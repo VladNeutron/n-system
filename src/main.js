@@ -20,3 +20,4 @@ const app = createApp(App).use(store).use(router)
 app.component('the-navbar', Navbar)
 
 app.mount('#app')
+
