@@ -1,9 +1,12 @@
 <template>
   <the-navbar></the-navbar>
+  <main class="main-content border-radius-lg ">
+  <the-header></the-header>
   <div class="home">
     <img alt="Vue logo" src="../assets/logo.png">
     <HelloWorld msg="Welcome to Your Vue.js App"/>
   </div>
+  </main>
 </template>
 
 <script>
