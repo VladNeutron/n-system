@@ -8,7 +8,7 @@ import '@/assets/css/nucleo-svg.css'
 import '@/assets/css/soft-ui-dashboard.css'
 import '@/assets/js/core/popper.min.js'
 import '@/assets/js/core/bootstrap.min.js'
-import '@/assets/js/soft-ui-dashboard.min.js'
+// import '@/assets/js/soft-ui-dashboard.min.js'
 import '@/assets/js/plugins/perfect-scrollbar.min.js'
 import '@/assets/js/plugins/smooth-scrollbar.min.js'
 

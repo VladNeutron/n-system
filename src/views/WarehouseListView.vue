@@ -1,73 +1,84 @@
 <template>
-  <div>
-    <div class="table__header">
-      <div>
-        <button class="btn bg-gradient-dark">
-          <span>+</span>Добавить склад
-        </button>
-      </div>
-      <div class="table__header-search">
-        <div class="form-group">
-          <div class="input-group mt-1">
-            <span class="input-group-text btn-outline-dark"
-              ><i class="ni ni-zoom-split-in"></i
-            ></span>
-            <input
-              class="form-control btn-outline-dark"
-              placeholder="Поиск"
-              type="text"
-            />
+  <the-navbar></the-navbar>
+  <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg">
+  <the-header></the-header>
+  <div class="container-fluid py-4">
+    <div class="row mt-4">
+        <div class="col-12">
+          <div class="card">
+            <div>
+              <div class="table__header">
+                <div>
+                  <button class="btn bg-gradient-dark">
+                    <span>+</span>Добавить склад
+                  </button>
+                </div>
+                <div class="table__header-search">
+                  <div class="form-group">
+                    <div class="input-group mt-1">
+                      <span class="input-group-text btn-outline-dark"
+                        ><i class="ni ni-zoom-split-in"></i
+                      ></span>
+                      <input
+                        class="form-control btn-outline-dark"
+                        placeholder="Поиск"
+                        type="text"
+                      />
+                    </div>
+                  </div>
+                  <button class="btn btn-outline-dark">
+                    <i class="ni-tablet-button"></i>
+                    Фильтры
+                  </button>
+                </div>
+              </div>
+              <div class="table">
+                <table>
+                  <tr>
+                    <th>№</th>
+                    <th>НАИМЕНОВАНИЕ СКЛАДА</th>
+                    <th>ТИП СКЛАДА</th>
+                    <th>АДРЕСС СКЛАДА</th>
+                    <th>СТАТУС</th>
+                  </tr>
+                  <tr>
+                    <td>1</td>
+                    <td>Тц “Jam mall”</td>
+                    <td>торговая точка</td>
+                    <td>ул. горького, 5</td>
+                    <td>
+                      <div class="table__status"><p class="tag">Закрыт</p></div>
+                    </td>
+                    <td></td>
+                    <td>
+                      <a href="#"
+                        ><img src="../assets/css/icons/editIcon.svg" alt="edit"
+                      /></a>
+                      <a href="#"
+                        ><img src="../assets/css/icons/deleteIcon.svg" alt="delete"
+                      /></a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>1</td>
+                    <td>Тц “Jam mall”</td>
+                    <td>торговая точка</td>
+                    <td>ул. горького, 5</td>
+                    <td>Закрыт</td>
+                    <td></td>
+                    <td>
+                      <a href="#"><img src="../assets/css/icons/editIcon.svg" alt="edit" /></a>
+                      <a href="#"><img src="../assets/css/icons/deleteIcon.svg" alt="delete" /></a>
+                    </td>
+                  </tr>
+                </table>
+              </div>
+            </div>
           </div>
         </div>
-        <button class="btn btn-outline-dark">
-          <i class="ni-tablet-button"></i>
-          Фильтры
-        </button>
-      </div>
-    </div>
-    <div class="table">
-      <table>
-        <tr>
-          <th>№</th>
-          <th>НАИМЕНОВАНИЕ СКЛАДА</th>
-          <th>ТИП СКЛАДА</th>
-          <th>АДРЕСС СКЛАДА</th>
-          <th>СТАТУС</th>
-        </tr>
-        <tr>
-          <td>1</td>
-          <td>Тц “Jam mall”</td>
-          <td>торговая точка</td>
-          <td>ул. горького, 5</td>
-          <td>
-            <div class="table__status"><p class="tag">Закрыт</p></div>
-          </td>
-          <td></td>
-          <td>
-            <a href="#"
-              ><img src="../assets/css/icons/editIcon.svg" alt="edit"
-            /></a>
-            <a href="#"
-              ><img src="../assets/css/icons/deleteIcon.svg" alt="delete"
-            /></a>
-          </td>
-        </tr>
-        <tr>
-          <td>1</td>
-          <td>Тц “Jam mall”</td>
-          <td>торговая точка</td>
-          <td>ул. горького, 5</td>
-          <td>Закрыт</td>
-          <td>
-            <a href="#"><img src="" alt="edit" /></a>
-          </td>
-          <td>
-            <a href="#"><img src="" alt="delete" /></a>
-          </td>
-        </tr>
-      </table>
     </div>
   </div>
+  </main>
 </template>
 
 <script>
