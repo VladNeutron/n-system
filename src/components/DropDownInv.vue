@@ -1,60 +1,65 @@
 <template>
   <div class="dropdown__inv">
-            <div class="dropdown__inv__content">
-              <p class="dropdown__title">Инвентаризация №19</p>
-              <div class="drowdown__items">
-                <div class="items__block">
-                  <p class="items__title">№ инвентаризации</p>
-                  <p class="items__text">№ 19</p>
-                </div>
-                <div class="items__block">
-                  <p class="items__title">дата и время</p>
-                  <p class="items__text">11 ноя, 19:23, 2021</p>
-                </div>
-                <div class="items__block">
-                  <p class="items__title">Склад</p>
-                  <div class="dropdown">
-                    <p class="items__text">ТРЦ Москва</p>
-                    <div class="dropdown-content">
-                      <a style="cursor: pointer">ТЦ Европейский</a>
-                      <hr />
-                      <a style="cursor: pointer">ТРЦ Jam Moll</a>
-                    </div>
-                  </div>
-                </div>
-                <div class="items__block">
-                  <p class="items__title">Ответственный</p>
-
-                  <div class="dropdown">
-                    <p class="items__text">Тихонов Александр</p>
-                    <div class="dropdown-content">
-                      <a style="cursor: pointer">Антон</a>
-                      <hr />
-                      <a style="cursor: pointer">Валера</a>
-                      <hr />
-                      <a style="cursor: pointer">Влад</a>
-                    </div>
-                  </div>
-                </div>
-                <div class="items__block">
-                  <p class="items__title">Статус инвентаризации</p>
-                  <p class="items__text">
-                    <span style="cursor: pointer">Завершена</span>,
-                    <span style="cursor: pointer">не закрыта</span>
-                  </p>
-                </div>
-              </div>
+    <div class="dropdown__inv__content">
+      <p class="dropdown__title">Инвентаризация №19</p>
+      <div class="drowdown__items">
+        <div class="items__block">
+          <p class="items__title">№ инвентаризации</p>
+          <p class="items__text">№ 19</p>
+        </div>
+        <div class="items__block">
+          <p class="items__title">дата и время</p>
+          <p class="items__text">11 ноя, 19:23, 2021</p>
+        </div>
+        <div class="items__block">
+          <p class="items__title">Склад</p>
+          <div class="dropdown">
+            <p class="items__tex items__flex" style="cursor: pointer">
+              ТРЦ Москва <img src="@/assets/img/down.svg" class="rotate" style="width:0.729vw; margin-left:0.417vw" alt="">
+            </p>
+            <div class="dropdown-content">
+              <a style="cursor: pointer">ТЦ Европейский</a>
+              <hr />
+              <a style="cursor: pointer">ТРЦ Jam Moll</a>
             </div>
           </div>
+        </div>
+        <div class="items__block">
+          <p class="items__title">Ответственный</p>
+
+          <div class="dropdown">
+            <p class="items__text items__flex" style="cursor: pointer">
+              Тихонов Александр <img src="@/assets/img/down.svg" class="rotate" style="width:0.729vw; margin-left:0.417vw" alt="">
+            </p>
+            <div class="dropdown-content">
+              <a style="cursor: pointer">Антон</a>
+              <hr />
+              <a style="cursor: pointer">Валера</a>
+              <hr />
+              <a style="cursor: pointer">Влад</a>
+            </div>
+          </div>
+        </div>
+        <div class="items__block">
+          <p class="items__title">Статус инвентаризации</p>
+          <p class="items__text">
+            <span style="cursor: pointer">Завершена</span>,
+            <span style="cursor: pointer">не закрыта</span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
-export default {
-
-}
+export default {};
 </script>
 
 <style scoped>
+.items__flex {
+  display: flex;
+}
 .dropdown {
   display: inline-block;
   position: relative;
@@ -74,6 +79,10 @@ export default {
 }
 .dropdown:hover .dropdown-content {
   display: block;
+}
+.dropdown:hover .rotate {
+  transform: rotate(180deg);
+  transition: 0.5s;
 }
 .dropdown-content a {
   display: block;
