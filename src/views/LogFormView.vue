@@ -12,7 +12,13 @@
                 <input type="text" placeholder="Логин" class="form-control" />
               </div>
               <div class="form-outline form-grey mb-4">
-                <input type="password" name="" id="" placeholder="Пароль" />
+                <input
+                  type="password"
+                  name=""
+                  id=""
+                  placeholder="Пароль"
+                  class="form-control"
+                />
               </div>
 
               <button class="btn btn-lg px-6 bg-gradient-dark">Войти</button>
