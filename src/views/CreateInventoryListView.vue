@@ -15,7 +15,7 @@
                     <div class="input-group mt-1">
                       <input
                         class="form-control"
-                        placeholder="123123213123"
+                        placeholder="12312321312"
                         id="search"
                         type="text"
                       />
