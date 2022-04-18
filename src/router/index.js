@@ -38,6 +38,8 @@ const routes = [
     path: "/create-inv-list",
     name: "create-inv-list",
     component: () => import("../views/CreateInventoryListView.vue"),
+  },
+  {
     path: "/edit-inv",
     name: "edit-inv",
     component: () => import("../views/EditInventoryView.vue"),
