@@ -1,94 +1,106 @@
 <template>
   <the-navbar></the-navbar>
   <main class="main-content border-radius-lg">
-    <div class="container-fluid container__padding">
-      <div class="inv__title">
-        <p class="inv__title__text">Список инвентаризаций</p>
-      </div>
-      <div class="inv__buttons">
-        <div class="inv__left__btn">
-          <button type="button" class="btn bg-gradient-secondary">
-            + Новая инвентаризация
-          </button>
-        </div>
-        <div class="inv__right__btn">
-          <div class="form-group">
-            <div class="input-group mt-1">
-              <span class="input-group-text"
-                ><i class="ni ni-zoom-split-in"></i
-              ></span>
-              <input
-                class="form-control inv__inp"
-                placeholder="Поиск"
-                type="text"
-              />
+    <the-header></the-header>
+    <div class="container-fluid py-4">
+      <div class="row mt-4">
+        <div class="col-12">
+          <div class="inv__title">
+            <p class="inv__title__text">Список инвентаризаций</p>
+          </div>
+          <div class="card">
+            <div class="inv__buttons">
+              <div class="inv__left__btn">
+                <button type="button" class="btn bg-gradient-secondary">
+                  + Новая инвентаризация
+                </button>
+              </div>
+              <div class="inv__right__btn">
+                <div class="form-group">
+                  <div class="input-group mt-1">
+                    <span class="input-group-text"
+                      ><i class="ni ni-zoom-split-in"></i
+                    ></span>
+                    <input
+                      class="form-control inv__inp"
+                      placeholder="Поиск"
+                      type="text"
+                    />
+                  </div>
+                </div>
+                <button type="button" class="inv__btn btn btn-outline-dark">
+                  <img
+                    src="@/assets/img/filter.svg"
+                    style="width: 1.25vw; margin-right: 0.417vw"
+                    alt=""
+                  />
+                  фильтры
+                </button>
+                <button type="button" class="inv__btn btn btn-outline-dark">
+                  <img
+                    src="@/assets/img/print.svg"
+                    style="width: 1.25vw; margin-right: 0.417vw"
+                    alt=""
+                  />
+                  печать
+                </button>
+                <button type="button" class="inv__btn btn btn-outline-dark">
+                  <img
+                    src="@/assets/img/download.svg"
+                    style="width: 1.25vw; margin-right: 0.417vw"
+                    alt=""
+                  />
+                  скачать
+                </button>
+              </div>
+            </div>
+            <div class="inv__block">
+              <div class="inv__content">
+                <table class="table table-bordered table-hover">
+                  <thead>
+                    <tr>
+                      <th scope="col" class="th__col">№</th>
+                      <th scope="col" class="th__col">Дата и время</th>
+                      <th scope="col" class="th__col">Склад</th>
+                      <th scope="col" class="th__col">Ответственный</th>
+                      <th scope="col" class="th__col">Статус инвентаризации</th>
+                      <th scope="col" class="th__col">Кол-во товаров</th>
+                      <th scope="col" class="th__col"></th>
+                    </tr>
+                  </thead>
+                  <tbody v-for="(item, i) in items" :key="item">
+                    <tr>
+                      <th scope="row">{{ i + 1 }}</th>
+                      <td>{{ item.date }}</td>
+                      <td>{{ item.place }}</td>
+                      <td>{{ item.name }}</td>
+                      <td>{{ item.isReady }}</td>
+                      <td>{{ item.count }}</td>
+                      <td>
+                        <div class="dropdown">
+                          <img
+                            src="@/assets/img/dots.svg"
+                            style="width: 1.563vw; cursor: pointer"
+                            alt=""
+                          />
+                          <div class="dropdown-content">
+                            <a href="#">Редактировать</a>
+                            <hr />
+                            <a
+                              style="cursor: pointer"
+                              data-bs-toggle="modal"
+                              data-bs-target="#DeleteInv"
+                              >Удалить</a
+                            >
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
             </div>
           </div>
-          <button type="button" class="inv__btn btn btn-outline-dark">
-            <img
-              src="@/assets/img/filter.svg"
-              style="width: 1.25vw; margin-right: 0.417vw"
-              alt=""
-            />
-            фильтры
-          </button>
-          <button type="button" class="inv__btn btn btn-outline-dark">
-            <img
-              src="@/assets/img/print.svg"
-              style="width: 1.25vw; margin-right: 0.417vw"
-              alt=""
-            />
-            печать
-          </button>
-          <button type="button" class="inv__btn btn btn-outline-dark">
-            <img
-              src="@/assets/img/download.svg"
-              style="width: 1.25vw; margin-right: 0.417vw"
-              alt=""
-            />
-            скачать
-          </button>
-        </div>
-      </div>
-      <div class="inv__block">
-        <div class="inv__content">
-          <table class="table table-bordered table-hover">
-            <thead>
-              <tr>
-                <th scope="col" class="th__col">№</th>
-                <th scope="col" class="th__col">Дата и время</th>
-                <th scope="col" class="th__col">Склад</th>
-                <th scope="col" class="th__col">Ответственный</th>
-                <th scope="col" class="th__col">Статус инвентаризации</th>
-                <th scope="col" class="th__col">Кол-во товаров</th>
-                <th scope="col" class="th__col"></th>
-              </tr>
-            </thead>
-            <tbody v-for="(item, i) in items" :key="item">
-              <tr>
-                <th scope="row">{{ i + 1 }}</th>
-                <td>{{ item.date }}</td>
-                <td>{{ item.place }}</td>
-                <td>{{ item.name }}</td>
-                <td>{{ item.isReady }}</td>
-                <td>{{ item.count }}</td>
-                <td>
-                  <div class="dropdown">
-                    <img
-                      src="@/assets/img/dots.svg"
-                      style="width: 1.563vw; cursor: pointer"
-                      alt=""
-                    />
-                    <div class="dropdown-content">
-                      <a href="#">Редактировать</a>
-                      <hr />
-                      <a style="cursor:pointer" data-bs-toggle="modal" data-bs-target="#DeleteInv">Удалить</a>
-                    </div>
-                  </div>
-                </td>
-              </tr>
-            </tbody>
-          </table>
         </div>
       </div>
     </div>
@@ -97,11 +109,11 @@
 </template>
 
 <script>
-import DeleteModal from '@/components/DeleteModal.vue'
+import DeleteModal from "@/components/DeleteModal.vue";
 export default {
-    components:{
-        DeleteModal
-    },
+  components: {
+    DeleteModal,
+  },
   data() {
     return {
       items: [
@@ -178,7 +190,7 @@ th {
 .inv__content::-webkit-scrollbar {
   background: #e2e8f0;
   border-radius: 0.78vw;
-  width: 0.47vw;
+  width: 0.37vw;
 }
 .inv__content::-webkit-scrollbar-thumb {
   border-radius: 0.78vw;
@@ -194,10 +206,7 @@ th {
   height: 33.469vw;
   overflow-y: scroll;
 }
-.inv__block {
-  padding-bottom: 2.188vw;
-  padding-top: 2.083vw;
-}
+
 .inv__btn {
   display: flex;
   align-items: center;
@@ -217,6 +226,10 @@ th {
   border-radius: 0.417vw;
 }
 .inv__buttons {
+  padding-top: 0.729vw;
+  padding-left: 1.25vw;
+  padding-right: 1.25vw;
+  padding-bottom:2.083vw;
   display: flex;
   justify-content: space-between;
 }

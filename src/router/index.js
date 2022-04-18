@@ -33,6 +33,11 @@ const routes = [
     name: "table",
     component: () => import("../views/WarehouseListView.vue"),
   },
+  {
+    path: "/edit-inv",
+    name: "edit-inv",
+    component: () => import("../views/EditInventoryView.vue"),
+  },
 ];
 
 const router = createRouter({
