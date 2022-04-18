@@ -52,32 +52,40 @@
       </div>
       <div class="inv__block">
         <div class="inv__content">
-          <table class="table">
+          <table class="table table-bordered table-striped table-hover">
             <thead>
               <tr>
-                <th scope="col">#</th>
-                <th scope="col">First</th>
-                <th scope="col">Last</th>
-                <th scope="col">Handle</th>
+                <th scope="col" class="th__col">№</th>
+                <th scope="col" class="th__col">Дата и время</th>
+                <th scope="col" class="th__col">Склад</th>
+                <th scope="col" class="th__col">Ответственный</th>
+                <th scope="col" class="th__col">Статус инвентаризации</th>
+                <th scope="col" class="th__col">Кол-во товаров</th>
+                <th scope="col" class="th__col"></th>
               </tr>
             </thead>
-            <tbody>
+            <tbody v-for="(item, i) in items" :key="item">
               <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-              </tr>
-              <tr>
-                <th scope="row">2</th>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-              </tr>
-              <tr>
-                <th scope="row">3</th>
-                <td colspan="2">Larry the Bird</td>
-                <td>@twitter</td>
+                <th scope="row">{{ i + 1 }}</th>
+                <td>{{ item.date }}</td>
+                <td>{{ item.place }}</td>
+                <td>{{ item.name }}</td>
+                <td>{{ item.isReady }}</td>
+                <td>{{ item.count }}</td>
+                <td>
+                  <div class="dropdown">
+                    <img
+                      src="@/assets/img/dots.svg"
+                      style="width: 1.563vw; cursor: pointer"
+                      alt=""
+                    />
+                    <div class="dropdown-content">
+                      <a href="#">Редактировать</a>
+                      <hr />
+                      <a href="#">Удалить</a>
+                    </div>
+                  </div>
+                </td>
               </tr>
             </tbody>
           </table>
@@ -88,11 +96,101 @@
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      items: [
+        {
+          date: "11 янв, 19:23, 2021",
+          place: "ТРЦ Москва",
+          name: "Мильчаков Валерий",
+          isReady: "Завершена",
+          count: "15",
+        },
+        {
+          date: "15 дек, 19:23, 2021",
+          place: "ТРЦ Москва",
+          name: "Дмитрий Иванович",
+          isReady: "Завершена",
+          count: "22",
+        },
+        {
+          date: "11 ноя, 19:23, 2021",
+          place: "ТЦ Европейский",
+          name: "Иван Иванов",
+          isReady: "Завершена",
+          count: "322",
+        },
+        {
+          date: "11 ноя, 19:23, 2021",
+          place: "ТРЦ Jam Moll",
+          name: "Тихонов Александр",
+          isReady: "Завершена",
+          count: "111",
+        },
+      ],
+    };
+  },
+};
 </script>
 
 <style scoped>
+hr {
+  border: 1px solid #2d3748;
+}
+.dropdown {
+  display: inline-block;
+  position: relative;
+}
+.dropdown-content {
+  text-align: left;
+  display: none;
+  position: absolute;
+  width: 7.815vw;
+  overflow: auto;
+  background: #f8f9fa;
+  box-shadow: 2px 2px 5.5px rgba(0, 0, 0, 0.25);
+  border-radius: 12px;
+  right: 15px;
+  z-index: 1;
+  padding: 0.625vw 0.625vw 0.625vw 0.625vw;
+}
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+.dropdown-content a {
+  display: block;
+  color: #2d3748;
+  text-decoration: none;
+}
+.th__col {
+  color: #a0aec0 !important;
+}
+td,
+th {
+  color: #2d3748;
+}
+.inv__content::-webkit-scrollbar {
+  background: #e2e8f0;
+  border-radius: 0.78vw;
+  width: 0.47vw;
+}
+.inv__content::-webkit-scrollbar-thumb {
+  border-radius: 0.78vw;
+  background-color: #a0aec0;
+}
+.inv__content::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.2);
+  border-radius: 0.78vw;
+  background-color: #e2e8f0;
+}
+.inv__content {
+  padding-right: 1.354vw;
+  height: 40.469vw;
+  overflow-y: scroll;
+}
 .inv__block {
+  padding-bottom: 2.188vw;
   padding-top: 2.083vw;
 }
 .inv__btn {
