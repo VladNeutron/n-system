@@ -1,10 +1,12 @@
 <template>
-  <the-navbar></the-navbar>
   <nav>
     <router-link to="/">Home</router-link> |
     <router-link to="/about">About</router-link> |
     <router-link to="/login">Login</router-link> |
+<<<<<<< HEAD
     <router-link to="/about">About</router-link>
+=======
+>>>>>>> 55421a550398b05b2cf80bbd46207bd258385a98
   </nav>
   <router-view />
 </template>
