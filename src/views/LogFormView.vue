@@ -6,10 +6,14 @@
     <div class="col-12 col-md-8 col-lg-6 col-xl-5">
       <div class="card bg-white text-grey">
         <div class="card bg-white text-grey" style="border-radius: 16px">
-          <div class="card-body p-5 text-center">
+          <div class="card-body p-3 text-center">
             <div class="mb-md-5 mt-md-4">
               <div class="form-outline form-grey mb-4">
-                <input type="text" placeholder="Логин" class="form-control" />
+                <input
+                  type="text"
+                  placeholder="Логин"
+                  class="form-control bg-light"
+                />
               </div>
               <div class="form-outline form-grey mb-4">
                 <input
@@ -17,14 +21,25 @@
                   name=""
                   id=""
                   placeholder="Пароль"
-                  class="form-control"
+                  class="form-control bg-light"
                 />
               </div>
 
-              <button class="btn btn-lg px-6 bg-gradient-dark">Войти</button>
+              <button
+                class="btn d-flex justify-content-center w-100 px-6 bg-gradient-dark"
+                style="border-radius: 20px"
+              >
+                Войти
+              </button>
+
               <div class=""></div>
-              <p>Забыли пароль? <a href="#" class="link"> Восстановить</a></p>
-              <p>Нет аккаунта? <a href="#"> Зарегестрироваться</a></p>
+              <p>
+                Забыли пароль?
+                <a href="#" class="text-primary"> Восстановить</a>
+              </p>
+              <p>
+                Нет аккаунта? <a href="text-primary"> Зарегестрироваться</a>
+              </p>
             </div>
           </div>
         </div>
