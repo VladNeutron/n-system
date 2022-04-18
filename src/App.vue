@@ -4,6 +4,9 @@
     <router-link to="/about">About</router-link> |
     <router-link to="/login">Login</router-link> |
     <router-link to="/about">About</router-link> |
+    <router-link to="/table">Table</router-link> |
+    <router-link to="/create-inv-list">Create Inventory</router-link>
+  </nav>
     <router-link to="/table">Table</router-link>
   </nav> -->
   <router-view />
@@ -17,8 +20,8 @@
   text-align: center;
   color: #2c3e50;
 }
-body{
-   background-color: #F8F9FA !important;
+body {
+  background-color: #f8f9fa !important;
 }
 
 nav {

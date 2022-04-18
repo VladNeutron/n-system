@@ -5,22 +5,6 @@
     <div class="container-fluid py-4">
       <div class="row mt-4">
         <div class="col-12">
-          <div class="edit__btns">
-            <button type="button" class="btn bg-gradient-secondary">
-              <img
-                src="@/assets/img/save.svg"
-                style="width: 1.25vw; margin-right: 0.677vw"
-                alt=""
-              />Сохранить
-            </button>
-            <button type="button" class="btn btn-outline-dark">
-              <img
-                src="@/assets/img/close.svg"
-                style="width: 1.563vw; margin-right: 0.677vw"
-                alt=""
-              />ЗАКРЫТЬ
-            </button>
-          </div>
           <drop-down></drop-down>
           <div class="card pl-pr">
             <div class="main-page text-start">
@@ -31,7 +15,7 @@
                     <div class="input-group mt-1">
                       <input
                         class="form-control"
-                        placeholder="123123213123"
+                        placeholder="12312321312"
                         id="search"
                         type="text"
                       />
@@ -129,7 +113,7 @@
                           <td>{{ item.count * item.price }} <span>₸</span></td>
                           <td>
                             <img
-                              src="@/assets/img/trash.svg"
+                              src="@/assets/img/dots.svg"
                               style="width: 1.563vw; cursor: pointer"
                               alt=""
                             />
@@ -238,20 +222,23 @@ export default {
   margin-top: 1.094vw;
   margin-right: 3.385vw;
 }
-btn-outline-dark {
-  display: flex;
-  align-items: center;
+.page__search-inputs {
+  gap: 1.042vw;
 }
-.bg-gradient-secondary {
-  display: flex;
-  background: linear-gradient(81.62deg, #313860 2.25%, #151928 79.87%);
-  border-radius: 8px;
-  align-items: center;
+td,
+th {
+  color: #2d3748;
 }
-.edit__btns {
-  padding-left: 1.25vw;
-  padding-right: 3.646vw;
-  display: flex;
-  justify-content: space-between;
+
+.inv__content {
+  padding-right: 1.354vw;
+  height: 90%;
+}
+.inv__block {
+  padding-bottom: 2.188vw;
+  padding-top: 2.083vw;
+}
+.pagination {
+  padding-right: 1.354vw;
 }
 </style>
