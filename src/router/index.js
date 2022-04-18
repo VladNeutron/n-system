@@ -23,6 +23,11 @@ const routes = [
     name: "login",
     component: () => import("../views/LogFormView.vue"),
   },
+  {
+    path: "/inv-list",
+    name: "inv-list",
+    component: () => import("../views/InventoryListView.vue"),
+  },
 ];
 
 const router = createRouter({
