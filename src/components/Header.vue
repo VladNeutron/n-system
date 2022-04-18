@@ -78,7 +78,7 @@
                 <a class="dropdown-item border-radius-md" href="javascript:;">
                   <div class="d-flex py-1">
                     <div class="my-auto">
-                      <!-- <img src="./assets/img/team-2.jpg" class="avatar avatar-sm  me-3 " alt="user image"> -->
+                      <img src="@/assets/img/team-2.jpg" class="avatar avatar-sm  me-3 " alt="user image">
                     </div>
                     <div class="d-flex flex-column justify-content-center">
                       <h6 class="text-sm font-weight-normal mb-1">
@@ -96,7 +96,7 @@
                 <a class="dropdown-item border-radius-md" href="javascript:;">
                   <div class="d-flex py-1">
                     <div class="my-auto">
-                      <!-- <img src="./assets/img/small-logos/logo-spotify.svg" class="avatar avatar-sm bg-gradient-dark  me-3 " alt="logo spotify"> -->
+                      <img src="@/assets/img/small-logos/logo-spotify.svg" class="avatar avatar-sm bg-gradient-dark  me-3 " alt="logo spotify">
                     </div>
                     <div class="d-flex flex-column justify-content-center">
                       <h6 class="text-sm font-weight-normal mb-1">
@@ -137,8 +137,49 @@
 </template>
 
 <script>
+import '@/assets/js/soft-ui-dashboard.min.js'
 export default {
+    methods:{
+        // navbarMinimize(el) {
+        // var sidenavShow = document.getElementsByClassName('g-sidenav-show')[0];
+        // if (!el.getAttribute("checked")) {
+        //     sidenavShow.classList.remove('g-sidenav-pinned');
+        //     sidenavShow.classList.add('g-sidenav-hidden');
+        //     el.setAttribute("checked", "true");
+        // } else {
+        //     sidenavShow.classList.remove('g-sidenav-hidden');
+        //     sidenavShow.classList.add('g-sidenav-pinned');
+        //     el.removeAttribute("checked");
+        // }
+        // },
+    },
+    mounted(){
+        if (document.querySelector('.sidenav-toggler')) {
+        var sidenavToggler = document.getElementsByClassName('sidenav-toggler')[0];
+        var sidenavShow = document.getElementsByClassName('g-sidenav-show')[0];
+        var toggleNavbarMinimize = document.getElementById('navbarMinimize');
 
+        if (sidenavShow) {
+            sidenavToggler.onclick = function() {
+            if (!sidenavShow.classList.contains('g-sidenav-hidden')) {
+                sidenavShow.classList.remove('g-sidenav-pinned');
+                sidenavShow.classList.add('g-sidenav-hidden');
+                if (toggleNavbarMinimize) {
+                toggleNavbarMinimize.click();
+                toggleNavbarMinimize.setAttribute("checked", "true");
+                }
+            } else {
+                sidenavShow.classList.remove('g-sidenav-hidden');
+                sidenavShow.classList.add('g-sidenav-pinned');
+                if (toggleNavbarMinimize) {
+                toggleNavbarMinimize.click();
+                toggleNavbarMinimize.removeAttribute("checked");
+                }
+            }
+            };
+        }
+        }
+    }
 }
 </script>
 

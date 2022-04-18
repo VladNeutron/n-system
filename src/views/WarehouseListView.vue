@@ -1,4 +1,11 @@
 <template>
+  <the-navbar></the-navbar>
+  <main class="main-content border-radius-lg ">
+  <the-header></the-header>
+  <div class="container-fluid py-4">
+    <div class="row mt-4">
+        <div class="col-12">
+          <div class="card">
   <div>
     <div class="table__header">
       <div>
@@ -68,6 +75,11 @@
       </table>
     </div>
   </div>
+  </div>
+        </div>
+    </div>
+  </div>
+  </main>
 </template>
 
 <script>
