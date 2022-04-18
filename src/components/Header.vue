@@ -78,7 +78,7 @@
                 <a class="dropdown-item border-radius-md" href="javascript:;">
                   <div class="d-flex py-1">
                     <div class="my-auto">
-                      <!-- <img src="./assets/img/team-2.jpg" class="avatar avatar-sm  me-3 " alt="user image"> -->
+                      <img src="@/assets/img/team-2.jpg" class="avatar avatar-sm  me-3 " alt="user image">
                     </div>
                     <div class="d-flex flex-column justify-content-center">
                       <h6 class="text-sm font-weight-normal mb-1">
@@ -96,7 +96,7 @@
                 <a class="dropdown-item border-radius-md" href="javascript:;">
                   <div class="d-flex py-1">
                     <div class="my-auto">
-                      <!-- <img src="./assets/img/small-logos/logo-spotify.svg" class="avatar avatar-sm bg-gradient-dark  me-3 " alt="logo spotify"> -->
+                      <img src="@/assets/img/small-logos/logo-spotify.svg" class="avatar avatar-sm bg-gradient-dark  me-3 " alt="logo spotify">
                     </div>
                     <div class="d-flex flex-column justify-content-center">
                       <h6 class="text-sm font-weight-normal mb-1">
@@ -137,8 +137,149 @@
 </template>
 
 <script>
+import '@/assets/js/soft-ui-dashboard.min.js'
 export default {
+    methods:{
+        // Navbar blur on scroll
+        navbarBlurOnScroll(id) {
+        const navbar = document.getElementById(id);
+        let navbarScrollActive = navbar ? navbar.getAttribute("data-scroll") : false;
+        let scrollDistance = 5;
+        let classes = ['blur', 'shadow-blur', 'left-auto'];
+        let toggleClasses = ['shadow-none'];
 
+        if (navbarScrollActive == 'true') {
+            window.onscroll = this.debounce(function() {
+            if (window.scrollY > scrollDistance) {
+                blurNavbar();
+            } else {
+                transparentNavbar();
+            }
+            }, 10);
+        } else {
+            window.onscroll = this.debounce(function() {
+            transparentNavbar();
+            }, 10);
+        }
+
+        var isWindows = navigator.platform.indexOf('Win') > -1 ? true : false;
+
+        if (isWindows) {
+            var content = document.querySelector('.main-content');
+            if (navbarScrollActive == 'true') {
+            content.addEventListener('ps-scroll-y', this.debounce(function() {
+                if (content.scrollTop > scrollDistance) {
+                blurNavbar();
+                } else {
+                transparentNavbar();
+                }
+            }, 10));
+            } else {
+            content.addEventListener('ps-scroll-y', this.debounce(function() {
+                transparentNavbar();
+            }, 10));
+            }
+        }
+
+        function blurNavbar() {
+            navbar.classList.add(...classes)
+            navbar.classList.remove(...toggleClasses)
+
+            toggleNavLinksColor('blur');
+        }
+
+        function transparentNavbar() {
+            navbar.classList.remove(...classes)
+            navbar.classList.add(...toggleClasses)
+
+            toggleNavLinksColor('transparent');
+        }
+
+        function toggleNavLinksColor(type) {
+            let navLinks = document.querySelectorAll('.navbar-main .nav-link')
+            let navLinksToggler = document.querySelectorAll('.navbar-main .sidenav-toggler-line')
+
+            if (type === "blur") {
+            navLinks.forEach(element => {
+                element.classList.remove('text-body')
+            });
+
+            navLinksToggler.forEach(element => {
+                element.classList.add('bg-dark')
+            });
+            } else if (type === "transparent") {
+            navLinks.forEach(element => {
+                element.classList.add('text-body')
+            });
+
+            navLinksToggler.forEach(element => {
+                element.classList.remove('bg-dark')
+            });
+            }
+        }
+        },
+        debounce(func, wait, immediate) {
+        var timeout;
+        return function() {
+            var context = this,
+            args = arguments;
+            var later = function() {
+            timeout = null;
+            if (!immediate) func.apply(context, args);
+            };
+            var callNow = immediate && !timeout;
+            clearTimeout(timeout);
+            timeout = setTimeout(later, wait);
+            if (callNow) func.apply(context, args);
+        };
+        },
+        navbarFixed(el) {
+            let classes = ['position-sticky', 'blur', 'shadow-blur', 'mt-4', 'left-auto', 'top-1', 'z-index-sticky'];
+            const navbar = document.getElementById('navbarBlur');
+
+            if (!el.getAttribute("checked")) {
+                navbar.classList.add(...classes);
+                navbar.setAttribute('data-scroll', 'true');
+                navbarBlurOnScroll('navbarBlur');
+                el.setAttribute("checked", "true");
+            } else {
+                navbar.classList.remove(...classes);
+                navbar.setAttribute('data-scroll', 'false');
+                navbarBlurOnScroll('navbarBlur');
+                el.removeAttribute("checked");
+            }
+        },
+    },
+    mounted(){
+        if (document.querySelector('.sidenav-toggler')) {
+        var sidenavToggler = document.getElementsByClassName('sidenav-toggler')[0];
+        var sidenavShow = document.getElementsByClassName('g-sidenav-show')[0];
+        var toggleNavbarMinimize = document.getElementById('navbarMinimize');
+
+        if (sidenavShow) {
+            sidenavToggler.onclick = function() {
+            if (!sidenavShow.classList.contains('g-sidenav-hidden')) {
+                sidenavShow.classList.remove('g-sidenav-pinned');
+                sidenavShow.classList.add('g-sidenav-hidden');
+                if (toggleNavbarMinimize) {
+                toggleNavbarMinimize.click();
+                toggleNavbarMinimize.setAttribute("checked", "true");
+                }
+            } else {
+                sidenavShow.classList.remove('g-sidenav-hidden');
+                sidenavShow.classList.add('g-sidenav-pinned');
+                if (toggleNavbarMinimize) {
+                toggleNavbarMinimize.click();
+                toggleNavbarMinimize.removeAttribute("checked");
+                }
+            }
+            };
+        }
+        }
+        if (document.getElementById('navbarBlur')) {
+            this.navbarBlurOnScroll('navbarBlur');
+        }
+    }
 }
 </script>
 

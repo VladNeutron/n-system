@@ -1607,7 +1607,8 @@ progress {
   --bs-table-bg: transparent;
   --bs-table-accent-bg: transparent;
   --bs-table-striped-color: #67748e;
-  --bs-table-striped-bg: rgba(0, 0, 0, 0.05);
+  /* --bs-table-striped-bg: rgba(0, 0, 0, 0.05); */
+  --bs-table-striped-bg: rgba(226, 232, 240, 0.3);
   --bs-table-active-color: #67748e;
   --bs-table-active-bg: rgba(0, 0, 0, 0.1);
   --bs-table-hover-color: #67748e;

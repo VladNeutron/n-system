@@ -1,5 +1,5 @@
 <template>
-  <nav>
+  <!-- <nav>
     <router-link to="/">Home</router-link> |
     <router-link to="/about">About</router-link> |
     <router-link to="/login">Login</router-link> |
@@ -7,6 +7,8 @@
     <router-link to="/table">Table</router-link> |
     <router-link to="/create-inv-list">Create Inventory</router-link>
   </nav>
+    <router-link to="/table">Table</router-link>
+  </nav> -->
   <router-view />
 </template>
 
@@ -18,9 +20,12 @@
   text-align: center;
   color: #2c3e50;
 }
+body {
+  background-color: #f8f9fa !important;
+}
 
 nav {
-  padding: 30px;
+  /* padding: 30px; */
 }
 
 nav a {
