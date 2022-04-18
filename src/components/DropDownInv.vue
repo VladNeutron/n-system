@@ -1,7 +1,7 @@
 <template>
   <div class="dropdown__inv">
     <div class="dropdown__inv__content">
-      <p class="dropdown__title">Инвентаризация №19</p>
+      <slot name="header">default header</slot>
       <div class="drowdown__items">
         <div class="items__block">
           <p class="items__title">№ инвентаризации</p>

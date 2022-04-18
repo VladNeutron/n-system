@@ -21,7 +21,11 @@
               />ЗАКРЫТЬ
             </button>
           </div>
-          <drop-down></drop-down>
+          <drop-down>
+            <template #header>
+             <p class="dropdown__title">Инвентаризация №19</p>
+            </template>
+          </drop-down>
           <div class="card pl-pr">
             <div class="main-page text-start">
               <label class="form-control-label ps-3" for="search">Поиск</label>
@@ -233,6 +237,12 @@ export default {
 </script>
 
 <style scoped>
+.dropdown__title {
+  font-weight: 600;
+  font-size: 0.938vw;
+  color: #2d3748;
+  text-align: left;
+}
 .pl-pr {
   margin-left: 1.146vw;
   margin-top: 1.094vw;
