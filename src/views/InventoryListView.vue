@@ -82,7 +82,7 @@
                     <div class="dropdown-content">
                       <a href="#">Редактировать</a>
                       <hr />
-                      <a href="#">Удалить</a>
+                      <a style="cursor:pointer" data-bs-toggle="modal" data-bs-target="#DeleteInv">Удалить</a>
                     </div>
                   </div>
                 </td>
@@ -92,11 +92,16 @@
         </div>
       </div>
     </div>
+    <delete-modal></delete-modal>
   </main>
 </template>
 
 <script>
+import DeleteModal from '@/components/DeleteModal.vue'
 export default {
+    components:{
+        DeleteModal
+    },
   data() {
     return {
       items: [
@@ -186,7 +191,7 @@ th {
 }
 .inv__content {
   padding-right: 1.354vw;
-  height: 40.469vw;
+  height: 33.469vw;
   overflow-y: scroll;
 }
 .inv__block {
