@@ -14,11 +14,13 @@ import '@/assets/js/plugins/smooth-scrollbar.min.js'
 
 // Components
 import Navbar from './components/Navbar.vue'
+import Header from './components/Header.vue'
 
 
 const app = createApp(App).use(store).use(router)
 
 app.component('the-navbar', Navbar)
+app.component('the-header', Header)
 
 app.mount('#app')
 

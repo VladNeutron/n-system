@@ -28,6 +28,11 @@ const routes = [
     name: "inv-list",
     component: () => import("../views/InventoryListView.vue"),
   },
+  {
+    path: "/table",
+    name: "table",
+    component: () => import("../views/WarehouseListView.vue"),
+  },
 ];
 
 const router = createRouter({
