@@ -90,7 +90,7 @@
                     <thead>
                       <tr>
                         <th scope="col" class="">№</th>
-                        <th scope="col" class="">Штрихкод</th>
+                        <th scope="col" class="">Штрихкод s</th>
                         <th scope="col" class="">Товар</th>
                         <th scope="col" class="">Категория</th>
                         <th scope="col" class="">Кол-во</th>
