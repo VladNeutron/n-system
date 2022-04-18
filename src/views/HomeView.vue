@@ -1,6 +1,6 @@
 <template>
   <the-navbar></the-navbar>
-  <main class="main-content border-radius-lg ">
+  <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg">
   <the-header></the-header>
   <div class="home">
     <img alt="Vue logo" src="../assets/logo.png">

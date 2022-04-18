@@ -140,18 +140,6 @@
 import '@/assets/js/soft-ui-dashboard.min.js'
 export default {
     methods:{
-        // navbarMinimize(el) {
-        // var sidenavShow = document.getElementsByClassName('g-sidenav-show')[0];
-        // if (!el.getAttribute("checked")) {
-        //     sidenavShow.classList.remove('g-sidenav-pinned');
-        //     sidenavShow.classList.add('g-sidenav-hidden');
-        //     el.setAttribute("checked", "true");
-        // } else {
-        //     sidenavShow.classList.remove('g-sidenav-hidden');
-        //     sidenavShow.classList.add('g-sidenav-pinned');
-        //     el.removeAttribute("checked");
-        // }
-        // },
     },
     mounted(){
         if (document.querySelector('.sidenav-toggler')) {
