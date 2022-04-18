@@ -234,24 +234,34 @@ export default {
             if (callNow) func.apply(context, args);
         };
         },
-        navbarFixed(el) {
-            let classes = ['position-sticky', 'blur', 'shadow-blur', 'mt-4', 'left-auto', 'top-1', 'z-index-sticky'];
-            const navbar = document.getElementById('navbarBlur');
-
-            if (!el.getAttribute("checked")) {
-                navbar.classList.add(...classes);
-                navbar.setAttribute('data-scroll', 'true');
-                navbarBlurOnScroll('navbarBlur');
-                el.setAttribute("checked", "true");
-            } else {
-                navbar.classList.remove(...classes);
-                navbar.setAttribute('data-scroll', 'false');
-                navbarBlurOnScroll('navbarBlur');
-                el.removeAttribute("checked");
-            }
-        },
     },
     mounted(){
+        (function() {
+            var isWindows = navigator.platform.indexOf('Win') > -1 ? true : false;
+
+            if (isWindows) {
+                // if we are on windows OS we activate the perfectScrollbar function
+                // if (document.getElementsByClassName('main-content')[0]) {
+                // var mainpanel = document.querySelector('.main-content');
+                // var ps = new PerfectScrollbar(mainpanel);
+                // };
+
+                if (document.getElementsByClassName('sidenav')[0]) {
+                var sidebar = document.querySelector('.sidenav');
+                var ps1 = new PerfectScrollbar(sidebar);
+                };
+
+                if (document.getElementsByClassName('navbar-collapse')[0]) {
+                var fixedplugin = document.querySelector('.navbar-collapse');
+                var ps2 = new PerfectScrollbar(fixedplugin);
+                };
+
+                if (document.getElementsByClassName('fixed-plugin')[0]) {
+                var fixedplugin = document.querySelector('.fixed-plugin');
+                var ps3 = new PerfectScrollbar(fixedplugin);
+                };
+            };
+            })();
         if (document.querySelector('.sidenav-toggler')) {
         var sidenavToggler = document.getElementsByClassName('sidenav-toggler')[0];
         var sidenavShow = document.getElementsByClassName('g-sidenav-show')[0];
@@ -280,32 +290,6 @@ export default {
         if (document.getElementById('navbarBlur')) {
             this.navbarBlurOnScroll('navbarBlur');
         }
-        (function() {
-            var isWindows = navigator.platform.indexOf('Win') > -1 ? true : false;
-
-            if (isWindows) {
-                // if we are on windows OS we activate the perfectScrollbar function
-                if (document.getElementsByClassName('main-content')[0]) {
-                var mainpanel = document.querySelector('.main-content');
-                var ps = new PerfectScrollbar(mainpanel);
-                };
-
-                if (document.getElementsByClassName('sidenav')[0]) {
-                var sidebar = document.querySelector('.sidenav');
-                var ps1 = new PerfectScrollbar(sidebar);
-                };
-
-                if (document.getElementsByClassName('navbar-collapse')[0]) {
-                var fixedplugin = document.querySelector('.navbar-collapse');
-                var ps2 = new PerfectScrollbar(fixedplugin);
-                };
-
-                if (document.getElementsByClassName('fixed-plugin')[0]) {
-                var fixedplugin = document.querySelector('.fixed-plugin');
-                var ps3 = new PerfectScrollbar(fixedplugin);
-                };
-            };
-            })();
     }
 }
 </script>
