@@ -84,8 +84,7 @@ export default {};
   width: 100%;
   padding: 5px;
 }
-.table {
-}
+
 th {
   color: gray;
   font-weight: 400;
@@ -101,15 +100,17 @@ td {
   padding: 0.521vw 0;
 }
 .table__status {
-  background-color: #eb5757;
-  color: #e21512;
+  background-color: rgba(235, 87, 87, 0.3);
+
   border-radius: 5px;
 }
 tr {
   border-bottom: 2px solid #f8f9fa;
+  height: 2.604vw;
 }
 .tag {
   margin: 0;
+  color: #eb5757;
 }
 td > a {
   padding-left: 0.833vw;
