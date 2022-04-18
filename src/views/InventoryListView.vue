@@ -52,7 +52,7 @@
       </div>
       <div class="inv__block">
         <div class="inv__content">
-          <table class="table table-bordered table-striped table-hover">
+          <table class="table table-bordered table-hover">
             <thead>
               <tr>
                 <th scope="col" class="th__col">№</th>
