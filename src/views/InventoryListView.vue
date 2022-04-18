@@ -1,0 +1,230 @@
+<template>
+  <the-navbar></the-navbar>
+  <main class="main-content border-radius-lg">
+    <div class="container-fluid container__padding">
+      <div class="inv__title">
+        <p class="inv__title__text">Список инвентаризаций</p>
+      </div>
+      <div class="inv__buttons">
+        <div class="inv__left__btn">
+          <button type="button" class="btn bg-gradient-secondary">
+            + Новая инвентаризация
+          </button>
+        </div>
+        <div class="inv__right__btn">
+          <div class="form-group">
+            <div class="input-group mt-1">
+              <span class="input-group-text"
+                ><i class="ni ni-zoom-split-in"></i
+              ></span>
+              <input
+                class="form-control inv__inp"
+                placeholder="Поиск"
+                type="text"
+              />
+            </div>
+          </div>
+          <button type="button" class="inv__btn btn btn-outline-dark">
+            <img
+              src="@/assets/img/filter.svg"
+              style="width: 1.25vw; margin-right: 0.417vw"
+              alt=""
+            />
+            фильтры
+          </button>
+          <button type="button" class="inv__btn btn btn-outline-dark">
+            <img
+              src="@/assets/img/print.svg"
+              style="width: 1.25vw; margin-right: 0.417vw"
+              alt=""
+            />
+            печать
+          </button>
+          <button type="button" class="inv__btn btn btn-outline-dark">
+            <img
+              src="@/assets/img/download.svg"
+              style="width: 1.25vw; margin-right: 0.417vw"
+              alt=""
+            />
+            скачать
+          </button>
+        </div>
+      </div>
+      <div class="inv__block">
+        <div class="inv__content">
+          <table class="table table-bordered table-hover">
+            <thead>
+              <tr>
+                <th scope="col" class="th__col">№</th>
+                <th scope="col" class="th__col">Дата и время</th>
+                <th scope="col" class="th__col">Склад</th>
+                <th scope="col" class="th__col">Ответственный</th>
+                <th scope="col" class="th__col">Статус инвентаризации</th>
+                <th scope="col" class="th__col">Кол-во товаров</th>
+                <th scope="col" class="th__col"></th>
+              </tr>
+            </thead>
+            <tbody v-for="(item, i) in items" :key="item">
+              <tr>
+                <th scope="row">{{ i + 1 }}</th>
+                <td>{{ item.date }}</td>
+                <td>{{ item.place }}</td>
+                <td>{{ item.name }}</td>
+                <td>{{ item.isReady }}</td>
+                <td>{{ item.count }}</td>
+                <td>
+                  <div class="dropdown">
+                    <img
+                      src="@/assets/img/dots.svg"
+                      style="width: 1.563vw; cursor: pointer"
+                      alt=""
+                    />
+                    <div class="dropdown-content">
+                      <a href="#">Редактировать</a>
+                      <hr />
+                      <a href="#">Удалить</a>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </main>
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      items: [
+        {
+          date: "11 янв, 19:23, 2021",
+          place: "ТРЦ Москва",
+          name: "Мильчаков Валерий",
+          isReady: "Завершена",
+          count: "15",
+        },
+        {
+          date: "15 дек, 19:23, 2021",
+          place: "ТРЦ Москва",
+          name: "Дмитрий Иванович",
+          isReady: "Завершена",
+          count: "22",
+        },
+        {
+          date: "11 ноя, 19:23, 2021",
+          place: "ТЦ Европейский",
+          name: "Иван Иванов",
+          isReady: "Завершена",
+          count: "322",
+        },
+        {
+          date: "11 ноя, 19:23, 2021",
+          place: "ТРЦ Jam Moll",
+          name: "Тихонов Александр",
+          isReady: "Завершена",
+          count: "111",
+        },
+      ],
+    };
+  },
+};
+</script>
+
+<style scoped>
+hr {
+  border: 1px solid #2d3748;
+}
+.dropdown {
+  display: inline-block;
+  position: relative;
+}
+.dropdown-content {
+  text-align: left;
+  display: none;
+  position: absolute;
+  width: 7.815vw;
+  overflow: auto;
+  background: #f8f9fa;
+  box-shadow: 2px 2px 5.5px rgba(0, 0, 0, 0.25);
+  border-radius: 12px;
+  right: 15px;
+  z-index: 1;
+  padding: 0.625vw 0.625vw 0.625vw 0.625vw;
+}
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+.dropdown-content a {
+  display: block;
+  color: #2d3748;
+  text-decoration: none;
+}
+.th__col {
+  color: #a0aec0 !important;
+}
+td,
+th {
+  color: #2d3748;
+}
+.inv__content::-webkit-scrollbar {
+  background: #e2e8f0;
+  border-radius: 0.78vw;
+  width: 0.47vw;
+}
+.inv__content::-webkit-scrollbar-thumb {
+  border-radius: 0.78vw;
+  background-color: #a0aec0;
+}
+.inv__content::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.2);
+  border-radius: 0.78vw;
+  background-color: #e2e8f0;
+}
+.inv__content {
+  padding-right: 1.354vw;
+  height: 40.469vw;
+  overflow-y: scroll;
+}
+.inv__block {
+  padding-bottom: 2.188vw;
+  padding-top: 2.083vw;
+}
+.inv__btn {
+  display: flex;
+  align-items: center;
+  text-transform: uppercase;
+  font-size: 0.7vw;
+}
+.inv__btn,
+.inv__inp {
+  margin-right: 0.521vw;
+}
+.inv__right__btn {
+  display: flex;
+  align-items: flex-start;
+}
+.bg-gradient-secondary {
+  background: linear-gradient(81.62deg, #313860 2.25%, #151928 79.87%);
+  border-radius: 0.417vw;
+}
+.inv__buttons {
+  display: flex;
+  justify-content: space-between;
+}
+.inv__title {
+  text-align: left;
+}
+.inv__title__text {
+  font-weight: 700;
+  font-size: 1.25vw;
+  color: #2d3748;
+}
+.container__padding {
+  padding-left: 2.135vw;
+  padding-right: 5.208vw;
+}
+</style>

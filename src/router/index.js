@@ -14,15 +14,19 @@ const routes = [
       import(/* webpackChunkName: "about" */ "../views/AboutView.vue"),
   },
   {
-    path: "/bank-info",
-    name: "bank-info",
-    component: () =>
-      import(/* webpackChunkName: "about" */ "../views/BankInfoView.vue"),
+    path: '/bank-info',
+    name: 'bank-info',
+    component: () => import(/* webpackChunkName: "about" */ '../views/BankInfoView.vue')
   },
   {
     path: "/login",
     name: "login",
     component: () => import("../views/LogFormView.vue"),
+  },
+  {
+    path: "/inv-list",
+    name: "inv-list",
+    component: () => import("../views/InventoryListView.vue"),
   },
   {
     path: "/table",
