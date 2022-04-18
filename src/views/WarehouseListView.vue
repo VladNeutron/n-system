@@ -1,31 +1,71 @@
 <template>
   <div>
-    <div>
+    <div class="table__header">
       <div>
-        <button>Добавить склад</button>
+        <button class="btn bg-gradient-dark">
+          <span>+</span>Добавить склад
+        </button>
       </div>
-      <div>
-        <input type="" />Поиск
-        <button>Фильтры</button>
+      <div class="table__header-search">
+        <div class="form-group">
+          <div class="input-group mt-1">
+            <span class="input-group-text btn-outline-dark"
+              ><i class="ni ni-zoom-split-in"></i
+            ></span>
+            <input
+              class="form-control btn-outline-dark"
+              placeholder="Поиск"
+              type="text"
+            />
+          </div>
+        </div>
+        <button class="btn btn-outline-dark">
+          <i class="ni-tablet-button"></i>
+          Фильтры
+        </button>
       </div>
     </div>
-    <div>
-      <tr>
-        <th>№</th>
-        <th>НАИМЕНОВАНИЕ СКЛАДА</th>
-        <th>ТИП СКЛАДА</th>
-        <th>АДРЕСС СКЛАДА</th>
-        <th>СТАТУС</th>
-      </tr>
-      <tr>
-        <td>1</td>
-        <td>Тц “Jam mall”</td>
-        <td>торговая точка</td>
-        <td>ул. горького, 5</td>
-        <td>Закрыт</td>
-        <td><img src="" alt="edit" /></td>
-        <td><img src="" alt="delete" /></td>
-      </tr>
+    <div class="table">
+      <table>
+        <tr>
+          <th>№</th>
+          <th>НАИМЕНОВАНИЕ СКЛАДА</th>
+          <th>ТИП СКЛАДА</th>
+          <th>АДРЕСС СКЛАДА</th>
+          <th>СТАТУС</th>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td>Тц “Jam mall”</td>
+          <td>торговая точка</td>
+          <td>ул. горького, 5</td>
+          <td>
+            <div class="table__status"><p class="tag">Закрыт</p></div>
+          </td>
+          <td></td>
+          <td>
+            <a href="#"
+              ><img src="../assets/css/icons/editIcon.svg" alt="edit"
+            /></a>
+            <a href="#"
+              ><img src="../assets/css/icons/deleteIcon.svg" alt="delete"
+            /></a>
+          </td>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td>Тц “Jam mall”</td>
+          <td>торговая точка</td>
+          <td>ул. горького, 5</td>
+          <td>Закрыт</td>
+          <td>
+            <a href="#"><img src="" alt="edit" /></a>
+          </td>
+          <td>
+            <a href="#"><img src="" alt="delete" /></a>
+          </td>
+        </tr>
+      </table>
     </div>
   </div>
 </template>
@@ -34,4 +74,60 @@
 export default {};
 </script>
 
-<style></style>
+<style scoped>
+.table {
+  display: flex;
+  min-width: 95%;
+  padding: 1.667vw 0.833vw 1.667vw 0.833vw;
+}
+.table table {
+  width: 100%;
+  padding: 5px;
+}
+.table {
+}
+th {
+  color: gray;
+  font-weight: 400;
+  font-size: 0.729vw;
+  padding-bottom: 8px;
+}
+td {
+  font-weight: 600;
+  font-size: 0.833vw;
+  text-align: center;
+  color: black;
+  border-color: #e2e8f0;
+  padding: 0.521vw 0;
+}
+.table__status {
+  background-color: #eb5757;
+  color: #e21512;
+  border-radius: 5px;
+}
+tr {
+  border-bottom: 2px solid #f8f9fa;
+}
+.tag {
+  margin: 0;
+}
+td > a {
+  padding-left: 0.833vw;
+}
+.table__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.521vw 0.833vw;
+}
+.table__header-search {
+  display: flex;
+  gap: 3.042vw;
+  align-items: center;
+}
+.search-icon {
+  padding-left: 20px;
+  background: no-repeat url("../assets/css/icons/searchIcon.svg");
+  background-size: 16px;
+}
+</style>
