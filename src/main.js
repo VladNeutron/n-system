@@ -8,4 +8,15 @@ import '@/assets/css/soft-ui-dashboard.css'
 import '@/assets/js/core/popper.min.js'
 import '@/assets/js/core/bootstrap.min.js'
 import '@/assets/js/soft-ui-dashboard.min.js'
-createApp(App).use(store).use(router).mount('#app')
+
+
+import BankInfo from '@/views/BankInfo'
+
+
+
+
+const app  = createApp(App).use(store).use(router)
+
+app.component('bank-info', BankInfo)
+
+.mount('#app')
