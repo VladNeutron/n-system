@@ -4,7 +4,8 @@
     <router-link to="/about">About</router-link> |
     <router-link to="/login">Login</router-link> |
     <router-link to="/about">About</router-link> |
-    <router-link to="/table">Table</router-link>
+    <router-link to="/table">Table</router-link> |
+    <router-link to="/create-inv-list">Create Inventory</router-link>
   </nav>
   <router-view />
 </template>
