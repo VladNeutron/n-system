@@ -22,7 +22,7 @@ const app = createApp(App).use(store).use(router)
 
 app.component('the-navbar', Navbar)
 app.component('the-header', Header)
-app.component('drop-down', Drow)
+app.component('drop-down', DropDownInv)
 
 app.mount('#app')
 
