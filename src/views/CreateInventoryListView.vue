@@ -5,7 +5,24 @@
     <div class="container-fluid py-4">
       <div class="row mt-4">
         <div class="col-12">
-          <drop-down></drop-down>
+          <drop-down>
+            <template #header>
+              <div class="d-flex justify-content-between align-content-center">
+                <div><h3>Создание инвентаризации</h3></div>
+                <div class="d-flex gap-3 align-content-center">
+                  <button class="btn bg-gradient-dark">
+                    <span class="btn-inner--icon"
+                      ><i class="ni ni-button-play"></i></span
+                    >Завершить
+                  </button>
+                  <button class="btn btn-outline-dark">Комментарии</button>
+                  <button class="btn btn-outline-dark">Печать</button>
+                  <button class="btn btn-outline-dark">Скачать</button>
+                  <button class="btn btn-outline-dark">Удалить</button>
+                </div>
+              </div>
+            </template>
+          </drop-down>
           <div class="card pl-pr">
             <div class="main-page text-start">
               <label class="form-control-label ps-3" for="search">Поиск</label>
