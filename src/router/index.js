@@ -14,10 +14,9 @@ const routes = [
       import(/* webpackChunkName: "about" */ "../views/AboutView.vue"),
   },
   {
-    path: "/bank-info",
-    name: "bank-info",
-    component: () =>
-      import(/* webpackChunkName: "about" */ "../views/BankInfoView.vue"),
+    path: '/bank-info',
+    name: 'bank-info',
+    component: () => import(/* webpackChunkName: "about" */ '../views/BankInfoView.vue')
   },
   {
     path: "/login",
@@ -25,15 +24,9 @@ const routes = [
     component: () => import("../views/LogFormView.vue"),
   },
   {
-<<<<<<< HEAD
     path: "/inv-list",
     name: "inv-list",
     component: () => import("../views/InventoryListView.vue"),
-=======
-    path: "/table",
-    name: "table",
-    component: () => import("../views/WarehouseListView.vue"),
->>>>>>> 0f487c0c5280fed537015e6d74f7ac36b8385449
   },
 ];
 

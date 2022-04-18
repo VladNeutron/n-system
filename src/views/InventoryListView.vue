@@ -11,7 +11,77 @@
             + Новая инвентаризация
           </button>
         </div>
-        <div class="inv__right__btn"></div>
+        <div class="inv__right__btn">
+          <div class="form-group">
+            <div class="input-group mt-1">
+              <span class="input-group-text"
+                ><i class="ni ni-zoom-split-in"></i
+              ></span>
+              <input
+                class="form-control inv__inp"
+                placeholder="Поиск"
+                type="text"
+              />
+            </div>
+          </div>
+          <button type="button" class="inv__btn btn btn-outline-dark">
+            <img
+              src="@/assets/img/filter.svg"
+              style="width: 1.25vw; margin-right: 0.417vw"
+              alt=""
+            />
+            фильтры
+          </button>
+          <button type="button" class="inv__btn btn btn-outline-dark">
+            <img
+              src="@/assets/img/print.svg"
+              style="width: 1.25vw; margin-right: 0.417vw"
+              alt=""
+            />
+            печать
+          </button>
+          <button type="button" class="inv__btn btn btn-outline-dark">
+            <img
+              src="@/assets/img/download.svg"
+              style="width: 1.25vw; margin-right: 0.417vw"
+              alt=""
+            />
+            скачать
+          </button>
+        </div>
+      </div>
+      <div class="inv__block">
+        <div class="inv__content">
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">First</th>
+                <th scope="col">Last</th>
+                <th scope="col">Handle</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td>Mark</td>
+                <td>Otto</td>
+                <td>@mdo</td>
+              </tr>
+              <tr>
+                <th scope="row">2</th>
+                <td>Jacob</td>
+                <td>Thornton</td>
+                <td>@fat</td>
+              </tr>
+              <tr>
+                <th scope="row">3</th>
+                <td colspan="2">Larry the Bird</td>
+                <td>@twitter</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   </main>
@@ -22,9 +92,26 @@ export default {};
 </script>
 
 <style scoped>
+.inv__block {
+  padding-top: 2.083vw;
+}
+.inv__btn {
+  display: flex;
+  align-items: center;
+  text-transform: uppercase;
+  font-size: 0.7vw;
+}
+.inv__btn,
+.inv__inp {
+  margin-right: 0.521vw;
+}
+.inv__right__btn {
+  display: flex;
+  align-items: flex-start;
+}
 .bg-gradient-secondary {
   background: linear-gradient(81.62deg, #313860 2.25%, #151928 79.87%);
-  border-radius: 8px;
+  border-radius: 0.417vw;
 }
 .inv__buttons {
   display: flex;
