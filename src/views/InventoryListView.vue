@@ -52,7 +52,7 @@
       </div>
       <div class="inv__block">
         <div class="inv__content">
-          <table class="table table-bordered table-hover">
+          <table class="table table-bordered table-hover table-striped">
             <thead>
               <tr>
                 <th scope="col" class="th__col">№</th>
@@ -64,8 +64,8 @@
                 <th scope="col" class="th__col"></th>
               </tr>
             </thead>
-            <tbody v-for="(item, i) in items" :key="item">
-              <tr>
+            <tbody >
+              <tr v-for="(item, i) in items" :key="item">
                 <th scope="row">{{ i + 1 }}</th>
                 <td>{{ item.date }}</td>
                 <td>{{ item.place }}</td>
