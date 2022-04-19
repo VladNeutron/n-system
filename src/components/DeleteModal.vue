@@ -10,9 +10,7 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-body modal__padding">
-          <p class="modal__title">
-            Вы уверены, что хотите удалить документ “Инвентаризация №19”?
-          </p>
+          <slot name="header">default header</slot>
         </div>
         <div class="modal-footer">
           <div class="modal__btns">
