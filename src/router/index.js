@@ -25,13 +25,13 @@ const routes = [
     component: () => import("../views/LogFormView.vue"),
   },
   {
-    path: "/inv-list",
-    name: "inv-list",
+    path: "/inventorization-list",
+    name: "inventorization-list",
     component: () => import("../views/InventoryListView.vue"),
   },
   {
-    path: "/table",
-    name: "table",
+    path: "/warehouses",
+    name: "warehouses",
     component: () => import("../views/WarehouseListView.vue"),
   },
   {
