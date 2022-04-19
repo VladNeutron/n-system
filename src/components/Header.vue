@@ -21,10 +21,11 @@
               </svg>
             </a>
           </li>
-          <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="javascript:;">Pages</a></li>
-          <li class="breadcrumb-item text-sm text-dark active" aria-current="page">index</li>
+          <!-- <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="javascript:;">Pages</a></li> -->
+          <li class="breadcrumb-item text-sm text-dark active" aria-current="page" v-for="item in headerRoute" :key="item">
+            <a class="opacity-5 text-dark" :href="item.path">{{item.name}}</a>
+          </li>
         </ol>
-        <h6 class="font-weight-bolder mb-0">index</h6>
   
       </nav>
       <div class="sidenav-toggler sidenav-toggler-inner d-xl-block d-none ">
@@ -290,6 +291,41 @@ export default {
         if (document.getElementById('navbarBlur')) {
             this.navbarBlurOnScroll('navbarBlur');
         }
+
+        console.log(this.$route.fullPath.split("/"));
+        console.log(this.$router.options.routes);
+    },
+    computed: {
+      headerRoute(){
+        let newRoute = [];
+        let allRoutes = this.$router.options.routes;
+        if(this.$route.fullPath.split("/").length < 3){
+          newRoute.push({name:'Главная страница',path: '/'}) 
+          return newRoute
+        }
+        else{
+          this.$route.fullPath.split("/").forEach(item => {
+            if(item != ''){
+              for(let i=0; i < allRoutes.length; i++){
+                if(allRoutes[i].path.indexOf(item) != -1){
+                  if(allRoutes[i].meta != undefined){
+                    newRoute.push({
+                      name: allRoutes[i].meta.NavLink,
+                      path: allRoutes[i].path,
+                    })
+                    // newRoute += allRoutes[i].meta.NavLink;
+                  }
+                  else{
+                    newRoute.push({name:'Задайте мета',path: '/'}) 
+                  }
+                  break
+                }
+              }
+            }
+          })
+          return newRoute;
+        }
+      }
     }
 }
 </script>

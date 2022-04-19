@@ -11,7 +11,7 @@
           <div class="card">
             <div class="inv__buttons">
               <div class="inv__left__btn">
-                <button type="button" class="btn bg-gradient-secondary" onclick="window.location.href = '/create-movement'">
+                <button type="button" class="btn bg-gradient-secondary" onclick="window.location.href = '/warehouse-accounting/create-movement'">
                   + Создать перемещение
                 </button>
               </div>
@@ -154,6 +154,9 @@ export default {
       ],
     };
   },
+  mounted(){
+    
+  }
 };
 </script>
 
