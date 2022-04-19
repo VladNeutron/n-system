@@ -7,14 +7,18 @@
         <div class="col-12">
           <drop-down>
             <template #header>
+              <div class="d-flex pb-3">
+                <h3>Создание Перемещения</h3>
+              </div>
               <div class="d-flex justify-content-between align-content-center">
-                <div><h3>Создание инвентаризации</h3></div>
-                <div class="d-flex gap-3 align-content-center buttons__panel">
+                <div>
                   <button class="btn bg-gradient-dark">
                     <span class="btn-inner--icon"
                       ><i class="ni ni-button-play"></i></span
-                    >Завершить
+                    >Провести
                   </button>
+                </div>
+                <div class="d-flex gap-3 align-content-center buttons__panel">
                   <button class="btn btn-outline-dark">
                     <span class="btn-inner--icon"
                       ><i class="fa-regular fa-message"></i></span

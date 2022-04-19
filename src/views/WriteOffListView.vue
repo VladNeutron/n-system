@@ -11,7 +11,7 @@
           <div class="card">
             <div class="inv__buttons">
               <div class="inv__left__btn">
-                <button type="button" class="btn bg-gradient-secondary" onclick="window.location.href = '/create-inv-list'">
+                <button type="button" class="btn bg-gradient-secondary" onclick="window.location.href = '/create-writeoff'">
                   + Создать списание
                 </button>
               </div>

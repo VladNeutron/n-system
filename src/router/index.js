@@ -45,6 +45,21 @@ const routes = [
     component: () => import("../views/EditInventoryView.vue"),
   },
   {
+    path: "/create-movement",
+    name: "create-movement",
+    component: () => import("../views/CreateMovement.vue"),
+  },
+  {
+    path: "/create-oprih",
+    name: "create-oprih",
+    component: () => import("../views/CreateOprih.vue"),
+  },
+  {
+    path: "/create-writeoff",
+    name: "create-writeoff",
+    component: () => import("../views/CreateWriteoff.vue"),
+  },
+  {
     path: "/post-list",
     name: "post-list",
     component: () => import("../views/PostingListView.vue"),

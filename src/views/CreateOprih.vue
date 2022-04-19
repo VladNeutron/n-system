@@ -8,7 +8,7 @@
           <drop-down>
             <template #header>
               <div class="d-flex justify-content-between align-content-center">
-                <div><h3>Создание инвентаризации</h3></div>
+                <div><h3>Создание оприходования</h3></div>
                 <div class="d-flex gap-3 align-content-center buttons__panel">
                   <button class="btn bg-gradient-dark">
                     <span class="btn-inner--icon"
