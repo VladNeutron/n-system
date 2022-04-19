@@ -19,7 +19,9 @@
                     <span class="btn-inner--icon"
                       ><i class="fa fa-comment"></i></span
                     >Комментарии
-                    <span class="badge badge-pill badge-danger">2</span>
+                    <span class="badge badge-pill badge-danger align-self-start"
+                      >2</span
+                    >
                   </button>
                   <button class="btn btn-outline-dark">
                     <span class="btn-inner--icon"
@@ -265,7 +267,9 @@ td,
 th {
   color: #2d3748;
 }
-
+.align-self-start {
+  align-self: flex-start;
+}
 .inv__content {
   padding-right: 1.354vw;
   height: 90%;
@@ -281,6 +285,7 @@ th {
   display: flex;
   justify-content: space-between;
   align-content: center;
+  align-items: center;
   gap: 5px;
 }
 </style>
