@@ -46,7 +46,7 @@
             <div class="main-page text-start">
               <label class="form-control-label ps-3" for="search">Поиск</label>
               <div class="d-flex justify-content-between ps-3">
-                <div class="page_search-inputs d-flex gap-5">
+                <div class="page_search-inputs d-flex align-items-center gap-5">
                   <div class="form-group m-0">
                     <div class="input-group mt-1">
                       <input
@@ -71,9 +71,7 @@
                   </div>
 
                   <div class="page__search-pages d-flex align-content-center">
-                    <div
-                      class="pagination-container d-flex justify-items-center"
-                    >
+                    <div class="pagination-container d-flex align-items-center">
                       <ul class="pagination pagination-info">
                         <li class="page-item">
                           <a
