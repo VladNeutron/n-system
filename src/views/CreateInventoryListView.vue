@@ -10,12 +10,12 @@
               <div class="d-flex justify-content-between align-content-center">
                 <div><h3>Создание инвентаризации</h3></div>
                 <div class="d-flex gap-3 align-content-center buttons__panel">
-                  <button class="btn bg-gradient-dark">
+                  <button class="btn bg-gradient-dark mb-0">
                     <span class="btn-inner--icon"
                       ><i class="ni ni-button-play"></i></span
                     >Завершить
                   </button>
-                  <button class="btn btn-outline-dark">
+                  <button class="btn btn-outline-dark mb-0">
                     <span class="btn-inner--icon"
                       ><i class="fa fa-comment"></i></span
                     >Комментарии
@@ -23,17 +23,17 @@
                       >2</span
                     >
                   </button>
-                  <button class="btn btn-outline-dark">
+                  <button class="btn btn-outline-dark mb-0">
                     <span class="btn-inner--icon"
                       ><i class="fa fa-print"></i></span
                     >Печать
                   </button>
-                  <button class="btn btn-outline-dark">
+                  <button class="btn btn-outline-dark mb-0">
                     <span class="btn-inner--icon"
                       ><i class="fa fa-download"></i></span
                     >Скачать
                   </button>
-                  <button class="btn btn-outline-dark">
+                  <button class="btn btn-outline-dark mb-0">
                     <span class="btn-inner--icon"
                       ><i class="fa fa-trash"></i></span
                     >Удалить
@@ -44,7 +44,9 @@
           </drop-down>
           <div class="card pl-pr">
             <div class="main-page text-start">
-              <label class="form-control-label ps-3" for="search">Поиск</label>
+              <label class="form-control-label ps-3 pt-3" for="search"
+                >Поиск</label
+              >
               <div class="d-flex justify-content-between ps-3">
                 <div class="page_search-inputs d-flex gap-5">
                   <div class="form-group m-0">
@@ -60,12 +62,12 @@
                       ></span>
                     </div>
                   </div>
-                  <button class="btn bg-gradient-info m-0">
+                  <button class="btn bg-gradient-info mb-0">
                     Выбрать из списка
                   </button>
                 </div>
 
-                <div class="d-flex align-items-center">
+                <div class="d-flex align-items-center gap-3">
                   <div>
                     <p class="m-0">Показано<span> 2112 12121</span></p>
                   </div>
@@ -127,7 +129,7 @@
                 <div class="inv__content">
                   <div>
                     <table
-                      class="table table-bordered table-hover table-striped"
+                      class="table table-bordered table-hover text-center table-striped"
                     >
                       <thead>
                         <tr>
@@ -164,54 +166,61 @@
                 </div>
               </div>
               <div class="pagination d-flex justify-content-end">
-                <div class="page__search-pages">
-                  <div class="pagination-container justify-content-center">
-                    <ul class="pagination pagination-info">
-                      <p class="">Показано<span> 2112 12121</span></p>
-                      <li class="page-item">
-                        <a
-                          class="page-link"
-                          href="javascript:;"
-                          aria-label="Previous"
-                        >
-                          <span aria-hidden="true"
-                            ><i
-                              class="fa fa-angle-double-left"
-                              aria-hidden="true"
-                            ></i
-                          ></span>
-                        </a>
-                      </li>
-                      <li class="page-item">
-                        <a class="page-link" href="javascript:;">1</a>
-                      </li>
-                      <li class="page-item">
-                        <a class="page-link" href="javascript:;">2</a>
-                      </li>
-                      <li class="page-item active">
-                        <a class="page-link" href="javascript:;">3</a>
-                      </li>
-                      <li class="page-item">
-                        <a class="page-link" href="javascript:;">4</a>
-                      </li>
-                      <li class="page-item">
-                        <a class="page-link" href="javascript:;">5</a>
-                      </li>
-                      <li class="page-item">
-                        <a
-                          class="page-link"
-                          href="javascript:;"
-                          aria-label="Next"
-                        >
-                          <span aria-hidden="true"
-                            ><i
-                              class="fa fa-angle-double-right"
-                              aria-hidden="true"
-                            ></i
-                          ></span>
-                        </a>
-                      </li>
-                    </ul>
+                <div class="d-flex align-items-center gap-3 pb-4">
+                  <div>
+                    <p class="m-0">Показано<span> 2112 12121</span></p>
+                  </div>
+
+                  <div class="page__search-pages d-flex align-content-center">
+                    <div
+                      class="pagination-container d-flex justify-items-center"
+                    >
+                      <ul class="pagination pagination-info mb-0 pe-0">
+                        <li class="page-item">
+                          <a
+                            class="page-link"
+                            href="javascript:;"
+                            aria-label="Previous"
+                          >
+                            <span aria-hidden="true"
+                              ><i
+                                class="fa fa-angle-double-left"
+                                aria-hidden="true"
+                              ></i
+                            ></span>
+                          </a>
+                        </li>
+                        <li class="page-item">
+                          <a class="page-link" href="javascript:;">1</a>
+                        </li>
+                        <li class="page-item">
+                          <a class="page-link" href="javascript:;">2</a>
+                        </li>
+                        <li class="page-item active">
+                          <a class="page-link" href="javascript:;">3</a>
+                        </li>
+                        <li class="page-item">
+                          <a class="page-link" href="javascript:;">4</a>
+                        </li>
+                        <li class="page-item">
+                          <a class="page-link" href="javascript:;">5</a>
+                        </li>
+                        <li class="page-item">
+                          <a
+                            class="page-link"
+                            href="javascript:;"
+                            aria-label="Next"
+                          >
+                            <span aria-hidden="true"
+                              ><i
+                                class="fa fa-angle-double-right"
+                                aria-hidden="true"
+                              ></i
+                            ></span>
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -264,6 +273,7 @@ export default {
 .page__search-inputs {
   gap: 1.042vw;
 }
+
 td,
 th {
   color: #2d3748;
@@ -289,7 +299,7 @@ th {
   align-items: center;
   gap: 5px;
 }
-.pagination-info{
+.pagination-info {
   margin-bottom: 0;
 }
 </style>
