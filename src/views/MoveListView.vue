@@ -208,6 +208,7 @@ th {
   background-color: #e2e8f0;
 }
 .inv__content {
+  padding-left: 1.354vw;
   padding-right: 1.354vw;
   height: 33.469vw;
   overflow-y: scroll;
