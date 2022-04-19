@@ -12,16 +12,9 @@
               </div>
               <div class="d-flex justify-content-between align-content-center">
                 <div>
-                  <button class="btn bg-gradient-dark">
-                    <span class="btn-inner--icon"
-                      ><i class="ni ni-button-play"></i></span
-                    >Провести
-                  </button>
-                </div>
-                <div class="d-flex gap-3 align-content-center buttons__panel">
                   <button class="btn btn-outline-dark">
                     <span class="btn-inner--icon"
-                      ><i class="fa-regular fa-message"></i></span
+                      ><i class="fa fa-comment"></i></span
                     >Комментарии
                     <span class="badge badge-pill badge-danger">2</span>
                   </button>
@@ -32,12 +25,12 @@
                   </button>
                   <button class="btn btn-outline-dark">
                     <span class="btn-inner--icon"
-                      ><i class="ni ni-button-play"></i></span
+                      ><i class="fa fa-download"></i></span
                     >Скачать
                   </button>
                   <button class="btn btn-outline-dark">
                     <span class="btn-inner--icon"
-                      ><i class="ni ni-button-play"></i></span
+                      ><i class="fa fa-trash"></i></span
                     >Удалить
                   </button>
                 </div>
