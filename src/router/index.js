@@ -44,6 +44,21 @@ const routes = [
     name: "edit-inv",
     component: () => import("../views/EditInventoryView.vue"),
   },
+  {
+    path: "/post-list",
+    name: "post-list",
+    component: () => import("../views/PostingListView.vue"),
+  },
+  {
+    path: "/write-off",
+    name: "write-off",
+    component: () => import("../views/WriteOffListView.vue"),
+  },
+  {
+    path: "/move-list",
+    name: "move-list",
+    component: () => import("../views/MoveListView.vue"),
+  },
 ];
 
 const router = createRouter({
