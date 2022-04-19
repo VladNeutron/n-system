@@ -74,7 +74,7 @@
                     <div
                       class="pagination-container d-flex justify-items-center"
                     >
-                      <ul class="pagination pagination-info">
+                      <ul class="pagination pagination-info mb-0">
                         <li class="page-item">
                           <a
                             class="page-link"
@@ -288,5 +288,8 @@ th {
   align-content: center;
   align-items: center;
   gap: 5px;
+}
+.pagination-info{
+  margin-bottom: 0;
 }
 </style>
