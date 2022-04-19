@@ -6,13 +6,13 @@
       <div class="row mt-4">
         <div class="col-12">
           <div class="inv__title">
-            <p class="inv__title__text">Список инвентаризаций</p>
+            <p class="inv__title__text">Список оприходований</p>
           </div>
           <div class="card">
             <div class="inv__buttons">
               <div class="inv__left__btn">
                 <button type="button" class="btn bg-gradient-secondary" onclick="window.location.href = '/create-inv-list'">
-                  + Новая инвентаризация
+                  + Создать оприходование
                 </button>
               </div>
               <div class="inv__right__btn">
@@ -107,7 +107,7 @@
     <delete-modal>
         <template #header>
           <p class="modal__title">
-            Вы уверены, что хотите удалить документ “Инвентаризация №19”?
+            Вы уверены, что хотите удалить документ “Оприходование №1”?
           </p>
         </template>
     </delete-modal>

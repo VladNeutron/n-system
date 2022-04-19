@@ -58,6 +58,19 @@ const routes = [
     path: "/create-writeoff",
     name: "create-writeoff",
     component: () => import("../views/CreateWriteoff.vue"),
+    path: "/post-list",
+    name: "post-list",
+    component: () => import("../views/PostingListView.vue"),
+  },
+  {
+    path: "/write-off",
+    name: "write-off",
+    component: () => import("../views/WriteOffListView.vue"),
+  },
+  {
+    path: "/move-list",
+    name: "move-list",
+    component: () => import("../views/MoveListView.vue"),
   },
 ];
 
