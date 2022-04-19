@@ -44,6 +44,21 @@ const routes = [
     name: "edit-inv",
     component: () => import("../views/EditInventoryView.vue"),
   },
+  {
+    path: "/create-movement",
+    name: "create-movement",
+    component: () => import("../views/CreateMovement.vue"),
+  },
+  {
+    path: "/create-oprih",
+    name: "create-oprih",
+    component: () => import("../views/CreateOprih.vue"),
+  },
+  {
+    path: "/create-writeoff",
+    name: "create-writeoff",
+    component: () => import("../views/CreateWriteoff.vue"),
+  },
 ];
 
 const router = createRouter({
