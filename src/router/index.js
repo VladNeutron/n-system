@@ -107,7 +107,7 @@ const routes = [
   {
     path: "/register",
     name: "register",
-    component: () => "../views/RegisterFormView.vue",
+    component: () => import("../views/RegisterFormView.vue"),
   },
 ];
 
