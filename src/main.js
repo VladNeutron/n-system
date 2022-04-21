@@ -18,6 +18,7 @@ import Header from "./components/Header.vue";
 import DropDownInv from "./components/DropDownInv";
 import Login from "./components/Login.vue";
 import Register from "./components/Register.vue";
+import Cookie from "./components/Cookie.vue";
 
 const app = createApp(App).use(store).use(router);
 
@@ -26,5 +27,6 @@ app.component("the-header", Header);
 app.component("drop-down", DropDownInv);
 app.component("login", Login);
 app.component("register", Register);
+app.component("cookie", Cookie);
 
 app.mount("#app", Login);
