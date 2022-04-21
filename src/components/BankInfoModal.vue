@@ -22,29 +22,7 @@
         </div>
       </div>
       <div class="modal-body body__p">
-        <div v-if="isAdded">
-          <div class="d-flex justify-content-center">
-            <img src="@/assets/img/addbank.svg" style="width: 4.167vw" alt="" />
-          </div>
-          <div class="d-flex justify-content-center">
-            <p class="bank__text">Добавьте свои банковские счета</p>
-          </div>
-          <div class="d-flex justify-content-center">
-            <button
-              class="bank__btn"
-              data-bs-toggle="modal"
-              data-bs-target="#InfoThird"
-            >
-              <img
-                src="@/assets/img/plus.svg"
-                style="width: 0.833vw; margin-right: 0.833vw"
-                alt=""
-              />
-              Добавить счет
-            </button>
-          </div>
-        </div>
-        <div v-else class="overflow__bank">
+          <div v-if="isAdded" class="overflow__bank">
           <div class="row">
             <div class="col bank__width" v-for="item in items" :key="item">
               <div class="info__block">
@@ -95,6 +73,28 @@
             </div>
           </div>
         </div>
+        <div v-else>
+          <div class="d-flex justify-content-center">
+            <img src="@/assets/img/addbank.svg" style="width: 4.167vw" alt="" />
+          </div>
+          <div class="d-flex justify-content-center">
+            <p class="bank__text">Добавьте свои банковские счета</p>
+          </div>
+          <div class="d-flex justify-content-center">
+            <button
+              class="bank__btn"
+              data-bs-toggle="modal"
+              data-bs-target="#InfoThird"
+            >
+              <img
+                src="@/assets/img/plus.svg"
+                style="width: 0.833vw; margin-right: 0.833vw"
+                alt=""
+              />
+              Добавить счет
+            </button>
+          </div>
+        </div>
       </div>
       <div class="modal-footer">
         <button v-if="isAdded" type="button" class="btn bg-gradient-secondary">
@@ -119,7 +119,7 @@ import AddBankInfoModal from "./AddBankInfoModal.vue";
 export default {
   data() {
     return {
-      isAdded: false,
+      isAdded: true,
       items: [
         {
           name: "Сбербанк Основной",
@@ -190,7 +190,7 @@ export default {
   font-size: 0.833vw;
   color: #2d3748;
   text-align: right;
-  padding-left: 5.625vw;
+  padding-left: 4.625vw;
 }
 .bank__info-content {
   display: flex;
@@ -249,6 +249,7 @@ export default {
 }
 .body__p {
   padding-top: 2.396vw;
+  margin-bottom: 2vw;
 }
 .bank__btn {
   display: flex;
