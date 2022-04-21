@@ -97,6 +97,12 @@ const routes = [
     component: () => import("../views/WriteOffListView.vue"),
     meta: {NavLink: 'Список списаний'},
   },
+  {
+    path: "/company-info",
+    name: "company-info",
+    component: () => import("../components/CompanyInfo.vue"),
+    meta: {NavLink: 'Информация о компанииит'},
+  },
   
 ];
 
