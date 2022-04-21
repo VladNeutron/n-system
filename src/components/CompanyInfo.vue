@@ -8,15 +8,17 @@
   </div>
   <company-info-modal v-if="pageNum == 1"></company-info-modal>
   <bank-info-modal v-if="pageNum  == 2"></bank-info-modal>
+  <create-account-modal v-if="pageNum  == 3"></create-account-modal>
 </template>
 
 <script>
+import CompanyInfoModal from "./CompanyInfoModal.vue"
 import BankInfoModal from './BankInfoModal.vue'
-import CompanyInfoModal from "./CompanyInfoModal.vue";
+import CreateAccountModal from "./CreateAccountModal.vue"
 export default {
     data(){
         return{
-           pageNum : 2
+           pageNum : 3
         }
     },
     props:{
@@ -24,7 +26,8 @@ export default {
     },
   components: {
     CompanyInfoModal,
-    BankInfoModal
+    BankInfoModal,
+    CreateAccountModal
   },
 };
 </script>
@@ -49,8 +52,8 @@ export default {
 }
 .logo {
   display: flex;
-  padding-bottom: 3.646vw;
-  padding-top: 5.208vw;
+  padding-bottom: 1.646vw;
+  padding-top: 3.208vw;
   justify-content: center;
 }
 </style>
