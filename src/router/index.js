@@ -30,6 +30,7 @@ const routes = [
     name: "warehouse-accounting",
     component: () => import("../views/WarehouseListView.vue"),
     meta: {NavLink: 'Складской учёт'},
+    redirect: '/warehouse-accounting/warehouses',
   },
 
   {
@@ -37,6 +38,7 @@ const routes = [
     name: "inventorization-list",
     component: () => import("../views/InventoryListView.vue"),
     meta: {NavLink: 'Список инвентаризаций'},
+    
   },
   {
     path: "/warehouse-accounting/create-inv-list",
