@@ -16,8 +16,8 @@ import "@/assets/js/plugins/smooth-scrollbar.min.js";
 import Navbar from "./components/Navbar.vue";
 import Header from "./components/Header.vue";
 import DropDownInv from "./components/DropDownInv";
-import Login from "./components/log2.vue";
-import Register from "./components/Login.vue";
+import Login from "./components/Login.vue";
+import Register from "./components/Register.vue";
 
 const app = createApp(App).use(store).use(router);
 
