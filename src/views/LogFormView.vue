@@ -4,6 +4,7 @@
       class="login__main-left d-flex justify-content-center gap-8 flex-column align-items-center"
     >
       <login v-if="authorized"></login>
+
       <cookie class="pb-5"></cookie>
     </div>
     <div
