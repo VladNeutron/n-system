@@ -125,62 +125,13 @@
           </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn bg-gradient-secondary">
+          <button type="button" class="btn bg-gradient-secondary" @click="pageNum = 2">
             Продолжить <img src="@/assets/img/next.svg" style="width:0.833vw; margin-left:1.25vw;" alt="">
           </button>
         </div>
       </div>
     </div>
   
-
-  <!-- ВТОРОЕ -->
-  <div
-    class="modal fade"
-    id="InfoSecond"
-    tabindex="-1"
-    role="dialog"
-    aria-labelledby="InfoSecond"
-    aria-hidden="true"
-  >
-    <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <div class="modal-header header__flex">
-          <div class="modal__title">
-            <p class="modal__text">Информация о компании</p>
-            <p class="modal__steps">Шаг 2 из 3</p>
-          </div>
-          <div class="modal__pagination">
-            <ul class="pagination pagination-info">
-              <li class="page-item"></li>
-              <li class="page-item">
-                <a class="page-link" href="#link">1</a>
-              </li>
-              <li class="page-item active">
-                <a class="page-link" href="#link">2</a>
-              </li>
-              <li class="page-item">
-                <a class="page-link" href="#link">3</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-        <div class="modal-body">...</div>
-        <div class="modal-footer">
-          <button
-            type="button"
-            class="btn bg-gradient-secondary"
-            data-bs-dismiss="modal"
-          >
-            Close
-          </button>
-          <button type="button" class="btn bg-gradient-primary">
-            Save changes
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>
-
   <!-- ТРЕТЬЕ -->
   <div
     class="modal fade"
@@ -195,16 +146,7 @@
         <div class="modal-header"></div>
         <div class="modal-body">...</div>
         <div class="modal-footer">
-          <button
-            type="button"
-            class="btn bg-gradient-secondary"
-            data-bs-dismiss="modal"
-          >
-            Close
-          </button>
-          <button type="button" class="btn bg-gradient-primary">
-            Save changes
-          </button>
+          <button type="button" class="btn bg-gradient-secondary">Secondary</button>
         </div>
       </div>
     </div>
@@ -212,15 +154,23 @@
 </template>
 
 <script>
-export default {};
+export default {
+    data(){
+        return{
+        }
+    }
+};
 </script>
 
 <style scoped>
 .page-item{
     margin-right:1.25vw;
 } 
-.active{
-    color: linear-gradient(83.56deg, #7092E0 10.01%, #8BAEF3 75.36%);
+.pagination.pagination-info .page-item.active > .page-link,
+.pagination.pagination-info .page-item.active > .page-link:focus,
+.pagination.pagination-info .page-item.active > .page-link:hover {
+  background-image:  linear-gradient(83.56deg, #7092E0 10.01%, #8BAEF3 75.36%);
+  border: none;
 }
 .bg-gradient-secondary {
   display: flex;
@@ -328,5 +278,11 @@ select::-ms-expand {
 }
 .modal__first {
   max-width: 42.969vw !important;
+  box-shadow: 0px 4px 4px rgba(51, 51, 51, 0.04), 0px 4px 16px rgba(51, 51, 51, 0.08);
+border-radius: 8px;
+border: 0;
+}
+.modal-content{
+    border: 0;
 }
 </style>
