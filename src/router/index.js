@@ -29,92 +29,94 @@ const routes = [
     path: "/warehouse-accounting",
     name: "warehouse-accounting",
     component: () => import("../views/WarehouseListView.vue"),
-    meta: {NavLink: 'Складской учёт'},
-    redirect: '/warehouse-accounting/warehouses',
+    meta: { NavLink: "Складской учёт" },
+    redirect: "/warehouse-accounting/warehouses",
   },
 
   {
     path: "/warehouse-accounting/inventorization-list",
     name: "inventorization-list",
     component: () => import("../views/InventoryListView.vue"),
-    meta: {NavLink: 'Список инвентаризаций'},
-    
+    meta: { NavLink: "Список инвентаризаций" },
   },
   {
     path: "/warehouse-accounting/create-inv-list",
     name: "create-inv-list",
     component: () => import("../views/CreateInventoryListView.vue"),
-    meta: {NavLink: 'Новая инвентаризация'},
+    meta: { NavLink: "Новая инвентаризация" },
   },
   {
     path: "/warehouse-accounting/edit-inv",
     name: "edit-inv",
     component: () => import("../views/EditInventoryView.vue"),
-    meta: {NavLink: 'Редактирование инвентаризации'},
+    meta: { NavLink: "Редактирование инвентаризации" },
   },
 
   {
     path: "/warehouse-accounting/warehouses",
     name: "warehouses",
     component: () => import("../views/WarehouseListView.vue"),
-    meta: {NavLink: 'Список складов'},
+    meta: { NavLink: "Список складов" },
   },
 
   {
     path: "/warehouse-accounting/create-movement",
     name: "create-movement",
     component: () => import("../views/CreateMovement.vue"),
-    meta: {NavLink: 'Новое перемещение'},
+    meta: { NavLink: "Новое перемещение" },
   },
   {
     path: "/warehouse-accounting/move-list",
     name: "move-list",
     component: () => import("../views/MoveListView.vue"),
-    meta: {NavLink: 'Список перемещений'},
+    meta: { NavLink: "Список перемещений" },
   },
 
   {
     path: "/warehouse-accounting/create-oprih",
     name: "create-oprih",
     component: () => import("../views/CreateOprih.vue"),
-    meta: {NavLink: 'Новое оприходование'},
+    meta: { NavLink: "Новое оприходование" },
   },
   {
     path: "/warehouse-accounting/post-list",
     name: "post-list",
     component: () => import("../views/PostingListView.vue"),
-    meta: {NavLink: 'Список оприходований'},
+    meta: { NavLink: "Список оприходований" },
   },
 
   {
     path: "/warehouse-accounting/create-writeoff",
     name: "create-writeoff",
     component: () => import("../views/CreateWriteoff.vue"),
-    meta: {NavLink: 'Новое списание'},
+    meta: { NavLink: "Новое списание" },
   },
-  
+
   {
     path: "/warehouse-accounting/write-off",
     name: "write-off",
     component: () => import("../views/WriteOffListView.vue"),
-    meta: {NavLink: 'Список списаний'},
+    meta: { NavLink: "Список списаний" },
   },
   {
     path: "/company-info",
     name: "company-info",
     component: () => import("../components/CompanyInfo.vue"),
-    meta: {NavLink: 'Информация о компанииит'},
+    meta: { NavLink: "Информация о компанииит" },
   },
-  
+  {
+    path: "/register",
+    name: "register",
+    component: () => "../views/RegisterFormView.vue",
+  },
 ];
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   scrollBehavior(to, from, savedPosition) {
-    return { top: 0 }
+    return { top: 0 };
   },
   routes,
-  
 });
 
 export default router;
