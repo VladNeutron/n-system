@@ -1,13 +1,14 @@
 <template>
   <login v-if="authorized"></login>
-  <register v-if="authorized"></register>
+  <register v-else></register>
+  <cookie></cookie>
 </template>
 
 <script>
 export default {
   data() {
     return {
-      authorized: true,
+      authorized: false,
     };
   },
 };
