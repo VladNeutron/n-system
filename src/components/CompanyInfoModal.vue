@@ -88,8 +88,9 @@
               <div class="select">
                 <select>
                   <option value="1">Организационная форма</option>
-                  <option value="2">ООО</option>
-                  <option value="3">ОАО</option>
+                  <option value="2">И.П</option>
+                  <option value="3">Т.О.О</option>
+                  <option value="3">О.О.О</option>
                 </select>
               </div>
             </div>
