@@ -149,6 +149,9 @@ export default {
       this.$emit("pageNum", 2);
     },
   },
+  emits:{
+        pageNum: Number
+    },
 };
 </script>
 

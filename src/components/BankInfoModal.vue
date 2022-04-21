@@ -67,8 +67,11 @@
                 </div>
               </div>
             </div>
+            
           </div>
+          
         </div>
+        
         <div v-else>
           <div class="d-flex justify-content-center">
             <img src="@/assets/img/addbank.svg" style="width: 4.167vw" alt="" />
@@ -168,6 +171,9 @@ export default {
       this.$emit("pageNum", 1);
     },
   },
+  emits:{
+        pageNum: Number
+    },
 };
 </script>
 
