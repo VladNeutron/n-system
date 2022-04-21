@@ -6,14 +6,25 @@
       <p class="logo__sec">System</p>
     </div>
   </div>
-  <company-info-modal class="modals"></company-info-modal>
+  <company-info-modal v-if="pageNum == 1"></company-info-modal>
+  <bank-info-modal v-if="pageNum  == 2"></bank-info-modal>
 </template>
 
 <script>
+import BankInfoModal from './BankInfoModal.vue'
 import CompanyInfoModal from "./CompanyInfoModal.vue";
 export default {
+    data(){
+        return{
+           pageNum : 2
+        }
+    },
+    props:{
+         
+    },
   components: {
     CompanyInfoModal,
+    BankInfoModal
   },
 };
 </script>
@@ -41,7 +52,5 @@ export default {
   padding-bottom: 3.646vw;
   padding-top: 5.208vw;
   justify-content: center;
-}
-.modals {
 }
 </style>
