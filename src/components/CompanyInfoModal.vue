@@ -1,153 +1,139 @@
 <template>
-<!-- ПЕРВОЕ -->
-<div
-      class="modal-dialog modal__first modal-dialog-centered"
-      role="document"
-    >
-      <div class="modal-content">
-        <div class="modal-header header__flex">
-          <div class="modal__title">
-            <p class="modal__text">Информация о компании</p>
-            <p class="modal__steps">Шаг 1 из 3</p>
-          </div>
-          <div class="modal__pagination">
-            <ul class="pagination pagination-info">
-              <li class="page-item"></li>
-              <li class="page-item active">
-                <a class="page-link" href="#link">1</a>
-              </li>
-              <li class="page-item">
-                <a class="page-link" href="#link">2</a>
-              </li>
-              <li class="page-item">
-                <a class="page-link" href="#link">3</a>
-              </li>
-            </ul>
-          </div>
+  <!-- ПЕРВОЕ -->
+  <div class="modal-dialog modal__first modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header header__flex">
+        <div class="modal__title">
+          <p class="modal__text">Информация о компании</p>
+          <p class="modal__steps">Шаг 1 из 3</p>
         </div>
-        <div class="modal-body row body__p">
-          <div class="modal__labels__left col">
-            <form action="">
-              <div class="form-group">
-                <input
-                  type="text"
-                  class="form-control form-control-lg"
-                  id="CompanyName"
-                  placeholder="Название компании"
-                />
+        <div class="modal__pagination">
+          <ul class="pagination pagination-info">
+            <li class="page-item"></li>
+            <li class="page-item active">
+              <a class="page-link" href="#link">1</a>
+            </li>
+            <li class="page-item">
+              <a class="page-link" href="#link">2</a>
+            </li>
+            <li class="page-item">
+              <a class="page-link" href="#link">3</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="modal-body row body__p">
+        <div class="modal__labels__left col">
+          <form action="">
+            <div class="form-group">
+              <input
+                type="text"
+                class="form-control form-control-lg"
+                id="CompanyName"
+                placeholder="Название компании"
+              />
+            </div>
+            <div class="form-group">
+              <input
+                type="text"
+                class="form-control form-control-lg"
+                id="PersonName"
+                placeholder="ФИО Директора"
+              />
+            </div>
+            <div class="form-group">
+              <input
+                type="text"
+                class="form-control form-control-lg"
+                id="INN"
+                placeholder="ИИН/БИН"
+              />
+            </div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                value=""
+                id="fcustomCheck1"
+                checked=""
+              />
+              <div class="checkbox__btn">
+                <label
+                  class="custom-control-label label__text"
+                  for="customCheck1"
+                  >Я даю свое согласие на обработку<br />
+                  персональных данных</label
+                >
               </div>
-              <div class="form-group">
-                <input
-                  type="text"
-                  class="form-control form-control-lg"
-                  id="PersonName"
-                  placeholder="ФИО Директора"
-                />
-              </div>
-              <div class="form-group">
-                <input
-                  type="text"
-                  class="form-control form-control-lg"
-                  id="INN"
-                  placeholder="ИИН/БИН"
-                />
-              </div>
-              <div class="form-check">
-                <input
-                  class="form-check-input"
-                  type="checkbox"
-                  value=""
-                  id="fcustomCheck1"
-                  checked=""
-                />
-                <div class="checkbox__btn">
-                  <label
-                    class="custom-control-label label__text"
-                    for="customCheck1"
-                    >Я даю свое согласие на обработку<br />
-                    персональных данных</label
-                  >
-                </div>
-              </div>
-            </form>
-          </div>
-          <div class="modal__labels__right col">
-            <form action="">
-              <div class="form-group">
-                <input
-                  type="text"
-                  class="form-control form-control-lg"
-                  id="CompanyName"
-                  placeholder="Юридический адрес"
-                />
-              </div>
-              <div class="form-group">
-                <!-- <input
+            </div>
+          </form>
+        </div>
+        <div class="modal__labels__right col">
+          <form action="">
+            <div class="form-group">
+              <input
+                type="text"
+                class="form-control form-control-lg"
+                id="CompanyName"
+                placeholder="Юридический адрес"
+              />
+            </div>
+            <div class="form-group">
+              <!-- <input
                   type="select"
                   class="form-control"
                   id="PersonName"
                   placeholder="Организационная форма"
                 /> -->
-                <div class="select">
-                  <select>
-                    <option value="1">Организационная форма</option>
-                    <option value="2">ООО</option>
-                    <option value="3">ОАО</option>
-                  </select>
-                </div>
+              <div class="select">
+                <select>
+                  <option value="1">Организационная форма</option>
+                  <option value="2">ООО</option>
+                  <option value="3">ОАО</option>
+                </select>
               </div>
-              <div class="radio__btns">
-                <p>Вы плательщик НДС?</p>
-                <div class="form-check">
-                  <input
-                    class="form-check-input"
-                    type="radio"
-                    name="flexRadioDefault"
-                    id="customRadio1"
-                  />
-                  <label class="custom-control-label" for="customRadio1"
-                    >Да</label
-                  >
-                </div>
-                <div class="form-check">
-                  <input
-                    class="form-check-input"
-                    type="radio"
-                    name="flexRadioDefault"
-                    id="customRadio2"
-                  />
-                  <label class="custom-control-label" for="customRadio2"
-                    >Нет</label
-                  >
-                </div>
+            </div>
+            <div class="radio__btns">
+              <p>Вы плательщик НДС?</p>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="flexRadioDefault"
+                  id="customRadio1"
+                />
+                <label class="custom-control-label" for="customRadio1"
+                  >Да</label
+                >
               </div>
-            </form>
-          </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn bg-gradient-secondary" @click="pageNum = 2">
-            Продолжить <img src="@/assets/img/next.svg" style="width:0.833vw; margin-left:1.25vw;" alt="">
-          </button>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="flexRadioDefault"
+                  id="customRadio2"
+                />
+                <label class="custom-control-label" for="customRadio2"
+                  >Нет</label
+                >
+              </div>
+            </div>
+          </form>
         </div>
       </div>
-    </div>
-  
-  <!-- ТРЕТЬЕ -->
-  <div
-    class="modal fade"
-    id="InfoThird"
-    tabindex="-1"
-    role="dialog"
-    aria-labelledby="InfoThird"
-    aria-hidden="true"
-  >
-    <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <div class="modal-header"></div>
-        <div class="modal-body">...</div>
-        <div class="modal-footer">
-          <button type="button" class="btn bg-gradient-secondary">Secondary</button>
-        </div>
+      <div class="modal-footer">
+        <button
+          type="button"
+          class="btn bg-gradient-secondary"
+          @click="nextPage"
+        >
+          Продолжить
+          <img
+            src="@/assets/img/next.svg"
+            style="width: 0.833vw; margin-left: 1.25vw"
+            alt=""
+          />
+        </button>
       </div>
     </div>
   </div>
@@ -155,21 +141,25 @@
 
 <script>
 export default {
-    data(){
-        return{
-        }
-    }
+  data() {
+    return {};
+  },
+  methods: {
+    nextPage() {
+      this.$emit("pageNum", 2);
+    },
+  },
 };
 </script>
 
 <style scoped>
-.page-item{
-    margin-right:1.25vw;
-} 
+.page-item {
+  margin-right: 1.25vw;
+}
 .pagination.pagination-info .page-item.active > .page-link,
 .pagination.pagination-info .page-item.active > .page-link:focus,
 .pagination.pagination-info .page-item.active > .page-link:hover {
-  background-image:  linear-gradient(83.56deg, #7092E0 10.01%, #8BAEF3 75.36%);
+  background-image: linear-gradient(83.56deg, #7092e0 10.01%, #8baef3 75.36%);
   border: none;
 }
 .bg-gradient-secondary {
@@ -278,11 +268,12 @@ select::-ms-expand {
 }
 .modal__first {
   max-width: 42.969vw !important;
-  box-shadow: 0px 4px 4px rgba(51, 51, 51, 0.04), 0px 4px 16px rgba(51, 51, 51, 0.08);
-border-radius: 8px;
-border: 0;
+  box-shadow: 0px 4px 4px rgba(51, 51, 51, 0.04),
+    0px 4px 16px rgba(51, 51, 51, 0.08);
+  border-radius: 8px;
+  border: 0;
 }
-.modal-content{
-    border: 0;
+.modal-content {
+  border: 0;
 }
 </style>

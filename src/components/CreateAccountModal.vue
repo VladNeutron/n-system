@@ -10,10 +10,10 @@
           <ul class="pagination pagination-info">
             <li class="page-item"></li>
             <li class="page-item active">
-              <a class="page-link" href="#link">1</a>
+              <a class="page-link" href="#link" @click="firstStep">1</a>
             </li>
             <li class="page-item active">
-              <a class="page-link" href="#link">2</a>
+              <a class="page-link" href="#link" @click="secondStep">2</a>
             </li>
             <li class="page-item active">
               <a class="page-link" href="#link">3</a>
@@ -37,14 +37,29 @@
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn bg-gradient-secondary" onclick="window.location.href = '/'">НАЧАТЬ</button>
+        <button
+          type="button"
+          class="btn bg-gradient-secondary"
+          onclick="window.location.href = '/'"
+        >
+          НАЧАТЬ
+        </button>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  methods: {
+    firstStep() {
+      this.$emit("pageNum", 1);
+    },
+    secondStep() {
+      this.$emit("pageNum", 2);
+    },
+  },
+};
 </script>
 
 <style scoped>

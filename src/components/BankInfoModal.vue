@@ -10,7 +10,7 @@
           <ul class="pagination pagination-info">
             <li class="page-item"></li>
             <li class="page-item active">
-              <a class="page-link" href="#link">1</a>
+              <a class="page-link" href="#link" @click="firstStep">1</a>
             </li>
             <li class="page-item active">
               <a class="page-link" href="#link">2</a>
@@ -22,7 +22,7 @@
         </div>
       </div>
       <div class="modal-body body__p">
-          <div v-if="isAdded" class="overflow__bank">
+        <div v-if="isAdded" class="overflow__bank">
           <div class="row">
             <div class="col bank__width" v-for="item in items" :key="item">
               <div class="info__block">
@@ -31,11 +31,7 @@
                     <div class="bank__name__title">
                       <p class="bank__title">{{ item.name }}</p>
                       <div class="bank__money__type">
-                        <img
-                          :src=item.img
-                          style="width: 0.625vw"
-                          alt=""
-                        />
+                        <img :src="item.img" style="width: 0.625vw" alt="" />
                       </div>
                     </div>
                     <img
@@ -48,24 +44,24 @@
                     <div class="bank__info-content">
                       <p class="info__left">Банк:</p>
                       <p class="info__right">
-                        {{item.fullName}}
+                        {{ item.fullName }}
                       </p>
                     </div>
                     <div class="bank__info-content">
                       <p class="info__left">БИК:</p>
-                      <p class="info__right">{{item.bik}}</p>
+                      <p class="info__right">{{ item.bik }}</p>
                     </div>
                     <div class="bank__info-content">
                       <p class="info__left">КБЕ:</p>
-                      <p class="info__right">{{item.kbe}}</p>
+                      <p class="info__right">{{ item.kbe }}</p>
                     </div>
                     <div class="bank__info-content">
                       <p class="info__left">ИИК:</p>
-                      <p class="info__right">{{item.iik}}</p>
+                      <p class="info__right">{{ item.iik }}</p>
                     </div>
                     <div class="bank__info-content">
                       <p class="info__left">ИИН/БИН:</p>
-                      <p class="info__right">{{item.inn}}</p>
+                      <p class="info__right">{{ item.inn }}</p>
                     </div>
                   </div>
                 </div>
@@ -97,7 +93,12 @@
         </div>
       </div>
       <div class="modal-footer">
-        <button v-if="isAdded" type="button" class="btn bg-gradient-secondary">
+        <button
+          v-if="isAdded"
+          type="button"
+          class="btn bg-gradient-secondary"
+          @click="nextPage"
+        >
           Продолжить
           <img
             src="@/assets/img/next.svg"
@@ -105,7 +106,12 @@
             alt=""
           />
         </button>
-        <button v-else type="button" class="btn bg-gradient-secondary">
+        <button
+          v-else
+          type="button"
+          class="btn bg-gradient-secondary"
+          @click="nextPage"
+        >
           Пропустить
         </button>
       </div>
@@ -128,7 +134,7 @@ export default {
           kbe: "14",
           iik: "KZ82125KZT1001300306",
           inn: "881206784000",
-          img: require('@/assets/img/euro.svg'),
+          img: require("@/assets/img/euro.svg"),
         },
         {
           name: "Kaspi Bank",
@@ -137,22 +143,30 @@ export default {
           kbe: "14",
           iik: "KZ82125KZT1001300306",
           inn: "881206784000",
-          img: require('@/assets/img/dollar.svg'),
+          img: require("@/assets/img/dollar.svg"),
         },
-         {
+        {
           name: "Сбербанк Тенге",
           fullName: "Дочерний банк акционерное общество «Сбербанк»",
           bik: "SABRKZKA",
           kbe: "14",
           iik: "KZ82125KZT1001300306",
           inn: "881206784000",
-          img: require('@/assets/img/tenge.svg'),
+          img: require("@/assets/img/tenge.svg"),
         },
       ],
     };
   },
   components: {
     AddBankInfoModal,
+  },
+  methods: {
+    nextPage() {
+      this.$emit("pageNum", 3);
+    },
+    firstStep() {
+      this.$emit("pageNum", 1);
+    },
   },
 };
 </script>

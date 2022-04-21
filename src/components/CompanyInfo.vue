@@ -6,9 +6,9 @@
       <p class="logo__sec">System</p>
     </div>
   </div>
-  <company-info-modal v-if="pageNum == 1"></company-info-modal>
-  <bank-info-modal v-if="pageNum  == 2"></bank-info-modal>
-  <create-account-modal v-if="pageNum  == 3"></create-account-modal>
+  <company-info-modal v-if="pageNum == 1" @pageNum="onClickChild"></company-info-modal>
+  <bank-info-modal v-if="pageNum  == 2" @pageNum="onClickChild"></bank-info-modal>
+  <create-account-modal v-if="pageNum  == 3" @pageNum="onClickChild"></create-account-modal>
 </template>
 
 <script>
@@ -18,8 +18,11 @@ import CreateAccountModal from "./CreateAccountModal.vue"
 export default {
     data(){
         return{
-           pageNum : 3
+           pageNum : 1
         }
+    },
+    emits:{
+        pageNum: Number
     },
     props:{
          
@@ -29,6 +32,11 @@ export default {
     BankInfoModal,
     CreateAccountModal
   },
+  methods:{
+      onClickChild(value){
+          this.pageNum = value
+      }
+  }
 };
 </script>
 
