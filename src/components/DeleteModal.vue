@@ -9,15 +9,30 @@
   >
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
+        <div class="modal-header header-flex">
+          <div style="text-align:left">
+            <p class="header__main">Удаление записи</p>
+            <p class="header__sec">Подтвердите свои действия</p>
+          </div>
+          <img src="@/assets/img/closemodal.svg" style="width:1.25vw; cursor:pointer" alt="" data-bs-dismiss="modal">
+        </div>
         <div class="modal-body modal__padding">
           <slot name="header">default header</slot>
         </div>
         <div class="modal-footer">
           <div class="modal__btns">
-            <button type="button" class="del__btn btn btn-outline-dark" data-bs-dismiss="modal">
+            <button
+              type="button"
+              class="del__btn btn btn-outline-dark"
+              data-bs-dismiss="modal"
+            >
               Удалить
             </button>
-            <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">
+            <button
+              type="button"
+              class="btn bg-gradient-secondary"
+              data-bs-dismiss="modal"
+            >
               Отмена
             </button>
           </div>
@@ -32,6 +47,23 @@ export default {};
 </script>
 
 <style scoped>
+.header__sec {
+  font-weight: 400;
+  font-size: 0.833vw;
+  color: #a0aec0;
+}
+.header__main {
+  margin: 0;
+  font-weight: 700;
+  font-size: 1.563vw;
+  color: #252f40;
+}
+.header-flex {
+  padding: 1.25vw 2.083vw 0.833vw 2.083vw;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline
+}
 .fade {
   background: linear-gradient(
     83.56deg,
@@ -41,13 +73,13 @@ export default {};
   backdrop-filter: blur(50px);
 }
 .btn-outline-dark {
-  padding: 0.26vw 1.146vw 0.26vw 1.146vw;
+  padding: 0.625vw 4.219vw 0.625vw 4.219vw;
 }
 .bg-gradient-secondary {
   background: linear-gradient(81.62deg, #313860 2.25%, #151928 79.87%);
   border-radius: 8px;
   text-transform: uppercase;
-  padding: 0.26vw 1.146vw 0.26vw 1.146vw;
+  padding: 0.625vw 4.219vw 0.625vw 4.219vw;
 }
 .del__btn {
   margin-right: 3.542vw;
@@ -62,11 +94,11 @@ export default {};
   padding-right: 6.667vw;
 }
 .modal__title {
-  font-weight: 600;
-  font-size: 1.563vw;
-  color: #000;
+font-weight: 600;
+font-size: 1.042vw;
+color: #2D3748;
 }
 .modal-dialog {
-  max-width: 47.5vw;
+  max-width: 34.219vw;
 }
 </style>

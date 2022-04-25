@@ -113,11 +113,13 @@ const routes = [
     path: "/storage",
     name: "storage",
     component: () => import("../views/StorageView.vue"),
+    meta: { NavLink: "Склад" },
   },
   {
     path: "/create-storage",
     name: "create-storage",
     component: () => import("../views/CreateStorageView.vue"),
+    meta: { NavLink: "Создание склада" },
   },
   {
     path: "/available-warehouse",
