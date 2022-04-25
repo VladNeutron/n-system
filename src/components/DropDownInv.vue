@@ -15,7 +15,13 @@
           <p class="items__title">Склад</p>
           <div class="dropdown">
             <p class="items__tex items__flex" style="cursor: pointer">
-              ТРЦ Москва <img src="@/assets/img/down.svg" class="rotate" style="width:0.729vw; margin-left:0.417vw" alt="">
+              ТРЦ Москва
+              <img
+                src="@/assets/img/down.svg"
+                class="rotate"
+                style="width: 0.729vw; margin-left: 0.417vw"
+                alt=""
+              />
             </p>
             <div class="dropdown-content">
               <a style="cursor: pointer">ТЦ Европейский</a>
@@ -29,7 +35,13 @@
 
           <div class="dropdown">
             <p class="items__text items__flex" style="cursor: pointer">
-              Тихонов Александр <img src="@/assets/img/down.svg" class="rotate" style="width:0.729vw; margin-left:0.417vw" alt="">
+              Тихонов Александр
+              <img
+                src="@/assets/img/down.svg"
+                class="rotate"
+                style="width: 0.729vw; margin-left: 0.417vw"
+                alt=""
+              />
             </p>
             <div class="dropdown-content">
               <a style="cursor: pointer">Антон</a>
@@ -106,6 +118,8 @@ export default {};
   padding-left: 1.25vw;
   display: flex;
   justify-content: space-between;
+  background: #f8f9fa;
+  border-radius: 12px;
 }
 .dropdown__inv {
   margin-top: 1.25vw;
