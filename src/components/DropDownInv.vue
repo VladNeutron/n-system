@@ -116,6 +116,7 @@ export default {};
 .drowdown__items {
   padding-top: 1.042vw;
   padding-left: 1.25vw;
+  padding-right:1.25vw;
   display: flex;
   justify-content: space-between;
   background: #f8f9fa;
