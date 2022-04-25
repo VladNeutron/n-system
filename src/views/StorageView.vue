@@ -318,7 +318,7 @@
                 <div class="cash__body">
                   <button class="cash__btn">
                     <img src="@/assets/img/plus.svg" style="0.833vw" alt="" />
-                    Подключить кассу
+                    Добавить кассу
                   </button>
                 </div>
               </div>
