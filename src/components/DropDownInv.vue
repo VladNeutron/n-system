@@ -102,8 +102,8 @@ export default {};
   text-align: left;
 }
 .drowdown__items {
-  padding-top: 1.979vw;
-  padding-left: 3.073vw;
+  padding-top: 1.042vw;
+  padding-left: 1.25vw;
   display: flex;
   justify-content: space-between;
 }
