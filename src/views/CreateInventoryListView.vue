@@ -83,8 +83,8 @@
                   </div>
                 </div>
               </div>
-              <div class="inv__block ps-3">
-                <div class="inv__content">
+              <div class="inv__block py-4 ps-0">
+                <div class="inv__content p-0">
                   <div>
                     <table class="table text-center">
                       <thead>
@@ -122,7 +122,7 @@
                   </div>
                 </div>
               </div>
-              <div class="pagination d-flex justify-content-end">
+              <div class="pagination d-flex justify-content-end pe-5">
                 <div class="d-flex align-items-center gap-3 pb-4">
                   <div>
                     <p class="m-0">Показано<span> 2112 12121</span></p>
@@ -254,10 +254,7 @@ tbody {
   padding-right: 1.354vw;
   height: 90%;
 }
-.inv__block {
-  padding-bottom: 2.188vw;
-  padding-top: 2.083vw;
-}
+
 .pagination {
   padding-right: 1.354vw;
 }

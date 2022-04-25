@@ -60,7 +60,7 @@
                   </div>
                 </div>
               </div>
-              <div class="inv__block ps-3 py-4">
+              <div class="inv__block py-4">
                 <div class="inv__content">
                   <div>
                     <table class="table text-center">
