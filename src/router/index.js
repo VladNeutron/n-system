@@ -119,6 +119,11 @@ const routes = [
     name: "create-storage",
     component: () => import("../views/CreateStorageView.vue"),
   },
+  {
+    path: "/available-warehouse",
+    name: "available-warehouse",
+    component: () => import("../views/WarehouseAvailabilityView.vue"),
+  },
 ];
 
 const router = createRouter({

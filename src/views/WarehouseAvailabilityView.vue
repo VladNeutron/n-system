@@ -1,0 +1,270 @@
+<template>
+  <the-navbar></the-navbar>
+  <main class="main-content border-radius-lg">
+    <the-header></the-header>
+    <div class="page__name px-4">
+      <h3 class="text-start">Наличие на складе</h3>
+      <p class="text-start m-0">
+        Внесите изменения и не забудьте нажать "Сохранить"
+      </p>
+    </div>
+    <div class="container-fluid pb-4">
+      <div class="row mt-4">
+        <div class="col-12">
+          <div class="card">
+            <div
+              class="search__munu p-4 d-flex justify-content-between align-items-end"
+            >
+              <div class="search__menu-left d-flex gap-4">
+                <div
+                  class="form-group m-0 d-flex flex-column align-items-start"
+                >
+                  <label for="search">Список товаров</label>
+                  <div class="input-group mt-1">
+                    <span class="input-group-text"
+                      ><img src="@/assets/css/icons/searchIcon.svg" alt="" />
+                    </span>
+                    <input
+                      class="form-control"
+                      placeholder="Поиск..."
+                      id="search"
+                      type="text"
+                      v-model.trim="search"
+                    />
+                  </div>
+                </div>
+                <div
+                  class="form-group m-0 d-flex flex-column align-items-start"
+                  style="width: 200px"
+                >
+                  <label for="search">Выберите склад</label>
+                  <select class="form-select" v-model="selected">
+                    <option
+                      v-for="(warehouse, i) in warehousesArr"
+                      :key="i"
+                      :value="warehouse"
+                      @click="this.selected = warehouse"
+                    >
+                      {{ warehouse }}
+                    </option>
+                  </select>
+                </div>
+              </div>
+              <div class="search__menu-right d-flex align-items-end gap-4">
+                <button class="btn btn-outline-dark mb-0">ФИЛЬТРЫ</button>
+                <button class="btn btn-outline-dark mb-0">
+                  <span class="btn-inner--icon"
+                    ><img src="@/assets/css/icons/chemodan.svg" alt="" /></span
+                  >ЭКСПОРТ
+                </button>
+              </div>
+            </div>
+            <div class="table__body px-4">
+              <table class="table table-hover text-center">
+                <thead>
+                  <tr>
+                    <th scope="col" class="">№</th>
+                    <th scope="col" class="">Товар</th>
+                    <th scope="col" class="">Штрихкод</th>
+                    <th scope="col" class="">Цвет</th>
+                    <th scope="col" class="">Размер</th>
+                    <th scope="col" class="">Склад</th>
+                    <th scope="col" class="">Себестоимость</th>
+                    <th scope="col" class="">Текущая цена</th>
+                    <th scope="col" class="">Кол-во</th>
+                    <th scope="col" class="">Сумма</th>
+                  </tr>
+                </thead>
+                <tbody class="table-body">
+                  <tr v-for="(item, i) in filteredWarehouse" :key="item">
+                    <th scope="row">{{ i + 1 }}</th>
+                    <td><img src="{{ item.img }}" />{{ item.name }}</td>
+                    <td>{{ item.barcode }}</td>
+                    <td>{{ item.color }}</td>
+                    <td>{{ item.size }}</td>
+                    <td>{{ item.warehouse }}</td>
+                    <td>{{ item.startPrice }}<span>₸</span></td>
+                    <td>{{ item.currentPrice }}<span>₸</span></td>
+                    <td>{{ item.amount }}</td>
+                    <td>{{ item.currentPrice * item.amount }}<span>₸</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="table__pagination">
+              <div class="pagination d-flex justify-content-end px-5">
+                <div class="d-flex align-items-center gap-3 pb-4">
+                  <div>
+                    <p class="m-0">Показано<span> 2112 12121</span></p>
+                  </div>
+
+                  <div class="page__search-pages d-flex align-content-center">
+                    <div
+                      class="pagination-container d-flex justify-items-center"
+                    >
+                      <ul class="pagination pagination-info mb-0 pe-0">
+                        <li class="page-item">
+                          <a
+                            class="page-link"
+                            href="javascript:;"
+                            aria-label="Previous"
+                          >
+                            <span aria-hidden="true"
+                              ><i
+                                class="fa fa-angle-left"
+                                aria-hidden="true"
+                              ></i
+                            ></span>
+                          </a>
+                        </li>
+                        <li class="page-item active">
+                          <a class="page-link" href="javascript:;">1</a>
+                        </li>
+                        <li class="page-item">
+                          <a class="page-link" href="javascript:;">2</a>
+                        </li>
+                        <li class="page-item">
+                          <a class="page-link" href="javascript:;">3</a>
+                        </li>
+                        <li class="page-item">
+                          <a class="page-link" href="javascript:;">4</a>
+                        </li>
+                        <li class="page-item">
+                          <a class="page-link" href="javascript:;">5</a>
+                        </li>
+                        <li class="page-item">
+                          <a
+                            class="page-link"
+                            href="javascript:;"
+                            aria-label="Next"
+                          >
+                            <span aria-hidden="true"
+                              ><i
+                                class="fa fa-angle-right"
+                                aria-hidden="true"
+                              ></i
+                            ></span>
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      items: [
+        {
+          name: "Куртка зеленая",
+          img: "#",
+          barcode: 1234567890456,
+          color: "Зеленый",
+          size: "S",
+          warehouse: "ТЦ “Jam Mall”",
+          startPrice: 12000,
+          currentPrice: 29000,
+          amount: 1,
+        },
+        {
+          name: "Куртка красная",
+          img: "#",
+          barcode: 1231236554634,
+          color: "Красный",
+          size: "M",
+          warehouse: "ТЦ “Jam Mall”",
+          startPrice: 20000,
+          currentPrice: 40000,
+          amount: 1,
+        },
+        {
+          name: "Футболка синяя",
+          img: "#",
+          barcode: 2354325423,
+          color: "Синий",
+          size: "XL",
+          warehouse: "ТЦ “Апорт”",
+          startPrice: 10000,
+          currentPrice: 27000,
+          amount: 1,
+        },
+        {
+          name: "Штаны дорогие",
+          img: "#",
+          barcode: 55555778080,
+          color: "Синий",
+          size: "L",
+          warehouse: "ТЦ “Апорт”",
+          startPrice: 40,
+          currentPrice: 40,
+          amount: 1,
+        },
+        {
+          name: "Шлем воина",
+          img: "#",
+          barcode: 2123123121,
+          color: "Черный",
+          size: "M",
+          warehouse: "ТЦ “Jam Mall”",
+          startPrice: 1000000,
+          currentPrice: 12000000,
+          amount: 1,
+        },
+      ],
+      warehousesArr: ["ТЦ “Jam Mall”", "ТЦ “Апорт”"],
+      search: "",
+      selected: "",
+    };
+  },
+  methods: {},
+  computed: {
+    filteredWarehouse() {
+      if (this.selected) {
+        return this.items.filter((item) => {
+          return (
+            (item.name.toLowerCase().includes(this.search.toLowerCase()) ||
+              item.barcode.toString().includes(this.search.toLowerCase())) &&
+            item.warehouse.toLowerCase() === this.selected.toLowerCase()
+          );
+        });
+      } else
+        return this.items.filter((item) => {
+          return (
+            item.name.toLowerCase().includes(this.search.toLowerCase()) ||
+            item.barcode.toString().includes(this.search.toLowerCase())
+          );
+        });
+    },
+  },
+};
+</script>
+
+<style scoped>
+.page__name h3 {
+  font-weight: 700;
+  line-height: 1.667vw;
+}
+.page__name p {
+  color: rgba(160, 174, 192, 1);
+  font-size: 0.729vw;
+}
+thead {
+  color: rgba(160, 174, 192, 1);
+  font-size: 0.625vw;
+  line-height: 0.938vw;
+}
+tbody {
+  font-size: 0.729vw;
+  font-weight: 600;
+  line-height: 0.99vw;
+}
+</style>
