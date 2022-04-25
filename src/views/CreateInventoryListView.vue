@@ -2,44 +2,33 @@
   <the-navbar></the-navbar>
   <main class="main-content border-radius-lg">
     <the-header></the-header>
-    <div class="container-fluid py-4">
+    <div class="formtop-buttons d-flex ps-6 pe-8 mt-2 justify-content-between">
+      <button class="btn bg-gradient-dark mb-0">
+        <span class="btn-inner--icon"
+          ><img src="@/assets/css/icons/add.svg" alt="" /></span
+        >Новая инвентаризация
+      </button>
+      <div class="formtop-buttons-right d-flex gap-3">
+        <button class="btn btn-outline-dark mb-0">
+          Комментарии
+          <span class="badge badge-pill badge-danger align-self-start">2</span>
+        </button>
+        <button class="btn btn-outline-dark mb-0">
+          <span class="btn-inner--icon"
+            ><img
+              class="pe-2"
+              src="@/assets/css/icons/chemodan.svg"
+              alt="" /></span
+          >ЭКСПОРТ
+        </button>
+      </div>
+    </div>
+    <div class="container-fluid pb-4">
       <div class="row mt-4">
         <div class="col-12">
-          <drop-down>
+          <drop-down class="drop__down-custom">
             <template #header>
-              <div class="d-flex justify-content-between align-content-center">
-                <div><h3>Создание инвентаризации</h3></div>
-                <div class="d-flex gap-3 align-content-center buttons__panel">
-                  <button class="btn bg-gradient-dark mb-0">
-                    <span class="btn-inner--icon"
-                      ><i class="ni ni-button-play"></i></span
-                    >Завершить
-                  </button>
-                  <button class="btn btn-outline-dark mb-0">
-                    <span class="btn-inner--icon"
-                      ><i class="fa fa-comment"></i></span
-                    >Комментарии
-                    <span class="badge badge-pill badge-danger align-self-start"
-                      >2</span
-                    >
-                  </button>
-                  <button class="btn btn-outline-dark mb-0">
-                    <span class="btn-inner--icon"
-                      ><i class="fa fa-print"></i></span
-                    >Печать
-                  </button>
-                  <button class="btn btn-outline-dark mb-0">
-                    <span class="btn-inner--icon"
-                      ><i class="fa fa-download"></i></span
-                    >Скачать
-                  </button>
-                  <button class="btn btn-outline-dark mb-0">
-                    <span class="btn-inner--icon"
-                      ><i class="fa fa-trash"></i></span
-                    >Удалить
-                  </button>
-                </div>
-              </div>
+              <h3 class="text-start fs-6">Инвентаризация №19</h3>
             </template>
           </drop-down>
           <div class="card pl-pr">
@@ -301,5 +290,8 @@ th {
 }
 .pagination-info {
   margin-bottom: 0;
+}
+.dropdown__items {
+  padding: 20px;
 }
 </style>
