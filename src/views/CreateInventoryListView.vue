@@ -2,7 +2,9 @@
   <the-navbar></the-navbar>
   <main class="main-content border-radius-lg">
     <the-header></the-header>
-    <div class="formtop-buttons d-flex ps-6 pe-8 mt-2 justify-content-between">
+    <div
+      class="formtop-buttons d-flex pt-2 ps-6 pe-8 mt-2 justify-content-between"
+    >
       <button class="btn bg-gradient-dark mb-0">
         <span class="btn-inner--icon"
           ><img src="@/assets/css/icons/add.svg" alt="" /></span
@@ -34,92 +36,57 @@
           <div class="card pl-pr">
             <div class="main-page text-start">
               <label class="form-control-label ps-3 pt-3" for="search"
-                >Поиск</label
+                >Добавить по штрихкоду</label
               >
               <div class="d-flex justify-content-between ps-3">
-                <div class="page_search-inputs d-flex gap-5">
+                <div class="page_search-inputs d-flex align-items-center gap-3">
                   <div class="form-group m-0">
                     <div class="input-group mt-1">
+                      <span class="input-group-text"
+                        ><img src="@/assets/css/icons/searchIcon.svg" alt=""
+                      /></span>
                       <input
                         class="form-control"
-                        placeholder="12312321312"
-                        id="search"
+                        placeholder="Введите штрихкод"
+                        id="search-barcode"
                         type="text"
                       />
-                      <span class="input-group-text"
-                        ><i class="ni ni-zoom-split-in"></i
-                      ></span>
+                      <span class="input-group-text py-0"
+                        ><img src="@/assets/css/icons/barcode.svg" alt=""
+                      /></span>
                     </div>
                   </div>
                   <button class="btn bg-gradient-info mb-0">
                     Выбрать из списка
                   </button>
                 </div>
-
-                <div class="d-flex align-items-center gap-3">
-                  <div>
-                    <p class="m-0">Показано<span> 2112 12121</span></p>
-                  </div>
-
-                  <div class="page__search-pages d-flex align-content-center">
-                    <div
-                      class="pagination-container d-flex justify-items-center"
-                    >
-                      <ul class="pagination pagination-info mb-0">
-                        <li class="page-item">
-                          <a
-                            class="page-link"
-                            href="javascript:;"
-                            aria-label="Previous"
-                          >
-                            <span aria-hidden="true"
-                              ><i
-                                class="fa fa-angle-double-left"
-                                aria-hidden="true"
-                              ></i
-                            ></span>
-                          </a>
-                        </li>
-                        <li class="page-item">
-                          <a class="page-link" href="javascript:;">1</a>
-                        </li>
-                        <li class="page-item">
-                          <a class="page-link" href="javascript:;">2</a>
-                        </li>
-                        <li class="page-item active">
-                          <a class="page-link" href="javascript:;">3</a>
-                        </li>
-                        <li class="page-item">
-                          <a class="page-link" href="javascript:;">4</a>
-                        </li>
-                        <li class="page-item">
-                          <a class="page-link" href="javascript:;">5</a>
-                        </li>
-                        <li class="page-item">
-                          <a
-                            class="page-link"
-                            href="javascript:;"
-                            aria-label="Next"
-                          >
-                            <span aria-hidden="true"
-                              ><i
-                                class="fa fa-angle-double-right"
-                                aria-hidden="true"
-                              ></i
-                            ></span>
-                          </a>
-                        </li>
-                      </ul>
+                <div class="d-flex justify-content-between ps-3 pe-4">
+                  <div
+                    class="page_search-inputs d-flex align-items-center gap-3"
+                  >
+                    <div class="form-group m-0">
+                      <div class="input-group mt-1">
+                        <span class="input-group-text"
+                          ><img src="@/assets/css/icons/searchIcon.svg" alt=""
+                        /></span>
+                        <input
+                          class="form-control"
+                          placeholder="Поиск..."
+                          id="search"
+                          type="text"
+                        />
+                      </div>
                     </div>
+                    <button class="btn bg-gradient-dark mb-0">
+                      Завершить инвентаризацию
+                    </button>
                   </div>
                 </div>
               </div>
               <div class="inv__block ps-3">
                 <div class="inv__content">
                   <div>
-                    <table
-                      class="table table-bordered table-hover text-center table-striped"
-                    >
+                    <table class="table text-center">
                       <thead>
                         <tr>
                           <th scope="col" class="">№</th>
@@ -144,7 +111,8 @@
                           <td>
                             <img
                               src="@/assets/img/dots.svg"
-                              style="width: 1.563vw; cursor: pointer"
+                              style="width: 1.563vw; cursor: pointer
+                              transform: rotate(40deg)"
                               alt=""
                             />
                           </td>
@@ -254,6 +222,9 @@ export default {
 </script>
 
 <style scoped>
+.btn {
+  height: 40px;
+}
 .pl-pr {
   margin-left: 1.146vw;
   margin-top: 1.094vw;
@@ -262,10 +233,19 @@ export default {
 .page__search-inputs {
   gap: 1.042vw;
 }
-
-td,
-th {
-  color: #2d3748;
+.badge {
+  top: -19px;
+  right: -25px;
+}
+thead {
+  color: rgba(160, 174, 192, 1);
+  font-size: 0.625vw;
+  line-height: 0.938vw;
+}
+tbody {
+  font-size: 0.729vw;
+  font-weight: 600;
+  line-height: 0.99vw;
 }
 .align-self-start {
   align-self: flex-start;
