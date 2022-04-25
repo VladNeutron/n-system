@@ -28,7 +28,7 @@
         <div class="col-12">
           <drop-down class="drop__down-custom">
             <template #header>
-              <h3 class="text-start fs-6">Инвентаризация №19</h3>
+              <h3 class="text-start fs-4">Инвентаризация №19</h3>
             </template>
           </drop-down>
           <div class="card pl-pr">
