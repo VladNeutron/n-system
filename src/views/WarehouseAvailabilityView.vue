@@ -78,7 +78,9 @@
                 <tbody class="table-body">
                   <tr v-for="(item, i) in filteredWarehouse" :key="item">
                     <th scope="row">{{ i + 1 }}</th>
-                    <td><img src="{{ item.img }}" />{{ item.name }}</td>
+                    <td class="d-flex gap-2">
+                      <img :src="item.img" />{{ item.name }}
+                    </td>
                     <td>{{ item.barcode }}</td>
                     <td>{{ item.color }}</td>
                     <td>{{ item.size }}</td>
@@ -91,7 +93,7 @@
                 </tbody>
               </table>
             </div>
-            <div class="table__pagination">
+            <div class="table__pagination pb-2">
               <div class="pagination d-flex justify-content-end px-5">
                 <div class="d-flex align-items-center gap-3 pb-4">
                   <div>
@@ -166,7 +168,7 @@ export default {
       items: [
         {
           name: "Куртка зеленая",
-          img: "#",
+          img: require("@/assets/css/images/pants.png"),
           barcode: 1234567890456,
           color: "Зеленый",
           size: "S",
@@ -177,7 +179,7 @@ export default {
         },
         {
           name: "Куртка красная",
-          img: "#",
+          img: require("@/assets/css/images/pants.png"),
           barcode: 1231236554634,
           color: "Красный",
           size: "M",
@@ -188,7 +190,7 @@ export default {
         },
         {
           name: "Футболка синяя",
-          img: "#",
+          img: require("@/assets/css/images/pants.png"),
           barcode: 2354325423,
           color: "Синий",
           size: "XL",
@@ -199,7 +201,7 @@ export default {
         },
         {
           name: "Штаны дорогие",
-          img: "#",
+          img: require("@/assets/css/images/pants.png"),
           barcode: 55555778080,
           color: "Синий",
           size: "L",
@@ -210,7 +212,7 @@ export default {
         },
         {
           name: "Шлем воина",
-          img: "#",
+          img: require("@/assets/css/images/pants.png"),
           barcode: 2123123121,
           color: "Черный",
           size: "M",
@@ -266,5 +268,9 @@ tbody {
   font-size: 0.729vw;
   font-weight: 600;
   line-height: 0.99vw;
+}
+tbody img {
+  width: 48px;
+  height: 48px;
 }
 </style>
