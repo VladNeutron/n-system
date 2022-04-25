@@ -109,6 +109,16 @@ const routes = [
     name: "register",
     component: () => import("../views/RegisterFormView.vue"),
   },
+  {
+    path: "/storage",
+    name: "storage",
+    component: () => import("../views/StorageView.vue"),
+  },
+  {
+    path: "/create-storage",
+    name: "create-storage",
+    component: () => import("../views/CreateStorageView.vue"),
+  },
 ];
 
 const router = createRouter({
