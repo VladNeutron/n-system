@@ -7,23 +7,362 @@
     >
       <div class="page__name-title text-start">
         <h3>Управление товаром</h3>
-        <p>Настройка изображение размеры</p>
+        <p class="mb-0">Настройка изображение размеры</p>
       </div>
       <div class="page__name-buttons d-flex gap-3 mx-4">
-        <button class="btn btn-outline-dark mb-0">ФИЛЬТРЫ</button>
-        <button class="btn bg-gradient-dark mb-0">ФИЛЬТРЫ</button>
+        <button class="btn btn-outline-dark mb-0">Назад</button>
+        <button class="btn bg-gradient-dark mb-0">Сохранить</button>
+      </div>
+    </div>
+    <div class="main__body d-flex gap-4 m-4">
+      <div class="img__card card">
+        <h5 class="m-0 pt-4 ps-4">Изображение товара</h5>
+        <img src="@/assets/css/images/product.png" alt="" />
+      </div>
+
+      <div class="card info__card gap-2 p-4">
+        <h5 class="text-start">Информация о товаре</h5>
+        <div class="info__card-top d-flex">
+          <div class="form-group m-0 text-start">
+            <label for="productName">Название</label>
+            <input
+              class="form-control"
+              placeholder="Название товара..."
+              id="productName"
+              type="text"
+            />
+          </div>
+          <div class="form-group ms-4 text-start">
+            <label for="productName">Название на сайте</label>
+            <input
+              class="form-control"
+              placeholder="Название товара на сайте..."
+              id="productSiteName"
+              type="text"
+            />
+          </div>
+        </div>
+        <div class="info__card-mid d-flex">
+          <div class="form-group m-0 text-start">
+            <label for="Category">Категория</label>
+            <input
+              class="form-control"
+              placeholder="Категория"
+              id="Category"
+              type="text"
+            />
+          </div>
+          <div class="form-group ms-4 text-start">
+            <label for="SelfPrice">Себестоимость</label>
+            <input
+              class="form-control"
+              placeholder="6 000"
+              id="SelfPrice"
+              type="text"
+            />
+          </div>
+          <div class="form-group ms-4 text-start">
+            <label for="Price">Цена</label>
+            <input
+              class="form-control"
+              placeholder="10 000"
+              id="Price"
+              type="text"
+            />
+          </div>
+        </div>
+        <p class="text-start fs-6 fw-bold mb-2">Дополнительно</p>
+        <div class="info__card-bottom">
+          <div class="form-switch d-flex align-items-center gap-2 m-0">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              id="flexSwitchCheckDefault"
+              checked=""
+            />
+            <label
+              class="form-check-label text-start m-0"
+              for="flexSwitchCheckDefault"
+              >Применить себестоимость и цену ко всем артикулам</label
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="main__body-info d-flex gap-4 m-4">
+      <div class="main__body-color p-4 card">
+        <div class="d-flex justify-content-between align-items-center">
+          <h5 class="m-0">Управление цветами</h5>
+          <button class="btn bg-gradient-dark mb-0">
+            <span class="btn-inner--icon pe-2"
+              ><img src="@/assets/css/icons/add.svg" alt=""
+            /></span>
+            Добавить цвет
+          </button>
+        </div>
+        <div class="color-photo">
+          <div class="d-flex justify-content-between align-items-center my-4">
+            <p class="m-0 fw-bold">Белый</p>
+
+            <a href="#"
+              ><span
+                ><img
+                  class="pe-2 pb-1"
+                  src="@/assets/css/icons/addPhoto.svg"
+                  alt="" /></span
+              >Загрузить фото</a
+            >
+          </div>
+          <div
+            id="carouselExampleControls"
+            class="carousel slide"
+            data-bs-ride="carousel"
+          >
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img
+                  src="@/assets/css/images/example.png"
+                  class="d-block w-100"
+                  alt="..."
+                />
+              </div>
+              <div class="carousel-item">
+                <img
+                  src="@/assets/css/images/example.png"
+                  class="d-block w-100"
+                  alt="..."
+                />
+              </div>
+              <div class="carousel-item">
+                <img
+                  src="@/assets/css/images/example.png"
+                  class="d-block w-100"
+                  alt="..."
+                />
+              </div>
+            </div>
+            <button
+              class="carousel-control-prev"
+              type="button"
+              data-bs-target="#carouselExampleControls"
+              data-bs-slide="prev"
+            >
+              <span
+                class="carousel-control-prev-icon"
+                aria-hidden="true"
+              ></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button
+              class="carousel-control-next"
+              type="button"
+              data-bs-target="#carouselExampleControls"
+              data-bs-slide="next"
+            >
+              <span
+                class="carousel-control-next-icon"
+                aria-hidden="true"
+              ></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+          </div>
+        </div>
+        <div class="color-photo"></div>
+        <div class="color-photo"></div>
+      </div>
+      <div class="d-flex flex-column w-100 gap-4">
+        <div class="main__body-size d-flex flex-column p-4 card">
+          <div class="d-flex justify-content-between align-items center">
+            <h5>Управление размерами</h5>
+            <button class="btn bg-gradient-dark mb-0">
+              <span class="btn-inner--icon pe-2"
+                ><img src="@/assets/css/icons/add.svg" alt=""
+              /></span>
+              Добавить размер
+            </button>
+          </div>
+          <div class="sizes__body d-flex py-2 gap-3">
+            <button
+              v-for="size in sizes"
+              :key="size"
+              :class="[
+                size.available ? 'btn bg-gradient-dark mb-0' : 'btn mb-0',
+              ]"
+            >
+              {{ size.name }}
+              <span v-if="size.available"
+                ><button class="remove-button">x</button></span
+              >
+            </button>
+          </div>
+        </div>
+        <div class="main__body-articles p-4 card">
+          <div class="d-flex justify-content-between align-items center">
+            <h5>Артикулы</h5>
+            <button class="btn bg-gradient-dark mb-0">
+              <span class="btn-inner--icon pe-2"
+                ><img src="@/assets/css/icons/add.svg" alt=""
+              /></span>
+              Добавить артикул
+            </button>
+          </div>
+          <div class="articles__content d-flex flex-column mt-4">
+            <div
+              class="articles__content-item d-flex justify-content-between align-items-center px-4 pt-1 mb-3 me-4"
+              v-for="i in 6"
+              :key="i"
+            >
+              <div class="d-flex">
+                <div class="form-group m-0 text-start">
+                  <label for="Barcode">Штрихкод</label>
+                  <input
+                    class="form-control"
+                    placeholder="Категория"
+                    id="Barcode"
+                    type="text"
+                  />
+                </div>
+                <div class="form-group ms-4 text-start">
+                  <label for="Color">Цвет</label>
+                  <input
+                    class="form-control"
+                    placeholder="Белый"
+                    id="Color"
+                    type="text"
+                  />
+                </div>
+                <div class="form-group ms-4 text-start">
+                  <label for="Size">Размер</label>
+                  <input
+                    class="form-control"
+                    placeholder="XS"
+                    id="Size"
+                    type="text"
+                  />
+                </div>
+              </div>
+              <div>
+                <button class="delete-btn">
+                  <img src="@/assets/css/icons/delete.svg" alt="" />
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </main>
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      sizes: [
+        { name: "XS", available: true },
+        { name: "S", available: false },
+        { name: "M", available: false },
+        { name: "L", available: false },
+        { name: "XL", available: true },
+      ],
+    };
+  },
+};
 </script>
 
 <style scoped>
+.form-switch .form-check-input:checked {
+  background: linear-gradient(83.56deg, #7092e0 10.01%, #8baef3 75.36%);
+  border-color: rgba(112, 146, 224, 1);
+}
 .page__name-buttons button {
   width: 241px;
   height: 47px;
+}
+.page__name h3 {
+  font-size: 24px;
+  line-height: 32px;
+  font-weight: 600;
+}
+.page__name p {
+  font-size: 14px;
+  line-height: 19px;
+  font-weight: 400;
+  color: gray;
+}
+.remove-button {
+  position: relative;
+  top: -20px;
+  right: -30px;
+  height: 24px;
+  width: 24px;
+  border: none;
+  border-radius: 12px;
+  background-color: #a0aec0;
+  color: white;
+}
+.info__card {
+  width: 100%;
+}
+.info__card-top div {
+  min-width: 380px;
+}
+.info__card-mid div {
+  min-width: 191px;
+}
+.img__card {
+  min-width: 490px;
+  align-items: flex-start;
+}
+.img__card img {
+  min-width: 442px;
+  min-height: 248px;
+  padding: 24px;
+}
+.main__body-color {
+  min-width: 490px;
+  height: 590px;
+}
+.main__body-size {
+  height: 145px;
+  width: 100%;
+}
+.main__body-color button {
+  width: 179px;
+  height: 40px;
+}
+.articles__content-item {
+  background: #f8f9fa;
+  border-radius: 12px;
+}
+.delete-btn {
+  height: 50px;
+  width: 50px;
+  border-radius: 8px;
+  background: rgba(160, 174, 192, 0.3);
+  border: none;
+}
+.main__body-articles {
+  height: 420px;
+}
+.articles__content {
+  height: 305px;
+  overflow-y: auto;
+}
+.articles__content::-webkit-scrollbar,
+.sizes__body::-webkit-scrollbar {
+  width: 5px;
+}
+.articles__content::-webkit-scrollbar-track,
+.sizes__body::-webkit-scrollbar-track {
+  background-color: #e9ecef;
+  border-radius: 5px;
+}
+.articles__content::-webkit-scrollbar-thumb,
+.sizes__body::-webkit-scrollbar-thumb {
+  background-color: black;
+  box-shadow: 0px 4px 7px -1px rgba(0, 0, 0, 0.11),
+    0px 2px 4px -1px rgba(0, 0, 0, 0.07);
+  border-radius: 8px;
 }
 </style>
