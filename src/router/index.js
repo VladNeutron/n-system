@@ -125,6 +125,7 @@ const routes = [
     path: "/available-warehouse",
     name: "available-warehouse",
     component: () => import("../views/WarehouseAvailabilityView.vue"),
+    meta: { NavLink: "Наличие на складе" },
   },
   {
     path: "/product-edit",
