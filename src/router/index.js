@@ -126,6 +126,11 @@ const routes = [
     name: "available-warehouse",
     component: () => import("../views/WarehouseAvailabilityView.vue"),
   },
+  {
+    path: "/product-edit",
+    name: "product-edit",
+    component: () => import("../views/ProductEditView.vue"),
+  },
 ];
 
 const router = createRouter({

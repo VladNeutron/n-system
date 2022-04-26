@@ -43,10 +43,11 @@
                       v-for="(warehouse, i) in warehousesArr"
                       :key="i"
                       :value="warehouse"
-                      @click="this.selected = warehouse"
+                      @input="this.selected = warehouse"
                     >
                       {{ warehouse }}
                     </option>
+                    <option value="">Без фильтра</option>
                   </select>
                 </div>
               </div>
