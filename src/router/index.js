@@ -127,6 +127,11 @@ const routes = [
     component: () => import("../views/WarehouseAvailabilityView.vue"),
     meta: { NavLink: "Наличие на складе" },
   },
+  {
+    path: "/product-edit",
+    name: "product-edit",
+    component: () => import("../views/ProductEditView.vue"),
+  },
 ];
 
 const router = createRouter({
