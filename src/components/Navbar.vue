@@ -64,7 +64,7 @@
             </li>
 
             <li class="nav-item ">
-              <router-link :to="{ name: 'inventorization-list'}" class="nav-link ">
+              <router-link :to="{ name: 'available-warehouse'}" class="nav-link ">
                 <span class="sidenav-mini-icon"> Н </span>
                 <span class="sidenav-normal"> Наличие на складе  <b class="caret"></b></span>
               </router-link>
