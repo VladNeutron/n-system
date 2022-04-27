@@ -23,6 +23,8 @@
                       class="form-control form-control-lg inv__inp"
                       placeholder="Поиск"
                       type="text"
+                      id="search"
+                      v-model.trim="search"
                     />
                   </div>
                 </div>
@@ -96,7 +98,7 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr v-for="(item, i) in items" :key="item">
+                    <tr v-for="(item, i) in filteredCategory" :key="item">
                       <th scope="row" style="border-right: 0">
                         {{ i + 1 }}
                       </th>
@@ -311,11 +313,24 @@ export default {
         },
         {
           id: "10",
-          category: "Тренч",
-          maincat: "Верхняя одежда",
+          category: "Джинсы",
+          maincat: "Штаны",
         },
       ],
+      search: "",
+      selected: "",
     };
+    
+  },
+  computed: {
+    filteredCategory() {
+        return this.items.filter((item) => {
+          return (
+            item.category.toLowerCase().includes(this.search.toLowerCase()) ||
+            item.maincat.toLowerCase().includes(this.search.toLowerCase())
+          );
+        });
+    },
   },
 };
 </script>

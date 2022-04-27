@@ -23,6 +23,8 @@
                       class="form-control form-control-lg inv__inp"
                       placeholder="Поиск"
                       type="text"
+                       id="search"
+                      v-model.trim="search"
                     />
                   </div>
                 </div>
@@ -110,7 +112,7 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr v-for="(item, i) in items" :key="item">
+                    <tr v-for="(item, i) in filteredProducts" :key="item">
                       <th scope="row" style="border-right: 0" width="1%">
                         {{ i + 1 }}
                       </th>
@@ -329,7 +331,18 @@ export default {
         },
 
       ],
+      search:""
     };
+  },
+    computed: {
+    filteredProducts() {
+        return this.items.filter((item) => {
+          return (
+            item.name.toLowerCase().includes(this.search.toLowerCase()) ||
+            item.category.toLowerCase().includes(this.search.toLowerCase())
+          );
+        });
+    },
   },
 };
 </script>

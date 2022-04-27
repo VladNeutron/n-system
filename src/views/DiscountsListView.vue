@@ -23,6 +23,8 @@
                       class="form-control form-control-lg inv__inp"
                       placeholder="Поиск"
                       type="text"
+                       id="search"
+                      v-model.trim="search"
                     />
                   </div>
                 </div>
@@ -96,7 +98,7 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr v-for="(item, i) in items" :key="item">
+                    <tr v-for="(item, i) in filteredDiscounts" :key="item">
                       <th scope="row" style="border-right: 0">
                         {{ i + 1 }}
                       </th>
@@ -295,11 +297,21 @@ export default {
           period: "01.04.2022 - 15.04.2022",
         },
         {
-          type: "Процент/число",
+          type: "Тест",
           period: "01.04.2022 - 15.04.2022",
         },
       ],
+       search: "",
     };
+  },
+    computed: {
+    filteredDiscounts() {
+        return this.items.filter((item) => {
+          return (
+            item.type.toLowerCase().includes(this.search.toLowerCase()) 
+          );
+        });
+    },
   },
 };
 </script>
