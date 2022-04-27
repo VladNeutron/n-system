@@ -127,6 +127,14 @@ const routes = [
     component: () => import("../views/WarehouseAvailabilityView.vue"),
     meta: { NavLink: "Наличие на складе" },
   },
+
+  //PRODUCT-ACCOUNTING
+  {
+    path: "/products-accounting",
+    name: "products-accounting",
+    component: () => import("../views/Barcode.vue"),
+    meta: { NavLink: "Учёт товаров" },
+  },
   {
     path: "/product-edit",
     name: "product-edit",
@@ -136,6 +144,12 @@ const routes = [
     path: "/product",
     name: "product",
     component: () => import("../views/ProductView.vue"),
+  },
+  {
+    path: "/products-accounting/barcode",
+    name: "barcode",
+    component: () => import("../views/Barcode.vue"),
+    meta: { NavLink: "Печать штрихкодов" },
   },
 ];
 

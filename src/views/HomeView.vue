@@ -333,35 +333,39 @@ export default {
         center: '',
         end: 'today prev,next' // will normally be on the right. if RTL, will be on the left
       },
-      height: '20.177vw',
+      // height: '200px',
+      // height: '100%',
+      fixedWeekCount: false,
+      // expandRows: true,
       selectable: true,
       editable: true,
-      initialDate: '2020-12-01',
+      aspectRatio: 2,
+      initialDate: '2022-04-01',
       events: [{
           title: 'Call with Dave',
-          start: '2020-11-18',
-          end: '2020-11-18',
+          start: '2022-04-18',
+          end: '2022-04-18',
           className: 'bg-gradient-danger'
         },
 
         {
           title: 'Lunch meeting',
-          start: '2020-11-21',
-          end: '2020-11-22',
+          start: '2022-04-21',
+          end: '2022-04-22',
           className: 'bg-gradient-warning'
         },
 
         {
           title: 'All day conference',
-          start: '2020-11-29',
-          end: '2020-11-29',
+          start: '2022-04-29',
+          end: '2022-04-29',
           className: 'bg-gradient-success'
         },
 
         {
           title: 'Meeting with Mary',
-          start: '2020-12-01',
-          end: '2020-12-01',
+          start: '2022-04-01',
+          end: '2022-04-01',
           className: 'bg-gradient-info'
         },
 
@@ -494,7 +498,7 @@ export default {
   grid-column-gap: 1.354vw;
 }
 .main__best__container{
-  padding: 16px 24px 32px 24px;
+  padding: 16px 24px 16px 24px;
 }
 .main__best__title__line{
   display: flex;
@@ -597,7 +601,7 @@ export default {
   margin-top: 16px;
   /* height: 100%; */
   overflow-y: auto;
-  height: 16.021vw;
+  height: 15.021vw;
 }
 .event{
   padding-bottom: 16px;
@@ -675,6 +679,6 @@ export default {
 
 /* CALENDAR */
 .card-calendara{
-  height: 23.177vw;
+  /* height: 26.177vw; */
 }
 </style>
