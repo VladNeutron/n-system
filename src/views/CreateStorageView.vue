@@ -301,7 +301,11 @@
                   />
                 </div>
                 <div class="cash__body">
-                  <button class="cash__btn">
+                  <button
+                    class="cash__btn"
+                    data-bs-toggle="modal"
+                    data-bs-target="#InpModal"
+                  >
                     <img src="@/assets/img/plus.svg" style="0.833vw" alt="" />
                     Добавить кассу
                   </button>
@@ -313,20 +317,91 @@
       </template>
     </storage>
   </main>
+  <inputs-modal>
+    <template #head>
+      <div style="text-align: left">
+        <p class="header__main">Добавление кассы</p>
+        <p class="header__sec">
+          Введите название кассы и нажмите “Добавить кассу”
+        </p>
+      </div>
+    </template>
+    <template #body>
+      <div class="body__content">
+        <div class="form-group" style="text-align: left">
+          <input
+            type="text"
+            class="form-control modal__inp form-control-lg"
+            id="exampleFormControlInput1"
+            placeholder="Название кассы"
+          />
+        </div>
+      </div>
+    </template>
+    <template #footer>
+      <div class="footer__btn">
+        <button class="footer__button">Добавить кассу</button>
+      </div>
+    </template>
+  </inputs-modal>
 </template>
 
 <script>
+import InputsModal from "../components/InputsModal.vue";
 import Storage from "../components/Storage.vue";
 export default {
   components: {
     Storage,
+    InputsModal,
   },
 };
 </script>
 
 <style scoped>
-.cash__body{
-    margin-top: 3.646vw;
+.header__sec {
+  font-weight: 400;
+  font-size: 0.833vw;
+  color: #a0aec0;
+}
+.header__main {
+  margin: 0;
+  font-weight: 700;
+  font-size: 1.563vw;
+  color: #252f40;
+}
+.modal__inp {
+  width: 100% !important;
+}
+.label__check {
+  font-weight: 400;
+  font-size: 0.833vw;
+  color: #252f40;
+}
+.footer__button {
+  font-weight: 700;
+  font-size: 0.833vw;
+  color: #fff;
+  border: 0;
+  background: linear-gradient(81.62deg, #313860 2.25%, #151928 79.87%);
+  box-shadow: 0px 4px 7px -1px rgba(0, 0, 0, 0.11),
+    0px 2px 4px -1px rgba(0, 0, 0, 0.07);
+  border-radius: 8px;
+  padding: 0.729vw 5.906vw 0.729vw 5.906vw;
+}
+.footer__btn {
+  display: flex;
+  justify-content: center;
+}
+.label__text {
+  font-weight: 600;
+  font-size: 0.729vw;
+  color: #2d3748;
+}
+.body__content {
+  padding: 1.25vw 2.083vw 0 2.083vw;
+}
+.cash__body {
+  margin-top: 3.646vw;
 }
 .cash__btn {
   border: 1px dashed #2d3748;
