@@ -1,0 +1,347 @@
+<template>
+  <the-navbar></the-navbar>
+  <main class="main-content border-radius-lg">
+    <the-header></the-header>
+    <div
+      class="page__name d-flex justify-content-between align-items-center ms-4"
+    >
+      <div class="page__name-title text-start">
+        <h3>Карточка товара</h3>
+        <p class="mb-0">Внесите изменения и не забудьте нажать “Сохранить”</p>
+      </div>
+      <div class="page__name-buttons d-flex gap-3 mx-4">
+        <button class="btn btn-outline-dark mb-0">Управление товаром</button>
+        <button class="btn bg-gradient-dark mb-0">Сохранить</button>
+      </div>
+    </div>
+    <div class="main__body d-flex gap-4 m-4">
+      <div class="img__card card">
+        <h5 class="m-0 pt-4 ps-4">Изображение товара</h5>
+        <img src="@/assets/css/images/product.png" alt="" />
+        <div class="img__card-buttons">
+          <button class="btn btn-outline-secondary mb-0">Удалить</button>
+          <button class="btn bg-gradient-dark mb-0">Редактировать</button>
+        </div>
+      </div>
+
+      <div class="card info__card w-100 gap-2 p-4">
+        <h5 class="text-start">Информация о товаре</h5>
+        <div class="info__card-top d-flex">
+          <div class="form-group m-0 text-start">
+            <label for="productName">Название</label>
+            <input
+              class="form-control"
+              placeholder="Свитшот мужской"
+              id="productName"
+              type="text"
+            />
+          </div>
+          <div class="form-group ms-4 text-start">
+            <label for="productName">Название на сайте</label>
+            <input
+              class="form-control"
+              placeholder="Свитшот мужской"
+              id="productSiteName"
+              type="text"
+            />
+          </div>
+        </div>
+        <div class="info__card-mid d-flex">
+          <div class="form-group text-start input-code">
+            <label for="SelfPrice">Код товара</label>
+            <input
+              class="form-control"
+              placeholder="94324234234"
+              id="ProductCode"
+              type="text"
+            />
+          </div>
+          <div class="form-group ms-4 input-category text-start">
+            <label for="Category">Категория</label>
+            <input
+              class="form-control"
+              placeholder="Категория"
+              id="Category"
+              type="text"
+            />
+          </div>
+        </div>
+        <div class="info__card-bottom d-flex gap-4">
+          <div class="m-0">
+            <p class="text-start fs-6 fw-bold mb-2">Описание</p>
+            <div id="editor"></div>
+          </div>
+          <div class="">
+            <p class="text-start fs-6 fw-bold mb-3">Дополнительно</p>
+            <div class="form-switch d-flex align-items-center gap-2 mb-3">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                id="flexSwitchCheckDefault"
+                checked=""
+              />
+              <label
+                class="form-check-label text-start m-0"
+                for="flexSwitchCheckDefault"
+                >Видимость товаров в каталоге</label
+              >
+            </div>
+            <div class="form-switch d-flex align-items-center gap-2 mb-2">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                id="flexSwitchCheckDefault"
+                checked=""
+              />
+              <label
+                class="form-check-label text-start m-0"
+                for="flexSwitchCheckDefault"
+                >Архивировать</label
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="main__body-info d-flex gap-4 m-4">
+      <div class="main__body-left card p-4 pe-6">
+        <div class="form-group text-start me-2">
+          <label for="warehouse" class="m-0">Выберите склад</label>
+          <select class="form-select" id="warehouse">
+            <option v-for="warehouse in warehouses" :key="warehouse">
+              {{ warehouse.name }}
+            </option>
+          </select>
+        </div>
+        <label for="sizes" class="text-start m-0">Размеры по модели</label>
+        <div class="main__body-sizes d-flex py-2 gap-3 me-2 pb-3">
+          <button
+            v-for="size in sizes"
+            :key="size"
+            :class="[size.available ? 'btn bg-gradient-dark mb-0' : 'btn mb-0']"
+          >
+            {{ size.name }}
+          </button>
+          <button
+            v-for="size in sizes"
+            :key="size"
+            :class="[size.available ? 'btn bg-gradient-dark mb-0' : 'btn mb-0']"
+          >
+            {{ size.name }}
+          </button>
+        </div>
+        <div class="main__body-left_bottom d-flex">
+          <div class="radio-wrap text-start mt-4 w-50">
+            <label for="colorRadio" class="m-0">Цвета по модели</label>
+            <div class="form-check mt-3" v-for="color in colors" :key="color">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="flexRadioDefault"
+                id="colorRadio"
+              />
+              <label class="custom-control-label fw-normal" for="colorRadio">{{
+                color.name
+              }}</label>
+            </div>
+          </div>
+          <div class="main__body-amount w-50 mt-4">
+            <div class="form-group text-start input-category">
+              <label for="amount">Количество на складе</label>
+              <input
+                class="form-control text-end text-dark fw-bold"
+                placeholder="135"
+                id="amount"
+                type="text"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="main__body-right d-flex flex-column w-100 card p-4">
+        <div
+          class="price__header d-flex justify-content-between align-items-center"
+        >
+          <h5>Стоимость товаров</h5>
+          <button class="btn btn-outline-dark">ФИЛЬТРЫ</button>
+        </div>
+        <div class="articles__content d-flex flex-column mt-4">
+          <div
+            class="articles__content-item d-flex justify-content-between align-items-center px-4 pt-1 mb-3 me-4"
+            v-for="i in 6"
+            :key="i"
+          >
+            <div class="d-flex">
+              <div class="form-group ms-2 text-start">
+                <label for="Size">Размер</label>
+                <input
+                  class="form-control"
+                  placeholder="XS"
+                  id="Size"
+                  type="text"
+                />
+              </div>
+              <div class="form-group ms-4 text-start">
+                <label for="color">Цвет</label>
+                <input
+                  class="form-control"
+                  placeholder="Белый"
+                  id="color"
+                  type="text"
+                />
+              </div>
+              <div class="form-group ms-4 text-start">
+                <label for="selfprice">Себестоимость</label>
+                <input
+                  class="form-control"
+                  placeholder="24 000"
+                  id="selfprice"
+                  type="text"
+                />
+              </div>
+              <div class="form-group ms-4 text-start">
+                <label for="price">Цена</label>
+                <input
+                  class="form-control"
+                  placeholder="31 000"
+                  id="price"
+                  type="text"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</template>
+
+<script>
+import Quill from "@/assets/js/plugins/quill.min.js";
+export default {
+  data() {
+    return {
+      warehouses: [
+        { name: `Тц-"Апорт"` },
+        { name: `Тц-"Пилот"` },
+        { name: `Тц-"Врот"` },
+      ],
+      sizes: [
+        { name: "XS", available: true },
+        { name: "S", available: false },
+        { name: "M", available: false },
+        { name: "L", available: false },
+        { name: "XL", available: true },
+      ],
+      colors: [
+        { name: "Белый" },
+        { name: "Коричневый" },
+        { name: "Бежевый" },
+        { name: "Черный" },
+        { name: "Серый" },
+      ],
+    };
+  },
+  mounted() {
+    var quill = new Quill("#editor", {
+      theme: "snow", // Specify theme in configuration
+    });
+    quill.render();
+  },
+};
+</script>
+
+<style scoped>
+.form-switch .form-check-input:checked {
+  background: linear-gradient(83.56deg, #7092e0 10.01%, #8baef3 75.36%);
+  border-color: rgba(112, 146, 224, 1);
+}
+.page__name-buttons button {
+  width: 241px;
+  height: 47px;
+}
+.page__name h3 {
+  font-size: 24px;
+  line-height: 32px;
+  font-weight: 600;
+}
+.page__name p {
+  font-size: 14px;
+  line-height: 19px;
+  font-weight: 400;
+  color: gray;
+}
+.img__card {
+  min-width: 490px;
+  height: 491px;
+  align-items: flex-start;
+}
+.img__card img {
+  min-width: 442px;
+  min-height: 248px;
+  padding: 24px;
+}
+.img__card-buttons {
+  align-self: flex-end;
+  padding: 24px 24px 0 0;
+}
+.img__card-buttons button {
+  margin-left: 20px;
+}
+.info__card-top div {
+  min-width: 380px;
+}
+.info__card-bottom {
+  height: 200px;
+}
+.input-code {
+  min-width: 380px;
+}
+.input-category {
+  min-width: 190px;
+}
+.ql-toolbar,
+.ql-snow {
+  width: 522px;
+}
+#editor {
+  height: 117px;
+}
+.main__body-info {
+  height: 527px;
+}
+.main__body-left {
+  max-width: 490px;
+}
+.main__body-sizes {
+  overflow-x: auto;
+}
+.articles__content {
+  height: 412px;
+  overflow-y: auto;
+}
+.articles__content-item {
+  background: #f8f9fa;
+  border-radius: 12px;
+}
+.main__body-sizes::-webkit-scrollbar,
+.articles__content::-webkit-scrollbar {
+  width: 5px;
+  height: 8px;
+}
+.main__body-sizes::-webkit-scrollbar-track,
+.articles__content::-webkit-scrollbar-track {
+  background-color: #e9ecef;
+  border-radius: 5px;
+}
+.main__body-sizes::-webkit-scrollbar-thumb,
+.articles__content::-webkit-scrollbar-thumb {
+  background-color: black;
+  box-shadow: 0px 4px 7px -1px rgba(0, 0, 0, 0.11),
+    0px 2px 4px -1px rgba(0, 0, 0, 0.07);
+  border-radius: 8px;
+}
+label {
+  font-size: 14px;
+}
+</style>
