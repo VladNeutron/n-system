@@ -151,6 +151,24 @@ const routes = [
     component: () => import("../views/Barcode.vue"),
     meta: { NavLink: "Печать штрихкодов" },
   },
+  {
+    path: "/products-accounting/category-list",
+    name: "category-list",
+    component: () => import("../views/CategoryListView.vue"),
+    meta: { NavLink: "Категории" },
+  },
+  {
+    path: "/products-accounting/discounts",
+    name: "discounts",
+    component: () => import("../views/DiscountsListView.vue"),
+    meta: { NavLink: "Список скидок" },
+  },
+  {
+    path: "/products-accounting/product-list",
+    name: "product-list",
+    component: () => import("../views/ProductListView.vue"),
+    meta: { NavLink: "Список товаров" },
+  },
 ];
 
 const router = createRouter({
