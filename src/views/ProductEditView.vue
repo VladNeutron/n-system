@@ -148,7 +148,11 @@
         <div class="main__body-articles p-4 card">
           <div class="d-flex justify-content-between align-items center">
             <h5>Артикулы</h5>
-            <button class="btn bg-gradient-dark mb-0">
+            <button
+              class="btn bg-gradient-dark mb-0"
+              data-bs-toggle="modal"
+              data-bs-target="#InpModal"
+            >
               <span class="btn-inner--icon pe-2"
                 ><img src="@/assets/css/icons/add.svg" alt=""
               /></span>
@@ -201,9 +205,50 @@
       </div>
     </div>
   </main>
+  <inputs-modal>
+    <template #head> <h2 class="text-start">Добавление артикула</h2> </template>
+    <template #body>
+      <div class="form-group text-start me-2">
+        <label for="Color" class="m-0">Выберите цвет</label>
+        <select class="form-select" id="Color">
+          <option v-for="color in colors" :key="color">
+            {{ color.name }}
+          </option>
+        </select>
+      </div>
+      <div class="form-group text-start me-2">
+        <label for="Size" class="m-0">Выберите размер</label>
+        <select class="form-select" id="Size" v-model="selected">
+          <option
+            v-for="size in sizes"
+            :key="size"
+            @input="this.selected = size"
+          >
+            {{ size.name }}
+          </option>
+        </select>
+      </div>
+      <div class="modal__barcode d-flex">
+        <div class="modal__barcode-size w-20 text-start">
+          <label for="Size" class="mt-2 ms-4 fw-light">Размер</label>
+          <p class="mb-2 ms-4 fw-bold">{{ this.selected }}</p>
+        </div>
+        <div class="modal__barcode-generate w-80 text-start">
+          <label for="Barcode" class="mt-2 ms-4 fw-light">Штрихкод</label>
+          <p class="mb-2 ms-4 fw-bold">1231232132231</p>
+        </div>
+      </div>
+    </template>
+    <template #footer>
+      <button @click="$emit('close')" class="btn bg-gradient-dark w-80">
+        Добавить
+      </button>
+    </template>
+  </inputs-modal>
 </template>
 
 <script>
+import InputsModal from "../components/InputsModal.vue";
 export default {
   data() {
     return {
@@ -214,11 +259,21 @@ export default {
         { name: "L", available: false },
         { name: "XL", available: true },
       ],
+      colors: [
+        { name: "Белый" },
+        { name: "Коричневый" },
+        { name: "Бежевый" },
+        { name: "Черный" },
+        { name: "Серый" },
+      ],
+      selected: "",
+      showModal: false,
     };
   },
   components: {
-    GSCarousel,
+    InputsModal,
   },
+  computed: {},
 };
 </script>
 
@@ -316,5 +371,13 @@ export default {
   box-shadow: 0px 4px 7px -1px rgba(0, 0, 0, 0.11),
     0px 2px 4px -1px rgba(0, 0, 0, 0.07);
   border-radius: 8px;
+}
+.modal__barcode {
+  border: 1px solid #e2e8f0;
+  background-color: #f8f9fa;
+  border-radius: 12px;
+}
+.modal__barcode-size {
+  border-right: 1px solid #e2e8f0;
 }
 </style>
