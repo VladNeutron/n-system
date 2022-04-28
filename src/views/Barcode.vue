@@ -254,7 +254,7 @@
                   </div>
                 </div>
 
-                <button type="button" class="btn bg-gradient-secondary mt-4 mb-0">
+                <button type="button" class="btn bg-gradient-secondary mt-4 mb-0" @click="openModal()">
                   Перейти к печати  
                 </button>
 
@@ -268,11 +268,13 @@
 
         </div>
       
-    
+    <barcode-modal></barcode-modal>  
   </main>
 </template>
 
 <script>
+import BarcodeModal from '@/components/BarcodeModal.vue'
+import {Modal} from "@/assets/js/core/bootstrap.min.js";
 export default {
   data(){
     return {
@@ -387,7 +389,13 @@ export default {
         this.selectedProducts.splice(this.selectedProducts.indexOf(this.products.find(el => {return el.id==ids})),1)
       }    
       console.log(this.selectedProducts) 
-    }
+    },
+    openModal(){
+      let myModal = new Modal(document.getElementById('BarcodeModal'))
+      // let modal = document.getElementById('BarcodeModal');
+      // let bsModal = bootstrap.Modal.getInstance(modal)
+      myModal.show();
+    },
   },
   computed: {
     selectedOne(){
@@ -401,6 +409,9 @@ export default {
   },
   mounted(){
     JsBarcode(".barcode").init();
+  },
+  components: {
+    BarcodeModal,
   }
 };
 </script>
@@ -566,8 +577,8 @@ td{
   padding: 10px;
 }
 .priceBar{
-  width: 70%;
-  height: 70%;
+  width: 60%;
+  height: 60%;
 }
 .priceBar__prices{
   display: flex;
