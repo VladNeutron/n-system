@@ -60,6 +60,7 @@
                   <thead>
                     <tr>
                       <th scope="col" class="th__col">№</th>
+                      <th scope="col" class="th__col" width="5%">№ Документа</th>
                       <th scope="col" class="th__col">Дата и время</th>
                       <th scope="col" class="th__col">Склад</th>
                       <th scope="col" class="th__col">Ответственный</th>
@@ -71,6 +72,7 @@
                   <tbody>
                     <tr v-for="(item, i) in items" :key="item">
                       <th scope="row">{{ i + 1 }}</th>
+                      <td>{{ item.id }}</td>
                       <td>{{ item.date }}</td>
                       <td>{{ item.place }}</td>
                       <td>{{ item.name }}</td>
@@ -125,31 +127,35 @@ export default {
       items: [
         {
           date: "11 янв, 19:23, 2021",
+          id:"19",
           place: "ТРЦ Москва",
           name: "Мильчаков Валерий",
           isReady: "Завершена",
           count: "15",
         },
         {
-          date: "15 дек, 19:23, 2021",
+          date: "11 янв, 19:23, 2021",
+          id:"19",
           place: "ТРЦ Москва",
-          name: "Дмитрий Иванович",
+          name: "Мильчаков Валерий",
           isReady: "Завершена",
-          count: "22",
+          count: "15",
         },
         {
-          date: "11 ноя, 19:23, 2021",
-          place: "ТЦ Европейский",
-          name: "Иван Иванов",
+          date: "11 янв, 19:23, 2021",
+          id:"19",
+          place: "ТРЦ Москва",
+          name: "Мильчаков Валерий",
           isReady: "Завершена",
-          count: "322",
+          count: "15",
         },
         {
-          date: "11 ноя, 19:23, 2021",
-          place: "ТРЦ Jam Moll",
-          name: "Тихонов Александр",
+          date: "11 янв, 19:23, 2021",
+          id:"19",
+          place: "ТРЦ Москва",
+          name: "Мильчаков Валерий",
           isReady: "Завершена",
-          count: "111",
+          count: "15",
         },
       ],
     };

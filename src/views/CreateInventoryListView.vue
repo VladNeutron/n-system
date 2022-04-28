@@ -2,35 +2,59 @@
   <the-navbar></the-navbar>
   <main class="main-content border-radius-lg">
     <the-header></the-header>
-    <div
-      class="formtop-buttons d-flex pt-2 ps-6 pe-8 mt-2 justify-content-between"
-    >
-      <button class="btn bg-gradient-dark mb-0">
-        <span class="btn-inner--icon"
-          ><img src="@/assets/css/icons/add.svg" alt="" /></span
-        >Новая инвентаризация
-      </button>
-      <div class="formtop-buttons-right d-flex gap-3">
-        <button class="btn btn-outline-dark mb-0">
-          Комментарии
-          <span class="badge badge-pill badge-danger align-self-start">2</span>
-        </button>
-        <button class="btn btn-outline-dark mb-0">
-          <span class="btn-inner--icon"
-            ><img
-              class="pe-2"
-              src="@/assets/css/icons/chemodan.svg"
-              alt="" /></span
-          >ЭКСПОРТ
-        </button>
-      </div>
-    </div>
     <div class="container-fluid pb-4">
       <div class="row mt-4">
         <div class="col-12">
           <drop-down class="drop__down-custom">
             <template #header>
-              <h3 class="text-start fs-4">Инвентаризация №19</h3>
+              <div class="drop__header">
+                <div>
+                  <p class="dropdown__title">Создание инвентаризации</p>
+                  <p class="dropdown__sec">
+                    Настройте все параметры и нажмите “Завершить инвентаризацию”
+                  </p>
+                </div>
+                <div class="drop__buttons">
+                  <button class="btn comment">
+                    <img
+                      src="@/assets/img/comment.svg"
+                      style="width: 1.042vw; margin-right: 0.417vw"
+                      alt=""
+                    />
+                    Комментарии <span class="count">4</span>
+                  </button>
+                  <div class="dropdown">
+                    <button
+                      class="btn action"
+                      type="button"
+                      id="dropdownMenuButton"
+                      data-bs-toggle="dropdown"
+                      aria-expanded="false"
+                    >
+                      <img
+                        src="@/assets/img/action.svg"
+                        style="width: 1.042vw; margin-right: 0.417vw"
+                        alt=""
+                      />
+                      Действия
+                    </button>
+                    <ul
+                      class="dropdown-menu"
+                      aria-labelledby="dropdownMenuButton"
+                    >
+                      <li>
+                        <a class="dropdown-item" href="javascript:;">Печать</a>
+                      </li>
+                      <li>
+                        <a class="dropdown-item" href="javascript:;">Скачать</a>
+                      </li>
+                      <li>
+                        <a class="dropdown-item" href="javascript:;">Удалить</a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
             </template>
           </drop-down>
           <div class="card pl-pr">
@@ -222,6 +246,78 @@ export default {
 </script>
 
 <style scoped>
+.dropdown__sec {
+  font-weight: 400;
+  font-size: 0.729vw;
+  color: #a0aec0;
+}
+.dropdown__title {
+  font-weight: 600;
+  font-size: 1.25vw;
+  color: #2d3748;
+  text-align: left;
+  margin: 0;
+}
+.dropdown-item {
+  font-weight: 400;
+  font-size: 0.729vw;
+  color: #2d3748;
+}
+.count {
+  position: absolute;
+  background: #eb5757;
+  font-weight: 600;
+  font-size: 0.625vw;
+  color: #fff;
+  border-radius: 50%;
+  padding: 0 5px 0 5px;
+  left: 7.708vw;
+  top: -0.26vw;
+}
+.comment {
+  position: relative;
+  display: flex;
+  border: 1px solid #2d3748;
+  box-sizing: border-box;
+  border-radius: 8px;
+  background: transparent;
+  padding: 0.521vw 0.833vw 0.573vw 0.833vw;
+  font-weight: 600;
+  font-size: 0.729vw;
+  color: #2d3748;
+  margin-right: 1.25vw;
+  text-transform: none;
+}
+.action {
+  display: flex;
+  border: 1px solid #2d3748;
+  box-sizing: border-box;
+  border-radius: 8px;
+  background: transparent;
+  padding: 0.521vw 0.833vw 0.573vw 0.833vw;
+  font-weight: 600;
+  font-size: 0.729vw;
+  color: #2d3748;
+  text-transform: none;
+}
+.drop__buttons {
+  display: flex;
+}
+.drop__header {
+  display: flex;
+  justify-content: space-between;
+}
+.pagination.pagination-info .page-item.active > .page-link,
+.pagination.pagination-info .page-item.active > .page-link:focus,
+.pagination.pagination-info .page-item.active > .page-link:hover {
+  background-image: linear-gradient(83.56deg, #7092e0 10.01%, #8baef3 75.36%);
+}
+.bg-gradient-info {
+  background: linear-gradient(83.56deg, #7092e0 10.01%, #8baef3 75.36%);
+  box-shadow: 0px 4px 6px -1px rgba(0, 0, 0, 0.12),
+    0px 2px 4px -1px rgba(0, 0, 0, 0.07);
+  border-radius: 8px;
+}
 .btn {
   height: 40px;
 }
