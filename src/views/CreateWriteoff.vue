@@ -7,37 +7,52 @@
         <div class="col-12">
           <drop-down>
             <template #header>
-              <div class="d-flex justify-content-between align-content-center">
-                <div><h3>Создание списания</h3></div>
-                <div class="d-flex gap-3 align-content-center buttons__panel">
-                  <button class="btn bg-gradient-dark">
-                    <span class="btn-inner--icon"
-                      ><i class="ni ni-button-play"></i></span
-                    >Провести
+              <div class="drop__header">
+                <div>
+                  <p class="dropdown__title">Создание списание</p>
+                   <p class="dropdown__sec">
+                    Настройте все параметры и нажмите “Завершить списание”
+                  </p>
+                </div>
+                <div class="drop__buttons">
+                  <button class="btn comment">
+                    <img
+                      src="@/assets/img/comment.svg"
+                      style="width: 1.042vw; margin-right: 0.417vw"
+                      alt=""
+                    />
+                    Комментарии <span class="count">4</span>
                   </button>
-                  <button class="btn btn-outline-dark">
-                    <span class="btn-inner--icon"
-                      ><i class="fa fa-comment"></i></span
-                    >Комментарии
-                    <span class="badge badge-pill badge-danger align-self-start"
-                      >2</span
+                  <div class="dropdown">
+                    <button
+                      class="btn action"
+                      type="button"
+                      id="dropdownMenuButton"
+                      data-bs-toggle="dropdown"
+                      aria-expanded="false"
                     >
-                  </button>
-                  <button class="btn btn-outline-dark">
-                    <span class="btn-inner--icon"
-                      ><i class="fa fa-print"></i></span
-                    >Печать
-                  </button>
-                  <button class="btn btn-outline-dark">
-                    <span class="btn-inner--icon"
-                      ><i class="fa fa-download"></i></span
-                    >Скачать
-                  </button>
-                  <button class="btn btn-outline-dark">
-                    <span class="btn-inner--icon"
-                      ><i class="fa fa-trash"></i></span
-                    >Удалить
-                  </button>
+                      <img
+                        src="@/assets/img/action.svg"
+                        style="width: 1.042vw; margin-right: 0.417vw"
+                        alt=""
+                      />
+                      Действия
+                    </button>
+                    <ul
+                      class="dropdown-menu"
+                      aria-labelledby="dropdownMenuButton"
+                    >
+                      <li>
+                        <a class="dropdown-item" href="javascript:;">Печать</a>
+                      </li>
+                      <li>
+                        <a class="dropdown-item" href="javascript:;">Скачать</a>
+                      </li>
+                      <li>
+                        <a class="dropdown-item" href="javascript:;">Удалить</a>
+                      </li>
+                    </ul>
+                  </div>
                 </div>
               </div>
             </template>
@@ -45,83 +60,50 @@
           <div class="card pl-pr">
             <div class="main-page text-start">
               <label class="form-control-label ps-3 pt-3" for="search"
-                >Поиск</label
+                >Добавить по штрихкоду</label
               >
               <div class="d-flex justify-content-between ps-3">
-                <div class="page_search-inputs d-flex gap-5">
+                <div class="page_search-inputs d-flex align-items-center gap-3">
                   <div class="form-group m-0">
                     <div class="input-group mt-1">
+                      <span class="input-group-text"
+                        ><img src="@/assets/css/icons/searchIcon.svg" alt=""
+                      /></span>
                       <input
                         class="form-control"
-                        placeholder="12312321312"
-                        id="search"
+                        placeholder="Введите штрихкод"
+                        id="search-barcode"
                         type="text"
                       />
-                      <span class="input-group-text"
-                        ><i class="ni ni-zoom-split-in"></i
-                      ></span>
+                      <span class="input-group-text py-0"
+                        ><img src="@/assets/css/icons/barcode.svg" alt=""
+                      /></span>
                     </div>
                   </div>
                   <button class="btn bg-gradient-info mb-0">
                     Выбрать из списка
                   </button>
                 </div>
-
-                <div class="d-flex align-items-center gap-3">
-                  <div>
-                    <p class="m-0">Показано<span> 2112 12121</span></p>
-                  </div>
-
-                  <div class="page__search-pages d-flex align-content-center">
-                    <div
-                      class="pagination-container d-flex justify-items-center"
-                    >
-                      <ul class="pagination pagination-info mb-0">
-                        <li class="page-item">
-                          <a
-                            class="page-link"
-                            href="javascript:;"
-                            aria-label="Previous"
-                          >
-                            <span aria-hidden="true"
-                              ><i
-                                class="fa fa-angle-double-left"
-                                aria-hidden="true"
-                              ></i
-                            ></span>
-                          </a>
-                        </li>
-                        <li class="page-item">
-                          <a class="page-link" href="javascript:;">1</a>
-                        </li>
-                        <li class="page-item">
-                          <a class="page-link" href="javascript:;">2</a>
-                        </li>
-                        <li class="page-item active">
-                          <a class="page-link" href="javascript:;">3</a>
-                        </li>
-                        <li class="page-item">
-                          <a class="page-link" href="javascript:;">4</a>
-                        </li>
-                        <li class="page-item">
-                          <a class="page-link" href="javascript:;">5</a>
-                        </li>
-                        <li class="page-item">
-                          <a
-                            class="page-link"
-                            href="javascript:;"
-                            aria-label="Next"
-                          >
-                            <span aria-hidden="true"
-                              ><i
-                                class="fa fa-angle-double-right"
-                                aria-hidden="true"
-                              ></i
-                            ></span>
-                          </a>
-                        </li>
-                      </ul>
+                <div class="d-flex justify-content-between ps-3 pe-4">
+                  <div
+                    class="page_search-inputs d-flex align-items-center gap-3"
+                  >
+                    <div class="form-group m-0">
+                      <div class="input-group mt-1">
+                        <span class="input-group-text"
+                          ><img src="@/assets/css/icons/searchIcon.svg" alt=""
+                        /></span>
+                        <input
+                          class="form-control"
+                          placeholder="Поиск..."
+                          id="search"
+                          type="text"
+                        />
+                      </div>
                     </div>
+                    <button class="btn bg-gradient-dark mb-0">
+                      Завершить списание
+                    </button>
                   </div>
                 </div>
               </div>
@@ -265,6 +247,78 @@ export default {
 </script>
 
 <style scoped>
+.dropdown__sec {
+  font-weight: 400;
+  font-size: 0.729vw;
+  color: #a0aec0;
+}
+.dropdown__title {
+  font-weight: 600;
+  font-size: 1.25vw;
+  color: #2d3748;
+  text-align: left;
+  margin: 0;
+}
+.dropdown-item {
+  font-weight: 400;
+  font-size: 0.729vw;
+  color: #2d3748;
+}
+.count {
+  position: absolute;
+  background: #eb5757;
+  font-weight: 600;
+  font-size: 0.625vw;
+  color: #fff;
+  border-radius: 50%;
+  padding: 0 5px 0 5px;
+  left: 7.708vw;
+  top: -0.26vw;
+}
+.comment {
+  position: relative;
+  display: flex;
+  border: 1px solid #2d3748;
+  box-sizing: border-box;
+  border-radius: 8px;
+  background: transparent;
+  padding: 0.521vw 0.833vw 0 0.833vw;
+  font-weight: 600;
+  font-size: 0.729vw;
+  color: #2d3748;
+  margin-right: 1.25vw;
+  text-transform: none;
+}
+.action {
+  display: flex;
+  border: 1px solid #2d3748;
+  box-sizing: border-box;
+  border-radius: 8px;
+  background: transparent;
+  padding: 0.521vw 0.833vw 0.573vw 0.833vw;
+  font-weight: 600;
+  font-size: 0.729vw;
+  color: #2d3748;
+  text-transform: none;
+}
+.drop__buttons {
+  display: flex;
+}
+.drop__header {
+  display: flex;
+  justify-content: space-between;
+}
+.pagination.pagination-info .page-item.active > .page-link,
+.pagination.pagination-info .page-item.active > .page-link:focus,
+.pagination.pagination-info .page-item.active > .page-link:hover {
+  background-image: linear-gradient(83.56deg, #7092e0 10.01%, #8baef3 75.36%);
+}
+.bg-gradient-info {
+  background: linear-gradient(83.56deg, #7092e0 10.01%, #8baef3 75.36%);
+  box-shadow: 0px 4px 6px -1px rgba(0, 0, 0, 0.12),
+    0px 2px 4px -1px rgba(0, 0, 0, 0.07);
+  border-radius: 8px;
+}
 .pl-pr {
   margin-left: 1.146vw;
   margin-top: 1.094vw;
