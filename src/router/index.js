@@ -102,7 +102,7 @@ const routes = [
     path: "/company-info",
     name: "company-info",
     component: () => import("../components/CompanyInfo.vue"),
-    meta: { NavLink: "Информация о компанииит" },
+    meta: { NavLink: "Компания" },
   },
   {
     path: "/register",
@@ -168,6 +168,18 @@ const routes = [
     name: "product-list",
     component: () => import("../views/ProductListView.vue"),
     meta: { NavLink: "Список товаров" },
+  },
+  {
+    path: "/company/edit-company",
+    name: "edit-company",
+    component: () => import("../views/EditOrganization.vue"),
+    meta: { NavLink: "Информация о компании" },
+  },
+  {
+    path: "/products-accounting/characteristics",
+    name: "characteristics",
+    component: () => import("../views/CharacteristicsView.vue"),
+    meta: { NavLink: "Характеристики" },
   },
 ];
 
