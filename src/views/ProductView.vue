@@ -17,10 +17,18 @@
     <div class="main__body d-flex gap-4 m-4">
       <div class="img__card card">
         <h5 class="m-0 pt-4 ps-4">Изображение товара</h5>
-        <img src="@/assets/css/images/product.png" alt="" />
-        <div class="img__card-buttons">
-          <button class="btn btn-outline-secondary mb-0">Удалить</button>
-          <button class="btn bg-gradient-dark mb-0">Редактировать</button>
+        <div class="img__card-img px-4 pt-3">
+          <img src="@/assets/css/images/product.png" alt="" />
+        </div>
+        <div class="img__card-select w-100 ps-4 pe-6 py-4">
+          <div class="form-group text-start me-2">
+            <label for="Color" class="mb-2">Выберите цвет</label>
+            <select class="form-select" id="Color">
+              <option v-for="color in colors" :key="color">
+                {{ color.name }}
+              </option>
+            </select>
+          </div>
         </div>
       </div>
 
@@ -240,13 +248,14 @@ export default {
         { name: "Черный" },
         { name: "Серый" },
       ],
+      colorSelected: "",
     };
   },
   mounted() {
-    var quill = new Quill("#editor", {
-      theme: "snow", // Specify theme in configuration
-    });
-    quill.render();
+    // var quill = new Quill("#editor", {
+    //   theme: "snow", // Specify theme in configuration
+    // });
+    // quill.render();
   },
 };
 </script>
@@ -276,18 +285,14 @@ export default {
   height: 491px;
   align-items: flex-start;
 }
+
 .img__card img {
-  min-width: 442px;
-  min-height: 248px;
-  padding: 24px;
+  width: 442px;
+  height: 307px;
+
+  object-fit: cover;
 }
-.img__card-buttons {
-  align-self: flex-end;
-  padding: 24px 24px 0 0;
-}
-.img__card-buttons button {
-  margin-left: 20px;
-}
+
 .info__card-top div {
   min-width: 380px;
 }

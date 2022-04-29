@@ -93,7 +93,12 @@
       <div class="main__body-color p-4 card">
         <div class="d-flex justify-content-between align-items-center">
           <h5 class="m-0">Управление цветами</h5>
-          <button class="btn bg-gradient-dark mb-0">
+          <button
+            class="btn bg-gradient-dark mb-0"
+            @click="getModalId('color')"
+            data-bs-toggle="modal"
+            data-bs-target="#InpModal"
+          >
             <span class="btn-inner--icon pe-2"
               ><img src="@/assets/css/icons/add.svg" alt=""
             /></span>
@@ -101,29 +106,40 @@
           </button>
         </div>
         <div class="color-photo">
-          <div class="d-flex justify-content-between align-items-center my-4">
-            <p class="m-0 fw-bold">Белый</p>
+          <div class="my-4" v-for="color in colors" :key="color">
+            <div class="d-flex justify-content-between mb-2">
+              <p class="m-0 fw-bold text-start">
+                {{ color.name }}
+                <span class="ms-2"
+                  ><img class="pb-1" src="@/assets/css/icons/pen.svg" alt=""
+                /></span>
+              </p>
 
-            <a href="#"
-              ><span
-                ><img
-                  class="pe-2 pb-1"
-                  src="@/assets/css/icons/addPhoto.svg"
-                  alt="" /></span
-              >Загрузить фото</a
-            >
+              <a class="text-end" href="#"
+                ><span
+                  ><img
+                    class="pe-2 pb-1"
+                    src="@/assets/css/icons/addPhoto.svg"
+                    alt="" /></span
+                >Загрузить фото</a
+              >
+            </div>
+            <div class="carousel">
+              <div><img src="@/assets/css/images/example.png" alt="" /></div>
+            </div>
           </div>
-
-          <div class="slide"></div>
         </div>
-        <div class="color-photo"></div>
-        <div class="color-photo"></div>
       </div>
       <div class="d-flex flex-column w-100 gap-4">
         <div class="main__body-size d-flex flex-column p-4 card">
           <div class="d-flex justify-content-between align-items center">
             <h5>Управление размерами</h5>
-            <button class="btn bg-gradient-dark mb-0">
+            <button
+              class="btn bg-gradient-dark mb-0"
+              data-bs-toggle="modal"
+              data-bs-target="#InpModal"
+              @click="getModalId('size')"
+            >
               <span class="btn-inner--icon pe-2"
                 ><img src="@/assets/css/icons/add.svg" alt=""
               /></span>
@@ -131,18 +147,14 @@
             </button>
           </div>
           <div class="sizes__body d-flex py-2 gap-3">
-            <button
-              v-for="size in sizes"
-              :key="size"
-              :class="[
-                size.available ? 'btn bg-gradient-dark mb-0' : 'btn mb-0',
-              ]"
-            >
-              {{ size.name }}
-              <span v-if="size.available"
-                ><button class="remove-button">x</button></span
+            <div v-for="(size, i) in sizes" :key="size" :class="['btn mb-0']">
+              {{ size }}
+              <span style="" class="show-btn"
+                ><button class="remove-button" @click="deleteSize(i)">
+                  x
+                </button></span
               >
-            </button>
+            </div>
           </div>
         </div>
         <div class="main__body-articles p-4 card">
@@ -152,6 +164,7 @@
               class="btn bg-gradient-dark mb-0"
               data-bs-toggle="modal"
               data-bs-target="#InpModal"
+              @click="getModalId('articles')"
             >
               <span class="btn-inner--icon pe-2"
                 ><img src="@/assets/css/icons/add.svg" alt=""
@@ -206,32 +219,47 @@
     </div>
   </main>
   <inputs-modal>
-    <template #head> <h2 class="text-start">Добавление артикула</h2> </template>
+    <template #head>
+      <h2 class="text-start">
+        Добавление
+        {{
+          modalId === "articles"
+            ? "артикула"
+            : modalId === "color"
+            ? "цвета"
+            : "размера"
+        }}
+      </h2>
+    </template>
     <template #body>
-      <div class="form-group text-start me-2">
+      <div
+        class="form-group text-start me-2"
+        v-if="modalId === 'articles' || modalId === 'color'"
+      >
         <label for="Color" class="m-0">Выберите цвет</label>
-        <select class="form-select" id="Color">
+        <select class="form-select" id="Color" v-model="colorSelected">
           <option v-for="color in colors" :key="color">
             {{ color.name }}
           </option>
         </select>
+        <a href="" class="text-end">+ Создать цвет</a>
       </div>
-      <div class="form-group text-start me-2">
+      <div
+        class="form-group text-start me-2"
+        v-if="modalId === 'size' || modalId === 'articles'"
+      >
         <label for="Size" class="m-0">Выберите размер</label>
-        <select class="form-select" id="Size" v-model="selected">
-          <option
-            v-for="size in sizes"
-            :key="size"
-            @input="this.selected = size"
-          >
-            {{ size.name }}
+        <select class="form-select" id="Size" v-model="sizeSelected">
+          <option v-for="size in sizes" :key="size">
+            {{ size }}
           </option>
         </select>
+        <a href="" class="">+ Создать размер</a>
       </div>
-      <div class="modal__barcode d-flex">
+      <div class="modal__barcode d-flex" v-if="modalId === 'articles'">
         <div class="modal__barcode-size w-20 text-start">
           <label for="Size" class="mt-2 ms-4 fw-light">Размер</label>
-          <p class="mb-2 ms-4 fw-bold">{{ this.selected }}</p>
+          <p class="mb-2 ms-4 fw-bold">{{ sizeSelected }}</p>
         </div>
         <div class="modal__barcode-generate w-80 text-start">
           <label for="Barcode" class="mt-2 ms-4 fw-light">Штрихкод</label>
@@ -240,25 +268,18 @@
       </div>
     </template>
     <template #footer>
-      <button @click="$emit('close')" class="btn bg-gradient-dark w-80">
-        Добавить
-      </button>
+      <button class="btn bg-gradient-dark w-80">Добавить</button>
     </template>
   </inputs-modal>
 </template>
 
 <script>
 import InputsModal from "../components/InputsModal.vue";
+
 export default {
   data() {
     return {
-      sizes: [
-        { name: "XS", available: true },
-        { name: "S", available: false },
-        { name: "M", available: false },
-        { name: "L", available: false },
-        { name: "XL", available: true },
-      ],
+      sizes: ["XS", "S", "M", "L", "XL"],
       colors: [
         { name: "Белый" },
         { name: "Коричневый" },
@@ -267,13 +288,31 @@ export default {
         { name: "Серый" },
       ],
       selected: "",
-      showModal: false,
+      modalId: "",
+      sizeSelected: "",
+      colorSelected: "",
     };
   },
   components: {
     InputsModal,
   },
-  computed: {},
+  methods: {
+    getModalId(id) {
+      return (this.modalId = id);
+    },
+    deleteSize(id) {
+      this.sizes.splice(id, 1);
+    },
+
+    /// карусель
+  },
+  mounted() {
+    $(".carousel").slick({
+      infinite: true,
+      slidesToShow: 3,
+      slidesToScroll: 3,
+    });
+  },
 };
 </script>
 
@@ -326,8 +365,10 @@ export default {
   min-height: 248px;
   padding: 24px;
 }
+.main__body-info {
+}
 .main__body-color {
-  min-width: 490px;
+  width: 490px;
   height: 590px;
 }
 .main__body-size {
