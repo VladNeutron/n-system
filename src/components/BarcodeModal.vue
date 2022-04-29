@@ -11,15 +11,25 @@
             </div>
             <div class="modal-body">
                 <div class="barcodes">
-                    <div class="barcodeCell" v-for="bar in 20" :key="bar">
-                        <div class="priceBar__cont">
+                    <div class="barcodeCell" v-for="bar in selectedArray" :key="bar">
+                        
+                        <div class="barcode__cont barsModal" v-if="option=='barcode'">
+                            <svg class="barcode barcodeModal onlybarcode"
+                                jsbarcode-format="ean13"
+                                :jsbarcode-value="bar.barcode"
+                                jsbarcode-textmargin="0"
+                                jsbarcode-fontoptions="bold">
+                            </svg>
+                        </div>
+
+                        <div class="priceBar__cont barsModal" v-if="option=='price'">
                             <div class="priceBar__name">
-                                Куртка Дубленка Черный (S)
+                                {{bar.name}} {{bar.color}} ({{bar.size}})
                             </div>
                             <div>
-                                <svg class="barcode priceBar"
-                                jsbarcode-format="upc"
-                                jsbarcode-value="123456789012"
+                                <svg class="barcode barcodeModal priceBar"
+                                jsbarcode-format="ean13"
+                                :jsbarcode-value="bar.barcode"
                                 jsbarcode-textmargin="0"
                                 jsbarcode-fontoptions="bold">
                                 </svg>
@@ -29,22 +39,22 @@
                                 
                                 </div>
                                 <div class="currentPrice">
-                                29 000 ₸   
+                                {{bar.price}} ₸   
                                 </div>
                             </div>
                         </div>
                         <div class="modal__inp mt-2">
                             <div class="cont__title mt-2 mb-2">Количество</div>
-                            <input type="number" class="form-control" id="width" placeholder="0 шт.">
+                            <input type="number" min="0" class="form-control amount" id="amount" placeholder="0 шт.">
                         </div>  
-                        <div class="modal__inp mt-2">
+                        <div class="modal__inp mt-2" v-if="option=='price'">
                             <div class="cont__title mt-2 mb-2">Старая цена</div>
-                            <input type="number" class="form-control" id="width" placeholder="0 ₸">
+                            <input type="number" min="0" class="form-control ModalOldPrice" id="ModalOldPrice" placeholder="0 ₸">
                         </div> 
 
-                        <div class="form-check chekCont mt-2">
-                            <input class="form-check-input" type="checkbox" value="" id="customCheck1">
-                            <label class="custom-control-label labelCheck" for="customCheck1">Зачеркнуть старую цену</label>
+                        <div class="form-check chekCont mt-2" v-if="option=='price'">
+                            <input class="form-check-input crossOldPrice" type="checkbox" value="" id="crossOldPrice">
+                            <label class="custom-control-label labelCheck" for="crossOldPrice">Зачеркнуть старую цену</label>
                         </div>
 
                     </div>
@@ -58,7 +68,7 @@
                         Принтер Xiaomi
                         </option>
                     </select>
-                    <button type="button" class="btn bg-gradient-secondary"><img src="@/assets/img/printIcon.svg" alt=""> Печать</button>
+                    <button type="button" class="btn bg-gradient-secondary" @click="qwe"><img src="@/assets/img/printIcon.svg" alt=""> Печать</button>
                     <button type="button" class="btn bg-gradient-secondaryBlue"><img src="@/assets/img/downloadarrow.svg" alt=""> Скачать</button>
                 </div>
             </div>
@@ -69,7 +79,115 @@
 
 <script>
 export default {
+    props: {
+        selectedArray: Array,
+        option: String,
+    },
+    methods: {
+        qwe(){
+            let bars = document.querySelectorAll(".barcodeCell");
+            let priceCont = document.querySelector('.printContainer');
+            
+            if(this.option == 'price'){
+                bars.forEach((bar,index) => {
+                    let barAmount = Number(bar.querySelector(".amount").value);
+                    let barOldPrice = Number(bar.querySelector(".ModalOldPrice").value);
+                    let barCrossOldPrice = bar.querySelector(".crossOldPrice").checked;
 
+                    for(let i=0; i < (barAmount > 0 ? barAmount : 1); i++){
+
+                        let barcode_view_new = document.createElement('div');
+                        barcode_view_new.className = `barcode-view d-flex`; 
+                        barcode_view_new.style.pageBreakAfter='always' 
+                        priceCont.append(barcode_view_new);
+
+                        let priceBar__cont = document.createElement('div');
+                        priceBar__cont.className = `priceBar__cont`; 
+                        priceBar__cont.style.width = '53mm'
+                        priceBar__cont.style.height = '36mm'
+                        barcode_view_new.append(priceBar__cont);
+
+                        let priceBar__name = document.createElement('div');
+                        priceBar__name.innerHTML = this.selectedArray[index].name
+                        priceBar__name.className = `priceBar__name`; 
+                        priceBar__cont.append(priceBar__name);
+
+                        // let priceBarDiv = document.createElement('div');
+                        // priceBar__cont.append(priceBarDiv);
+
+                        let barcode_new = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+                        barcode_new.setAttribute('jsbarcode-format', 'ean13');
+                        barcode_new.setAttribute('jsbarcode-value', 1234567890456);
+                        barcode_new.setAttribute('jsbarcode-fontoptions', "bold");
+                        barcode_new.classList.add("priceBar")
+                        barcode_new.classList.add("priceBar__print")
+                        barcode_new.setAttribute('jsbarcode-height', "50");
+                        priceBar__cont.append(barcode_new);
+
+                        let priceBar__prices = document.createElement('div');
+                        priceBar__prices.className = `priceBar__prices`; 
+                        priceBar__cont.append(priceBar__prices);
+
+                        let oldPrice = document.createElement('div');
+                        oldPrice.className = `oldPrice`; 
+                        if(barOldPrice != '' && barOldPrice > 0){
+                            oldPrice.innerHTML = barOldPrice + ' ₸'    
+                        }
+                        if(barCrossOldPrice){
+                            oldPrice.style.textDecoration = "line-through"        
+                        }
+                        priceBar__prices.append(oldPrice);
+
+                        let currentPrice = document.createElement('div');
+                        currentPrice.innerHTML = this.selectedArray[index].price + ' ₸'
+                        currentPrice.className = `currentPrice`; 
+                        priceBar__prices.append(currentPrice);
+                    }
+                })
+                }
+            else{
+                bars.forEach((bar,index) => {
+                let barAmount = Number(bar.querySelector(".amount").value);
+
+                for(let i=0; i < (barAmount > 0 ? barAmount : 1); i++){
+
+                    let barcode_view_new = document.createElement('div');
+                    barcode_view_new.className = `barcode-view d-flex`; 
+                    barcode_view_new.style.pageBreakAfter='always' 
+                    priceCont.append(barcode_view_new);
+
+                    let priceBar__cont = document.createElement('div');
+                    priceBar__cont.className = `priceBar__cont`; 
+                    priceBar__cont.style.width = '53mm'
+                    priceBar__cont.style.height = '36mm'
+                    barcode_view_new.append(priceBar__cont);
+
+                    // let priceBarDiv = document.createElement('div');
+                    // priceBar__cont.append(priceBarDiv);
+
+                    let barcode_new = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+                    barcode_new.setAttribute('jsbarcode-format', 'ean13');
+                    barcode_new.setAttribute('jsbarcode-value', 1234567890456);
+                    barcode_new.setAttribute('jsbarcode-fontoptions', "bold");
+                    barcode_new.classList.add("priceBar")
+                    barcode_new.classList.add("priceBar__print")
+                    barcode_new.setAttribute('jsbarcode-height', "50");
+                    barcode_new.classList.add("barcodeAloneWidth");
+                    priceBar__cont.append(barcode_new);
+                }
+            })        
+            }
+            JsBarcode(".priceBar__print").init();
+            
+            window.print();
+
+            document.querySelectorAll(".barcode-view").forEach(el => {
+                el.remove();
+            })
+
+
+        },
+    }
 }
 </script>
 
@@ -108,6 +226,47 @@ export default {
 }
 
 /* PRICEBAR */
+:global(.priceBar__cont){
+    border: 1px solid rgba(160, 174, 192, 1);
+  border-radius: 20px;
+  /* width: 80%; */
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between
+}
+:global(.priceBar__name){
+  font-weight: 400;
+  font-size: 0.8em;
+  padding: 1mm;
+  color: #000000;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.11);
+}
+:global(.priceBar){
+  width: 70%;
+  height: auto;
+  margin: auto;
+}
+:global(.priceBar__prices){
+  display: flex;
+  border-top: 1px solid rgba(0, 0, 0, 0.11);
+}
+:global(.oldPrice){
+  width: 50%;
+  font-size: 0.75em;
+  font-weight: bold;
+  color: #000000;
+  padding: 1mm 0 1mm 1mm;
+}
+:global(.currentPrice){
+  width: 50%;
+  font-size: 0.75em;
+  font-weight: bold;
+  color: #000000;
+  border-left: 1px solid rgba(0, 0, 0, 0.11);
+  padding: 1mm 0 1mm 1mm;
+}
 .priceBar__cont{
   border: 1px solid rgba(160, 174, 192, 1);
   border-radius: 20px;
@@ -223,5 +382,21 @@ export default {
 .modal-body::-webkit-scrollbar-thumb {
     box-shadow: inset 0 0 35px #313860;
     border-radius: 8px;
+}
+
+
+</style>
+
+<style>
+@media print {
+    .main {
+        display: none;
+    }
+    .printContainer {
+        display: block;
+    }
+    .barcode-box {
+        margin: 3mm 0 0 0;
+    }
 }
 </style>
