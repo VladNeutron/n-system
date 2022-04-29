@@ -225,7 +225,7 @@
 
                 <div class="barcode__cont" v-show="activeOption=='barcode'">
                   <svg class="barcode onlybarcode"
-                    jsbarcode-format="upc"
+                    jsbarcode-format="ean13"
                     jsbarcode-value="123456789012"
                     jsbarcode-textmargin="0"
                     jsbarcode-fontoptions="bold">
@@ -238,7 +238,7 @@
                   </div>
                   <div>
                     <svg class="barcode priceBar"
-                      jsbarcode-format="upc"
+                      jsbarcode-format="ean13"
                       jsbarcode-value="123456789012"
                       jsbarcode-textmargin="0"
                       jsbarcode-fontoptions="bold">
@@ -268,8 +268,11 @@
 
         </div>
       
-    <barcode-modal></barcode-modal>  
+    <barcode-modal :selectedArray="selectedProducts" :option="activeOption"></barcode-modal>  
   </main>
+  <div class="printContainer">
+
+  </div>
 </template>
 
 <script>
@@ -298,7 +301,7 @@ export default {
         {
           id: 2,
           barcode: 1234567890456,
-          name: 'Куртка зеленая',
+          name: 'Куртка very зеленая and warm',
           price: '29 000',
           color: 'Зеленый',
           size: 'S'
@@ -388,12 +391,9 @@ export default {
       else{
         this.selectedProducts.splice(this.selectedProducts.indexOf(this.products.find(el => {return el.id==ids})),1)
       }    
-      console.log(this.selectedProducts) 
     },
     openModal(){
-      let myModal = new Modal(document.getElementById('BarcodeModal'))
-      // let modal = document.getElementById('BarcodeModal');
-      // let bsModal = bootstrap.Modal.getInstance(modal)
+      let myModal = Modal.getInstance(document.getElementById('BarcodeModal'))
       myModal.show();
     },
   },
@@ -408,7 +408,11 @@ export default {
     }
   },
   mounted(){
+    let myModal = new Modal(document.getElementById('BarcodeModal'))
     JsBarcode(".barcode").init();
+    document.getElementById('BarcodeModal').addEventListener('show.bs.modal', function (event) {
+      JsBarcode(".barcodeModal").init();
+    })
   },
   components: {
     BarcodeModal,
@@ -598,5 +602,40 @@ td{
   color: #000000;
   border-left: 1px solid rgba(0, 0, 0, 0.11);
   padding: 6px;
+}
+
+
+</style>
+<style>
+/* PRINT */
+.printContainer{
+  display: none;
+}
+@media print {
+    main {
+        display: none;
+    }
+    .printContainer {
+        display: block;
+    }
+    #sidenav-main{
+      display: none;
+    }
+    .barcode-box {
+        margin: 3mm 0 0 0;
+    }
+    .priceBar__cont{
+        margin: 3mm 0 0 0;
+        border-color: black;
+    }
+    .priceBar__cont div{
+        border-color: black;
+    }
+    .fade{
+      display: none;
+    }
+    .barcodeAloneWidth{
+      width: 90% !important;
+    }
 }
 </style>
