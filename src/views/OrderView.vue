@@ -249,18 +249,7 @@
               </div>
             </div>
           </div>
-          <div class="not__added" v-if="isAdded">
-              <div>
-            <img src="@/assets/img/add.png" style="width: 6.667vw" alt="" />
-            <p class="not__added__main">Товары не выбраны</p>
-            <p class="not__added__sec">
-              Для того чтобы создать заказ, необходимо<br />
-              выбрать товары из списка
-            </p>
-            <button class="btn btn__chose">Выбрать из списка</button>
-            </div>
-          </div>
-          <div class="order__table__body" v-else>
+          <div class="order__table__body">
             <table class="table table-bordered table-hover table-striped">
               <thead>
                 <tr>
@@ -349,38 +338,15 @@
                   <th scope="row" style="border-right: 0; border-left: 0">
                     {{ i + 1 }}
                   </th>
-                  <td style="border-left: 0; border-right: 0; display: flex">
-                    <img
-                      :src="item.img"
-                      style="width: 2.5vw; margin-right: 0.833vw"
-                      alt=""
-                    />
-                    {{ item.name }}
-                  </td>
-                  <td style="border-left: 0; border-right: 0">
-                    {{ item.barcode }}
-                  </td>
-                  <td style="border-left: 0; border-right: 0">
-                    {{ item.color }}
-                  </td>
-                  <td style="border-left: 0; border-right: 0">
-                    {{ item.size }}
-                  </td>
-                  <td style="border-left: 0; border-right: 0">
-                    {{ item.costPrice }} ₸
-                  </td>
-                  <td style="border-left: 0; border-right: 0">
-                    {{ item.price }} ₸
-                  </td>
-                  <td style="border-left: 0; border-right: 0">
-                    {{ item.count }}
-                  </td>
-                  <td style="border-left: 0; border-right: 0">
-                    {{ item.disc }}
-                  </td>
-                  <td style="border-left: 0; border-right: 0">
-                    {{ item.price * item.count }} ₸
-                  </td>
+                  <td style="border-left: 0; border-right: 0; display:flex;"><img :src=item.img style="width:2.5vw; margin-right:0.833vw;" alt=""> {{item.name}}</td>
+                  <td style="border-left: 0; border-right: 0">{{item.barcode}}</td>
+                  <td style="border-left: 0; border-right: 0">{{item.color}}</td>
+                  <td style="border-left: 0; border-right: 0">{{item.size}}</td>
+                  <td style="border-left: 0; border-right: 0">{{item.costPrice}} ₸</td>
+                  <td style="border-left: 0; border-right: 0">{{item.price}} ₸</td>
+                  <td style="border-left: 0; border-right: 0">{{item.count}}</td>
+                  <td style="border-left: 0; border-right: 0">{{item.disc}}</td>
+                  <td style="border-left: 0; border-right: 0">{{item.price * item.count}} ₸</td>
                   <td style="border-left: 0; border-right: 0">
                     <div class="dropdown">
                       <img
@@ -422,32 +388,6 @@
 
 
 <style scoped>
-.not__added{
-    margin-top: 0.8vw;
-}
-.btn__chose {
-  background: linear-gradient(83.56deg, #7092e0 10.01%, #8baef3 75.36%);
-  box-shadow: 0px 4px 7px -1px rgba(0, 0, 0, 0.11),
-    0px 2px 4px -1px rgba(0, 0, 0, 0.07);
-  border-radius: 8px;
-  padding: 0.625vw 1.875vw 0.625vw 1.875vw;
-  text-transform: none;
-  font-weight: 700;
-  font-size: 0.833vw;
-  color: #ffffff;
-  margin-top: 1.25vw;
-}
-.not__added__sec {
-  font-weight: 400;
-  font-size: 0.833vw;
-  color: #2d3748;
-}
-.not__added__main {
-  margin-top: 1.354vw;
-  font-weight: 600;
-  font-size: 1.25vw;
-  color: #2d3748;
-}
 .order__table__body::-webkit-scrollbar {
   background: #e2e8f0;
   border-radius: 0.78vw;
@@ -462,9 +402,9 @@
   border-radius: 0.78vw;
   background-color: #e2e8f0;
 }
-.order__table__body {
-  height: 460px;
-  overflow-y: scroll;
+.order__table__body{
+    height: 460px;
+    overflow-y: scroll;
 }
 .dropdown {
   display: inline-block;
@@ -686,7 +626,7 @@ export default {
       items: [
         {
           img: require("@/assets/img/tshirt.png"),
-          barcode: "876543456",
+          barcode:'876543456',
           name: "Куртка зеленая",
           color: "Белый",
           size: "S",
@@ -697,7 +637,7 @@ export default {
         },
         {
           img: require("@/assets/img/tshirt.png"),
-          barcode: "2146543456",
+          barcode:'2146543456',
           name: "Куртка Черная",
           color: "Белый",
           size: "S",
@@ -708,7 +648,7 @@ export default {
         },
         {
           img: require("@/assets/img/tshirt.png"),
-          barcode: "5246543456",
+          barcode:'5246543456',
           name: "Куртка Белая",
           color: "Белый",
           size: "S",
@@ -719,7 +659,7 @@ export default {
         },
         {
           img: require("@/assets/img/tshirt.png"),
-          barcode: "876543456",
+          barcode:'876543456',
           name: "Куртка зеленая",
           color: "Белый",
           size: "S",
@@ -730,7 +670,7 @@ export default {
         },
         {
           img: require("@/assets/img/tshirt.png"),
-          barcode: "876543456",
+          barcode:'876543456',
           name: "Куртка зеленая",
           color: "Белый",
           size: "S",
@@ -741,7 +681,7 @@ export default {
         },
         {
           img: require("@/assets/img/tshirt.png"),
-          barcode: "876543456",
+          barcode:'876543456',
           name: "Куртка зеленая",
           color: "Белый",
           size: "S",
@@ -752,7 +692,7 @@ export default {
         },
         {
           img: require("@/assets/img/tshirt.png"),
-          barcode: "876543456",
+          barcode:'876543456',
           name: "Куртка зеленая",
           color: "Белый",
           size: "S",
@@ -763,7 +703,7 @@ export default {
         },
         {
           img: require("@/assets/img/tshirt.png"),
-          barcode: "876543456",
+          barcode:'876543456',
           name: "Куртка зеленая",
           color: "Белый",
           size: "S",
@@ -772,19 +712,19 @@ export default {
           count: 2,
           disc: "нет",
         },
+        
       ],
       search: "",
-      isAdded: true,
     };
   },
   computed: {
     filteredProducts() {
-      return this.items.filter((item) => {
-        return (
-          item.name.toLowerCase().includes(this.search.toLowerCase()) ||
-          item.barcode.toString().includes(this.search.toLowerCase())
-        );
-      });
+        return this.items.filter((item) => {
+          return (
+            item.name.toLowerCase().includes(this.search.toLowerCase()) ||
+            item.barcode.toString().includes(this.search.toLowerCase())
+          );
+        });
     },
   },
   mounted() {

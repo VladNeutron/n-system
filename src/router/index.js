@@ -187,6 +187,12 @@ const routes = [
     component: () => import("../views/CreateOrderView.vue"),
     meta: { NavLink: "Создание заказа" },
   },
+  {
+    path: "/sales/order",
+    name: "order",
+    component: () => import("../views/OrderView.vue"),
+    meta: { NavLink: "Заказа" },
+  },
 ];
 
 const router = createRouter({
