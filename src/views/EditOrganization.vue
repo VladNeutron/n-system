@@ -169,22 +169,25 @@
                     </div>
                   </div>
                 </div>
-                
               </div>
               <div v-else>
-                  <div class="d-flex justify-content-center">
-                    <img
-                      src="@/assets/img/addbank.svg"
-                      style="width: 4.167vw"
-                      alt=""
-                    />
-                  </div>
-                  <div class="d-flex justify-content-center">
-                    <p class="bank__text">Добавьте свои банковские счета</p>
-                  </div>
+                <div class="d-flex justify-content-center">
+                  <img
+                    src="@/assets/img/addbank.svg"
+                    style="width: 4.167vw"
+                    alt=""
+                  />
                 </div>
+                <div class="d-flex justify-content-center">
+                  <p class="bank__text">Добавьте свои банковские счета</p>
+                </div>
+              </div>
               <div class="bank__footer">
-                <button class="btn add__bank">
+                <button
+                  class="btn add__bank"
+                  data-bs-toggle="modal"
+                  data-bs-target="#InfoThird"
+                >
                   <img
                     src="@/assets/img/plus.svg"
                     style="width: 0.833vw; margin-right: 0.833vw"
@@ -199,13 +202,18 @@
       </div>
     </div>
   </main>
+  <add-bank-info-modal></add-bank-info-modal>
 </template>
 
 <script>
+import AddBankInfoModal from "@/components/AddBankInfoModal.vue";
 export default {
+  components: {
+    AddBankInfoModal,
+  },
   data() {
     return {
-        isAdded: true,
+      isAdded: true,
       items: [
         {
           name: "Сбербанк Основной",
@@ -232,8 +240,8 @@ export default {
 </script>
 
 <style scoped>
-.form-control{
-  border: 1px solid #A0AEC0;
+.form-control {
+  border: 1px solid #a0aec0;
 }
 .add__bank {
   display: flex;

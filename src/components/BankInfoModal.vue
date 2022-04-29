@@ -128,7 +128,7 @@ import AddBankInfoModal from "./AddBankInfoModal.vue";
 export default {
   data() {
     return {
-      isAdded: false,
+      isAdded: true,
       items: [
         {
           name: "Сбербанк Основной",
