@@ -10,7 +10,7 @@
               <div class="table__header">
                 <div>
                   <button class="btn bg-gradient-dark">
-                    <span>+</span>Добавить склад
+                    <span class="pe-2">+</span>Добавить склад
                   </button>
                 </div>
                 <div class="table__header-search">

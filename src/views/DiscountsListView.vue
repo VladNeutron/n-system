@@ -32,7 +32,7 @@
                   type="button"
                   class="btn bg-gradient-secondary"
                   data-bs-toggle="modal"
-                  data-bs-target="#InpModal"
+                  data-bs-target="#SelectDisc"
                 >
                   <img
                     src="@/assets/img/whtplus.svg"
@@ -193,69 +193,15 @@
         </div>
       </div>
     </div>
-    <inputs-modal>
-      <template #head>
-        <div style="text-align: left">
-          <p class="header__main">Добавление скидки</p>
-          <p class="header__sec">
-            Выберите тип скидки,период и нажмите “Добавить”
-          </p>
-        </div>
-      </template>
-      <template #body>
-        <div class="body__content">
-          <div class="form-group" style="text-align: left">
-            <label for="exampleFormControlSelect1" class="label__text"
-              >Тип скидки</label
-            >
-            <select
-              class="form-control modal__inp"
-              id="exampleFormControlSelect1"
-            >
-              <option>Процент/число</option>
-              <option>Процент/число</option>
-              <option>Процент/число</option>
-            </select>
-          </div>
-          <div class="form-group" style="text-align: left">
-          <label for="example-date-input" class="form-control-label label__text"
-            >Начало</label
-          >
-          <input
-            class="form-control modal__inp"
-            type="date"
-            value="2018-11-23"
-            id="example-date-input"
-          />
-        </div>
-        <div class="form-group" style="text-align: left">
-          <label for="example-date-input1" class="form-control-label label__text"
-            >Конец</label
-          >
-          <input
-            class="form-control modal__inp"
-            type="date"
-            value="2018-11-23"
-            id="example-date-input1"
-          />
-        </div>
-        
-        </div>
-      </template>
-      <template #footer>
-        <div class="footer__btn">
-          <button class="footer__button">Добавить</button>
-        </div>
-      </template>
-    </inputs-modal>
+    <select-product-discount></select-product-discount>
   </main>
 </template>
 
 <script>
-import InputsModal from "../components/InputsModal.vue";
+import SelectProductDiscount from "../components/SelectProductDiscount.vue";
 export default {
   components: {
-    InputsModal,
+    SelectProductDiscount,
   },
   data() {
     return {
@@ -453,7 +399,7 @@ td {
   display: flex;
   background: linear-gradient(81.62deg, #313860 2.25%, #151928 79.87%);
   border-radius: 0.417vw;
-  padding: 0.521vw 1.25vw 0.573vw 2.188vw;
+  padding: 0.521vw 1.25vw 0.573vw 1.25vw;
   font-weight: 600;
   font-size: 0.729vw;
   align-items: center;
