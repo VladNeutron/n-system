@@ -1979,9 +1979,9 @@ textarea.form-control-lg {
     .form-select {
       transition: none; } }
   .form-select:focus {
-    border-color: #e293d3;
+    border-color: #7092E0;
     outline: 0;
-    box-shadow: 0 0 0 2px #e9aede; }
+    box-shadow: 0 0 0 2px rgba(139, 174, 243, 0.5); }
   .form-select[multiple], .form-select[size]:not([size="1"]) {
     padding-right: 0.75rem;
     background-image: none; }
@@ -4011,7 +4011,7 @@ textarea.form-control-lg {
     color: #830866;
     background-color: #e9ecef;
     outline: 0;
-    box-shadow: 0 0 0 0.2rem rgba(203, 12, 159, 0.25); }
+    box-shadow: 0 0 0 0.2rem rgba(112, 146, 224, 0.5); }
 
 .page-item:not(:first-child) .page-link {
   margin-left: -1px; }

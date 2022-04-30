@@ -38,7 +38,7 @@
                         <img src="@/assets/img/reloadData.svg" class="reloadDataImg" alt="">
                         Обновить данные
                       </button>
-                      <button class="btn btn-outline-dark mb-0 ">
+                      <button class="btn btn-outline-dark mb-0 openFilters" @click="openFilters">
                         Фильтры
                       </button>
                     </div>
@@ -269,6 +269,7 @@
         </div>
       
     <barcode-modal :selectedArray="selectedProducts" :option="activeOption"></barcode-modal>  
+    <filters></filters>
   </main>
   <div class="printContainer">
 
@@ -278,6 +279,7 @@
 <script>
 import BarcodeModal from '@/components/BarcodeModal.vue'
 import {Modal} from "@/assets/js/core/bootstrap.min.js";
+import Filters from "@/components/Filters.vue";
 export default {
   data(){
     return {
@@ -396,6 +398,10 @@ export default {
       let myModal = Modal.getInstance(document.getElementById('BarcodeModal'))
       myModal.show();
     },
+    openFilters(){
+      let filtersContainer = document.querySelector(".filters__container");
+      filtersContainer.classList.add("filters__show");
+    }
   },
   computed: {
     selectedOne(){
@@ -415,7 +421,7 @@ export default {
     })
   },
   components: {
-    BarcodeModal,
+    BarcodeModal, Filters
   }
 };
 </script>
@@ -456,7 +462,7 @@ export default {
 
 .barcodes__card{
   padding: 1.250vw 1.250vw 1.250vw 1.250vw;
-  height: 75vh;
+  min-height: 75vh;
   justify-content: space-between;
 }
 .barcodes__SettingsCard{

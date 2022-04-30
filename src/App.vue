@@ -12,6 +12,17 @@
   <router-view />
 </template>
 
+<script>
+export default {
+  methods:{
+    openFilters(){
+      let filtersContainer = document.querySelector(".filters__container");
+      filtersContainer.classList.add("filters__show");
+    },
+  }
+}
+</script>
+
 <style>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
