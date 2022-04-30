@@ -94,7 +94,7 @@
         <div class="d-flex justify-content-between align-items-center">
           <h5 class="m-0">Управление цветами</h5>
           <button
-            class="btn bg-gradient-dark mb-0"
+            class="btn bg-gradient-dark modal-btn mb-0"
             @click="getModalId('color')"
             data-bs-toggle="modal"
             data-bs-target="#InpModal"
@@ -105,8 +105,8 @@
             Добавить цвет
           </button>
         </div>
-        <div class="color-photo">
-          <div class="my-4" v-for="color in colors" :key="color">
+        <div class="color-photo mt-2 pe-3">
+          <div class="mt-2 me-2" v-for="(color, idx) in colors" :key="color">
             <div class="d-flex justify-content-between mb-2">
               <p class="m-0 fw-bold text-start">
                 {{ color.name }}
@@ -124,8 +124,23 @@
                 >Загрузить фото</a
               >
             </div>
-            <div class="carousel">
+            <div class="carousel" :class="['carousel-' + idx]">
               <div><img src="@/assets/css/images/example.png" alt="" /></div>
+              <div><img src="@/assets/css/images/example.png" alt="" /></div>
+              <div><img src="@/assets/css/images/example.png" alt="" /></div>
+              <div><img src="@/assets/css/images/example.png" alt="" /></div>
+            </div>
+            <div class="arrows d-flex w-0">
+              <div class="left-arrow">
+                <button class="btn arrow-btn mb-0" @click="prevSlide(idx)">
+                  <img src="@/assets/css/icons/leftarrow.svg" alt="" />
+                </button>
+              </div>
+              <div class="right-arrow">
+                <button class="btn arrow-btn mb-0" @click="nextSlide(idx)">
+                  <img src="@/assets/css/icons/rightarrow.svg" alt="" />
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -147,9 +162,15 @@
             </button>
           </div>
           <div class="sizes__body d-flex py-2 gap-3">
-            <div v-for="(size, i) in sizes" :key="size" :class="['btn mb-0']">
+            <div
+              v-for="(size, i) in sizes"
+              :key="size"
+              class="btn mb-0"
+              @click="selectSize(i)"
+              :class="[this.sizeMap[i] ? 'bg-gradient-dark' : null]"
+            >
               {{ size }}
-              <span style="" class="show-btn"
+              <span v-if="sizeMap[i]" style="" class="show-btn"
                 ><button class="remove-button" @click="deleteSize(i)">
                   x
                 </button></span
@@ -291,6 +312,7 @@ export default {
       modalId: "",
       sizeSelected: "",
       colorSelected: "",
+      sizeMap: [],
     };
   },
   components: {
@@ -300,23 +322,62 @@ export default {
     getModalId(id) {
       return (this.modalId = id);
     },
+    selectSize(id) {
+      this.sizeMap[id] = !this.sizeMap[id];
+      console.log(this.sizeMap);
+    },
     deleteSize(id) {
       this.sizes.splice(id, 1);
+      this.sizeMap.splice(id, 1);
     },
-
-    /// карусель
+    prevSlide(id) {
+      $(`.carousel-${id}`).slick("slickPrev");
+    },
+    nextSlide(id) {
+      $(`.carousel-${id}`).slick("slickNext");
+    },
   },
+
   mounted() {
     $(".carousel").slick({
       infinite: true,
       slidesToShow: 3,
-      slidesToScroll: 3,
+      slidesToScroll: 1,
+      arrows: false,
     });
   },
 };
 </script>
 
 <style scoped>
+.arrows {
+  position: relative;
+  top: -60px;
+}
+.arrows button {
+  width: 24px;
+  height: 24px;
+  background: silver;
+  border: none;
+  border-radius: 25px;
+}
+.arrow-btn {
+  padding: 0;
+}
+.arrows img {
+  width: 15px;
+  height: 15px;
+}
+
+.left-arrow {
+  position: relative;
+  right: -5px;
+}
+.right-arrow {
+  position: relative;
+  right: -360px;
+}
+
 .form-switch .form-check-input:checked {
   background: linear-gradient(83.56deg, #7092e0 10.01%, #8baef3 75.36%);
   border-color: rgba(112, 146, 224, 1);
@@ -365,17 +426,19 @@ export default {
   min-height: 248px;
   padding: 24px;
 }
-.main__body-info {
-}
 .main__body-color {
-  width: 490px;
+  min-width: 490px;
+  max-width: 490px;
   height: 590px;
+}
+.color-photo {
+  overflow-y: auto;
 }
 .main__body-size {
   height: 145px;
   width: 100%;
 }
-.main__body-color button {
+.modal-btn {
   width: 179px;
   height: 40px;
 }
@@ -398,16 +461,20 @@ export default {
   overflow-y: auto;
 }
 .articles__content::-webkit-scrollbar,
-.sizes__body::-webkit-scrollbar {
+.sizes__body::-webkit-scrollbar,
+.color-photo::-webkit-scrollbar {
   width: 5px;
+  height: 5px;
 }
 .articles__content::-webkit-scrollbar-track,
-.sizes__body::-webkit-scrollbar-track {
+.sizes__body::-webkit-scrollbar-track,
+.color-photo::-webkit-scrollbar-track {
   background-color: #e9ecef;
   border-radius: 5px;
 }
 .articles__content::-webkit-scrollbar-thumb,
-.sizes__body::-webkit-scrollbar-thumb {
+.sizes__body::-webkit-scrollbar-thumb,
+.color-photo::-webkit-scrollbar-thumb {
   background-color: black;
   box-shadow: 0px 4px 7px -1px rgba(0, 0, 0, 0.11),
     0px 2px 4px -1px rgba(0, 0, 0, 0.07);
