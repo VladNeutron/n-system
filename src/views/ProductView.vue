@@ -252,10 +252,10 @@ export default {
     };
   },
   mounted() {
-    // var quill = new Quill("#editor", {
-    //   theme: "snow", // Specify theme in configuration
-    // });
-    // quill.render();
+    var quill = new Quill("#editor", {
+      theme: "snow", // Specify theme in configuration
+    });
+    quill.render();
   },
 };
 </script>
