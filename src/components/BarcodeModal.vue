@@ -158,8 +158,8 @@ export default {
 
                     let priceBar__cont = document.createElement('div');
                     priceBar__cont.className = `priceBar__cont`; 
-                    priceBar__cont.style.width = '53mm'
-                    priceBar__cont.style.height = '36mm'
+                    priceBar__cont.style.width = '40mm'
+                    priceBar__cont.style.height = '30mm'
                     barcode_view_new.append(priceBar__cont);
 
                     // let priceBarDiv = document.createElement('div');
