@@ -236,6 +236,7 @@ const routes = [
     component: () => import("../views/Sales/OrderView.vue"),
     meta: { NavLink: "Заказ" },
   },
+  // ПРОДАЖИ
 ];
 
 const router = createRouter({
