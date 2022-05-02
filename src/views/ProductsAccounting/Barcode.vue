@@ -38,9 +38,7 @@
                         <img src="@/assets/img/reloadData.svg" class="reloadDataImg" alt="">
                         Обновить данные
                       </button>
-                      <button class="btn btn-outline-dark mb-0 openFilters" @click="openFilters">
-                        Фильтры
-                      </button>
+                      <filters-button></filters-button>
                     </div>
                 </div>
                 <div class="table-responsive">
@@ -280,6 +278,7 @@
 import BarcodeModal from '@/components/BarcodeModal.vue'
 import {Modal} from "@/assets/js/core/bootstrap.min.js";
 import Filters from "@/components/Filters.vue";
+import FiltersButton from "@/components/buttons/FiltersButton.vue";
 export default {
   data(){
     return {
@@ -398,10 +397,10 @@ export default {
       let myModal = Modal.getInstance(document.getElementById('BarcodeModal'))
       myModal.show();
     },
-    openFilters(){
-      let filtersContainer = document.querySelector(".filters__container");
-      filtersContainer.classList.add("filters__show");
-    }
+    // openFilters(){
+    //   let filtersContainer = document.querySelector(".filters__container");
+    //   filtersContainer.classList.add("filters__show");
+    // }
   },
   computed: {
     selectedOne(){
@@ -421,7 +420,7 @@ export default {
     })
   },
   components: {
-    BarcodeModal, Filters
+    BarcodeModal, Filters, FiltersButton
   }
 };
 </script>

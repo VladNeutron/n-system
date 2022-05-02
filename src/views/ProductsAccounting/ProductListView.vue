@@ -6,7 +6,7 @@
       <div class="row mt-4">
         <div class="col-12">
           <div class="inv__title">
-            <p class="inv__title__text">Список скидок</p>
+            <p class="inv__title__text">Список товаров</p>
           </div>
           <div class="card">
             <div class="inv__buttons">
@@ -32,14 +32,14 @@
                   type="button"
                   class="btn bg-gradient-secondary"
                   data-bs-toggle="modal"
-                  data-bs-target="#SelectDisc"
+                  data-bs-target="#InpModal"
                 >
                   <img
                     src="@/assets/img/whtplus.svg"
                     style="width: 1.042vw; margin-right: 0.729vw"
                     alt=""
                   />
-                  Добавить скидку
+                  Добавить товар
                 </button>
               </div>
               <div class="inv__right__btn">
@@ -82,14 +82,28 @@
                         class="th__col"
                         style="border-left: 0; border-right: 0"
                       >
-                        Тип скидки
+                        Товар
                       </th>
                       <th
                         scope="col"
                         class="th__col"
                         style="border-left: 0; border-right: 0"
                       >
-                        Период действия
+                        Категория
+                      </th>
+                      <th
+                        scope="col"
+                        class="th__col"
+                        style="border-left: 0; border-right: 0"
+                      >
+                        Себестоимость
+                      </th>
+                      <th
+                        scope="col"
+                        class="th__col"
+                        style="border-left: 0; border-right: 0"
+                      >
+                        Цена продажи
                       </th>
 
                       <th scope="col" class="th__col" style="border-left: 0">
@@ -98,16 +112,14 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr v-for="(item, i) in filteredDiscounts" :key="item">
-                      <th scope="row" style="border-right: 0">
+                    <tr v-for="(item, i) in filteredProducts" :key="item">
+                      <th scope="row" style="border-right: 0" width="1%">
                         {{ i + 1 }}
                       </th>
-                      <td style="border-left: 0; border-right: 0">
-                        {{ item.type }}
-                      </td>
-                      <td width="75%" style="border-left: 0; border-right: 0">
-                        {{ item.period }}
-                      </td>
+                      <td style="border-left: 0; border-right: 0; display: flex; justify-content: center;" ><img :src=item.img style="margin-right:0.833vw">{{item.name}}</td>
+                      <td style="border-left: 0; border-right: 0">{{item.category}}</td>
+                      <td style="border-left: 0; border-right: 0">{{item.costPrice}}</td>
+                      <td style="border-left: 0; border-right: 0">{{item.price}}</td>
                       <td style="border-left: 0">
                         <div class="dropdown">
                           <img
@@ -193,68 +205,141 @@
         </div>
       </div>
     </div>
-    <select-product-discount></select-product-discount>
+    <inputs-modal>
+      <template #head>
+        <div style="text-align: left">
+          <p class="header__main">Добавление категории</p>
+          <p class="header__sec">
+            Введите название категории и нажмите “Добавить”
+          </p>
+        </div>
+      </template>
+      <template #body>
+        <div class="body__content">
+          <div class="form-group" style="text-align: left">
+            <label for="exampleFormControlInput1" class="label__text"
+              >Название категории</label
+            >
+            <input
+              type="text"
+              class="form-control modal__inp"
+              id="exampleFormControlInput1"
+              placeholder="Введите название"
+            />
+          </div>
+          <div class="form-check" style="text-align: left">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              value=""
+              id="fcustomCheck1"
+            />
+            <label class="custom-control-label label__check" for="customCheck1"
+              >Подчиненная категория</label
+            >
+          </div>
+          <div class="form-group" style="text-align: left">
+            <label for="exampleFormControlSelect1" class="label__text"
+              >Основная категория</label
+            >
+            <select
+              class="form-control modal__inp"
+              id="exampleFormControlSelect1"
+              v-model="selected"
+            >
+              <option>Верхняя одежда</option>
+              <option>Нижнее белье</option>
+              <option>Штаны</option>
+            </select>
+          </div>
+        </div>
+      </template>
+      <template #footer>
+        <div class="footer__btn">
+          <button class="footer__button">Добавить</button>
+        </div>
+      </template>
+    </inputs-modal>
   </main>
 </template>
 
 <script>
-import SelectProductDiscount from "../components/SelectProductDiscount.vue";
+import InputsModal from "../../components/InputsModal.vue";
 export default {
   components: {
-    SelectProductDiscount,
+    InputsModal,
   },
   data() {
     return {
+      selected: "",
       items: [
         {
-          type: "Процент/число",
-          period: "01.04.2022 - 15.04.2022",
+          img: require("@/assets/img/green.png"),
+          name: "Куртка зеленая",
+          category: "Верхняя одежда",
+          costPrice: "12 000 ₸",
+          price: "29 000 ₸",
         },
-        {
-          type: "Процент/число",
-          period: "01.04.2022 - 15.04.2022",
+         {
+          img: require("@/assets/img/green.png"),
+          name: "Куртка зеленая",
+          category: "Верхняя одежда",
+          costPrice: "12 000 ₸",
+          price: "29 000 ₸",
         },
-        {
-          type: "Процент/число",
-          period: "01.04.2022 - 15.04.2022",
+         {
+          img: require("@/assets/img/green.png"),
+          name: "Куртка зеленая",
+          category: "Верхняя одежда",
+          costPrice: "12 000 ₸",
+          price: "29 000 ₸",
         },
-        {
-          type: "Процент/число",
-          period: "01.04.2022 - 15.04.2022",
+         {
+          img: require("@/assets/img/green.png"),
+          name: "Куртка зеленая",
+          category: "Верхняя одежда",
+          costPrice: "12 000 ₸",
+          price: "29 000 ₸",
         },
-        {
-          type: "Процент/число",
-          period: "01.04.2022 - 15.04.2022",
+         {
+          img: require("@/assets/img/green.png"),
+          name: "Куртка зеленая",
+          category: "Верхняя одежда",
+          costPrice: "12 000 ₸",
+          price: "29 000 ₸",
         },
-        {
-          type: "Процент/число",
-          period: "01.04.2022 - 15.04.2022",
+         {
+          img: require("@/assets/img/green.png"),
+          name: "Куртка зеленая",
+          category: "Верхняя одежда",
+          costPrice: "12 000 ₸",
+          price: "29 000 ₸",
         },
-        {
-          type: "Процент/число",
-          period: "01.04.2022 - 15.04.2022",
+         {
+          img: require("@/assets/img/green.png"),
+          name: "Куртка зеленая",
+          category: "Верхняя одежда",
+          costPrice: "12 000 ₸",
+          price: "29 000 ₸",
         },
-        {
-          type: "Процент/число",
-          period: "01.04.2022 - 15.04.2022",
+         {
+          img: require("@/assets/img/green.png"),
+          name: "Куртка зеленая",
+          category: "Верхняя одежда",
+          costPrice: "12 000 ₸",
+          price: "29 000 ₸",
         },
-        {
-          type: "Процент/число",
-          period: "01.04.2022 - 15.04.2022",
-        },
-        {
-          type: "Тест",
-          period: "01.04.2022 - 15.04.2022",
-        },
+
       ],
-       search: "",
+      search:""
     };
   },
     computed: {
-    filteredDiscounts() {
+    filteredProducts() {
         return this.items.filter((item) => {
           return (
-            item.type.toLowerCase().includes(this.search.toLowerCase()) 
+            item.name.toLowerCase().includes(this.search.toLowerCase()) ||
+            item.category.toLowerCase().includes(this.search.toLowerCase())
           );
         });
     },
@@ -399,7 +484,7 @@ td {
   display: flex;
   background: linear-gradient(81.62deg, #313860 2.25%, #151928 79.87%);
   border-radius: 0.417vw;
-  padding: 0.521vw 1.25vw 0.573vw 1.25vw;
+  padding: 0.521vw 1.25vw 0.573vw 2.188vw;
   font-weight: 600;
   font-size: 0.729vw;
   align-items: center;

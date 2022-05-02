@@ -6,7 +6,7 @@
       <div class="row mt-4">
         <div class="col-12">
           <div class="inv__title">
-            <p class="inv__title__text">Список категорий</p>
+            <p class="inv__title__text">Список скидок</p>
           </div>
           <div class="card">
             <div class="inv__buttons">
@@ -23,7 +23,7 @@
                       class="form-control form-control-lg inv__inp"
                       placeholder="Поиск"
                       type="text"
-                      id="search"
+                       id="search"
                       v-model.trim="search"
                     />
                   </div>
@@ -32,14 +32,14 @@
                   type="button"
                   class="btn bg-gradient-secondary"
                   data-bs-toggle="modal"
-                  data-bs-target="#InpModal"
+                  data-bs-target="#SelectDisc"
                 >
                   <img
                     src="@/assets/img/whtplus.svg"
                     style="width: 1.042vw; margin-right: 0.729vw"
                     alt=""
                   />
-                  Добавить новую категорию
+                  Добавить скидку
                 </button>
               </div>
               <div class="inv__right__btn">
@@ -82,14 +82,14 @@
                         class="th__col"
                         style="border-left: 0; border-right: 0"
                       >
-                        Категория
+                        Тип скидки
                       </th>
                       <th
                         scope="col"
                         class="th__col"
                         style="border-left: 0; border-right: 0"
                       >
-                        Основная Категория
+                        Период действия
                       </th>
 
                       <th scope="col" class="th__col" style="border-left: 0">
@@ -98,15 +98,15 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr v-for="(item, i) in filteredCategory" :key="item">
+                    <tr v-for="(item, i) in filteredDiscounts" :key="item">
                       <th scope="row" style="border-right: 0">
                         {{ i + 1 }}
                       </th>
                       <td style="border-left: 0; border-right: 0">
-                        {{ item.category }}
+                        {{ item.type }}
                       </td>
                       <td width="75%" style="border-left: 0; border-right: 0">
-                        {{ item.maincat }}
+                        {{ item.period }}
                       </td>
                       <td style="border-left: 0">
                         <div class="dropdown">
@@ -193,141 +193,68 @@
         </div>
       </div>
     </div>
-    <inputs-modal>
-      <template #head>
-        <div style="text-align: left">
-          <p class="header__main">Добавление категории</p>
-          <p class="header__sec">
-            Введите название категории и нажмите “Добавить”
-          </p>
-        </div>
-      </template>
-      <template #body>
-        <div class="body__content">
-          <div class="form-group" style="text-align: left">
-            <label for="exampleFormControlInput1" class="label__text"
-              >Название категории</label
-            >
-            <input
-              type="text"
-              class="form-control modal__inp"
-              id="exampleFormControlInput1"
-              placeholder="Введите название"
-            />
-          </div>
-          <div class="form-check" style="text-align: left">
-            <input
-              class="form-check-input"
-              type="checkbox"
-              value=""
-              id="fcustomCheck1"
-            />
-            <label class="custom-control-label label__check" for="customCheck1"
-              >Подчиненная категория</label
-            >
-          </div>
-          <div class="form-group" style="text-align: left">
-            <label for="exampleFormControlSelect1" class="label__text"
-              >Основная категория</label
-            >
-            <select
-              class="form-control modal__inp"
-              id="exampleFormControlSelect1"
-              v-model="selected"
-            >
-              <option>Верхняя одежда</option>
-              <option>Нижнее белье</option>
-              <option>Штаны</option>
-            </select>
-          </div>
-        </div>
-      </template>
-      <template #footer>
-        <div class="footer__btn">
-          <button class="footer__button">Добавить</button>
-        </div>
-      </template>
-    </inputs-modal>
+    <select-product-discount></select-product-discount>
   </main>
 </template>
 
 <script>
-import InputsModal from "../components/InputsModal.vue";
+import SelectProductDiscount from "../../components/SelectProductDiscount.vue";
 export default {
   components: {
-    InputsModal,
+    SelectProductDiscount,
   },
   data() {
     return {
-        selected: '',
       items: [
         {
-          id: "0",
-          category: "Зимняя одежда",
-          maincat: "Верхняя одежда",
+          type: "Процент/число",
+          period: "01.04.2022 - 15.04.2022",
         },
         {
-          id: "1",
-          category: "Летняя одежда",
-          maincat: "Верхняя одежда",
+          type: "Процент/число",
+          period: "01.04.2022 - 15.04.2022",
         },
         {
-          id: "2",
-          category: "Безрукавки",
-          maincat: "Верхняя одежда",
+          type: "Процент/число",
+          period: "01.04.2022 - 15.04.2022",
         },
         {
-          id: "3",
-          category: "Кожанки",
-          maincat: "Верхняя одежда",
+          type: "Процент/число",
+          period: "01.04.2022 - 15.04.2022",
         },
         {
-          id: "4",
-          category: "Пальто",
-          maincat: "Верхняя одежда",
+          type: "Процент/число",
+          period: "01.04.2022 - 15.04.2022",
         },
         {
-          id: "5",
-          category: "Тренч",
-          maincat: "Верхняя одежда",
+          type: "Процент/число",
+          period: "01.04.2022 - 15.04.2022",
         },
         {
-          id: "6",
-          category: "Тренч",
-          maincat: "Верхняя одежда",
+          type: "Процент/число",
+          period: "01.04.2022 - 15.04.2022",
         },
         {
-          id: "7",
-          category: "Тренч",
-          maincat: "Верхняя одежда",
+          type: "Процент/число",
+          period: "01.04.2022 - 15.04.2022",
         },
         {
-          id: "8",
-          category: "Тренч",
-          maincat: "Верхняя одежда",
+          type: "Процент/число",
+          period: "01.04.2022 - 15.04.2022",
         },
         {
-          id: "9",
-          category: "Тренч",
-          maincat: "Верхняя одежда",
-        },
-        {
-          id: "10",
-          category: "Джинсы",
-          maincat: "Штаны",
+          type: "Тест",
+          period: "01.04.2022 - 15.04.2022",
         },
       ],
-      search: "",
-      selected: "",
+       search: "",
     };
-    
   },
-  computed: {
-    filteredCategory() {
+    computed: {
+    filteredDiscounts() {
         return this.items.filter((item) => {
           return (
-            item.category.toLowerCase().includes(this.search.toLowerCase()) ||
-            item.maincat.toLowerCase().includes(this.search.toLowerCase())
+            item.type.toLowerCase().includes(this.search.toLowerCase()) 
           );
         });
     },
@@ -423,8 +350,8 @@ hr {
 .th__col {
   color: #a0aec0 !important;
 }
-th{
-    text-transform: uppercase;
+th {
+  text-transform: uppercase;
 }
 td,
 th {
@@ -472,7 +399,7 @@ td {
   display: flex;
   background: linear-gradient(81.62deg, #313860 2.25%, #151928 79.87%);
   border-radius: 0.417vw;
-  padding: 0.521vw 1.25vw 0.573vw 2.188vw;
+  padding: 0.521vw 1.25vw 0.573vw 1.25vw;
   font-weight: 600;
   font-size: 0.729vw;
   align-items: center;

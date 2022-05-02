@@ -6,7 +6,7 @@
       <div class="row mt-4">
         <div class="col-12">
           <div class="inv__title">
-            <p class="inv__title__text">Список товаров</p>
+            <p class="inv__title__text">Список категорий</p>
           </div>
           <div class="card">
             <div class="inv__buttons">
@@ -23,7 +23,7 @@
                       class="form-control form-control-lg inv__inp"
                       placeholder="Поиск"
                       type="text"
-                       id="search"
+                      id="search"
                       v-model.trim="search"
                     />
                   </div>
@@ -39,7 +39,7 @@
                     style="width: 1.042vw; margin-right: 0.729vw"
                     alt=""
                   />
-                  Добавить товар
+                  Добавить новую категорию
                 </button>
               </div>
               <div class="inv__right__btn">
@@ -82,13 +82,6 @@
                         class="th__col"
                         style="border-left: 0; border-right: 0"
                       >
-                        Товар
-                      </th>
-                      <th
-                        scope="col"
-                        class="th__col"
-                        style="border-left: 0; border-right: 0"
-                      >
                         Категория
                       </th>
                       <th
@@ -96,14 +89,7 @@
                         class="th__col"
                         style="border-left: 0; border-right: 0"
                       >
-                        Себестоимость
-                      </th>
-                      <th
-                        scope="col"
-                        class="th__col"
-                        style="border-left: 0; border-right: 0"
-                      >
-                        Цена продажи
+                        Основная Категория
                       </th>
 
                       <th scope="col" class="th__col" style="border-left: 0">
@@ -112,14 +98,16 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr v-for="(item, i) in filteredProducts" :key="item">
-                      <th scope="row" style="border-right: 0" width="1%">
+                    <tr v-for="(item, i) in filteredCategory" :key="item">
+                      <th scope="row" style="border-right: 0">
                         {{ i + 1 }}
                       </th>
-                      <td style="border-left: 0; border-right: 0; display: flex; justify-content: center;" ><img :src=item.img style="margin-right:0.833vw">{{item.name}}</td>
-                      <td style="border-left: 0; border-right: 0">{{item.category}}</td>
-                      <td style="border-left: 0; border-right: 0">{{item.costPrice}}</td>
-                      <td style="border-left: 0; border-right: 0">{{item.price}}</td>
+                      <td style="border-left: 0; border-right: 0">
+                        {{ item.category }}
+                      </td>
+                      <td width="75%" style="border-left: 0; border-right: 0">
+                        {{ item.maincat }}
+                      </td>
                       <td style="border-left: 0">
                         <div class="dropdown">
                           <img
@@ -264,82 +252,82 @@
 </template>
 
 <script>
-import InputsModal from "../components/InputsModal.vue";
+import InputsModal from "../../components/InputsModal.vue";
 export default {
   components: {
     InputsModal,
   },
   data() {
     return {
-      selected: "",
+        selected: '',
       items: [
         {
-          img: require("@/assets/img/green.png"),
-          name: "Куртка зеленая",
-          category: "Верхняя одежда",
-          costPrice: "12 000 ₸",
-          price: "29 000 ₸",
+          id: "0",
+          category: "Зимняя одежда",
+          maincat: "Верхняя одежда",
         },
-         {
-          img: require("@/assets/img/green.png"),
-          name: "Куртка зеленая",
-          category: "Верхняя одежда",
-          costPrice: "12 000 ₸",
-          price: "29 000 ₸",
+        {
+          id: "1",
+          category: "Летняя одежда",
+          maincat: "Верхняя одежда",
         },
-         {
-          img: require("@/assets/img/green.png"),
-          name: "Куртка зеленая",
-          category: "Верхняя одежда",
-          costPrice: "12 000 ₸",
-          price: "29 000 ₸",
+        {
+          id: "2",
+          category: "Безрукавки",
+          maincat: "Верхняя одежда",
         },
-         {
-          img: require("@/assets/img/green.png"),
-          name: "Куртка зеленая",
-          category: "Верхняя одежда",
-          costPrice: "12 000 ₸",
-          price: "29 000 ₸",
+        {
+          id: "3",
+          category: "Кожанки",
+          maincat: "Верхняя одежда",
         },
-         {
-          img: require("@/assets/img/green.png"),
-          name: "Куртка зеленая",
-          category: "Верхняя одежда",
-          costPrice: "12 000 ₸",
-          price: "29 000 ₸",
+        {
+          id: "4",
+          category: "Пальто",
+          maincat: "Верхняя одежда",
         },
-         {
-          img: require("@/assets/img/green.png"),
-          name: "Куртка зеленая",
-          category: "Верхняя одежда",
-          costPrice: "12 000 ₸",
-          price: "29 000 ₸",
+        {
+          id: "5",
+          category: "Тренч",
+          maincat: "Верхняя одежда",
         },
-         {
-          img: require("@/assets/img/green.png"),
-          name: "Куртка зеленая",
-          category: "Верхняя одежда",
-          costPrice: "12 000 ₸",
-          price: "29 000 ₸",
+        {
+          id: "6",
+          category: "Тренч",
+          maincat: "Верхняя одежда",
         },
-         {
-          img: require("@/assets/img/green.png"),
-          name: "Куртка зеленая",
-          category: "Верхняя одежда",
-          costPrice: "12 000 ₸",
-          price: "29 000 ₸",
+        {
+          id: "7",
+          category: "Тренч",
+          maincat: "Верхняя одежда",
         },
-
+        {
+          id: "8",
+          category: "Тренч",
+          maincat: "Верхняя одежда",
+        },
+        {
+          id: "9",
+          category: "Тренч",
+          maincat: "Верхняя одежда",
+        },
+        {
+          id: "10",
+          category: "Джинсы",
+          maincat: "Штаны",
+        },
       ],
-      search:""
+      search: "",
+      selected: "",
     };
+    
   },
-    computed: {
-    filteredProducts() {
+  computed: {
+    filteredCategory() {
         return this.items.filter((item) => {
           return (
-            item.name.toLowerCase().includes(this.search.toLowerCase()) ||
-            item.category.toLowerCase().includes(this.search.toLowerCase())
+            item.category.toLowerCase().includes(this.search.toLowerCase()) ||
+            item.maincat.toLowerCase().includes(this.search.toLowerCase())
           );
         });
     },
@@ -435,8 +423,8 @@ hr {
 .th__col {
   color: #a0aec0 !important;
 }
-th {
-  text-transform: uppercase;
+th{
+    text-transform: uppercase;
 }
 td,
 th {

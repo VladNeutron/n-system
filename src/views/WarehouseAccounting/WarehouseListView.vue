@@ -52,10 +52,10 @@
                     <td></td>
                     <td>
                       <a href="#"
-                        ><img src="../assets/css/icons/editIcon.svg" alt="edit"
+                        ><img src="@/assets/css/icons/editIcon.svg" alt="edit"
                       /></a>
                       <a href="#"
-                        ><img src="../assets/css/icons/deleteIcon.svg" alt="delete"
+                        ><img src="@/assets/css/icons/deleteIcon.svg" alt="delete"
                       /></a>
                     </td>
                   </tr>
@@ -67,8 +67,8 @@
                     <td>Закрыт</td>
                     <td></td>
                     <td>
-                      <a href="#"><img src="../assets/css/icons/editIcon.svg" alt="edit" /></a>
-                      <a href="#"><img src="../assets/css/icons/deleteIcon.svg" alt="delete" /></a>
+                      <a href="#"><img src="@/assets/css/icons/editIcon.svg" alt="edit" /></a>
+                      <a href="#"><img src="@/assets/css/icons/deleteIcon.svg" alt="delete" /></a>
                     </td>
                   </tr>
                 </table>
@@ -139,7 +139,7 @@ td > a {
 }
 .search-icon {
   padding-left: 20px;
-  background: no-repeat url("../assets/css/icons/searchIcon.svg");
+  background: no-repeat url("@/assets/css/icons/searchIcon.svg");
   background-size: 16px;
 }
 </style>

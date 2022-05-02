@@ -154,10 +154,10 @@
           <ul class="nav ms-4 ps-3">
       
             <li class="nav-item ">
-              <a class="nav-link " href="./applications/kanban.html">
+              <router-link :to="{ name: 'product-list'}" class="nav-link ">
                 <span class="sidenav-mini-icon"> С </span>
                 <span class="sidenav-normal"> Список товаров </span>
-              </a>
+              </router-link>
             </li>
       
       
@@ -170,18 +170,18 @@
       
       
             <li class="nav-item ">
-              <a class="nav-link " href="./applications/datatables.html">
+              <router-link :to="{ name: 'category-list'}" class="nav-link ">
                 <span class="sidenav-mini-icon"> К </span>
                 <span class="sidenav-normal"> Категории </span>
-              </a>
+              </router-link>
             </li>
       
       
             <li class="nav-item ">
-              <a class="nav-link " href="./applications/calendar.html">
+              <router-link :to="{ name: 'discounts'}" class="nav-link ">
                 <span class="sidenav-mini-icon"> С </span>
                 <span class="sidenav-normal"> Скидки и акции </span>
-              </a>
+              </router-link>
             </li>
       
       

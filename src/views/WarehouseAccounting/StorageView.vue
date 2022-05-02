@@ -7,9 +7,9 @@
         <div class="storage__padding">
           <div class="storage__header">
             <div class="storage__name">
-              <p class="storage__main">Новый склад</p>
+              <p class="storage__main">Склад 1</p>
               <p class="storage__sec">
-                Заполните данные о складе и нажмите “Сохранить”
+                Внесите изменения в штрихкод и выберите действия
               </p>
             </div>
             <div class="storage__save">
@@ -26,7 +26,7 @@
                 <p class="storage__img-text">Изображение склада</p>
                 <div>
                   <img
-                    src="@/assets/img/storage__noimg.png"
+                    src="@/assets/img/storage__img.png"
                     style="width: 23.021vw"
                     alt=""
                   />
@@ -36,7 +36,7 @@
                     Удалить
                   </button>
                   <button type="button" class="btn bg-gradient-info">
-                    Загрузить фото
+                    Изменить
                   </button>
                 </div>
               </div>
@@ -88,6 +88,21 @@
                         rows="3"
                         placeholder="Комментариев нет"
                       ></textarea>
+                    </div>
+                  </div>
+                  <div class="storage__checkbox">
+                    <div class="form-check">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        value=""
+                        id="customCheck1"
+                      />
+                      <label
+                        class="custom-control-label storage__label"
+                        for="customCheck1"
+                        >Закрыть склад</label
+                      >
                     </div>
                   </div>
                 </div>
@@ -347,8 +362,8 @@
 </template>
 
 <script>
-import InputsModal from "../components/InputsModal.vue";
-import Storage from "../components/Storage.vue";
+import InputsModal from "../../components/InputsModal.vue";
+import Storage from "../../components/Storage.vue";
 export default {
   components: {
     Storage,

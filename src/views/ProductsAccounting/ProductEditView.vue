@@ -304,7 +304,7 @@
 </template>
 
 <script>
-import InputsModal from "../components/InputsModal.vue";
+import InputsModal from "../../components/InputsModal.vue";
 
 export default {
   data() {
