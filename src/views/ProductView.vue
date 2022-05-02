@@ -15,12 +15,24 @@
       </div>
     </div>
     <div class="main__body d-flex gap-4 m-4">
-      <div class="img__card card">
-        <h5 class="m-0 pt-4 ps-4">Изображение товара</h5>
-        <div class="img__card-img px-4 pt-3">
-          <img src="@/assets/css/images/product.png" alt="" />
+      <div class="img__card card p-4">
+        <div class="d-flex w-100 justify-content-between align-items-center">
+          <h5 class="m-0">Изображение товара</h5>
+          <img
+            src="@/assets/css/icons/pen.svg"
+            class="img-fluid w-5 me-2"
+            alt=""
+          />
         </div>
-        <div class="img__card-select w-100 ps-4 pe-6 py-4">
+
+        <div class="img__card-img my-3">
+          <img
+            src="@/assets/css/images/product.png"
+            class="img-fluid rounded"
+            alt=""
+          />
+        </div>
+        <div class="img__card-select w-100">
           <div class="form-group text-start me-2">
             <label for="Color" class="mb-2">Выберите цвет</label>
             <select class="form-select" id="Color">
@@ -33,7 +45,11 @@
       </div>
 
       <div class="card info__card w-100 gap-2 p-4">
-        <h5 class="text-start">Информация о товаре</h5>
+        <h5 class="text-start">
+          Информация о товаре<span
+            ><img class="ms-2" src="@/assets/css/icons/star.svg" alt=""
+          /></span>
+        </h5>
         <div class="info__card-top d-flex">
           <div class="form-group m-0 text-start">
             <label for="productName">Название</label>
@@ -286,7 +302,7 @@ export default {
   align-items: flex-start;
 }
 
-.img__card img {
+.img__card-img img {
   width: 442px;
   height: 307px;
 

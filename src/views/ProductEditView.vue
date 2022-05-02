@@ -227,6 +227,15 @@
                     type="text"
                   />
                 </div>
+                <div class="form-group ms-4 text-start">
+                  <label for="<Article>">Артикул</label>
+                  <input
+                    class="form-control"
+                    placeholder="123123123"
+                    id="Article"
+                    type="text"
+                  />
+                </div>
               </div>
               <div>
                 <button class="delete-btn">
@@ -278,11 +287,11 @@
         <a href="" class="">+ Создать размер</a>
       </div>
       <div class="modal__barcode d-flex" v-if="modalId === 'articles'">
-        <div class="modal__barcode-size w-20 text-start">
-          <label for="Size" class="mt-2 ms-4 fw-light">Размер</label>
-          <p class="mb-2 ms-4 fw-bold">{{ sizeSelected }}</p>
+        <div class="modal__barcode-size w-50 text-start">
+          <label for="Size" class="mt-2 ms-4 fw-light">Артикул</label>
+          <p class="mb-2 ms-4 fw-bold">Артикул</p>
         </div>
-        <div class="modal__barcode-generate w-80 text-start">
+        <div class="modal__barcode-generate w-50 text-start">
           <label for="Barcode" class="mt-2 ms-4 fw-light">Штрихкод</label>
           <p class="mb-2 ms-4 fw-bold">1231232132231</p>
         </div>
@@ -328,7 +337,7 @@ export default {
     },
     deleteSize(id) {
       this.sizes.splice(id, 1);
-      this.sizeMap.splice(id, 1);
+      // this.sizeMap.splice(id, 1);
     },
     prevSlide(id) {
       $(`.carousel-${id}`).slick("slickPrev");
