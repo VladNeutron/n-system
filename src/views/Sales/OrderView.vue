@@ -232,7 +232,13 @@
               <button class="btn barcode__btn">Выбрать из списка</button>
             </div>
             <div class="search">
-              <button class="btn disc__btn">скидка</button>
+              <button
+                class="btn disc__btn"
+                data-bs-toggle="modal"
+                data-bs-target="#DiscModal"
+              >
+                Применить скидку
+              </button>
               <div class="form-group m-0">
                 <div class="input-group mt-1">
                   <span class="input-group-text"
@@ -338,15 +344,38 @@
                   <th scope="row" style="border-right: 0; border-left: 0">
                     {{ i + 1 }}
                   </th>
-                  <td style="border-left: 0; border-right: 0; display:flex;"><img :src=item.img style="width:2.5vw; margin-right:0.833vw;" alt=""> {{item.name}}</td>
-                  <td style="border-left: 0; border-right: 0">{{item.barcode}}</td>
-                  <td style="border-left: 0; border-right: 0">{{item.color}}</td>
-                  <td style="border-left: 0; border-right: 0">{{item.size}}</td>
-                  <td style="border-left: 0; border-right: 0">{{item.costPrice}} ₸</td>
-                  <td style="border-left: 0; border-right: 0">{{item.price}} ₸</td>
-                  <td style="border-left: 0; border-right: 0">{{item.count}}</td>
-                  <td style="border-left: 0; border-right: 0">{{item.disc}}</td>
-                  <td style="border-left: 0; border-right: 0">{{item.price * item.count}} ₸</td>
+                  <td style="border-left: 0; border-right: 0; display: flex">
+                    <img
+                      :src="item.img"
+                      style="width: 2.5vw; margin-right: 0.833vw"
+                      alt=""
+                    />
+                    {{ item.name }}
+                  </td>
+                  <td style="border-left: 0; border-right: 0">
+                    {{ item.barcode }}
+                  </td>
+                  <td style="border-left: 0; border-right: 0">
+                    {{ item.color }}
+                  </td>
+                  <td style="border-left: 0; border-right: 0">
+                    {{ item.size }}
+                  </td>
+                  <td style="border-left: 0; border-right: 0">
+                    {{ item.costPrice }} ₸
+                  </td>
+                  <td style="border-left: 0; border-right: 0">
+                    {{ item.price }} ₸
+                  </td>
+                  <td style="border-left: 0; border-right: 0">
+                    {{ item.count }}
+                  </td>
+                  <td style="border-left: 0; border-right: 0">
+                    {{ item.disc }}
+                  </td>
+                  <td style="border-left: 0; border-right: 0">
+                    {{ item.price * item.count }} ₸
+                  </td>
                   <td style="border-left: 0; border-right: 0">
                     <div class="dropdown">
                       <img
@@ -383,11 +412,172 @@
         </div>
       </div>
     </div>
+    <discount-modal>
+      <template #head>
+        <div style="text-align: left">
+          <p class="header__main">Применить скидку</p>
+          <p class="header__sec">Выберите скидку и нажмите “Применить”</p>
+        </div>
+      </template>
+      <template #body>
+        <div class="search__buttons">
+          <button
+            :class="['left__btn', { active: onStorage == 'yes' }]"
+            @click="onStorage = 'yes'"
+          >
+            Выбрать из списка
+          </button>
+          <button
+            :class="['right__btn', { active2: onStorage == 'all' }]"
+            @click="onStorage = 'all'"
+          >
+            Ввести вручную
+          </button>
+        </div>
+        <div class="modal__flex__disc" v-if="onStorage == 'yes'">
+          <div class="form-group mr">
+            <label for="exampleFormControlSelect1" class="order__label__disc"
+              >Выберите скидку</label
+            >
+            <div class="select3">
+              <img src="@/assets/img/arrow.svg" style="width: 0.833vw" alt="" />
+              <select
+                class="form-control disc__form"
+                id="exampleFormControlSelect1"
+              >
+                <option>Выберите</option>
+                <option>Скидка "8 марта"</option>
+                <option>Скидка "8 марта"</option>
+                <option>Скидка "8 марта"</option>
+              </select>
+            </div>
+          </div>
+        </div>
+                <div class="modal__flex__disc"  v-if="onStorage == 'all'">
+          <div class="form-group mr">
+            <label for="exampleFormControlSelect1" class="order__label__disc"
+              >Ручная скидка</label
+            >
+        <input class="form-control disc__form" type="text" placeholder="Введите значение" id="example-text-input">
+          </div>
+        </div>
+      </template>
+      <template #footer>
+        <div class="accept__button">
+          <button class="btn accept__btn">Применить</button>
+        </div>
+      </template>
+    </discount-modal>
   </main>
 </template>
 
 
 <style scoped>
+.accept__btn {
+  background: linear-gradient(81.62deg, #313860 2.25%, #151928 79.87%);
+  box-shadow: 0px 4px 7px -1px rgba(0, 0, 0, 0.11),
+    0px 2px 4px -1px rgba(0, 0, 0, 0.07);
+  border-radius: 8px;
+  text-transform: none;
+  padding: 0.729vw 7.413vw 0.729vw 7.413vw;
+  font-weight: 700;
+  font-size: 0.833vw;
+  color: #ffffff;
+}
+.accept__button {
+  display: flex;
+  justify-content: center;
+}
+.select3:hover img {
+  transform: rotate(180deg);
+}
+.select3 {
+  position: relative;
+}
+.select3 img {
+  position: absolute;
+  left: 18.438vw;
+  top: 0.781vw;
+}
+.mr {
+  margin-right: 0 !important;
+}
+.disc__form {
+  width: 19.896vw !important;
+}
+.order__label__disc {
+  font-weight: 600;
+  font-size: 0.729vw;
+  color: #2d3748;
+}
+.modal__flex__disc {
+  margin-top: 1.25vw;
+  display: flex;
+  justify-content: center;
+}
+.active {
+  background: linear-gradient(
+    83.56deg,
+    #7092e0 10.01%,
+    #8baef3 75.36%
+  ) !important;
+  border-radius: 8px 0px 0px 8px !important;
+  font-size: 0.729vw !important;
+  color: #ffffff !important;
+}
+.active2 {
+  background: linear-gradient(
+    83.56deg,
+    #7092e0 10.01%,
+    #8baef3 75.36%
+  ) !important;
+  border-radius: 0px 8px 8px 0px !important;
+  font-size: 0.729vw !important;
+  color: #ffffff !important;
+}
+.search__buttons {
+  margin-top: 0.7vw;
+}
+.left__btn {
+  background: transparent;
+  border: 1px solid #a0aec0;
+  box-sizing: border-box;
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+  border-right: 0;
+  padding: 0.365vw 1.458vw 0.365vw 1.458vw;
+  font-size: 0.729vw;
+  color: #2d3748;
+  font-weight: 400;
+}
+.right__btn {
+  background: transparent;
+  border: 1px solid #a0aec0;
+  box-sizing: border-box;
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+  padding: 0.365vw 1.927vw 0.365vw 1.927vw;
+  font-size: 0.729vw;
+  color: #2d3748;
+  font-weight: 400;
+}
+.header__sec {
+  font-weight: 400;
+  font-size: 0.833vw;
+  color: #a0aec0;
+}
+.header__main {
+  margin: 0;
+  font-weight: 700;
+  font-size: 1.563vw;
+  color: #252f40;
+}
+.header-flex {
+  padding: 1.25vw 2.083vw 0.833vw 2.083vw;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
 .order__table__body::-webkit-scrollbar {
   background: #e2e8f0;
   border-radius: 0.78vw;
@@ -402,9 +592,9 @@
   border-radius: 0.78vw;
   background-color: #e2e8f0;
 }
-.order__table__body{
-    height: 460px;
-    overflow-y: scroll;
+.order__table__body {
+  height: 460px;
+  overflow-y: scroll;
 }
 .dropdown {
   display: inline-block;
@@ -620,13 +810,18 @@
 </style>
 
 <script>
+import DiscountModal from "@/components/DiscountModal.vue";
 export default {
+  components: {
+    DiscountModal,
+  },
   data() {
     return {
+      onStorage: "yes",
       items: [
         {
           img: require("@/assets/img/tshirt.png"),
-          barcode:'876543456',
+          barcode: "876543456",
           name: "Куртка зеленая",
           color: "Белый",
           size: "S",
@@ -637,7 +832,7 @@ export default {
         },
         {
           img: require("@/assets/img/tshirt.png"),
-          barcode:'2146543456',
+          barcode: "2146543456",
           name: "Куртка Черная",
           color: "Белый",
           size: "S",
@@ -648,7 +843,7 @@ export default {
         },
         {
           img: require("@/assets/img/tshirt.png"),
-          barcode:'5246543456',
+          barcode: "5246543456",
           name: "Куртка Белая",
           color: "Белый",
           size: "S",
@@ -659,7 +854,7 @@ export default {
         },
         {
           img: require("@/assets/img/tshirt.png"),
-          barcode:'876543456',
+          barcode: "876543456",
           name: "Куртка зеленая",
           color: "Белый",
           size: "S",
@@ -670,7 +865,7 @@ export default {
         },
         {
           img: require("@/assets/img/tshirt.png"),
-          barcode:'876543456',
+          barcode: "876543456",
           name: "Куртка зеленая",
           color: "Белый",
           size: "S",
@@ -681,7 +876,7 @@ export default {
         },
         {
           img: require("@/assets/img/tshirt.png"),
-          barcode:'876543456',
+          barcode: "876543456",
           name: "Куртка зеленая",
           color: "Белый",
           size: "S",
@@ -692,7 +887,7 @@ export default {
         },
         {
           img: require("@/assets/img/tshirt.png"),
-          barcode:'876543456',
+          barcode: "876543456",
           name: "Куртка зеленая",
           color: "Белый",
           size: "S",
@@ -703,7 +898,7 @@ export default {
         },
         {
           img: require("@/assets/img/tshirt.png"),
-          barcode:'876543456',
+          barcode: "876543456",
           name: "Куртка зеленая",
           color: "Белый",
           size: "S",
@@ -712,19 +907,18 @@ export default {
           count: 2,
           disc: "нет",
         },
-        
       ],
       search: "",
     };
   },
   computed: {
     filteredProducts() {
-        return this.items.filter((item) => {
-          return (
-            item.name.toLowerCase().includes(this.search.toLowerCase()) ||
-            item.barcode.toString().includes(this.search.toLowerCase())
-          );
-        });
+      return this.items.filter((item) => {
+        return (
+          item.name.toLowerCase().includes(this.search.toLowerCase()) ||
+          item.barcode.toString().includes(this.search.toLowerCase())
+        );
+      });
     },
   },
   mounted() {
