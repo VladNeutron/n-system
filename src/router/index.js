@@ -2,7 +2,6 @@ import { createRouter, createWebHistory } from "vue-router";
 import HomeView from "../views/HomeView.vue";
 
 const routes = [
-
   // НАЧАЛЬНЫЕ СТРАНИЦЫ
   {
     path: "/",
@@ -26,7 +25,7 @@ const routes = [
     name: "login",
     component: () => import("../views/LogFormView.vue"),
   },
-  
+
   {
     path: "/company-info",
     name: "company-info",
@@ -46,41 +45,44 @@ const routes = [
   },
   // НАЧАЛЬНЫЕ СТРАНИЦЫ
 
-
-
   //СКЛАДСКОЙ УЧЁТ
   {
     path: "/warehouse-accounting",
     name: "warehouse-accounting",
-    component: () => import("../views/WarehouseAccounting/WarehouseListView.vue"),
+    component: () =>
+      import("../views/WarehouseAccounting/WarehouseListView.vue"),
     meta: { NavLink: "Складской учёт" },
     redirect: "/warehouse-accounting/warehouses",
   },
-    // ИНВЕНТАРИЗАЦИЯ
+  // ИНВЕНТАРИЗАЦИЯ
   {
     path: "/warehouse-accounting/inventorization-list",
     name: "inventorization-list",
-    component: () => import("../views/WarehouseAccounting/InventoryListView.vue"),
+    component: () =>
+      import("../views/WarehouseAccounting/InventoryListView.vue"),
     meta: { NavLink: "Список инвентаризаций" },
   },
   {
     path: "/warehouse-accounting/create-inv-list",
     name: "create-inv-list",
-    component: () => import("../views/WarehouseAccounting/CreateInventoryListView.vue"),
+    component: () =>
+      import("../views/WarehouseAccounting/CreateInventoryListView.vue"),
     meta: { NavLink: "Новая инвентаризация" },
   },
   {
     path: "/warehouse-accounting/edit-inv",
     name: "edit-inv",
-    component: () => import("../views/WarehouseAccounting/EditInventoryView.vue"),
+    component: () =>
+      import("../views/WarehouseAccounting/EditInventoryView.vue"),
     meta: { NavLink: "Редактирование инвентаризации" },
   },
-    // ИНВЕНТАРИЗАЦИЯ
-    // СКЛАДЫ
+  // ИНВЕНТАРИЗАЦИЯ
+  // СКЛАДЫ
   {
     path: "/warehouse-accounting/warehouses",
     name: "warehouses",
-    component: () => import("../views/WarehouseAccounting/WarehouseListView.vue"),
+    component: () =>
+      import("../views/WarehouseAccounting/WarehouseListView.vue"),
     meta: { NavLink: "Список складов" },
   },
   {
@@ -92,11 +94,12 @@ const routes = [
   {
     path: "/warehouse-accounting/create-storage",
     name: "create-storage",
-    component: () => import("../views/WarehouseAccounting/CreateStorageView.vue"),
+    component: () =>
+      import("../views/WarehouseAccounting/CreateStorageView.vue"),
     meta: { NavLink: "Создание склада" },
   },
-    // СКЛАДЫ
-    // ПЕРЕМЕЩЕНИЕ
+  // СКЛАДЫ
+  // ПЕРЕМЕЩЕНИЕ
   {
     path: "/warehouse-accounting/create-movement",
     name: "create-movement",
@@ -109,8 +112,8 @@ const routes = [
     component: () => import("../views/WarehouseAccounting/MoveListView.vue"),
     meta: { NavLink: "Список перемещений" },
   },
-    // ПЕРЕМЕЩЕНИЕ
-    // ОПРИХОДОВАНИЕ
+  // ПЕРЕМЕЩЕНИЕ
+  // ОПРИХОДОВАНИЕ
   {
     path: "/warehouse-accounting/create-oprih",
     name: "create-oprih",
@@ -123,8 +126,8 @@ const routes = [
     component: () => import("../views/WarehouseAccounting/PostingListView.vue"),
     meta: { NavLink: "Список оприходований" },
   },
-    // ОПРИХОДОВАНИЕ
-    // СПИСАНИЕ
+  // ОПРИХОДОВАНИЕ
+  // СПИСАНИЕ
   {
     path: "/warehouse-accounting/create-writeoff",
     name: "create-writeoff",
@@ -134,23 +137,20 @@ const routes = [
   {
     path: "/warehouse-accounting/write-off",
     name: "write-off",
-    component: () => import("../views/WarehouseAccounting/WriteOffListView.vue"),
+    component: () =>
+      import("../views/WarehouseAccounting/WriteOffListView.vue"),
     meta: { NavLink: "Список списаний" },
   },
-    // СПИСАНИЕ
-    // НАЛИЧИЕ НА СКЛАДЕ
+  // СПИСАНИЕ
+  // НАЛИЧИЕ НА СКЛАДЕ
   {
     path: "/warehouse-accounting/available-warehouse",
     name: "available-warehouse",
-    component: () => import("../views/WarehouseAccounting/WarehouseAvailabilityView.vue"),
+    component: () =>
+      import("../views/WarehouseAccounting/WarehouseAvailabilityView.vue"),
     meta: { NavLink: "Наличие на складе" },
   },
-    // НАЛИЧИЕ НА СКЛАДЕ
-    
-
-  
-  
-  
+  // НАЛИЧИЕ НА СКЛАДЕ
 
   //PRODUCT-ACCOUNTING
   {
@@ -159,7 +159,7 @@ const routes = [
     component: () => import("../views/ProductsAccounting/ProductListView.vue"),
     meta: { NavLink: "Учёт товаров" },
   },
-    // СПИСОК ТОВАРОВ
+  // СПИСОК ТОВАРОВ
   {
     path: "/products-accounting/product-list",
     name: "product-list",
@@ -178,44 +178,41 @@ const routes = [
     component: () => import("../views/ProductsAccounting/ProductView.vue"),
     meta: { NavLink: "Карточка товара" },
   },
-    // СПИСОК ТОВАРОВ
-    // ПЕЧАТЬ ШТРИХКОДОВ
+  // СПИСОК ТОВАРОВ
+  // ПЕЧАТЬ ШТРИХКОДОВ
   {
     path: "/products-accounting/barcode",
     name: "barcode",
     component: () => import("../views/ProductsAccounting/Barcode.vue"),
     meta: { NavLink: "Печать штрихкодов" },
   },
-    // ПЕЧАТЬ ШТРИХКОДОВ
-    // КАТЕГОРИИ
+  // ПЕЧАТЬ ШТРИХКОДОВ
+  // КАТЕГОРИИ
   {
     path: "/products-accounting/category-list",
     name: "category-list",
     component: () => import("../views/ProductsAccounting/CategoryListView.vue"),
     meta: { NavLink: "Категории" },
   },
-    // КАТЕГОРИИ
-    // СКИДКИ
+  // КАТЕГОРИИ
+  // СКИДКИ
   {
     path: "/products-accounting/discounts",
     name: "discounts",
-    component: () => import("../views/ProductsAccounting/DiscountsListView.vue"),
+    component: () =>
+      import("../views/ProductsAccounting/DiscountsListView.vue"),
     meta: { NavLink: "Список скидок" },
   },
-    // СКИДКИ
-    // ХАРАКТЕРИСТИКИ
+  // СКИДКИ
+  // ХАРАКТЕРИСТИКИ
   {
     path: "/products-accounting/characteristics",
     name: "characteristics",
-    component: () => import("../views/ProductsAccounting/CharacteristicsView.vue"),
+    component: () =>
+      import("../views/ProductsAccounting/CharacteristicsView.vue"),
     meta: { NavLink: "Характеристики" },
   },
-    // ХАРАКТЕРИСТИКИ
-
-
-
-
-
+  // ХАРАКТЕРИСТИКИ
 
   // ПРОДАЖИ
   {
@@ -235,6 +232,12 @@ const routes = [
     name: "order",
     component: () => import("../views/Sales/OrderView.vue"),
     meta: { NavLink: "Заказ" },
+  },
+  {
+    path: "/sales/order-list",
+    name: "order-list",
+    component: () => import("../views/Sales/OrderListView.vue"),
+    meta: { NavLink: "Список заказов" },
   },
   // ПРОДАЖИ
 
