@@ -237,6 +237,19 @@ const routes = [
     meta: { NavLink: "Заказ" },
   },
   // ПРОДАЖИ
+
+
+
+
+  // КАССА
+  {
+    path: "/cash-register/cash-register-sale",
+    name: "cash-register-sale",
+    component: () => import("../views/CashRegister/CashRegisterSale.vue"),
+    meta: { NavLink: "Окно продажи" },
+  },
+  // КАССА
+
 ];
 
 const router = createRouter({

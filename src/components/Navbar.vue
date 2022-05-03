@@ -186,10 +186,10 @@
       
       
             <li class="nav-item ">
-              <a class="nav-link " href="./applications/analytics.html">
+              <router-link :to="{ name: 'characteristics'}" class="nav-link ">
                 <span class="sidenav-mini-icon"> Х </span>
                 <span class="sidenav-normal"> Характеристики </span>
-              </a>
+              </router-link>
             </li>
       
       
