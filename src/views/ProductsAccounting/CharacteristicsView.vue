@@ -12,7 +12,21 @@
           <div class="character">
             <div class="character__header">
               <div>
-                <p class="character__main">Размеры</p>
+                <div class="d-flex">
+                  <p class="character__main">Размеры</p>
+                  <img
+                    src="@/assets/img/edit.svg"
+                    style="
+                      width: 1.042vw;
+                      margin-left: 0.833vw;
+                      cursor: pointer;
+                    "
+                    @click="isColor = 'sizes'"
+                    data-bs-toggle="modal"
+                    data-bs-target="#InpModal"
+                    alt=""
+                  />
+                </div>
                 <p class="character__sec">Настройка характеристики товаров</p>
               </div>
               <button class="btn save__btn">
@@ -80,7 +94,7 @@
                             href="#"
                             data-bs-toggle="modal"
                             data-bs-target="#InpModal"
-                            @click="isColor = false"
+                            @click="isColor = 'size'"
                             >Редактировать</a
                           >
                           <hr />
@@ -171,7 +185,7 @@
                             href="#"
                             data-bs-toggle="modal"
                             data-bs-target="#InpModal"
-                            @click="isColor = true"
+                            @click="isColor = 'color'"
                             >Редактировать</a
                           >
                           <hr />
@@ -195,15 +209,18 @@
   </main>
   <inputs-modal>
     <template #head>
-      <div class="modal__header" v-if="isColor">
+      <div class="modal__header" v-if="isColor == 'color'">
         <p class="modal__main">Редактирование цвета</p>
       </div>
-      <div class="modal__header" v-else>
+      <div class="modal__header" v-if="isColor == 'size'">
         <p class="modal__main">Редактирование размера</p>
+      </div>
+      <div class="modal__header" v-if="isColor == 'sizes'">
+        <p class="modal__main">Редактирование названия</p>
       </div>
     </template>
     <template #body>
-      <div class="modal__body" v-if="isColor">
+      <div class="modal__body" v-if="isColor == 'color'">
         <div class="form-group">
           <label for="exampleFormControlInput1" class="modal__label"
             >Название цвета</label
@@ -216,7 +233,7 @@
           />
         </div>
       </div>
-      <div class="modal__body" v-else>
+      <div class="modal__body" v-if="isColor == 'size'">
         <div class="form-group">
           <label for="exampleFormControlInput1" class="modal__label"
             >Название размера</label
@@ -226,6 +243,19 @@
             class="form-control"
             id="exampleFormControlInput1"
             placeholder="Новый размер"
+          />
+        </div>
+      </div>
+      <div class="modal__body" v-if="isColor == 'sizes'">
+        <div class="form-group">
+          <label for="exampleFormControlInput1" class="modal__label"
+            >Название характеристики</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            id="exampleFormControlInput1"
+            placeholder="Новое название"
           />
         </div>
       </div>
@@ -246,7 +276,7 @@ export default {
   },
   data() {
     return {
-      isColor: false,
+      isColor: "",
       sizes: [
         {
           size: "XXL",
