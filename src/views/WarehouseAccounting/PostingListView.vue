@@ -11,7 +11,11 @@
           <div class="card">
             <div class="inv__buttons">
               <div class="inv__left__btn">
-                <button type="button" class="btn bg-gradient-secondary" onclick="window.location.href = '/warehouse-accounting/create-oprih'">
+                <button
+                  type="button"
+                  class="btn bg-gradient-secondary"
+                  onclick="window.location.href = '/warehouse-accounting/create-oprih'"
+                >
                   + Создать оприходование
                 </button>
               </div>
@@ -28,14 +32,7 @@
                     />
                   </div>
                 </div>
-                <button type="button" class="inv__btn btn btn-outline-dark">
-                  <img
-                    src="@/assets/img/filter.svg"
-                    style="width: 1.25vw; margin-right: 0.417vw"
-                    alt=""
-                  />
-                  фильтры
-                </button>
+                <filters-button></filters-button>
                 <button type="button" class="inv__btn btn btn-outline-dark">
                   <img
                     src="@/assets/img/print.svg"
@@ -60,7 +57,9 @@
                   <thead>
                     <tr>
                       <th scope="col" class="th__col">№</th>
-                      <th scope="col" class="th__col" width="5%">№ Документа</th>
+                      <th scope="col" class="th__col" width="5%">
+                        № Документа
+                      </th>
                       <th scope="col" class="th__col">Дата и время</th>
                       <th scope="col" class="th__col">Склад</th>
                       <th scope="col" class="th__col">Ответственный</th>
@@ -107,51 +106,93 @@
       </div>
     </div>
     <delete-modal>
-        <template #header>
-          <p class="modal__title">
-            Вы уверены, что хотите удалить документ “Оприходование №1”?
-          </p>
-        </template>
+      <template #header>
+        <p class="modal__title">
+          Вы уверены, что хотите удалить документ “Оприходование №1”?
+        </p>
+      </template>
     </delete-modal>
+    <filters>
+      <div class="filters__period__flex">
+        <div class="filter__name__standart">Выберите период</div>
+        <div class="reset__date">Сбросить период</div>
+      </div>
+      <div class="filters__period">
+        <div class="form-group">
+          <input
+            class="form-control"
+            type="date"
+            id="example-date-input"
+          />
+        </div>
+        <div>
+          <img src="@/assets/img/line.svg" style="width: 1.927vw" alt="" />
+        </div>
+        <div class="form-group">
+          <input
+            class="form-control"
+            type="date"
+            id="example-date-input"
+          />
+        </div>
+      </div>
+
+      <div class="filter__name__standart">Склад</div>
+      <select class="form-select">
+        <option value="" disabled selected>Выберите склад</option>
+        <option>Склад 1</option>
+        <option>Склад 2</option>
+      </select>
+      <div class="filter__name__standart mt-3">Ответственный</div>
+      <select class="form-select">
+        <option value="" disabled selected>Выберите ответственного</option>
+        <option>Открыт</option>
+        <option>Закрыт</option>
+      </select>
+    </filters>
   </main>
 </template>
 
 <script>
+import Filters from "@/components/Filters.vue";
+import FiltersButton from "@/components/buttons/FiltersButton.vue";
 import DeleteModal from "@/components/DeleteModal.vue";
 export default {
   components: {
     DeleteModal,
+    Filters,
+    FiltersButton,
   },
   data() {
     return {
       items: [
         {
           date: "11 янв, 19:23, 2021",
-          id:"23",
+          id: "23",
           place: "ТРЦ Москва",
           name: "Мильчаков Валерий",
           isReady: "Завершена",
           count: "15",
         },
-         {
+        {
           date: "11 янв, 19:23, 2021",
-          id:"23",
+          id: "23",
           place: "ТРЦ Москва",
           name: "Мильчаков Валерий",
           isReady: "Завершена",
           count: "15",
         },
-         {
+        {
           date: "11 янв, 19:23, 2021",
-          id:"23",
+          id: "23",
           place: "ТРЦ Москва",
           name: "Мильчаков Валерий",
           isReady: "Завершена",
           count: "15",
         },
-         {
+        {
           date: "11 янв, 19:23, 2021",
-          id:"23",
+          id: "23",
           place: "ТРЦ Москва",
           name: "Мильчаков Валерий",
           isReady: "Завершена",
@@ -216,7 +257,7 @@ th {
 .inv__content {
   padding-left: 1.354vw;
   padding-right: 1.354vw;
-  height: 33.469vw;
+  height: 30.469vw;
   overflow-y: scroll;
 }
 .inv__btn {
@@ -241,7 +282,7 @@ th {
   padding-top: 0.729vw;
   padding-left: 1.25vw;
   padding-right: 1.25vw;
-  padding-bottom:2.083vw;
+  padding-bottom: 2.083vw;
   display: flex;
   justify-content: space-between;
 }

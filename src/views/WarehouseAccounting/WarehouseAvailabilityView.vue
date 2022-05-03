@@ -66,7 +66,7 @@
                   <tr>
                     <th scope="col" class="">№</th>
                     <th scope="col" class="">Товар</th>
-                    <th scope="col" class="">Штрихкод</th>
+                    <th scope="col" class="">Артикул</th>
                     <th scope="col" class="">Цвет</th>
                     <th scope="col" class="">Размер</th>
                     <th scope="col" class="">Склад</th>

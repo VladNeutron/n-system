@@ -26,10 +26,7 @@
                       />
                     </div>
                   </div>
-                  <button class="btn btn-outline-dark">
-                    <i class="ni-tablet-button"></i>
-                    Фильтры
-                  </button>
+                  <filters-button class="mb-3"></filters-button>
                 </div>
               </div>
               <div class="table">
@@ -78,11 +75,32 @@
         </div>
     </div>
   </div>
+  <filters>
+    <div class="filter__name__standart">Тип склада</div>
+    <select class="form-select">
+      <option value="" disabled selected>Выберите склад </option>
+      <option>Склад 1</option>
+      <option>Склад 2</option>
+    </select>  
+    <div class="filter__name__standart mt-3">Статус склада</div>
+    <select class="form-select">
+      <option value="" disabled selected>Выберите статус склада </option>
+      <option>Открыт</option>
+      <option>Закрыт</option>
+    </select> 
+  </filters>
   </main>
 </template>
 
 <script>
-export default {};
+import Filters from "@/components/Filters.vue";
+import FiltersButton from "@/components/buttons/FiltersButton.vue";
+
+export default {
+  components:{
+    Filters, FiltersButton
+  }  
+};
 </script>
 
 <style scoped>

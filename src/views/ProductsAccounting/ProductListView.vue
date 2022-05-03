@@ -23,7 +23,7 @@
                       class="form-control form-control-lg inv__inp"
                       placeholder="Поиск"
                       type="text"
-                       id="search"
+                      id="search"
                       v-model.trim="search"
                     />
                   </div>
@@ -43,14 +43,7 @@
                 </button>
               </div>
               <div class="inv__right__btn">
-                <button type="button" class="inv__btn btn btn-outline-dark">
-                  <img
-                    src="@/assets/img/filter.svg"
-                    style="width: 1.25vw; margin-right: 0.417vw"
-                    alt=""
-                  />
-                  фильтры
-                </button>
+                <filters-button></filters-button>
                 <button type="button" class="inv__btn btn btn-outline-dark">
                   <img
                     src="@/assets/img/print.svg"
@@ -116,10 +109,27 @@
                       <th scope="row" style="border-right: 0" width="1%">
                         {{ i + 1 }}
                       </th>
-                      <td style="border-left: 0; border-right: 0; display: flex; justify-content: center;" ><img :src=item.img style="margin-right:0.833vw">{{item.name}}</td>
-                      <td style="border-left: 0; border-right: 0">{{item.category}}</td>
-                      <td style="border-left: 0; border-right: 0">{{item.costPrice}}</td>
-                      <td style="border-left: 0; border-right: 0">{{item.price}}</td>
+                      <td
+                        style="
+                          border-left: 0;
+                          border-right: 0;
+                          display: flex;
+                          justify-content: center;
+                        "
+                      >
+                        <img :src="item.img" style="margin-right: 0.833vw" />{{
+                          item.name
+                        }}
+                      </td>
+                      <td style="border-left: 0; border-right: 0">
+                        {{ item.category }}
+                      </td>
+                      <td style="border-left: 0; border-right: 0">
+                        {{ item.costPrice }}
+                      </td>
+                      <td style="border-left: 0; border-right: 0">
+                        {{ item.price }}
+                      </td>
                       <td style="border-left: 0">
                         <div class="dropdown">
                           <img
@@ -260,14 +270,45 @@
         </div>
       </template>
     </inputs-modal>
+    <filters>
+      <div class="filter__name__standart">Категория</div>
+      <select class="form-select">
+        <option value="" disabled selected>Выберите категорию</option>
+        <option>Склад 1</option>
+        <option>Склад 2</option>
+      </select>
+      <div class="filter__name__standart mt-3">Склад</div>
+      <select class="form-select">
+        <option value="" disabled selected>Выберите склад</option>
+        <option>Открыт</option>
+        <option>Закрыт</option>
+      </select>
+      <div class="form-check" style="text-align: left; margin-top: 0.833vw">
+        <input
+          class="form-check-input"
+          type="checkbox"
+          value=""
+          id="fcustomCheck1"
+        />
+        <label
+          class="custom-control-label filters__checkbox__label"
+          for="customCheck1"
+          >Есть в наличии</label
+        >
+      </div>
+    </filters>
   </main>
 </template>
 
 <script>
+import Filters from "@/components/Filters.vue";
+import FiltersButton from "@/components/buttons/FiltersButton.vue";
 import InputsModal from "../../components/InputsModal.vue";
 export default {
   components: {
     InputsModal,
+    Filters,
+    FiltersButton,
   },
   data() {
     return {
@@ -280,68 +321,67 @@ export default {
           costPrice: "12 000 ₸",
           price: "29 000 ₸",
         },
-         {
+        {
           img: require("@/assets/img/green.png"),
           name: "Куртка зеленая",
           category: "Верхняя одежда",
           costPrice: "12 000 ₸",
           price: "29 000 ₸",
         },
-         {
+        {
           img: require("@/assets/img/green.png"),
           name: "Куртка зеленая",
           category: "Верхняя одежда",
           costPrice: "12 000 ₸",
           price: "29 000 ₸",
         },
-         {
+        {
           img: require("@/assets/img/green.png"),
           name: "Куртка зеленая",
           category: "Верхняя одежда",
           costPrice: "12 000 ₸",
           price: "29 000 ₸",
         },
-         {
+        {
           img: require("@/assets/img/green.png"),
           name: "Куртка зеленая",
           category: "Верхняя одежда",
           costPrice: "12 000 ₸",
           price: "29 000 ₸",
         },
-         {
+        {
           img: require("@/assets/img/green.png"),
           name: "Куртка зеленая",
           category: "Верхняя одежда",
           costPrice: "12 000 ₸",
           price: "29 000 ₸",
         },
-         {
+        {
           img: require("@/assets/img/green.png"),
           name: "Куртка зеленая",
           category: "Верхняя одежда",
           costPrice: "12 000 ₸",
           price: "29 000 ₸",
         },
-         {
+        {
           img: require("@/assets/img/green.png"),
           name: "Куртка зеленая",
           category: "Верхняя одежда",
           costPrice: "12 000 ₸",
           price: "29 000 ₸",
         },
-
       ],
-      search:""
+      search: "",
     };
   },
-    computed: {
+  computed: {
     filteredProducts() {
-        return this.items.filter((item) => {
-          return (
-            item.name.toLowerCase().includes(this.search.toLowerCase()) ||
-            item.category.toLowerCase().includes(this.search.toLowerCase())
-          );
-        });
+      return this.items.filter((item) => {
+        return (
+          item.name.toLowerCase().includes(this.search.toLowerCase()) ||
+          item.category.toLowerCase().includes(this.search.toLowerCase())
+        );
+      });
     },
   },
 };

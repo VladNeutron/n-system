@@ -267,7 +267,33 @@
         </div>
       
     <barcode-modal :selectedArray="selectedProducts" :option="activeOption"></barcode-modal>  
-    <filters></filters>
+    <filters>
+       <div class="filter__name__standart">Категория</div>
+      <select class="form-select">
+        <option value="" disabled selected>Выберите категорию</option>
+        <option>Склад 1</option>
+        <option>Склад 2</option>
+      </select>
+      <div class="filter__name__standart mt-3">Склад</div>
+      <select class="form-select">
+        <option value="" disabled selected>Выберите склад</option>
+        <option>Открыт</option>
+        <option>Закрыт</option>
+      </select>
+      <div class="form-check" style="text-align: left; margin-top: 0.833vw">
+        <input
+          class="form-check-input"
+          type="checkbox"
+          value=""
+          id="fcustomCheck1"
+        />
+        <label
+          class="custom-control-label filters__checkbox__label"
+          for="customCheck1"
+          >Есть в наличии</label
+        >
+      </div>
+    </filters>
   </main>
   <div class="printContainer">
 
