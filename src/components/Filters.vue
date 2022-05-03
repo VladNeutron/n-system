@@ -11,6 +11,11 @@
         </div>
         <img src="@/assets/img/filtersClose.svg" alt="" class="filters__close__img" @click="filtersClose">    
       </div>
+      <div class="filters__body">
+          <slot>
+              Фильтр
+          </slot>
+      </div>
   </div>
 </template>
 
@@ -70,5 +75,14 @@ export default {
 }
 .filters__close__img{
     cursor: pointer;
+}
+.filters__body{
+    padding: 1.667vw 2.083vw 1.563vw 2.083vw;
+}
+.filters__body .filter__name__standart{
+    font-weight: 600;
+    font-size: 20px;
+    color: #2D3748;
+    text-align: left;
 }
 </style>
