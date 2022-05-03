@@ -43,14 +43,7 @@
                 </button>
               </div>
               <div class="inv__right__btn">
-                <button type="button" class="inv__btn btn btn-outline-dark">
-                  <img
-                    src="@/assets/img/filter.svg"
-                    style="width: 1.25vw; margin-right: 0.417vw"
-                    alt=""
-                  />
-                  фильтры
-                </button>
+                <filters-button></filters-button>
                 <button type="button" class="inv__btn btn btn-outline-dark">
                   <img
                     src="@/assets/img/print.svg"
@@ -248,18 +241,47 @@
         </div>
       </template>
     </inputs-modal>
+    <filters>
+      <div class="filter__name__standart">Категории</div>
+      <select class="form-select">
+        <option value="" disabled selected>Выберите категорию</option>
+        <option v-if="check">Верхняя Одежда</option>
+        <option v-if="check">Штаны</option>
+        <option v-if="!check">Тренч</option>
+        <option v-if="!check">Пальто</option>
+      </select>
+      <div class="form-check" style="text-align: left; margin-top: 0.833vw">
+        <input
+          class="form-check-input"
+          type="checkbox"
+          value=""
+          id="fcustomCheck1"
+          @click="check = !check"
+        />
+        <label
+          class="custom-control-label filters__checkbox__label"
+          for="fcustomCheck1"
+          >Показывать только основные категории</label
+        >
+      </div>
+    </filters>
   </main>
 </template>
 
 <script>
+import Filters from "@/components/Filters.vue";
+import FiltersButton from "@/components/buttons/FiltersButton.vue";
 import InputsModal from "../../components/InputsModal.vue";
 export default {
   components: {
     InputsModal,
+    Filters,
+    FiltersButton,
   },
   data() {
     return {
-        selected: '',
+      check: false,
+      selected: "",
       items: [
         {
           id: "0",
@@ -320,16 +342,15 @@ export default {
       search: "",
       selected: "",
     };
-    
   },
   computed: {
     filteredCategory() {
-        return this.items.filter((item) => {
-          return (
-            item.category.toLowerCase().includes(this.search.toLowerCase()) ||
-            item.maincat.toLowerCase().includes(this.search.toLowerCase())
-          );
-        });
+      return this.items.filter((item) => {
+        return (
+          item.category.toLowerCase().includes(this.search.toLowerCase()) ||
+          item.maincat.toLowerCase().includes(this.search.toLowerCase())
+        );
+      });
     },
   },
 };
@@ -423,8 +444,8 @@ hr {
 .th__col {
   color: #a0aec0 !important;
 }
-th{
-    text-transform: uppercase;
+th {
+  text-transform: uppercase;
 }
 td,
 th {

@@ -28,14 +28,7 @@
                     />
                   </div>
                 </div>
-                <button type="button" class="inv__btn btn btn-outline-dark">
-                  <img
-                    src="@/assets/img/filter.svg"
-                    style="width: 1.25vw; margin-right: 0.417vw"
-                    alt=""
-                  />
-                  фильтры
-                </button>
+               <filters-button></filters-button>
                 <button type="button" class="inv__btn btn btn-outline-dark">
                   <img
                     src="@/assets/img/print.svg"
@@ -113,14 +106,62 @@
           </p>
         </template>
     </delete-modal>
+     <filters>
+      <div class="filters__period__flex">
+        <div class="filter__name__standart">Выберите период</div>
+        <div class="reset__date">Сбросить период</div>
+      </div>
+      <div class="filters__period">
+        <div class="form-group">
+          <input
+            class="form-control"
+            type="date"
+            id="example-date-input"
+          />
+        </div>
+        <div>
+          <img src="@/assets/img/line.svg" style="width: 1.927vw" alt="" />
+        </div>
+        <div class="form-group">
+          <input
+            class="form-control"
+            type="date"
+            id="example-date-input"
+          />
+        </div>
+      </div>
+
+      <div class="filter__name__standart">Отправитель</div>
+      <select class="form-select">
+        <option value="" disabled selected>Выберите отправителя</option>
+        <option>Склад 1</option>
+        <option>Склад 2</option>
+      </select>
+      <div class="filter__name__standart mt-3">Получатель</div>
+      <select class="form-select">
+        <option value="" disabled selected>Выберите получателя</option>
+        <option>Открыт</option>
+        <option>Закрыт</option>
+      </select>
+       <div class="filter__name__standart mt-3">Ответственный</div>
+      <select class="form-select">
+        <option value="" disabled selected>Выберите ответственного</option>
+        <option>Открыт</option>
+        <option>Закрыт</option>
+      </select>
+    </filters>
   </main>
 </template>
 
 <script>
+import Filters from "@/components/Filters.vue";
+import FiltersButton from "@/components/buttons/FiltersButton.vue";
 import DeleteModal from "@/components/DeleteModal.vue";
 export default {
   components: {
     DeleteModal,
+    Filters,
+    FiltersButton,
   },
   data() {
     return {
@@ -219,7 +260,7 @@ th {
 .inv__content {
   padding-left: 1.354vw;
   padding-right: 1.354vw;
-  height: 33.469vw;
+  height: 30.469vw;
   overflow-y: scroll;
 }
 
