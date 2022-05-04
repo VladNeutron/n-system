@@ -85,7 +85,7 @@
                             alt=""
                           />
                           <div class="dropdown-content">
-                            <a href="#">Редактировать</a>
+                            <a href="/warehouse-accounting/edit-posting/">Редактировать</a>
                             <hr />
                             <a
                               style="cursor: pointer"

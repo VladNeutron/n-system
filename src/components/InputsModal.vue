@@ -58,12 +58,6 @@
   font-size: 1.563vw;
   color: #252f40;
 }
-.header-flex {
-  padding: 1.25vw 2.083vw 0.833vw 2.083vw;
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline
-}
 .fade {
   background: linear-gradient(
     83.56deg,
@@ -89,11 +83,10 @@
   border-top: 0;
   padding-bottom: 2.083vw;
 }
-/* .modal__padding {
-  padding-top: 1.563vw;
-  padding-left: 6.667vw;
-  padding-right: 6.667vw;
-} */
+.modal__padding {
+  padding-left:2.083vw;
+  padding-right: 2.083vw;
+}
 .modal__title {
 font-weight: 600;
 font-size: 1.042vw;

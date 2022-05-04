@@ -79,7 +79,7 @@
                             alt=""
                           />
                           <div class="dropdown-content">
-                            <a href="#">Редактировать</a>
+                            <a href="/warehouse-accounting/edit-move/">Редактировать</a>
                             <hr />
                             <a
                               style="cursor: pointer"
