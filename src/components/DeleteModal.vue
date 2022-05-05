@@ -10,11 +10,16 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header header-flex">
-          <div style="text-align:left">
-            <p class="header__main">Удаление записи</p>
+          <div style="text-align: left">
+            <slot name="head">Удаление записи</slot>
             <p class="header__sec">Подтвердите свои действия</p>
           </div>
-          <img src="@/assets/img/closemodal.svg" style="width:1.25vw; cursor:pointer" alt="" data-bs-dismiss="modal">
+          <img
+            src="@/assets/img/closemodal.svg"
+            style="width: 1.25vw; cursor: pointer"
+            alt=""
+            data-bs-dismiss="modal"
+          />
         </div>
         <div class="modal-body modal__padding">
           <slot name="header">default header</slot>
@@ -45,7 +50,24 @@
 <script>
 export default {};
 </script>
-
+<style>
+.header__sec {
+  font-weight: 400;
+  font-size: 0.833vw;
+  color: #a0aec0;
+}
+.header__main {
+  margin: 0;
+  font-weight: 700;
+  font-size: 1.563vw;
+  color: #252f40;
+}
+.modal__body__text {
+  font-weight: 600;
+  font-size: 1.042vw;
+  color: #2d3748;
+}
+</style>
 <style scoped>
 .header__sec {
   font-weight: 400;
@@ -62,7 +84,7 @@ export default {};
   padding: 1.25vw 2.083vw 0.833vw 2.083vw;
   display: flex;
   justify-content: space-between;
-  align-items: baseline
+  align-items: baseline;
 }
 .fade {
   background: linear-gradient(
@@ -94,9 +116,9 @@ export default {};
   padding-right: 6.667vw;
 }
 .modal__title {
-font-weight: 600;
-font-size: 1.042vw;
-color: #2D3748;
+  font-weight: 600;
+  font-size: 1.042vw;
+  color: #2d3748;
 }
 .modal-dialog {
   max-width: 34.219vw;
