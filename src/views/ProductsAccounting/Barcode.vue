@@ -34,7 +34,7 @@
                     </div>
 
                     <div class="topbuttons__contRight">
-                      <button class="btn btn-outline-dark mb-0 reloadData__btn">
+                      <button class="btn btn-outline-dark reloadData__btn">
                         <img src="@/assets/img/reloadData.svg" class="reloadDataImg" alt="">
                         Обновить данные
                       </button>
