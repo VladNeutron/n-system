@@ -282,6 +282,18 @@ const routes = [
     component: () => import("../views/CashRegister/CashListView.vue"),
     meta: { NavLink: "Список касс" },
   },
+  {
+    path: "/cash-register/checks-list",
+    name: "checks-list",
+    component: () => import("../views/CashRegister/ChecksList.vue"),
+    meta: { NavLink: "Список чеков" },
+  },
+  {
+    path: "/cash-register/cash-startup",
+    name: "cash-startup",
+    component: () => import("../views/CashRegister/CashStartUp.vue"),
+    meta: { NavLink: "Стартовое окно" },
+  },
   // КАССА
 
 
