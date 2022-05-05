@@ -88,7 +88,7 @@
                 <tbody>
                   <!-- v-for="(item, i) in filteredDiscounts" :key="item" -->
                   <tr v-for="item in filteredProducts" :key="item">
-                    <td style="border-right: 0">{{ item.name }}</td>
+                    <td style="border-right: 0;">{{ item.name }}</td>
                     <td style="border-left: 0; border-right: 0">
                       {{ item.color }}
                     </td>
@@ -261,6 +261,9 @@ export default {
 </script>
 
 <style scoped>
+/* td{
+  height: 40px !important;
+} */
 .active {
   background: linear-gradient(
     83.56deg,

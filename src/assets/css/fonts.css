@@ -5,3 +5,6 @@
 html, body{
     font-family: 'Open Sans', sans-serif;
 }
+.btn{
+    text-transform: none !important;
+}

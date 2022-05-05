@@ -112,6 +112,12 @@ const routes = [
     component: () => import("../views/WarehouseAccounting/MoveListView.vue"),
     meta: { NavLink: "Список перемещений" },
   },
+  {
+    path: "/warehouse-accounting/edit-move",
+    name: "edit-move",
+    component: () => import("../views/WarehouseAccounting/EditMoveListView.vue"),
+    meta: { NavLink: "Перемещение" },
+  },
   // ПЕРЕМЕЩЕНИЕ
   // ОПРИХОДОВАНИЕ
   {
@@ -125,6 +131,12 @@ const routes = [
     name: "post-list",
     component: () => import("../views/WarehouseAccounting/PostingListView.vue"),
     meta: { NavLink: "Список оприходований" },
+  },
+  {
+    path: "/warehouse-accounting/edit-posting",
+    name: "edit-posting",
+    component: () => import("../views/WarehouseAccounting/EditPostingListView.vue"),
+    meta: { NavLink: "Оприходование" },
   },
   // ОПРИХОДОВАНИЕ
   // СПИСАНИЕ
@@ -140,6 +152,13 @@ const routes = [
     component: () =>
       import("../views/WarehouseAccounting/WriteOffListView.vue"),
     meta: { NavLink: "Список списаний" },
+  },
+  {
+    path: "/warehouse-accounting/edit-writeoff",
+    name: "edit-writeoff",
+    component: () =>
+      import("../views/WarehouseAccounting/EditWriteOffListView.vue"),
+    meta: { NavLink: "Списание" },
   },
   // СПИСАНИЕ
   // НАЛИЧИЕ НА СКЛАДЕ
@@ -239,6 +258,12 @@ const routes = [
     component: () => import("../views/Sales/OrderListView.vue"),
     meta: { NavLink: "Список заказов" },
   },
+   {
+    path: "/sales/client-list",
+    name: "client-list",
+    component: () => import("../views/Sales/ClientList.vue"),
+    meta: { NavLink: "Клиентская база" },
+  },
   // ПРОДАЖИ
 
 
@@ -251,7 +276,26 @@ const routes = [
     component: () => import("../views/CashRegister/CashRegisterSale.vue"),
     meta: { NavLink: "Окно продажи" },
   },
+  {
+    path: "/cash-register/cash-list",
+    name: "cash-list",
+    component: () => import("../views/CashRegister/CashListView.vue"),
+    meta: { NavLink: "Список касс" },
+  },
+  {
+    path: "/cash-register/checks-list",
+    name: "checks-list",
+    component: () => import("../views/CashRegister/ChecksList.vue"),
+    meta: { NavLink: "Список чеков" },
+  },
+  {
+    path: "/cash-register/cash-startup",
+    name: "cash-startup",
+    component: () => import("../views/CashRegister/CashStartUp.vue"),
+    meta: { NavLink: "Стартовое окно" },
+  },
   // КАССА
+
 
 ];
 

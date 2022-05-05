@@ -1,10 +1,10 @@
 <template>
   <div
     class="modal fade"
-    id="InpModal"
+    id="DiscModal"
     tabindex="-1"
     role="dialog"
-    aria-labelledby="InpModal"
+    aria-labelledby="DiscModal"
     aria-hidden="true"
   >
     <div class="modal-dialog modal-dialog-centered" role="document">
@@ -27,7 +27,8 @@
 
 <script>
 </script>
-<style>
+
+<style scoped>
 .header__sec {
   font-weight: 400;
   font-size: 0.833vw;
@@ -40,23 +41,10 @@
   color: #252f40;
 }
 .header-flex {
-  padding: 1.25vw 2.083vw 0.833vw 2.083vw;
+  padding: 1.25vw 1.25vw 0.833vw 1.25vw;
   display: flex;
   justify-content: space-between;
   align-items: baseline
-}
-</style>
-<style scoped>
-.header__sec {
-  font-weight: 400;
-  font-size: 0.833vw;
-  color: #a0aec0;
-}
-.header__main {
-  margin: 0;
-  font-weight: 700;
-  font-size: 1.563vw;
-  color: #252f40;
 }
 .fade {
   background: linear-gradient(
@@ -83,16 +71,17 @@
   border-top: 0;
   padding-bottom: 2.083vw;
 }
-.modal__padding {
-  padding-left:2.083vw;
-  padding-right: 2.083vw;
-}
+/* .modal__padding {
+  padding-top: 1.563vw;
+  padding-left: 6.667vw;
+  padding-right: 6.667vw;
+} */
 .modal__title {
 font-weight: 600;
 font-size: 1.042vw;
 color: #2D3748;
 }
 .modal-dialog {
-  max-width: 28.854vw;
+  max-width: 22.396vw;
 }
 </style>
