@@ -1,10 +1,6 @@
 <template>
   <button type="button" class="inv__btn btn btn-outline-dark openFilters" @click="openFilters">
-    <img
-      src="@/assets/img/filter.svg"
-      style="width: 1.25vw; margin-right: 0.417vw"
-      alt=""
-    />
+
     фильтры
   </button>
 

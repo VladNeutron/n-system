@@ -435,13 +435,13 @@
 
 .order__ready__sum {
   font-weight: 600;
-  font-size: 1.875vw;
+  font-size: 1vw;
   color: #2D3748;
 }
 
 .order__ready_block {
   margin-left: 28.073vw;
-  margin-top: 1.25vw;
+  margin-top: 8px;
   display: flex;
   justify-content: space-around
 }
@@ -676,7 +676,7 @@
   background: #ffffff;
   box-shadow: 0px 3.5px 5.5px rgba(0, 0, 0, 0.02);
   border-radius: 15px;
-  padding: 1.25vw 0 1.667vw 0;
+  padding: 8px 0 0 0;
 }
 
 .order__table {
@@ -699,7 +699,7 @@
 
 .order__ready__sec {
   font-weight: 700;
-  font-size: 1.25vw;
+  font-size: 1vw;
   color: #2d3748;
   margin: 0;
 }
@@ -838,7 +838,7 @@
   background: #ffffff;
   box-shadow: 0px 3.5px 5.5px rgba(0, 0, 0, 0.02);
   border-radius: 15px;
-  padding: 1.25vw 1.25vw 1.25vw 1.25vw;
+  padding: 0 1.25vw 1.25vw 1.25vw;
 }
 
 .order__content {
@@ -952,7 +952,7 @@ export default {
         },
       ],
       search: "",
-      isAdded: true,
+      isAdded: false,
     };
   },
   computed: {

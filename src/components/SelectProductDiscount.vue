@@ -11,9 +11,10 @@
       <div class="modal-content">
         <div class="modal-header header-flex">
           <div style="text-align: left">
-            <p class="header__main">Выберите товары</p>
+          <img src="@/assets/img/tshirt-lg.png" style="width:4.948vw" alt="">
+            <p class="header__main">Куртка зеленая</p>
             <p class="header__sec">
-              Выделите необходимые товары и нажмите “Готово”
+              Список чеков, в которых присутствует выбранный товар
             </p>
           </div>
           <img

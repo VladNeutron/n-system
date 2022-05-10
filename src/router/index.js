@@ -258,6 +258,18 @@ const routes = [
     component: () => import("../views/Sales/OrderListView.vue"),
     meta: { NavLink: "Список заказов" },
   },
+  {
+    path: "/sales/return-list",
+    name: "return-list",
+    component: () => import("../views/Sales/ReturnList.vue"),
+    meta: { NavLink: "Список возвратов" },
+  },
+  {
+    path: "/sales/create-return",
+    name: "create-return",
+    component: () => import("../views/Sales/CreateReturn.vue"),
+    meta: { NavLink: "Создание возврата" },
+  },
    {
     path: "/sales/client-list",
     name: "client-list",
@@ -289,10 +301,28 @@ const routes = [
     meta: { NavLink: "Список чеков" },
   },
   {
+    path: "/cash-register/deffered-checks",
+    name: "deffered-checks",
+    component: () => import("../views/CashRegister/DefferedChecks.vue"),
+    meta: { NavLink: "Отложенные чеки" },
+  },
+  {
+    path: "/cash-register/return-checks",
+    name: "return-checks",
+    component: () => import("../views/CashRegister/ReturnChecksList.vue"),
+    meta: { NavLink: "Список возвратов чеков" },
+  },
+  {
     path: "/cash-register/cash-startup",
     name: "cash-startup",
     component: () => import("../views/CashRegister/CashStartUp.vue"),
     meta: { NavLink: "Стартовое окно" },
+  },
+  {
+    path: "/cash-register/sales-report",
+    name: "sales-report",
+    component: () => import("../views/CashRegister/SalesReport.vue"),
+    meta: { NavLink: "Отчеты по продажам" },
   },
   // КАССА
 
