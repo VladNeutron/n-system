@@ -339,6 +339,12 @@ const routes = [
 
   //АНАЛИТИКА
   {
+    path: "/analytics",
+    name: "analytics",
+    component: () => import("../views/Analytics/analytics.vue"),
+    meta: { NavLink: "Аналитика" },
+  },
+  {
     path: "/analytics/revenue-profit-avgcheck",
     name: "revenue-profit",
     component: () => import("../views/Analytics/RevenueGraph.vue"),
@@ -361,6 +367,18 @@ const routes = [
     name: "remainder-storage",
     component: () => import("../views/Analytics/ProductsInStorage.vue"),
     meta: { NavLink: "Остатки товаров на складе" },
+  },
+  {
+    path: "/analytics/abc-analysis",
+    name: "abc-analysis",
+    component: () => import("../views/Analytics/ABCAnalysis.vue"),
+    meta: { NavLink: "ABC анализ" },
+  },
+  {
+    path: "/analytics/abc-analysis/abc-product",
+    name: "abc-product",
+    component: () => import("../views/Analytics/ABCProduct.vue"),
+    meta: { NavLink: "Куртка зеленая" },
   },
   //АНАЛИТИКА
 
