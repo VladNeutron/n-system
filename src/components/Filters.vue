@@ -19,8 +19,12 @@
       <slot> Фильтр </slot>
     </div>
     <div class="filters__footer">
-      <button class="btn filters__accept">Применить фильтры</button>
-      <button class="btn filters__reset">Сбросить</button>
+      <button class="btn filters__accept" @click="$emit('filter-list')">
+        Применить фильтры
+      </button>
+      <button class="btn filters__reset" @click="$emit('no-filter')">
+        Сбросить
+      </button>
     </div>
   </div>
 
@@ -41,16 +45,13 @@
       <input class="form-control" type="date" id="example-date-input" />
     </div>
   </div> -->
-
   <!-- DROPDOWN -->
-  <!-- <select class="form-select">
-        <option value="" disabled selected>Выберите склад</option>
-        <option>Склад 1</option>
-        <option>Склад 2</option>
-      </select> -->
-
-      <!-- CHECKBOX -->
-      <!-- <div class="form-check" style="text-align: left; margin-top: 0.833vw">
+  <!-- <label class="text-start" for=""></label>
+  <select class="form-select">
+    <option></option>
+  </select> -->
+  <!-- CHECKBOX -->
+  <!-- <div class="form-check" style="text-align: left; margin-top: 0.833vw">
         <input
           class="form-check-input"
           type="checkbox"
@@ -67,6 +68,9 @@
 
 <script>
 export default {
+  data() {
+    return {};
+  },
   methods: {
     filtersClose() {
       document
@@ -74,6 +78,7 @@ export default {
         .classList.remove("filters__show");
     },
   },
+  computed: {},
   mounted() {
     document.querySelector("body").onclick = function (event) {
       if (
