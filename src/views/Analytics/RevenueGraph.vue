@@ -46,6 +46,7 @@
                 type="checkbox"
                 id="flexSwitchCheckDefault"
                 checked=""
+                v-model="revenueSwitch"
               />
               <label
                 class="form-check-label text-start m-0 fs-6"
@@ -59,6 +60,7 @@
                 type="checkbox"
                 id="flexSwitchCheckDefault"
                 checked=""
+                v-model="incomeSwitch"
               />
               <label
                 class="form-check-label text-start m-0 fs-6"
@@ -72,6 +74,7 @@
                 type="checkbox"
                 id="flexSwitchCheckDefault"
                 checked=""
+                v-model="avgSwitch"
               />
               <label
                 class="form-check-label text-start m-0 fs-6"
@@ -83,8 +86,8 @@
         </div>
       </div>
     </div>
-    <div class="graphs d-flex m-4 gap-4">
-      <div class="card p-4">
+    <div class="graphs m-4 gap-4 d-flex justify-content-between">
+      <div class="graph__card card p-4" v-if="revenueSwitch">
         <p class="fw-bold fs-5 text-start">Выручка</p>
         <div
           class="graph__description mb-3 d-flex justify-content-between align-items-center"
@@ -100,8 +103,8 @@
             <span class="chart__stats__year">в 2021</span>
           </div>
           <div class="chart__stats-date d-flex align-items-center">
-            <span>Показать:</span
-            ><select class="form-select">
+            <span class="chart__stats">Показать:</span
+            ><select class="form-select border-0 outline-0">
               <option v-for="dates of selectChartsDate" :key="dates">
                 {{ dates }}
               </option>
@@ -109,7 +112,61 @@
           </div>
         </div>
 
-        <canvas id="myChart" class="w-100"></canvas>
+        <canvas id="myChart1" class="w-100"></canvas>
+      </div>
+      <div class="graph__card card p-4" v-if="incomeSwitch">
+        <p class="fw-bold fs-5 text-start">Прибыль</p>
+        <div
+          class="graph__description mb-3 d-flex justify-content-between align-items-center"
+        >
+          <div class="chart__stats" v-if="chartPercent > 0">
+            <img src="@/assets/img/home/percerntPositive.svg" alt="" /> на
+            {{ chartPercent }} % больше
+            <span class="chart__stats__year"> в 2021</span>
+          </div>
+          <div class="chart__stats" v-else>
+            <img src="@/assets/img/home/percentNegative.svg" alt="" /> на
+            {{ chartPercent }} % больше
+            <span class="chart__stats__year">в 2021</span>
+          </div>
+          <div class="chart__stats-date d-flex align-items-center">
+            <span class="chart__stats">Показать:</span
+            ><select class="form-select border-0 outline-0">
+              <option v-for="dates of selectChartsDate" :key="dates">
+                {{ dates }}
+              </option>
+            </select>
+          </div>
+        </div>
+
+        <canvas id="myChart2" class="w-100"></canvas>
+      </div>
+      <div class="graph__card card p-4" v-if="avgSwitch">
+        <p class="fw-bold fs-5 text-start">Средний чек</p>
+        <div
+          class="graph__description mb-3 d-flex justify-content-between align-items-center"
+        >
+          <div class="chart__stats" v-if="chartPercent > 0">
+            <img src="@/assets/img/home/percerntPositive.svg" alt="" /> на
+            {{ chartPercent }} % больше
+            <span class="chart__stats__year"> в 2021</span>
+          </div>
+          <div class="chart__stats" v-else>
+            <img src="@/assets/img/home/percentNegative.svg" alt="" /> на
+            {{ chartPercent }} % больше
+            <span class="chart__stats__year">в 2021</span>
+          </div>
+          <div class="chart__stats-date d-flex align-items-center">
+            <span class="chart__stats">Показать:</span
+            ><select class="form-select border-0 outline-0">
+              <option v-for="dates of selectChartsDate" :key="dates">
+                {{ dates }}
+              </option>
+            </select>
+          </div>
+        </div>
+
+        <canvas id="myChart3" class="w-100"></canvas>
       </div>
     </div>
   </main>
@@ -121,17 +178,39 @@ import Chart from "@/assets/js/plugins/chartjs.min.js";
 export default {
   data() {
     return {
+      revenueSwitch: true,
+      incomeSwitch: true,
+      avgSwitch: true,
       chartPercent: 4,
-      selectChartsDate: ["Месяц", "Год", "За все время"],
+      selectChartsDate: [
+        "Сегодня",
+        "День",
+        "Неделя",
+        "Месяц",
+        "Год",
+        "За все время",
+      ],
     };
   },
   mounted() {
-    const ctx = document.getElementById("myChart").getContext("2d");
+    const ctx1 = document.getElementById("myChart1").getContext("2d");
+    const ctx2 = document.getElementById("myChart2").getContext("2d");
+    const ctx3 = document.getElementById("myChart3").getContext("2d");
 
-    var gradientStroke1 = ctx.createLinearGradient(0, 230, 0, 50);
+    var gradientStroke1 = ctx1.createLinearGradient(0, 230, 0, 50);
 
     gradientStroke1.addColorStop(0, "rgba(255, 255, 255, 0.1)");
     gradientStroke1.addColorStop(1, "rgba(112, 146, 224, 0.1)");
+
+    var gradientStroke2 = ctx2.createLinearGradient(0, 230, 0, 50);
+
+    gradientStroke2.addColorStop(0, "rgba(255, 255, 255, 0.1)");
+    gradientStroke2.addColorStop(1, "rgba(112, 146, 224, 0.1)");
+
+    var gradientStroke3 = ctx3.createLinearGradient(0, 230, 0, 50);
+
+    gradientStroke3.addColorStop(0, "rgba(255, 255, 255, 0.1)");
+    gradientStroke3.addColorStop(1, "rgba(112, 146, 224, 0.1)");
     // gradientStroke1.addColorStop(0, 'rgba(203,12,159,0)'); //purple colors
 
     const data = {
@@ -167,7 +246,9 @@ export default {
       },
     };
 
-    const myChart = new Chart(ctx, config);
+    const myChart1 = new Chart(ctx1, config);
+    const myChart2 = new Chart(ctx2, config);
+    const myChart3 = new Chart(ctx3, config);
   },
   components: {
     "the-filter": Filter,
@@ -220,5 +301,16 @@ export default {
 .chart__stats__year {
   color: #2d3748;
   margin-left: 4px;
+}
+.chart__stats-date select {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.graph__card {
+  min-width: 30%;
+  max-width: 60%;
+  min-height: 406px;
+  max-height: 40vh;
 }
 </style>
