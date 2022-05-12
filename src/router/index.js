@@ -339,6 +339,12 @@ const routes = [
 
   //АНАЛИТИКА
   {
+    path: "/analytics",
+    name: "analytics",
+    component: () => import("../views/Analytics/analytics.vue"),
+    meta: { NavLink: "Аналитика" },
+  },
+  {
     path: "/analytics/revenue-profit-avgcheck",
     name: "revenue-profit",
     component: () => import("../views/Analytics/RevenueGraph.vue"),
@@ -363,10 +369,23 @@ const routes = [
     meta: { NavLink: "Остатки товаров на складе" },
   },
   {
+<<<<<<< HEAD
     path: "/analytics/revenue-expenses-income",
     name: "revenue-expenses-income",
     component: () => import("../views/Analytics/ExpensesGraph.vue"),
     meta: { NavLink: "Доходы - Расходы - Прибыль" },
+=======
+    path: "/analytics/abc-analysis",
+    name: "abc-analysis",
+    component: () => import("../views/Analytics/ABCAnalysis.vue"),
+    meta: { NavLink: "ABC анализ" },
+  },
+  {
+    path: "/analytics/abc-analysis/abc-product",
+    name: "abc-product",
+    component: () => import("../views/Analytics/ABCProduct.vue"),
+    meta: { NavLink: "Куртка зеленая" },
+>>>>>>> 7d98f96690547c6fd72b37ed5f9458920ddd6487
   },
   //АНАЛИТИКА
 
