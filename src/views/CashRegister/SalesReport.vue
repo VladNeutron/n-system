@@ -119,8 +119,7 @@
                             </thead>
                             <tbody>
                                 <!-- v-for="(item, i) in items" :key="item" -->
-                                <tr v-for="(item, i) in items" :key="item" data-bs-toggle="modal"
-                                    data-bs-target="#ChecksModal">
+                                <tr v-for="(item, i) in items" :key="item" @click="openModal(item.id)">
                                     <th scope="row" style="border-right: 0; border-left: 0">
                                         {{ i + 1 }}
                                     </th>
@@ -153,7 +152,7 @@
                 </div>
             </div>
         </div>
-        <checks-modal></checks-modal>
+        <checks-modal :product="modal.modalProductName"></checks-modal>
     </main>
 </template>
 <style scoped>
@@ -363,8 +362,13 @@ export default {
     },
     data() {
         return {
+            modal: {
+                modalProductName: {},
+            },
+            checks: [],
             items: [
                 {
+                    id: 0,
                     img: require("@/assets/img/tshirt.png"),
                     category: "Верхняя одежда",
                     name: "Куртка Белая",
@@ -374,6 +378,7 @@ export default {
                     discount: 535,
                 },
                 {
+                    id: 1,
                     img: require("@/assets/img/tshirt.png"),
                     category: "Верхняя одежда",
                     name: "Куртка Белая",
@@ -383,6 +388,7 @@ export default {
                     discount: 535,
                 },
                 {
+                    id: 2,
                     img: require("@/assets/img/tshirt.png"),
                     category: "Верхняя одежда",
                     name: "Куртка Белая",
@@ -392,6 +398,7 @@ export default {
                     discount: 535,
                 },
                 {
+                    id: 3,
                     img: require("@/assets/img/tshirt.png"),
                     category: "Верхняя одежда",
                     name: "Куртка Белая",
@@ -401,27 +408,10 @@ export default {
                     discount: 535,
                 },
                 {
+                    id: 4,
                     img: require("@/assets/img/tshirt.png"),
                     category: "Верхняя одежда",
-                    name: "Куртка Белая",
-                    color: "Белый",
-                    price: 29000,
-                    count: 2,
-                    discount: 535,
-                },
-                {
-                    img: require("@/assets/img/tshirt.png"),
-                    category: "Верхняя одежда",
-                    name: "Куртка Белая",
-                    color: "Белый",
-                    price: 29000,
-                    count: 2,
-                    discount: 535,
-                },
-                {
-                    img: require("@/assets/img/tshirt.png"),
-                    category: "Верхняя одежда",
-                    name: "Куртка Белая",
+                    name: "Куртка Красная",
                     color: "Белый",
                     price: 29000,
                     count: 2,
@@ -429,6 +419,12 @@ export default {
                 },
             ]
         }
+    },
+    methods: {
+        openModal(id) {
+            this.modal.modalProductName = this.items.filter(item => item.id == id)[0];
+            $('#ChecksModal').modal('show')
+        },
     },
     mounted() {
         const ctx = document.getElementById("chart-bars").getContext("2d");

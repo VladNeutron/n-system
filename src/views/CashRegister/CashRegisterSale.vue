@@ -14,7 +14,7 @@
                             <div class="cash__header__title">
                                 Рабочее место кассира
                             </div>
-                            <button class="btn bg-gradient-info">
+                            <button class="btn bg-gradient-info" data-bs-toggle="modal" data-bs-target="#SelectDisc">
                                 Добавить товар
                             </button>
                         </div>
@@ -36,12 +36,16 @@
                         <div class="col-8">
                             <div class="product">
                                 <div class="product__top">
-                                    <span class="product__name">Куртка Бежевая</span>
-                                    <img src="@/assets/img/cash-register/delete.svg" alt="">
+                                    <span class="product__name" v-if="selectedProduct.name">{{selectedProduct.name}}</span>
+                                    <span class="product__name" v-else>Выберите товар</span>
+                                    <img src="@/assets/img/cash-register/delete.svg" alt="" @click="deleteProduct(selectedProduct.id)">
                                 </div>
                                 <div class="product__bottom">
-                                    <div class="product__price">
-                                        32 990 ₸  
+                                    <div class="product__price" v-if="selectedProduct.price">
+                                        {{selectedProduct.price}} ₸  
+                                    </div>
+                                    <div class="product__price" v-else>
+                                        0 ₸  
                                     </div>
                                     <div class="product__amount">
                                         <div class="product__amount__btn product__amount__btn__minus" @click="productAmount-=1">
@@ -54,7 +58,7 @@
                                         <div class="product__amount__btn" @click="productAmount+=1">+</div>
                                     </div>
                                     <div class="product__discount">
-                                        <input type="number" class="form-control" placeholder="Скидка">
+                                        <input type="number" v-model="percentValue" class="form-control" placeholder="Скидка">
                                         <div 
                                         :class="['product__percent', {'product__discount__active' : discountType == 'percent'}]"
                                         @click="discountType = 'percent'"
@@ -68,11 +72,11 @@
                                             ₸
                                         </div>
                                     </div>
-                                    <button class="btn bg-gradient-dark mb-0">
-                                        Сохранить
+                                    <button class="btn bg-gradient-dark mb-0" @click="saveProduct">
+                                        <img src="@/assets/img/cash-register/cashSave.svg" alt=""> Сохранить
                                     </button>
                                     <div class="product__result">
-                                        65 980 ₸  
+                                        {{productSum}} ₸  
                                     </div>
                                 </div>
                             </div>
@@ -107,7 +111,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr v-for="product in produtsList" :key="product.id">
+                                        <tr v-for="product in produtsList" :key="product.id" @click="this.selectProduct(product)">
                                             <td>
                                                 <div class="d-flex px-2 py-1">
                                                 <div>
@@ -136,7 +140,7 @@
                                             <td>
                                                 {{product.sum}} ₸ 
                                             </td>
-                                            <td>
+                                            <td @click="deleteProduct(product.id)" style="cursor: pointer;">
                                                 <img src="@/assets/img/cash-register/cashTableDelete.svg" alt="">
                                             </td>
                                         </tr>
@@ -146,7 +150,7 @@
                         </div>
                         <div class="col-4">
                             <div class="action__buttons">
-                                <div class="btn__favourite action__button">
+                                <div class="btn__favourite action__button" @click="openFavourites">
                                     <img src="@/assets/img/cash-register/cashFavourite.svg" alt="">    
                                 </div>
                                 <div class="btn__discount action__button">
@@ -175,7 +179,7 @@
                                                 Сумма скидки
                                             </div>
                                             <div class="caluclator__discount__number">
-                                                1 590 ₸ 
+                                                {{discountValue}} ₸ 
                                             </div>
                                         </div>
                                     </div>
@@ -269,16 +273,21 @@
             </div>
         </div>
   </div>
+  <Favourites></Favourites>
+  <select-product-discount></select-product-discount>
   </main>
 </template>
 
 <script>
+import SelectProductDiscount from "../../components/SelectProductDiscount.vue";
+import Favourites from "@/components/Favourites.vue";
 export default {
     data(){
         return {
             productAmount: 1,
             discountType: 'percent',
             paymentValue: '',
+            percentValue: '',
             products: [
                 {
                     id: 1,
@@ -302,6 +311,7 @@ export default {
             produtsList: [
                 
             ],
+            selectedProduct: {},
         }
     },
     methods:{
@@ -326,6 +336,7 @@ export default {
                 let sameProduct = this.produtsList.filter( el => {return el.id == searchedProduct.id})
                 if(sameProduct.length != 0){
                     sameProduct[0].amount = sameProduct[0].amount + 1;
+                    sameProduct[0].sum = sameProduct[0].sum + sameProduct[0].price; 
                     document.querySelector('.testInp').value = '';
                     document.querySelector('.testInp').focus();
                 }
@@ -347,13 +358,91 @@ export default {
                 document.querySelector('.testInp').focus();
             }
         },
+        deleteProduct(id){
+            this.produtsList = this.produtsList.filter(el => {return el.id != id});
+            if(id == this.selectedProduct.id){
+                this.selectedProduct = {};
+                this.percentValue = '';
+                this.productAmount = 1;
+            }        
+        },
+        selectProduct(prod){
+            if(this.produtsList.indexOf(prod) != -1){
+                this.selectedProduct = prod;
+                this.productAmount = prod.amount;
+                if(prod.discount != 'нет' && prod.discount > 0){
+                    this.discountType = prod.discountTypeProduct;
+                    this.percentValue = prod.discountVal;
+                }
+                else{
+                    this.percentValue = '';    
+                }
+            }    
+        },
+        saveProduct(){
+            let ind = this.produtsList.indexOf(this.selectedProduct);
+            if(ind != -1){
+                this.produtsList[ind].amount = this.productAmount;
+                let result = this.selectedProduct.price * this.productAmount;
+                if(this.percentValue > 0){
+                    if(this.discountType == 'percent'){
+                        this.produtsList[ind].discount = result * this.percentValue / 100;    
+                    }
+                    else{
+                        this.produtsList[ind].discount = this.percentValue;
+                    }
+                    this.produtsList[ind].discountTypeProduct = this.discountType;
+                    this.produtsList[ind].discountVal = this.percentValue;
+                }
+                else{
+                    this.produtsList[ind].discount = 'нет';    
+                }
+                this.produtsList[ind].sum = this.productSum;    
+            }
+        },
+        openFavourites(){
+            let filtersContainer = document.querySelector(".filters__container");
+            filtersContainer.classList.add("filters__show");
+        },
         testInp(){
             console.log(document.querySelector('.testInp').value);
-        }    
+        },
+        testClick(){
+            console.log('Abc')
+        },    
     },
     computed:{
+        productSum(){
+            if(this.selectedProduct.price){
+                let result = this.selectedProduct.price * this.productAmount;
+                if(this.percentValue > 0){
+                    if(this.discountType == 'percent'){
+                        result = result - result * this.percentValue / 100;  
+                    }
+                    else{
+                        result = result - this.percentValue;
+                    }
+                }
+                return result;
+            }
+            else {return 0}
+        },
         totalValue(){
-            return 73440
+            return this.produtsList.reduce( (accum,cur) => {
+                return accum + cur.sum
+            }, 0
+            )
+        },
+        discountValue(){
+            return this.produtsList.reduce( (accum,cur) => {
+                if(cur.discount != 'нет' && cur.discount > 0){
+                    return accum + cur.discount
+                }
+                else{
+                    return accum + 0   
+                }
+            }, 0
+            )
         },
         changeValue(){
             if(this.paymentValue > this.totalValue){
@@ -389,6 +478,11 @@ export default {
             }    
         }   
     },
+    components: {
+    SelectProductDiscount,
+    Favourites,
+    Favourites
+},
 }
 </script>
 
@@ -547,7 +641,8 @@ export default {
 .table td{
     font-weight: 600;
     font-size: 14px; 
-    color: #2D3748;   
+    color: #2D3748;
+    cursor: pointer;   
 }
 .table__cont::-webkit-scrollbar {
     width: 5px;
