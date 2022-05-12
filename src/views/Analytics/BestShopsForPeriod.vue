@@ -4,7 +4,7 @@
         <the-header></the-header>
         <div class="page__name d-flex align-items-center ms-4 justify-content-between">
             <div class="page__name-title text-start">
-                <h3>Лучшие товары за период</h3>
+                <h3>Лучшие магазины за период</h3>
                 <p class="mb-0">Внесите изменения и не забудьте нажать “Сохранить”</p>
             </div>
             <div class="header__buttons">
@@ -51,12 +51,12 @@
             <div class="best__products">
                 <div class="best__products__content">
                     <div>
-                        <img src="@/assets/img/largeimg.png" alt="">
+                        <img src="@/assets/img/shop1.png" alt="">
                     </div>
                     <div class="best__products__text">
                         <div>
-                            <p class="main__top mb-0">Куртка зеленая</p>
-                            <p class="sec__top mb-0">Артикул: 1234567890</p>
+                            <p class="main__top mb-0">Reserved</p>
+                            <p class="sec__top mb-0">Адрес: ул. Гагарина, д.109</p>
                         </div>
                         <div class="bottom__text">
                             <p class="main__bottom mb-0">СУММА ПРОДАЖ</p>
@@ -69,12 +69,12 @@
                 </div>
                 <div class="best__products__content">
                     <div>
-                        <img src="@/assets/img/largeimg.png" alt="">
+                        <img src="@/assets/img/shop2.png" alt="">
                     </div>
                     <div class="best__products__text">
                         <div>
-                            <p class="main__top mb-0">Куртка зеленая</p>
-                            <p class="sec__top mb-0">Артикул: 1234567890</p>
+                            <p class="main__top mb-0">For Men</p>
+                            <p class="sec__top mb-0">Адрес: ул. Гагарина, д.109</p>
                         </div>
                         <div class="bottom__text">
                             <p class="main__bottom mb-0">СУММА ПРОДАЖ</p>
@@ -87,12 +87,12 @@
                 </div>
                 <div class="best__products__content" style="margin-right:0">
                     <div>
-                        <img src="@/assets/img/largeimg.png" alt="">
+                        <img src="@/assets/img/shop3.png" alt="">
                     </div>
                     <div class="best__products__text">
                         <div>
-                            <p class="main__top mb-0">Куртка зеленая</p>
-                            <p class="sec__top mb-0">Артикул: 1234567890</p>
+                            <p class="main__top mb-0">Marc O’Polo</p>
+                            <p class="sec__top mb-0">Адрес: ул. Гагарина, д.109</p>
                         </div>
                         <div class="bottom__text">
                             <p class="main__bottom mb-0">СУММА ПРОДАЖ</p>
@@ -112,19 +112,19 @@
                                 №
                             </th>
                             <th scope="col" class="th__col" style="border-left: 0; border-right: 0">
-                                Товар
+                                Название магазина
                             </th>
                             <th scope="col" class="th__col" style="border-left: 0; border-right: 0">
-                                Себестоимость
+                                Адрес
                             </th>
                             <th scope="col" class="th__col" style="border-left: 0; border-right: 0">
-                                Кол-во
+                               Количество продаж
                             </th>
                             <th scope="col" class="th__col" style="border-left: 0; border-right: 0">
-                                Цена продажи
+                               Выручка
                             </th>
                             <th scope="col" class="th__col" style="border-left: 0; border-right: 0">
-                                Сумма продаж
+                                Прибыль
                             </th>
                             <th scope="col" class="th__col" style="border-left: 0; border-right: 0">
                                 Маржинальность
@@ -138,20 +138,19 @@
                                 {{ i + 1 }}
                             </th>
                             <td style="border-left: 0; border-right: 0; display: flex">
-                                <img :src="item.img" style="width: 2.5vw; margin-right: 0.833vw" alt="" />
                                 {{ item.name }}
                             </td>
                             <td style="border-left: 0; border-right: 0">
-                                {{ item.costPrice }} ₸
+                                {{ item.adres }}
                             </td>
                             <td style="border-left: 0; border-right: 0">
                                 {{ item.count }}
                             </td>
                             <td style="border-left: 0; border-right: 0">
-                                {{ item.price }} ₸
+                                {{ item.revenue }} ₸
                             </td>
                             <td style="border-left: 0; border-right: 0">
-                                {{ item.count * item.price }} ₸
+                                {{ item.profit }} ₸
                             </td>
                             <td style="border-left: 0; border-right: 0">
                                 {{ item.marj }} ₸
@@ -171,44 +170,44 @@ export default {
             activeBtn: 1,
             items: [
                 {
-                    img: require("@/assets/img/tshirt.png"),
                     name: 'Куртка зеленая',
-                    costPrice: 12000,
-                    count: 1,
-                    price: 29000,
-                    marj: 29000
+                    adres: 'Ул. Гагарина, д.32',
+                    count: 1234,
+                    revenue: 120340,
+                    profit:120340,
+                    marj: 120340
+                },
+                 {
+                    name: 'Куртка зеленая',
+                    adres: 'Ул. Гагарина, д.32',
+                    count: 1234,
+                    revenue: 120340,
+                    profit:120340,
+                    marj: 120340
                 },
                 {
-                    img: require("@/assets/img/tshirt.png"),
                     name: 'Куртка зеленая',
-                    costPrice: 12000,
-                    count: 2,
-                    price: 29000,
-                    marj: 29000
+                    adres: 'Ул. Гагарина, д.32',
+                    count: 1234,
+                    revenue: 120340,
+                    profit:120340,
+                    marj: 120340
                 },
-                {
-                    img: require("@/assets/img/tshirt.png"),
+                 {
                     name: 'Куртка зеленая',
-                    costPrice: 12000,
-                    count: 3,
-                    price: 29000,
-                    marj: 29000
+                    adres: 'Ул. Гагарина, д.32',
+                    count: 1234,
+                    revenue: 120340,
+                    profit:120340,
+                    marj: 120340
                 },
-                {
-                    img: require("@/assets/img/tshirt.png"),
+                 {
                     name: 'Куртка зеленая',
-                    costPrice: 12000,
-                    count: 1,
-                    price: 29000,
-                    marj: 29000
-                },
-                {
-                    img: require("@/assets/img/tshirt.png"),
-                    name: 'Куртка зеленая',
-                    costPrice: 12000,
-                    count: 1,
-                    price: 29000,
-                    marj: 29000
+                    adres: 'Ул. Гагарина, д.32',
+                    count: 1234,
+                    revenue: 120340,
+                    profit:120340,
+                    marj: 120340
                 },
             ]
         }
