@@ -350,6 +350,12 @@ const routes = [
     component: () => import("../views/Analytics/BestProductsForPeriod.vue"),
     meta: { NavLink: "Лучшие товары за период" },
   },
+  {
+    path: "/analytics/best-shops",
+    name: "best-shops",
+    component: () => import("../views/Analytics/BestShopsForPeriod.vue"),
+    meta: { NavLink: "Лучшие магазины за период" },
+  },
   //АНАЛИТИКА
 
 
@@ -403,6 +409,7 @@ const routes = [
       import("../views/Purchases/EditReturnSupplier.vue"),
     meta: { NavLink: "Возврат №" },
   },
+  
   // ЗАКУПКИ
 ];
 
