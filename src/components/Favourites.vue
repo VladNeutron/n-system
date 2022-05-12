@@ -1,8 +1,8 @@
 <template>
-  <div class="filters__container" id="filters__container">
+  <div class="filters__container" id="favourites__container">
     <div class="filters__header">
       <div class="filters__header__cont">
-        <div class="filters__header__title">Фильтры</div>
+        <div class="filters__header__title"> &#9733; Избранные товары</div>
         <div class="filters__header__text">
           Задайте свои настройки и нажмите “Применить”
         </div>
@@ -16,60 +16,58 @@
     </div>
     <hr />
     <div class="filters__body">
-      <slot> Фильтр </slot>
+      <div class="filtersGrid">
+        <div class="cont" v-for="item in favourites" :key="item.id">
+          <div :class="['favourite__itemCont', {'favourite__itemContActive':item.active}]" @click="addToCheck(item.id)">
+            <div class="favourite__itemName">
+              {{item.name}}
+            </div>
+            <div class="favourite__itemArticle">
+              {{item.article}}
+            </div>
+            <div class="favourite__itemPrice">
+              {{item.price}} ₸
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="filters__footer">
-      <button class="btn filters__accept" @click="$emit('filter-list')">
-        Применить фильтры
-      </button>
-      <button class="btn filters__reset" @click="$emit('no-filter')">
-        Сбросить
-      </button>
-    </div>
+    <!-- <div class="filters__footer">
+      <button class="btn filters__accept">Применить фильтры</button>
+      <button class="btn filters__reset">Сбросить</button>
+    </div> -->
   </div>
-
-  <!-- Components -->
-  <!-- PERIOD -->
-  <!-- <div class="filters__period__flex">
-    <div class="filter__name__standart">Выберите период</div>
-    <div class="reset__date">Сбросить период</div>
-  </div>
-  <div class="filters__period">
-    <div class="form-group">
-      <input class="form-control" type="date" id="example-date-input" />
-    </div>
-    <div>
-      <img src="@/assets/img/line.svg" style="width: 1.927vw" alt="" />
-    </div>
-    <div class="form-group">
-      <input class="form-control" type="date" id="example-date-input" />
-    </div>
-  </div> -->
-  <!-- DROPDOWN -->
-  <!-- <label class="text-start" for=""></label>
-  <select class="form-select">
-    <option></option>
-  </select> -->
-  <!-- CHECKBOX -->
-  <!-- <div class="form-check" style="text-align: left; margin-top: 0.833vw">
-        <input
-          class="form-check-input"
-          type="checkbox"
-          value=""
-          id="fcustomCheck1"
-        />
-        <label
-          class="custom-control-label filters__checkbox__label"
-          for="customCheck1"
-          >Есть в наличии</label
-        >
-      </div> -->
 </template>
 
 <script>
 export default {
-  data() {
-    return {};
+  data(){
+    return {
+      favourites: [
+        {
+          id: 123,
+          name: 'Белые носки муж. высокие',
+          article: 94756390,
+          price: 750,
+          active: false,
+        },
+        {
+          id: 124,
+          name: 'Черные носки',
+          article: 94756390,
+          price: 650,
+          active: false,
+        },
+        {
+          id: 125,
+          name: 'Белые сапоги',
+          article: 94756390,
+          price: 2850,
+          active: false,
+        },
+      ],
+      selectedFavourites: [],
+    }
   },
   methods: {
     filtersClose() {
@@ -77,12 +75,21 @@ export default {
         .querySelector(".filters__container")
         .classList.remove("filters__show");
     },
+    addToCheck(ide){
+      // console.log(ide)
+      if(this.favourites.filter(el => {return el.id == ide})[0].active == false){
+        this.favourites.filter(el => {return el.id == ide})[0].active = true;
+      }
+      else{
+        this.favourites.filter(el => {return el.id == ide})[0].active = false;
+      }
+      // el.classList.toggle('favourite__itemContActive')
+    }
   },
-  computed: {},
   mounted() {
     document.querySelector("body").onclick = function (event) {
       if (
-        !event.target.closest("#filters__container") &&
+        !event.target.closest("#favourites__container") &&
         !event.target.closest(".openFilters")
       ) {
         console.log(event.target);
@@ -204,5 +211,56 @@ export default {
   align-items: baseline;
   margin-top: 0.833vw;
   margin-bottom: 0.833vw;
+}
+
+/* FAVOURITES */
+.favourite__itemCont{
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: #E2E8F0;
+  border-radius: 12px;
+  min-height: 160px;
+  height: 100%;
+  cursor: pointer;
+}
+.favourite__itemName{
+  font-weight: 400;
+  line-height: 22px;
+  font-size: 20px;
+  color: #2D3748;
+  text-align: left;
+}
+.favourite__itemArticle{
+  font-weight: 400;
+  font-size: 14px;
+  color: #2D3748;
+  text-align: left;
+}
+.favourite__itemPrice{
+  font-weight: 700;
+  font-size: 30px;
+  color: #2D3748;
+  text-align: right;
+}
+.favourite__itemContActive{
+  background: #313860;
+  color: white;
+}
+.favourite__itemContActive .favourite__itemName{
+  color: white;
+}
+.favourite__itemContActive .favourite__itemPrice{
+  color: white;
+}
+.favourite__itemContActive .favourite__itemArticle{
+  color: rgba(255, 255, 255, 0.5);
+}
+.filtersGrid{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-column-gap: 16px;
+  grid-row-gap: 16px;
 }
 </style>

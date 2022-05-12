@@ -41,7 +41,7 @@
                 alt="" /></span
             >Скачать
           </button>
-          <button class="btn btn-outline-dark mb-0">Фильтры</button>
+          <filter-button class="mb-0"></filter-button>
         </div>
       </div>
       <div class="page__table">
@@ -52,6 +52,7 @@
               <th scope="col" class="th__col">№</th>
               <th scope="col" class="th__col">№ Заказа</th>
               <th scope="col" class="th__col">Дата</th>
+              <th scope="col" class="th__col">Склад</th>
               <th scope="col" class="th__col">Ответственный</th>
               <th scope="col" class="th__col">Статус</th>
               <th scope="col" class="th__col">Клиент</th>
@@ -63,7 +64,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr v-for="(order, i) of orders" :key="order.id">
+            <tr v-for="(order, i) of filteredOrders" :key="order.id">
               <th scope="row">
                 <input
                   class="form-check-input"
@@ -75,6 +76,8 @@
               <th>{{ i + 1 }}</th>
               <td>{{ order.id }}</td>
               <td>{{ order.date }}</td>
+              <td>{{ order.warehouse }}</td>
+
               <td>{{ order.responsible }}</td>
               <td>
                 <div class="btn mb-0 w-100" :class="getClass(order.status)">
@@ -151,19 +154,73 @@
       </div>
     </div>
   </main>
+  <the-filter :orders="orders">
+    <div class="filters__period__flex">
+      <div class="filter__name__standart">Выберите период</div>
+      <div class="reset__date">Сбросить период</div>
+    </div>
+    <div class="filters__period">
+      <div class="form-group">
+        <input class="form-control" type="date" id="example-date-input" />
+      </div>
+      <div>
+        <img src="@/assets/img/line.svg" style="width: 1.927vw" alt="" />
+      </div>
+      <div class="form-group">
+        <input class="form-control" type="date" id="example-date-input" />
+      </div>
+    </div>
+    <label class="text-start" for="Статус">Статус заказа</label>
+    <div class="d-flex flex-wrap">
+      <div class="cat" v-for="status of orderStatusList" :key="status">
+        <label>
+          <input
+            type="checkbox"
+            :value="status"
+            v-model="filterStatusSelect"
+          /><span>{{ status }}</span>
+        </label>
+      </div>
+    </div>
+    <label class="text-start" for="Склад">Склад</label>
+    <select class="form-select" v-model="filterWarehouse">
+      <option v-for="warehouse of orderWarehouseList" :key="warehouse">
+        {{ warehouse }}
+      </option>
+    </select>
+    <label class="text-start" for="Ответственный">Ответственный</label>
+    <select class="form-select" v-model="filterResponsible">
+      <option v-for="responsible of orderResponsibleList" :key="responsible">
+        {{ responsible }}
+      </option>
+    </select>
+    <label class="text-start" for="Клиент">Клиент</label>
+    <select class="form-select" v-model="filterClient">
+      <option v-for="client of orderClientList" :key="client">
+        {{ client }}
+      </option>
+    </select>
+    <label class="text-start" for="Тип заказа">Тип заказа</label>
+    <select class="form-select" v-model="filterOrderType">
+      <option v-for="orderType of orderTypeList" :key="orderType">
+        {{ orderType }}
+      </option>
+    </select>
+  </the-filter>
 </template>
 
 <script>
-import Filter from "../../components/Filters.vue";
+import Filter from "@/components/Filters.vue";
+import FilterButton from "@/components/buttons/FiltersButton.vue";
 export default {
   data() {
     return {
-      status: null,
       buttonText: "",
       orders: [
         {
           id: 12132145,
           date: "11 ноя, 2021 19:23",
+          warehouse: "что-там",
           responsible: "Тихонова А.Р",
           status: "new",
           client: "Мария Калашникова",
@@ -174,6 +231,7 @@ export default {
         {
           id: 12132145,
           date: "11 ноя, 2021 19:23",
+          warehouse: "где-то-там",
           responsible: "Тихонова А.Р",
           status: "in-process",
           client: "Мария Калашникова",
@@ -184,6 +242,7 @@ export default {
         {
           id: 32132312,
           date: "11 ноя, 2021 19:23",
+          warehouse: "Киров",
           responsible: "Тихонова А.Р",
           status: "canceled",
           client: "Мария Калашникова",
@@ -195,7 +254,7 @@ export default {
           id: 54354536,
           date: "11 ноя, 2021 19:23",
           responsible: "Тихонова А.Р",
-
+          warehouse: "что-там",
           status: "processed",
           client: "Мария Калашникова",
           type: "Интернет-магазин",
@@ -205,6 +264,7 @@ export default {
         {
           id: 12312556,
           date: "11 ноя, 2021 19:23",
+          warehouse: "Алматы",
           responsible: "Тихонова А.Р",
           status: "assembly",
           client: "Мария Калашникова",
@@ -215,6 +275,7 @@ export default {
         {
           id: 442142132,
           date: "11 ноя, 2021 19:23",
+          warehouse: "что-там",
           responsible: "Тихонова А.Р",
           status: "ready",
           client: "Мария Калашникова",
@@ -225,6 +286,7 @@ export default {
         {
           id: 5426534654,
           date: "11 ноя, 2021 19:23",
+          warehouse: "что-там",
           responsible: "Тихонова А.Р",
           status: "shipped",
           client: "Мария Калашникова",
@@ -233,10 +295,12 @@ export default {
           sum: 12000,
         },
       ],
+      filterStatusSelect: [],
+      filterResponsible: "",
+      filterClient: "",
+      filterOrderType: "",
+      filterWarehouse: "",
     };
-  },
-  components: {
-    "the-filter": Filter,
   },
   methods: {
     getClass(stat) {
@@ -269,11 +333,113 @@ export default {
         return "bg-gradient-success";
       }
     },
+    check() {
+      const ch = this.filterStatusSelect.includes(this.orders[0].status);
+      console.log(ch);
+    },
+  },
+  computed: {
+    orderStatusList() {
+      let unfiltered = this.orders.map((e) => e.status);
+      return [...new Set(unfiltered)];
+    },
+    orderResponsibleList() {
+      let unfiltered = this.orders.map((e) => e.responsible);
+      return [...new Set(unfiltered)];
+    },
+    orderClientList() {
+      let unfiltered = this.orders.map((e) => e.client);
+      return [...new Set(unfiltered)];
+    },
+    orderTypeList() {
+      let unfiltered = this.orders.map((e) => e.type);
+      return [...new Set(unfiltered)];
+    },
+    orderWarehouseList() {
+      let unfiltered = this.orders.map((e) => e.warehouse);
+      return [...new Set(unfiltered)];
+    },
+    filteredOrders() {
+      const statusCheckIfEmpty = this.filterStatusSelect > 0;
+      return this.orders.filter(
+        (order) =>
+          (statusCheckIfEmpty
+            ? this.filterStatusSelect.includes(order.status)
+            : true) &&
+          (this.filterWarehouse === ""
+            ? true
+            : order.warehouse === this.filterWarehouse) &&
+          (this.filterResponsible === ""
+            ? true
+            : order.responsible === this.filterResponsible) &&
+          (this.filterClient === ""
+            ? true
+            : order.client === this.filterClient) &&
+          (this.filterOrderType === ""
+            ? true
+            : order.type === this.filterOrderType)
+      );
+    },
+  },
+
+  components: {
+    "the-filter": Filter,
+    "filter-button": FilterButton,
   },
 };
 </script>
 
 <style scoped>
+/* CHECKBOX BUTTON */
+
+.cat {
+  margin: 4px;
+  background-color: #fff;
+  width: 143px;
+  height: 40px;
+  border-radius: 50px;
+
+  outline: 1px solid #2d3748;
+  overflow: hidden;
+  float: left;
+}
+
+.cat label {
+  float: left;
+  line-height: 3em;
+  color: #2d3748;
+  width: 8em;
+  height: 3em;
+}
+
+.cat label span {
+  position: relative;
+  top: auto;
+  right: 5px;
+  text-align: center;
+  height: 50px;
+  width: 145px;
+  display: block;
+  color: #2d3748;
+}
+
+.cat label input {
+  position: absolute;
+  display: none;
+  color: #2d3748 !important;
+}
+/* selects all of the text within the input element and changes the color of the text */
+.cat label input + span {
+  color: #2d3748;
+}
+
+/* This will declare how a selected input will look giving generic properties */
+.cat input:checked + span {
+  color: #ffffff;
+  text-shadow: 0 0 6px rgba(0, 0, 0, 0.8);
+  background-color: #2d3748;
+}
+/*  */
 .page__name h3 {
   font-size: 24px;
   line-height: 32px;
@@ -302,5 +468,17 @@ td {
 }
 .pagination {
   align-self: end;
+}
+.filters__period {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-top: 0.833vw;
+  margin-bottom: 0.833vw;
+}
+.filters__period__flex {
+  display: flex !important;
+  justify-content: space-between;
+  align-items: flex-end;
 }
 </style>
