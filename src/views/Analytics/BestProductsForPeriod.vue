@@ -20,7 +20,7 @@
             </div>
         </div>
         <div class="card pt-4  m-4">
-            <div class="d-flex justify-content-between align-items-center mx-4 mb-4">
+            <div class="d-flex justify-content-between align-items-center mx-4">
                 <div class="products__period">
                     <div class="filters__period__flex">
                         <div class="filter__name__standart">Выберите период</div>
@@ -135,7 +135,7 @@
                         <!-- v-for="(item, i) in items" :key="item" -->
                         <tr v-for="(item, i) in items" :key="item">
                             <th scope="row" style="border-right: 0; border-left: 0">
-                                {{ i + 1 }}
+                                {{ i + 4 }}
                             </th>
                             <td style="border-left: 0; border-right: 0; display: flex">
                                 <img :src="item.img" style="width: 2.5vw; margin-right: 0.833vw" alt="" />
@@ -210,6 +210,14 @@ export default {
                     price: 29000,
                     marj: 29000
                 },
+                {
+                    img: require("@/assets/img/tshirt.png"),
+                    name: 'Куртка зеленая',
+                    costPrice: 12000,
+                    count: 1,
+                    price: 29000,
+                    marj: 29000
+                },
             ]
         }
     },
@@ -217,26 +225,8 @@ export default {
 </script>
 
 <style scoped>
-.order__table__body::-webkit-scrollbar {
-    background: #e2e8f0;
-    border-radius: 0.78vw;
-    width: 0.37vw;
-}
-
-.order__table__body::-webkit-scrollbar-thumb {
-    border-radius: 0.78vw;
-    background-color: #313860;
-}
-
-.order__table__body::-webkit-scrollbar-track {
-    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.2);
-    border-radius: 0.78vw;
-    background-color: #e2e8f0;
-}
-
 .order__table__body {
-    height: 19.792vw;
-    overflow-y: scroll;
+  
 }
 
 .top__number3 {
