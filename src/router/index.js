@@ -261,9 +261,15 @@ const routes = [
     meta: { NavLink: "Список заказов" },
   },
   {
+    path: "/sales/return-edit",
+    name: "return-edit",
+    component: () => import("../views/Sales/ReturnList.vue"),
+    meta: { NavLink: "Редактирование возврата" },
+  },
+  {
     path: "/sales/return-list",
     name: "return-list",
-    component: () => import("../views/Sales/ReturnList.vue"),
+    component: () => import("../views/Sales/Return.vue"),
     meta: { NavLink: "Список возвратов" },
   },
   {
@@ -338,7 +344,66 @@ const routes = [
     component: () => import("../views/Analytics/RevenueGraph.vue"),
     meta: { NavLink: "Выручка - Прибыль - Средний чек" },
   },
+  {
+    path: "/analytics/best-products",
+    name: "best-products",
+    component: () => import("../views/Analytics/BestProductsForPeriod.vue"),
+    meta: { NavLink: "Лучшие товары за период" },
+  },
   //АНАЛИТИКА
+
+
+  // ЗАКУПКИ
+  {
+    path: "/purchases",
+    name: "purchases",
+    component: () =>
+      import("../views/Purchases/purchases.vue"),
+    meta: { NavLink: "Закупки" },
+  },
+  {
+    path: "/purchases/income-list",
+    name: "income-list",
+    component: () =>
+      import("../views/Purchases/IncomeList.vue"),
+    meta: { NavLink: "Поступления" },
+  },
+  {
+    path: "/purchases/create-income",
+    name: "create-income",
+    component: () =>
+      import("../views/Purchases/CreateIncome.vue"),
+    meta: { NavLink: "Создание поступления" },
+  },
+  {
+    path: "/purchases/edit-income",
+    name: "edit-income",
+    component: () =>
+      import("../views/Purchases/EditIncome.vue"),
+    meta: { NavLink: "Поступление №" },
+  },
+  {
+    path: "/purchases/return-supplier-list",
+    name: "return-supplier-list",
+    component: () =>
+      import("../views/Purchases/ReturnSupplierList.vue"),
+    meta: { NavLink: "Возвраты поставщикам" },
+  },
+  {
+    path: "/purchases/create-supplier-return",
+    name: "create-supplier-return",
+    component: () =>
+      import("../views/Purchases/CreateReturnSupplier.vue"),
+    meta: { NavLink: "Создание возврата поставщикам" },
+  },
+  {
+    path: "/purchases/edit-supplier-return",
+    name: "edit-supplier-return",
+    component: () =>
+      import("../views/Purchases/EditReturnSupplier.vue"),
+    meta: { NavLink: "Возврат №" },
+  },
+  // ЗАКУПКИ
 ];
 
 const router = createRouter({
