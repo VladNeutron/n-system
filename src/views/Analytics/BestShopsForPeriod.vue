@@ -240,21 +240,21 @@ export default {
 
 .top__number3 {
     position: absolute;
-    left: 15.886vw;
+    left: 17.806vw;
     top: 0.781vw;
     opacity: 0.1;
 }
 
 .top__number2 {
     position: absolute;
-    left: 15.886vw;
+    left: 17.720vw;
     top: 0.938vw;
     opacity: 0.2;
 }
 
 .top__number {
     position: absolute;
-    left: 16.927vw;
+    left: 18.727vw;
     top: 0.885vw;
     opacity: 0.2;
 }
