@@ -118,10 +118,10 @@
                                 Адрес
                             </th>
                             <th scope="col" class="th__col" style="border-left: 0; border-right: 0">
-                               Количество продаж
+                                Количество продаж
                             </th>
                             <th scope="col" class="th__col" style="border-left: 0; border-right: 0">
-                               Выручка
+                                Выручка
                             </th>
                             <th scope="col" class="th__col" style="border-left: 0; border-right: 0">
                                 Прибыль
@@ -135,9 +135,9 @@
                         <!-- v-for="(item, i) in items" :key="item" -->
                         <tr v-for="(item, i) in items" :key="item">
                             <th scope="row" style="border-right: 0; border-left: 0">
-                                {{ i + 1 }}
+                                {{ i + 4 }}
                             </th>
-                            <td style="border-left: 0; border-right: 0; display: flex">
+                            <td style="border-left: 0; border-right: 0;">
                                 {{ item.name }}
                             </td>
                             <td style="border-left: 0; border-right: 0">
@@ -170,43 +170,59 @@ export default {
             activeBtn: 1,
             items: [
                 {
-                    name: 'Куртка зеленая',
+                    name: 'Neutron Store',
                     adres: 'Ул. Гагарина, д.32',
                     count: 1234,
                     revenue: 120340,
-                    profit:120340,
-                    marj: 120340
-                },
-                 {
-                    name: 'Куртка зеленая',
-                    adres: 'Ул. Гагарина, д.32',
-                    count: 1234,
-                    revenue: 120340,
-                    profit:120340,
+                    profit: 120340,
                     marj: 120340
                 },
                 {
-                    name: 'Куртка зеленая',
+                    name: 'Neutron Store',
                     adres: 'Ул. Гагарина, д.32',
                     count: 1234,
                     revenue: 120340,
-                    profit:120340,
+                    profit: 120340,
                     marj: 120340
                 },
-                 {
-                    name: 'Куртка зеленая',
+                {
+                    name: 'Neutron Store',
                     adres: 'Ул. Гагарина, д.32',
                     count: 1234,
                     revenue: 120340,
-                    profit:120340,
+                    profit: 120340,
                     marj: 120340
                 },
-                 {
-                    name: 'Куртка зеленая',
+                {
+                    name: 'Neutron Store',
                     adres: 'Ул. Гагарина, д.32',
                     count: 1234,
                     revenue: 120340,
-                    profit:120340,
+                    profit: 120340,
+                    marj: 120340
+                },
+                {
+                    name: 'Neutron Store',
+                    adres: 'Ул. Гагарина, д.32',
+                    count: 1234,
+                    revenue: 120340,
+                    profit: 120340,
+                    marj: 120340
+                },
+                {
+                    name: 'Neutron Store',
+                    adres: 'Ул. Гагарина, д.32',
+                    count: 1234,
+                    revenue: 120340,
+                    profit: 120340,
+                    marj: 120340
+                },
+                {
+                    name: 'Neutron Store',
+                    adres: 'Ул. Гагарина, д.32',
+                    count: 1234,
+                    revenue: 120340,
+                    profit: 120340,
                     marj: 120340
                 },
             ]
@@ -216,45 +232,23 @@ export default {
 </script>
 
 <style scoped>
-.order__table__body::-webkit-scrollbar {
-    background: #e2e8f0;
-    border-radius: 0.78vw;
-    width: 0.37vw;
-}
-
-.order__table__body::-webkit-scrollbar-thumb {
-    border-radius: 0.78vw;
-    background-color: #313860;
-}
-
-.order__table__body::-webkit-scrollbar-track {
-    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.2);
-    border-radius: 0.78vw;
-    background-color: #e2e8f0;
-}
-
-.order__table__body {
-    height: 19.792vw;
-    overflow-y: scroll;
-}
-
 .top__number3 {
     position: absolute;
-    left: 15.886vw;
+    left: 17.806vw;
     top: 0.781vw;
     opacity: 0.1;
 }
 
 .top__number2 {
     position: absolute;
-    left: 305.005px;
+    left: 17.720vw;
     top: 0.938vw;
     opacity: 0.2;
 }
 
 .top__number {
     position: absolute;
-    left: 16.927vw;
+    left: 18.727vw;
     top: 0.885vw;
     opacity: 0.2;
 }

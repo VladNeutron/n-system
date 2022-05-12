@@ -356,6 +356,12 @@ const routes = [
     component: () => import("../views/Analytics/BestShopsForPeriod.vue"),
     meta: { NavLink: "Лучшие магазины за период" },
   },
+  {
+    path: "/analytics/remainder-storage",
+    name: "remainder-storage",
+    component: () => import("../views/Analytics/ProductsInStorage.vue"),
+    meta: { NavLink: "Остатки товаров на складе" },
+  },
   //АНАЛИТИКА
 
 
