@@ -4,18 +4,18 @@
     <the-header></the-header>
     <div class="page__name d-flex align-items-center ms-4">
       <div class="page__name-title text-start">
-        <h3>Список чеков</h3>
+        <h3>Список возвратов чеков</h3>
         <p class="mb-0">Внесите изменения и не забудьте нажать “Сохранить”</p>
       </div>
     </div>
     <div class="card pt-4 pb-6 m-4">
       <div class="d-flex justify-content-between align-items-center mx-4 mb-4">
         <div>
-          <button class="btn bg-gradient-dark mb-0" style="margin-right: 0.833vw">
-            <img src="@/assets/img/whtplus.svg" alt="" /> Новая продажа
+            <button class="btn bg-gradient-dark mb-0" style="margin-right: 0.833vw">
+            <img src="@/assets/img/whtplus.svg" alt="" /> Оформить возврат
           </button>
           <button class="btn bg-gradient-dark mb-0">
-            <img src="@/assets/img/whtplus.svg" alt="" /> Оформить возврат
+            <img src="@/assets/img/whtplus.svg" alt="" /> Новая продажа
           </button>
         </div>
         <div class="table__inputs d-flex gap-3 align-content-center">

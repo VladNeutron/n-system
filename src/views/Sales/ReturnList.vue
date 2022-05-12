@@ -7,53 +7,37 @@
         <div class="order__header-content">
           <div class="order__header-main">
             <div class="order__header-text">
-              <p class="order__header__main">Заказ №</p>
+              <p class="order__header__main">Возврат №</p>
               <p class="order__header__sec">
                 Настройте все параметры и нажмите “Сохранить”
               </p>
             </div>
             <div class="drop__buttons">
-                  <button class="btn comment">
-                    <img
-                      src="@/assets/img/comment.svg"
-                      style="width: 1.042vw; margin-right: 0.417vw"
-                      alt=""
-                    />
-                    Комментарии <span class="count">4</span>
-                  </button>
-                  <div class="dropdown">
-                    <button
-                      class="btn action"
-                      type="button"
-                      id="dropdownMenuButton"
-                      data-bs-toggle="dropdown"
-                      aria-expanded="false"
-                    >
-                      <img
-                        src="@/assets/img/action.svg"
-                        style="width: 1.042vw; margin-right: 0.417vw"
-                        alt=""
-                      />
-                      Действия
-                    </button>
-                    <ul
-                      class="dropdown-menu"
-                      aria-labelledby="dropdownMenuButton"
-                    >
-                      <li>
-                        <a class="dropdown-item" href="javascript:;">Печать</a>
-                      </li>
-                      <li>
-                        <a class="dropdown-item" href="javascript:;">Скачать</a>
-                      </li>
-                      <li>
-                        <a class="dropdown-item" href="javascript:;">Удалить</a>
-                      </li>
-                    </ul>
-                  </div>
-                  <button class="btn save__btn">Сохранить</button>
-                </div>
-            
+              <button class="btn comment">
+                <img src="@/assets/img/comment.svg" style="width: 1.042vw; margin-right: 0.417vw" alt="" />
+                Комментарии <span class="count">4</span>
+              </button>
+              <div class="dropdown">
+                <button class="btn action" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown"
+                  aria-expanded="false">
+                  <img src="@/assets/img/action.svg" style="width: 1.042vw; margin-right: 0.417vw" alt="" />
+                  Действия
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <li>
+                    <a class="dropdown-item" href="javascript:;">Печать</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="javascript:;">Скачать</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="javascript:;">Удалить</a>
+                  </li>
+                </ul>
+              </div>
+              <button class="btn save__btn">Сохранить</button>
+            </div>
+
           </div>
           <div class="order__body">
             <div class="row">
@@ -61,11 +45,11 @@
                 <div class="order__body__content">
                   <div class="order__first__row">
                     <div class="form-group">
-                      <label for="example-text-input" class="form-control-label order__label">№ Заказа</label>
+                      <label for="example-text-input" class="form-control-label order__label">№ Возврата</label>
                       <input class="form-control" type="text" id="example-text-input" placeholder="№ 9876543" />
                     </div>
                     <div class="form-group">
-                      <label for="example-date-input" class="form-control-label order__label">Дата заказа</label>
+                      <label for="example-date-input" class="form-control-label order__label">Дата возврата</label>
                       <input class="form-control" type="date" id="example-date-input" />
                     </div>
                     <div class="form-group">
@@ -95,7 +79,7 @@
                       </div>
                     </div>
                     <div class="form-group">
-                      <label for="exampleFormControlSelect1" class="order__label">Способ оплаты</label>
+                      <label for="exampleFormControlSelect1" class="order__label">Способ возврата средств</label>
                       <div class="select">
                         <img src="@/assets/img/arrow.svg" style="width: 0.833vw" alt="" />
                         <select class="form-control" id="exampleFormControlSelect1">
@@ -109,7 +93,7 @@
                   </div>
                   <div class="order__second__row">
                     <div class="form-group">
-                      <label for="exampleFormControlSelect1" class="order__label">Статус заказа</label>
+                      <label for="exampleFormControlSelect1" class="order__label">Статус возврата</label>
                       <div class="select2">
                         <img src="@/assets/img/arrow.svg" style="width: 0.833vw" alt="" />
                         <select class="form-control first__s" id="exampleFormControlSelect1">
@@ -202,7 +186,18 @@
               </div>
             </div>
           </div>
-          <div class="order__table__body">
+          <div class="not__added" v-if="isAdded">
+            <div>
+              <img src="@/assets/img/add.png" style="width: 6.667vw" alt="" />
+              <p class="not__added__main">Товары не выбраны</p>
+              <p class="not__added__sec">
+                Для того чтобы создать заказ, необходимо<br />
+                выбрать товары из списка
+              </p>
+              <button class="btn btn__chose">Выбрать из списка</button>
+            </div>
+          </div>
+          <div class="order__table__body" v-else>
             <table class="table table-bordered table-hover table-striped">
               <thead>
                 <tr>
@@ -294,7 +289,7 @@
               </tbody>
             </table>
           </div>
-          <div class="order__ready_block">
+          <div class="order__ready_block" v-if="!isAdded">
             <div style="text-align:left">
               <p class="order__ready__main">Сумма</p>
               <p class="order__ready__sec">280 000 ₸</p>
@@ -363,9 +358,33 @@
 
 
 <style scoped>
-.drop__buttons{
-  display:flex;
+.not__added__main {
+  font-weight: 600;
+  font-size: 1.25vw;
+  color: #2D3748;
 }
+
+.not__added__sec {
+  font-weight: 400;
+  font-size: 0.833vw;
+  color: #2D3748;
+}
+
+.btn__chose {
+  background: linear-gradient(83.56deg, #7092E0 10.01%, #8BAEF3 75.36%);
+  box-shadow: 0px 4px 7px -1px rgba(0, 0, 0, 0.11), 0px 2px 4px -1px rgba(0, 0, 0, 0.07);
+  border-radius: 8px;
+  padding: 0.625vw 1.875vw 0.625vw 1.875vw;
+  font-weight: 700;
+  font-size: 0.833vw;
+  color: #FFFFFF;
+
+}
+
+.drop__buttons {
+  display: flex;
+}
+
 .comment {
   position: relative;
   display: flex;
@@ -380,6 +399,7 @@
   margin-right: 1.25vw;
   text-transform: none;
 }
+
 .count {
   position: absolute;
   background: #eb5757;
@@ -391,6 +411,7 @@
   left: 7.708vw;
   top: -0.26vw;
 }
+
 .action {
   display: flex;
   border: 1px solid #2d3748;
@@ -402,8 +423,9 @@
   font-size: 0.729vw;
   color: #2d3748;
   text-transform: none;
-  margin-right:1.25vw;
+  margin-right: 1.25vw;
 }
+
 .order__ready__result {
   font-weight: 600;
   font-size: 1.042vw;
@@ -418,8 +440,8 @@
 }
 
 .order__ready_block {
-  margin-left:28.073vw;
-  margin-top:8px;
+  margin-left: 28.073vw;
+  margin-top: 8px;
   display: flex;
   justify-content: space-around
 }
@@ -930,6 +952,7 @@ export default {
         },
       ],
       search: "",
+      isAdded: false,
     };
   },
   computed: {
