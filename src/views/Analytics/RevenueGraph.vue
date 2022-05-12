@@ -83,16 +83,91 @@
         </div>
       </div>
     </div>
-    <div class="graphs d-flex"></div>
+    <div class="graphs d-flex m-4 gap-4">
+      <div class="card p-4">
+        <p class="fw-bold fs-5 text-start">Выручка</p>
+        <div
+          class="graph__description mb-3 d-flex justify-content-between align-items-center"
+        >
+          <div class="chart__stats" v-if="chartPercent > 0">
+            <img src="@/assets/img/home/percerntPositive.svg" alt="" /> на
+            {{ chartPercent }} % больше
+            <span class="chart__stats__year"> в 2021</span>
+          </div>
+          <div class="chart__stats" v-else>
+            <img src="@/assets/img/home/percentNegative.svg" alt="" /> на
+            {{ chartPercent }} % больше
+            <span class="chart__stats__year">в 2021</span>
+          </div>
+          <div class="chart__stats-date d-flex align-items-center">
+            <span>Показать:</span
+            ><select class="form-select">
+              <option v-for="dates of selectChartsDate" :key="dates">
+                {{ dates }}
+              </option>
+            </select>
+          </div>
+        </div>
+
+        <canvas id="myChart" class="w-100"></canvas>
+      </div>
+    </div>
   </main>
 </template>
 <script>
 import Filter from "@/components/Filters.vue";
 import FilterButton from "@/components/buttons/FiltersButton.vue";
-import Chart from "../assets/js/plugins/chartjs.min.js";
+import Chart from "@/assets/js/plugins/chartjs.min.js";
 export default {
   data() {
-    return {};
+    return {
+      chartPercent: 4,
+      selectChartsDate: ["Месяц", "Год", "За все время"],
+    };
+  },
+  mounted() {
+    const ctx = document.getElementById("myChart").getContext("2d");
+
+    var gradientStroke1 = ctx.createLinearGradient(0, 230, 0, 50);
+
+    gradientStroke1.addColorStop(0, "rgba(255, 255, 255, 0.1)");
+    gradientStroke1.addColorStop(1, "rgba(112, 146, 224, 0.1)");
+    // gradientStroke1.addColorStop(0, 'rgba(203,12,159,0)'); //purple colors
+
+    const data = {
+      labels: ["Апр", "Май", "Июн", "Июл", "Авг", "Сен", "Окт", "Ноя", "Дек"],
+      datasets: [
+        {
+          label: "Выручка",
+          data: [23, 45, 125, 320, 300, 100, 250, 400, 500],
+          fill: true,
+          borderColor: "#8BAEF3",
+          backgroundColor: gradientStroke1,
+        },
+      ],
+    };
+    const config = {
+      type: "line",
+      data: data,
+      options: {
+        responsive: true,
+        interaction: {
+          mode: "index",
+          intersect: false,
+        },
+        plugins: {
+          legend: {
+            display: false,
+            title: {
+              display: false,
+              text: "Legend Title",
+            },
+          },
+        },
+      },
+    };
+
+    const myChart = new Chart(ctx, config);
   },
   components: {
     "the-filter": Filter,
@@ -130,5 +205,20 @@ export default {
 .form-switch .form-check-input:checked {
   background: linear-gradient(83.56deg, #7092e0 10.01%, #8baef3 75.36%);
   border-color: rgba(112, 146, 224, 1);
+}
+.chart__stats {
+  text-align: left;
+  display: flex;
+  align-items: center;
+  font-weight: 600;
+  font-size: 14px;
+  color: #a0aec0;
+}
+.chart__stats img {
+  margin-right: 4px;
+}
+.chart__stats__year {
+  color: #2d3748;
+  margin-left: 4px;
 }
 </style>
