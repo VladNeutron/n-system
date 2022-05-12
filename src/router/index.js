@@ -276,6 +276,12 @@ const routes = [
     component: () => import("../views/Sales/ClientList.vue"),
     meta: { NavLink: "Клиентская база" },
   },
+  {
+    path: "/sales/application-list",
+    name: "application-list",
+    component: () => import("../views/Sales/ApplicationList.vue"),
+    meta: { NavLink: "Список заявок" },
+  },
   // ПРОДАЖИ
 
 
