@@ -154,7 +154,7 @@
       </div>
     </div>
   </main>
-  <the-filter :orders="orders">
+  <the-filter :orders="orders" @no-filter="cancelFilters">
     <div class="filters__period__flex">
       <div class="filter__name__standart">Выберите период</div>
       <div class="reset__date">Сбросить период</div>
@@ -170,7 +170,7 @@
         <input class="form-control" type="date" id="example-date-input" />
       </div>
     </div>
-    <label class="text-start" for="Статус">Статус заказа</label>
+    <p class="text-start my-2 fw-bold" for="Статус">Статус заказа</p>
     <div class="d-flex flex-wrap">
       <div class="cat" v-for="status of orderStatusList" :key="status">
         <label>
@@ -182,29 +182,37 @@
         </label>
       </div>
     </div>
-    <label class="text-start" for="Склад">Склад</label>
+    <p class="text-start my-2 fw-bold" for="Склад">Склад</p>
     <select class="form-select" v-model="filterWarehouse">
+      <option value="" disabled>Выберите склад</option>
       <option v-for="warehouse of orderWarehouseList" :key="warehouse">
         {{ warehouse }}
       </option>
+      <option value=""></option>
     </select>
-    <label class="text-start" for="Ответственный">Ответственный</label>
+    <p class="text-start my-2 fw-bold" for="Ответственный">Ответственный</p>
     <select class="form-select" v-model="filterResponsible">
+      <option value="" disabled>Выберите ответственного</option>
       <option v-for="responsible of orderResponsibleList" :key="responsible">
         {{ responsible }}
       </option>
+      <option value=""></option>
     </select>
-    <label class="text-start" for="Клиент">Клиент</label>
+    <p class="text-start my-2 fw-bold" for="Клиент">Клиент</p>
     <select class="form-select" v-model="filterClient">
+      <option value="" disabled>Выберите клиента</option>
       <option v-for="client of orderClientList" :key="client">
         {{ client }}
       </option>
+      <option value=""></option>
     </select>
-    <label class="text-start" for="Тип заказа">Тип заказа</label>
+    <p class="text-start my-2 fw-bold" for="Тип заказа">Тип заказа</p>
     <select class="form-select" v-model="filterOrderType">
+      <option value="" disabled>Выберите тип заказа</option>
       <option v-for="orderType of orderTypeList" :key="orderType">
         {{ orderType }}
       </option>
+      <option value=""></option>
     </select>
   </the-filter>
 </template>
@@ -333,9 +341,12 @@ export default {
         return "bg-gradient-success";
       }
     },
-    check() {
-      const ch = this.filterStatusSelect.includes(this.orders[0].status);
-      console.log(ch);
+    cancelFilters() {
+      this.filterStatusSelect = [];
+      this.filterResponsible = "";
+      this.filterClient = "";
+      this.filterOrderType = "";
+      this.filterWarehouse = "";
     },
   },
   computed: {
@@ -359,8 +370,9 @@ export default {
       let unfiltered = this.orders.map((e) => e.warehouse);
       return [...new Set(unfiltered)];
     },
+
     filteredOrders() {
-      const statusCheckIfEmpty = this.filterStatusSelect > 0;
+      const statusCheckIfEmpty = this.filterStatusSelect.length > 0;
       return this.orders.filter(
         (order) =>
           (statusCheckIfEmpty

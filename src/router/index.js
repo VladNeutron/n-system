@@ -115,7 +115,8 @@ const routes = [
   {
     path: "/warehouse-accounting/edit-move",
     name: "edit-move",
-    component: () => import("../views/WarehouseAccounting/EditMoveListView.vue"),
+    component: () =>
+      import("../views/WarehouseAccounting/EditMoveListView.vue"),
     meta: { NavLink: "Перемещение" },
   },
   // ПЕРЕМЕЩЕНИЕ
@@ -135,7 +136,8 @@ const routes = [
   {
     path: "/warehouse-accounting/edit-posting",
     name: "edit-posting",
-    component: () => import("../views/WarehouseAccounting/EditPostingListView.vue"),
+    component: () =>
+      import("../views/WarehouseAccounting/EditPostingListView.vue"),
     meta: { NavLink: "Оприходование" },
   },
   // ОПРИХОДОВАНИЕ
@@ -270,16 +272,13 @@ const routes = [
     component: () => import("../views/Sales/CreateReturn.vue"),
     meta: { NavLink: "Создание возврата" },
   },
-   {
+  {
     path: "/sales/client-list",
     name: "client-list",
     component: () => import("../views/Sales/ClientList.vue"),
     meta: { NavLink: "Клиентская база" },
   },
   // ПРОДАЖИ
-
-
-
 
   // КАССА
   {
@@ -326,7 +325,14 @@ const routes = [
   },
   // КАССА
 
-
+  //АНАЛИТИКА
+  {
+    path: "/analytics/revenue-profit-avgcheck",
+    name: "revenue-profit",
+    component: () => import("../views/Analytics/RevenueGraph.vue"),
+    meta: { NavLink: "Выручка - Прибыль - Средний чек" },
+  },
+  //АНАЛИТИКА
 ];
 
 const router = createRouter({
