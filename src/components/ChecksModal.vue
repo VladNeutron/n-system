@@ -7,7 +7,7 @@
                     <div style="text-align: left; display:flex">
                         <img src="@/assets/img/tshirt-lg.png" style="width:4.948vw; margin-right:1.25vw" alt="">
                         <div>
-                            <p class="header__main">Куртка зеленая</p>
+                            <p class="header__main">{{product.name}}</p>
                             <p class="header__sec">Список чеков, в которых присутствует выбранный товар
                             </p>
                         </div>
@@ -28,7 +28,7 @@
                             </div>
                             <div class="checks__count">
                                 <p class="count__main">Количество чеков</p>
-                                <p class="count__sec">28</p>
+                                <p class="count__sec">{{product.count}}</p>
                             </div>
                         </div>
                         <filters-button></filters-button>
@@ -38,7 +38,6 @@
                             <table class="table table-bordered table-hover table-striped">
                                 <thead>
                                     <tr>
-                                        <th scope="col" class="th__col" style="width: 10px;border-left: 0;border-right: 0"></th>
                                         <th scope="col" class="th__col" style="border-left: 0;border-right: 0">
                                             №
                                         </th>
@@ -66,12 +65,6 @@
                                 <tbody>
                                     <!-- v-for="item in filteredProducts" :key="item" -->
                                     <tr v-for="(item, i) in filteredProducts" :key="item">
-                                        <td width="1%" scope="row" style="border-left: 0; border-right: 0">
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" value=""
-                                                    id="fcustomCheck1" />
-                                            </div>
-                                        </td>
                                         <td style="border-left: 0; border-right: 0">
                                             {{i + 1}}
                                         </td>
@@ -152,6 +145,9 @@ import FiltersButton from "@/components/buttons/FiltersButton.vue";
 export default {
     components: {
         FiltersButton
+    },
+     props: {
+        product: Object,
     },
     data() {
         return {
