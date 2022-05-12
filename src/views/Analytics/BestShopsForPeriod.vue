@@ -118,10 +118,10 @@
                                 Адрес
                             </th>
                             <th scope="col" class="th__col" style="border-left: 0; border-right: 0">
-                               Количество продаж
+                                Количество продаж
                             </th>
                             <th scope="col" class="th__col" style="border-left: 0; border-right: 0">
-                               Выручка
+                                Выручка
                             </th>
                             <th scope="col" class="th__col" style="border-left: 0; border-right: 0">
                                 Прибыль
@@ -137,7 +137,7 @@
                             <th scope="row" style="border-right: 0; border-left: 0">
                                 {{ i + 1 }}
                             </th>
-                            <td style="border-left: 0; border-right: 0; display: flex">
+                            <td style="border-left: 0; border-right: 0;">
                                 {{ item.name }}
                             </td>
                             <td style="border-left: 0; border-right: 0">
@@ -170,43 +170,43 @@ export default {
             activeBtn: 1,
             items: [
                 {
-                    name: 'Куртка зеленая',
+                    name: 'Neutron Store',
                     adres: 'Ул. Гагарина, д.32',
                     count: 1234,
                     revenue: 120340,
-                    profit:120340,
-                    marj: 120340
-                },
-                 {
-                    name: 'Куртка зеленая',
-                    adres: 'Ул. Гагарина, д.32',
-                    count: 1234,
-                    revenue: 120340,
-                    profit:120340,
+                    profit: 120340,
                     marj: 120340
                 },
                 {
-                    name: 'Куртка зеленая',
+                    name: 'Neutron Store',
                     adres: 'Ул. Гагарина, д.32',
                     count: 1234,
                     revenue: 120340,
-                    profit:120340,
+                    profit: 120340,
                     marj: 120340
                 },
-                 {
-                    name: 'Куртка зеленая',
+                {
+                    name: 'Neutron Store',
                     adres: 'Ул. Гагарина, д.32',
                     count: 1234,
                     revenue: 120340,
-                    profit:120340,
+                    profit: 120340,
                     marj: 120340
                 },
-                 {
-                    name: 'Куртка зеленая',
+                {
+                    name: 'Neutron Store',
                     adres: 'Ул. Гагарина, д.32',
                     count: 1234,
                     revenue: 120340,
-                    profit:120340,
+                    profit: 120340,
+                    marj: 120340
+                },
+                {
+                    name: 'Neutron Store',
+                    adres: 'Ул. Гагарина, д.32',
+                    count: 1234,
+                    revenue: 120340,
+                    profit: 120340,
                     marj: 120340
                 },
             ]
@@ -247,7 +247,7 @@ export default {
 
 .top__number2 {
     position: absolute;
-    left: 305.005px;
+    left: 15.886vw;
     top: 0.938vw;
     opacity: 0.2;
 }
