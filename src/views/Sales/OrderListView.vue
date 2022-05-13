@@ -80,7 +80,7 @@
 
               <td>{{ order.responsible }}</td>
               <td>
-                <div class="btn mb-0 w-100" :class="getClass(order.status)">
+                <div class="btn mb-0 w-100">
                   {{ buttonText }}
                 </div>
               </td>
@@ -372,25 +372,25 @@ export default {
     },
 
     filteredOrders() {
-      // const statusCheckIfEmpty = this.filterStatusSelect.length > 0;
-      // return this.orders.filter(
-      //   (order) =>
-      //     (statusCheckIfEmpty
-      //       ? this.filterStatusSelect.includes(order.status)
-      //       : true) &&
-      //     (this.filterWarehouse === ""
-      //       ? true
-      //       : order.warehouse === this.filterWarehouse) &&
-      //     (this.filterResponsible === ""
-      //       ? true
-      //       : order.responsible === this.filterResponsible) &&
-      //     (this.filterClient === ""
-      //       ? true
-      //       : order.client === this.filterClient) &&
-      //     (this.filterOrderType === ""
-      //       ? true
-      //       : order.type === this.filterOrderType)
-      // );
+      const statusCheckIfEmpty = this.filterStatusSelect.length > 0;
+      return this.orders.filter(
+        (order) =>
+          (statusCheckIfEmpty
+            ? this.filterStatusSelect.includes(order.status)
+            : true) &&
+          (this.filterWarehouse === ""
+            ? true
+            : order.warehouse === this.filterWarehouse) &&
+          (this.filterResponsible === ""
+            ? true
+            : order.responsible === this.filterResponsible) &&
+          (this.filterClient === ""
+            ? true
+            : order.client === this.filterClient) &&
+          (this.filterOrderType === ""
+            ? true
+            : order.type === this.filterOrderType)
+      );
     },
   },
 
