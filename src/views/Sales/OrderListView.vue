@@ -360,7 +360,7 @@ export default {
       return [...new Set(unfiltered)];
     },
     filteredOrders() {
-      const statusCheckIfEmpty = this.filterStatusSelect > 0;
+      const statusCheckIfEmpty = this.filterStatusSelect.length > 0;
       return this.orders.filter(
         (order) =>
           (statusCheckIfEmpty

@@ -26,7 +26,7 @@
                             <button class="btn bg-gradient-dark">
                                 Оформить возврат
                             </button>
-                            <select class="form-select">
+                            <select class="form-select" v-model="cashRegisterNumber">
                                 <option>Касса 1</option>
                                 <option>Касса 2</option>
                             </select> 
@@ -113,7 +113,7 @@
                                     <tbody>
                                         <tr v-for="product in produtsList" :key="product.id" @click="this.selectProduct(product)">
                                             <td>
-                                                <div class="d-flex px-2 py-1">
+                                                <div class="d-flex px-2">
                                                 <div>
                                                     <img src="https://demos.creative-tim.com/soft-ui-design-system-pro/assets/img/team-2.jpg" class="avatar avatar-md me-3">
                                                 </div>
@@ -153,13 +153,13 @@
                                 <div class="btn__favourite action__button" @click="openFavourites">
                                     <img src="@/assets/img/cash-register/cashFavourite.svg" alt="">    
                                 </div>
-                                <div class="btn__discount action__button">
+                                <div class="btn__discount action__button" data-bs-toggle="modal" data-bs-target="#DiscModal" @click="modalState = 0">
                                     <img src="@/assets/img/cash-register/cashPercentBtn.svg" alt=""> 
                                 </div>
                                 <div class="btn__deferred action__button">
                                     <img src="@/assets/img/cash-register/cashDefferedBtn.svg" alt=""> 
                                 </div>
-                                <div class="btn__deleteBarcode action__button">
+                                <div class="btn__deleteBarcode action__button"  data-bs-toggle="modal" data-bs-target="#DiscModal" @click="modalState = 1">
                                     <img src="@/assets/img/cash-register/cashDeleteBarc.svg" alt=""> 
                                 </div>   
                             </div>
@@ -188,7 +188,7 @@
                                             Способ оплаты
                                         </div>
                                         <div class="calculator__payment__method">
-                                            <select class="form-select calculator__payment__method__select">
+                                            <select class="form-select calculator__payment__method__select" v-model="paymentMethod">
                                                 <option>Наличные</option>
                                                 <option>Карта</option>
                                             </select>
@@ -263,7 +263,7 @@
                                 <button class="btn checkDefer__btn">
                                     <img src="@/assets/img/cash-register/checkDefer.svg" alt="">  
                                 </button>
-                                <button class="btn bg-gradient-dark check__btn">
+                                <button class="btn bg-gradient-dark check__btn" @click="printCheck">
                                     Пробить чек   
                                 </button>
                             </div>
@@ -273,14 +273,177 @@
             </div>
         </div>
   </div>
-  <Favourites></Favourites>
+  <Favourites :deleted="deletedProductId" @set-deleted="deletedProductId = -1" @add-fav="addFavProduct" @delete-fav="deleteProduct"></Favourites>
   <select-product-discount></select-product-discount>
+  <discount-modal>
+    <template #head>
+        <div style="text-align: left" v-if="modalState == 1">
+            <p class="header__main">Удаление по штрихкоду</p>
+            <p class="header__sec">Отсканируйте товар, который хотите удалить</p>
+        </div>
+        <div style="text-align: left" v-if="modalState == 0">
+            <p class="header__main">Применить скидку</p>
+            <p class="header__sec">Введите значение скидки и нажмите “Применить”</p>
+        </div>
+    </template>
+    <template #body>
+        <div class="form-group m-0" v-if="modalState == 1">
+            <div class="input-group mt-1">
+                <input
+                    class="form-control"
+                    placeholder="Введите штрихкод"
+                    id="search-barcode"
+                    type="text"
+                    @change="deleteBarcode($event)"
+                />
+                <span class="input-group-text py-0">
+                    <img src="@/assets/css/icons/barcode.svg" alt=""/>
+                </span>
+            </div>
+        </div>
+        
+        <div class="form-group label__text" style="text-align: left" v-if="modalState == 0">
+            <label for="exampleFormControlInput1" class="label__text"
+              >Введите скидку на весь чек</label
+            >
+            <div class="d-flex">
+                <input
+                type="number"
+                class="form-control modal__inp"
+                id="exampleFormControlInput1"
+                placeholder="0"
+                v-model="discountModalInput"
+                />
+                <div 
+                :class="['product__percent', {'product__discount__active' : discountType == 'percent'}]"
+                @click="discountType = 'percent'"
+                >
+                    %
+                </div>
+                <div
+                :class="['product__tenge', {'product__discount__active' : discountType == 'tenge'}]"
+                @click="discountType = 'tenge'"
+                >
+                    ₸
+                </div>
+          </div>    
+        </div>
+    </template>
+    <template #footer v-if="modalState == 0">
+        <div class="footer__btn">
+          <button class="footer__button" @click="discountForAll">Применить скидку</button>
+        </div>
+      </template>
+  </discount-modal>
   </main>
+  <div class="printContainer">
+      <div class="check__container">
+        <div class="check__header">
+            <div class="check__header__title">
+                Чек №{{checkNumber}}
+            </div>
+            <div class="check__header__date">
+                {{checkDate}}
+            </div>
+        </div>    
+        <div class="check__products mt-3">
+            <div class="d-flex justify-content-between mt-1" v-for="product in produtsList" :key="product.id">
+                <div class="check__products__name">
+                    {{product.name}}
+                </div>
+                <div class="check__products__sum">
+                    {{product.amount}} шт. х {{product.price}} = {{product.amount*product.price}} 
+                </div>
+            </div>
+            <div class="d-flex justify-content-between mt-1">
+                <div class="check__products__name">
+                    СКИДКА
+                </div>
+                <div class="check__products__sum">
+                    {{discountValue}}
+                </div>
+            </div>
+        </div>
+        <div class="check__result__container">
+            <div class="d-flex justify-content-between mt-1">
+                <div class="check__result__title">
+                    ИТОГО
+                </div>
+                <div class="check__result__value">
+                    {{totalValue}}
+                </div>
+            </div>    
+            <div class="d-flex justify-content-between mt-1">
+                <div class="check__result__text">
+                    {{paymentMethod}}
+                </div>
+                <div class="check__result__text">
+                    {{paymentValue}}
+                </div>
+            </div>  
+            <div class="d-flex justify-content-between mt-1">
+                <div class="check__result__text">
+                    Сдача
+                </div>
+                <div class="check__result__text">
+                    {{changeValue}}
+                </div>
+            </div>
+        </div>
+        <div class="check__requisites">
+            <div class="d-flex justify-content-between mt-1">
+                <div class="check__result__text">
+                    БИН: 748390012845
+                </div>
+                <div class="check__result__text">
+                    Транзакция: 9575
+                </div>
+            </div>     
+            <div class="d-flex justify-content-between mt-1">
+                <div class="check__result__text">
+                    ЗНМ: 353728299372
+                </div>
+                <div class="check__result__text">
+                    Кассир: 504220
+                </div>
+            </div>  
+            <div class="d-flex justify-content-between mt-1">
+                <div class="check__result__text">
+                    РНМ: 0203946720019
+                </div>
+                <div class="check__result__text">
+                    Магазин: 500008
+                </div>
+            </div>  
+        </div>
+        <div class="check__footer pt-2 pb-2">
+            <div class="check__footer__register" style="text-align:center;">
+                Кассир: Касса 1
+            </div>
+            <div class="check__footer__register mt-1" style="text-align:center;">
+                Дата: 06-03-2022 &nbsp; Время: 18:00
+            </div>
+            <div class="check__footer__register mt-2" style="text-align:center;">
+                <b>ФИСКАЛЬНЫЙ ЧЕК</b>
+            </div>
+            <div class="check__footer__register mt-1" style="text-align:center;">
+                ОФД - АО “КАЗАХТЕЛЕКОМ”
+            </div>
+            <div class="check__footer__register mt-1" style="text-align:center;">
+                Фиск. признак 2165782301
+            </div>
+            <div class="check__footer__register mt-1" style="text-align:center;">
+                Код ККМ КГД: 010101297600
+            </div>
+        </div>
+      </div>
+  </div>
 </template>
 
 <script>
 import SelectProductDiscount from "../../components/SelectProductDiscount.vue";
 import Favourites from "@/components/Favourites.vue";
+import DiscountModal from "@/components/DiscountModal.vue";
 export default {
     data(){
         return {
@@ -307,11 +470,49 @@ export default {
                     size: 'M',
                     price: 29000,        
                 },
+                {
+                    id: 123,
+                    name: 'Белые носки муж. высокие',
+                    barcode: '123123123',
+                    article: 94756390,
+                    color: 'Белый',
+                    size: 'S',
+                    price: 750,
+                    active: false,
+                },
+                {
+                    id: 124,
+                    name: 'Черные носки',
+                    barcode: '124124124',
+                    article: 94756390,
+                    color: 'Белый',
+                    size: 'S',
+                    price: 650,
+                    active: false,
+                },
+                {
+                    id: 125,
+                    name: 'Белые сапоги',
+                    barcode: '125125125',
+                    color: 'Белый',
+                    size: 'S',
+                    article: 94756390,
+                    price: 2850,
+                    active: false,
+                },
             ],
             produtsList: [
                 
             ],
+            paymentMethod: 'Наличные',
             selectedProduct: {},
+            deletedProductId: -1,
+            modalState: 0, 
+            discountModalInput: 0,
+            discountModalValue: 0,
+            checkNumber: 3800961,
+            cashRegisterNumber: 'Касса 1',
+            checkDate: '13.05.2022 10:58' 
         }
     },
     methods:{
@@ -326,7 +527,7 @@ export default {
             this.paymentValue = '';
         },
         addProduct(bar){
-            console.log(bar.target.value)
+            // console.log(bar.target.value)
             console.log('searchBar');
             let searchedProduct = this.products.filter( el => {
                 return String(el.barcode) == bar.target.value;
@@ -359,12 +560,15 @@ export default {
             }
         },
         deleteProduct(id){
+            console.log(id)
             this.produtsList = this.produtsList.filter(el => {return el.id != id});
             if(id == this.selectedProduct.id){
                 this.selectedProduct = {};
                 this.percentValue = '';
                 this.productAmount = 1;
-            }        
+            }
+            this.deletedProductId = -1;        
+            this.deletedProductId = id;
         },
         selectProduct(prod){
             if(this.produtsList.indexOf(prod) != -1){
@@ -410,6 +614,61 @@ export default {
         testClick(){
             console.log('Abc')
         },    
+        addFavProduct(barcode){
+            console.log(barcode)
+            let searchedProduct = this.products.filter( el => {
+                return String(el.barcode) == barcode;
+            })[0];  
+            if (searchedProduct){
+                let sameProduct = this.produtsList.filter( el => {return el.id == searchedProduct.id})
+                if(sameProduct.length != 0){
+                    sameProduct[0].amount = sameProduct[0].amount + 1;
+                    sameProduct[0].sum = sameProduct[0].sum + sameProduct[0].price; 
+                    document.querySelector('.testInp').value = '';
+                    document.querySelector('.testInp').focus();
+                }
+                else{
+                    searchedProduct.amount = 1;
+                    searchedProduct.discount = 'нет';
+                    searchedProduct.sum = searchedProduct.price;
+                    this.produtsList.push(
+                        searchedProduct
+                    )    
+                    document.querySelector('.testInp').value = '';
+                    document.querySelector('.testInp').focus();
+                }
+                
+            }  
+        },
+        deleteBarcode(bar){
+            let deletedProductId = this.produtsList.filter(el => {return el.barcode == bar.target.value})[0].id;
+            this.produtsList = this.produtsList.filter(el => {return el.barcode != bar.target.value});
+            if(bar.target.value == this.selectedProduct.barcode){
+                this.selectedProduct = {};
+                this.percentValue = '';
+                this.productAmount = 1;
+            }
+            this.deletedProductId = -1;        
+            this.deletedProductId = deletedProductId;
+        },
+        discountForAll(){
+            if(this.discountType == 'percent'){
+                this.discountModalValue = 0;
+                this.produtsList.forEach(el => {
+                    if(
+                        el.discount == 0 || el.discount == 'нет'  
+                    ){
+                        this.discountModalValue += el.price*this.discountModalInput/100;
+                    }
+                })
+            }
+            else{
+                this.discountModalValue = Number(this.discountModalInput);
+            }
+        },
+        printCheck(){
+            window.print();
+        }
     },
     computed:{
         productSum(){
@@ -428,13 +687,17 @@ export default {
             else {return 0}
         },
         totalValue(){
-            return this.produtsList.reduce( (accum,cur) => {
+            let result = this.produtsList.reduce( (accum,cur) => {
                 return accum + cur.sum
             }, 0
             )
+            if(this.discountModalValue > 0){
+                result -= this.discountModalValue
+            }
+            return result
         },
         discountValue(){
-            return this.produtsList.reduce( (accum,cur) => {
+            let result = this.produtsList.reduce( (accum,cur) => {
                 if(cur.discount != 'нет' && cur.discount > 0){
                     return accum + cur.discount
                 }
@@ -443,6 +706,10 @@ export default {
                 }
             }, 0
             )
+            if(this.discountModalValue > 0){
+                result += this.discountModalValue;
+            }
+            return result
         },
         changeValue(){
             if(this.paymentValue > this.totalValue){
@@ -451,7 +718,7 @@ export default {
             else{
                 return 0
             }
-        }
+        },
     },
     mounted(){
         document.querySelector('.testInp').addEventListener("focus", () => console.log("SALAM"));
@@ -481,7 +748,7 @@ export default {
     components: {
     SelectProductDiscount,
     Favourites,
-    Favourites
+    DiscountModal
 },
 }
 </script>
@@ -873,5 +1140,134 @@ export default {
     opacity: 0;
     padding: 0;
     margin: 0;
+}
+
+/* MODALDELETE */
+.header__sec {
+  font-weight: 400;
+  font-size: 0.833vw;
+  color: #a0aec0;
+}
+.header__main {
+  margin: 0;
+  font-weight: 700;
+  font-size: 1.2vw;
+  color: #252f40;
+}
+.modal-footer{
+    padding: 0 !important;
+}
+.label__text{
+    font-weight: 600;
+    font-size: 0.729vw;
+    color: #2d3748;
+}
+.footer__button {
+  font-weight: 700;
+  font-size: 0.833vw;
+  color: #fff;
+  border: 0;
+  background: linear-gradient(81.62deg, #313860 2.25%, #151928 79.87%);
+  box-shadow: 0px 4px 7px -1px rgba(0, 0, 0, 0.11),
+    0px 2px 4px -1px rgba(0, 0, 0, 0.07);
+  border-radius: 8px;
+  padding: 0.729vw 5.906vw 0.729vw 5.906vw;
+}
+.modal-footer{
+    padding: 1rem;
+}
+
+/* CHECK */
+.check__container{
+    width: 80mm;
+    padding: 2mm;
+    font-weight: 400;
+    font-size: 12px;
+    color: #000000;
+}
+.check__header{
+    padding-top: 20px;
+    padding-bottom: 16px;
+    text-align: center;
+    border-bottom: 1px dashed #A0AEC0;
+}
+.check__header__title{
+    font-weight: 700;
+    font-size: 20px;
+    color: #000000;
+}
+.check__header__date{
+    font-weight: 400;
+    font-size: 16px;
+    color: #A0AEC0;
+}
+.check__products{
+    padding-bottom: 16px;
+    border-bottom: 1px dashed #A0AEC0;;
+}
+.check__products__name{
+    font-weight: 400;
+    font-size: 12px;
+    color: #000000;
+    width: 35mm;
+    text-align: left;
+}
+.check__products__sum{
+    font-weight: 400;
+    font-size: 12px;
+    color: #000000;
+}
+.check__result__container{
+    padding-top: 10px;
+    border-bottom: 1px solid #A0AEC0;
+    padding-bottom: 10px;
+}
+.check__result__title{
+    font-size: 16px;
+    font-weight: 600;
+}
+.check__result__value{
+    font-size: 14px;
+}
+
+.check__requisites{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px dashed #A0AEC0;;
+}
+/* CHECK */
+</style>
+
+<style>
+/* PRINT */
+.printContainer{
+  display: none;
+}
+@media print {
+    main {
+        display: none;
+    }
+    .printContainer {
+        display: block;
+    }
+    #sidenav-main{
+      display: none;
+    }
+    .barcode-box {
+        margin: 3mm 0 0 0;
+    }
+    .priceBar__cont{
+        margin: 3mm 0 0 0;
+        border-color: black;
+    }
+    .priceBar__cont div{
+        border-color: black;
+    }
+    .fade{
+      display: none;
+    }
+    .barcodeAloneWidth{
+      width: 90% !important;
+    }
 }
 </style>

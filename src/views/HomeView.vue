@@ -200,7 +200,7 @@
         <canvas id="myChart" class="ChartContainer"></canvas>
       </div>
       <div class="card card-calendara">
-        <div class="card-body p-3">
+        <div class="card-body p-2">
           <div class="" data-bs-toggle="calendar" id="calendar"></div>
         </div>
       </div>
@@ -333,7 +333,7 @@ export default {
         center: '',
         end: 'today prev,next' // will normally be on the right. if RTL, will be on the left
       },
-      // height: '200px',
+      height: '280px',
       // height: '100%',
       fixedWeekCount: false,
       // expandRows: true,
@@ -456,12 +456,14 @@ export default {
   display: flex;
   justify-content: space-between;
   flex-direction: row;
-  padding: 0.833vw;
+  padding: 0.733vw;
   align-items: center;
 }
 .main__topCard__title{
+  text-align: left;
   font-weight: 600;
-  font-size: 14px;
+  /* font-size: 14px; */
+  font-size: 0.73vw;
   color: #A0AEC0;
 }
 .main__topCard__text{
@@ -470,7 +472,8 @@ export default {
 }
 .main__topCard__text__sum{
   font-weight: 700;
-  font-size: 20px;
+  /* font-size: 20px; */
+  font-size: 1.04vw;
   color: #2D3748;
 }
 .main__topCard__text__persent{
@@ -498,7 +501,7 @@ export default {
   grid-column-gap: 1.354vw;
 }
 .main__best__container{
-  padding: 16px 24px 16px 24px;
+  padding: 0.83vw 1.25vw 0.83vw 1.25vw;
 }
 .main__best__title__line{
   display: flex;
@@ -507,7 +510,8 @@ export default {
 }
 .main__bestTitle{
   font-weight: 700;
-  font-size: 20px;
+  /* font-size: 20px; */
+  font-size: 1.04vw;
   color: #2D3748;
 }
 .main__best__period{
@@ -543,7 +547,8 @@ export default {
 }
 .main__best__table__position{
   font-weight: 700;
-  font-size: 16px;  
+  /* font-size: 16px;   */
+  font-size: 0.83vw;
   color: #2D3748;
 }
 .main__best__table__amount{
@@ -553,7 +558,8 @@ export default {
 }
 .main__best__table__month{
   font-weight: 400;
-  font-size: 14px;
+  /* font-size: 14px; */
+  font-size: 0.73vw;
   color: #A0AEC0;
 }
 .main__best__table__income{
@@ -644,7 +650,7 @@ export default {
 .bottom__row{
   display: grid;
   grid-template-columns: 1fr 1.3fr;
-  margin-top: 36px;
+  margin-top: 1.88vw;
   grid-column-gap: 1.354vw;
 }
 /* CHART */
@@ -681,4 +687,78 @@ export default {
 .card-calendara{
   /* height: 26.177vw; */
 }
+
+
+@media screen and (max-width: 1800px){
+  .main__best__table{
+    border-spacing: 0 0.5vw;
+  }
+  .events__body{
+    height: 12.021vw;
+  }
+  .bottom__row{
+    margin-top: 1vw;
+  }
+  .chart__card{
+    height: fit-content;
+    padding: 10px 24px 10px 24px;
+  }
+
+  .fc-scroller::-webkit-scrollbar {
+    width: 5px;
+  }
+  .fc-scroller::-webkit-scrollbar-track {
+      background-color: #E9ECEF;
+      border-radius: 5px;
+  }
+  .fc-scroller::-webkit-scrollbar-thumb {
+      box-shadow: inset 0 0 10px #151928;
+      border-radius: 8px;
+  }
+  .fc .fc-scroller-liquid-absolute{
+      overflow: hidden scroll;
+  }
+  
+  .fc .fc-scroller-liquid-absolute::-webkit-scrollbar {
+    width: 5px !important;
+  }
+  .fc .fc-scroller-liquid-absolute::-webkit-scrollbar-track {
+      background-color: #E9ECEF;
+      border-radius: 5px;
+  }
+  .fc .fc-scroller-liquid-absolute::-webkit-scrollbar-thumb {
+      box-shadow: inset 0 0 10px #151928;
+      border-radius: 8px;
+  }
+  
+}
+</style>
+
+<style>
+  .fc .fc-scroller-liquid-absolute::-webkit-scrollbar {
+    width: 5px;
+  }
+  .fc .fc-scroller-liquid-absolute::-webkit-scrollbar-track {
+      background-color: #E9ECEF;
+      border-radius: 5px;
+  }
+  .fc .fc-scroller-liquid-absolute::-webkit-scrollbar-thumb {
+      box-shadow: inset 0 0 10px #151928;
+      border-radius: 8px;
+  }
+
+  .fc-scroller::-webkit-scrollbar {
+    width: 5px;
+  }
+  .fc-scroller::-webkit-scrollbar-track {
+      background-color: #E9ECEF;
+      border-radius: 5px;
+  }
+  .fc-scroller::-webkit-scrollbar-thumb {
+      box-shadow: inset 0 0 10px #151928;
+      border-radius: 8px;
+  }
+  .ChartContainer{
+    max-height: 234px !important;
+  }
 </style>

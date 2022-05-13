@@ -70,6 +70,8 @@
   justify-content: center;
   border-top: 0;
   padding-bottom: 2.083vw;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 /* .modal__padding {
   padding-top: 1.563vw;

@@ -47,23 +47,50 @@ export default {
         {
           id: 123,
           name: 'Белые носки муж. высокие',
+          barcode: '123123123',
           article: 94756390,
+          color: 'Белый',
+          size: 'S',
           price: 750,
           active: false,
         },
         {
           id: 124,
           name: 'Черные носки',
+          barcode: '124124124',
           article: 94756390,
+          color: 'Белый',
+          size: 'S',
           price: 650,
           active: false,
         },
         {
           id: 125,
           name: 'Белые сапоги',
+          barcode: '125125125',
+          color: 'Белый',
+          size: 'S',
           article: 94756390,
           price: 2850,
           active: false,
+        },
+        {
+          id: 1,
+          name: 'Белые asd',
+          barcode: '987654321',
+          article: 94756390,
+          price: 2850,
+          active: false,
+        },
+        {
+          id: 2,
+          name: 'Кофта',
+          barcode: '123456789',
+          img: '@/assets/img/cash-register/prodImg.png',
+          color: 'Белый',
+          size: 'M',
+          price: 29000,
+          active: false,        
         },
       ],
       selectedFavourites: [],
@@ -77,11 +104,16 @@ export default {
     },
     addToCheck(ide){
       // console.log(ide)
+      let chosenEl = this.favourites.filter(el => {return el.id == ide})[0];
+      let chosenBar = chosenEl.barcode;
+      let chosenId = chosenEl.id;
       if(this.favourites.filter(el => {return el.id == ide})[0].active == false){
         this.favourites.filter(el => {return el.id == ide})[0].active = true;
+        this.$emit('addFav', chosenBar)
       }
       else{
         this.favourites.filter(el => {return el.id == ide})[0].active = false;
+        this.$emit('deleteFav', chosenId)
       }
       // el.classList.toggle('favourite__itemContActive')
     }
@@ -100,7 +132,17 @@ export default {
         }
       }
     };
+    console.log(this.deleted);
   },
+  props: ['deleted'],
+  watch: {
+    deleted(newId , oldId){
+      if(this.favourites.filter(el => {return el.id == newId}).length > 0){
+        this.favourites.filter(el => {return el.id == newId})[0].active = false;
+        this.$emit('setDeleted', -1)  
+      }
+    },
+  }
 };
 </script>
 
