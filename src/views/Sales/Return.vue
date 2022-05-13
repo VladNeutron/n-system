@@ -4,13 +4,13 @@
     <the-header></the-header>
     <div class="page__name d-flex align-items-center ms-4">
       <div class="page__name-title text-start">
-        <h3>Список заказов</h3>
+        <h3>Список возвратов</h3>
         <p class="mb-0">Внесите изменения и не забудьте нажать “Сохранить”</p>
       </div>
     </div>
     <div class="card pt-4 pb-6 m-4">
       <div class="d-flex justify-content-between align-items-center mx-4 mb-4">
-        <button class="btn bg-gradient-dark mb-0">Новый заказ</button>
+        <button class="btn bg-gradient-dark mb-0">Оформить возврат</button>
         <div class="table__inputs d-flex gap-3 align-content-center">
           <div class="form-group m-0">
             <div class="input-group mt-1">

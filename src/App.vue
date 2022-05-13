@@ -14,8 +14,8 @@
 
 <script>
 export default {
-  methods:{
-    openFilters(){
+  methods: {
+    openFilters() {
       let filtersContainer = document.querySelector(".filters__container");
       filtersContainer.classList.add("filters__show");
     },
@@ -24,6 +24,23 @@ export default {
 </script>
 
 <style>
+.page__name h3 {
+    font-size: 24px;
+    line-height: 32px;
+    font-weight: 600;
+}
+
+.page__name p {
+    font-size: 14px;
+    line-height: 19px;
+    font-weight: 400;
+    color: gray;
+}
+.form-select {
+  border: 1px solid #A0AEC0 !important;
+  border-radius: 8px;
+}
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -31,6 +48,7 @@ export default {
   text-align: center;
   color: #2c3e50;
 }
+
 body {
   background-color: #f8f9fa !important;
 }

@@ -115,7 +115,8 @@ const routes = [
   {
     path: "/warehouse-accounting/edit-move",
     name: "edit-move",
-    component: () => import("../views/WarehouseAccounting/EditMoveListView.vue"),
+    component: () =>
+      import("../views/WarehouseAccounting/EditMoveListView.vue"),
     meta: { NavLink: "Перемещение" },
   },
   // ПЕРЕМЕЩЕНИЕ
@@ -135,7 +136,8 @@ const routes = [
   {
     path: "/warehouse-accounting/edit-posting",
     name: "edit-posting",
-    component: () => import("../views/WarehouseAccounting/EditPostingListView.vue"),
+    component: () =>
+      import("../views/WarehouseAccounting/EditPostingListView.vue"),
     meta: { NavLink: "Оприходование" },
   },
   // ОПРИХОДОВАНИЕ
@@ -259,9 +261,15 @@ const routes = [
     meta: { NavLink: "Список заказов" },
   },
   {
+    path: "/sales/return-edit",
+    name: "return-edit",
+    component: () => import("../views/Sales/ReturnList.vue"),
+    meta: { NavLink: "Редактирование возврата" },
+  },
+  {
     path: "/sales/return-list",
     name: "return-list",
-    component: () => import("../views/Sales/ReturnList.vue"),
+    component: () => import("../views/Sales/Return.vue"),
     meta: { NavLink: "Список возвратов" },
   },
   {
@@ -270,16 +278,19 @@ const routes = [
     component: () => import("../views/Sales/CreateReturn.vue"),
     meta: { NavLink: "Создание возврата" },
   },
-   {
+  {
     path: "/sales/client-list",
     name: "client-list",
     component: () => import("../views/Sales/ClientList.vue"),
     meta: { NavLink: "Клиентская база" },
   },
+  {
+    path: "/sales/application-list",
+    name: "application-list",
+    component: () => import("../views/Sales/ApplicationList.vue"),
+    meta: { NavLink: "Список заявок" },
+  },
   // ПРОДАЖИ
-
-
-
 
   // КАССА
   {
@@ -326,7 +337,102 @@ const routes = [
   },
   // КАССА
 
+  //АНАЛИТИКА
+  {
+    path: "/analytics",
+    name: "analytics",
+    component: () => import("../views/Analytics/analytics.vue"),
+    meta: { NavLink: "Аналитика" },
+  },
+  {
+    path: "/analytics/revenue-profit-avgcheck",
+    name: "revenue-profit",
+    component: () => import("../views/Analytics/RevenueGraph.vue"),
+    meta: { NavLink: "Выручка - Прибыль - Средний чек" },
+  },
+  {
+    path: "/analytics/best-products",
+    name: "best-products",
+    component: () => import("../views/Analytics/BestProductsForPeriod.vue"),
+    meta: { NavLink: "Лучшие товары за период" },
+  },
+  {
+    path: "/analytics/best-shops",
+    name: "best-shops",
+    component: () => import("../views/Analytics/BestShopsForPeriod.vue"),
+    meta: { NavLink: "Лучшие магазины за период" },
+  },
+  {
+    path: "/analytics/remainder-storage",
+    name: "remainder-storage",
+    component: () => import("../views/Analytics/ProductsInStorage.vue"),
+    meta: { NavLink: "Остатки товаров на складе" },
+  },
+  {
+    path: "/analytics/revenue-expenses-income",
+    name: "revenue-expenses-income",
+    component: () => import("../views/Analytics/ExpensesGraph.vue"),
+    meta: { NavLink: "Доходы - Расходы - Прибыль" },
+  },
+  {
+    path: "/analytics/abc-analysis",
+    name: "abc-analysis",
+    component: () => import("../views/Analytics/ABCAnalysis.vue"),
+    meta: { NavLink: "ABC анализ" },
+  },
+  {
+    path: "/analytics/abc-analysis/abc-product",
+    name: "abc-product",
+    component: () => import("../views/Analytics/ABCProduct.vue"),
+    meta: { NavLink: "Куртка зеленая" },
+  },
+  //АНАЛИТИКА
 
+  // ЗАКУПКИ
+  {
+    path: "/purchases",
+    name: "purchases",
+    component: () => import("../views/Purchases/purchases.vue"),
+    meta: { NavLink: "Закупки" },
+  },
+  {
+    path: "/purchases/income-list",
+    name: "income-list",
+    component: () => import("../views/Purchases/IncomeList.vue"),
+    meta: { NavLink: "Поступления" },
+  },
+  {
+    path: "/purchases/create-income",
+    name: "create-income",
+    component: () => import("../views/Purchases/CreateIncome.vue"),
+    meta: { NavLink: "Создание поступления" },
+  },
+  {
+    path: "/purchases/edit-income",
+    name: "edit-income",
+    component: () => import("../views/Purchases/EditIncome.vue"),
+    meta: { NavLink: "Поступление №" },
+  },
+  {
+    path: "/purchases/return-supplier-list",
+    name: "return-supplier-list",
+    component: () => import("../views/Purchases/ReturnSupplierList.vue"),
+    meta: { NavLink: "Возвраты поставщикам" },
+  },
+  {
+    path: "/purchases/create-supplier-return",
+    name: "create-supplier-return",
+    component: () => import("../views/Purchases/CreateReturnSupplier.vue"),
+    meta: { NavLink: "Создание возврата поставщикам" },
+  },
+  {
+    path: "/purchases/edit-supplier-return",
+    name: "edit-supplier-return",
+    component: () => import("../views/Purchases/EditReturnSupplier.vue"),
+    meta: { NavLink: "Возврат №" },
+  },
+
+  // ЗАКУПКИ
 ];
 
 const router = createRouter({

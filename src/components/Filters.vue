@@ -71,6 +71,10 @@ export default {
   data() {
     return {};
   },
+  emits: {
+    "filter-list": {},
+    "no-filter": {},
+  },
   methods: {
     filtersClose() {
       document
