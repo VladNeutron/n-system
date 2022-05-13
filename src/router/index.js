@@ -237,10 +237,11 @@ const routes = [
 
   // ПРОДАЖИ
   {
-    path: "/sales/create-order",
-    name: "create-order",
+    path: "/sales",
+    name: "sales-main",
     component: () => import("../views/Sales/OrderView.vue"),
     meta: { NavLink: "Продажи" },
+    redirect: "/sales/create-order"
   },
   {
     path: "/sales/create-order",
