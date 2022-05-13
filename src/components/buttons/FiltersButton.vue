@@ -1,7 +1,7 @@
 <template>
   <button type="button" class="inv__btn btn btn-outline-dark openFilters" @click="openFilters">
 
-    фильтры
+    ФИЛЬТРЫ
   </button>
 
 
@@ -28,7 +28,7 @@ export default {
   display: flex;
   align-items: center;
   text-transform: uppercase;
-  font-size: 0.7vw;
+  font-size: 0.8vw;
 }
 .inv__btn,
 .inv__inp {

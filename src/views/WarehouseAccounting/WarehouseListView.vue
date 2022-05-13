@@ -38,13 +38,13 @@
                     <th>АДРЕСС СКЛАДА</th>
                     <th>СТАТУС</th>
                   </tr>
-                  <tr v-for="item in 30" :key="item">
-                    <td>1</td>
-                    <td>Тц “Jam mall”</td>
-                    <td>торговая точка</td>
-                    <td>ул. горького, 5</td>
+                  <tr v-for="(warehouse, index) in warehouses" :key="warehouse.id">
+                    <td>{{index+1}}</td>
+                    <td>{{warehouse.name}}</td>
+                    <td>{{warehouse.type}}</td>
+                    <td>{{warehouse.adress}}</td>
                     <td>
-                      <div class="table__status"><p class="tag">Закрыт</p></div>
+                      <div :class="[{'table__status__open': warehouse.status != 'Закрыт'},{'table__status__closed': warehouse.status == 'Закрыт'}]"><p class="tag">{{warehouse.status}}</p></div>
                     </td>
                     <td></td>
                     <td>
@@ -54,18 +54,6 @@
                       <a href="#"
                         ><img src="@/assets/css/icons/deleteIcon.svg" alt="delete"
                       /></a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>1</td>
-                    <td>Тц “Jam mall”</td>
-                    <td>торговая точка</td>
-                    <td>ул. горького, 5</td>
-                    <td>Закрыт</td>
-                    <td></td>
-                    <td>
-                      <a href="#"><img src="@/assets/css/icons/editIcon.svg" alt="edit" /></a>
-                      <a href="#"><img src="@/assets/css/icons/deleteIcon.svg" alt="delete" /></a>
                     </td>
                   </tr>
                 </table>
@@ -97,6 +85,26 @@ import Filters from "@/components/Filters.vue";
 import FiltersButton from "@/components/buttons/FiltersButton.vue";
 
 export default {
+  data(){
+    return {
+      warehouses: [
+        { 
+          id: 1,
+          name: 'ТЦ “Jam mall”',
+          type: 'Торговая точка',
+          adress: 'Ул. Горького, 5',
+          status: 'Закрыт'
+        },
+        { 
+          id: 2,
+          name: 'ТЦ “Москва”',
+          type: 'Торговая точка',
+          adress: '8-й микрорайон, 37/1',
+          status: 'Открыт'
+        }
+      ],
+    }
+  },
   components:{
     Filters, FiltersButton
   }  
@@ -128,8 +136,13 @@ td {
   border-color: #e2e8f0;
   padding: 0.521vw 0;
 }
-.table__status {
+.table__status__closed {
   background-color: rgba(235, 87, 87, 0.3);
+
+  border-radius: 5px;
+}
+.table__status__open {
+  background-color: rgba(72, 187, 120, 0.3);
 
   border-radius: 5px;
 }
@@ -137,9 +150,13 @@ tr {
   border-bottom: 2px solid #f8f9fa;
   height: 2.604vw;
 }
-.tag {
+.table__status__closed .tag {
   margin: 0;
   color: #eb5757;
+}
+.table__status__open .tag {
+  margin: 0;
+  color: rgba(72, 187, 120, 1);
 }
 td > a {
   padding-left: 0.833vw;
