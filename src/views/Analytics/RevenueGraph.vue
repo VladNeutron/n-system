@@ -87,7 +87,7 @@
       </div>
     </div>
     <div class="graphs m-4 gap-4 d-flex justify-content-between">
-      <div class="graph__card card p-4" v-if="revenueSwitch">
+      <div class="graph__card card p-4" v-show="revenueSwitch">
         <p class="fw-bold fs-5 text-start">Выручка</p>
         <div
           class="graph__description mb-3 d-flex justify-content-between align-items-center"
@@ -114,7 +114,7 @@
 
         <canvas id="myChart1" class="w-100"></canvas>
       </div>
-      <div class="graph__card card p-4" v-if="incomeSwitch">
+      <div class="graph__card card p-4" v-show="incomeSwitch">
         <p class="fw-bold fs-5 text-start">Прибыль</p>
         <div
           class="graph__description mb-3 d-flex justify-content-between align-items-center"
@@ -141,7 +141,7 @@
 
         <canvas id="myChart2" class="w-100"></canvas>
       </div>
-      <div class="graph__card card p-4" v-if="avgSwitch">
+      <div class="graph__card card p-4" v-show="avgSwitch">
         <p class="fw-bold fs-5 text-start">Средний чек</p>
         <div
           class="graph__description mb-3 d-flex justify-content-between align-items-center"
@@ -311,6 +311,5 @@ export default {
   min-width: 30%;
   max-width: 60%;
   min-height: 406px;
-  max-height: 40vh;
 }
 </style>

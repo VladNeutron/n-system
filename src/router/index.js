@@ -373,6 +373,8 @@ const routes = [
     name: "revenue-expenses-income",
     component: () => import("../views/Analytics/ExpensesGraph.vue"),
     meta: { NavLink: "Доходы - Расходы - Прибыль" },
+  },
+  {
     path: "/analytics/abc-analysis",
     name: "abc-analysis",
     component: () => import("../views/Analytics/ABCAnalysis.vue"),
