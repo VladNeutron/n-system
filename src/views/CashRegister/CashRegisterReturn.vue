@@ -260,11 +260,8 @@
                                 </div>
                             </div>
                             <div class="check__btn__cont">
-                                <button class="btn checkDefer__btn">
-                                    <img src="@/assets/img/cash-register/checkDefer.svg" alt="">  
-                                </button>
                                 <button class="btn bg-gradient-dark check__btn" @click="printCheck">
-                                    Пробить чек   
+                                    Оформить возврат   
                                 </button>
                             </div>
                         </div>
@@ -340,7 +337,7 @@
       <div class="check__container">
         <div class="check__header">
             <div class="check__header__title">
-                Чек №{{checkNumber}}
+                Чек возврата №{{checkNumber}}
             </div>
             <div class="check__header__date">
                 {{checkDate}}
@@ -800,7 +797,7 @@ export default {
 /* PRODUCT */
 .product{
     padding: 0.833vw 1.250vw 1.250vw 1.250vw;
-    background: rgba(130, 214, 22, 0.3);
+    background: rgba(253, 67, 26, 0.3);
     border-radius: 12px;
     margin-top: 1.250vw;
 }
@@ -1122,7 +1119,7 @@ export default {
     height: 1.25vw;
 }
 .check__btn{
-    width: 70%;
+    width: 100%;
     font-weight: 600;
     font-size: 24px;
     text-transform: none;
