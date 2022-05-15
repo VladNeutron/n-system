@@ -22,7 +22,7 @@
             </div>
             <div class="reset__date">Сбросить период</div>
           </div>
-          <div class="filters__period mt-3">
+          <div class="filters__period mt-3 align-items-center">
             <div class="form-group mb-0">
               <input class="form-control" type="date" id="example-date-input" />
             </div>
@@ -44,13 +44,11 @@
               <input
                 class="form-check-input"
                 type="checkbox"
-                id="flexSwitchCheckDefault"
+                id="revenue"
                 checked=""
                 v-model="revenueSwitch"
               />
-              <label
-                class="form-check-label text-start m-0 fs-6"
-                for="flexSwitchCheckDefault"
+              <label class="form-check-label text-start m-0 fs-6" for="revenue"
                 >Доходы</label
               >
             </div>
@@ -58,13 +56,11 @@
               <input
                 class="form-check-input"
                 type="checkbox"
-                id="flexSwitchCheckDefault"
+                id="expenses"
                 checked=""
                 v-model="expensesSwitch"
               />
-              <label
-                class="form-check-label text-start m-0 fs-6"
-                for="flexSwitchCheckDefault"
+              <label class="form-check-label text-start m-0 fs-6" for="expenses"
                 >Расходы</label
               >
             </div>
@@ -72,13 +68,11 @@
               <input
                 class="form-check-input"
                 type="checkbox"
-                id="flexSwitchCheckDefault"
+                id="income"
                 checked=""
                 v-model="incomeSwitch"
               />
-              <label
-                class="form-check-label text-start m-0 fs-6"
-                for="flexSwitchCheckDefault"
+              <label class="form-check-label text-start m-0 fs-6" for="income"
                 >Прибыль</label
               >
             </div>
@@ -134,7 +128,7 @@
 </template>
 <script>
 import { Chart } from "@/assets/js/plugins/chartjs.min";
-
+// import chartlabelf from "chartjs-plugin-labels";
 export default {
   data() {
     return {
@@ -220,15 +214,23 @@ export default {
     const config = {
       type: "pie",
       data: data,
+
       options: {
         responsive: true,
         maintainAspectRatio: false,
         plugins: {
           legend: {
             position: "right",
+            align: "start",
+            labels: {
+              font: {
+                size: 16,
+              },
+            },
           },
         },
       },
+      // plugins: [ChartDataLabels],
     };
     const myChart = new Chart(ctx, config);
   },
