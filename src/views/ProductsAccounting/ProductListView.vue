@@ -31,8 +31,7 @@
                 <button
                   type="button"
                   class="btn bg-gradient-secondary"
-                  data-bs-toggle="modal"
-                  data-bs-target="#InpModal"
+                  onclick="window.location.href = '/products-accounting/product-edit'"
                 >
                   <img
                     src="@/assets/img/whtplus.svg"
