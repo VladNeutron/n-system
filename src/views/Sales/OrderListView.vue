@@ -80,7 +80,7 @@
 
               <td>{{ order.responsible }}</td>
               <td>
-                <div class="btn mb-0 w-100" :class="getClass(order.status)">
+                <div class="btn mb-0 w-100">
                   {{ buttonText }}
                 </div>
               </td>

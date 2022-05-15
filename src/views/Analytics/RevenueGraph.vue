@@ -22,7 +22,7 @@
             </div>
             <div class="reset__date">Сбросить период</div>
           </div>
-          <div class="filters__period">
+          <div class="filters__period align-items-center">
             <div class="form-group mb-0">
               <input class="form-control" type="date" id="example-date-input" />
             </div>
@@ -44,13 +44,11 @@
               <input
                 class="form-check-input"
                 type="checkbox"
-                id="flexSwitchCheckDefault"
+                id="revenue"
                 checked=""
                 v-model="revenueSwitch"
               />
-              <label
-                class="form-check-label text-start m-0 fs-6"
-                for="flexSwitchCheckDefault"
+              <label class="form-check-label text-start m-0 fs-6" for="revenue"
                 >Выручка</label
               >
             </div>
@@ -58,13 +56,11 @@
               <input
                 class="form-check-input"
                 type="checkbox"
-                id="flexSwitchCheckDefault"
+                id="income"
                 checked=""
                 v-model="incomeSwitch"
               />
-              <label
-                class="form-check-label text-start m-0 fs-6"
-                for="flexSwitchCheckDefault"
+              <label class="form-check-label text-start m-0 fs-6" for="income"
                 >Прибыль</label
               >
             </div>
@@ -72,13 +68,11 @@
               <input
                 class="form-check-input"
                 type="checkbox"
-                id="flexSwitchCheckDefault"
+                id="avgCheck"
                 checked=""
                 v-model="avgSwitch"
               />
-              <label
-                class="form-check-label text-start m-0 fs-6"
-                for="flexSwitchCheckDefault"
+              <label class="form-check-label text-start m-0 fs-6" for="avgCheck"
                 >Средний чек</label
               >
             </div>
@@ -86,7 +80,7 @@
         </div>
       </div>
     </div>
-    <div class="graphs m-4 gap-4 d-flex justify-content-between">
+    <div class="graphs m-4 gap-4">
       <div class="graph__card card p-4" v-show="revenueSwitch">
         <p class="fw-bold fs-5 text-start">Выручка</p>
         <div
@@ -95,12 +89,12 @@
           <div class="chart__stats" v-if="chartPercent > 0">
             <img src="@/assets/img/home/percerntPositive.svg" alt="" /> на
             {{ chartPercent }} % больше
-            <span class="chart__stats__year"> в 2021</span>
+            <span class="chart__stats__year"> в 2022</span>
           </div>
           <div class="chart__stats" v-else>
             <img src="@/assets/img/home/percentNegative.svg" alt="" /> на
             {{ chartPercent }} % больше
-            <span class="chart__stats__year">в 2021</span>
+            <span class="chart__stats__year">в 2022</span>
           </div>
           <div class="chart__stats-date d-flex align-items-center">
             <span class="chart__stats">Показать:</span
@@ -122,12 +116,12 @@
           <div class="chart__stats" v-if="chartPercent > 0">
             <img src="@/assets/img/home/percerntPositive.svg" alt="" /> на
             {{ chartPercent }} % больше
-            <span class="chart__stats__year"> в 2021</span>
+            <span class="chart__stats__year"> в 2022</span>
           </div>
           <div class="chart__stats" v-else>
             <img src="@/assets/img/home/percentNegative.svg" alt="" /> на
             {{ chartPercent }} % больше
-            <span class="chart__stats__year">в 2021</span>
+            <span class="chart__stats__year">в 2022</span>
           </div>
           <div class="chart__stats-date d-flex align-items-center">
             <span class="chart__stats">Показать:</span
@@ -149,12 +143,12 @@
           <div class="chart__stats" v-if="chartPercent > 0">
             <img src="@/assets/img/home/percerntPositive.svg" alt="" /> на
             {{ chartPercent }} % больше
-            <span class="chart__stats__year"> в 2021</span>
+            <span class="chart__stats__year"> в 2022</span>
           </div>
           <div class="chart__stats" v-else>
             <img src="@/assets/img/home/percentNegative.svg" alt="" /> на
             {{ chartPercent }} % больше
-            <span class="chart__stats__year">в 2021</span>
+            <span class="chart__stats__year">в 2022</span>
           </div>
           <div class="chart__stats-date d-flex align-items-center">
             <span class="chart__stats">Показать:</span
@@ -306,10 +300,18 @@ export default {
   font-size: 14px;
   font-weight: 600;
 }
+.graphs {
+  display: grid;
+  height: auto;
+  grid-auto-columns: minmax(516px, 70%);
+  grid-auto-rows: minmax(406px, 700px);
+  grid-auto-flow: column;
 
+  align-items: flex-start;
+}
 .graph__card {
-  min-width: 30%;
-  max-width: 60%;
+  /* align-self: flex-start; */
+  max-width: 100%;
   min-height: 406px;
 }
 </style>
