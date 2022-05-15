@@ -80,9 +80,11 @@
 
               <td>{{ order.responsible }}</td>
               <td>
-                <div class="btn mb-0 w-100" :class="getClass(order.status)">
-                  {{ normalizeStatusName(order.status) }}
-                </div>
+                <div
+                  class="btn mb-0 w-100"
+                  v-text="normalizeStatusName(order.status)"
+                  :class="getClass(order.status)"
+                ></div>
               </td>
               <td>{{ order.client }}</td>
               <td>{{ order.type }}</td>
@@ -178,7 +180,7 @@
             type="checkbox"
             :value="status"
             v-model="filterStatusSelect"
-          /><span>{{ normalizeStatusName(status) }}</span>
+          /><span v-text="normalizeStatusName(status)"></span>
         </label>
       </div>
     </div>
@@ -223,7 +225,6 @@ import FilterButton from "@/components/buttons/FiltersButton.vue";
 export default {
   data() {
     return {
-      buttonText: "",
       orders: [
         {
           id: 12132145,
@@ -336,16 +337,16 @@ export default {
         ready: "Готов к выдаче",
         shipped: "Отправлен",
       };
-      this.buttonText = statusMap[name] || "Статус не найден";
-      return this.buttonText;
+
+      return statusMap[name] || "Статус не найден";
     },
-  },
-  cancelFilters() {
-    this.filterStatusSelect = [];
-    this.filterResponsible = "";
-    this.filterClient = "";
-    this.filterOrderType = "";
-    this.filterWarehouse = "";
+    cancelFilters() {
+      this.filterStatusSelect = [];
+      this.filterResponsible = "";
+      this.filterClient = "";
+      this.filterOrderType = "";
+      this.filterWarehouse = "";
+    },
   },
 
   computed: {
