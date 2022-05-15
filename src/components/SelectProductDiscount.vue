@@ -11,7 +11,11 @@
       <div class="modal-content">
         <div class="modal-header header-flex">
           <div style="text-align: left">
-          <img src="@/assets/img/tshirt-lg.png" style="width:4.948vw" alt="">
+            <img
+              src="@/assets/img/tshirt-lg.png"
+              style="width: 4.948vw"
+              alt=""
+            />
             <p class="header__main">Куртка зеленая</p>
             <p class="header__sec">
               Список чеков, в которых присутствует выбранный товар
@@ -40,7 +44,7 @@
             </div>
             <div class="search__buttons">
               <button
-                :class="['left__btn', { active: onStorage == 'yes' }]"
+                :class="['left__btn', { active1: onStorage == 'yes' }]"
                 @click="onStorage = 'yes'"
               >
                 Есть на складе
@@ -89,7 +93,7 @@
                 <tbody>
                   <!-- v-for="(item, i) in filteredDiscounts" :key="item" -->
                   <tr v-for="item in filteredProducts" :key="item">
-                    <td style="border-right: 0;">{{ item.name }}</td>
+                    <td style="border-right: 0">{{ item.name }}</td>
                     <td style="border-left: 0; border-right: 0">
                       {{ item.color }}
                     </td>
@@ -248,14 +252,14 @@ export default {
       ],
     };
   },
-    computed: {
+  computed: {
     filteredProducts() {
-        return this.items.filter((item) => {
-          return (
-           item.name.toLowerCase().includes(this.search.toLowerCase()) ||
-            item.barcode.toLowerCase().includes(this.search.toLowerCase())
-          );
-        });
+      return this.items.filter((item) => {
+        return (
+          item.name.toLowerCase().includes(this.search.toLowerCase()) ||
+          item.barcode.toLowerCase().includes(this.search.toLowerCase())
+        );
+      });
     },
   },
 };
@@ -265,7 +269,7 @@ export default {
 /* td{
   height: 40px !important;
 } */
-.active {
+.active1 {
   background: linear-gradient(
     83.56deg,
     #7092e0 10.01%,
