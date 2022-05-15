@@ -64,7 +64,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr v-for="(order, i) in filteredOrders" :key="order.id">
+            <tr v-for="(order, i) of filteredOrders" :key="order.id">
               <th scope="row">
                 <input
                   class="form-check-input"
@@ -372,25 +372,25 @@ export default {
     },
 
     filteredOrders() {
-      // const statusCheckIfEmpty = this.filterStatusSelect.length > 0;
-      // return this.orders.filter(
-      //   (order) =>
-      //     (statusCheckIfEmpty
-      //       ? this.filterStatusSelect.includes(order.status)
-      //       : true) &&
-      //     (this.filterWarehouse === ""
-      //       ? true
-      //       : order.warehouse === this.filterWarehouse) &&
-      //     (this.filterResponsible === ""
-      //       ? true
-      //       : order.responsible === this.filterResponsible) &&
-      //     (this.filterClient === ""
-      //       ? true
-      //       : order.client === this.filterClient) &&
-      //     (this.filterOrderType === ""
-      //       ? true
-      //       : order.type === this.filterOrderType)
-      // );
+      const statusCheckIfEmpty = this.filterStatusSelect.length > 0;
+      return this.orders.filter(
+        (order) =>
+          (statusCheckIfEmpty
+            ? this.filterStatusSelect.includes(order.status)
+            : true) &&
+          (this.filterWarehouse === ""
+            ? true
+            : order.warehouse === this.filterWarehouse) &&
+          (this.filterResponsible === ""
+            ? true
+            : order.responsible === this.filterResponsible) &&
+          (this.filterClient === ""
+            ? true
+            : order.client === this.filterClient) &&
+          (this.filterOrderType === ""
+            ? true
+            : order.type === this.filterOrderType)
+      );
     },
   },
 
