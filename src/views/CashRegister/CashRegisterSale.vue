@@ -8,9 +8,11 @@
                 <div class="card">
                     <div class="cash__header">
                         <div class="cash__header__left">
+                            <router-link :to="{ name: 'cash-startup'}">
                             <button class="btn btn-outline-dark">
                                 &#8592; Стартовое окно
                             </button>
+                            </router-link>
                             <div class="cash__header__title">
                                 Рабочее место кассира
                             </div>
@@ -23,9 +25,11 @@
                             @input="testInp"
                             @change="addProduct($event)"
                             >
+                            <router-link :to="{ name: 'cash-register-return'}">
                             <button class="btn bg-gradient-dark">
                                 Оформить возврат
                             </button>
+                            </router-link>
                             <select class="form-select" v-model="cashRegisterNumber">
                                 <option>Касса 1</option>
                                 <option>Касса 2</option>
