@@ -11,7 +11,12 @@
       <div class="modal-content">
         <div class="modal-header header-flex">
           <slot name="head">Default header</slot>
-          <img src="@/assets/img/closemodal.svg" style="width:1.25vw; cursor:pointer" alt="" data-bs-dismiss="modal">
+          <img
+            src="@/assets/img/closemodal.svg"
+            style="width: 1.25vw; cursor: pointer"
+            alt=""
+            data-bs-dismiss="modal"
+          />
         </div>
         <div class="modal-body modal__padding">
           <slot name="body">default header</slot>
@@ -22,11 +27,9 @@
       </div>
     </div>
   </div>
-
 </template>
 
-<script>
-</script>
+<script></script>
 
 <style scoped>
 .header__sec {
@@ -44,15 +47,7 @@
   padding: 1.25vw 1.25vw 0.833vw 1.25vw;
   display: flex;
   justify-content: space-between;
-  align-items: baseline
-}
-.fade {
-  background: linear-gradient(
-    83.56deg,
-    rgba(112, 146, 224, 0.1) 10.01%,
-    rgba(139, 174, 243, 0.1) 75.36%
-  );
-  backdrop-filter: blur(50px);
+  align-items: baseline;
 }
 .btn-outline-dark {
   padding: 0.625vw 4.219vw 0.625vw 4.219vw;
@@ -79,9 +74,9 @@
   padding-right: 6.667vw;
 } */
 .modal__title {
-font-weight: 600;
-font-size: 1.042vw;
-color: #2D3748;
+  font-weight: 600;
+  font-size: 1.042vw;
+  color: #2d3748;
 }
 .modal-dialog {
   max-width: 22.396vw;
