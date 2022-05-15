@@ -80,8 +80,8 @@
 
               <td>{{ order.responsible }}</td>
               <td>
-                <div class="btn mb-0 w-100">
-                  {{ buttonText }}
+                <div class="btn mb-0 w-100" :class="getClass(order.status)">
+                  {{ normalizeStatusName(order.status) }}
                 </div>
               </td>
               <td>{{ order.client }}</td>
@@ -178,7 +178,7 @@
             type="checkbox"
             :value="status"
             v-model="filterStatusSelect"
-          /><span>{{ status }}</span>
+          /><span>{{ normalizeStatusName(status) }}</span>
         </label>
       </div>
     </div>
@@ -312,43 +312,42 @@ export default {
   },
   methods: {
     getClass(stat) {
-      if (stat === "new") {
-        this.buttonText = "Новый";
-        return "bg-gradient-info";
-      }
-      if (stat === "in-process") {
-        this.buttonText = "В обработке";
-        return "bg-gradient-primary";
-      }
-      if (stat === "canceled") {
-        this.buttonText = "Отменен";
-        return "bg-gradient-danger";
-      }
-      if (stat === "processed") {
-        this.buttonText = "Обработан";
-        return "bg-gradient-warning";
-      }
-      if (stat === "assembly") {
-        this.buttonText = "В сборке";
-        return "bg-gradient-secondary";
-      }
-      if (stat === "ready") {
-        this.buttonText = "Готов к выдаче";
-        return "bg-gradient-blue";
-      }
-      if (stat === "shipped") {
-        this.buttonText = "Отправлен";
-        return "bg-gradient-success";
-      }
+      return stat === "new"
+        ? "bg-gradient-info"
+        : stat === "in-process"
+        ? "bg-gradient-primary"
+        : stat === "canceled"
+        ? "bg-gradient-danger"
+        : stat === "processed"
+        ? "bg-gradient-warning"
+        : stat === "assembly"
+        ? "bg-gradient-secondary"
+        : stat === "ready"
+        ? "bg-gradient-blue"
+        : "bg-gradient-success";
     },
-    cancelFilters() {
-      this.filterStatusSelect = [];
-      this.filterResponsible = "";
-      this.filterClient = "";
-      this.filterOrderType = "";
-      this.filterWarehouse = "";
+    normalizeStatusName(name) {
+      const statusMap = {
+        new: "Новый заказ",
+        "in-process": "В обработке",
+        canceled: "Отменен",
+        processed: "Обработан",
+        assembly: "В сборке",
+        ready: "Готов к выдаче",
+        shipped: "Отправлен",
+      };
+      this.buttonText = statusMap[name] || "Статус не найден";
+      return this.buttonText;
     },
   },
+  cancelFilters() {
+    this.filterStatusSelect = [];
+    this.filterResponsible = "";
+    this.filterClient = "";
+    this.filterOrderType = "";
+    this.filterWarehouse = "";
+  },
+
   computed: {
     orderStatusList() {
       let unfiltered = this.orders.map((e) => e.status);
