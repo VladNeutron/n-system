@@ -24,7 +24,7 @@
                             @change="addProduct($event)"
                             >
                             <button class="btn bg-gradient-dark">
-                                Оформить возврат
+                                Новая продажа
                             </button>
                             <select class="form-select" v-model="cashRegisterNumber">
                                 <option>Касса 1</option>
@@ -57,7 +57,7 @@
                                         >
                                         <div class="product__amount__btn" @click="productAmount+=1">+</div>
                                     </div>
-                                    <div class="product__discount">
+                                    <!-- <div class="product__discount">
                                         <input type="number" v-model="percentValue" class="form-control" placeholder="Скидка">
                                         <div 
                                         :class="['product__percent', {'product__discount__active' : discountType == 'percent'}]"
@@ -71,7 +71,7 @@
                                         >
                                             ₸
                                         </div>
-                                    </div>
+                                    </div> -->
                                     <button class="btn bg-gradient-dark mb-0" @click="saveProduct">
                                         <img src="@/assets/img/cash-register/cashSave.svg" alt=""> Сохранить
                                     </button>
@@ -99,9 +99,9 @@
                                             <th>
                                                 Кол-во
                                             </th>
-                                            <th>
+                                            <!-- <th>
                                                 Скидка
-                                            </th>
+                                            </th> -->
                                             <th>
                                                 Cумма
                                             </th>
@@ -134,9 +134,9 @@
                                             <td>
                                                 {{product.amount}}
                                             </td>
-                                            <td>
+                                            <!-- <td>
                                                 {{product.discount}}
-                                            </td>
+                                            </td> -->
                                             <td>
                                                 {{product.sum}} ₸ 
                                             </td>
@@ -153,9 +153,9 @@
                                 <div class="btn__favourite action__button" @click="openFavourites">
                                     <img src="@/assets/img/cash-register/cashFavourite.svg" alt="">    
                                 </div>
-                                <div class="btn__discount action__button" data-bs-toggle="modal" data-bs-target="#DiscModal" @click="modalState = 0">
+                                <!-- <div class="btn__discount action__button" data-bs-toggle="modal" data-bs-target="#DiscModal" @click="modalState = 0">
                                     <img src="@/assets/img/cash-register/cashPercentBtn.svg" alt=""> 
-                                </div>
+                                </div> -->
                                 <div class="btn__deferred action__button">
                                     <img src="@/assets/img/cash-register/cashDefferedBtn.svg" alt=""> 
                                 </div>
@@ -168,20 +168,20 @@
                                     <div class="calculator__total__Container">
                                         <div class="calculator__total">
                                             <div class="calculator__total__title">
-                                                К ОПЛАТЕ
+                                                К ВЫДАЧЕ
                                             </div>
                                             <div class="calculator__total__number">
                                                 {{totalValue}} ₸
                                             </div>
                                         </div>
-                                        <div class="caluclator__discount">
+                                        <!-- <div class="caluclator__discount">
                                             <div class="caluclator__discount__title">
                                                 Сумма скидки
                                             </div>
                                             <div class="caluclator__discount__number">
                                                 {{discountValue}} ₸ 
                                             </div>
-                                        </div>
+                                        </div> -->
                                     </div>
                                     <div class="calculator__payment">
                                         <div class="calculator__payment__title">
@@ -352,14 +352,14 @@
                     {{product.amount}} шт. х {{product.price}} = {{product.amount*product.price}} 
                 </div>
             </div>
-            <div class="d-flex justify-content-between mt-1">
+            <!-- <div class="d-flex justify-content-between mt-1">
                 <div class="check__products__name">
                     СКИДКА
                 </div>
                 <div class="check__products__sum">
                     {{discountValue}}
                 </div>
-            </div>
+            </div> -->
         </div>
         <div class="check__result__container">
             <div class="d-flex justify-content-between mt-1">

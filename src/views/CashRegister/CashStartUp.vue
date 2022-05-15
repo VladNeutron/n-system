@@ -11,6 +11,7 @@
                 <div class="cash__left">
                   <div class="cash__left__blue">
                     <p class="cash__text">Выбор режима работы</p>
+                    <router-link :to="{ name: 'cash-register-sale'}">
                     <div class="cash__blue__block">
                       <div class="cash__blue__content">
                         <div class="cash__blue__text">
@@ -23,6 +24,8 @@
                         </div>
                       </div>
                     </div>
+                    </router-link>
+                    <router-link :to="{ name: 'cash-register-return'}">
                     <div class="cash__blue__block">
                       <div class="cash__blue__content">
                         <div class="cash__blue__text">
@@ -35,6 +38,8 @@
                         </div>
                       </div>
                     </div>
+                    </router-link>
+                    <router-link :to="{ name: 'checks-list'}">
                     <div class="cash__blue__block">
                       <div class="cash__blue__content">
                         <div class="cash__blue__text">
@@ -47,6 +52,8 @@
                         </div>
                       </div>
                     </div>
+                    </router-link>
+                    <router-link :to="{ name: 'deffered-checks'}">
                     <div class="cash__blue__block">
                       <div class="cash__blue__content">
                         <div
@@ -62,6 +69,7 @@
                         </div>
                       </div>
                     </div>
+                    </router-link>
                   </div>
                   <div class="cash__left__green">
                     <p class="cash__text">Кассовая смена</p>
@@ -218,7 +226,9 @@
                       </div>
                     </div>
                     <div>
-                      <button class="btn goto__list">Перейти к списку</button>
+                      <router-link :to="{ name: 'cash-list'}">
+                        <button class="btn goto__list">Перейти к списку</button>
+                      </router-link>
                     </div>
                   </div>
                 </div>
