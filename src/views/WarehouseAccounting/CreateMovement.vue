@@ -7,11 +7,11 @@
         <div class="col-12">
           <drop-down>
             <template #header>
-           <div class="drop__header">
+              <div class="drop__header">
                 <div>
-                  <p class="dropdown__title">Создание перемешения</p>
-                   <p class="dropdown__sec">
-                    Настройте все параметры и нажмите “Завершить перемещение”
+                  <p class="dropdown__title">Перемещение №19</p>
+                  <p class="dropdown__sec">
+                    Настройте все параметры и нажмите “Завершить перемещение"
                   </p>
                 </div>
                 <div class="drop__buttons">
@@ -56,10 +56,90 @@
                 </div>
               </div>
             </template>
+            <template #body>
+              <div class="drowdown__items">
+                <div class="items__block">
+                  <p class="items__title">№ перемещения</p>
+                  <p class="items__text">№ 19</p>
+                </div>
+                <div class="items__block">
+                  <p class="items__title">дата и время</p>
+                  <p class="items__text">11 ноя, 19:23, 2021</p>
+                </div>
+                <div class="items__block">
+                  <p class="items__title">Склад отправитель</p>
+                  <div class="dropdown">
+                    <p class="items__tex items__flex" style="cursor: pointer">
+                      ТРЦ Москва
+                      <img
+                        src="@/assets/img/down.svg"
+                        class="rotate"
+                        style="width: 0.729vw; margin-left: 0.417vw"
+                        alt=""
+                      />
+                    </p>
+                    <div class="dropdown-content">
+                      <a style="cursor: pointer">ТЦ Европейский</a>
+                      <hr />
+                      <a style="cursor: pointer">ТРЦ Jam Moll</a>
+                    </div>
+                  </div>
+                </div>
+                <div class="items__block">
+                  <p class="items__title">Склад получатель</p>
+                  <div class="dropdown">
+                    <p class="items__tex items__flex" style="cursor: pointer">
+                      ТРЦ Москва
+                      <img
+                        src="@/assets/img/down.svg"
+                        class="rotate"
+                        style="width: 0.729vw; margin-left: 0.417vw"
+                        alt=""
+                      />
+                    </p>
+                    <div class="dropdown-content">
+                      <a style="cursor: pointer">ТЦ Европейский</a>
+                      <hr />
+                      <a style="cursor: pointer">ТРЦ Jam Moll</a>
+                    </div>
+                  </div>
+                </div>
+                <div class="items__block">
+                  <p class="items__title">Ответственный</p>
+
+                  <div class="dropdown">
+                    <p class="items__text items__flex" style="cursor: pointer">
+                      Тихонов Александр
+                      <img
+                        src="@/assets/img/down.svg"
+                        class="rotate"
+                        style="width: 0.729vw; margin-left: 0.417vw"
+                        alt=""
+                      />
+                    </p>
+                    <div class="dropdown-content">
+                      <a style="cursor: pointer">Антон</a>
+                      <hr />
+                      <a style="cursor: pointer">Валера</a>
+                      <hr />
+                      <a style="cursor: pointer">Влад</a>
+                    </div>
+                  </div>
+                </div>
+                <div class="items__block">
+                  <p class="items__title">Инвентаризация</p>
+                  <p class="items__text">
+                    <span style="cursor: pointer">Инвентаризация №19</span
+                    >,<br />
+                    <span style="cursor: pointer">от 11.11.21</span>
+                  </p>
+                </div>
+              </div>
+            </template>
           </drop-down>
           <div class="card pl-pr">
             <div class="main-page text-start">
-             <label class="form-control-label ps-3 pt-3" for="search"
+              <label class="form-control-label ps-3 pt-3" for="search"
                 >Добавить по штрихкоду</label
               >
               <div class="d-flex justify-content-between ps-3">
