@@ -15,7 +15,7 @@
                   </p>
                 </div>
                 <div class="drop__buttons">
-                  <button class="btn comment">
+                  <button class="btn comment" style="height: fit-content">
                     <img
                       src="@/assets/img/comment.svg"
                       style="width: 1.042vw; margin-right: 0.417vw"
