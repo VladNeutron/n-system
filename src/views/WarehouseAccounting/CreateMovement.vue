@@ -127,7 +127,7 @@
                   </div>
                 </div>
                 <div class="items__block">
-                  <p class="items__title">Синвентаризация</p>
+                  <p class="items__title">Инвентаризация</p>
                   <p class="items__text">
                     <span style="cursor: pointer">Инвентаризация №19</span
                     >,<br />
