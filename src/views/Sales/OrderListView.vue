@@ -64,7 +64,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr v-for="(order, i) in filteredOrders" :key="order.id">
+            <tr v-for="(order, i) of filteredOrders" :key="order.id">
               <th scope="row">
                 <input
                   class="form-check-input"

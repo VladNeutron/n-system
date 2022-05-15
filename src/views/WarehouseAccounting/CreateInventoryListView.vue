@@ -56,6 +56,66 @@
                 </div>
               </div>
             </template>
+            <template #body>
+              <div class="drowdown__items">
+                <div class="items__block">
+                  <p class="items__title">№ инвентаризации</p>
+                  <p class="items__text">№ 19</p>
+                </div>
+                <div class="items__block">
+                  <p class="items__title">дата и время</p>
+                  <p class="items__text">11 ноя, 19:23, 2021</p>
+                </div>
+                <div class="items__block">
+                  <p class="items__title">Склад</p>
+                  <div class="dropdown">
+                    <p class="items__tex items__flex" style="cursor: pointer">
+                      ТРЦ Москва
+                      <img
+                        src="@/assets/img/down.svg"
+                        class="rotate"
+                        style="width: 0.729vw; margin-left: 0.417vw"
+                        alt=""
+                      />
+                    </p>
+                    <div class="dropdown-content">
+                      <a style="cursor: pointer">ТЦ Европейский</a>
+                      <hr />
+                      <a style="cursor: pointer">ТРЦ Jam Moll</a>
+                    </div>
+                  </div>
+                </div>
+                <div class="items__block">
+                  <p class="items__title">Ответственный</p>
+
+                  <div class="dropdown">
+                    <p class="items__text items__flex" style="cursor: pointer">
+                      Тихонов Александр
+                      <img
+                        src="@/assets/img/down.svg"
+                        class="rotate"
+                        style="width: 0.729vw; margin-left: 0.417vw"
+                        alt=""
+                      />
+                    </p>
+                    <div class="dropdown-content">
+                      <a style="cursor: pointer">Антон</a>
+                      <hr />
+                      <a style="cursor: pointer">Валера</a>
+                      <hr />
+                      <a style="cursor: pointer">Влад</a>
+                    </div>
+                  </div>
+                </div>
+                <div class="items__block">
+                  <p class="items__title">Синвентаризация</p>
+                  <p class="items__text">
+                    <span style="cursor: pointer">Завершена</span>,
+                    <span style="cursor: pointer">не закрыта</span>
+                  </p>
+                </div>
+              </div>
+            </template>
           </drop-down>
           <div class="card pl-pr">
             <div class="main-page text-start">

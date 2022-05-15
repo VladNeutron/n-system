@@ -10,10 +10,21 @@
     <router-link to="/table">Table</router-link>
   </nav> -->
   <router-view />
+      <delete-modal>
+      <template #header>
+        <p class="modal__title">
+          Вы уверены, что хотите удалить документ “Инвентаризация №19”?
+        </p>
+      </template>
+    </delete-modal>
 </template>
 
 <script>
+import DeleteModal from "@/components/DeleteModal.vue";
 export default {
+  components:{
+DeleteModal
+  },
   methods: {
     openFilters() {
       let filtersContainer = document.querySelector(".filters__container");
@@ -24,6 +35,9 @@ export default {
 </script>
 
 <style>
+td{
+  color:#2D3748
+}
 .page__name h3 {
     font-size: 24px;
     line-height: 32px;

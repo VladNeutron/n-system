@@ -29,7 +29,12 @@
                 </div>
                 <p class="character__sec">Настройка характеристики товаров</p>
               </div>
-              <button class="btn save__btn">
+              <button
+                class="btn save__btn"
+                @click="isColor = 'create1'"
+                data-bs-toggle="modal"
+                data-bs-target="#InpModal"
+              >
                 <img
                   src="@/assets/img/whtplus.svg"
                   style="width: 1.042vw; margin-right: 0.521vw"
@@ -70,9 +75,9 @@
                 <tbody>
                   <!-- v-for="(item, i) in items" :key="item" -->
                   <tr v-for="(item, i) in sizes" :key="item">
-                    <th scope="row" style="border-right: 0; border-left: 0">
+                    <td scope="row" style="border-right: 0; border-left: 0">
                       {{ i + 1 }}
-                    </th>
+                    </td>
                     <td
                       style="text-align: left; border-left: 0; border-right: 0"
                     >
@@ -117,16 +122,35 @@
           <div class="character">
             <div class="character__header">
               <div>
-                <p class="character__main">Цвета</p>
+                <div class="d-flex">
+                  <p class="character__main">Цвета</p>
+                  <img
+                    src="@/assets/img/edit.svg"
+                    style="
+                      width: 1.042vw;
+                      margin-left: 0.833vw;
+                      cursor: pointer;
+                    "
+                    @click="isColor = 'sizes'"
+                    data-bs-toggle="modal"
+                    data-bs-target="#InpModal"
+                    alt=""
+                  />
+                </div>
                 <p class="character__sec">Настройка характеристики товаров</p>
               </div>
-              <button class="btn save__btn">
+              <button
+                class="btn save__btn"
+                @click="isColor = 'create2'"
+                data-bs-toggle="modal"
+                data-bs-target="#InpModal"
+              >
                 <img
                   src="@/assets/img/whtplus.svg"
                   style="width: 1.042vw; margin-right: 0.521vw"
                   alt=""
                 />
-                Добавить размер
+                Добавить цвет
               </button>
             </div>
             <div class="character__body">
@@ -161,9 +185,9 @@
                 <tbody>
                   <!-- v-for="(item, i) in items" :key="item" -->
                   <tr v-for="(item, i) in colors" :key="item">
-                    <th scope="row" style="border-right: 0; border-left: 0">
+                    <td scope="row" style="border-right: 0; border-left: 0">
                       {{ i + 1 }}
-                    </th>
+                    </td>
                     <td
                       style="text-align: left; border-left: 0; border-right: 0"
                     >
@@ -218,6 +242,12 @@
       <div class="modal__header" v-if="isColor == 'sizes'">
         <p class="modal__main">Редактирование названия</p>
       </div>
+      <div class="modal__header" v-if="isColor == 'create1'">
+        <p class="modal__main">Добавить размер</p>
+      </div>
+      <div class="modal__header" v-if="isColor == 'create2'">
+        <p class="modal__main">Добавить Цвет</p>
+      </div>
     </template>
     <template #body>
       <div class="modal__body" v-if="isColor == 'color'">
@@ -259,10 +289,24 @@
           />
         </div>
       </div>
+      <div
+        class="form-group text-start me-2"
+        v-if="modalId === 'size' || isColor === 'create1'"
+      >
+        <label for="Size" class="m-0">Введите размер</label>
+        <input class="form-control" id="Size" placeholder="Введите размер" />
+      </div>
+      <div
+        class="form-group text-start me-2"
+        v-if="modalId === 'size' || isColor === 'create2'"
+      >
+        <label for="Size" class="m-0">Введите название</label>
+        <input class="form-control" id="Size" placeholder="Введите название" />
+      </div>
     </template>
     <template #footer>
       <div class="modal__footer">
-        <button class="btn edit__btn">Изменить</button>
+        <button class="btn edit__btn">Сохранить</button>
       </div>
     </template>
   </inputs-modal>

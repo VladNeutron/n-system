@@ -54,28 +54,28 @@
             <li class="nav-item ">
               <router-link :to="{ name: 'order-list'}" class="nav-link ">
                 <span class="sidenav-mini-icon"> З </span>
-                <span class="sidenav-normal"> Заказы  <b class="caret"></b></span>
+                <span class="sidenav-normal">Заказы  <b class="caret"></b></span>
               </router-link>
             </li>
 
             <li class="nav-item ">
               <router-link :to="{ name: 'return-list'}" class="nav-link ">
                 <span class="sidenav-mini-icon"> В </span>
-                <span class="sidenav-normal"> Возвраты  <b class="caret"></b></span>
+                <span class="sidenav-normal">Возвраты  <b class="caret"></b></span>
               </router-link>
             </li>
 
             <li class="nav-item ">
               <router-link :to="{ name: 'client-list'}" class="nav-link ">
                 <span class="sidenav-mini-icon"> К </span>
-                <span class="sidenav-normal"> Клиентская база  <b class="caret"></b></span>
+                <span class="sidenav-normal">Клиентская база  <b class="caret"></b></span>
               </router-link>
             </li>
 
             <li class="nav-item ">
               <router-link :to="{ name: 'application-list'}" class="nav-link ">
                 <span class="sidenav-mini-icon"> О </span>
-                <span class="sidenav-normal"> Обратная связь  <b class="caret"></b></span>
+                <span class="sidenav-normal">Обратная связь  <b class="caret"></b></span>
               </router-link>
             </li>
         </ul>
@@ -102,42 +102,42 @@
             <li class="nav-item ">
               <router-link :to="{ name: 'warehouses'}" class="nav-link ">
                 <span class="sidenav-mini-icon"> С </span>
-                <span class="sidenav-normal"> Склады  <b class="caret"></b></span>
+                <span class="sidenav-normal">Склады  <b class="caret"></b></span>
               </router-link>
             </li>
 
             <li class="nav-item ">
               <router-link :to="{ name: 'inventorization-list'}" class="nav-link ">
                 <span class="sidenav-mini-icon"> И </span>
-                <span class="sidenav-normal"> Инвентаризация  <b class="caret"></b></span>
+                <span class="sidenav-normal">Инвентаризация  <b class="caret"></b></span>
               </router-link>
             </li>
 
             <li class="nav-item ">
               <router-link :to="{ name: 'available-warehouse'}" class="nav-link ">
                 <span class="sidenav-mini-icon"> Н </span>
-                <span class="sidenav-normal"> Наличие на складе  <b class="caret"></b></span>
+                <span class="sidenav-normal">Наличие на складе  <b class="caret"></b></span>
               </router-link>
             </li>
 
             <li class="nav-item ">
               <router-link :to="{ name: 'post-list'}" class="nav-link ">
                 <span class="sidenav-mini-icon"> О </span>
-                <span class="sidenav-normal"> Оприходование товаров  <b class="caret"></b></span>
+                <span class="sidenav-normal">Оприходование товаров  <b class="caret"></b></span>
               </router-link>
             </li>
 
             <li class="nav-item ">
               <router-link :to="{ name: 'move-list'}" class="nav-link ">
                 <span class="sidenav-mini-icon"> П </span>
-                <span class="sidenav-normal"> Перемещение товаров  <b class="caret"></b></span>
+                <span class="sidenav-normal">Перемещение товаров  <b class="caret"></b></span>
               </router-link>
             </li>
 
             <li class="nav-item ">
               <router-link :to="{ name: 'write-off'}" class="nav-link ">
                 <span class="sidenav-mini-icon"> С </span>
-                <span class="sidenav-normal"> Списание товаров  <b class="caret"></b></span>
+                <span class="sidenav-normal">Списание товаров  <b class="caret"></b></span>
               </router-link>
             </li>
       
@@ -148,7 +148,7 @@
       
               <a class="nav-link " data-bs-toggle="collapse" aria-expanded="false" href="#usersExample">
                 <span class="sidenav-mini-icon"> U </span>
-                <span class="sidenav-normal"> Users  <b class="caret"></b></span>
+                <span class="sidenav-normal">Users  <b class="caret"></b></span>
               </a>
       
               <div class="collapse " id="usersExample">
@@ -158,7 +158,7 @@
       
                     <a class="nav-link " href="./pages/users/reports.html">
                       <span class="sidenav-mini-icon text-xs"> R </span>
-                      <span class="sidenav-normal"> Reports </span>
+                      <span class="sidenav-normal">Reports </span>
                     </a>
       
                   </li>
@@ -167,7 +167,7 @@
       
                     <a class="nav-link " href="./pages/users/new-user.html">
                       <span class="sidenav-mini-icon text-xs"> N </span>
-                      <span class="sidenav-normal"> New User </span>
+                      <span class="sidenav-normal">New User </span>
                     </a>
       
                   </li>
@@ -206,7 +206,7 @@
             <li class="nav-item ">
               <router-link :to="{ name: 'product-list'}" class="nav-link ">
                 <span class="sidenav-mini-icon"> С </span>
-                <span class="sidenav-normal"> Список товаров </span>
+                <span class="sidenav-normal">Список товаров </span>
               </router-link>
             </li>
       
@@ -214,7 +214,7 @@
             <li class="nav-item ">
                <router-link :to="{ name: 'barcode'}" class="nav-link ">
                 <span class="sidenav-mini-icon"> П </span>
-                <span class="sidenav-normal"> Печать штрихкодов </span>
+                <span class="sidenav-normal">Печать штрихкодов </span>
                </router-link>
             </li>
       
@@ -222,7 +222,7 @@
             <li class="nav-item ">
               <router-link :to="{ name: 'category-list'}" class="nav-link ">
                 <span class="sidenav-mini-icon"> К </span>
-                <span class="sidenav-normal"> Категории </span>
+                <span class="sidenav-normal">Категории </span>
               </router-link>
             </li>
       
@@ -230,7 +230,7 @@
             <li class="nav-item ">
               <router-link :to="{ name: 'discounts'}" class="nav-link ">
                 <span class="sidenav-mini-icon"> С </span>
-                <span class="sidenav-normal"> Скидки и акции </span>
+                <span class="sidenav-normal">Скидки и акции </span>
               </router-link>
             </li>
       
@@ -238,7 +238,7 @@
             <li class="nav-item ">
               <router-link :to="{ name: 'characteristics'}" class="nav-link ">
                 <span class="sidenav-mini-icon"> Х </span>
-                <span class="sidenav-normal"> Характеристики </span>
+                <span class="sidenav-normal">Характеристики </span>
               </router-link>
             </li>
       
@@ -266,21 +266,21 @@
             <li class="nav-item ">
               <router-link :to="{ name: 'cash-startup'}" class="nav-link ">
                 <span class="sidenav-mini-icon"> О </span>
-                <span class="sidenav-normal"> Оформить продажу </span>
+                <span class="sidenav-normal">Оформить продажу </span>
               </router-link>
             </li>
       
             <li class="nav-item ">
               <router-link :to="{ name: 'cash-list'}" class="nav-link ">
                 <span class="sidenav-mini-icon"> С </span>
-                <span class="sidenav-normal"> Список касс </span>
+                <span class="sidenav-normal">Список касс </span>
               </router-link>
             </li>
       
             <li class="nav-item ">
               <router-link :to="{ name: 'sales-report'}" class="nav-link ">
                 <span class="sidenav-mini-icon"> П </span>
-                <span class="sidenav-normal"> Продажи по кассе </span>
+                <span class="sidenav-normal">Продажи по кассе </span>
               </router-link>
             </li>
         </ul>
@@ -304,14 +304,14 @@
             <li class="nav-item ">
               <router-link :to="{ name: 'income-list'}" class="nav-link ">
                 <span class="sidenav-mini-icon"> П </span>
-                <span class="sidenav-normal"> Поступления </span>
+                <span class="sidenav-normal">Поступления </span>
               </router-link>
             </li>
       
             <li class="nav-item ">
               <router-link :to="{ name: 'return-supplier-list'}" class="nav-link ">
                 <span class="sidenav-mini-icon"> В </span>
-                <span class="sidenav-normal"> Возвраты поставщикам </span>
+                <span class="sidenav-normal">Возвраты поставщикам </span>
               </router-link>
             </li>
         </ul>
@@ -335,49 +335,49 @@
             <li class="nav-item ">
               <router-link :to="{ name: 'best-products'}" class="nav-link ">
                 <span class="sidenav-mini-icon"> Л </span>
-                <span class="sidenav-normal"> Лучшие товары за период </span>
+                <span class="sidenav-normal">Лучшие товары за период </span>
               </router-link>
             </li>
       
             <li class="nav-item ">
               <router-link :to="{ name: 'remainder-storage'}" class="nav-link ">
                 <span class="sidenav-mini-icon"> О </span>
-                <span class="sidenav-normal"> Остатки товаров на складе </span>
+                <span class="sidenav-normal">Остатки товаров на складе </span>
               </router-link>
             </li>
 
             <li class="nav-item ">
               <router-link :to="{ name: 'revenue-profit'}" class="nav-link ">
                 <span class="sidenav-mini-icon"> В </span>
-                <span class="sidenav-normal"> Выручка/Прибыль/Средний чек </span>
+                <span class="sidenav-normal">Выручка/Прибыль/Средний чек </span>
               </router-link>
             </li>
 
             <li class="nav-item ">
               <router-link :to="{ name: 'best-shops'}" class="nav-link ">
                 <span class="sidenav-mini-icon"> Л </span>
-                <span class="sidenav-normal"> Лучшие магазины </span>
+                <span class="sidenav-normal">Лучшие магазины </span>
               </router-link>
             </li>
 
             <li class="nav-item ">
               <router-link :to="{ name: 'abc-analysis'}" class="nav-link ">
                 <span class="sidenav-mini-icon"> A </span>
-                <span class="sidenav-normal"> ABC-анализ </span>
+                <span class="sidenav-normal">ABC-анализ </span>
               </router-link>
             </li>
 
             <li class="nav-item ">
               <router-link :to="{ name: 'revenue-expenses-income'}" class="nav-link ">
                 <span class="sidenav-mini-icon"> Д </span>
-                <span class="sidenav-normal"> Доходы/Расходы/Прибыль </span>
+                <span class="sidenav-normal">Доходы/Расходы/Прибыль </span>
               </router-link>
             </li>
 
             <li class="nav-item ">
               <router-link :to="{ name: 'revenue-expenses-income'}" class="nav-link ">
                 <span class="sidenav-mini-icon"> О </span>
-                <span class="sidenav-normal"> Отчёт Доходы-Расходы </span>
+                <span class="sidenav-normal">Отчёт Доходы-Расходы </span>
               </router-link>
             </li>
         </ul>
@@ -407,7 +407,7 @@
       
               <a class="nav-link " href="./ecommerce/overview.html">
                 <span class="sidenav-mini-icon"> O </span>
-                <span class="sidenav-normal"> Overview </span>
+                <span class="sidenav-normal">Overview </span>
               </a>
       
       
@@ -421,7 +421,7 @@
       
               <a class="nav-link " data-bs-toggle="collapse" aria-expanded="false" href="#productsExample">
                 <span class="sidenav-mini-icon"> P </span>
-                <span class="sidenav-normal"> Products  <b class="caret"></b></span>
+                <span class="sidenav-normal">Products  <b class="caret"></b></span>
               </a>
       
               <div class="collapse " id="productsExample">
@@ -431,7 +431,7 @@
       
                     <a class="nav-link " href="./ecommerce/products/new-product.html">
                       <span class="sidenav-mini-icon text-xs"> N </span>
-                      <span class="sidenav-normal"> New Product </span>
+                      <span class="sidenav-normal">New Product </span>
                     </a>
       
                   </li>
@@ -440,7 +440,7 @@
       
                     <a class="nav-link " href="./ecommerce/products/edit-product.html">
                       <span class="sidenav-mini-icon text-xs"> E </span>
-                      <span class="sidenav-normal"> Edit Product </span>
+                      <span class="sidenav-normal">Edit Product </span>
                     </a>
       
                   </li>
@@ -449,7 +449,7 @@
       
                     <a class="nav-link " href="./ecommerce/products/product-page.html">
                       <span class="sidenav-mini-icon text-xs"> P </span>
-                      <span class="sidenav-normal"> Product Page </span>
+                      <span class="sidenav-normal">Product Page </span>
                     </a>
       
                   </li>
@@ -458,7 +458,7 @@
       
                     <a class="nav-link " href="./ecommerce/products/products-list.html">
                       <span class="sidenav-mini-icon text-xs"> P </span>
-                      <span class="sidenav-normal"> Products List </span>
+                      <span class="sidenav-normal">Products List </span>
                     </a>
       
                   </li>
@@ -476,7 +476,7 @@
       
               <a class="nav-link " data-bs-toggle="collapse" aria-expanded="false" href="#ordersExample">
                 <span class="sidenav-mini-icon"> O </span>
-                <span class="sidenav-normal"> Orders  <b class="caret"></b></span>
+                <span class="sidenav-normal">Orders  <b class="caret"></b></span>
               </a>
       
               <div class="collapse " id="ordersExample">
@@ -486,7 +486,7 @@
       
                     <a class="nav-link " href="./ecommerce/orders/list.html">
                       <span class="sidenav-mini-icon text-xs"> O </span>
-                      <span class="sidenav-normal"> Order List </span>
+                      <span class="sidenav-normal">Order List </span>
                     </a>
       
                   </li>
@@ -495,7 +495,7 @@
       
                     <a class="nav-link " href="./ecommerce/orders/details.html">
                       <span class="sidenav-mini-icon text-xs"> O </span>
-                      <span class="sidenav-normal"> Order Details </span>
+                      <span class="sidenav-normal">Order Details </span>
                     </a>
       
                   </li>
@@ -514,7 +514,7 @@
       
               <a class="nav-link " href="./ecommerce/referral.html">
                 <span class="sidenav-mini-icon"> R </span>
-                <span class="sidenav-normal"> Referral </span>
+                <span class="sidenav-normal">Referral </span>
               </a>
       
       
@@ -551,5 +551,8 @@ export default {
 <style scoped>
 .sidenav-normal{
   white-space: break-spaces;
+}
+.nav-link{
+  text-align: left;
 }
 </style>

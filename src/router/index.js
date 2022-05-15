@@ -295,10 +295,22 @@ const routes = [
 
   // КАССА
   {
+    path: "/cash-register",
+    name: "cash-register",
+    component: () => import("../views/CashRegister/CashStartUp.vue"),
+    meta: { NavLink: "Касса" },
+  },
+  {
     path: "/cash-register/cash-register-sale",
     name: "cash-register-sale",
     component: () => import("../views/CashRegister/CashRegisterSale.vue"),
     meta: { NavLink: "Окно продажи" },
+  },
+  {
+    path: "/cash-register/cash-register-return",
+    name: "cash-register-return",
+    component: () => import("../views/CashRegister/CashRegisterReturn.vue"),
+    meta: { NavLink: "Окно возврата" },
   },
   {
     path: "/cash-register/cash-list",
