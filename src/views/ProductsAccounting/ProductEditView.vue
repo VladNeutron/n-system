@@ -99,9 +99,7 @@
             data-bs-toggle="modal"
             data-bs-target="#InpModal"
           >
-            <span class="btn-inner--icon pe-2"
-              ><img src="@/assets/css/icons/add.svg" alt=""
-            /></span>
+            <img class="pe-2" src="@/assets/css/icons/add.svg" alt="" />
             Добавить цвет
           </button>
         </div>
@@ -171,7 +169,7 @@
             >
               {{ size }}
               <span v-if="sizeMap[i]" style="" class="show-btn"
-                ><button class="remove-button" @click="deleteSize(i)">
+                ><button class="remove-button" @click="deleteSize(size)">
                   x
                 </button></span
               >
@@ -335,9 +333,8 @@ export default {
       this.sizeMap[id] = !this.sizeMap[id];
       console.log(this.sizeMap);
     },
-    deleteSize(id) {
-      this.sizes.splice(id, 1);
-      // this.sizeMap.splice(id, 1);
+    deleteSize(size) {
+      this.sizeMap = this.sizeMap.filter((el) => el !== size);
     },
     prevSlide(id) {
       $(`.carousel-${id}`).slick("slickPrev");
@@ -359,6 +356,56 @@ export default {
 </script>
 
 <style scoped>
+/* CHECKBOX BUTTON */
+
+.cat {
+  margin: 4px;
+  background-color: #fff;
+  width: 143px;
+  height: 40px;
+  border-radius: 50px;
+
+  outline: 1px solid #2d3748;
+  overflow: hidden;
+  float: left;
+}
+
+.cat label {
+  float: left;
+  line-height: 3em;
+  color: #2d3748;
+  width: 8em;
+  height: 3em;
+}
+
+.cat label span {
+  position: relative;
+  top: auto;
+  right: 5px;
+  text-align: center;
+  height: 50px;
+  width: 145px;
+  display: block;
+  color: #2d3748;
+}
+
+.cat label input {
+  position: absolute;
+  display: none;
+  color: #2d3748 !important;
+}
+/* selects all of the text within the input element and changes the color of the text */
+.cat label input + span {
+  color: #2d3748;
+}
+
+/* This will declare how a selected input will look giving generic properties */
+.cat input:checked + span {
+  color: #ffffff;
+  text-shadow: 0 0 6px rgba(0, 0, 0, 0.8);
+  background-color: #2d3748;
+}
+/*  */
 .arrows {
   position: relative;
   top: -60px;
