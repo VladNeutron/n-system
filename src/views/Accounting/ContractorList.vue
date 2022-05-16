@@ -5,31 +5,56 @@
     <div class="page__name d-flex align-items-center ms-4">
       <div class="page__name-title text-start">
         <h3>Список контрагентов</h3>
-        <p class="mb-0">Внесите изменения и не забудьте  нажать “Сохранить”</p>
+        <p class="mb-0">Внесите изменения и не забудьте нажать “Сохранить”</p>
       </div>
     </div>
     <div class="card pt-4 pb-6 m-4">
       <div class="d-flex justify-content-between align-items-center mx-4 mb-4">
         <div>
-          <button class="btn bg-gradient-dark mb-0" style="margin-right: 0.833vw">
+          <button
+            class="btn bg-gradient-dark mb-0"
+            style="margin-right: 0.833vw"
+          >
             <img src="@/assets/img/whtplus.svg" alt="" /> Добавить контрагента
           </button>
-          <button class="btn bg-gradient-dark mb-0" style="margin-right: 0.833vw">
+          <button
+            class="btn bg-gradient-dark mb-0"
+            style="margin-right: 0.833vw"
+            data-bs-toggle="modal"
+            data-bs-target="#CounterModal"
+          >
             <img src="@/assets/img/DocumentsBtn.svg" alt="" /> Документы
           </button>
         </div>
         <div class="table__inputs d-flex gap-3 align-content-center">
           <div class="form-group m-0">
             <div class="input-group mt-1">
-              <span class="input-group-text"><img src="@/assets/css/icons/searchIcon.svg" alt="" /></span>
-              <input class="form-control form__width" placeholder="Поиск..." id="search" type="text" />
+              <span class="input-group-text"
+                ><img src="@/assets/css/icons/searchIcon.svg" alt=""
+              /></span>
+              <input
+                class="form-control form__width"
+                placeholder="Поиск..."
+                id="search"
+                type="text"
+              />
             </div>
           </div>
           <button class="btn btn-outline-dark mb-0">
-            <span><img src="@/assets/css/icons/print.svg" class="me-1" alt="" /></span>Печать
+            <span
+              ><img
+                src="@/assets/css/icons/print.svg"
+                class="me-1"
+                alt="" /></span
+            >Печать
           </button>
           <button class="btn btn-outline-dark mb-0">
-            <span><img src="@/assets/css/icons/down-arrow.svg" class="me-1" alt="" /></span>Скачать
+            <span
+              ><img
+                src="@/assets/css/icons/down-arrow.svg"
+                class="me-1"
+                alt="" /></span
+            >Скачать
           </button>
           <button class="btn btn-outline-dark mb-0">Фильтры</button>
         </div>
@@ -53,11 +78,16 @@
             <tr v-for="(order, i) of orders" :key="order.id">
               <th scope="row">
                 <div class="form-check">
-                  <input class="form-check-input" type="checkbox" value="" id="fcustomCheck1" />
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    value=""
+                    id="fcustomCheck1"
+                  />
                 </div>
               </th>
               <th width="1%">{{ i + 1 }}</th>
-              <td>{{ order.name}}</td>
+              <td>{{ order.name }}</td>
               <td>{{ order.bin }}</td>
               <td>{{ order.companyType }}</td>
               <td>{{ order.contractorType }}</td>
@@ -68,11 +98,24 @@
 
               <td>
                 <div class="dropdown">
-                  <img src="@/assets/img/dots.svg" style="width: 1.563vw; cursor: pointer" alt="" />
+                  <img
+                    src="@/assets/img/dots.svg"
+                    style="width: 1.563vw; cursor: pointer"
+                    alt=""
+                  />
                   <div class="dropdown-content">
-                    <a style="cursor: pointer" onclick="window.location.href = '/purchases/edit-income'">Редактировать</a>
+                    <a
+                      style="cursor: pointer"
+                      onclick="window.location.href = '/purchases/edit-income'"
+                      >Редактировать</a
+                    >
                     <hr />
-                    <a style="cursor: pointer" data-bs-toggle="modal" data-bs-target="#DeleteInv">Удалить</a>
+                    <a
+                      style="cursor: pointer"
+                      data-bs-toggle="modal"
+                      data-bs-target="#DeleteInv"
+                      >Удалить</a
+                    >
                   </div>
                 </div>
               </td>
@@ -80,11 +123,16 @@
             <tr v-for="(order, i) of orders" :key="order.id">
               <th scope="row">
                 <div class="form-check">
-                  <input class="form-check-input" type="checkbox" value="" id="fcustomCheck1" />
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    value=""
+                    id="fcustomCheck1"
+                  />
                 </div>
               </th>
               <th width="1%">{{ i + 1 }}</th>
-              <td>{{ order.name}}</td>
+              <td>{{ order.name }}</td>
               <td>{{ order.bin }}</td>
               <td>{{ order.companyType }}</td>
               <td>{{ order.contractorType }}</td>
@@ -95,11 +143,24 @@
 
               <td>
                 <div class="dropdown">
-                  <img src="@/assets/img/dots.svg" style="width: 1.563vw; cursor: pointer" alt="" />
+                  <img
+                    src="@/assets/img/dots.svg"
+                    style="width: 1.563vw; cursor: pointer"
+                    alt=""
+                  />
                   <div class="dropdown-content">
-                    <a style="cursor: pointer" onclick="window.location.href = '/purchases/edit-income'">Редактировать</a>
+                    <a
+                      style="cursor: pointer"
+                      onclick="window.location.href = '/purchases/edit-income'"
+                      >Редактировать</a
+                    >
                     <hr />
-                    <a style="cursor: pointer" data-bs-toggle="modal" data-bs-target="#DeleteInv">Удалить</a>
+                    <a
+                      style="cursor: pointer"
+                      data-bs-toggle="modal"
+                      data-bs-target="#DeleteInv"
+                      >Удалить</a
+                    >
                   </div>
                 </div>
               </td>
@@ -107,14 +168,9 @@
           </tbody>
         </table>
       </div>
-      <div class="
-          pagination
-          d-flex
-          justify-content-end
-          align-items-center
-          me-4
-          mt-4
-        ">
+      <div
+        class="pagination d-flex justify-content-end align-items-center me-4 mt-4"
+      >
         <div class="d-flex align-items-center gap-3">
           <div>
             <p class="m-0">Показано<span> 2112 12121</span></p>
@@ -124,8 +180,14 @@
             <div class="pagination-container d-flex justify-items-center">
               <ul class="pagination pagination-info mb-0 pe-0">
                 <li class="page-item">
-                  <a class="page-link" href="javascript:;" aria-label="Previous">
-                    <span aria-hidden="true"><i class="fa fa-angle-double-left" aria-hidden="true"></i></span>
+                  <a
+                    class="page-link"
+                    href="javascript:;"
+                    aria-label="Previous"
+                  >
+                    <span aria-hidden="true"
+                      ><i class="fa fa-angle-double-left" aria-hidden="true"></i
+                    ></span>
                   </a>
                 </li>
                 <li class="page-item">
@@ -145,7 +207,12 @@
                 </li>
                 <li class="page-item">
                   <a class="page-link" href="javascript:;" aria-label="Next">
-                    <span aria-hidden="true"><i class="fa fa-angle-double-right" aria-hidden="true"></i></span>
+                    <span aria-hidden="true"
+                      ><i
+                        class="fa fa-angle-double-right"
+                        aria-hidden="true"
+                      ></i
+                    ></span>
                   </a>
                 </li>
               </ul>
@@ -154,14 +221,19 @@
         </div>
       </div>
     </div>
+    <counter-modal :product="modal.modalProductName"></counter-modal>
   </main>
 </template>
 
 <script>
+import CounterModal from "@/components/CounterModal.vue";
 import Filter from "../../components/Filters.vue";
 export default {
   data() {
     return {
+      modal: {
+        modalProductName: {},
+      },
       status: null,
       buttonText: "",
       orders: [
@@ -170,75 +242,75 @@ export default {
           name: "Тихонова А.Р",
           bin: 111111111111,
           companyType: "ТОО",
-          contractorType: 'Клиент',
-          phoneNumber: '+7 999 999 99 99',
-          adress: 'г.Алматы, ул.Жолдасбекова 97',
+          contractorType: "Клиент",
+          phoneNumber: "+7 999 999 99 99",
+          adress: "г.Алматы, ул.Жолдасбекова 97",
         },
         {
           id: 1,
           name: "ИП Ромашкин",
           bin: 222222222222,
           companyType: "ИП",
-          contractorType: 'Клиент',
-          phoneNumber: '+7 999 999 99 99',
-          adress: 'г.Алматы, ул.Жолдасбекова 97',
+          contractorType: "Клиент",
+          phoneNumber: "+7 999 999 99 99",
+          adress: "г.Алматы, ул.Жолдасбекова 97",
         },
         {
           id: 2,
           name: "ИП Весёлов",
           bin: 333333333333,
           companyType: "ИП",
-          contractorType: 'Клиент',
-          phoneNumber: '+7 999 999 99 99',
-          adress: 'г.Алматы, ул.Жолдасбекова 97',
+          contractorType: "Клиент",
+          phoneNumber: "+7 999 999 99 99",
+          adress: "г.Алматы, ул.Жолдасбекова 97",
         },
         {
           id: 3,
           name: "ТОО “Будь уверен”",
           bin: 444444444444,
           companyType: "ТОО",
-          contractorType: 'Поставщик',
-          phoneNumber: '+7 999 999 99 99',
-          adress: 'г.Алматы, ул.Жолдасбекова 97',
+          contractorType: "Поставщик",
+          phoneNumber: "+7 999 999 99 99",
+          adress: "г.Алматы, ул.Жолдасбекова 97",
         },
-
       ],
     };
   },
   components: {
     "the-filter": Filter,
+    CounterModal,
   },
 };
 </script>
 
 <style scoped>
 .dropdown {
-    display: inline-block;
-    position: relative;
+  display: inline-block;
+  position: relative;
 }
 
 .dropdown-content {
-    text-align: left;
-    display: none;
-    position: absolute;
-    width: 7.815vw;
-    overflow: auto;
-    background: #f8f9fa;
-    box-shadow: 2px 2px 5.5px rgba(0, 0, 0, 0.25);
-    border-radius: 12px;
-    right: 15px;
-    z-index: 1;
-    padding: 0.625vw 0.625vw 0.625vw 0.625vw;
+  text-align: left;
+  display: none;
+  position: absolute;
+  width: 7.815vw;
+  overflow: auto;
+  background: #f8f9fa;
+  box-shadow: 2px 2px 5.5px rgba(0, 0, 0, 0.25);
+  border-radius: 12px;
+  right: 15px;
+  z-index: 1;
+  padding: 0.625vw 0.625vw 0.625vw 0.625vw;
 }
 
 .dropdown:hover .dropdown-content {
-    display: block;
+  display: block;
 }
 
 .dropdown-content a {
-    display: block;
-    color: #2d3748;
-    text-decoration: none;
+  display: block;
+  color: #2d3748;
+  text-decoration: none;
 }
 .form__width {
   width: 15.99vw !important;
@@ -284,7 +356,7 @@ td {
 .pagination {
   align-self: end;
 }
-th{
+th {
   text-transform: uppercase !important;
 }
 </style>

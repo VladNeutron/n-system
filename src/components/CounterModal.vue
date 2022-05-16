@@ -287,9 +287,9 @@ export default {
   components: {
     FiltersButton,
   },
-  //   props: {
-  //     product: Object,
-  //   },
+  props: {
+    product: Object,
+  },
   data() {
     return {
       search: "",
