@@ -2,7 +2,7 @@
   <the-navbar></the-navbar>
   <main class="main-content border-radius-lg">
     <the-header></the-header>
-    <div class="container-fluid py-4">
+    <div class="container-fluid py-1">
       <div class="row mt-4">
         <div class="col-12">
           <div class="card">
@@ -73,7 +73,7 @@
                   </div>
                   <div class="cash__left__green">
                     <p class="cash__text">Кассовая смена</p>
-                    <div class="cash__blue__block">
+                    <div class="cash__blue__block" @click="shiftStatus='closed'">
                       <div class="cash__green__content">
                         <div class="cash__blue__text">
                           <img
@@ -85,7 +85,7 @@
                         </div>
                       </div>
                     </div>
-                    <div class="cash__blue__block">
+                    <div class="cash__blue__block" @click="shiftStatus='open'">
                       <div class="cash__green__content">
                         <div class="cash__blue__text">
                           <img
