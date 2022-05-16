@@ -460,7 +460,13 @@ const routes = [
     component: () => import("../views/Accounting/ContractorList.vue"),
     meta: { NavLink: "Список контрагентов" },
   },
-  // БУХШАЛТЕРИЯ
+  {
+    path: "/accounting/employees-list",
+    name: "employees-list",
+    component: () => import("../views/Accounting/EmployeesList.vue"),
+    meta: { NavLink: "Список сотрудников" },
+  },
+  // БУХГАЛТЕРИЯ
 ];
 
 const router = createRouter({
