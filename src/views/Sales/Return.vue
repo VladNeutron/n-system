@@ -314,35 +314,6 @@ export default {
   },
   methods: {
     getClass(stat) {
-      // if (stat === "new") {
-      //   this.buttonText = "Новый";
-      //   return "bg-gradient-info";
-      // }
-      // if (stat === "in-process") {
-      //   this.buttonText = "В обработке";
-      //   return "bg-gradient-primary";
-      // }
-      // if (stat === "canceled") {
-      //   this.buttonText = "Отменен";
-      //   return "bg-gradient-danger";
-      // }
-      // if (stat === "processed") {
-      //   this.buttonText = "Обработан";
-      //   return "bg-gradient-warning";
-      // }
-      // if (stat === "assembly") {
-      //   this.buttonText = "В сборке";
-      //   return "bg-gradient-secondary";
-      // }
-      // if (stat === "ready") {
-      //   this.buttonText = "Готов к выдаче";
-      //   return "bg-gradient-blue";
-      // }
-      // if (stat === "shipped") {
-      //   this.buttonText = "Отправлен";
-      //   return "bg-gradient-success";
-      // }
-
       return stat === "new"
         ? "bg-gradient-info"
         : stat === "in-process"
