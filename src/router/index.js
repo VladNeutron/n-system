@@ -446,6 +446,21 @@ const routes = [
   },
 
   // ЗАКУПКИ
+
+  // БУХГАЛТЕРИЯ
+  {
+    path: "/accounting",
+    name: "accounting",
+    component: () => import("../views/Accounting/ContractorList.vue"),
+    meta: { NavLink: "Бухгалтерия" },
+  },
+  {
+    path: "/accounting/contractor-list",
+    name: "contractor-list",
+    component: () => import("../views/Accounting/ContractorList.vue"),
+    meta: { NavLink: "Список контрагентов" },
+  },
+  // БУХШАЛТЕРИЯ
 ];
 
 const router = createRouter({
