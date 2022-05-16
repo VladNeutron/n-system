@@ -160,8 +160,8 @@
                                 <!-- <div class="btn__discount action__button" data-bs-toggle="modal" data-bs-target="#DiscModal" @click="modalState = 0">
                                     <img src="@/assets/img/cash-register/cashPercentBtn.svg" alt=""> 
                                 </div> -->
-                                <div class="btn__deferred action__button">
-                                    <img src="@/assets/img/cash-register/cashDefferedBtn.svg" alt=""> 
+                                <div class="btn__deferred action__button" data-bs-toggle="modal" data-bs-target="#DiscModal" @click="modalState = 0">
+                                    <img src="@/assets/img/cash-register/returnCheck.png" alt=""> 
                                 </div>
                                 <div class="btn__deleteBarcode action__button"  data-bs-toggle="modal" data-bs-target="#DiscModal" @click="modalState = 1">
                                     <img src="@/assets/img/cash-register/cashDeleteBarc.svg" alt=""> 
@@ -283,8 +283,8 @@
             <p class="header__sec">Отсканируйте товар, который хотите удалить</p>
         </div>
         <div style="text-align: left" v-if="modalState == 0">
-            <p class="header__main">Применить скидку</p>
-            <p class="header__sec">Введите значение скидки и нажмите “Применить”</p>
+            <p class="header__main">Возврат по номеру чека</p>
+            <p class="header__sec">Введите номер заказа и нажмите “Добавить товары”</p>
         </div>
     </template>
     <template #body>
@@ -305,7 +305,7 @@
         
         <div class="form-group label__text" style="text-align: left" v-if="modalState == 0">
             <label for="exampleFormControlInput1" class="label__text"
-              >Введите скидку на весь чек</label
+              >Номер чека</label
             >
             <div class="d-flex">
                 <input
@@ -315,24 +315,12 @@
                 placeholder="0"
                 v-model="discountModalInput"
                 />
-                <div 
-                :class="['product__percent', {'product__discount__active' : discountType == 'percent'}]"
-                @click="discountType = 'percent'"
-                >
-                    %
-                </div>
-                <div
-                :class="['product__tenge', {'product__discount__active' : discountType == 'tenge'}]"
-                @click="discountType = 'tenge'"
-                >
-                    ₸
-                </div>
           </div>    
         </div>
     </template>
     <template #footer v-if="modalState == 0">
         <div class="footer__btn">
-          <button class="footer__button" @click="discountForAll">Применить скидку</button>
+          <button class="footer__button">Добавить товары</button>
         </div>
       </template>
   </discount-modal>
@@ -933,16 +921,16 @@ export default {
     cursor: pointer;
 }
 .action__button{
-    width: 6.19vw;
+    width: 8.19vw;
     background: #E2E8F0;
     border-radius: 5px;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 10px;
+    padding: 10px 5px;
 }
 .action__button img{
-    width: 1.12vw;
+    width: 1.25vw;
    
 }
 /* ACTIONBUTTONS */

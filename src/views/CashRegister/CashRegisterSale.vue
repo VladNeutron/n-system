@@ -160,7 +160,7 @@
                                 <div class="btn__discount action__button" data-bs-toggle="modal" data-bs-target="#DiscModal" @click="modalState = 0">
                                     <img src="@/assets/img/cash-register/cashPercentBtn.svg" alt=""> 
                                 </div>
-                                <div class="btn__deferred action__button">
+                                <div class="btn__deferred action__button"  data-bs-toggle="modal" data-bs-target="#DeferredList">
                                     <img src="@/assets/img/cash-register/cashDefferedBtn.svg" alt=""> 
                                 </div>
                                 <div class="btn__deleteBarcode action__button"  data-bs-toggle="modal" data-bs-target="#DiscModal" @click="modalState = 1">
@@ -279,6 +279,7 @@
   </div>
   <Favourites :deleted="deletedProductId" @set-deleted="deletedProductId = -1" @add-fav="addFavProduct" @delete-fav="deleteProduct"></Favourites>
   <select-product-discount></select-product-discount>
+  <deferred-list></deferred-list>
   <discount-modal>
     <template #head>
         <div style="text-align: left" v-if="modalState == 1">
@@ -446,6 +447,7 @@
 
 <script>
 import SelectProductDiscount from "../../components/SelectProductDiscount.vue";
+import DeferredList from "../../components/CashRegisterDeferredListModal.vue";
 import Favourites from "@/components/Favourites.vue";
 import DiscountModal from "@/components/DiscountModal.vue";
 export default {
@@ -752,7 +754,8 @@ export default {
     components: {
     SelectProductDiscount,
     Favourites,
-    DiscountModal
+    DiscountModal,
+    DeferredList
 },
 }
 </script>
