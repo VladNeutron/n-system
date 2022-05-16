@@ -90,7 +90,6 @@
               <td>{{ order.type }}</td>
               <td>{{ order.amount }}</td>
               <td>{{ order.sum }}</td>
-
               <td>
                 <img
                   src="@/assets/img/dots.svg"
@@ -337,9 +336,15 @@ export default {
         ready: "Готов к выдаче",
         shipped: "Отправлен",
       };
-
       return statusMap[name] || "Статус не найден";
     },
+    createFilteredSet(key) {
+      const unfiltered = this.orders.map((obj) => obj[key]);
+      return [...new Set(unfiltered)];
+    },
+  },
+
+  computed: {
     cancelFilters() {
       this.filterStatusSelect = [];
       this.filterResponsible = "";
@@ -347,28 +352,20 @@ export default {
       this.filterOrderType = "";
       this.filterWarehouse = "";
     },
-  },
-
-  computed: {
     orderStatusList() {
-      let unfiltered = this.orders.map((e) => e.status);
-      return [...new Set(unfiltered)];
+      return this.createFilteredSet("status");
     },
     orderResponsibleList() {
-      let unfiltered = this.orders.map((e) => e.responsible);
-      return [...new Set(unfiltered)];
+      return this.createFilteredSet("responsible");
     },
     orderClientList() {
-      let unfiltered = this.orders.map((e) => e.client);
-      return [...new Set(unfiltered)];
+      return this.createFilteredSet("client");
     },
     orderTypeList() {
-      let unfiltered = this.orders.map((e) => e.type);
-      return [...new Set(unfiltered)];
+      return this.createFilteredSet("type");
     },
     orderWarehouseList() {
-      let unfiltered = this.orders.map((e) => e.warehouse);
-      return [...new Set(unfiltered)];
+      return this.createFilteredSet("warehouse");
     },
 
     filteredOrders() {
