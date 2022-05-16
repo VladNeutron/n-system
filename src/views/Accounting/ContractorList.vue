@@ -20,8 +20,6 @@
           <button
             class="btn bg-gradient-dark mb-0"
             style="margin-right: 0.833vw"
-            data-bs-toggle="modal"
-            data-bs-target="#CounterModal"
           >
             <img src="@/assets/img/DocumentsBtn.svg" alt="" /> Документы
           </button>
@@ -75,7 +73,11 @@
             </tr>
           </thead>
           <tbody>
-            <tr v-for="(order, i) of orders" :key="order.id">
+            <tr
+              v-for="(item, i) of items"
+              :key="item.id"
+              @click="openModal(item.id)"
+            >
               <th scope="row">
                 <div class="form-check">
                   <input
@@ -87,59 +89,14 @@
                 </div>
               </th>
               <th width="1%">{{ i + 1 }}</th>
-              <td>{{ order.name }}</td>
-              <td>{{ order.bin }}</td>
-              <td>{{ order.companyType }}</td>
-              <td>{{ order.contractorType }}</td>
+              <td>{{ item.name }}</td>
+              <td>{{ item.bin }}</td>
+              <td>{{ item.companyType }}</td>
+              <td>{{ item.contractorType }}</td>
               <td>
-                {{ order.phoneNumber }}
+                {{ item.phoneNumber }}
               </td>
-              <td>{{ order.adress }}</td>
-
-              <td>
-                <div class="dropdown">
-                  <img
-                    src="@/assets/img/dots.svg"
-                    style="width: 1.563vw; cursor: pointer"
-                    alt=""
-                  />
-                  <div class="dropdown-content">
-                    <a
-                      style="cursor: pointer"
-                      onclick="window.location.href = '/purchases/edit-income'"
-                      >Редактировать</a
-                    >
-                    <hr />
-                    <a
-                      style="cursor: pointer"
-                      data-bs-toggle="modal"
-                      data-bs-target="#DeleteInv"
-                      >Удалить</a
-                    >
-                  </div>
-                </div>
-              </td>
-            </tr>
-            <tr v-for="(order, i) of orders" :key="order.id">
-              <th scope="row">
-                <div class="form-check">
-                  <input
-                    class="form-check-input"
-                    type="checkbox"
-                    value=""
-                    id="fcustomCheck1"
-                  />
-                </div>
-              </th>
-              <th width="1%">{{ i + 1 }}</th>
-              <td>{{ order.name }}</td>
-              <td>{{ order.bin }}</td>
-              <td>{{ order.companyType }}</td>
-              <td>{{ order.contractorType }}</td>
-              <td>
-                {{ order.phoneNumber }}
-              </td>
-              <td>{{ order.adress }}</td>
+              <td>{{ item.adress }}</td>
 
               <td>
                 <div class="dropdown">
@@ -236,7 +193,7 @@ export default {
       },
       status: null,
       buttonText: "",
-      orders: [
+      items: [
         {
           id: 0,
           name: "Тихонова А.Р",
@@ -275,6 +232,14 @@ export default {
         },
       ],
     };
+  },
+  methods: {
+    openModal(id) {
+      this.modal.modalProductName = this.items.filter(
+        (item) => item.id == id
+      )[0];
+      $("#CounterModal").modal("show");
+    },
   },
   components: {
     "the-filter": Filter,

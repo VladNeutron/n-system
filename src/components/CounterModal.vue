@@ -12,7 +12,7 @@
         <div class="modal-header header-flex">
           <div style="text-align: left; display: flex">
             <div>
-              <p class="header__main">Документы по ТОО “Ромашка”</p>
+              <p class="header__main">Документы по {{ product.name }}</p>
               <p class="header__sec">Список документов по контрагенту</p>
             </div>
           </div>
