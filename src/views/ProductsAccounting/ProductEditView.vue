@@ -123,10 +123,34 @@
               >
             </div>
             <div class="carousel" :class="['carousel-' + idx]">
-              <div><img src="@/assets/css/images/example.png" alt="" /></div>
-              <div><img src="@/assets/css/images/example.png" alt="" /></div>
-              <div><img src="@/assets/css/images/example.png" alt="" /></div>
-              <div><img src="@/assets/css/images/example.png" alt="" /></div>
+              <div>
+                <img
+                  class="carousel-img"
+                  src="@/assets/css/images/example.png"
+                  alt=""
+                />
+              </div>
+              <div>
+                <img
+                  class="carousel-img"
+                  src="@/assets/css/images/example.png"
+                  alt=""
+                />
+              </div>
+              <div>
+                <img
+                  class="carousel-img"
+                  src="@/assets/css/images/example.png"
+                  alt=""
+                />
+              </div>
+              <div>
+                <img
+                  class="carousel-img"
+                  src="@/assets/css/images/example.png"
+                  alt=""
+                />
+              </div>
             </div>
             <div class="arrows d-flex w-0">
               <div class="left-arrow">
@@ -163,12 +187,12 @@
             <div
               v-for="(size, i) in sizes"
               :key="size"
+              @click="selectSize(size)"
               class="btn mb-0"
-              @click="selectSize(i)"
-              :class="[this.sizeMap[i] ? 'bg-gradient-dark' : null]"
+              :class="[this.sizeToDelete === size ? 'bg-gradient-dark' : null]"
             >
               {{ size }}
-              <span v-if="sizeMap[i]" style="" class="show-btn"
+              <span v-if="this.sizeToDelete === size" style="" class="show-btn"
                 ><button class="remove-button" @click="deleteSize(size)">
                   x
                 </button></span
@@ -318,6 +342,7 @@ export default {
       selected: "",
       modalId: "",
       sizeSelected: "",
+      sizeToDelete: "",
       colorSelected: "",
       sizeMap: [],
     };
@@ -329,12 +354,13 @@ export default {
     getModalId(id) {
       return (this.modalId = id);
     },
-    selectSize(id) {
-      this.sizeMap[id] = !this.sizeMap[id];
-      console.log(this.sizeMap);
+    selectSize(size) {
+      if (this.sizeToDelete === size) {
+        this.sizeToDelete = "";
+      } else this.sizeToDelete = this.sizes.find((s) => s === size);
     },
     deleteSize(size) {
-      this.sizeMap = this.sizeMap.filter((el) => el !== size);
+      this.sizes = this.sizes.filter((el) => el !== size);
     },
     prevSlide(id) {
       $(`.carousel-${id}`).slick("slickPrev");
@@ -356,56 +382,6 @@ export default {
 </script>
 
 <style scoped>
-/* CHECKBOX BUTTON */
-
-.cat {
-  margin: 4px;
-  background-color: #fff;
-  width: 143px;
-  height: 40px;
-  border-radius: 50px;
-
-  outline: 1px solid #2d3748;
-  overflow: hidden;
-  float: left;
-}
-
-.cat label {
-  float: left;
-  line-height: 3em;
-  color: #2d3748;
-  width: 8em;
-  height: 3em;
-}
-
-.cat label span {
-  position: relative;
-  top: auto;
-  right: 5px;
-  text-align: center;
-  height: 50px;
-  width: 145px;
-  display: block;
-  color: #2d3748;
-}
-
-.cat label input {
-  position: absolute;
-  display: none;
-  color: #2d3748 !important;
-}
-/* selects all of the text within the input element and changes the color of the text */
-.cat label input + span {
-  color: #2d3748;
-}
-
-/* This will declare how a selected input will look giving generic properties */
-.cat input:checked + span {
-  color: #ffffff;
-  text-shadow: 0 0 6px rgba(0, 0, 0, 0.8);
-  background-color: #2d3748;
-}
-/*  */
 .arrows {
   position: relative;
   top: -60px;
@@ -432,6 +408,17 @@ export default {
 .right-arrow {
   position: relative;
   right: -360px;
+}
+.carousel-img {
+  border-radius: 5px;
+  width: 130px;
+}
+.slick-slide {
+  margin: 0 8px 0 0;
+}
+
+.slick-list {
+  margin: 0 -8px 0 0;
 }
 
 .form-switch .form-check-input:checked {
