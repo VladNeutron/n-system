@@ -230,35 +230,35 @@ export default {
       ],
     };
   },
+
   methods: {
-    methods: {
-      getClass(stat) {
-        return stat === "new"
-          ? "bg-gradient-info"
-          : stat === "in-process"
-          ? "bg-gradient-primary"
-          : stat === "refused"
-          ? "bg-gradient-danger"
-          : stat === "processed"
-          ? "bg-gradient-success"
-          : "bg-gradient-warning";
-      },
-      normalizeStatusName(name) {
-        const statusMap = {
-          new: "Новый возврат",
-          "in-process": "В обработке",
-          refused: "Отказ",
-          approved: "Одобрен",
-          processed: "Оформлен",
-        };
-        return statusMap[name] || "Статус не найден";
-      },
-      createFilteredSet(key) {
-        const unfiltered = this.orders.map((obj) => obj[key]);
-        return [...new Set(unfiltered)];
-      },
+    getClass(stat) {
+      return stat === "new"
+        ? "bg-gradient-info"
+        : stat === "in-process"
+        ? "bg-gradient-primary"
+        : stat === "refused"
+        ? "bg-gradient-danger"
+        : stat === "processed"
+        ? "bg-gradient-success"
+        : "bg-gradient-warning";
+    },
+    normalizeStatusName(name) {
+      const statusMap = {
+        new: "Новый возврат",
+        "in-process": "В обработке",
+        refused: "Отказ",
+        approved: "Одобрен",
+        processed: "Оформлен",
+      };
+      return statusMap[name] || "Статус не найден";
+    },
+    createFilteredSet(key) {
+      const unfiltered = this.orders.map((obj) => obj[key]);
+      return [...new Set(unfiltered)];
     },
   },
+
   components: {
     "the-filter": Filter,
   },
