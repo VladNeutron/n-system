@@ -21,96 +21,168 @@
                 <button class="btn about__btn">Сохранить изменения</button>
               </div>
               <div class="about__body">
-                <div class="form-group">
-                  <label for="exampleFormControlInput1" class="about__label"
-                    >Название компании</label
-                  >
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="exampleFormControlInput1"
-                    placeholder="ТОО “Рога и Копыта”"
-                  />
-                </div>
-                <div class="form-group">
-                  <label for="exampleFormControlSelect1" class="about__label"
-                    >Организационная форма</label
-                  >
-
-                  <div class="drop">
-                    <img
-                      src="@/assets/img/arrow.svg"
-                      style="width: 0.833vw"
-                      class="arrow"
-                      alt=""
-                    />
-                    <select class="form-control" id="exampleFormControlSelect1">
-                      <option>Онлайн-магазин</option>
-                      <option>ТОО</option>
-                      <option>ООО</option>
-                      <option>ОАО</option>
-                    </select>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label for="exampleFormControlInput3" class="about__label"
-                    >ФИО Директора</label
-                  >
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="exampleFormControlInput3"
-                    placeholder="Иванов Иван Иванович"
-                  />
-                </div>
-                <div class="form-group">
-                  <label for="exampleFormControlInput4" class="about__label"
-                    >ИИН/БИН</label
-                  >
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="exampleFormControlInput4"
-                    placeholder="0987654323456789"
-                  />
-                </div>
-                <div class="form-group">
-                  <label for="exampleFormControlTextarea1" class="about__label"
-                    >Юридический адрес</label
-                  >
-                  <textarea
-                    class="form-control"
-                    id="exampleFormControlTextarea1"
-                    rows="2"
-                    placeholder="521370, Саратовская область, город Люберцы, пл. 1905 года, 54
-"
-                  ></textarea>
-                </div>
-                <div class="VAT">
-                  <p class="vat__text">Вы плательщик НДС?</p>
-                </div>
                 <div class="d-flex">
-                  <div class="form-check">
-                    <label class="custom-control-label" for="customRadio1"
-                      >Да</label
-                    >
-                    <input
-                      class="form-check-input"
-                      type="radio"
-                      name="flexRadioDefault"
-                      id="customRadio1"
-                    />
+                  <div>
+                    <div class="form-group">
+                      <label for="exampleFormControlInput1" class="about__label"
+                        >Название компании</label
+                      >
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="exampleFormControlInput1"
+                        placeholder="ТОО “Рога и Копыта”"
+                      />
+                    </div>
+                    <div class="form-group">
+                      <label
+                        for="exampleFormControlSelect2"
+                        class="about__label"
+                        >Тип компании</label
+                      >
+
+                      <div class="drop">
+                        <img
+                          src="@/assets/img/arrow.svg"
+                          style="width: 0.833vw"
+                          class="arrow"
+                          alt=""
+                        />
+                        <select
+                          class="form-control"
+                          id="exampleFormControlSelect2"
+                        >
+                          <option>Онлайн-магазин</option>
+                          <option>ТОО</option>
+                          <option>ООО</option>
+                          <option>ОАО</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label
+                        for="exampleFormControlSelect3"
+                        class="about__label"
+                        >Тип налогооблажения</label
+                      >
+
+                      <div class="drop">
+                        <img
+                          src="@/assets/img/arrow.svg"
+                          style="width: 0.833vw"
+                          class="arrow"
+                          alt=""
+                        />
+                        <select
+                          class="form-control"
+                          id="exampleFormControlSelect3"
+                        >
+                          <option>УСН</option>
+                          <option>ТОО</option>
+                          <option>ООО</option>
+                          <option>ОАО</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleFormControlInput4" class="about__label"
+                        >ИИН/БИН</label
+                      >
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="exampleFormControlInput4"
+                        placeholder="0987654323456789"
+                      />
+                    </div>
+                    <div class="VAT">
+                      <p class="vat__text">Вы плательщик НДС?</p>
+                    </div>
+                    <div class="d-flex">
+                      <div class="form-check">
+                        <label class="custom-control-label" for="customRadio1"
+                          >Да</label
+                        >
+                        <input
+                          class="form-check-input"
+                          type="radio"
+                          name="flexRadioDefault"
+                          id="customRadio1"
+                        />
+                      </div>
+                      <div class="form-check" style="margin-left: 2.083vw">
+                        <input
+                          class="form-check-input"
+                          type="radio"
+                          name="flexRadioDefault"
+                          id="customRadio2"
+                        />
+                        <label class="custom-control-label" for="customRadio2"
+                          >Нет</label
+                        >
+                      </div>
+                    </div>
                   </div>
-                  <div class="form-check" style="margin-left: 2.083vw">
-                    <input
-                      class="form-check-input"
-                      type="radio"
-                      name="flexRadioDefault"
-                      id="customRadio2"
-                    />
-                    <label class="custom-control-label" for="customRadio2"
-                      >Нет</label
-                    >
+                  <div style="margin-left: 23px">
+                    <div class="form-group">
+                      <label for="exampleFormControlInput5" class="about__label"
+                        >ФИО Директора</label
+                      >
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="exampleFormControlInput5"
+                        placeholder="Иванов Иван Иванович"
+                      />
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleFormControlInput6" class="about__label"
+                        >Контактный телефон</label
+                      >
+                      <input
+                        type="tel"
+                        class="form-control phone__org"
+                        id="exampleFormControlInput6"
+                        placeholder="+7 707 123 45 67"
+                      />
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleFormControlInput7" class="about__label"
+                        >E-mail</label
+                      >
+                      <input
+                        type="email"
+                        class="form-control"
+                        id="exampleFormControlInput7"
+                        placeholder="ivan.ivaaaaan@gmail.com"
+                      />
+                    </div>
+                    <div class="form-group">
+                      <label
+                        for="exampleFormControlTextarea1"
+                        class="about__label"
+                        >Юридический адрес</label
+                      >
+                      <textarea
+                        class="form-control"
+                        id="exampleFormControlTextarea1"
+                        rows="2"
+                        placeholder="521370, Саратовская область, город Люберцы, пл. 1905 года, 5"
+                      ></textarea>
+                    </div>
+                    <div class="form-group">
+                      <label
+                        for="exampleFormControlTextarea2"
+                        class="about__label"
+                        >Фактический адрес</label
+                      >
+                      <textarea
+                        class="form-control"
+                        id="exampleFormControlTextarea2"
+                        rows="2"
+                        placeholder="521370, Саратовская область, город Люберцы, пл. 1905 года, 5"
+                      ></textarea>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -235,6 +307,13 @@ export default {
         },
       ],
     };
+  },
+  mounted() {
+    var element = document.getElementsByClassName("phone__org")[0];
+    var maskOptions = {
+      mask: "+{7}(000)000-00-00",
+    };
+    var mask = IMask(element, maskOptions);
   },
 };
 </script>
