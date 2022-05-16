@@ -11,22 +11,47 @@
     <div class="card pt-4 pb-6 m-4">
       <div class="d-flex justify-content-between align-items-center mx-4 mb-4">
         <div>
-          <button class="btn bg-gradient-dark mb-0" style="margin-right: 0.833vw">
-             Продолжить продажу <img src="@/assets/img/arrow_forward.svg" style="width:1.042vw" alt="" />
+          <button
+            class="btn bg-gradient-dark mb-0"
+            style="margin-right: 0.833vw"
+          >
+            Продолжить продажу
+            <img
+              src="@/assets/img/arrow_forward.svg"
+              style="width: 1.042vw"
+              alt=""
+            />
           </button>
         </div>
         <div class="table__inputs d-flex gap-3 align-content-center">
           <div class="form-group m-0">
             <div class="input-group mt-1">
-              <span class="input-group-text"><img src="@/assets/css/icons/searchIcon.svg" alt="" /></span>
-              <input class="form-control form__width" placeholder="Поиск..." id="search" type="text" />
+              <span class="input-group-text"
+                ><img src="@/assets/css/icons/searchIcon.svg" alt=""
+              /></span>
+              <input
+                class="form-control form__width"
+                placeholder="Поиск..."
+                id="search"
+                type="text"
+              />
             </div>
           </div>
           <button class="btn btn-outline-dark mb-0">
-            <span><img src="@/assets/css/icons/print.svg" class="me-1" alt="" /></span>Печать
+            <span
+              ><img
+                src="@/assets/css/icons/print.svg"
+                class="me-1"
+                alt="" /></span
+            >Печать
           </button>
           <button class="btn btn-outline-dark mb-0">
-            <span><img src="@/assets/css/icons/down-arrow.svg" class="me-1" alt="" /></span>Скачать
+            <span
+              ><img
+                src="@/assets/css/icons/down-arrow.svg"
+                class="me-1"
+                alt="" /></span
+            >Скачать
           </button>
           <button class="btn btn-outline-dark mb-0">Фильтры</button>
         </div>
@@ -40,7 +65,7 @@
               <th scope="col" class="th__col">№ чека</th>
               <th scope="col" class="th__col">Дата</th>
               <th scope="col" class="th__col">Кассир</th>
-              <th scope="col" class="th__col">Торговая точка</th>
+              <th scope="col" class="th__col">Статус</th>
               <th scope="col" class="th__col">Кол-во</th>
               <th scope="col" class="th__col">Сумма</th>
 
@@ -48,37 +73,45 @@
             </tr>
           </thead>
           <tbody>
-            <tr v-for="(order, i) of orders" :key="order.id">
+            <tr v-for="(order, i) of orders" :key="order.checkId">
               <th scope="row">
                 <div class="form-check">
-                  <input class="form-check-input" type="checkbox" value="" id="fcustomCheck1" />
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    value=""
+                    id="fcustomCheck1"
+                  />
                 </div>
               </th>
               <th width="1%">{{ i + 1 }}</th>
-              <td>{{ order.id }}</td>
+              <td>{{ order.checkId }}</td>
               <td>{{ order.date }}</td>
-              <td>{{ order.responsible }}</td>
+              <td>{{ order.cashier }}</td>
               <td>
-                {{ order.storage }}
+                <div
+                  class="btn mb-0 w-100"
+                  v-text="normalizeStatusName(order.status)"
+                  :class="getClass(order.status)"
+                ></div>
               </td>
               <td>{{ order.amount }}</td>
               <td>{{ order.sum }}</td>
 
               <td>
-                <img src="@/assets/img/dots.svg" style="width: 1.563vw; cursor: pointer" alt="" />
+                <img
+                  src="@/assets/img/dots.svg"
+                  style="width: 1.563vw; cursor: pointer"
+                  alt=""
+                />
               </td>
             </tr>
           </tbody>
         </table>
       </div>
-      <div class="
-          pagination
-          d-flex
-          justify-content-end
-          align-items-center
-          me-4
-          mt-4
-        ">
+      <div
+        class="pagination d-flex justify-content-end align-items-center me-4 mt-4"
+      >
         <div class="d-flex align-items-center gap-3">
           <div>
             <p class="m-0">Показано<span> 2112 12121</span></p>
@@ -88,8 +121,14 @@
             <div class="pagination-container d-flex justify-items-center">
               <ul class="pagination pagination-info mb-0 pe-0">
                 <li class="page-item">
-                  <a class="page-link" href="javascript:;" aria-label="Previous">
-                    <span aria-hidden="true"><i class="fa fa-angle-double-left" aria-hidden="true"></i></span>
+                  <a
+                    class="page-link"
+                    href="javascript:;"
+                    aria-label="Previous"
+                  >
+                    <span aria-hidden="true"
+                      ><i class="fa fa-angle-double-left" aria-hidden="true"></i
+                    ></span>
                   </a>
                 </li>
                 <li class="page-item">
@@ -109,7 +148,12 @@
                 </li>
                 <li class="page-item">
                   <a class="page-link" href="javascript:;" aria-label="Next">
-                    <span aria-hidden="true"><i class="fa fa-angle-double-right" aria-hidden="true"></i></span>
+                    <span aria-hidden="true"
+                      ><i
+                        class="fa fa-angle-double-right"
+                        aria-hidden="true"
+                      ></i
+                    ></span>
                   </a>
                 </li>
               </ul>
@@ -130,54 +174,90 @@ export default {
       buttonText: "",
       orders: [
         {
-          id: 12132145,
+          checkId: 1213215,
           date: "11 ноя, 2021 19:23",
-          responsible: "Тихонова А.Р",
-          storage: "Aport Mall",
-          client: "Мария Калашникова",
-          type: "Создан вручную",
+          cashier: "Тихонова А.Р.",
+          status: "new",
           amount: 8,
           sum: 12000,
         },
         {
-          id: 12132145,
+          checkId: 12132145,
           date: "11 ноя, 2021 19:23",
-          responsible: "Тихонова А.Р",
-          storage: "Aport Mall",
-          client: "Мария Калашникова",
-          type: "Создан вручную",
+          cashier: "Тихонова А.Р.",
+          status: "in-process",
           amount: 8,
           sum: 12000,
-        }, {
-          id: 12132145,
+        },
+        {
+          checkId: 12132145,
           date: "11 ноя, 2021 19:23",
-          responsible: "Тихонова А.Р",
-          storage: "Aport Mall",
-          client: "Мария Калашникова",
-          type: "Создан вручную",
+          cashier: "Тихонова А.Р.",
+          status: "refused",
           amount: 8,
           sum: 12000,
-        }, {
-          id: 12132145,
+        },
+        {
+          checkId: 12132145,
           date: "11 ноя, 2021 19:23",
-          responsible: "Тихонова А.Р",
-          storage: "Aport Mall",
-          client: "Мария Калашникова",
-          type: "Создан вручную",
+          cashier: "Тихонова А.Р.",
+          status: "approved",
           amount: 8,
           sum: 12000,
-        }, {
-          id: 12132145,
+        },
+        {
+          checkId: 12132145,
           date: "11 ноя, 2021 19:23",
-          responsible: "Тихонова А.Р",
-          storage: "Aport Mall",
-          client: "Мария Калашникова",
-          type: "Создан вручную",
+          cashier: "Тихонова А.Р.",
+          status: "refused",
+          amount: 8,
+          sum: 12000,
+        },
+        {
+          checkId: 12132145,
+          date: "11 ноя, 2021 19:23",
+          cashier: "Тихонова А.Р.",
+          status: "approved",
+          amount: 8,
+          sum: 12000,
+        },
+        {
+          checkId: 12132145,
+          date: "11 ноя, 2021 19:23",
+          cashier: "Тихонова А.Р.",
+          status: "processed",
           amount: 8,
           sum: 12000,
         },
       ],
     };
+  },
+  methods: {
+    getClass(stat) {
+      return stat === "new"
+        ? "bg-gradient-info"
+        : stat === "in-process"
+        ? "bg-gradient-primary"
+        : stat === "refused"
+        ? "bg-gradient-danger"
+        : stat === "processed"
+        ? "bg-gradient-success"
+        : "bg-gradient-warning";
+    },
+    normalizeStatusName(name) {
+      const statusMap = {
+        new: "Новый возврат",
+        "in-process": "В обработке",
+        refused: "Отказ",
+        approved: "Одобрен",
+        processed: "Оформлен",
+      };
+      return statusMap[name] || "Статус не найден";
+    },
+    createFilteredSet(key) {
+      const unfiltered = this.orders.map((obj) => obj[key]);
+      return [...new Set(unfiltered)];
+    },
   },
   components: {
     "the-filter": Filter,
@@ -186,8 +266,8 @@ export default {
 </script>
 
 <style scoped>
-.form__width{
-  width:15.99vw !important;
+.form__width {
+  width: 15.99vw !important;
 }
 .bg-gradient-dark {
   font-weight: 600;
