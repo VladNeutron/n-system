@@ -80,9 +80,11 @@
 
               <td>{{ order.responsible }}</td>
               <td>
-                <div class="btn mb-0 w-100" :class="getClass(order.status)">
-                  {{ buttonText }}
-                </div>
+                <div
+                  class="btn mb-0 w-100"
+                  v-text="normalizeStatusName(order.status)"
+                  :class="getClass(order.status)"
+                ></div>
               </td>
               <td>{{ order.client }}</td>
               <td>{{ order.type }}</td>
@@ -252,7 +254,7 @@ export default {
           date: "11 ноя, 2021 19:23",
           warehouse: "Киров",
           responsible: "Тихонова А.Р",
-          status: "canceled",
+          status: "refused",
           client: "Мария Калашникова",
           type: "Создан вручную",
           amount: 8,
@@ -263,7 +265,7 @@ export default {
           date: "11 ноя, 2021 19:23",
           responsible: "Тихонова А.Р",
           warehouse: "что-там",
-          status: "processed",
+          status: "approved",
           client: "Мария Калашникова",
           type: "Интернет-магазин",
           amount: 8,
@@ -274,7 +276,7 @@ export default {
           date: "11 ноя, 2021 19:23",
           warehouse: "Алматы",
           responsible: "Тихонова А.Р",
-          status: "assembly",
+          status: "refused",
           client: "Мария Калашникова",
           type: "Интернет-магазин",
           amount: 8,
@@ -285,7 +287,7 @@ export default {
           date: "11 ноя, 2021 19:23",
           warehouse: "что-там",
           responsible: "Тихонова А.Р",
-          status: "ready",
+          status: "approved",
           client: "Мария Калашникова",
           type: "Создан вручную",
           amount: 8,
@@ -296,7 +298,7 @@ export default {
           date: "11 ноя, 2021 19:23",
           warehouse: "что-там",
           responsible: "Тихонова А.Р",
-          status: "shipped",
+          status: "processed",
           client: "Мария Калашникова",
           type: "Создан вручную",
           amount: 8,
@@ -312,35 +314,61 @@ export default {
   },
   methods: {
     getClass(stat) {
-      if (stat === "new") {
-        this.buttonText = "Новый";
-        return "bg-gradient-info";
-      }
-      if (stat === "in-process") {
-        this.buttonText = "В обработке";
-        return "bg-gradient-primary";
-      }
-      if (stat === "canceled") {
-        this.buttonText = "Отменен";
-        return "bg-gradient-danger";
-      }
-      if (stat === "processed") {
-        this.buttonText = "Обработан";
-        return "bg-gradient-warning";
-      }
-      if (stat === "assembly") {
-        this.buttonText = "В сборке";
-        return "bg-gradient-secondary";
-      }
-      if (stat === "ready") {
-        this.buttonText = "Готов к выдаче";
-        return "bg-gradient-blue";
-      }
-      if (stat === "shipped") {
-        this.buttonText = "Отправлен";
-        return "bg-gradient-success";
-      }
+      // if (stat === "new") {
+      //   this.buttonText = "Новый";
+      //   return "bg-gradient-info";
+      // }
+      // if (stat === "in-process") {
+      //   this.buttonText = "В обработке";
+      //   return "bg-gradient-primary";
+      // }
+      // if (stat === "canceled") {
+      //   this.buttonText = "Отменен";
+      //   return "bg-gradient-danger";
+      // }
+      // if (stat === "processed") {
+      //   this.buttonText = "Обработан";
+      //   return "bg-gradient-warning";
+      // }
+      // if (stat === "assembly") {
+      //   this.buttonText = "В сборке";
+      //   return "bg-gradient-secondary";
+      // }
+      // if (stat === "ready") {
+      //   this.buttonText = "Готов к выдаче";
+      //   return "bg-gradient-blue";
+      // }
+      // if (stat === "shipped") {
+      //   this.buttonText = "Отправлен";
+      //   return "bg-gradient-success";
+      // }
+
+      return stat === "new"
+        ? "bg-gradient-info"
+        : stat === "in-process"
+        ? "bg-gradient-primary"
+        : stat === "refused"
+        ? "bg-gradient-danger"
+        : stat === "processed"
+        ? "bg-gradient-success"
+        : "bg-gradient-warning";
     },
+    normalizeStatusName(name) {
+      const statusMap = {
+        new: "Новый возврат",
+        "in-process": "В обработке",
+        refused: "Отказ",
+        approved: "Одобрен",
+        processed: "Оформлен",
+      };
+      return statusMap[name] || "Статус не найден";
+    },
+    createFilteredSet(key) {
+      const unfiltered = this.orders.map((obj) => obj[key]);
+      return [...new Set(unfiltered)];
+    },
+  },
+  computed: {
     cancelFilters() {
       this.filterStatusSelect = [];
       this.filterResponsible = "";
@@ -348,27 +376,20 @@ export default {
       this.filterOrderType = "";
       this.filterWarehouse = "";
     },
-  },
-  computed: {
     orderStatusList() {
-      let unfiltered = this.orders.map((e) => e.status);
-      return [...new Set(unfiltered)];
+      return this.createFilteredSet("status");
     },
     orderResponsibleList() {
-      let unfiltered = this.orders.map((e) => e.responsible);
-      return [...new Set(unfiltered)];
+      return this.createFilteredSet("responsible");
     },
     orderClientList() {
-      let unfiltered = this.orders.map((e) => e.client);
-      return [...new Set(unfiltered)];
+      return this.createFilteredSet("client");
     },
     orderTypeList() {
-      let unfiltered = this.orders.map((e) => e.type);
-      return [...new Set(unfiltered)];
+      return this.createFilteredSet("type");
     },
     orderWarehouseList() {
-      let unfiltered = this.orders.map((e) => e.warehouse);
-      return [...new Set(unfiltered)];
+      return this.createFilteredSet("warehouse");
     },
 
     filteredOrders() {
