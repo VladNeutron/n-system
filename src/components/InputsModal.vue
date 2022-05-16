@@ -78,6 +78,7 @@
   justify-content: center;
   border-top: 0;
   padding-bottom: 2.083vw;
+  flex-direction: column;
 }
 .modal__padding {
   padding-left: 2.083vw;
