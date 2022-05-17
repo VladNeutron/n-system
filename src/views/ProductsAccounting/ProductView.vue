@@ -336,12 +336,13 @@ export default {
   min-width: 512px;
   width: 100%;
 } */
-#editor {
-  height: 117px;
-}
+
 .quill-wrapper {
   min-width: 512px;
   width: 100%;
+  height: 157px;
+}
+#editor {
   height: 117px;
 }
 
