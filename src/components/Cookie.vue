@@ -1,5 +1,5 @@
 <template>
-  <div class="cookie__body">
+  <div class="cookie__body mx-4 my-4 mb-6">
     <div class="card p-4 pb-3">
       <div class="cookie__body-text d-flex gap-3 mb-3">
         <img src="@/assets/css/images/cookie.png" alt="" />

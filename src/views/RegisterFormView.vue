@@ -1,9 +1,7 @@
 <template>
   <div class="login__main d-flex">
-    <div
-      class="login__main-left d-flex justify-content-center gap-8 flex-column align-items-center"
-    >
-      <register v-if="authorized"></register>
+    <div class="login__main-left d-flex flex-column">
+      <register v-if="authorized" class="mx-auto my-auto"></register>
       <cookie class="pb-5"></cookie>
     </div>
     <div
