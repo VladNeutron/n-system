@@ -477,10 +477,12 @@ table {
 th {
   color: #2d3748;
   font-size: 12px;
+  text-align: center;
 }
 td {
   font-size: 14px;
   font-weight: 600;
+  text-align: center;
 }
 
 .pagination {
