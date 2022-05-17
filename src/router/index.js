@@ -466,6 +466,18 @@ const routes = [
     component: () => import("../views/Accounting/EmployeesList.vue"),
     meta: { NavLink: "Список сотрудников" },
   },
+  {
+    path: "/accounting/property-list",
+    name: "property-list",
+    component: () => import("../views/Accounting/PropertyList.vue"),
+    meta: { NavLink: "Список имуществ" },
+  },
+  {
+    path: "/accounting/position-list",
+    name: "position-list",
+    component: () => import("../views/Accounting/PositionList.vue"),
+    meta: { NavLink: "Список должностей" },
+  },
   // БУХГАЛТЕРИЯ
 ];
 

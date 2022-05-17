@@ -106,12 +106,14 @@
         <div class="color-photo mt-2 pe-3">
           <div class="mt-2 me-2" v-for="(color, idx) in colors" :key="color">
             <div class="d-flex justify-content-between mb-2">
-              <p class="m-0 fw-bold text-start">
-                {{ color.name }}
-                <span class="ms-2"
-                  ><img class="pb-1" src="@/assets/css/icons/pen.svg" alt=""
-                /></span>
-              </p>
+              <div>
+                <p class="m-0 fw-bold text-start">
+                  {{ color.name }}
+                  <span class="ms-2"
+                    ><img class="pb-1" src="@/assets/css/icons/pen.svg" alt=""
+                  /></span>
+                </p>
+              </div>
 
               <a class="text-end" href="#"
                 ><span

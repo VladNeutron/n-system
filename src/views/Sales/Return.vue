@@ -180,7 +180,7 @@
             type="checkbox"
             :value="status"
             v-model="filterStatusSelect"
-          /><span>{{ status }}</span>
+          /><span v-text="normalizeStatusName(status)"></span>
         </label>
       </div>
     </div>

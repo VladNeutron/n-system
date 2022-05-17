@@ -4,7 +4,7 @@
     <the-header></the-header>
     <div class="page__name d-flex align-items-center ms-4">
       <div class="page__name-title text-start">
-        <h3>Список сотрудников</h3>
+        <h3>Список должностей</h3>
         <p class="mb-0">Внесите изменения и не забудьте  нажать “Сохранить”</p>
       </div>
     </div>
@@ -13,50 +13,28 @@
         <div>
           <button class="btn bg-gradient-dark mb-0" style="margin-right: 0.833vw" data-bs-toggle="modal"
           data-bs-target="#InpModal"  @click="isEdit = 'no'">
-            <img src="@/assets/img/whtplus.svg" alt="" /> Добавить сотрудника
+            <img src="@/assets/img/whtplus.svg" alt="" /> Добавить имущество
           </button>
-        </div>
-        <div class="table__inputs d-flex gap-3 align-content-center">
-          <div class="form-group m-0">
-            <div class="input-group mt-1">
-              <span class="input-group-text"><img src="@/assets/css/icons/searchIcon.svg" alt="" /></span>
-              <input class="form-control form__width" placeholder="Поиск..." id="search" type="text" />
-            </div>
-          </div>
-          <button class="btn btn-outline-dark mb-0">
-            <span><img src="@/assets/css/icons/print.svg" class="me-1" alt="" /></span>Печать
-          </button>
-          <button class="btn btn-outline-dark mb-0">
-            <span><img src="@/assets/css/icons/down-arrow.svg" class="me-1" alt="" /></span>Скачать
-          </button>
-          <button class="btn btn-outline-dark mb-0">Фильтры</button>
         </div>
       </div>
       <div class="page__table">
         <table class="table table-hover">
           <thead>
             <tr class="">
-              <th scope="col" class="th__col" style="width: 25px"></th>
+              
               <th width="1%" scope="col" class="th__col">№</th>
-              <th scope="col" class="th__col">ФИО</th>
-              <th scope="col" class="th__col">Должность</th>
-              <th scope="col" class="th__col">Телефон</th>
-              <th scope="col" class="th__col">Email</th>
+              <th scope="col" class="th__col">Название должности</th>
+              <th scope="col" class="th__col">Торговая точка</th>
+              <th scope="col" class="th__col">статус</th>
               <th scope="col" class="th__col">Действия</th>
             </tr>
           </thead>
           <tbody>
             <tr v-for="(order, i) of orders" :key="order.id">
-              <td scope="row">
-                <div class="form-check">
-                  <input class="form-check-input" type="checkbox" value="" id="fcustomCheck1" />
-                </div>
-              </td>
               <th width="1%">{{ i + 1 }}</th>
               <td>{{ order.name}}</td>
-              <td>{{ order.position }}</td>
-              <td>{{ order.phoneNumber }}</td>
-              <td>{{ order.email }}</td>
+              <td>{{ order.shop }}</td>
+              <td>{{ order.status }}</td>
               <td>
                 <div class="dropdown">
                   <img src="@/assets/img/dots.svg" style="width: 1.563vw; cursor: pointer" alt="" />
@@ -121,11 +99,11 @@
     <inputs-modal>
       <template #head>
         <div style="text-align: left" v-if="isEdit == 'no'">
-          <p class="header__main">Добавление сотрудника</p>
-          <p class="header__sec">Введите данные сотрудника и нажмите “Добавить”</p>
+          <p class="header__main">Добавление должности</p>
+          <p class="header__sec">Введите данные и нажмите “Добавить”</p>
         </div>
         <div style="text-align: left" v-if="isEdit == 'yes'">
-          <p class="header__main">Сотрудник Ильясов</p>
+          <p class="header__main">Кассир</p>
           <p class="header__sec">Измените данные и нажмите “Сохранить”</p>
         </div>
       </template>
@@ -133,91 +111,35 @@
         <div class="clients__modal" v-if="isEdit == 'no'">
           <div class="form-group">
             <label for="example-text-input" class="form-control-label"
-              >ФИО сотрудника</label
+              >Название должности</label
             >
             <input
               class="form-control"
               type="text"
-              placeholder="Введите ФИО"
+              placeholder="Введите название"
               id="example-text-input"
             />
           </div>
-          <div class="form-group">
-            <label class="form-control-label" for="Статус заявки"
-              >Должность</label
-            >
-            <select class="form-select">
-              <option selected disabled>Выберите</option>
-              <option >Кассир</option>
-              <option >Складовщик</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="example-text-input1" class="form-control-label"
-              >Номер телефона</label
-            >
-            <input
-              class="form-control"
-              type="text"
-              placeholder="Введите номер телефона"
-              id="example-text-input1"
-            />
-          </div>
-          <div class="form-group">
-            <label for="example-text-input2" class="form-control-label"
-              >Email</label
-            >
-            <input
-              class="form-control"
-              type="text"
-              placeholder="Введите email"
-              id="example-text-input2"
-            />
+          <div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" checked="">
+            <label class="form-check-label" for="flexSwitchCheckDefault">Статус должности</label>
           </div>
         </div>
         <div class="clients__modal" v-if="isEdit == 'yes'">
           <div class="form-group">
             <label for="example-text-input" class="form-control-label"
-              >ФИО сотрудника</label
+              >Название должности</label
             >
             <input
               class="form-control"
               type="text"
-              placeholder="Введите ФИО"
+              placeholder="Введите название"
               id="example-text-input"
             />
           </div>
-          <div class="form-group">
-            <label class="form-control-label" for="Статус заявки"
-              >Должность</label
-            >
-            <select class="form-select">
-              <option selected disabled>Выберите</option>
-              <option >Кассир</option>
-              <option >Складовщик</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="example-text-input1" class="form-control-label"
-              >Номер телефона</label
-            >
-            <input
-              class="form-control"
-              type="text"
-              placeholder="Введите номер телефона"
-              id="example-text-input1"
-            />
-          </div>
-          <div class="form-group">
-            <label for="example-text-input2" class="form-control-label"
-              >Email</label
-            >
-            <input
-              class="form-control"
-              type="text"
-              placeholder="Введите email"
-              id="example-text-input2"
-            />
+          <div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" checked="">
+            <label class="form-check-label" for="flexSwitchCheckDefault">Статус должности</label>
           </div>
         </div>
       </template>
@@ -229,7 +151,7 @@
           <button class="btn bg-gradient-dark">Сохранить</button>
         </div>
         <div class="clients__footer" v-if="isEdit == 'yes'">
-          <button class="btn btn-outline-dark">Удалить сотрудника</button>
+          <button class="btn btn-outline-dark">Удалить должность</button>
         </div>
       </template>
     </inputs-modal>
@@ -247,38 +169,33 @@ export default {
       orders: [
         {
           id: 0,
-          name: "Тихонова А.Р",
-          position: 'Кассир',
-          phoneNumber: '+7 999 999 99 99',
-          email: 'kassir@neutron.kz',
+          name: "Кассир",
+          shop: 'Москва',
+          status: 'Активна',
         },
         {
           id: 1,
-          name: "Ильясов С.Д",
-          position: 'Исполнитель',
-          phoneNumber: '+7 322 998 25 09',
-          email: 'isp@neutron.kz',
+          name: "Бухгалтер",
+          shop: 'Москва',
+          status: 'Не в сети',
         },
         {
           id: 2,
-          name: "Павлов Л.В",
-          position: 'Технический директор',
-          phoneNumber: '+7 322 998 01 05',
-          email: 'tech@neutron.kz',
+          name: "Фасовщик",
+          shop: 'Апорт',
+          status: 'Активна',
         },
         {
           id: 3,
-          name: "Валерьянов М.С",
-          position: 'Full Stack программист',
-          phoneNumber: '+7 322 001 15 02',
-          email: 'full@neutron.kz',
+          name: "Консультант",
+          shop: 'Апорт',
+          status: 'Не в сети',
         },
         {
           id: 4,
-          name: "Владосов Л.В",
-          position: 'Стажёр',
-          phoneNumber: '+7 322 999 07 10',
-          email: 'vlv@neutron.kz',
+          name: "Управляющий",
+          shop: 'Апорт',
+          status: 'Активна',
         },
       ],
       isEdit: 'no',
@@ -377,6 +294,9 @@ th{
   width: 60%;
 }
 .form-group{
+  text-align: left;
+}
+.form-switch{
   text-align: left;
 }
 </style>
