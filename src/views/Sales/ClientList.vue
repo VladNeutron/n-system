@@ -5,12 +5,20 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-12">
-          <div class="inv__title">
+          <lists-header>
+            <template v-slot:title>
+              Список клиентов   
+            </template>  
+            <template v-slot:description>
+              Внесите изменения и не забудьте  нажать “Сохранить”    
+            </template>          
+          </lists-header>
+          <!-- <div class="inv__title">
             <p class="inv__title__text">Список клиентов</p>
             <p class="inv__sec__text">
               Внесите изменения и не забудьте нажать “Сохранить”
             </p>
-          </div>
+          </div> -->
           <div class="card">
             <div class="inv__buttons p-4">
               <div class="inv__left__btn">

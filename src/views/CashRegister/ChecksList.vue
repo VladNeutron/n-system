@@ -3,12 +3,16 @@
   <main class="main-content border-radius-lg">
     <the-header></the-header>
     <div class="page__name d-flex align-items-center ms-4">
-      <div class="page__name-title text-start">
-        <h3>Список чеков</h3>
-        <p class="mb-0">Внесите изменения и не забудьте нажать “Сохранить”</p>
-      </div>
+      <lists-header>
+            <template v-slot:title>
+              Список чеков   
+            </template>  
+            <template v-slot:description>
+              Внесите изменения и не забудьте  нажать “Сохранить”    
+            </template>          
+          </lists-header>
     </div>
-    <div class="card pt-4 pb-6 m-4">
+    <div class="card pt-4 pb-6 mb-4 ms-4">
       <div class="d-flex justify-content-between align-items-center mx-4 mb-4">
         <div>
           <button

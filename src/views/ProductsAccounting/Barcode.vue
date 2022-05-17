@@ -2,16 +2,17 @@
   <the-navbar></the-navbar>
   <main class="main-content border-radius-lg">
     <the-header></the-header>
-
-    <div class="storage__padding">
-      <div class="storage__header">
-        <div class="storage__name">
-          <p class="storage__main">Печать штрихкода</p>
-          <p class="storage__sec">
-            Выберите штрихкоды из списка и нажмите "Перейти к печати"
-          </p>
-        </div>
-      </div>
+      <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+      <lists-header>
+            <template v-slot:title>
+              Печать штрихкодов   
+            </template>  
+            <template v-slot:description>
+              Выберите штрихкоды из списка и нажмите "Перейти к печати"   
+            </template>          
+          </lists-header>
 
       <div class="row">
         <div class="col-9">
@@ -278,7 +279,9 @@
           </div>
         </div>
       </div>
-    </div>
+          </div>
+        </div>
+      </div>
 
     <barcode-modal
       :selectedArray="selectedProducts"

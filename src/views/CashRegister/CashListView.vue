@@ -2,15 +2,17 @@
   <the-navbar></the-navbar>
   <main class="main-content border-radius-lg">
     <the-header></the-header>
-    <div class="container-fluid py-4">
-      <div class="row mt-4">
+    <div class="container-fluid">
+      <div class="row ">
         <div class="col-12">
-          <div class="inv__title">
-            <p class="inv__title__text">Список касс</p>
-            <p class="inv__sec__text">
-              Внесите изменения и не забудьте нажать “Сохранить”
-            </p>
-          </div>
+          <lists-header>
+            <template v-slot:title>
+              Список касс   
+            </template>  
+            <template v-slot:description>
+              Внесите изменения и не забудьте  нажать “Сохранить”    
+            </template>          
+          </lists-header>
           <div class="card" style="padding-top: 1.25vw">
             <div style="text-align: left; margin-left: 1.25vw">
               <button
