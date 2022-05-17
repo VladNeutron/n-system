@@ -12,7 +12,7 @@
             </p>
           </div>
           <div class="card">
-            <div class="inv__buttons">
+            <div class="inv__buttons p-4">
               <div class="inv__left__btn">
                 <div class="form-group">
                   <div class="input-group">
@@ -33,32 +33,38 @@
                 </div>
                 <button
                   type="button"
-                  class="btn bg-gradient-secondary"
+                  class="btn bg-gradient-secondary mb-0"
                   data-bs-toggle="modal"
                   data-bs-target="#InpModal"
                   @click="isEdit = 'no'"
                 >
                   <img
                     src="@/assets/img/whtplus.svg"
-                    style="width: 1.042vw; margin-right: 0.729vw"
+                    style="width: 20.006px; margin-right: 0.729vw"
                     alt=""
                   />
                   Добавить клиента
                 </button>
               </div>
               <div class="inv__right__btn">
-                <button type="button" class="inv__btn btn btn-outline-dark">
+                <button
+                  type="button"
+                  class="inv__btn btn btn-outline-dark mb-0"
+                >
                   <img
                     src="@/assets/img/print.svg"
-                    style="width: 1.25vw; margin-right: 0.417vw"
+                    style="width: 24px; margin-right: 0.417vw"
                     alt=""
                   />
                   печать
                 </button>
-                <button type="button" class="inv__btn btn btn-outline-dark">
+                <button
+                  type="button"
+                  class="inv__btn btn btn-outline-dark mb-0"
+                >
                   <img
                     src="@/assets/img/download.svg"
-                    style="width: 1.25vw; margin-right: 0.417vw"
+                    style="width: 24px; margin-right: 0.417vw"
                     alt=""
                   />
                   скачать
@@ -67,7 +73,7 @@
             </div>
             <div class="inv__block">
               <div class="inv__content">
-                <table class="table table-bordered table-hover table-striped">
+                <table class="table table-hover">
                   <thead>
                     <tr>
                       <th scope="col" class="th__col" style="border-right: 0">
@@ -153,7 +159,7 @@
                 </table>
               </div>
             </div>
-            <div class="pagination d-flex justify-content-end pe-5">
+            <div class="pagination d-flex justify-content-end pe-5 mt-auto">
               <div class="d-flex align-items-baseline gap-3 pb-4">
                 <div>
                   <p class="m-0">Показано<span> 1-10 из 100</span></p>
@@ -451,8 +457,8 @@ export default {
   color: #2d3748;
   box-shadow: none;
 }
-.clients__delete:hover{
-    box-shadow: none;
+.clients__delete:hover {
+  box-shadow: none;
 }
 .clients__footer {
   display: flex;
@@ -513,13 +519,13 @@ export default {
 }
 .inv__title__text {
   font-weight: 600;
-  font-size: 1.25vw;
+  font-size: 24px;
   color: #2d3748;
   margin: 0;
 }
 .inv__sec__text {
   font-weight: 400;
-  font-size: 0.729vw;
+  font-size: 14px;
   color: #a0aec0;
 }
 .inv__content::-webkit-scrollbar {
@@ -536,10 +542,11 @@ export default {
   border-radius: 0.78vw;
   background-color: #e2e8f0;
 }
+.inv__block {
+  max-height: 80vh;
+}
 .inv__content {
-  padding-left: 1.354vw;
-  padding-right: 1.354vw;
-  height: 27.363vw;
+  height: 100%;
   overflow-y: scroll;
 }
 
@@ -547,7 +554,7 @@ export default {
   display: flex;
   align-items: center;
   text-transform: uppercase;
-  font-size: 0.7vw;
+  font-size: 13.44px;
 }
 .inv__btn,
 .inv__inp {
@@ -563,19 +570,15 @@ export default {
 .bg-gradient-secondary {
   display: flex;
   background: linear-gradient(81.62deg, #313860 2.25%, #151928 79.87%);
-  border-radius: 0.417vw;
-  padding: 0.521vw 1.25vw 0.573vw 1.25vw;
+  border-radius: 8.006px;
+  padding: 10.003px 24px 11.002px 24px;
   font-weight: 600;
-  font-size: 0.729vw;
+  font-size: 13.997px;
   align-items: center;
-  height: 2.604vw;
+  height: 49.997px;
   text-transform: none;
 }
 .inv__buttons {
-  padding-top: 0.729vw;
-  padding-left: 1.25vw;
-  padding-right: 1.25vw;
-  padding-bottom: 2.083vw;
   display: flex;
   justify-content: space-between;
 }
