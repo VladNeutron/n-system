@@ -85,7 +85,9 @@
                             alt=""
                           />
                           <div class="dropdown-content">
-                            <a href="/warehouse-accounting/edit-posting/">Редактировать</a>
+                            <a href="/warehouse-accounting/edit-posting/"
+                              >Редактировать</a
+                            >
                             <hr />
                             <a
                               style="cursor: pointer"
@@ -119,21 +121,13 @@
       </div>
       <div class="filters__period">
         <div class="form-group">
-          <input
-            class="form-control"
-            type="date"
-            id="example-date-input"
-          />
+          <input class="form-control" type="date" id="example-date-input" />
         </div>
         <div>
           <img src="@/assets/img/line.svg" style="width: 1.927vw" alt="" />
         </div>
         <div class="form-group">
-          <input
-            class="form-control"
-            type="date"
-            id="example-date-input"
-          />
+          <input class="form-control" type="date" id="example-date-input" />
         </div>
       </div>
 
@@ -297,5 +291,19 @@ th {
 .container__padding {
   padding-left: 2.135vw;
   padding-right: 5.208vw;
+}
+@media screen and (max-width: 1600px) {
+  .btn {
+    font-size: 12px !important;
+  }
+  .input-group {
+    margin-top: 1px !important;
+  }
+  td {
+    font-size: 14px;
+  }
+  .dropdown-content {
+    width: 130px;
+  }
 }
 </style>

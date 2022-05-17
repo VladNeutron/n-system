@@ -2,7 +2,7 @@
   <the-navbar></the-navbar>
   <main class="main-content border-radius-lg">
     <the-header></the-header>
-    <div class="container-fluid pb-4">
+    <div class="container-fluid">
       <div class="row mt-4">
         <div class="col-12">
           <drop-down class="drop__down-custom">
@@ -15,7 +15,7 @@
                   </p>
                 </div>
                 <div class="drop__buttons">
-                  <button class="btn comment">
+                  <button class="btn comment mb-0">
                     <img
                       src="@/assets/img/comment.svg"
                       style="width: 1.042vw; margin-right: 0.417vw"
@@ -125,7 +125,7 @@
               <div class="d-flex justify-content-between ps-3">
                 <div class="page_search-inputs d-flex align-items-center gap-3">
                   <div class="form-group m-0">
-                    <div class="input-group mt-1">
+                    <div class="input-group mt form__adapt2">
                       <span class="input-group-text"
                         ><img src="@/assets/css/icons/searchIcon.svg" alt=""
                       /></span>
@@ -149,7 +149,7 @@
                     class="page_search-inputs d-flex align-items-center gap-3"
                   >
                     <div class="form-group m-0">
-                      <div class="input-group mt-1">
+                      <div class="input-group form__adapt">
                         <span class="input-group-text"
                           ><img src="@/assets/css/icons/searchIcon.svg" alt=""
                         /></span>
@@ -426,5 +426,41 @@ tbody {
 }
 .dropdown__items {
   padding: 20px;
+}
+@media screen and (max-width: 1600px) {
+  .btn {
+    font-size: 12px !important;
+  }
+  td,
+  th {
+    font-size: 12px;
+  }
+  .items__text {
+    font-size: 12px;
+  }
+  .items__title {
+    font-size: 12px;
+  }
+  .form__adapt {
+    width: 120px;
+  }
+  .form__adapt2 {
+    width: 225px;
+  }
+  .comment,
+  .action,
+  .drowdown__items {
+    align-items: center;
+  }
+  .count {
+    left: 8.708vw;
+    top: -0.26vw;
+  }
+  .dropdown__title {
+    font-size: 18px;
+  }
+  .dropdown__sec {
+    font-size: 10px;
+  }
 }
 </style>
