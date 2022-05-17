@@ -2,161 +2,175 @@
   <the-navbar></the-navbar>
   <main class="main-content border-radius-lg">
     <the-header></the-header>
-    <div class="page__name d-flex align-items-center ms-4">
-      <div class="page__name-title text-start">
-        <h3>Список заявок</h3>
-        <p class="mb-0">Внесите изменения и не забудьте нажать “Сохранить”</p>
-      </div>
-    </div>
-    <div class="card py-4 m-4 main__card">
-      <div class="d-flex justify-content-between align-items-center mx-4 mb-4">
-        <button
-          class="btn bg-gradient-dark mb-0"
-          data-bs-toggle="modal"
-          data-bs-target="#InpModal"
-          @click="isEdit = 'no'"
-        >
-          Создать заявку
-        </button>
-        <div class="table__inputs d-flex gap-3 align-content-center">
-          <div class="form-group m-0">
-            <div class="input-group mt-1">
-              <span class="input-group-text"
-                ><img src="@/assets/css/icons/searchIcon.svg" alt=""
-              /></span>
-              <input
-                class="form-control"
-                placeholder="Поиск..."
-                id="search"
-                type="text"
-              />
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+          <!-- <div class="page__name d-flex align-items-center ms-4">
+            <div class="page__name-title text-start">
+              <h3>Список заявок</h3>
+              <p class="mb-0">Внесите изменения и не забудьте нажать “Сохранить”</p>
             </div>
-          </div>
-          <button class="btn btn-outline-dark mb-0">
-            <span
-              ><img
-                src="@/assets/css/icons/print.svg"
-                class="me-1"
-                alt="" /></span
-            >Печать
-          </button>
-          <button class="btn btn-outline-dark mb-0">
-            <span
-              ><img
-                src="@/assets/css/icons/down-arrow.svg"
-                class="me-1"
-                alt="" /></span
-            >Скачать
-          </button>
-          <filter-button class="mb-0"></filter-button>
-        </div>
-      </div>
-      <div class="page__table mb-4">
-        <div class="table-wrapper">
-          <table class="table table-hover text-wrap text-start">
-            <thead>
-              <tr class="text-center">
-                <th scope="col" class="th__col">№</th>
-                <th scope="col" class="th__col">Дата</th>
-                <th scope="col" class="th__col">ФИО</th>
-                <th scope="col" class="th__col">Статус</th>
-                <th scope="col" class="th__col">Номер Телефона</th>
-                <th scope="col" class="th__col">Email</th>
-                <th scope="col" class="th__col">Действия</th>
-              </tr>
-            </thead>
-            <tbody class="text-center">
-              <tr v-for="(order, i) of filteredOrders" :key="order.id">
-                <th>{{ i + 1 }}</th>
-                <td>{{ order.date }}</td>
-                <td>{{ order.fio }}</td>
-                <td>
-                  <div
-                    class="btn mb-0 w-100"
-                    v-text="normalizeStatusName(order.status)"
-                    :class="getClass(order.status)"
-                  ></div>
-                </td>
-                <td>{{ order.phone }}</td>
-                <td>{{ order.email }}</td>
-                <td>
-                  <div class="dropdown">
-                    <img
-                      src="@/assets/img/dots.svg"
-                      style="width: 1.563vw; cursor: pointer"
-                      alt=""
+          </div> -->
+          <lists-header>
+            <template v-slot:title>
+              Список заявок    
+            </template>  
+            <template v-slot:description>
+              Внесите изменения и не забудьте  нажать “Сохранить”    
+            </template>          
+          </lists-header>
+          <div class="card py-4 main__card">
+            <div class="d-flex justify-content-between align-items-center mx-4 mb-4">
+              <button
+                class="btn bg-gradient-dark mb-0"
+                data-bs-toggle="modal"
+                data-bs-target="#InpModal"
+                @click="isEdit = 'no'"
+              >
+                Создать заявку
+              </button>
+              <div class="table__inputs d-flex gap-3 align-content-center">
+                <div class="form-group m-0">
+                  <div class="input-group mt-1">
+                    <span class="input-group-text"
+                      ><img src="@/assets/css/icons/searchIcon.svg" alt=""
+                    /></span>
+                    <input
+                      class="form-control"
+                      placeholder="Поиск..."
+                      id="search"
+                      type="text"
                     />
-                    <div class="dropdown-content">
-                      <a
-                        style="cursor: pointer"
-                        data-bs-toggle="modal"
-                        data-bs-target="#InpModal"
-                        @click="isEdit = 'yes'"
-                        >Редактировать</a
-                      >
-                      <hr />
-                      <a
-                        style="cursor: pointer"
-                        data-bs-toggle="modal"
-                        data-bs-target="#DeleteInv"
-                        >Удалить</a
-                      >
-                    </div>
                   </div>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-      <div
-        class="pagination d-flex justify-content-end align-items-center me-4 mt-auto"
-      >
-        <div class="d-flex align-items-center gap-3">
-          <div>
-            <p class="m-0">Показано<span> 2112 12121</span></p>
-          </div>
+                </div>
+                <button class="btn btn-outline-dark mb-0">
+                  <span
+                    ><img
+                      src="@/assets/css/icons/print.svg"
+                      class="me-1"
+                      alt="" /></span
+                  >Печать
+                </button>
+                <button class="btn btn-outline-dark mb-0">
+                  <span
+                    ><img
+                      src="@/assets/css/icons/down-arrow.svg"
+                      class="me-1"
+                      alt="" /></span
+                  >Скачать
+                </button>
+                <filter-button class="mb-0"></filter-button>
+              </div>
+            </div>
+            <div class="page__table mb-4">
+              <div class="table-wrapper">
+                <table class="table table-hover text-wrap text-start">
+                  <thead>
+                    <tr class="text-center">
+                      <th scope="col" class="th__col">№</th>
+                      <th scope="col" class="th__col">Дата</th>
+                      <th scope="col" class="th__col">ФИО</th>
+                      <th scope="col" class="th__col">Статус</th>
+                      <th scope="col" class="th__col">Номер Телефона</th>
+                      <th scope="col" class="th__col">Email</th>
+                      <th scope="col" class="th__col">Действия</th>
+                    </tr>
+                  </thead>
+                  <tbody class="text-center">
+                    <tr v-for="(order, i) of filteredOrders" :key="order.id">
+                      <th>{{ i + 1 }}</th>
+                      <td>{{ order.date }}</td>
+                      <td>{{ order.fio }}</td>
+                      <td>
+                        <div
+                          class="btn mb-0 w-100"
+                          v-text="normalizeStatusName(order.status)"
+                          :class="getClass(order.status)"
+                        ></div>
+                      </td>
+                      <td>{{ order.phone }}</td>
+                      <td>{{ order.email }}</td>
+                      <td>
+                        <div class="dropdown">
+                          <img
+                            src="@/assets/img/dots.svg"
+                            style="width: 1.563vw; cursor: pointer"
+                            alt=""
+                          />
+                          <div class="dropdown-content">
+                            <a
+                              style="cursor: pointer"
+                              data-bs-toggle="modal"
+                              data-bs-target="#InpModal"
+                              @click="isEdit = 'yes'"
+                              >Редактировать</a
+                            >
+                            <hr />
+                            <a
+                              style="cursor: pointer"
+                              data-bs-toggle="modal"
+                              data-bs-target="#DeleteInv"
+                              >Удалить</a
+                            >
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div
+              class="pagination d-flex justify-content-end align-items-center me-4 mt-auto"
+            >
+              <div class="d-flex align-items-center gap-3">
+                <div>
+                  <p class="m-0">Показано<span> 2112 12121</span></p>
+                </div>
 
-          <div class="page__search-pages d-flex align-content-center">
-            <div class="pagination-container d-flex justify-items-center">
-              <ul class="pagination pagination-info mb-0 pe-0">
-                <li class="page-item">
-                  <a
-                    class="page-link"
-                    href="javascript:;"
-                    aria-label="Previous"
-                  >
-                    <span aria-hidden="true"
-                      ><i class="fa fa-angle-double-left" aria-hidden="true"></i
-                    ></span>
-                  </a>
-                </li>
-                <li class="page-item">
-                  <a class="page-link" href="javascript:;">1</a>
-                </li>
-                <li class="page-item">
-                  <a class="page-link" href="javascript:;">2</a>
-                </li>
-                <li class="page-item active">
-                  <a class="page-link" href="javascript:;">3</a>
-                </li>
-                <li class="page-item">
-                  <a class="page-link" href="javascript:;">4</a>
-                </li>
-                <li class="page-item">
-                  <a class="page-link" href="javascript:;">5</a>
-                </li>
-                <li class="page-item">
-                  <a class="page-link" href="javascript:;" aria-label="Next">
-                    <span aria-hidden="true"
-                      ><i
-                        class="fa fa-angle-double-right"
-                        aria-hidden="true"
-                      ></i
-                    ></span>
-                  </a>
-                </li>
-              </ul>
+                <div class="page__search-pages d-flex align-content-center">
+                  <div class="pagination-container d-flex justify-items-center">
+                    <ul class="pagination pagination-info mb-0 pe-0">
+                      <li class="page-item">
+                        <a
+                          class="page-link"
+                          href="javascript:;"
+                          aria-label="Previous"
+                        >
+                          <span aria-hidden="true"
+                            ><i class="fa fa-angle-double-left" aria-hidden="true"></i
+                          ></span>
+                        </a>
+                      </li>
+                      <li class="page-item">
+                        <a class="page-link" href="javascript:;">1</a>
+                      </li>
+                      <li class="page-item">
+                        <a class="page-link" href="javascript:;">2</a>
+                      </li>
+                      <li class="page-item active">
+                        <a class="page-link" href="javascript:;">3</a>
+                      </li>
+                      <li class="page-item">
+                        <a class="page-link" href="javascript:;">4</a>
+                      </li>
+                      <li class="page-item">
+                        <a class="page-link" href="javascript:;">5</a>
+                      </li>
+                      <li class="page-item">
+                        <a class="page-link" href="javascript:;" aria-label="Next">
+                          <span aria-hidden="true"
+                            ><i
+                              class="fa fa-angle-double-right"
+                              aria-hidden="true"
+                            ></i
+                          ></span>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>

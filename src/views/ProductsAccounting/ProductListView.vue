@@ -2,12 +2,20 @@
   <the-navbar></the-navbar>
   <main class="main-content border-radius-lg">
     <the-header></the-header>
-    <div class="container-fluid py-4">
-      <div class="row mt-4">
+    <div class="container-fluid py-1">
+      <div class="row">
         <div class="col-12">
-          <div class="inv__title">
+          <lists-header>
+            <template v-slot:title>
+              Список товаров    
+            </template>  
+            <template v-slot:description>
+              Внесите изменения и не забудьте  нажать “Сохранить”    
+            </template>  
+          </lists-header>
+          <!-- <div class="inv__title">
             <p class="inv__title__text">Список товаров</p>
-          </div>
+          </div> -->
           <div class="card">
             <div class="inv__buttons">
               <div class="inv__left__btn">
@@ -300,6 +308,7 @@
 </template>
 
 <script>
+import ListsHeader from '@/components/ListsHeader.vue'
 import Filters from "@/components/Filters.vue";
 import FiltersButton from "@/components/buttons/FiltersButton.vue";
 import InputsModal from "../../components/InputsModal.vue";
@@ -308,6 +317,7 @@ export default {
     InputsModal,
     Filters,
     FiltersButton,
+    ListsHeader,
   },
   data() {
     return {

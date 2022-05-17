@@ -2,9 +2,14 @@
   <the-navbar></the-navbar>
   <main class="main-content position-relative border-radius-lg">
     <the-header></the-header>
-    <div class="container-fluid py-4">
-      <div class="row mt-4">
+    <div class="container-fluid">
+      <div class="row">
         <div class="col-12">
+          <lists-header>
+            <template v-slot:title>
+              Список складов   
+            </template>         
+          </lists-header>
           <div class="card">
             <div>
               <div class="table__header">
