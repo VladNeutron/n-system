@@ -89,7 +89,7 @@ export default {
         !event.target.closest("#filters__container") &&
         !event.target.closest(".openFilters")
       ) {
-        console.log(event.target);
+        // console.log(event.target);
         if (document.querySelector(".filters__show")) {
           document
             .querySelector(".filters__container")
