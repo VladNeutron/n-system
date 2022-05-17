@@ -330,6 +330,11 @@ export default {
     flex-direction: column;
   }
 }
+@media screen and (max-width: 1380px) {
+  .quill-wrapper {
+    min-width: auto;
+  }
+}
 /* .ql-toolbar,
 .ql-snow {
   min-width: 512px;
@@ -337,7 +342,7 @@ export default {
 } */
 
 .quill-wrapper {
-  min-width: 512px;
+  width: 512px;
   width: 100%;
   height: 157px;
 }
