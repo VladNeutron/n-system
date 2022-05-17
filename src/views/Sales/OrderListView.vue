@@ -8,7 +8,7 @@
         <p class="mb-0">Внесите изменения и не забудьте нажать “Сохранить”</p>
       </div>
     </div>
-    <div class="card pt-4 pb-6 m-4">
+    <div class="card py-4 m-4 main__card">
       <div class="d-flex justify-content-between align-items-center mx-4 mb-4">
         <button class="btn bg-gradient-dark mb-0">Новый заказ</button>
         <div class="table__inputs d-flex gap-3 align-content-center">
@@ -45,64 +45,66 @@
         </div>
       </div>
       <div class="page__table">
-        <table class="table table-hover text-wrap text-start">
-          <thead>
-            <tr class="text-start">
-              <th scope="col" class="th__col" style="width: 25px"></th>
-              <th scope="col" class="th__col">№</th>
-              <th scope="col" class="th__col">№ Заказа</th>
-              <th scope="col" class="th__col">Дата</th>
-              <th scope="col" class="th__col">Склад</th>
-              <th scope="col" class="th__col">Ответственный</th>
-              <th scope="col" class="th__col">Статус</th>
-              <th scope="col" class="th__col">Клиент</th>
-              <th scope="col" class="th__col">Тип</th>
-              <th scope="col" class="th__col">Кол-во</th>
-              <th scope="col" class="th__col">Сумма</th>
+        <div class="table-wrapper">
+          <table class="table table-hover text-wrap text-start">
+            <thead>
+              <tr class="text-start">
+                <th scope="col" class="th__col" style="width: 25px"></th>
+                <th scope="col" class="th__col">№</th>
+                <th scope="col" class="th__col">№ Заказа</th>
+                <th scope="col" class="th__col">Дата</th>
+                <th scope="col" class="th__col">Склад</th>
+                <th scope="col" class="th__col">Ответственный</th>
+                <th scope="col" class="th__col">Статус</th>
+                <th scope="col" class="th__col">Клиент</th>
+                <th scope="col" class="th__col">Тип</th>
+                <th scope="col" class="th__col">Кол-во</th>
+                <th scope="col" class="th__col">Сумма</th>
 
-              <th scope="col" class="th__col"></th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr v-for="(order, i) of filteredOrders" :key="order.id">
-              <th scope="row">
-                <input
-                  class="form-check-input"
-                  type="checkbox"
-                  value=""
-                  id="flexCheckDefault"
-                />
-              </th>
-              <th>{{ i + 1 }}</th>
-              <td>{{ order.id }}</td>
-              <td>{{ order.date }}</td>
-              <td>{{ order.warehouse }}</td>
+                <th scope="col" class="th__col"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="(order, i) of filteredOrders" :key="order.id">
+                <th scope="row">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    value=""
+                    id="flexCheckDefault"
+                  />
+                </th>
+                <th>{{ i + 1 }}</th>
+                <td>{{ order.id }}</td>
+                <td>{{ order.date }}</td>
+                <td>{{ order.warehouse }}</td>
 
-              <td>{{ order.responsible }}</td>
-              <td>
-                <div
-                  class="btn mb-0 w-100"
-                  v-text="normalizeStatusName(order.status)"
-                  :class="getClass(order.status)"
-                ></div>
-              </td>
-              <td>{{ order.client }}</td>
-              <td>{{ order.type }}</td>
-              <td>{{ order.amount }}</td>
-              <td>{{ order.sum }}</td>
-              <td>
-                <img
-                  src="@/assets/img/dots.svg"
-                  style="width: 1.563vw; cursor: pointer"
-                  alt=""
-                />
-              </td>
-            </tr>
-          </tbody>
-        </table>
+                <td>{{ order.responsible }}</td>
+                <td>
+                  <div
+                    class="btn mb-0 w-100"
+                    v-text="normalizeStatusName(order.status)"
+                    :class="getClass(order.status)"
+                  ></div>
+                </td>
+                <td>{{ order.client }}</td>
+                <td>{{ order.type }}</td>
+                <td>{{ order.amount }}</td>
+                <td>{{ order.sum }}</td>
+                <td>
+                  <img
+                    src="@/assets/img/dots.svg"
+                    style="width: 1.563vw; cursor: pointer"
+                    alt=""
+                  />
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
       <div
-        class="pagination d-flex justify-content-end align-items-center me-4 mt-4"
+        class="pagination d-flex justify-content-end align-items-center me-4 mt-auto"
       >
         <div class="d-flex align-items-center gap-3">
           <div>
@@ -460,24 +462,33 @@ export default {
   font-weight: 400;
   color: gray;
 }
+.main__card {
+  max-height: 80vh;
+}
 .th__col {
   color: #a0aec0 !important;
 }
-
+table {
+  height: 100%;
+}
+.table-wrapper {
+  overflow: auto;
+}
 th {
   color: #2d3748;
   font-size: 12px;
+  text-align: center;
 }
 td {
   font-size: 14px;
   font-weight: 600;
+  text-align: center;
 }
-.card {
-  max-height: 838px;
-}
+
 .pagination {
   align-self: end;
 }
+
 .filters__period {
   display: flex;
   justify-content: space-between;

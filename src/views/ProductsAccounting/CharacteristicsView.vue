@@ -265,8 +265,8 @@
       </div>
       <div class="modal__body" v-if="isColor == 'size'">
         <div class="form-group">
-          <label for="exampleFormControlInput1" class="modal__label"
-            >Название размера</label
+          <label for="exampleFormControlInput1" class="m-0"
+            >Введите название</label
           >
           <input
             type="text"
@@ -533,5 +533,19 @@ export default {
 }
 .company__header {
   text-align: left;
+}
+@media screen and (max-width: 1600px) {
+  .btn,
+  .modal__label {
+    font-size: 12px !important;
+  }
+  .company__main,
+  .character__main {
+    font-size: 20px;
+  }
+  .company__sec,
+  .character__sec {
+    font-size: 14px;
+  }
 }
 </style>

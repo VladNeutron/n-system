@@ -8,7 +8,7 @@
         <p class="mb-0">Внесите изменения и не забудьте нажать “Сохранить”</p>
       </div>
     </div>
-    <div class="card pt-4 pb-6 m-4">
+    <div class="card py-4 m-4 main__card">
       <div class="d-flex justify-content-between align-items-center mx-4 mb-4">
         <button
           class="btn bg-gradient-dark mb-0"
@@ -51,64 +51,66 @@
           <filter-button class="mb-0"></filter-button>
         </div>
       </div>
-      <div class="page__table">
-        <table class="table table-hover text-wrap text-start">
-          <thead>
-            <tr class="text-start">
-              <th scope="col" class="th__col">№</th>
-              <th scope="col" class="th__col">Дата</th>
-              <th scope="col" class="th__col">ФИО</th>
-              <th scope="col" class="th__col">Статус</th>
-              <th scope="col" class="th__col">Номер Телефона</th>
-              <th scope="col" class="th__col">Email</th>
-              <th scope="col" class="th__col">Действия</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr v-for="(order, i) of filteredOrders" :key="order.id">
-              <th>{{ i + 1 }}</th>
-              <td>{{ order.date }}</td>
-              <td>{{ order.fio }}</td>
-              <td>
-                <div
-                  class="btn mb-0 w-100"
-                  v-text="normalizeStatusName(order.status)"
-                  :class="getClass(order.status)"
-                ></div>
-              </td>
-              <td>{{ order.phone }}</td>
-              <td>{{ order.email }}</td>
-              <td>
-                <div class="dropdown">
-                  <img
-                    src="@/assets/img/dots.svg"
-                    style="width: 1.563vw; cursor: pointer"
-                    alt=""
-                  />
-                  <div class="dropdown-content">
-                    <a
-                      style="cursor: pointer"
-                      data-bs-toggle="modal"
-                      data-bs-target="#InpModal"
-                      @click="isEdit = 'yes'"
-                      >Редактировать</a
-                    >
-                    <hr />
-                    <a
-                      style="cursor: pointer"
-                      data-bs-toggle="modal"
-                      data-bs-target="#DeleteInv"
-                      >Удалить</a
-                    >
+      <div class="page__table mb-4">
+        <div class="table-wrapper">
+          <table class="table table-hover text-wrap text-start">
+            <thead>
+              <tr class="text-center">
+                <th scope="col" class="th__col">№</th>
+                <th scope="col" class="th__col">Дата</th>
+                <th scope="col" class="th__col">ФИО</th>
+                <th scope="col" class="th__col">Статус</th>
+                <th scope="col" class="th__col">Номер Телефона</th>
+                <th scope="col" class="th__col">Email</th>
+                <th scope="col" class="th__col">Действия</th>
+              </tr>
+            </thead>
+            <tbody class="text-center">
+              <tr v-for="(order, i) of filteredOrders" :key="order.id">
+                <th>{{ i + 1 }}</th>
+                <td>{{ order.date }}</td>
+                <td>{{ order.fio }}</td>
+                <td>
+                  <div
+                    class="btn mb-0 w-100"
+                    v-text="normalizeStatusName(order.status)"
+                    :class="getClass(order.status)"
+                  ></div>
+                </td>
+                <td>{{ order.phone }}</td>
+                <td>{{ order.email }}</td>
+                <td>
+                  <div class="dropdown">
+                    <img
+                      src="@/assets/img/dots.svg"
+                      style="width: 1.563vw; cursor: pointer"
+                      alt=""
+                    />
+                    <div class="dropdown-content">
+                      <a
+                        style="cursor: pointer"
+                        data-bs-toggle="modal"
+                        data-bs-target="#InpModal"
+                        @click="isEdit = 'yes'"
+                        >Редактировать</a
+                      >
+                      <hr />
+                      <a
+                        style="cursor: pointer"
+                        data-bs-toggle="modal"
+                        data-bs-target="#DeleteInv"
+                        >Удалить</a
+                      >
+                    </div>
                   </div>
-                </div>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
       <div
-        class="pagination d-flex justify-content-end align-items-center me-4 mt-4"
+        class="pagination d-flex justify-content-end align-items-center me-4 mt-auto"
       >
         <div class="d-flex align-items-center gap-3">
           <div>
@@ -613,22 +615,27 @@ export default {
   color: gray;
 }
 
+.main__card {
+  max-height: 80vh;
+}
 .th__col {
   color: #a0aec0 !important;
 }
-
+table {
+  height: 100%;
+}
+.table-wrapper {
+  overflow: auto;
+}
 th {
   color: #2d3748;
   font-size: 12px;
+  text-align: center;
 }
-
 td {
   font-size: 14px;
   font-weight: 600;
-}
-
-.card {
-  max-height: 838px;
+  text-align: center;
 }
 
 .pagination {
