@@ -80,12 +80,14 @@
                   <tbody>
                     <tr v-for="(order, i) of filteredOrders" :key="order.id">
                       <th scope="row">
-                        <input
-                          class="form-check-input"
-                          type="checkbox"
-                          value=""
-                          id="flexCheckDefault"
-                        />
+                        <div class="form-check">
+                          <input
+                            class="form-check-input"
+                            type="checkbox"
+                            value=""
+                            id="flexCheckIndeterminate"
+                          />
+                        </div>
                       </th>
                       <th>{{ i + 1 }}</th>
                       <td>{{ order.id }}</td>
