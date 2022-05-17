@@ -2,7 +2,7 @@
   <the-navbar></the-navbar>
   <main class="main-content border-radius-lg">
     <the-header></the-header>
-    <div class="container-fluid py-4">
+    <div class="container-fluid">
       <div class="row mt-4">
         <div class="col-12">
           <div class="inv__title">
@@ -70,7 +70,7 @@
                   </thead>
                   <tbody>
                     <tr v-for="(item, i) in items" :key="item">
-                      <th scope="row">{{ i + 1 }}</th>
+                      <td scope="row">{{ i + 1 }}</td>
                       <td>{{ item.id }}</td>
                       <td>{{ item.date }}</td>
                       <td>{{ item.place }}</td>
@@ -85,7 +85,9 @@
                             alt=""
                           />
                           <div class="dropdown-content">
-                            <a href="/warehouse-accounting/edit-inv">Редактировать</a>
+                            <a href="/warehouse-accounting/edit-inv"
+                              >Редактировать</a
+                            >
                             <hr />
                             <a
                               style="cursor: pointer"
@@ -119,21 +121,13 @@
       </div>
       <div class="filters__period">
         <div class="form-group">
-          <input
-            class="form-control"
-            type="date"
-            id="example-date-input"
-          />
+          <input class="form-control" type="date" id="example-date-input" />
         </div>
         <div>
           <img src="@/assets/img/line.svg" style="width: 1.927vw" alt="" />
         </div>
         <div class="form-group">
-          <input
-            class="form-control"
-            type="date"
-            id="example-date-input"
-          />
+          <input class="form-control" type="date" id="example-date-input" />
         </div>
       </div>
 
@@ -245,10 +239,6 @@ hr {
 .th__col {
   color: #a0aec0 !important;
 }
-td,
-th {
-  color: #2d3748;
-}
 .inv__content::-webkit-scrollbar {
   background: #e2e8f0;
   border-radius: 0.78vw;
@@ -307,5 +297,19 @@ th {
 .container__padding {
   padding-left: 2.135vw;
   padding-right: 5.208vw;
+}
+@media screen and (max-width: 1600px) {
+  .btn {
+    font-size: 12px !important;
+  }
+  .input-group {
+    margin-top: 1px !important;
+  }
+  td {
+    font-size: 14px;
+  }
+  .dropdown-content {
+    width: 130px;
+  }
 }
 </style>
