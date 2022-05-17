@@ -446,6 +446,39 @@ const routes = [
   },
 
   // ЗАКУПКИ
+
+  // БУХГАЛТЕРИЯ
+  {
+    path: "/accounting",
+    name: "accounting",
+    component: () => import("../views/Accounting/ContractorList.vue"),
+    meta: { NavLink: "Бухгалтерия" },
+  },
+  {
+    path: "/accounting/contractor-list",
+    name: "contractor-list",
+    component: () => import("../views/Accounting/ContractorList.vue"),
+    meta: { NavLink: "Список контрагентов" },
+  },
+  {
+    path: "/accounting/employees-list",
+    name: "employees-list",
+    component: () => import("../views/Accounting/EmployeesList.vue"),
+    meta: { NavLink: "Список сотрудников" },
+  },
+  {
+    path: "/accounting/property-list",
+    name: "property-list",
+    component: () => import("../views/Accounting/PropertyList.vue"),
+    meta: { NavLink: "Список имуществ" },
+  },
+  {
+    path: "/accounting/position-list",
+    name: "position-list",
+    component: () => import("../views/Accounting/PositionList.vue"),
+    meta: { NavLink: "Список должностей" },
+  },
+  // БУХГАЛТЕРИЯ
 ];
 
 const router = createRouter({
