@@ -414,4 +414,35 @@ export default {
 .modal-dialog {
   max-width: 48.073vw;
 }
+@media screen and (max-width: 1600px) {
+  td,
+  th {
+    font-size: 12px;
+  }
+  .header__main {
+    font-size: 20px;
+  }
+  .header__sec {
+    font-size: 14px;
+  }
+  .btn,
+  .search__label {
+    font-size: 12px;
+  }
+  .right__btn,
+  .left__btn {
+    font-size: 12px;
+  }
+  .search__input {
+    width: 19vw;
+    height: 28px;
+  }
+  .active1,
+  .active2 {
+    font-size: 12px !important;
+  }
+  .form-group {
+    margin-bottom: 1.3rem;
+  }
+}
 </style>

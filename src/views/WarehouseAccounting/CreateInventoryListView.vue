@@ -457,10 +457,10 @@ tbody {
     top: -0.26vw;
   }
   .dropdown__title {
-    font-size: 18px;
+    font-size: 20px;
   }
   .dropdown__sec {
-    font-size: 10px;
+    font-size: 12px;
   }
 }
 </style>

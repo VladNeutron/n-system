@@ -305,5 +305,8 @@ th {
   .dropdown-content {
     width: 130px;
   }
+  .inv__title__text {
+    font-size: 20px;
+  }
 }
 </style>

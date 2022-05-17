@@ -108,7 +108,7 @@
                   </div>
                 </div>
                 <div class="items__block">
-                  <p class="items__title">Синвентаризация</p>
+                  <p class="items__title">инвентаризация</p>
                   <p class="items__text">
                     <span style="cursor: pointer">Инвентаризация №19</span
                     >,<br />
@@ -126,7 +126,7 @@
               <div class="d-flex justify-content-between ps-3">
                 <div class="page_search-inputs d-flex align-items-center gap-3">
                   <div class="form-group m-0">
-                    <div class="input-group mt-1">
+                    <div class="input-group form__adapt2">
                       <span class="input-group-text"
                         ><img src="@/assets/css/icons/searchIcon.svg" alt=""
                       /></span>
@@ -150,7 +150,7 @@
                     class="page_search-inputs d-flex align-items-center gap-3"
                   >
                     <div class="form-group m-0">
-                      <div class="input-group mt-1">
+                      <div class="input-group form__adapt">
                         <span class="input-group-text"
                           ><img src="@/assets/css/icons/searchIcon.svg" alt=""
                         /></span>
@@ -418,5 +418,41 @@ tbody {
   padding-right: 3.646vw;
   display: flex;
   justify-content: space-between;
+}
+@media screen and (max-width: 1600px) {
+  .btn {
+    font-size: 12px !important;
+  }
+  td,
+  th {
+    font-size: 12px;
+  }
+  .items__text {
+    font-size: 12px;
+  }
+  .items__title {
+    font-size: 10px;
+  }
+  .form__adapt {
+    width: 120px;
+  }
+  .form__adapt2 {
+    width: 225px;
+  }
+  .comment,
+  .action,
+  .drowdown__items {
+    align-items: center;
+  }
+  .count {
+    left: 8.708vw;
+    top: -0.26vw;
+  }
+  .dropdown__title {
+    font-size: 20px;
+  }
+  .dropdown__sec {
+    font-size: 12px;
+  }
 }
 </style>
