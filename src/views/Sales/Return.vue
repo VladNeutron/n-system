@@ -6,12 +6,10 @@
       <div class="row">
         <div class="col-12">
           <lists-header>
-                        <template v-slot:title>
-                          Список возвратов    
-                        </template>  
-                        <template v-slot:description>
-                          Внесите изменения и не забудьте  нажать “Сохранить”    
-                        </template>       
+            <template v-slot:title> Список возвратов </template>
+            <template v-slot:description>
+              Внесите изменения и не забудьте нажать “Сохранить”
+            </template>
           </lists-header>
           <!-- <div class="page__name d-flex align-items-center ms-4">
             <div class="page__name-title text-start">
@@ -20,8 +18,12 @@
             </div>
           </div> -->
           <div class="card py-4 main__card">
-            <div class="d-flex justify-content-between align-items-center mx-4 mb-4">
-              <button class="btn bg-gradient-dark mb-0">Оформить возврат</button>
+            <div
+              class="d-flex justify-content-between align-items-center mx-4 mb-4"
+            >
+              <button class="btn bg-gradient-dark mb-0">
+                Оформить возврат
+              </button>
               <div class="table__inputs d-flex gap-3 align-content-center">
                 <div class="form-group m-0">
                   <div class="input-group mt-1">
@@ -133,7 +135,10 @@
                           aria-label="Previous"
                         >
                           <span aria-hidden="true"
-                            ><i class="fa fa-angle-double-left" aria-hidden="true"></i
+                            ><i
+                              class="fa fa-angle-double-left"
+                              aria-hidden="true"
+                            ></i
                           ></span>
                         </a>
                       </li>
@@ -153,7 +158,11 @@
                         <a class="page-link" href="javascript:;">5</a>
                       </li>
                       <li class="page-item">
-                        <a class="page-link" href="javascript:;" aria-label="Next">
+                        <a
+                          class="page-link"
+                          href="javascript:;"
+                          aria-label="Next"
+                        >
                           <span aria-hidden="true"
                             ><i
                               class="fa fa-angle-double-right"
@@ -354,8 +363,6 @@ export default {
       const unfiltered = this.orders.map((obj) => obj[key]);
       return [...new Set(unfiltered)];
     },
-  },
-  computed: {
     cancelFilters() {
       this.filterStatusSelect = [];
       this.filterResponsible = "";
@@ -363,6 +370,8 @@ export default {
       this.filterOrderType = "";
       this.filterWarehouse = "";
     },
+  },
+  computed: {
     orderStatusList() {
       return this.createFilteredSet("status");
     },
