@@ -2,7 +2,7 @@
   <div class="login__main d-flex">
     <div class="login__main-left d-flex flex-column">
       <register v-if="authorized" class="mx-auto my-auto"></register>
-      <cookie class="pb-5"></cookie>
+      <cookie class="pb-5 mx-auto"></cookie>
     </div>
     <div
       class="login__main-right d-flex flex-column justify-content-center align-items-stretch"
