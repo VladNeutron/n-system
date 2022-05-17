@@ -131,7 +131,7 @@ export default {
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  margin-top: 6.354vw;
+  margin-top: 1vw;
 }
 .filters__container {
   width: 550px;
@@ -150,7 +150,7 @@ export default {
 }
 .filters__header {
   display: flex;
-  padding: 3.125vw 2.083vw 16px 2.083vw;
+  padding: 2.125vw 2.083vw 16px 2.083vw;
   justify-content: space-between;
   align-items: baseline;
 }

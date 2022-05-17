@@ -533,7 +533,7 @@ td {
   display: flex;
   background: linear-gradient(81.62deg, #313860 2.25%, #151928 79.87%);
   border-radius: 0.417vw;
-  padding: 0.521vw 1.25vw 0.573vw 2.188vw;
+  padding: 0.521vw 1.25vw 0.573vw 1.25vw;
   font-weight: 600;
   font-size: 0.729vw;
   align-items: center;
