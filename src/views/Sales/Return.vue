@@ -510,4 +510,10 @@ table {
   justify-content: space-between;
   align-items: flex-end;
 }
+td {
+  vertical-align: baseline;
+}
+th {
+  vertical-align: baseline;
+}
 </style>
