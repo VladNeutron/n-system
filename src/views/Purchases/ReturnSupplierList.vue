@@ -5,28 +5,49 @@
     <div class="page__name d-flex align-items-center ms-4">
       <div class="page__name-title text-start">
         <h3>Список возвратов</h3>
-        <p class="mb-0">Внесите изменения и не забудьте  нажать “Сохранить”</p>
+        <p class="mb-0">Внесите изменения и не забудьте нажать “Сохранить”</p>
       </div>
     </div>
     <div class="card pt-4 pb-6 m-4">
       <div class="d-flex justify-content-between align-items-center mx-4 mb-4">
         <div>
-          <button class="btn bg-gradient-dark mb-0" style="margin-right: 0.833vw" onclick="window.location.href = '/purchases/create-supplier-return'">
+          <button
+            class="btn bg-gradient-dark mb-0"
+            style="margin-right: 0.833vw"
+            onclick="window.location.href = '/purchases/create-supplier-return'"
+          >
             <img src="@/assets/img/whtplus.svg" alt="" /> Новый возврат
           </button>
         </div>
         <div class="table__inputs d-flex gap-3 align-content-center">
           <div class="form-group m-0">
             <div class="input-group mt-1">
-              <span class="input-group-text"><img src="@/assets/css/icons/searchIcon.svg" alt="" /></span>
-              <input class="form-control form__width" placeholder="Поиск..." id="search" type="text" />
+              <span class="input-group-text"
+                ><img src="@/assets/css/icons/searchIcon.svg" alt=""
+              /></span>
+              <input
+                class="form-control form__width"
+                placeholder="Поиск..."
+                id="search"
+                type="text"
+              />
             </div>
           </div>
           <button class="btn btn-outline-dark mb-0">
-            <span><img src="@/assets/css/icons/print.svg" class="me-1" alt="" /></span>Печать
+            <span
+              ><img
+                src="@/assets/css/icons/print.svg"
+                class="me-1"
+                alt="" /></span
+            >Печать
           </button>
           <button class="btn btn-outline-dark mb-0">
-            <span><img src="@/assets/css/icons/down-arrow.svg" class="me-1" alt="" /></span>Скачать
+            <span
+              ><img
+                src="@/assets/css/icons/down-arrow.svg"
+                class="me-1"
+                alt="" /></span
+            >Скачать
           </button>
           <button class="btn btn-outline-dark mb-0">Фильтры</button>
         </div>
@@ -51,7 +72,12 @@
             <tr v-for="(order, i) of orders" :key="order.id">
               <th scope="row">
                 <div class="form-check">
-                  <input class="form-check-input" type="checkbox" value="" id="fcustomCheck1" />
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    value=""
+                    id="fcustomCheck1"
+                  />
                 </div>
               </th>
               <th width="1%">{{ i + 1 }}</th>
@@ -67,11 +93,24 @@
 
               <td>
                 <div class="dropdown">
-                  <img src="@/assets/img/dots.svg" style="width: 1.563vw; cursor: pointer" alt="" />
+                  <img
+                    src="@/assets/img/dots.svg"
+                    style="width: 1.563vw; cursor: pointer"
+                    alt=""
+                  />
                   <div class="dropdown-content">
-                    <a style="cursor: pointer" onclick="window.location.href = '/purchases/edit-supplier-return'">Редактировать</a>
+                    <a
+                      style="cursor: pointer"
+                      onclick="window.location.href = '/purchases/edit-supplier-return'"
+                      >Редактировать</a
+                    >
                     <hr />
-                    <a style="cursor: pointer" data-bs-toggle="modal" data-bs-target="#DeleteInv">Удалить</a>
+                    <a
+                      style="cursor: pointer"
+                      data-bs-toggle="modal"
+                      data-bs-target="#DeleteInv"
+                      >Удалить</a
+                    >
                   </div>
                 </div>
               </td>
@@ -79,14 +118,9 @@
           </tbody>
         </table>
       </div>
-      <div class="
-          pagination
-          d-flex
-          justify-content-end
-          align-items-center
-          me-4
-          mt-4
-        ">
+      <div
+        class="pagination d-flex justify-content-end align-items-center me-4 mt-4"
+      >
         <div class="d-flex align-items-center gap-3">
           <div>
             <p class="m-0">Показано<span> 2112 12121</span></p>
@@ -96,8 +130,14 @@
             <div class="pagination-container d-flex justify-items-center">
               <ul class="pagination pagination-info mb-0 pe-0">
                 <li class="page-item">
-                  <a class="page-link" href="javascript:;" aria-label="Previous">
-                    <span aria-hidden="true"><i class="fa fa-angle-double-left" aria-hidden="true"></i></span>
+                  <a
+                    class="page-link"
+                    href="javascript:;"
+                    aria-label="Previous"
+                  >
+                    <span aria-hidden="true"
+                      ><i class="fa fa-angle-double-left" aria-hidden="true"></i
+                    ></span>
                   </a>
                 </li>
                 <li class="page-item">
@@ -117,7 +157,12 @@
                 </li>
                 <li class="page-item">
                   <a class="page-link" href="javascript:;" aria-label="Next">
-                    <span aria-hidden="true"><i class="fa fa-angle-double-right" aria-hidden="true"></i></span>
+                    <span aria-hidden="true"
+                      ><i
+                        class="fa fa-angle-double-right"
+                        aria-hidden="true"
+                      ></i
+                    ></span>
                   </a>
                 </li>
               </ul>
@@ -173,7 +218,6 @@ export default {
           amount: 8,
           sum: 12000,
         },
-
       ],
     };
   },
@@ -185,32 +229,32 @@ export default {
 
 <style scoped>
 .dropdown {
-    display: inline-block;
-    position: relative;
+  display: inline-block;
+  position: relative;
 }
 
 .dropdown-content {
-    text-align: left;
-    display: none;
-    position: absolute;
-    width: 7.815vw;
-    overflow: auto;
-    background: #f8f9fa;
-    box-shadow: 2px 2px 5.5px rgba(0, 0, 0, 0.25);
-    border-radius: 12px;
-    right: 15px;
-    z-index: 1;
-    padding: 0.625vw 0.625vw 0.625vw 0.625vw;
+  text-align: left;
+  display: none;
+  position: absolute;
+  width: 7.815vw;
+  overflow: auto;
+  background: #f8f9fa;
+  box-shadow: 2px 2px 5.5px rgba(0, 0, 0, 0.25);
+  border-radius: 12px;
+  right: 15px;
+  z-index: 1;
+  padding: 0.625vw 0.625vw 0.625vw 0.625vw;
 }
 
 .dropdown:hover .dropdown-content {
-    display: block;
+  display: block;
 }
 
 .dropdown-content a {
-    display: block;
-    color: #2d3748;
-    text-decoration: none;
+  display: block;
+  color: #2d3748;
+  text-decoration: none;
 }
 .form__width {
   width: 15.99vw !important;
@@ -255,5 +299,31 @@ td {
 
 .pagination {
   align-self: end;
+}
+@media screen and (max-width: 1600px) {
+  .btn {
+    font-size: 12px !important;
+  }
+  td,
+  th {
+    font-size: 12px;
+  }
+  .page__table::-webkit-scrollbar {
+    background: #e2e8f0;
+    border-radius: 0.78vw;
+    width: 0.37vw;
+  }
+  .page__table::-webkit-scrollbar-thumb {
+    border-radius: 0.78vw;
+    background-color: #a0aec0;
+  }
+  .page__table::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.2);
+    border-radius: 0.78vw;
+    background-color: #e2e8f0;
+  }
+  .page__table {
+    overflow-x: scroll;
+  }
 }
 </style>

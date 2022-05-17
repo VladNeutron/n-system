@@ -88,13 +88,8 @@
                         >Ответственный</label
                       >
                       <div class="select">
-                        <img
-                          src="@/assets/img/arrow.svg"
-                          style="width: 0.833vw"
-                          alt=""
-                        />
                         <select
-                          class="form-control"
+                          class="form-select"
                           id="exampleFormControlSelect1"
                         >
                           <option>Выберите</option>
@@ -112,13 +107,8 @@
                         >Склад</label
                       >
                       <div class="select">
-                        <img
-                          src="@/assets/img/arrow.svg"
-                          style="width: 0.833vw"
-                          alt=""
-                        />
                         <select
-                          class="form-control"
+                          class="form-select"
                           id="exampleFormControlSelect1"
                         >
                           <option>Выберите</option>
@@ -136,13 +126,8 @@
                         >Контрагент</label
                       >
                       <div class="select">
-                        <img
-                          src="@/assets/img/arrow.svg"
-                          style="width: 0.833vw"
-                          alt=""
-                        />
                         <select
-                          class="form-control"
+                          class="form-select"
                           id="exampleFormControlSelect1"
                         >
                           <option>Выберите</option>
@@ -159,13 +144,8 @@
                         >Поступление</label
                       >
                       <div class="select">
-                        <img
-                          src="@/assets/img/arrow.svg"
-                          style="width: 0.833vw"
-                          alt=""
-                        />
                         <select
-                          class="form-control"
+                          class="form-select"
                           id="exampleFormControlSelect1"
                         >
                           <option>Выберите</option>
@@ -842,7 +822,8 @@
   margin-right: 1.25vw;
 }
 
-.form-control {
+.form-control,
+.form-select {
   border: 1px solid #a0aec0;
   width: 9.948vw;
 }
@@ -904,6 +885,29 @@
 
 .order__content {
   padding: 0 2.083vw 0 2.083vw;
+}
+@media screen and (max-width: 1600px) {
+  .btn {
+    font-size: 12px !important;
+  }
+  .order__header__main {
+    font-size: 20px;
+  }
+  .order__header__sec {
+    font-size: 14px;
+  }
+  .order__label {
+    font-size: 12px;
+  }
+  .disc__btn {
+    padding: 0.75rem 1.5rem;
+  }
+  .search {
+    align-items: flex-start;
+  }
+  .order__table__body {
+    height: 33vw;
+  }
 }
 </style>
 
@@ -1025,13 +1029,6 @@ export default {
         );
       });
     },
-  },
-  mounted() {
-    var element = document.getElementsByClassName("third__s")[0];
-    var maskOptions = {
-      mask: "+{7}(000)000-00-00",
-    };
-    var mask = IMask(element, maskOptions);
   },
 };
 </script>

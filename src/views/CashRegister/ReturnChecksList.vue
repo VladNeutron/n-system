@@ -11,7 +11,10 @@
     <div class="card pt-4 pb-6 m-4">
       <div class="d-flex justify-content-between align-items-center mx-4 mb-4">
         <div>
-            <button class="btn bg-gradient-dark mb-0" style="margin-right: 0.833vw">
+          <button
+            class="btn bg-gradient-dark mb-0"
+            style="margin-right: 0.833vw"
+          >
             <img src="@/assets/img/whtplus.svg" alt="" /> Оформить возврат
           </button>
           <button class="btn bg-gradient-dark mb-0">
@@ -19,19 +22,51 @@
           </button>
         </div>
         <div class="table__inputs d-flex gap-3 align-content-center">
-          <div class="form-group m-0">
+          <div class="form-group m-0 search__adapt">
             <div class="input-group mt-1">
-              <span class="input-group-text"><img src="@/assets/css/icons/searchIcon.svg" alt="" /></span>
-              <input class="form-control form__width" placeholder="Поиск..." id="search" type="text" />
+              <span class="input-group-text"
+                ><img src="@/assets/css/icons/searchIcon.svg" alt=""
+              /></span>
+              <input
+                class="form-control form__width"
+                placeholder="Поиск..."
+                id="search"
+                type="text"
+              />
             </div>
           </div>
           <button class="btn btn-outline-dark mb-0">
-            <span><img src="@/assets/css/icons/print.svg" class="me-1" alt="" /></span>Печать
+            <span
+              ><img
+                src="@/assets/css/icons/print.svg"
+                class="me-1"
+                alt="" /></span
+            >Печать
           </button>
           <button class="btn btn-outline-dark mb-0">
-            <span><img src="@/assets/css/icons/down-arrow.svg" class="me-1" alt="" /></span>Скачать
+            <span
+              ><img
+                src="@/assets/css/icons/down-arrow.svg"
+                class="me-1"
+                alt="" /></span
+            >Скачать
           </button>
           <button class="btn btn-outline-dark mb-0">Фильтры</button>
+        </div>
+      </div>
+      <div style="margin-left: 25px">
+        <div class="form-group m-0 search__adapt__mob">
+          <div class="input-group mt-1 search__size">
+            <span class="input-group-text"
+              ><img src="@/assets/css/icons/searchIcon.svg" alt=""
+            /></span>
+            <input
+              class="form-control form__width"
+              placeholder="Поиск..."
+              id="search"
+              type="text"
+            />
+          </div>
         </div>
       </div>
       <div class="page__table">
@@ -54,7 +89,12 @@
             <tr v-for="(order, i) of orders" :key="order.id">
               <th scope="row">
                 <div class="form-check">
-                  <input class="form-check-input" type="checkbox" value="" id="fcustomCheck1" />
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    value=""
+                    id="fcustomCheck1"
+                  />
                 </div>
               </th>
               <th width="1%">{{ i + 1 }}</th>
@@ -68,20 +108,19 @@
               <td>{{ order.sum }}</td>
 
               <td>
-                <img src="@/assets/img/dots.svg" style="width: 1.563vw; cursor: pointer" alt="" />
+                <img
+                  src="@/assets/img/dots.svg"
+                  style="width: 1.563vw; cursor: pointer"
+                  alt=""
+                />
               </td>
             </tr>
           </tbody>
         </table>
       </div>
-      <div class="
-          pagination
-          d-flex
-          justify-content-end
-          align-items-center
-          me-4
-          mt-4
-        ">
+      <div
+        class="pagination d-flex justify-content-end align-items-center me-4 mt-4"
+      >
         <div class="d-flex align-items-center gap-3">
           <div>
             <p class="m-0">Показано<span> 2112 12121</span></p>
@@ -91,8 +130,14 @@
             <div class="pagination-container d-flex justify-items-center">
               <ul class="pagination pagination-info mb-0 pe-0">
                 <li class="page-item">
-                  <a class="page-link" href="javascript:;" aria-label="Previous">
-                    <span aria-hidden="true"><i class="fa fa-angle-double-left" aria-hidden="true"></i></span>
+                  <a
+                    class="page-link"
+                    href="javascript:;"
+                    aria-label="Previous"
+                  >
+                    <span aria-hidden="true"
+                      ><i class="fa fa-angle-double-left" aria-hidden="true"></i
+                    ></span>
                   </a>
                 </li>
                 <li class="page-item">
@@ -112,7 +157,12 @@
                 </li>
                 <li class="page-item">
                   <a class="page-link" href="javascript:;" aria-label="Next">
-                    <span aria-hidden="true"><i class="fa fa-angle-double-right" aria-hidden="true"></i></span>
+                    <span aria-hidden="true"
+                      ><i
+                        class="fa fa-angle-double-right"
+                        aria-hidden="true"
+                      ></i
+                    ></span>
                   </a>
                 </li>
               </ul>
@@ -151,7 +201,8 @@ export default {
           type: "Создан вручную",
           amount: 8,
           sum: 12000,
-        }, {
+        },
+        {
           id: 12132145,
           date: "11 ноя, 2021 19:23",
           responsible: "Тихонова А.Р",
@@ -160,7 +211,8 @@ export default {
           type: "Создан вручную",
           amount: 8,
           sum: 12000,
-        }, {
+        },
+        {
           id: 12132145,
           date: "11 ноя, 2021 19:23",
           responsible: "Тихонова А.Р",
@@ -169,7 +221,8 @@ export default {
           type: "Создан вручную",
           amount: 8,
           sum: 12000,
-        }, {
+        },
+        {
           id: 12132145,
           date: "11 ноя, 2021 19:23",
           responsible: "Тихонова А.Р",
@@ -189,8 +242,8 @@ export default {
 </script>
 
 <style scoped>
-.form__width{
-  width:15.99vw !important;
+.form__width {
+  width: 15.99vw !important;
 }
 .bg-gradient-dark {
   font-weight: 600;
@@ -231,5 +284,19 @@ td {
 
 .pagination {
   align-self: end;
+}
+@media screen and (max-width: 1600px) {
+  .btn {
+    font-size: 12px !important;
+  }
+  .search__adapt {
+    display: none;
+  }
+  .search__adapt__mob {
+    display: contents;
+  }
+  .search__size {
+    width: 240px;
+  }
 }
 </style>

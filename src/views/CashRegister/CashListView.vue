@@ -460,4 +460,25 @@ export default {
   font-size: 0.729vw;
   color: #a0aec0;
 }
+@media screen and (max-width: 1600px) {
+  .inv__title__text {
+    font-size: 20px;
+  }
+  .inv__sec__text {
+    font-size: 14px;
+  }
+  .btn {
+    font-size: 12px !important;
+  }
+  td,
+  th {
+    font-size: 14px;
+  }
+  .order__label__disc {
+    font-size: 14px;
+  }
+  .dropdown-content {
+    width: 130px;
+  }
+}
 </style>

@@ -11,69 +11,96 @@
                 <div class="cash__left">
                   <div class="cash__left__blue">
                     <p class="cash__text">Выбор режима работы</p>
-                    <router-link :to="{ name: 'cash-register-sale'}">
-                    <div class="cash__blue__block">
-                      <div class="cash__blue__content">
-                        <div class="cash__blue__text">
-                          <img
-                            src="@/assets/img/calculator.svg"
-                            style="width: 1.667vw; margin-right: 0.833vw"
-                            alt=""
-                          />
-                          Продажа
+                    <router-link :to="{ name: 'cash-register-sale' }">
+                      <div class="cash__blue__block">
+                        <div class="cash__blue__content">
+                          <div class="cash__blue__text">
+                            <img
+                              src="@/assets/img/calculator.svg"
+                              style="width: 1.667vw; margin-right: 0.833vw"
+                              alt=""
+                            />
+                            Продажа
+                          </div>
                         </div>
                       </div>
-                    </div>
                     </router-link>
-                    <router-link :to="{ name: 'cash-register-return'}">
-                    <div class="cash__blue__block">
-                      <div class="cash__blue__content">
-                        <div class="cash__blue__text">
-                          <img
-                            src="@/assets/img/shopping_cart.svg"
-                            style="width: 1.667vw; margin-right: 0.833vw"
-                            alt=""
-                          />
-                          Возврат
+                    <router-link :to="{ name: 'cash-register-return' }">
+                      <div class="cash__blue__block">
+                        <div class="cash__blue__content">
+                          <div class="cash__blue__text">
+                            <img
+                              src="@/assets/img/shopping_cart.svg"
+                              style="width: 1.667vw; margin-right: 0.833vw"
+                              alt=""
+                            />
+                            Возврат
+                          </div>
                         </div>
                       </div>
-                    </div>
                     </router-link>
-                    <router-link :to="{ name: 'checks-list'}">
-                    <div class="cash__blue__block">
-                      <div class="cash__blue__content">
-                        <div class="cash__blue__text">
-                          <img
-                            src="@/assets/img/receipt.svg"
-                            style="width: 1.667vw; margin-right: 0.833vw"
-                            alt=""
-                          />
-                          Список чеков
+                    <router-link :to="{ name: 'checks-list' }">
+                      <div class="cash__blue__block">
+                        <div class="cash__blue__content">
+                          <div class="cash__blue__text">
+                            <img
+                              src="@/assets/img/receipt.svg"
+                              style="width: 1.667vw; margin-right: 0.833vw"
+                              alt=""
+                            />
+                            Список чеков
+                          </div>
                         </div>
                       </div>
-                    </div>
                     </router-link>
-                    <router-link :to="{ name: 'deffered-checks'}">
-                    <div class="cash__blue__block">
-                      <div class="cash__blue__content">
-                        <div
-                          class="cash__blue__text align-items-baseline"
-                          style="margin-top: -2.25vw"
-                        >
-                          <img
-                            src="@/assets/img/remove_shopping_cart.svg"
-                            style="width: 1.667vw; margin-right: 0.833vw"
-                            alt=""
-                          />
-                          Незавершенные продажи
+                    <div class="card__adapt" style="display: none">
+                      <router-link :to="{ name: 'deffered-checks' }">
+                        <div class="cash__blue__block">
+                          <div class="cash__blue__content">
+                            <div
+                              class="cash__blue__text align-items-baseline"
+                              style="margin-top: -2.25vw"
+                            >
+                              <img
+                                src="@/assets/img/remove_shopping_cart.svg"
+                                style="width: 1.667vw; margin-right: 0.833vw"
+                                alt=""
+                              />
+                              Незавершенные продажи
+                            </div>
+                          </div>
+                        </div>
+                      </router-link>
+                    </div>
+                  </div>
+                  <div class="card__adapt__mob">
+                    <router-link :to="{ name: 'deffered-checks' }">
+                      <div
+                        class="cash__blue__block"
+                        style="margin-top: 40px; margin-right: 1.042vw"
+                      >
+                        <div class="cash__blue__content">
+                          <div
+                            class="cash__blue__text align-items-baseline"
+                            style="margin-top: -2.25vw"
+                          >
+                            <img
+                              src="@/assets/img/remove_shopping_cart.svg"
+                              style="width: 1.667vw; margin-right: 0.833vw"
+                              alt=""
+                            />
+                            Незавершенные продажи
+                          </div>
                         </div>
                       </div>
-                    </div>
                     </router-link>
                   </div>
                   <div class="cash__left__green">
                     <p class="cash__text">Кассовая смена</p>
-                    <div class="cash__blue__block" @click="shiftStatus='closed'">
+                    <div
+                      class="cash__blue__block"
+                      @click="shiftStatus = 'closed'"
+                    >
                       <div class="cash__green__content">
                         <div class="cash__blue__text">
                           <img
@@ -85,7 +112,10 @@
                         </div>
                       </div>
                     </div>
-                    <div class="cash__blue__block" @click="shiftStatus='open'">
+                    <div
+                      class="cash__blue__block"
+                      @click="shiftStatus = 'open'"
+                    >
                       <div class="cash__green__content">
                         <div class="cash__blue__text">
                           <img
@@ -201,7 +231,10 @@
                   <div class="shift__header">
                     <p class="shift__title">Касса</p>
                   </div>
-                  <div class="shift__body2" style="display: flex;align-items: flex-end">
+                  <div
+                    class="shift__body2"
+                    style="display: flex; align-items: flex-end"
+                  >
                     <div class="form-group" style="margin-right: 1.25vw">
                       <label
                         for="exampleFormControlSelect1"
@@ -209,13 +242,8 @@
                         >Выбор кассы</label
                       >
                       <div class="select2">
-                        <img
-                          src="@/assets/img/arrow.svg"
-                          style="width: 0.833vw"
-                          alt=""
-                        />
                         <select
-                          class="form-control first__s"
+                          class="form-select first__s"
                           id="exampleFormControlSelect1"
                         >
                           <option disabled selected>Выберите</option>
@@ -226,7 +254,7 @@
                       </div>
                     </div>
                     <div>
-                      <router-link :to="{ name: 'cash-list'}">
+                      <router-link :to="{ name: 'cash-list' }">
                         <button class="btn goto__list">Перейти к списку</button>
                       </router-link>
                     </div>
@@ -364,9 +392,9 @@ export default {
 .cash__blue__block {
   margin-bottom: 1.25vw;
 }
-.cash__green__content:hover{
-    box-shadow: 0px 3.5px 5.5px rgba(72, 187, 120, 0.8);
-    transition: 0.1s;
+.cash__green__content:hover {
+  box-shadow: 0px 3.5px 5.5px rgba(72, 187, 120, 0.8);
+  transition: 0.1s;
 }
 .cash__green__content {
   padding: 4.169vw 3.906vw 1.25vw 1.25vw;
@@ -376,9 +404,9 @@ export default {
   height: 7.854vw;
   cursor: pointer;
 }
-.cash__blue__content:hover{
-    box-shadow: 0px 3.5px 5.5px rgba(79, 114, 239, 0.8);
-    transition: 0.1s;
+.cash__blue__content:hover {
+  box-shadow: 0px 3.5px 5.5px rgba(79, 114, 239, 0.8);
+  transition: 0.1s;
 }
 .cash__blue__content {
   padding: 4.169vw 3.906vw 1.25vw 1.25vw;
@@ -397,5 +425,29 @@ export default {
 }
 .cash__left {
   display: flex;
+}
+.card__adapt__mob {
+  display: none;
+}
+@media screen and (max-width: 1600px) {
+  .card__padding {
+    padding: 0 4.479vw 1vw 3.125vw;
+  }
+  .form-control-label {
+    font-size: 12px;
+  }
+  .card__adapt {
+    display: none;
+  }
+  .card__adapt__mob {
+    display: contents;
+  }
+  .goto__list {
+    font-size: 12px;
+    padding: 0.75rem 1.5rem;
+  }
+  .shift__status {
+    font-size: 12px;
+  }
 }
 </style>

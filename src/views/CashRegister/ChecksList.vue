@@ -22,7 +22,7 @@
           </button>
         </div>
         <div class="table__inputs d-flex gap-3 align-content-center">
-          <div class="form-group m-0">
+          <div class="form-group m-0 search__adapt">
             <div class="input-group mt-1">
               <span class="input-group-text"
                 ><img src="@/assets/css/icons/searchIcon.svg" alt=""
@@ -52,6 +52,21 @@
             >Скачать
           </button>
           <button class="btn btn-outline-dark mb-0">Фильтры</button>
+        </div>
+      </div>
+      <div style="margin-left: 25px">
+        <div class="form-group m-0 search__adapt__mob">
+          <div class="input-group mt-1 search__size">
+            <span class="input-group-text"
+              ><img src="@/assets/css/icons/searchIcon.svg" alt=""
+            /></span>
+            <input
+              class="form-control form__width"
+              placeholder="Поиск..."
+              id="search"
+              type="text"
+            />
+          </div>
         </div>
       </div>
       <div class="page__table">
@@ -308,5 +323,22 @@ td {
 
 .pagination {
   align-self: end;
+}
+.search__adapt__mob {
+  display: none;
+}
+@media screen and (max-width: 1600px) {
+  .btn {
+    font-size: 12px !important;
+  }
+  .search__adapt {
+    display: none;
+  }
+  .search__adapt__mob {
+    display: contents;
+  }
+  .search__size {
+    width: 240px;
+  }
 }
 </style>
