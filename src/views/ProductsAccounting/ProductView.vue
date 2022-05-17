@@ -91,11 +91,13 @@
           </div>
         </div>
         <div class="info__card-bottom d-flex gap-4">
-          <div class="m-0">
+          <div class="info__card-quill m-0">
             <p class="text-start fs-6 fw-bold mb-2">Описание</p>
-            <div id="editor"></div>
+            <div class="quill-wrapper">
+              <div id="editor"></div>
+            </div>
           </div>
-          <div class="">
+          <div class="info__card-switches">
             <p class="text-start fs-6 fw-bold mb-3">Дополнительно</p>
             <div class="form-switch d-flex align-items-center gap-2 mb-3">
               <input
@@ -271,7 +273,6 @@ export default {
     var quill = new Quill("#editor", {
       theme: "snow", // Specify theme in configuration
     });
-    quill.render();
   },
 };
 </script>
@@ -298,7 +299,7 @@ export default {
 }
 .img__card {
   min-width: 490px;
-  height: 491px;
+  min-height: 491px;
   align-items: flex-start;
 }
 
@@ -310,24 +311,45 @@ export default {
 }
 
 .info__card-top div {
-  min-width: 380px;
+  width: 380px;
 }
 .info__card-bottom {
   height: 200px;
 }
 .input-code {
-  min-width: 380px;
+  width: 380px;
 }
 .input-category {
-  min-width: 190px;
+  width: 190px;
 }
-.ql-toolbar,
+@media screen and (max-width: 1700px) {
+  .info__card {
+    height: 612px;
+  }
+  .info__card-bottom {
+    flex-direction: column;
+  }
+}
+@media screen and (max-width: 1380px) {
+  .quill-wrapper {
+    min-width: auto;
+  }
+}
+/* .ql-toolbar,
 .ql-snow {
-  width: 522px;
+  min-width: 512px;
+  width: 100%;
+} */
+
+.quill-wrapper {
+  width: 512px;
+  width: 100%;
+  height: 157px;
 }
 #editor {
   height: 117px;
 }
+
 .main__body-info {
   height: 527px;
 }

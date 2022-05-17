@@ -544,6 +544,13 @@ export default {
         }
         Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
     }
+        function areaExpFalse(el){
+          // console.log(el.target.parentElement.parentElement.parentElement.previousElementSibling)
+          el.target.parentElement.parentElement.parentElement.previousElementSibling.ariaExpanded = false;
+        }
+        document.querySelectorAll('.nav-link').forEach(el=>{
+          el.addEventListener('click', areaExpFalse.bind(el));
+        })
     }
 }
 </script>

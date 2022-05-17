@@ -89,7 +89,7 @@ export default {
         !event.target.closest("#filters__container") &&
         !event.target.closest(".openFilters")
       ) {
-        console.log(event.target);
+        // console.log(event.target);
         if (document.querySelector(".filters__show")) {
           document
             .querySelector(".filters__container")
@@ -143,6 +143,7 @@ export default {
   background-color: white;
   transition: all 0.8s;
   box-shadow: -10px 0px 40px rgba(0, 0, 0, 0.1);
+  overflow-y: auto;
 }
 .filters__show {
   right: 0;
