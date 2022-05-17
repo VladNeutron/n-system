@@ -92,13 +92,13 @@
         </div>
         <div class="info__card-bottom d-flex gap-4">
           <div class="info__card-quill m-0">
-            <p class="text-start fs-6 fw-bold mb-2">Описание</p>
+            <p class="text-start fw-bold mb-2">Описание</p>
             <div class="quill-wrapper">
               <div id="editor"></div>
             </div>
           </div>
           <div class="info__card-switches">
-            <p class="text-start fs-6 fw-bold mb-3">Дополнительно</p>
+            <p class="text-start fw-bold mb-3">Дополнительно</p>
             <div class="form-switch d-flex align-items-center gap-2 mb-3">
               <input
                 class="form-check-input"
@@ -112,7 +112,9 @@
                 >Видимость товаров в каталоге</label
               >
             </div>
-            <div class="form-switch d-flex align-items-center gap-2 mb-2">
+            <div
+              class="form-switch form-switch-lg d-flex align-items-center gap-2 mb-2"
+            >
               <input
                 class="form-check-input"
                 type="checkbox"
@@ -278,6 +280,25 @@ export default {
 </script>
 
 <style scoped>
+label {
+  font-family: Open Sans;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 19px;
+  letter-spacing: -0.38723403215408325px;
+  text-align: left;
+}
+.form-group > input,
+.form-check-label,
+.info__card-switches p {
+  font-family: Open Sans;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 19px;
+  letter-spacing: -0.38723403215408325px;
+  text-align: left;
+}
+
 .form-switch .form-check-input:checked {
   background: linear-gradient(83.56deg, #7092e0 10.01%, #8baef3 75.36%);
   border-color: rgba(112, 146, 224, 1);
