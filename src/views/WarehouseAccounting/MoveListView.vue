@@ -11,7 +11,11 @@
           <div class="card">
             <div class="inv__buttons">
               <div class="inv__left__btn">
-                <button type="button" class="btn bg-gradient-secondary" onclick="window.location.href = '/warehouse-accounting/create-movement'">
+                <button
+                  type="button"
+                  class="btn bg-gradient-secondary"
+                  onclick="window.location.href = '/warehouse-accounting/create-movement'"
+                >
                   + Создать перемещение
                 </button>
               </div>
@@ -28,7 +32,7 @@
                     />
                   </div>
                 </div>
-               <filters-button></filters-button>
+                <filters-button></filters-button>
                 <button type="button" class="inv__btn btn btn-outline-dark">
                   <img
                     src="@/assets/img/print.svg"
@@ -53,7 +57,9 @@
                   <thead>
                     <tr>
                       <th scope="col" class="th__col">№</th>
-                      <th scope="col" class="th__col" width="5%">№ Документа</th>
+                      <th scope="col" class="th__col" width="5%">
+                        № Документа
+                      </th>
                       <th scope="col" class="th__col">Дата и время</th>
                       <th scope="col" class="th__col">Склад</th>
                       <th scope="col" class="th__col">Ответственный</th>
@@ -79,7 +85,9 @@
                             alt=""
                           />
                           <div class="dropdown-content">
-                            <a href="/warehouse-accounting/edit-move/">Редактировать</a>
+                            <a href="/warehouse-accounting/edit-move/"
+                              >Редактировать</a
+                            >
                             <hr />
                             <a
                               style="cursor: pointer"
@@ -100,34 +108,26 @@
       </div>
     </div>
     <delete-modal>
-        <template #header>
-          <p class="modal__title">
-            Вы уверены, что хотите удалить документ “Перемещение №1”?
-          </p>
-        </template>
+      <template #header>
+        <p class="modal__title">
+          Вы уверены, что хотите удалить документ “Перемещение №1”?
+        </p>
+      </template>
     </delete-modal>
-     <filters>
+    <filters>
       <div class="filters__period__flex">
         <div class="filter__name__standart">Выберите период</div>
         <div class="reset__date">Сбросить период</div>
       </div>
       <div class="filters__period">
         <div class="form-group">
-          <input
-            class="form-control"
-            type="date"
-            id="example-date-input"
-          />
+          <input class="form-control" type="date" id="example-date-input" />
         </div>
         <div>
           <img src="@/assets/img/line.svg" style="width: 1.927vw" alt="" />
         </div>
         <div class="form-group">
-          <input
-            class="form-control"
-            type="date"
-            id="example-date-input"
-          />
+          <input class="form-control" type="date" id="example-date-input" />
         </div>
       </div>
 
@@ -143,7 +143,7 @@
         <option>Открыт</option>
         <option>Закрыт</option>
       </select>
-       <div class="filter__name__standart mt-3">Ответственный</div>
+      <div class="filter__name__standart mt-3">Ответственный</div>
       <select class="form-select">
         <option value="" disabled selected>Выберите ответственного</option>
         <option>Открыт</option>
@@ -168,7 +168,7 @@ export default {
       items: [
         {
           date: "11 янв, 19:23, 2021",
-          id:"23",
+          id: "23",
           place: "ТРЦ Москва",
           name: "Мильчаков Валерий",
           isReady: "Завершена",
@@ -176,23 +176,23 @@ export default {
         },
         {
           date: "11 янв, 19:23, 2021",
-          id:"23",
+          id: "23",
           place: "ТРЦ Москва",
           name: "Мильчаков Валерий",
           isReady: "Завершена",
           count: "15",
         },
-         {
+        {
           date: "11 янв, 19:23, 2021",
-          id:"23",
+          id: "23",
           place: "ТРЦ Москва",
           name: "Мильчаков Валерий",
           isReady: "Завершена",
           count: "15",
         },
-         {
+        {
           date: "11 янв, 19:23, 2021",
-          id:"23",
+          id: "23",
           place: "ТРЦ Москва",
           name: "Мильчаков Валерий",
           isReady: "Завершена",
@@ -201,9 +201,7 @@ export default {
       ],
     };
   },
-  mounted(){
-    
-  }
+  mounted() {},
 };
 </script>
 
@@ -286,7 +284,7 @@ th {
   padding-top: 0.729vw;
   padding-left: 1.25vw;
   padding-right: 1.25vw;
-  padding-bottom:2.083vw;
+  padding-bottom: 2.083vw;
   display: flex;
   justify-content: space-between;
 }
@@ -301,5 +299,22 @@ th {
 .container__padding {
   padding-left: 2.135vw;
   padding-right: 5.208vw;
+}
+@media screen and (max-width: 1600px) {
+  .btn {
+    font-size: 12px !important;
+  }
+  .input-group {
+    margin-top: 1px !important;
+  }
+  td {
+    font-size: 14px;
+  }
+  .dropdown-content {
+    width: 130px;
+  }
+  .inv__title__text {
+    font-size: 20px;
+  }
 }
 </style>

@@ -16,7 +16,7 @@
                 </div>
                 <div class="drop__buttons">
                   <div>
-                    <button class="btn comment mb-0">
+                    <button class="btn comment">
                       <img
                         src="@/assets/img/comment.svg"
                         style="width: 1.042vw; margin-right: 0.417vw"
@@ -345,7 +345,7 @@ export default {
   box-sizing: border-box;
   border-radius: 8px;
   background: transparent;
-  padding: 0.521vw 0.833vw 0 0.833vw;
+  padding: 0.521vw 0.833vw 0.573vw 0.833vw;
   font-weight: 600;
   font-size: 0.729vw;
   color: #2d3748;
@@ -445,10 +445,10 @@ th {
     top: -0.26vw;
   }
   .dropdown__title {
-    font-size: 18px;
+    font-size: 20px;
   }
   .dropdown__sec {
-    font-size: 10px;
+    font-size: 12px;
   }
 }
 </style>

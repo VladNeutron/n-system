@@ -1,9 +1,9 @@
 <template>
   <the-navbar></the-navbar>
   <main class="main-content position-relative border-radius-lg">
-  <the-header></the-header>
-  <div class="container-fluid py-4">
-    <div class="row mt-4">
+    <the-header></the-header>
+    <div class="container-fluid py-4">
+      <div class="row mt-4">
         <div class="col-12">
           <div class="card">
             <div>
@@ -38,13 +38,25 @@
                     <th>АДРЕСС СКЛАДА</th>
                     <th>СТАТУС</th>
                   </tr>
-                  <tr v-for="(warehouse, index) in warehouses" :key="warehouse.id">
-                    <td>{{index+1}}</td>
-                    <td>{{warehouse.name}}</td>
-                    <td>{{warehouse.type}}</td>
-                    <td>{{warehouse.adress}}</td>
+                  <tr
+                    v-for="(warehouse, index) in warehouses"
+                    :key="warehouse.id"
+                  >
+                    <td>{{ index + 1 }}</td>
+                    <td>{{ warehouse.name }}</td>
+                    <td>{{ warehouse.type }}</td>
+                    <td>{{ warehouse.adress }}</td>
                     <td>
-                      <div :class="[{'table__status__open': warehouse.status != 'Закрыт'},{'table__status__closed': warehouse.status == 'Закрыт'}]"><p class="tag">{{warehouse.status}}</p></div>
+                      <div
+                        :class="[
+                          { table__status__open: warehouse.status != 'Закрыт' },
+                          {
+                            table__status__closed: warehouse.status == 'Закрыт',
+                          },
+                        ]"
+                      >
+                        <p class="tag">{{ warehouse.status }}</p>
+                      </div>
                     </td>
                     <td></td>
                     <td>
@@ -52,7 +64,9 @@
                         ><img src="@/assets/css/icons/editIcon.svg" alt="edit"
                       /></a>
                       <a href="#"
-                        ><img src="@/assets/css/icons/deleteIcon.svg" alt="delete"
+                        ><img
+                          src="@/assets/css/icons/deleteIcon.svg"
+                          alt="delete"
                       /></a>
                     </td>
                   </tr>
@@ -61,22 +75,22 @@
             </div>
           </div>
         </div>
+      </div>
     </div>
-  </div>
-  <filters>
-    <div class="filter__name__standart">Тип склада</div>
-    <select class="form-select">
-      <option value="" disabled selected>Выберите склад </option>
-      <option>Склад 1</option>
-      <option>Склад 2</option>
-    </select>  
-    <div class="filter__name__standart mt-3">Статус склада</div>
-    <select class="form-select">
-      <option value="" disabled selected>Выберите статус склада </option>
-      <option>Открыт</option>
-      <option>Закрыт</option>
-    </select> 
-  </filters>
+    <filters>
+      <div class="filter__name__standart">Тип склада</div>
+      <select class="form-select">
+        <option value="" disabled selected>Выберите склад</option>
+        <option>Склад 1</option>
+        <option>Склад 2</option>
+      </select>
+      <div class="filter__name__standart mt-3">Статус склада</div>
+      <select class="form-select">
+        <option value="" disabled selected>Выберите статус склада</option>
+        <option>Открыт</option>
+        <option>Закрыт</option>
+      </select>
+    </filters>
   </main>
 </template>
 
@@ -85,29 +99,30 @@ import Filters from "@/components/Filters.vue";
 import FiltersButton from "@/components/buttons/FiltersButton.vue";
 
 export default {
-  data(){
+  data() {
     return {
       warehouses: [
-        { 
+        {
           id: 1,
-          name: 'ТЦ “Jam mall”',
-          type: 'Торговая точка',
-          adress: 'Ул. Горького, 5',
-          status: 'Закрыт'
+          name: "ТЦ “Jam mall”",
+          type: "Торговая точка",
+          adress: "Ул. Горького, 5",
+          status: "Закрыт",
         },
-        { 
+        {
           id: 2,
-          name: 'ТЦ “Москва”',
-          type: 'Торговая точка',
-          adress: '8-й микрорайон, 37/1',
-          status: 'Открыт'
-        }
+          name: "ТЦ “Москва”",
+          type: "Торговая точка",
+          adress: "8-й микрорайон, 37/1",
+          status: "Открыт",
+        },
       ],
-    }
+    };
   },
-  components:{
-    Filters, FiltersButton
-  }  
+  components: {
+    Filters,
+    FiltersButton,
+  },
 };
 </script>
 
@@ -176,5 +191,11 @@ td > a {
   padding-left: 20px;
   background: no-repeat url("@/assets/css/icons/searchIcon.svg");
   background-size: 16px;
+}
+@media screen and (max-width: 1600px) {
+  td,
+  th {
+    font-size: 12px;
+  }
 }
 </style>

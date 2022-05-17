@@ -38,7 +38,7 @@
                   style="width: 200px"
                 >
                   <label for="search">Выберите склад</label>
-                  <select class="form-select" v-model="selected">
+                  <select class="form-select form__adapt" v-model="selected">
                     <option
                       v-for="(warehouse, i) in warehousesArr"
                       :key="i"
@@ -273,5 +273,34 @@ tbody {
 tbody img {
   width: 48px;
   height: 48px;
+}
+@media screen and (max-width: 1600px) {
+  td,
+  th {
+    font-size: 14px;
+  }
+  .form__adapt {
+    margin-top: 4px;
+  }
+  .table__body::-webkit-scrollbar {
+    background: #e2e8f0;
+    border-radius: 0.78vw;
+    width: 0.37vw;
+  }
+  .table__body::-webkit-scrollbar-thumb {
+    border-radius: 0.78vw;
+    background-color: #a0aec0;
+  }
+  .table__body::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.2);
+    border-radius: 0.78vw;
+    background-color: #e2e8f0;
+  }
+  .table__body {
+    overflow-x: scroll;
+  }
+  .px-4 {
+    margin-bottom: 1.5rem !important;
+  }
 }
 </style>
