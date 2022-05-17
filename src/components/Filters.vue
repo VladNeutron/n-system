@@ -143,6 +143,7 @@ export default {
   background-color: white;
   transition: all 0.8s;
   box-shadow: -10px 0px 40px rgba(0, 0, 0, 0.1);
+  overflow-y: auto;
 }
 .filters__show {
   right: 0;
