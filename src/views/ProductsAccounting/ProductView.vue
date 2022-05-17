@@ -273,7 +273,6 @@ export default {
     var quill = new Quill("#editor", {
       theme: "snow", // Specify theme in configuration
     });
-    quill.render();
   },
 };
 </script>
