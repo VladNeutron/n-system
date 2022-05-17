@@ -1,7 +1,6 @@
 <template>
   <the-navbar></the-navbar>
   <main class="main-content border-radius-lg">
-    <counter-modal></counter-modal>
     <the-header></the-header>
     <div class="card pt-4 pb-4 card__padding">
       <div class="page__name d-flex align-items-center justify-content-between">
@@ -98,17 +97,15 @@
           </div>
         </div>
         <div class="col">
-          <div class="bg-gradient-dark border-radius-lg py-3 pe-1 mb-3">
+          <div
+            class="bg-gradient-dark border-radius-lg py-3 pe-1 mb-3 chars__adapt"
+            style=""
+          >
             <canvas
               id="chart-bars"
               class="chart-canvas chartjs-render-monitor"
               height="170"
-              style="
-                display: block;
-                height: 15.938vw;
-                width: 45.417vw;
-                box-sizing: border-box;
-              "
+              style="height: 15.938vw; width: 45.417vw; box-sizing: border-box"
               width="495"
             ></canvas>
           </div>
@@ -418,6 +415,27 @@
 .card__padding {
   padding-left: 1.667vw;
   padding-right: 1.667vw;
+}
+@media screen and (max-width: 1600px) {
+  .chars__adapt {
+    width: 490px;
+  }
+  .btn {
+    font-size: 12px !important;
+  }
+  .comment {
+    align-items: center;
+  }
+  .action {
+    padding: 0.75rem 1.5rem;
+  }
+  td,
+  th {
+    font-size: 14px;
+  }
+  .order__table__body {
+    height: 400px;
+  }
 }
 </style>
 <script>

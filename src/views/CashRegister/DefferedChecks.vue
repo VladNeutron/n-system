@@ -309,4 +309,9 @@ td {
 .pagination {
   align-self: end;
 }
+@media screen and (max-width: 1600px) {
+  .btn {
+    font-size: 12px !important;
+  }
+}
 </style>
