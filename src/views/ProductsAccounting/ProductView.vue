@@ -337,7 +337,7 @@ export default {
 } */
 
 .quill-wrapper {
-  min-width: 512px;
+  width: 512px;
   width: 100%;
   height: 157px;
 }
