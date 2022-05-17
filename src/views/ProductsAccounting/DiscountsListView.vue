@@ -23,7 +23,7 @@
                       class="form-control form-control-lg inv__inp"
                       placeholder="Поиск"
                       type="text"
-                       id="search"
+                      id="search"
                       v-model.trim="search"
                     />
                   </div>
@@ -239,16 +239,14 @@ export default {
           period: "01.04.2022 - 15.04.2022",
         },
       ],
-       search: "",
+      search: "",
     };
   },
-    computed: {
+  computed: {
     filteredDiscounts() {
-        return this.items.filter((item) => {
-          return (
-            item.type.toLowerCase().includes(this.search.toLowerCase()) 
-          );
-        });
+      return this.items.filter((item) => {
+        return item.type.toLowerCase().includes(this.search.toLowerCase());
+      });
     },
   },
 };
@@ -395,7 +393,6 @@ td {
   font-weight: 600;
   font-size: 0.729vw;
   align-items: center;
-  height: 2.604vw;
   text-transform: none;
 }
 .inv__buttons {
@@ -417,5 +414,22 @@ td {
 .container__padding {
   padding-left: 2.135vw;
   padding-right: 5.208vw;
+}
+@media screen and (max-width: 1600px) {
+  .btn {
+    font-size: 12px !important;
+  }
+  .input-group {
+    margin-top: 1px !important;
+  }
+  td {
+    font-size: 14px;
+  }
+  .dropdown-content {
+    width: 130px;
+  }
+  .inv__title__text {
+    font-size: 20px;
+  }
 }
 </style>
