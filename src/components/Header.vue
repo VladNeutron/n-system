@@ -56,7 +56,7 @@
             </a>
           </li>
           <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
-            <a href="javascript:;" class="nav-link text-body p-0" id="iconNavbarSidenav">
+            <a href="javascript:;" class="nav-link text-body p-0" id="iconNavbarSidenav" @click="showSidebar">
               <div class="sidenav-toggler-inner">
                 <i class="sidenav-toggler-line"></i>
                 <i class="sidenav-toggler-line"></i>
@@ -139,6 +139,7 @@
 
 <script>
 import '@/assets/js/soft-ui-dashboard.min.js'
+import { directive } from '@babel/types';
 import PerfectScrollbar from '../assets/js/plugins/perfect-scrollbar.min.js'
 export default {
     methods:{
@@ -235,6 +236,24 @@ export default {
             if (callNow) func.apply(context, args);
         };
         },
+        navbresize(){
+          if(document.documentElement.clientWidth < 1200){
+            document.querySelector('.sidenav').classList.add('bg-white');
+            document.querySelector('.sidenav').style.zIndex='1100'
+            if(document.querySelector('body').className.includes('g-sidenav-pinned')){
+              document.querySelector('body').classList.remove('g-sidenav-pinned') 
+            }
+          }
+          else{
+            if(document.querySelector('.sidenav').className.includes('bg-white')){
+              document.querySelector('.sidenav').classList.remove('bg-white')
+              document.querySelector('.sidenav').style.zIndex='' 
+            }
+          }
+        },
+        showSidebar(){
+          document.querySelector('body').classList.toggle('g-sidenav-pinned')
+        }
     },
     mounted(){
         (function() {
@@ -292,8 +311,17 @@ export default {
             this.navbarBlurOnScroll('navbarBlur');
         }
 
-        console.log(this.$route.fullPath.split("/"));
-        console.log(this.$router.options.routes);
+        // console.log(this.$route.fullPath.split("/"));
+        // console.log(this.$router.options.routes);
+
+        window.onresize = this.navbresize;
+        if(document.documentElement.clientWidth < 1200){
+          document.querySelector('.sidenav').classList.add('bg-white')
+          document.querySelector('.sidenav').style.zIndex='1100'
+          if(document.querySelector('body').className.includes('g-sidenav-pinned')){
+            document.querySelector('body').classList.remove('g-sidenav-pinned') 
+          }
+        }
     },
     computed: {
       headerRoute(){
