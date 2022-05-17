@@ -21,7 +21,7 @@
       </div>
 
       <div class="card info__card gap-2 p-4">
-        <h5 class="text-start">Информация о товаре</h5>
+        <h5 class="text-start mb-2">Информация о товаре</h5>
         <div class="info__card-top d-flex">
           <div class="form-group m-0 text-start">
             <label for="productName">Название</label>
@@ -172,9 +172,9 @@
       <div class="d-flex flex-column w-100 gap-4">
         <div class="main__body-size d-flex flex-column p-4 card">
           <div class="d-flex justify-content-between align-items center">
-            <h5 class="text-start">Управление размерами</h5>
+            <h5 class="text-start text-wrap">Управление размерами</h5>
             <button
-              class="btn bg-gradient-dark mb-0"
+              class="btn bg-gradient-dark mb-0 modal-btn"
               data-bs-toggle="modal"
               data-bs-target="#InpModal"
               @click="getModalId('size')"
@@ -206,7 +206,7 @@
           <div class="d-flex justify-content-between align-items center">
             <h5>Артикулы</h5>
             <button
-              class="btn bg-gradient-dark mb-0"
+              class="btn bg-gradient-dark mb-0 modal-btn"
               data-bs-toggle="modal"
               data-bs-target="#InpModal"
               @click="getModalId('articles')"
@@ -384,6 +384,24 @@ export default {
 </script>
 
 <style scoped>
+label {
+  font-family: Open Sans;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 19px;
+  letter-spacing: -0.38723403215408325px;
+  text-align: left;
+}
+.form-group > input,
+.form-check-label,
+a {
+  font-family: Open Sans;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 19px;
+  letter-spacing: -0.38723403215408325px;
+  text-align: left;
+}
 .arrows {
   position: relative;
   top: -60px;
@@ -484,8 +502,8 @@ export default {
   width: 100%;
 }
 .modal-btn {
-  width: 179px;
   height: 40px;
+  padding: 10px 24px;
 }
 .articles__content-item {
   background: #f8f9fa;
