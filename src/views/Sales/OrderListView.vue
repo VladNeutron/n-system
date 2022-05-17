@@ -463,7 +463,7 @@ export default {
   color: gray;
 }
 .main__card {
-  min-height: 80vh;
+  max-height: 80vh;
 }
 .th__col {
   color: #a0aec0 !important;
@@ -477,19 +477,18 @@ table {
 th {
   color: #2d3748;
   font-size: 12px;
+  text-align: center;
 }
 td {
   font-size: 14px;
   font-weight: 600;
+  text-align: center;
 }
-.card {
-  max-height: 838px;
-}
+
 .pagination {
   align-self: end;
 }
-@media screen and (max-width: 1600px) {
-}
+
 .filters__period {
   display: flex;
   justify-content: space-between;
