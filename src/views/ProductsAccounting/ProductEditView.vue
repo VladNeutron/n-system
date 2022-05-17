@@ -99,7 +99,7 @@
             data-bs-toggle="modal"
             data-bs-target="#InpModal"
           >
-            <img class="pe-2" src="@/assets/css/icons/add.svg" alt="" />
+            <img class="pe-2 pb-1" src="@/assets/css/icons/add.svg" alt="" />
             Добавить цвет
           </button>
         </div>
@@ -172,7 +172,7 @@
       <div class="d-flex flex-column w-100 gap-4">
         <div class="main__body-size d-flex flex-column p-4 card">
           <div class="d-flex justify-content-between align-items center">
-            <h5>Управление размерами</h5>
+            <h5 class="text-start">Управление размерами</h5>
             <button
               class="btn bg-gradient-dark mb-0"
               data-bs-toggle="modal"
@@ -262,7 +262,7 @@
                 </div>
               </div>
               <div>
-                <button class="delete-btn">
+                <button class="delete-btn ms-2">
                   <img src="@/assets/css/icons/delete.svg" alt="" />
                 </button>
               </div>
@@ -457,10 +457,10 @@ export default {
   width: 100%;
 }
 .info__card-top div {
-  min-width: 380px;
+  width: 380px;
 }
 .info__card-mid div {
-  min-width: 191px;
+  width: 191px;
 }
 .img__card {
   min-width: 490px;
