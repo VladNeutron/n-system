@@ -479,6 +479,12 @@ const routes = [
     meta: { NavLink: "Список должностей" },
   },
   {
+    path: "/accounting/contractor-info",
+    name: "contractor-info",
+    component: () => import("../views/Accounting/ContractorInfo.vue"),
+    meta: { NavLink: "Информация о контрагенте" },
+  },
+  {
     path: "/accounting/edit-company",
     name: "accounting-edit-company",
     component: () => import("../views/EditOrganization.vue"),
