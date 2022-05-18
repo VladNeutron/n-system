@@ -17,7 +17,7 @@
           <div class="card">
             <div class="inv__buttons">
               <div class="inv__left__btn">
-                <div class="form-group">
+                <!-- <div class="form-group">
                   <div class="input-group">
                     <span class="input-group-text"
                       ><img
@@ -33,7 +33,7 @@
                       v-model.trim="search"
                     />
                   </div>
-                </div>
+                </div> -->
                 <button
                   type="button"
                   class="btn bg-gradient-secondary"
@@ -47,24 +47,11 @@
                   Добавить товар
                 </button>
               </div>
-              <div class="inv__right__btn">
+              <div class="inv__right__btn gap-3">
+                <list-search></list-search>
+                <print-button></print-button>
+                <download-button></download-button>
                 <filters-button></filters-button>
-                <button type="button" class="inv__btn btn btn-outline-dark">
-                  <img
-                    src="@/assets/img/print.svg"
-                    style="width: 1.25vw; margin-right: 0.417vw"
-                    alt=""
-                  />
-                  печать
-                </button>
-                <button type="button" class="inv__btn btn btn-outline-dark">
-                  <img
-                    src="@/assets/img/download.svg"
-                    style="width: 1.25vw; margin-right: 0.417vw"
-                    alt=""
-                  />
-                  скачать
-                </button>
               </div>
             </div>
             <div class="inv__block">

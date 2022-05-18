@@ -32,36 +32,10 @@
                 </button>
               </div>
               <div class="table__inputs d-flex gap-3 align-content-center">
-                <div class="form-group m-0">
-                  <div class="input-group mt-1">
-                    <span class="input-group-text"
-                      ><img src="@/assets/css/icons/searchIcon.svg" alt=""
-                    /></span>
-                    <input
-                      class="form-control form__width"
-                      placeholder="Поиск..."
-                      id="search"
-                      type="text"
-                    />
-                  </div>
-                </div>
-                <button class="btn btn-outline-dark mb-0">
-                  <span
-                    ><img
-                      src="@/assets/css/icons/print.svg"
-                      class="me-1"
-                      alt="" /></span
-                  >Печать
-                </button>
-                <button class="btn btn-outline-dark mb-0">
-                  <span
-                    ><img
-                      src="@/assets/css/icons/down-arrow.svg"
-                      class="me-1"
-                      alt="" /></span
-                  >Скачать
-                </button>
-                <button class="btn btn-outline-dark mb-0">Фильтры</button>
+                <list-search></list-search>
+                <print-button></print-button>
+                <download-button></download-button>
+                <filters-button></filters-button>
               </div>
             </div>
             <div class="page__table">
@@ -200,6 +174,7 @@
 <script>
 import CounterModal from "@/components/CounterModal.vue";
 import Filter from "../../components/Filters.vue";
+import FiltersButton from '@/components/buttons/FiltersButton.vue';
 export default {
   data() {
     return {
@@ -259,6 +234,7 @@ export default {
   components: {
     "the-filter": Filter,
     CounterModal,
+    FiltersButton,
   },
 };
 </script>

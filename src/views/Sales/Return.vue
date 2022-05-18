@@ -542,3 +542,9 @@ th {
   vertical-align: middle;
 }
 </style>
+
+<style>
+.table .dropdown{
+  height: 100%;
+}
+</style>

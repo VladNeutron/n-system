@@ -20,7 +20,7 @@
             <div>
               <div class="topbuttons__cont">
                 <div class="form-group m-0">
-                  <div class="input-group mt-1 barcode__search">
+                  <div class="input-group barcode__search">
                     <span class="input-group-text"
                       ><img src="@/assets/css/icons/searchIcon.svg" alt=""
                     /></span>
@@ -543,6 +543,7 @@ export default {
   display: flex;
   align-items: center;
   margin-right: 0.833vw;
+  height: 40px;
 }
 .reloadDataImg {
   width: 1.042vw;
