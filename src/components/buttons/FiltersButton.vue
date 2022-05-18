@@ -28,7 +28,7 @@ export default {
   text-transform: uppercase;
   font-weight: 600;
   font-size: 12px;
-  max-height: 40px;
+  height: 40px;
 }
 .inv__btn,
 .inv__inp {

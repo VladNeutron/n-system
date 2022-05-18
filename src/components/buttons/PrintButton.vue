@@ -16,7 +16,7 @@ export default {
 
 <style scoped>
     .print__button{
-        max-height: 40px;
+        height: 40px;
         text-transform: uppercase !important;
         font-weight: 600;
         font-size: 12px;
