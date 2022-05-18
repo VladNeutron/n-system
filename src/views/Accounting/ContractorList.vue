@@ -19,6 +19,7 @@
                 <button
                   class="btn bg-gradient-dark mb-0"
                   style="margin-right: 0.833vw"
+                  onclick="window.location.href = '/accounting/new-contractor'"
                 >
                   <img src="@/assets/img/whtplus.svg" alt="" /> Добавить
                   контрагента
