@@ -327,14 +327,42 @@ export default {
       headerRoute(){
         let newRoute = [];
         let allRoutes = this.$router.options.routes;
-        if(this.$route.fullPath.split("/").length < 3){
+        if(this.$route.fullPath.split("/").length == 1){
           newRoute.push({name:'Главная страница',path: '/'}) 
           return newRoute
+        }
+        else if(this.$route.fullPath.split("/").length == 2){
+          let currentRote = '';
+          this.$route.fullPath.split("/").forEach((item,ind) => {
+            if(item != ''){
+              currentRote = currentRote + '/' + item
+                for(let i=0; i < allRoutes.length; i++){
+                if(allRoutes[i].path == currentRote){
+                  if(allRoutes[i].meta != undefined){
+                    newRoute.push({
+                      name: allRoutes[i].meta.NavLink,
+                      path: allRoutes[i].path,
+                    })
+                  }
+                  else{
+                    newRoute.push({name:'Задайте мета',path: '/'}) 
+                  }
+                  break
+                }
+                }
+            }
+
+          })
+          if(newRoute.length == 0){
+            newRoute.push({name:'Главная страница',path: '/'}) 
+            return newRoute
+          }
+          return newRoute;
         }
         else{
           let currentRote = '';
           this.$route.fullPath.split("/").forEach((item,ind) => {
-            console.log(item)
+            
             if(item != ''){
               currentRote = currentRote + '/' + item
               // if(ind != 1){
@@ -370,7 +398,6 @@ export default {
                 }
                 }
               
-              console.log(currentRote);
             }
 
           })
