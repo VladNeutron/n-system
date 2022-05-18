@@ -5,277 +5,281 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-12">
-      <lists-header>
-        <template v-slot:title> Организация </template>
-        <template v-slot:description>
-          Настройки вашей компании
-        </template>
-      </lists-header>
-      <div class="row">
-        <div class="col">
-          <div class="about__company">
-            <div class="about__content">
-              <div class="about__header">
-                <div class="company__header">
-                  <p class="company__main">Информация о компании</p>
-                  <p class="company__sec">
-                    Внесите изменения и нажмите “Сохранить”
-                  </p>
-                </div>
-                <button class="btn about__btn">Сохранить изменения</button>
-              </div>
-              <div class="about__body">
-                <div class="d-flex">
-                  <div>
-                    <div class="form-group">
-                      <label for="exampleFormControlInput1" class="about__label"
-                        >Название компании</label
-                      >
-                      <input
-                        type="text"
-                        class="form-control"
-                        id="exampleFormControlInput1"
-                        placeholder="ТОО “Рога и Копыта”"
-                      />
-                    </div>
-                    <div class="form-group">
-                      <label
-                        for="exampleFormControlSelect2"
-                        class="about__label"
-                        >Тип компании</label
-                      >
-
-                      <div class="drop">
-                        <img
-                          src="@/assets/img/arrow.svg"
-                          style="width: 0.833vw"
-                          class="arrow"
-                          alt=""
-                        />
-                        <select
-                          class="form-control"
-                          id="exampleFormControlSelect2"
-                        >
-                          <option>Онлайн-магазин</option>
-                          <option>ТОО</option>
-                          <option>ООО</option>
-                          <option>ОАО</option>
-                        </select>
-                      </div>
-                    </div>
-                    <div class="form-group">
-                      <label
-                        for="exampleFormControlSelect3"
-                        class="about__label"
-                        >Тип налогооблажения</label
-                      >
-
-                      <div class="drop">
-                        <img
-                          src="@/assets/img/arrow.svg"
-                          style="width: 0.833vw"
-                          class="arrow"
-                          alt=""
-                        />
-                        <select
-                          class="form-control"
-                          id="exampleFormControlSelect3"
-                        >
-                          <option>УСН</option>
-                          <option>ТОО</option>
-                          <option>ООО</option>
-                          <option>ОАО</option>
-                        </select>
-                      </div>
-                    </div>
-                    <div class="form-group">
-                      <label for="exampleFormControlInput4" class="about__label"
-                        >ИИН/БИН</label
-                      >
-                      <input
-                        type="text"
-                        class="form-control"
-                        id="exampleFormControlInput4"
-                        placeholder="0987654323456789"
-                      />
-                    </div>
-                    <div class="VAT">
-                      <p class="vat__text">Вы плательщик НДС?</p>
-                    </div>
-                    <div class="d-flex">
-                      <div class="form-check">
-                        <label class="custom-control-label" for="customRadio1"
-                          >Да</label
-                        >
-                        <input
-                          class="form-check-input"
-                          type="radio"
-                          name="flexRadioDefault"
-                          id="customRadio1"
-                        />
-                      </div>
-                      <div class="form-check" style="margin-left: 2.083vw">
-                        <input
-                          class="form-check-input"
-                          type="radio"
-                          name="flexRadioDefault"
-                          id="customRadio2"
-                        />
-                        <label class="custom-control-label" for="customRadio2"
-                          >Нет</label
-                        >
-                      </div>
-                    </div>
-                  </div>
-                  <div style="margin-left: 23px">
-                    <div class="form-group">
-                      <label for="exampleFormControlInput5" class="about__label"
-                        >ФИО Директора</label
-                      >
-                      <input
-                        type="text"
-                        class="form-control"
-                        id="exampleFormControlInput5"
-                        placeholder="Иванов Иван Иванович"
-                      />
-                    </div>
-                    <div class="form-group">
-                      <label for="exampleFormControlInput6" class="about__label"
-                        >Контактный телефон</label
-                      >
-                      <input
-                        type="tel"
-                        class="form-control phone__org"
-                        id="exampleFormControlInput6"
-                        placeholder="+7 707 123 45 67"
-                      />
-                    </div>
-                    <div class="form-group">
-                      <label for="exampleFormControlInput7" class="about__label"
-                        >E-mail</label
-                      >
-                      <input
-                        type="email"
-                        class="form-control"
-                        id="exampleFormControlInput7"
-                        placeholder="ivan.ivaaaaan@gmail.com"
-                      />
-                    </div>
-                    <div class="form-group">
-                      <label
-                        for="exampleFormControlTextarea1"
-                        class="about__label"
-                        >Юридический адрес</label
-                      >
-                      <textarea
-                        class="form-control"
-                        id="exampleFormControlTextarea1"
-                        rows="2"
-                        placeholder="521370, Саратовская область, город Люберцы, пл. 1905 года, 5"
-                      ></textarea>
-                    </div>
-                    <div class="form-group">
-                      <label
-                        for="exampleFormControlTextarea2"
-                        class="about__label"
-                        >Фактический адрес</label
-                      >
-                      <textarea
-                        class="form-control"
-                        id="exampleFormControlTextarea2"
-                        rows="2"
-                        placeholder="521370, Саратовская область, город Люберцы, пл. 1905 года, 5"
-                      ></textarea>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="about__company">
-            <div class="bank__about__content">
-              <div class="about__header">
-                <div class="company__header">
-                  <p class="company__main">Банковские счета</p>
-                  <p class="company__sec">
-                    Внесите изменения и нажмите “Сохранить”
-                  </p>
-                </div>
-                <button class="btn about__btn">Сохранить изменения</button>
-              </div>
-              <div class="bank__body" v-if="isAdded">
-                <div class="bank__content" v-for="item in items" :key="item">
-                  <div class="bank__header">
-                    <div class="bank__yname">
-                      <p class="yname__text">{{ item.name }}</p>
-                      <span class="currency"
-                        ><img :src="item.img" style="width: 0.625vw" alt=""
-                      /></span>
-                    </div>
-                    <img
-                      src="@/assets/img/edit.svg"
-                      style="width: 1.25vw; cursor: pointer"
-                      alt=""
-                    />
-                  </div>
-                  <div class="bank__info">
-                    <div class="bank__info__text">
-                      <p class="bank__info__name">Банк:</p>
-                      <p class="bank__info__main">
-                        {{ item.fullName }}
+          <lists-header>
+            <template v-slot:title> Организация </template>
+            <template v-slot:description> Настройки вашей компании </template>
+          </lists-header>
+          <div class="row">
+            <div class="col">
+              <div class="about__company">
+                <div class="about__content">
+                  <div class="about__header">
+                    <div class="company__header">
+                      <p class="company__main">Информация о компании</p>
+                      <p class="company__sec">
+                        Внесите изменения и нажмите “Сохранить”
                       </p>
                     </div>
-                    <div class="bank__info__text">
-                      <p class="bank__info__name">БИК:</p>
-                      <p class="bank__info__main">{{ item.bik }}</p>
-                    </div>
-                    <div class="bank__info__text">
-                      <p class="bank__info__name">{{ item.kbe }}</p>
-                      <p class="bank__info__main">14</p>
-                    </div>
-                    <div class="bank__info__text">
-                      <p class="bank__info__name">ИИК:</p>
-                      <p class="bank__info__main">{{ item.iik }}</p>
-                    </div>
-                    <div class="bank__info__text">
-                      <p class="bank__info__name">ИИН/БИН:</p>
-                      <p class="bank__info__main">{{ item.inn }}</p>
+                    <button class="btn about__btn">Сохранить изменения</button>
+                  </div>
+                  <div class="about__body">
+                    <div class="d-flex">
+                      <div>
+                        <div class="form-group">
+                          <label
+                            for="exampleFormControlInput1"
+                            class="about__label"
+                            >Название компании</label
+                          >
+                          <input
+                            type="text"
+                            class="form-control"
+                            id="exampleFormControlInput1"
+                            placeholder="ТОО “Рога и Копыта”"
+                          />
+                        </div>
+                        <div class="form-group">
+                          <label
+                            for="exampleFormControlSelect2"
+                            class="about__label"
+                            >Тип компании</label
+                          >
+
+                          <div class="drop">
+                            <select
+                              class="form-select"
+                              id="exampleFormControlSelect2"
+                            >
+                              <option>Онлайн-магазин</option>
+                              <option>ТОО</option>
+                              <option>ООО</option>
+                              <option>ОАО</option>
+                            </select>
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <label
+                            for="exampleFormControlSelect3"
+                            class="about__label"
+                            >Тип налогооблажения</label
+                          >
+
+                          <div class="drop">
+                            <select
+                              class="form-select"
+                              id="exampleFormControlSelect3"
+                            >
+                              <option>УСН</option>
+                              <option>ТОО</option>
+                              <option>ООО</option>
+                              <option>ОАО</option>
+                            </select>
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <label
+                            for="exampleFormControlInput4"
+                            class="about__label"
+                            >ИИН/БИН</label
+                          >
+                          <input
+                            type="text"
+                            class="form-control"
+                            id="exampleFormControlInput4"
+                            placeholder="0987654323456789"
+                          />
+                        </div>
+                        <div class="VAT">
+                          <p class="vat__text">Вы плательщик НДС?</p>
+                        </div>
+                        <div class="d-flex">
+                          <div class="form-check">
+                            <label
+                              class="custom-control-label"
+                              for="customRadio1"
+                              >Да</label
+                            >
+                            <input
+                              class="form-check-input"
+                              type="radio"
+                              name="flexRadioDefault"
+                              id="customRadio1"
+                            />
+                          </div>
+                          <div class="form-check" style="margin-left: 2.083vw">
+                            <input
+                              class="form-check-input"
+                              type="radio"
+                              name="flexRadioDefault"
+                              id="customRadio2"
+                            />
+                            <label
+                              class="custom-control-label"
+                              for="customRadio2"
+                              >Нет</label
+                            >
+                          </div>
+                        </div>
+                      </div>
+                      <div style="margin-left: 23px">
+                        <div class="form-group">
+                          <label
+                            for="exampleFormControlInput5"
+                            class="about__label"
+                            >ФИО Директора</label
+                          >
+                          <input
+                            type="text"
+                            class="form-control"
+                            id="exampleFormControlInput5"
+                            placeholder="Иванов Иван Иванович"
+                          />
+                        </div>
+                        <div class="form-group">
+                          <label
+                            for="exampleFormControlInput6"
+                            class="about__label"
+                            >Контактный телефон</label
+                          >
+                          <input
+                            type="tel"
+                            class="form-control phone__org"
+                            id="exampleFormControlInput6"
+                            placeholder="+7 707 123 45 67"
+                          />
+                        </div>
+                        <div class="form-group">
+                          <label
+                            for="exampleFormControlInput7"
+                            class="about__label"
+                            >E-mail</label
+                          >
+                          <input
+                            type="email"
+                            class="form-control"
+                            id="exampleFormControlInput7"
+                            placeholder="ivan.ivaaaaan@gmail.com"
+                          />
+                        </div>
+                        <div class="form-group">
+                          <label
+                            for="exampleFormControlTextarea1"
+                            class="about__label"
+                            >Юридический адрес</label
+                          >
+                          <textarea
+                            class="form-control"
+                            id="exampleFormControlTextarea1"
+                            rows="2"
+                            placeholder="521370, Саратовская область, город Люберцы, пл. 1905 года, 5"
+                          ></textarea>
+                        </div>
+                        <div class="form-group">
+                          <label
+                            for="exampleFormControlTextarea2"
+                            class="about__label"
+                            >Фактический адрес</label
+                          >
+                          <textarea
+                            class="form-control"
+                            id="exampleFormControlTextarea2"
+                            rows="2"
+                            placeholder="521370, Саратовская область, город Люберцы, пл. 1905 года, 5"
+                          ></textarea>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
-              <div v-else>
-                <div class="d-flex justify-content-center">
-                  <img
-                    src="@/assets/img/addbank.svg"
-                    style="width: 4.167vw"
-                    alt=""
-                  />
+            </div>
+            <div class="col">
+              <div class="about__company">
+                <div class="bank__about__content">
+                  <div class="about__header">
+                    <div class="company__header">
+                      <p class="company__main">Банковские счета</p>
+                      <p class="company__sec">
+                        Внесите изменения и нажмите “Сохранить”
+                      </p>
+                    </div>
+                    <button class="btn about__btn">Сохранить изменения</button>
+                  </div>
+                  <div class="bank__body" v-if="isAdded">
+                    <div
+                      class="bank__content"
+                      v-for="item in items"
+                      :key="item"
+                    >
+                      <div class="bank__header">
+                        <div class="bank__yname">
+                          <p class="yname__text">{{ item.name }}</p>
+                          <span class="currency"
+                            ><img :src="item.img" style="width: 0.625vw" alt=""
+                          /></span>
+                        </div>
+                        <img
+                          src="@/assets/img/edit.svg"
+                          style="width: 1.25vw; cursor: pointer"
+                          alt=""
+                        />
+                      </div>
+                      <div class="bank__info">
+                        <div class="bank__info__text">
+                          <p class="bank__info__name">Банк:</p>
+                          <p class="bank__info__main">
+                            {{ item.fullName }}
+                          </p>
+                        </div>
+                        <div class="bank__info__text">
+                          <p class="bank__info__name">БИК:</p>
+                          <p class="bank__info__main">{{ item.bik }}</p>
+                        </div>
+                        <div class="bank__info__text">
+                          <p class="bank__info__name">{{ item.kbe }}</p>
+                          <p class="bank__info__main">14</p>
+                        </div>
+                        <div class="bank__info__text">
+                          <p class="bank__info__name">ИИК:</p>
+                          <p class="bank__info__main">{{ item.iik }}</p>
+                        </div>
+                        <div class="bank__info__text">
+                          <p class="bank__info__name">ИИН/БИН:</p>
+                          <p class="bank__info__main">{{ item.inn }}</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div v-else>
+                    <div class="d-flex justify-content-center">
+                      <img
+                        src="@/assets/img/addbank.svg"
+                        style="width: 4.167vw"
+                        alt=""
+                      />
+                    </div>
+                    <div class="d-flex justify-content-center">
+                      <p class="bank__text">Добавьте свои банковские счета</p>
+                    </div>
+                  </div>
+                  <div class="bank__footer">
+                    <button
+                      class="btn add__bank"
+                      data-bs-toggle="modal"
+                      data-bs-target="#InfoThird"
+                    >
+                      <img
+                        src="@/assets/img/plus.svg"
+                        style="width: 0.833vw; margin-right: 0.833vw"
+                        alt=""
+                      />
+                      Добавить счет
+                    </button>
+                  </div>
                 </div>
-                <div class="d-flex justify-content-center">
-                  <p class="bank__text">Добавьте свои банковские счета</p>
-                </div>
-              </div>
-              <div class="bank__footer">
-                <button
-                  class="btn add__bank"
-                  data-bs-toggle="modal"
-                  data-bs-target="#InfoThird"
-                >
-                  <img
-                    src="@/assets/img/plus.svg"
-                    style="width: 0.833vw; margin-right: 0.833vw"
-                    alt=""
-                  />
-                  Добавить счет
-                </button>
               </div>
             </div>
           </div>
-        </div>
-      </div>
         </div>
       </div>
     </div>
@@ -325,7 +329,8 @@ export default {
 </script>
 
 <style scoped>
-.form-control {
+.form-control,
+.form-select {
   border: 1px solid #a0aec0;
 }
 .add__bank {
@@ -438,7 +443,8 @@ export default {
 .form-check {
   text-align: left;
 }
-.form-control {
+.form-control,
+.form-select {
   width: 22.031vw;
 }
 .form-group {

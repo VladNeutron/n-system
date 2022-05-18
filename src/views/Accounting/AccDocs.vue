@@ -10,7 +10,7 @@
         <p class="mb-0">Выберите необходимые вам документы</p>
       </div>
     </div>
-    <div class="card pt-2 pb-4 mx-5 mt-4 px-4">
+    <div class="card pt-2 pb-12 mx-5 mt-4 px-4">
       <div class="row">
         <div class="col-4">
           <div class="docs__content">
