@@ -28,19 +28,7 @@
                 Новый заказ
               </button>
               <div class="table__inputs d-flex gap-3 align-content-center align-items-center">
-                <div class="form-group m-0">
-                  <div class="input-group">
-                    <span class="input-group-text"
-                      ><img src="@/assets/css/icons/searchIcon.svg" alt=""
-                    /></span>
-                    <input
-                      class="form-control"
-                      placeholder="Поиск..."
-                      id="search"
-                      type="text"
-                    />
-                  </div>
-                </div>
+                <list-search></list-search>
                 <print-button></print-button>
                 <download-button></download-button>
                 <filter-button class="mb-0"></filter-button>
@@ -528,13 +516,13 @@ th {
   color: #2d3748;
   font-size: 12px;
   text-align: center;
-  vertical-align: baseline;
+  vertical-align: middle;
 }
 td {
   font-size: 14px;
   font-weight: 600;
   text-align: center;
-  vertical-align: baseline;
+  vertical-align: middle;
 }
 
 .pagination {

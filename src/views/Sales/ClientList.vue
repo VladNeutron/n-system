@@ -22,23 +22,6 @@
           <div class="card">
             <div class="inv__buttons p-4">
               <div class="inv__left__btn">
-                <div class="form-group">
-                  <div class="input-group">
-                    <span class="input-group-text"
-                      ><img
-                        src="@/assets/css/icons/searchIcon.svg"
-                        style="width: 0.833vw"
-                        alt=""
-                    /></span>
-                    <input
-                      class="form-control form-control-lg inv__inp"
-                      placeholder="Поиск"
-                      type="text"
-                      id="search"
-                      v-model.trim="search"
-                    />
-                  </div>
-                </div>
                 <button
                   type="button"
                   class="btn bg-gradient-secondary mb-0"
@@ -54,29 +37,10 @@
                   Добавить клиента
                 </button>
               </div>
-              <div class="inv__right__btn">
-                <button
-                  type="button"
-                  class="inv__btn btn btn-outline-dark mb-0"
-                >
-                  <img
-                    src="@/assets/img/print.svg"
-                    style="width: 24px; margin-right: 0.417vw"
-                    alt=""
-                  />
-                  печать
-                </button>
-                <button
-                  type="button"
-                  class="inv__btn btn btn-outline-dark mb-0"
-                >
-                  <img
-                    src="@/assets/img/download.svg"
-                    style="width: 24px; margin-right: 0.417vw"
-                    alt=""
-                  />
-                  скачать
-                </button>
+              <div class="inv__right__btn gap-3">
+                <list-search></list-search>
+                <print-button></print-button>
+                <download-button></download-button>
               </div>
             </div>
             <div class="inv__block">
@@ -583,7 +547,7 @@ export default {
   font-weight: 600;
   font-size: 13.997px;
   align-items: center;
-  height: 49.997px;
+  height: 40px;
   text-transform: none;
 }
 .inv__buttons {

@@ -1,5 +1,5 @@
 <template>
-  <button type="button" class="inv__btn btn btn-outline-dark openFilters" @click="openFilters">
+  <button type="button" class="inv__btn btn btn-outline-dark openFilters mb-0" @click="openFilters">
 
     ФИЛЬТРЫ
   </button>

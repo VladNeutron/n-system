@@ -22,6 +22,7 @@ import Cookie from "./components/Cookie.vue";
 import ListsHeader from '@/components/ListsHeader.vue';
 import PrintButton from '@/components/buttons/PrintButton.vue';
 import DownloadButton from '@/components/buttons/DownloadButton.vue';
+import ListSearch from '@/components/inputs/ListSearch.vue';
 
 
 const app = createApp(App).use(store).use(router);
@@ -35,5 +36,6 @@ app.component("cookie", Cookie);
 app.component("lists-header", ListsHeader);
 app.component("print-button", PrintButton);
 app.component("download-button", DownloadButton);
+app.component("list-search", ListSearch);
 
 app.mount("#app", Login);
