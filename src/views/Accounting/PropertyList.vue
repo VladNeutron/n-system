@@ -2,95 +2,101 @@
   <the-navbar></the-navbar>
   <main class="main-content border-radius-lg">
     <the-header></the-header>
-    <div class="page__name d-flex align-items-center ms-4">
-      <div class="page__name-title text-start">
-        <h3>Список имуществ</h3>
-        <p class="mb-0">Внесите изменения и не забудьте  нажать “Сохранить”</p>
-      </div>
-    </div>
-    <div class="card pt-4 pb-6 m-4">
-      <div class="d-flex justify-content-between align-items-center mx-4 mb-4">
-        <div>
-          <button class="btn bg-gradient-dark mb-0" style="margin-right: 0.833vw" data-bs-toggle="modal"
-          data-bs-target="#InpModal"  @click="isEdit = 'no'">
-            <img src="@/assets/img/whtplus.svg" alt="" /> Добавить имущество
-          </button>
-        </div>
-      </div>
-      <div class="page__table">
-        <table class="table table-hover">
-          <thead>
-            <tr class="">
-              
-              <th width="1%" scope="col" class="th__col">№</th>
-              <th scope="col" class="th__col">Название имущества</th>
-              <th scope="col" class="th__col">Тип имущества</th>
-              <th scope="col" class="th__col">Стоимость</th>
-              <th scope="col" class="th__col">Действия</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr v-for="(order, i) of orders" :key="order.id">
-              <th width="1%">{{ i + 1 }}</th>
-              <td>{{ order.name}}</td>
-              <td>{{ order.type }}</td>
-              <td>{{ order.price }} ₸</td>
-              <td>
-                <div class="dropdown">
-                  <img src="@/assets/img/dots.svg" style="width: 1.563vw; cursor: pointer" alt="" />
-                  <div class="dropdown-content">
-                    <a style="cursor: pointer" data-bs-toggle="modal" data-bs-target="#InpModal" @click="isEdit = 'yes'">Редактировать</a>
-                    <hr />
-                    <a style="cursor: pointer" data-bs-toggle="modal" data-bs-target="#DeleteInv">Удалить</a>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+          <lists-header>
+              <template v-slot:title> Список имуществ </template>
+              <template v-slot:description>
+                Внесите изменения и не забудьте  нажать “Сохранить”
+              </template>
+          </lists-header>
+          <div class="card pt-4 pb-6">
+            <div class="d-flex justify-content-between align-items-center mx-4 mb-4">
+              <div>
+                <button class="btn bg-gradient-dark mb-0" style="margin-right: 0.833vw" data-bs-toggle="modal"
+                data-bs-target="#InpModal"  @click="isEdit = 'no'">
+                  <img src="@/assets/img/whtplus.svg" alt="" /> Добавить имущество
+                </button>
+              </div>
+            </div>
+            <div class="page__table">
+              <table class="table table-hover">
+                <thead>
+                  <tr class="">
+                    
+                    <th width="1%" scope="col" class="th__col">№</th>
+                    <th scope="col" class="th__col">Название имущества</th>
+                    <th scope="col" class="th__col">Тип имущества</th>
+                    <th scope="col" class="th__col">Стоимость</th>
+                    <th scope="col" class="th__col">Действия</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr v-for="(order, i) of orders" :key="order.id">
+                    <th width="1%">{{ i + 1 }}</th>
+                    <td>{{ order.name}}</td>
+                    <td>{{ order.type }}</td>
+                    <td>{{ order.price }} ₸</td>
+                    <td>
+                      <div class="dropdown">
+                        <img src="@/assets/img/dots.svg" style="width: 1.563vw; cursor: pointer" alt="" />
+                        <div class="dropdown-content">
+                          <a style="cursor: pointer" data-bs-toggle="modal" data-bs-target="#InpModal" @click="isEdit = 'yes'">Редактировать</a>
+                          <hr />
+                          <a style="cursor: pointer" data-bs-toggle="modal" data-bs-target="#DeleteInv">Удалить</a>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="
+                pagination
+                d-flex
+                justify-content-end
+                align-items-center
+                me-4
+                mt-4
+              ">
+              <div class="d-flex align-items-center gap-3">
+                <div>
+                  <p class="m-0">Показано<span> 2112 12121</span></p>
+                </div>
+
+                <div class="page__search-pages d-flex align-content-center">
+                  <div class="pagination-container d-flex justify-items-center">
+                    <ul class="pagination pagination-info mb-0 pe-0">
+                      <li class="page-item">
+                        <a class="page-link" href="javascript:;" aria-label="Previous">
+                          <span aria-hidden="true"><i class="fa fa-angle-double-left" aria-hidden="true"></i></span>
+                        </a>
+                      </li>
+                      <li class="page-item">
+                        <a class="page-link" href="javascript:;">1</a>
+                      </li>
+                      <li class="page-item">
+                        <a class="page-link" href="javascript:;">2</a>
+                      </li>
+                      <li class="page-item active">
+                        <a class="page-link" href="javascript:;">3</a>
+                      </li>
+                      <li class="page-item">
+                        <a class="page-link" href="javascript:;">4</a>
+                      </li>
+                      <li class="page-item">
+                        <a class="page-link" href="javascript:;">5</a>
+                      </li>
+                      <li class="page-item">
+                        <a class="page-link" href="javascript:;" aria-label="Next">
+                          <span aria-hidden="true"><i class="fa fa-angle-double-right" aria-hidden="true"></i></span>
+                        </a>
+                      </li>
+                    </ul>
                   </div>
                 </div>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="
-          pagination
-          d-flex
-          justify-content-end
-          align-items-center
-          me-4
-          mt-4
-        ">
-        <div class="d-flex align-items-center gap-3">
-          <div>
-            <p class="m-0">Показано<span> 2112 12121</span></p>
-          </div>
-
-          <div class="page__search-pages d-flex align-content-center">
-            <div class="pagination-container d-flex justify-items-center">
-              <ul class="pagination pagination-info mb-0 pe-0">
-                <li class="page-item">
-                  <a class="page-link" href="javascript:;" aria-label="Previous">
-                    <span aria-hidden="true"><i class="fa fa-angle-double-left" aria-hidden="true"></i></span>
-                  </a>
-                </li>
-                <li class="page-item">
-                  <a class="page-link" href="javascript:;">1</a>
-                </li>
-                <li class="page-item">
-                  <a class="page-link" href="javascript:;">2</a>
-                </li>
-                <li class="page-item active">
-                  <a class="page-link" href="javascript:;">3</a>
-                </li>
-                <li class="page-item">
-                  <a class="page-link" href="javascript:;">4</a>
-                </li>
-                <li class="page-item">
-                  <a class="page-link" href="javascript:;">5</a>
-                </li>
-                <li class="page-item">
-                  <a class="page-link" href="javascript:;" aria-label="Next">
-                    <span aria-hidden="true"><i class="fa fa-angle-double-right" aria-hidden="true"></i></span>
-                  </a>
-                </li>
-              </ul>
+              </div>
             </div>
           </div>
         </div>

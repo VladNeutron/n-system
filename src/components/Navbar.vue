@@ -383,9 +383,76 @@
         </ul>
       </div>
       </li>
+
+      <!-- Бухгалтерия -->
+      <li class="nav-item">
+        <a data-bs-toggle="collapse" href="#Accounting" class="nav-link " aria-controls="Accounting" role="button" aria-expanded="false">
+      
+            <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center d-flex align-items-center justify-content-center  me-2">
+              <img src="@/assets/img/NavAccounting.svg" alt="">
+            </div>
+      
+          <span class="nav-link-text ms-1">Бухгалтерия</span>
+        </a>
+      
+        <div class="collapse " id="Accounting">
+          <ul class="nav ms-4 ps-3">
+      
+            <li class="nav-item ">
+              <router-link :to="{ name: 'accounting-edit-company'}" class="nav-link ">
+                <span class="sidenav-mini-icon"> К </span>
+                <span class="sidenav-normal">Компания</span>
+              </router-link>
+            </li>
+
+            <li class="nav-item ">
+              <a class="nav-link " data-bs-toggle="collapse" aria-expanded="false" href="#employees">
+                <span class="sidenav-mini-icon"> К </span>
+                <span class="sidenav-normal">Кадры  <b class="caret"></b></span>
+              </a>
+
+              <div class="collapse " id="employees">
+                <ul class="nav nav-sm flex-column">
+      
+                  <li class="nav-item ">
+                    <router-link :to="{ name: 'employees-list'}" class="nav-link ">
+                      <span class="sidenav-mini-icon"> С </span>
+                      <span class="sidenav-normal">Список сотрудников</span>
+                    </router-link>
+                  </li>
+      
+                  <li class="nav-item ">
+                    <router-link :to="{ name: 'position-list'}" class="nav-link ">
+                      <span class="sidenav-mini-icon text-xs"> Д </span>
+                      <span class="sidenav-normal">Список должностей</span>
+                    </router-link>
+                  </li>
+
+                </ul>
+            </div>
+            </li>
+
+            
+
+            <li class="nav-item ">
+              <router-link :to="{ name: 'contractor-list'}" class="nav-link ">
+                <span class="sidenav-mini-icon"> К </span>
+                <span class="sidenav-normal">Контрагенты </span>
+              </router-link>
+            </li>
+
+            <li class="nav-item ">
+              <router-link :to="{ name: 'property-list'}" class="nav-link ">
+                <span class="sidenav-mini-icon"> И </span>
+                <span class="sidenav-normal">Имущество </span>
+              </router-link>
+            </li>
+        </ul>
+      </div>
+      </li>
       
       
-      <!-- <li class="nav-item">
+       <!-- <li class="nav-item">
       
       
         <a data-bs-toggle="collapse" href="#ecommerceExamples" class="nav-link " aria-controls="ecommerceExamples" role="button" aria-expanded="false">

@@ -2,11 +2,15 @@
   <the-navbar></the-navbar>
   <main class="main-content border-radius-lg">
     <the-header></the-header>
-    <div class="company__content">
-      <div class="company__header">
-        <p class="company__main">Организация</p>
-        <p class="company__sec">Настройки вашей компании</p>
-      </div>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+      <lists-header>
+        <template v-slot:title> Организация </template>
+        <template v-slot:description>
+          Настройки вашей компании
+        </template>
+      </lists-header>
       <div class="row">
         <div class="col">
           <div class="about__company">
@@ -270,6 +274,8 @@
               </div>
             </div>
           </div>
+        </div>
+      </div>
         </div>
       </div>
     </div>
