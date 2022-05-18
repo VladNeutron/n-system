@@ -6,9 +6,7 @@
       <div class="row">
         <div class="col-12">
           <lists-header>
-            <template v-slot:title>
-              Список категорий   
-            </template>          
+            <template v-slot:title> Список категорий </template>
           </lists-header>
           <div class="card">
             <div class="inv__buttons">
@@ -103,23 +101,21 @@
                       <td width="75%" style="border-left: 0; border-right: 0">
                         {{ item.maincat }}
                       </td>
-                      <td style="border-left: 0">
-                        <div class="dropdown">
-                          <img
-                            src="@/assets/img/dots.svg"
-                            style="width: 1.563vw; cursor: pointer"
-                            alt=""
-                          />
-                          <div class="dropdown-content">
-                            <a href="#">Редактировать</a>
-                            <hr />
-                            <a
-                              style="cursor: pointer"
-                              data-bs-toggle="modal"
-                              data-bs-target="#DeleteInv"
-                              >Удалить</a
-                            >
-                          </div>
+                      <td class="dropdown" style="border-left: 0">
+                        <img
+                          src="@/assets/img/dots.svg"
+                          style="width: 1.563vw; cursor: pointer"
+                          alt=""
+                        />
+                        <div class="dropdown-content">
+                          <a href="#">Редактировать</a>
+                          <hr />
+                          <a
+                            style="cursor: pointer"
+                            data-bs-toggle="modal"
+                            data-bs-target="#DeleteInv"
+                            >Удалить</a
+                          >
                         </div>
                       </td>
                     </tr>
@@ -419,6 +415,7 @@ hr {
   border: 1px solid #2d3748;
 }
 .dropdown {
+  width: 100%;
   display: inline-block;
   position: relative;
 }

@@ -6,9 +6,7 @@
       <div class="row">
         <div class="col-12">
           <lists-header>
-            <template v-slot:title>
-              Список перемещений   
-            </template>        
+            <template v-slot:title> Список перемещений </template>
           </lists-header>
           <div class="card">
             <div class="inv__buttons">
@@ -79,25 +77,23 @@
                       <td>{{ item.name }}</td>
                       <td>{{ item.isReady }}</td>
                       <td>{{ item.count }}</td>
-                      <td>
-                        <div class="dropdown">
-                          <img
-                            src="@/assets/img/dots.svg"
-                            style="width: 1.563vw; cursor: pointer"
-                            alt=""
-                          />
-                          <div class="dropdown-content">
-                            <a href="/warehouse-accounting/edit-move/"
-                              >Редактировать</a
-                            >
-                            <hr />
-                            <a
-                              style="cursor: pointer"
-                              data-bs-toggle="modal"
-                              data-bs-target="#DeleteInv"
-                              >Удалить</a
-                            >
-                          </div>
+                      <td class="dropdown">
+                        <img
+                          src="@/assets/img/dots.svg"
+                          style="width: 1.563vw; cursor: pointer"
+                          alt=""
+                        />
+                        <div class="dropdown-content">
+                          <a href="/warehouse-accounting/edit-move/"
+                            >Редактировать</a
+                          >
+                          <hr />
+                          <a
+                            style="cursor: pointer"
+                            data-bs-toggle="modal"
+                            data-bs-target="#DeleteInv"
+                            >Удалить</a
+                          >
                         </div>
                       </td>
                     </tr>
@@ -212,6 +208,7 @@ hr {
   border: 1px solid #2d3748;
 }
 .dropdown {
+  width: 100%;
   display: inline-block;
   position: relative;
 }

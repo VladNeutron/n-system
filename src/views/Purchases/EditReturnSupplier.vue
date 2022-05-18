@@ -341,11 +341,7 @@
                     <div class="dropdown">
                       <img
                         src="@/assets/img/dots.svg"
-                        style="
-                          width: 1.563vw;
-                          cursor: pointer;
-                          transform: rotate(90deg);
-                        "
+                        style="width: 1.563vw; cursor: pointer"
                         alt=""
                       />
                       <div class="dropdown-content">
@@ -632,6 +628,7 @@
 }
 
 .dropdown {
+  width: 100%;
   display: inline-block;
   position: relative;
 }

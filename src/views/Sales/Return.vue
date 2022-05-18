@@ -21,7 +21,10 @@
             <div
               class="d-flex justify-content-between align-items-center mx-4 mb-4"
             >
-              <button class="btn bg-gradient-dark mb-0">
+              <button
+                class="btn bg-gradient-dark mb-0"
+                onclick="window.location.href = '/sales/edit-return'"
+              >
                 Оформить возврат
               </button>
               <div class="table__inputs d-flex gap-3 align-content-center">
@@ -80,13 +83,24 @@
                       <td>{{ order.type }}</td>
                       <td>{{ order.amount }}</td>
                       <td>{{ order.sum }}</td>
-
                       <td>
-                        <img
-                          src="@/assets/img/dots.svg"
-                          style="width: 1.563vw; cursor: pointer"
-                          alt=""
-                        />
+                        <div class="dropdown">
+                          <img
+                            src="@/assets/img/dots.svg"
+                            style="width: 1.563vw; cursor: pointer"
+                            alt=""
+                          />
+                          <div class="dropdown-content">
+                            <a href="/sales/create-return">Редактировать</a>
+                            <hr />
+                            <a
+                              style="cursor: pointer"
+                              data-bs-toggle="modal"
+                              data-bs-target="#DeleteInv"
+                              >Удалить</a
+                            >
+                          </div>
+                        </div>
                       </td>
                     </tr>
                   </tbody>
@@ -395,6 +409,32 @@ export default {
 </script>
 
 <style scoped>
+.dropdown {
+  width: 100%;
+  display: inline-block;
+  position: relative;
+}
+.dropdown-content {
+  text-align: left;
+  display: none;
+  position: absolute;
+  width: 7.815vw;
+  overflow: auto;
+  background: #f8f9fa;
+  box-shadow: 2px 2px 5.5px rgba(0, 0, 0, 0.25);
+  border-radius: 12px;
+  right: 15px;
+  z-index: 1;
+  padding: 0.625vw 0.625vw 0.625vw 0.625vw;
+}
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+.dropdown-content a {
+  display: block;
+  color: #2d3748;
+  text-decoration: none;
+}
 /* CHECKBOX BUTTON */
 
 .cat {

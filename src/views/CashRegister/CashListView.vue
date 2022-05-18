@@ -3,15 +3,13 @@
   <main class="main-content border-radius-lg">
     <the-header></the-header>
     <div class="container-fluid">
-      <div class="row ">
+      <div class="row">
         <div class="col-12">
           <lists-header>
-            <template v-slot:title>
-              Список касс   
-            </template>  
+            <template v-slot:title> Список касс </template>
             <template v-slot:description>
-              Внесите изменения и не забудьте  нажать “Сохранить”    
-            </template>          
+              Внесите изменения и не забудьте нажать “Сохранить”
+            </template>
           </lists-header>
           <div class="card" style="padding-top: 1.25vw">
             <div style="text-align: left; margin-left: 1.25vw">
@@ -82,29 +80,30 @@
                       <td style="border-left: 0; border-right: 0">
                         {{ item.status }}
                       </td>
-                      <td style="border-left: 0; border-right: 0">
-                        <div class="dropdown">
-                          <img
-                            src="@/assets/img/dots.svg"
-                            style="width: 1.563vw; cursor: pointer"
-                            alt=""
-                          />
-                          <div class="dropdown-content">
-                            <a
-                              style="cursor: pointer"
-                              data-bs-toggle="modal"
-                              data-bs-target="#InpModal"
-                              @click="isEdit = 'yes'"
-                              >Редактировать</a
-                            >
-                            <hr />
-                            <a
-                              style="cursor: pointer"
-                              data-bs-toggle="modal"
-                              data-bs-target="#DeleteInv"
-                              >Удалить</a
-                            >
-                          </div>
+                      <td
+                        class="dropdown"
+                        style="border-left: 0; border-right: 0"
+                      >
+                        <img
+                          src="@/assets/img/dots.svg"
+                          style="width: 1.563vw; cursor: pointer"
+                          alt=""
+                        />
+                        <div class="dropdown-content">
+                          <a
+                            style="cursor: pointer"
+                            data-bs-toggle="modal"
+                            data-bs-target="#InpModal"
+                            @click="isEdit = 'yes'"
+                            >Редактировать</a
+                          >
+                          <hr />
+                          <a
+                            style="cursor: pointer"
+                            data-bs-toggle="modal"
+                            data-bs-target="#DeleteInv"
+                            >Удалить</a
+                          >
                         </div>
                       </td>
                     </tr>
@@ -202,9 +201,8 @@
               >Торговая точка</label
             >
             <div class="select3">
-              <img src="@/assets/img/arrow.svg" style="width: 0.833vw" alt="" />
               <select
-                class="form-control disc__form"
+                class="form-select disc__form"
                 id="exampleFormControlSelect1"
               >
                 <option disabled selected>Выберите торговую точку</option>
@@ -232,9 +230,8 @@
               >Торговая точка</label
             >
             <div class="select3">
-              <img src="@/assets/img/arrow.svg" style="width: 0.833vw" alt="" />
               <select
-                class="form-control disc__form"
+                class="form-select disc__form"
                 id="exampleFormControlSelect1"
               >
                 <option disabled selected>Выберите торговую точку</option>
@@ -424,6 +421,7 @@ export default {
   overflow-y: scroll;
 }
 .dropdown {
+  width: 100%;
   display: inline-block;
   position: relative;
 }
@@ -436,7 +434,7 @@ export default {
   background: #f8f9fa;
   box-shadow: 2px 2px 5.5px rgba(0, 0, 0, 0.25);
   border-radius: 12px;
-  right: 15px;
+  right: 8.333vw;
   z-index: 1;
   padding: 0.625vw 0.625vw 0.625vw 0.625vw;
 }
