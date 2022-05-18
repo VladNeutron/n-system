@@ -436,11 +436,7 @@
                     <div class="dropdown">
                       <img
                         src="@/assets/img/dots.svg"
-                        style="
-                          width: 1.563vw;
-                          cursor: pointer;
-                          transform: rotate(90deg);
-                        "
+                        style="width: 1.563vw; cursor: pointer"
                         alt=""
                       />
                       <div class="dropdown-content">
@@ -788,6 +784,8 @@
 }
 
 .dropdown {
+  height: 100%;
+  width: 100%;
   display: inline-block;
   position: relative;
 }
@@ -978,7 +976,8 @@
   margin-right: 1.25vw;
 }
 
-.form-control {
+.form-control,
+.form-select {
   border: 1px solid #a0aec0;
   width: 9.948vw;
 }

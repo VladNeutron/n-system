@@ -6,9 +6,7 @@
       <div class="row">
         <div class="col-12">
           <lists-header>
-            <template v-slot:title>
-              Список инвентаризаций   
-            </template>         
+            <template v-slot:title> Список инвентаризаций </template>
           </lists-header>
           <!-- <div class="inv__title">
             <p class="inv__title__text">Список инвентаризаций</p>
@@ -82,25 +80,23 @@
                       <td>{{ item.name }}</td>
                       <td>{{ item.isReady }}</td>
                       <td>{{ item.count }}</td>
-                      <td>
-                        <div class="dropdown">
-                          <img
-                            src="@/assets/img/dots.svg"
-                            style="width: 1.563vw; cursor: pointer"
-                            alt=""
-                          />
-                          <div class="dropdown-content">
-                            <a href="/warehouse-accounting/edit-inv"
-                              >Редактировать</a
-                            >
-                            <hr />
-                            <a
-                              style="cursor: pointer"
-                              data-bs-toggle="modal"
-                              data-bs-target="#DeleteInv"
-                              >Удалить</a
-                            >
-                          </div>
+                      <td class="dropdown">
+                        <img
+                          src="@/assets/img/dots.svg"
+                          style="width: 1.563vw; cursor: pointer"
+                          alt=""
+                        />
+                        <div class="dropdown-content">
+                          <a href="/warehouse-accounting/edit-inv"
+                            >Редактировать</a
+                          >
+                          <hr />
+                          <a
+                            style="cursor: pointer"
+                            data-bs-toggle="modal"
+                            data-bs-target="#DeleteInv"
+                            >Удалить</a
+                          >
                         </div>
                       </td>
                     </tr>
@@ -206,6 +202,70 @@ export default {
           isReady: "Завершена",
           count: "15",
         },
+        {
+          date: "11 янв, 19:23, 2021",
+          id: "19",
+          place: "ТРЦ Москва",
+          name: "Мильчаков Валерий",
+          isReady: "Завершена",
+          count: "15",
+        },
+        {
+          date: "11 янв, 19:23, 2021",
+          id: "19",
+          place: "ТРЦ Москва",
+          name: "Мильчаков Валерий",
+          isReady: "Завершена",
+          count: "15",
+        },
+        {
+          date: "11 янв, 19:23, 2021",
+          id: "19",
+          place: "ТРЦ Москва",
+          name: "Мильчаков Валерий",
+          isReady: "Завершена",
+          count: "15",
+        },
+        {
+          date: "11 янв, 19:23, 2021",
+          id: "19",
+          place: "ТРЦ Москва",
+          name: "Мильчаков Валерий",
+          isReady: "Завершена",
+          count: "15",
+        },
+        {
+          date: "11 янв, 19:23, 2021",
+          id: "19",
+          place: "ТРЦ Москва",
+          name: "Мильчаков Валерий",
+          isReady: "Завершена",
+          count: "15",
+        },
+        {
+          date: "11 янв, 19:23, 2021",
+          id: "19",
+          place: "ТРЦ Москва",
+          name: "Мильчаков Валерий",
+          isReady: "Завершена",
+          count: "15",
+        },
+        {
+          date: "11 янв, 19:23, 2021",
+          id: "19",
+          place: "ТРЦ Москва",
+          name: "Мильчаков Валерий",
+          isReady: "Завершена",
+          count: "15",
+        },
+        {
+          date: "11 янв, 19:23, 2021",
+          id: "19",
+          place: "ТРЦ Москва",
+          name: "Мильчаков Валерий",
+          isReady: "Завершена",
+          count: "15",
+        },
       ],
     };
   },
@@ -213,10 +273,8 @@ export default {
 </script>
 
 <style scoped>
-hr {
-  border: 1px solid #2d3748;
-}
 .dropdown {
+  width: 100%;
   display: inline-block;
   position: relative;
 }
@@ -240,6 +298,9 @@ hr {
   display: block;
   color: #2d3748;
   text-decoration: none;
+}
+hr {
+  border: 1px solid #2d3748;
 }
 .th__col {
   color: #a0aec0 !important;

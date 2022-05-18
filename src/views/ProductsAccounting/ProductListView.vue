@@ -6,12 +6,10 @@
       <div class="row">
         <div class="col-12">
           <lists-header>
-            <template v-slot:title>
-              Список товаров    
-            </template>  
+            <template v-slot:title> Список товаров </template>
             <template v-slot:description>
-              Внесите изменения и не забудьте  нажать “Сохранить”    
-            </template>  
+              Внесите изменения и не забудьте нажать “Сохранить”
+            </template>
           </lists-header>
           <!-- <div class="inv__title">
             <p class="inv__title__text">Список товаров</p>
@@ -137,7 +135,7 @@
                       <td style="border-left: 0; border-right: 0">
                         {{ item.price }}
                       </td>
-                      <td style="border-left: 0">
+                      <td style="border-left: 0; border-right: 0">
                         <div class="dropdown">
                           <img
                             src="@/assets/img/dots.svg"
@@ -145,7 +143,9 @@
                             alt=""
                           />
                           <div class="dropdown-content">
-                            <a href="#">Редактировать</a>
+                            <a href="/warehouse-accounting/edit-inv"
+                              >Редактировать</a
+                            >
                             <hr />
                             <a
                               style="cursor: pointer"
@@ -308,7 +308,7 @@
 </template>
 
 <script>
-import ListsHeader from '@/components/ListsHeader.vue'
+import ListsHeader from "@/components/ListsHeader.vue";
 import Filters from "@/components/Filters.vue";
 import FiltersButton from "@/components/buttons/FiltersButton.vue";
 import InputsModal from "../../components/InputsModal.vue";

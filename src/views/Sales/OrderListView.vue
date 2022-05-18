@@ -109,23 +109,21 @@
                       <td>{{ order.type }}</td>
                       <td>{{ order.amount }}</td>
                       <td>{{ order.sum }}</td>
-                      <td style="border-left: 0">
-                        <div class="dropdown">
-                          <img
-                            src="@/assets/img/dots.svg"
-                            style="width: 1.563vw; cursor: pointer"
-                            alt=""
-                          />
-                          <div class="dropdown-content">
-                            <a href="/sales/order">Редактировать</a>
-                            <hr />
-                            <a
-                              style="cursor: pointer"
-                              data-bs-toggle="modal"
-                              data-bs-target="#DeleteInv"
-                              >Удалить</a
-                            >
-                          </div>
+                      <td class="dropdown" style="border-left: 0">
+                        <img
+                          src="@/assets/img/dots.svg"
+                          style="width: 1.563vw; cursor: pointer"
+                          alt=""
+                        />
+                        <div class="dropdown-content">
+                          <a href="/sales/order">Редактировать</a>
+                          <hr />
+                          <a
+                            style="cursor: pointer"
+                            data-bs-toggle="modal"
+                            data-bs-target="#DeleteInv"
+                            >Удалить</a
+                          >
                         </div>
                       </td>
                     </tr>
@@ -442,6 +440,7 @@ export default {
 
 <style scoped>
 .dropdown {
+  width: 100%;
   display: inline-block;
   position: relative;
 }

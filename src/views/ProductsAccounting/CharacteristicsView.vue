@@ -2,16 +2,14 @@
   <the-navbar></the-navbar>
   <main class="main-content border-radius-lg">
     <the-header></the-header>
-      <div class="container-fluid">
+    <div class="container-fluid">
       <div class="row">
         <div class="col-12">
           <lists-header>
-                <template v-slot:title>
-                  Характеристики  
-                </template>  
-                <template v-slot:description>
-                  Настройка характеристик товаров   
-                </template>          
+            <template v-slot:title> Характеристики </template>
+            <template v-slot:description>
+              Настройка характеристик товаров
+            </template>
           </lists-header>
           <div class="row">
             <div class="col">
@@ -33,7 +31,9 @@
                         alt=""
                       />
                     </div>
-                    <p class="character__sec">Настройка характеристики товаров</p>
+                    <p class="character__sec">
+                      Настройка характеристики товаров
+                    </p>
                   </div>
                   <button
                     class="btn save__btn"
@@ -65,7 +65,11 @@
                           scope="col"
                           class="th__col"
                           width="75%"
-                          style="text-align: left; border-left: 0; border-right: 0"
+                          style="
+                            text-align: left;
+                            border-left: 0;
+                            border-right: 0;
+                          "
                         >
                           Значение характеристики
                         </th>
@@ -85,37 +89,40 @@
                           {{ i + 1 }}
                         </td>
                         <td
-                          style="text-align: left; border-left: 0; border-right: 0"
+                          style="
+                            text-align: left;
+                            border-left: 0;
+                            border-right: 0;
+                          "
                         >
-                          <span style="margin-left: 0.677vw">{{ item.size }}</span>
+                          <span style="margin-left: 0.677vw">{{
+                            item.size
+                          }}</span>
                         </td>
-                        <td style="border-left: 0; border-right: 0">
-                          <div class="dropdown">
-                            <img
-                              src="@/assets/img/dots.svg"
-                              style="
-                                width: 1.563vw;
-                                cursor: pointer;
-                                transform: rotate(90deg);
-                              "
-                              alt=""
-                            />
-                            <div class="dropdown-content">
-                              <a
-                                href="#"
-                                data-bs-toggle="modal"
-                                data-bs-target="#InpModal"
-                                @click="isColor = 'size'"
-                                >Редактировать</a
-                              >
-                              <hr />
-                              <a
-                                style="cursor: pointer"
-                                data-bs-toggle="modal"
-                                data-bs-target="#DeleteInv"
-                                >Удалить</a
-                              >
-                            </div>
+                        <td
+                          class="dropdown"
+                          style="border-left: 0; border-right: 0"
+                        >
+                          <img
+                            src="@/assets/img/dots.svg"
+                            style="width: 1.563vw; cursor: pointer"
+                            alt=""
+                          />
+                          <div class="dropdown-content">
+                            <a
+                              href="#"
+                              data-bs-toggle="modal"
+                              data-bs-target="#InpModal"
+                              @click="isColor = 'size'"
+                              >Редактировать</a
+                            >
+                            <hr />
+                            <a
+                              style="cursor: pointer"
+                              data-bs-toggle="modal"
+                              data-bs-target="#DeleteInv"
+                              >Удалить</a
+                            >
                           </div>
                         </td>
                       </tr>
@@ -143,7 +150,9 @@
                         alt=""
                       />
                     </div>
-                    <p class="character__sec">Настройка характеристики товаров</p>
+                    <p class="character__sec">
+                      Настройка характеристики товаров
+                    </p>
                   </div>
                   <button
                     class="btn save__btn"
@@ -175,7 +184,11 @@
                           scope="col"
                           class="th__col"
                           width="75%"
-                          style="text-align: left; border-left: 0; border-right: 0"
+                          style="
+                            text-align: left;
+                            border-left: 0;
+                            border-right: 0;
+                          "
                         >
                           Значение характеристики
                         </th>
@@ -195,37 +208,40 @@
                           {{ i + 1 }}
                         </td>
                         <td
-                          style="text-align: left; border-left: 0; border-right: 0"
+                          style="
+                            text-align: left;
+                            border-left: 0;
+                            border-right: 0;
+                          "
                         >
-                          <span style="margin-left: 0.677vw">{{ item.name }}</span>
+                          <span style="margin-left: 0.677vw">{{
+                            item.name
+                          }}</span>
                         </td>
-                        <td style="border-left: 0; border-right: 0">
-                          <div class="dropdown">
-                            <img
-                              src="@/assets/img/dots.svg"
-                              style="
-                                width: 1.563vw;
-                                cursor: pointer;
-                                transform: rotate(90deg);
-                              "
-                              alt=""
-                            />
-                            <div class="dropdown-content">
-                              <a
-                                href="#"
-                                data-bs-toggle="modal"
-                                data-bs-target="#InpModal"
-                                @click="isColor = 'color'"
-                                >Редактировать</a
-                              >
-                              <hr />
-                              <a
-                                style="cursor: pointer"
-                                data-bs-toggle="modal"
-                                data-bs-target="#DeleteInv"
-                                >Удалить</a
-                              >
-                            </div>
+                        <td
+                          class="dropdown"
+                          style="border-left: 0; border-right: 0"
+                        >
+                          <img
+                            src="@/assets/img/dots.svg"
+                            style="width: 1.563vw; cursor: pointer"
+                            alt=""
+                          />
+                          <div class="dropdown-content">
+                            <a
+                              href="#"
+                              data-bs-toggle="modal"
+                              data-bs-target="#InpModal"
+                              @click="isColor = 'color'"
+                              >Редактировать</a
+                            >
+                            <hr />
+                            <a
+                              style="cursor: pointer"
+                              data-bs-toggle="modal"
+                              data-bs-target="#DeleteInv"
+                              >Удалить</a
+                            >
                           </div>
                         </td>
                       </tr>
@@ -235,10 +251,9 @@
               </div>
             </div>
           </div>
-          </div>
         </div>
       </div>
-    
+    </div>
   </main>
   <inputs-modal>
     <template #head>
@@ -465,6 +480,7 @@ export default {
   height: 590px;
 }
 .dropdown {
+  width: 100%;
   display: inline-block;
   position: relative;
 }
