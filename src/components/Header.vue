@@ -1,6 +1,6 @@
 <template>
 <nav class="navbar navbar-main navbar-expand-lg position-sticky mt-4 top-1 px-0 mx-4 shadow-none border-radius-xl z-index-sticky" id="navbarBlur" data-scroll="true">
-    <div class="container-fluid py-1 ps-0">
+    <div class="container-fluid py-1 ps-2">
       <nav aria-label="breadcrumb">
   
         <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
@@ -327,29 +327,79 @@ export default {
       headerRoute(){
         let newRoute = [];
         let allRoutes = this.$router.options.routes;
-        if(this.$route.fullPath.split("/").length < 3){
+        if(this.$route.fullPath.split("/").length == 1){
           newRoute.push({name:'Главная страница',path: '/'}) 
           return newRoute
         }
-        else{
-          this.$route.fullPath.split("/").forEach(item => {
+        else if(this.$route.fullPath.split("/").length == 2){
+          let currentRote = '';
+          this.$route.fullPath.split("/").forEach((item,ind) => {
             if(item != ''){
-              for(let i=0; i < allRoutes.length; i++){
-                if(allRoutes[i].path.indexOf(item) != -1){
+              currentRote = currentRote + '/' + item
+                for(let i=0; i < allRoutes.length; i++){
+                if(allRoutes[i].path == currentRote){
                   if(allRoutes[i].meta != undefined){
                     newRoute.push({
                       name: allRoutes[i].meta.NavLink,
                       path: allRoutes[i].path,
                     })
-                    // newRoute += allRoutes[i].meta.NavLink;
                   }
                   else{
                     newRoute.push({name:'Задайте мета',path: '/'}) 
                   }
                   break
                 }
-              }
+                }
             }
+
+          })
+          if(newRoute.length == 0){
+            newRoute.push({name:'Главная страница',path: '/'}) 
+            return newRoute
+          }
+          return newRoute;
+        }
+        else{
+          let currentRote = '';
+          this.$route.fullPath.split("/").forEach((item,ind) => {
+            
+            if(item != ''){
+              currentRote = currentRote + '/' + item
+              // if(ind != 1){
+              //   for(let i=0; i < allRoutes.length; i++){
+              //   if(allRoutes[i].path.indexOf(item) != -1){
+              //     if(allRoutes[i].meta != undefined){
+              //       newRoute.push({
+              //         name: allRoutes[i].meta.NavLink,
+              //         path: allRoutes[i].path,
+              //       })
+              //       // newRoute += allRoutes[i].meta.NavLink;
+              //     }
+              //     else{
+              //       newRoute.push({name:'Задайте мета',path: '/'}) 
+              //     }
+              //     break
+              //   }
+              //   }
+              // }
+              
+                for(let i=0; i < allRoutes.length; i++){
+                if(allRoutes[i].path == currentRote){
+                  if(allRoutes[i].meta != undefined){
+                    newRoute.push({
+                      name: allRoutes[i].meta.NavLink,
+                      path: allRoutes[i].path,
+                    })
+                  }
+                  else{
+                    newRoute.push({name:'Задайте мета',path: '/'}) 
+                  }
+                  break
+                }
+                }
+              
+            }
+
           })
           return newRoute;
         }
