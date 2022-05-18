@@ -2,13 +2,16 @@
   <the-navbar></the-navbar>
   <main class="main-content border-radius-lg">
     <the-header></the-header>
-    <div class="page__name d-flex align-items-center ms-4">
-      <div class="page__name-title text-start">
-        <h3>Список сотрудников</h3>
-        <p class="mb-0">Внесите изменения и не забудьте  нажать “Сохранить”</p>
-      </div>
-    </div>
-    <div class="card pt-4 pb-6 m-4">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+    <lists-header>
+        <template v-slot:title> Список сотрудников </template>
+        <template v-slot:description>
+          Внесите изменения и не забудьте  нажать “Сохранить”
+        </template>
+    </lists-header>
+    <div class="card pt-4 pb-6">
       <div class="d-flex justify-content-between align-items-center mx-4 mb-4">
         <div>
           <button class="btn bg-gradient-dark mb-0" style="margin-right: 0.833vw" data-bs-toggle="modal"
@@ -117,6 +120,9 @@
           </div>
         </div>
       </div>
+    </div>
+        </div>
+     </div>
     </div>
     <inputs-modal>
       <template #head>
