@@ -29,7 +29,7 @@
               </button>
               <div class="table__inputs d-flex gap-3 align-content-center">
                 <div class="form-group m-0">
-                  <div class="input-group mt-1">
+                  <div class="input-group">
                     <span class="input-group-text"
                       ><img src="@/assets/css/icons/searchIcon.svg" alt=""
                     /></span>
@@ -41,22 +41,16 @@
                     />
                   </div>
                 </div>
-                <button class="btn btn-outline-dark mb-0">
-                  <span
-                    ><img
-                      src="@/assets/css/icons/print.svg"
-                      class="me-1"
-                      alt="" /></span
-                  >Печать
-                </button>
-                <button class="btn btn-outline-dark mb-0">
+                <print-button></print-button>
+                <download-button></download-button>
+                <!-- <button class="btn btn-outline-dark mb-0">
                   <span
                     ><img
                       src="@/assets/css/icons/down-arrow.svg"
                       class="me-1"
                       alt="" /></span
                   >Скачать
-                </button>
+                </button> -->
                 <filter-button class="mb-0"></filter-button>
               </div>
             </div>

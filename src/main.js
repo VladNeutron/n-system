@@ -19,7 +19,10 @@ import DropDownInv from "./components/DropDownInv";
 import Login from "./components/Login.vue";
 import Register from "./components/Register.vue";
 import Cookie from "./components/Cookie.vue";
-import ListsHeader from '@/components/ListsHeader.vue'
+import ListsHeader from '@/components/ListsHeader.vue';
+import PrintButton from '@/components/buttons/PrintButton.vue';
+import DownloadButton from '@/components/buttons/DownloadButton.vue';
+
 
 const app = createApp(App).use(store).use(router);
 
@@ -30,5 +33,7 @@ app.component("login", Login);
 app.component("register", Register);
 app.component("cookie", Cookie);
 app.component("lists-header", ListsHeader);
+app.component("print-button", PrintButton);
+app.component("download-button", DownloadButton);
 
 app.mount("#app", Login);
