@@ -52,7 +52,7 @@
                       <th></th>
                       <th class="ps-2">№</th>
                       <th
-                        class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2"
+                        class="ps-2"
                       >
                         штрихкод
                       </th>
