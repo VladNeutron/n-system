@@ -25,8 +25,19 @@
                 class="btn bg-gradient-dark mb-0"
                 data-bs-toggle="modal"
                 data-bs-target="#InpModal"
+                style="
+                  font-size: 14px;
+                  font-weight: 600;
+                  display: flex;
+                  align-items: center;
+                "
                 @click="isEdit = 'no'"
               >
+                <img
+                  src="@/assets/img/whtplus.svg"
+                  alt=""
+                  style="margin-right: 10px"
+                />
                 Создать заявку
               </button>
               <div class="table__inputs d-flex gap-3 align-content-center">
@@ -286,57 +297,22 @@
     </inputs-modal>
   </main>
   <the-filter :orders="orders">
-    <div class="filters__period__flex">
-      <div class="filter__name__standart">Выберите период</div>
-      <div class="reset__date">Сбросить период</div>
+    <div class="text-start">
+      <label class="text-start" for="Склад">Статус заявки</label>
+      <select class="form-select" v-model="filterWarehouse">
+        <option v-for="warehouse of orderWarehouseList" :key="warehouse">
+          {{ warehouse }}
+        </option>
+      </select>
     </div>
-    <div class="filters__period">
-      <div class="form-group">
-        <input class="form-control" type="date" id="example-date-input" />
-      </div>
-      <div>
-        <img src="@/assets/img/line.svg" style="width: 1.927vw" alt="" />
-      </div>
-      <div class="form-group">
-        <input class="form-control" type="date" id="example-date-input" />
-      </div>
+    <div class="text-start">
+      <label class="text-start" for="Ответственный">Клиент</label>
+      <select class="form-select" v-model="filterResponsible">
+        <option v-for="responsible of orderResponsibleList" :key="responsible">
+          {{ responsible }}
+        </option>
+      </select>
     </div>
-    <label class="text-start" for="Статус">Статус заказа</label>
-    <div class="d-flex flex-wrap">
-      <div class="cat" v-for="status of orderStatusList" :key="status">
-        <label>
-          <input
-            type="checkbox"
-            :value="status"
-            v-model="filterStatusSelect"
-          /><span v-text="normalizeStatusName(status)"></span>
-        </label>
-      </div>
-    </div>
-    <label class="text-start" for="Склад">Склад</label>
-    <select class="form-select" v-model="filterWarehouse">
-      <option v-for="warehouse of orderWarehouseList" :key="warehouse">
-        {{ warehouse }}
-      </option>
-    </select>
-    <label class="text-start" for="Ответственный">Ответственный</label>
-    <select class="form-select" v-model="filterResponsible">
-      <option v-for="responsible of orderResponsibleList" :key="responsible">
-        {{ responsible }}
-      </option>
-    </select>
-    <label class="text-start" for="Клиент">Клиент</label>
-    <select class="form-select" v-model="filterClient">
-      <option v-for="client of orderClientList" :key="client">
-        {{ client }}
-      </option>
-    </select>
-    <label class="text-start" for="Тип заказа">Тип заказа</label>
-    <select class="form-select" v-model="filterOrderType">
-      <option v-for="orderType of orderTypeList" :key="orderType">
-        {{ orderType }}
-      </option>
-    </select>
   </the-filter>
 </template>
 

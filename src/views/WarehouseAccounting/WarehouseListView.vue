@@ -6,32 +6,33 @@
       <div class="row">
         <div class="col-12">
           <lists-header>
-            <template v-slot:title>
-              Список складов   
-            </template>         
+            <template v-slot:title> Список складов </template>
           </lists-header>
           <div class="card">
             <div>
               <div class="table__header">
                 <div>
-                  <button class="btn bg-gradient-dark">
-                    <span class="pe-2">+</span>Добавить склад
+                  <button
+                    class="btn bg-gradient-dark"
+                    onclick="window.location.href = '/warehouse-accounting/create-storage'"
+                    style="
+                      font-size: 14px;
+                      font-weight: 600;
+                      display: flex;
+                      align-items: center;
+                    "
+                  >
+                    <img
+                      src="@/assets/img/whtplus.svg"
+                      alt=""
+                      style="margin-right: 10px"
+                    />
+                    Добавить склад
                   </button>
                 </div>
                 <div class="table__header-search">
-                  <div class="form-group">
-                    <div class="input-group mt-1">
-                      <span class="input-group-text btn-outline-dark"
-                        ><i class="ni ni-zoom-split-in"></i
-                      ></span>
-                      <input
-                        class="form-control btn-outline-dark"
-                        placeholder="Поиск"
-                        type="text"
-                      />
-                    </div>
-                  </div>
-                  <filters-button class="mb-3"></filters-button>
+                  <list-search></list-search>
+                  <filters-button></filters-button>
                 </div>
               </div>
               <div class="table">
@@ -65,10 +66,13 @@
                     </td>
                     <td></td>
                     <td>
-                      <a href="#"
+                      <a href="/warehouse-accounting/storage"
                         ><img src="@/assets/css/icons/editIcon.svg" alt="edit"
                       /></a>
-                      <a href="#"
+                      <a
+                        data-bs-toggle="modal"
+                        data-bs-target="#DeleteInv"
+                        style="cursor: pointer"
                         ><img
                           src="@/assets/css/icons/deleteIcon.svg"
                           alt="delete"

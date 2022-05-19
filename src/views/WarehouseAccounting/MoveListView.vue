@@ -14,9 +14,20 @@
                 <button
                   type="button"
                   class="btn bg-gradient-secondary"
+                  style="
+                    font-size: 14px;
+                    font-weight: 600;
+                    display: flex;
+                    align-items: center;
+                  "
                   onclick="window.location.href = '/warehouse-accounting/create-movement'"
                 >
-                  + Создать перемещение
+                  <img
+                    src="@/assets/img/whtplus.svg"
+                    alt=""
+                    style="margin-right: 10px"
+                  />
+                  Создать перемещение
                 </button>
               </div>
               <div class="inv__right__btn gap-3">
@@ -28,7 +39,7 @@
             </div>
             <div class="inv__block">
               <div class="inv__content">
-                <table class="table table-bordered table-hover table-striped">
+                <table class="table table-hover table-striped">
                   <thead>
                     <tr>
                       <th scope="col" class="th__col">№</th>
@@ -230,8 +241,6 @@ th {
   background-color: #e2e8f0;
 }
 .inv__content {
-  padding-left: 1.354vw;
-  padding-right: 1.354vw;
   height: 30.469vw;
   overflow-y: scroll;
 }
