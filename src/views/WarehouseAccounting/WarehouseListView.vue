@@ -139,7 +139,7 @@ export default {
 .table {
   display: flex;
   min-width: 95%;
-  padding: 1.667vw 0.833vw 1.667vw 0.833vw;
+  padding: 0.17vw 0.833vw 1.667vw 0.833vw;
 }
 .table table {
   width: 100%;
@@ -147,9 +147,9 @@ export default {
 }
 
 th {
-  color: gray;
-  font-weight: 400;
-  font-size: 0.729vw;
+  /* color: gray; */
+  /* font-weight: 400; */
+  /* font-size: 0.729vw; */
   padding-bottom: 8px;
 }
 td {
@@ -189,7 +189,7 @@ td > a {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0.521vw 0.833vw;
+  padding: 1.521vw 0.833vw;
 }
 .table__header-search {
   display: flex;

@@ -42,6 +42,7 @@ export default {
 table th {
   font-size: 12px;
   font-weight: 600;
+  color: rgba(160, 174, 192, 1);
 }
 td {
   color: #2d3748;

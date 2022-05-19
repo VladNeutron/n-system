@@ -20,3 +20,9 @@ body::-webkit-scrollbar {
     border-radius: 0.78vw;
     background-color: #e2e8f0;
   }
+
+.custom__label{
+  font-weight: 600;
+  font-size: 14px;
+  color: #2D3748;
+}
