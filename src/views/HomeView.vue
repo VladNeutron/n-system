@@ -334,7 +334,7 @@ export default {
         // end: 'prev,next' // will normally be on the right. if RTL, will be on the left
         end: ''
       },
-      height: '20vw',
+      height: '100%',
       // height: '100%',
       fixedWeekCount: false,
       // expandRows: true,
@@ -727,6 +727,12 @@ export default {
 
 
 @media screen and (max-width: 1800px){
+  .main__best__stats{
+    margin-top: 1vw;
+  }
+  .events__body{
+    flex-grow: 1;
+  }
   .main__best__table{
     border-spacing: 0 0.5vw;
   }
@@ -768,6 +774,51 @@ export default {
       border-radius: 8px;
   }
   
+}
+
+@media screen and (max-width: 1440px){
+  .main__best__table__income{
+    font-size: 14px;
+  }  
+  .events__body{
+    flex-grow: 1;
+  }
+  .main__topCards{
+    grid-column-gap: 0.55vw;  
+  }
+}
+
+@media screen and (max-width: 1320px){
+  .main__topCard__text__persent{
+    font-size: 12px;
+  }
+  .main__topCard{
+    padding: 0.5vw 0.55vw;
+  }
+  .main__best__period{
+    font-size: 12px;
+  }
+  .main__best__period img{
+    margin-right: 5px;  
+  }
+  .main__best__stats{
+    grid-column-gap: 0.554vw;
+  }
+  .main__best__table__month__point{
+    font-size: 0.73vw;
+  }
+  .main__best__table__income{
+    font-size: 12px;
+  }  
+  .events__body{
+    flex-grow: 1;
+  }
+  .event{
+    padding-bottom: 5px;
+  }
+  .main__topCards{
+    grid-column-gap: 0.55vw;  
+  }
 }
 </style>
 
