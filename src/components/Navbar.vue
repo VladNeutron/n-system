@@ -15,13 +15,13 @@
           class="navbar-brand-img h-100"
           alt="main_logo"
         />
-        <span
-          ><img
+        <span>
+          <img
             class="pt-1"
             style="height: 2.083vw; width: 5.729vw; margin-left: 10px"
             src="@/assets/img/test__logo.svg"
-            alt=""
-        /></span>
+          />
+        </span>
         <!-- <span class="ms-1 font-weight-bold">Neutron System</span> -->
         <!-- <span class="ms-1 font-weight-bold"></span> -->
       </a>
