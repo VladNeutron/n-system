@@ -34,10 +34,10 @@
                     />
                   </div>
                 </div> -->
+                <router-link :to="{ name: 'product' }" class="nav-link">
                 <button
                   type="button"
                   class="btn bg-gradient-secondary"
-                  onclick="window.location.href = '/products-accounting/product-edit'"
                 >
                   <img
                     src="@/assets/img/whtplus.svg"
@@ -46,6 +46,7 @@
                   />
                   Добавить товар
                 </button>
+                </router-link>
               </div>
               <div class="inv__right__btn gap-3">
                 <list-search></list-search>
@@ -131,7 +132,7 @@
                             alt=""
                           />
                           <div class="dropdown-content">
-                            <a href="/products-accounting/product"
+                            <a href="/products-accounting/product-edit"
                               >Редактировать</a
                             >
                             <hr />
