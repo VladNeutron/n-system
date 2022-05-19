@@ -170,12 +170,10 @@
                   </div>
                 </div>
               </div>
-              <div class="inv__block ps-3">
+              <div class="inv__block">
                 <div class="inv__content">
                   <div>
-                    <table
-                      class="table table-bordered table-hover text-center table-striped"
-                    >
+                    <table class="table table-hover text-center table-striped">
                       <thead>
                         <tr>
                           <th scope="col" class="">№</th>
@@ -398,7 +396,6 @@ th {
   align-self: flex-start;
 }
 .inv__content {
-  padding-right: 1.354vw;
   height: 90%;
 }
 .inv__block {
