@@ -2,12 +2,12 @@
   <the-navbar></the-navbar>
   <main class="main-content border-radius-lg">
     <the-header></the-header>
-    <div class="order__content">
+    <div class="container-fluid">
       <div class="order__header">
         <div class="order__header-content">
-          <div class="order__header-main">
+          <div class="order__header-main pt-2">
             <div class="order__header-text">
-              <p class="order__header__main">Возврат №</p>
+              <p class="order__header__main">Возврат №121455</p>
               <p class="order__header__sec">
                 Настройте все параметры и нажмите “Сохранить”
               </p>
@@ -921,7 +921,7 @@
   background: #ffffff;
   box-shadow: 0px 3.5px 5.5px rgba(0, 0, 0, 0.02);
   border-radius: 15px;
-  padding: 8px 0 0 0;
+  padding: 16px 0 0 0;
 }
 
 .order__table {
@@ -1088,6 +1088,11 @@
 
 .order__content {
   padding: 0 2.083vw 0 2.083vw;
+}
+td{
+  font-weight: 600;
+  font-size: 14px; 
+  color: #2D3748; 
 }
 </style>
 

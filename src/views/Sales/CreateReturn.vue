@@ -646,7 +646,7 @@
 
 .order__ready__sum {
   font-weight: 600;
-  font-size: 1vw;
+  font-size: 1.2vw;
   color: #2d3748;
 }
 
@@ -1036,7 +1036,11 @@
   font-size: 0.729vw;
   color: #a0aec0;
 }
-
+td{
+  font-weight: 600;
+  font-size: 14px; 
+  color: #2D3748; 
+}
 .order__header__main {
   font-weight: 600;
   font-size: 1.25vw;
