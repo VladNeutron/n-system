@@ -10,7 +10,7 @@
         <p class="mb-0">Настройка изображение размеры</p>
       </div>
       <div class="page__name-buttons d-flex gap-3 mx-4">
-        <button class="btn btn-outline-dark mb-0">Назад</button>
+        <router-link :to="{ name: 'product' }"><button class="btn btn-outline-dark mb-0">Назад</button></router-link>
         <button class="btn bg-gradient-dark mb-0">Сохранить</button>
       </div>
     </div>
@@ -187,7 +187,7 @@
           </div>
           <div class="sizes__body d-flex py-2 gap-3">
             <div
-              v-for="(size, i) in sizes"
+              v-for="(size) in sizes"
               :key="size"
               @click="selectSize(size)"
               class="btn mb-0"
@@ -448,6 +448,8 @@ a {
 .page__name-buttons button {
   width: 241px;
   height: 47px;
+  font-weight: 700;
+  font-size: 16px;
 }
 .page__name h3 {
   font-size: 24px;
@@ -458,7 +460,7 @@ a {
   font-size: 14px;
   line-height: 19px;
   font-weight: 400;
-  color: gray;
+  color: #A0AEC0;
 }
 .remove-button {
   position: relative;

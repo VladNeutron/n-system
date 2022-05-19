@@ -68,23 +68,9 @@
           </div>
         </div>
         <div class="table__inputs d-flex gap-3 align-content-center">
-          <button class="btn btn-outline-dark mb-0">
-            <span
-              ><img
-                src="@/assets/css/icons/print.svg"
-                class="me-1"
-                alt="" /></span
-            >Печать
-          </button>
-          <button class="btn btn-outline-dark mb-0">
-            <span
-              ><img
-                src="@/assets/css/icons/down-arrow.svg"
-                class="me-1"
-                alt="" /></span
-            >Скачать
-          </button>
-          <button class="btn btn-outline-dark mb-0">Фильтры</button>
+          <print-button></print-button>
+          <download-button></download-button>
+          <filters-button></filters-button>
         </div>
       </div>
       <div class="best__products">
@@ -144,92 +130,54 @@
         </div>
       </div>
       <div class="order__table__body mt-4">
-        <table class="table table-bordered table-hover table-striped">
+        <table class="table table-hover table-striped">
           <thead>
             <tr>
-              <th
-                scope="col"
-                class="th__col"
-                style="border-left: 0; border-right: 0"
-              >
-                №
-              </th>
-              <th
-                scope="col"
-                class="th__col"
-                style="border-left: 0; border-right: 0"
-              >
-                Название магазина
-              </th>
-              <th
-                scope="col"
-                class="th__col"
-                style="border-left: 0; border-right: 0"
-              >
-                Адрес
-              </th>
-              <th
-                scope="col"
-                class="th__col"
-                style="border-left: 0; border-right: 0"
-              >
-                Количество продаж
-              </th>
-              <th
-                scope="col"
-                class="th__col"
-                style="border-left: 0; border-right: 0"
-              >
-                Выручка
-              </th>
-              <th
-                scope="col"
-                class="th__col"
-                style="border-left: 0; border-right: 0"
-              >
-                Прибыль
-              </th>
-              <th
-                scope="col"
-                class="th__col"
-                style="border-left: 0; border-right: 0"
-              >
-                Маржинальность
-              </th>
+              <th scope="col" class="th__col">№</th>
+              <th scope="col" class="th__col">Название магазина</th>
+              <th scope="col" class="th__col">Адрес</th>
+              <th scope="col" class="th__col">Количество продаж</th>
+              <th scope="col" class="th__col">Выручка</th>
+              <th scope="col" class="th__col">Прибыль</th>
+              <th scope="col" class="th__col">Маржинальность</th>
             </tr>
           </thead>
           <tbody>
             <!-- v-for="(item, i) in items" :key="item" -->
             <tr v-for="(item, i) in items" :key="item">
-              <th scope="row" style="border-right: 0; border-left: 0">
+              <td scope="row">
                 {{ i + 4 }}
-              </th>
-              <td style="border-left: 0; border-right: 0">
+              </td>
+              <td>
                 {{ item.name }}
               </td>
-              <td style="border-left: 0; border-right: 0">
+              <td>
                 {{ item.adres }}
               </td>
-              <td style="border-left: 0; border-right: 0">
+              <td>
                 {{ item.count }}
               </td>
-              <td style="border-left: 0; border-right: 0">
-                {{ item.revenue }} ₸
+              <td>{{ item.revenue }} ₸</td>
+              <td>
+                {{ item.profit }}
+                ₸
               </td>
-              <td style="border-left: 0; border-right: 0">
-                {{ item.profit }} ₸
-              </td>
-              <td style="border-left: 0; border-right: 0">{{ item.marj }} ₸</td>
+              <td>{{ item.marj }} ₸</td>
             </tr>
           </tbody>
         </table>
       </div>
     </div>
+    <Filters></Filters>
   </main>
 </template>
 
 <script>
+import Filters from "@/components/Filters";
 export default {
+  components: {
+    Filters,
+  },
   data() {
     return {
       activeBtn: 1,

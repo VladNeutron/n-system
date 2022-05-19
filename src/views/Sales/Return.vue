@@ -21,39 +21,26 @@
             <div
               class="d-flex justify-content-between align-items-center mx-4 mb-4"
             >
-              <button class="btn bg-gradient-dark mb-0">
+              <router-link :to="{ name: 'create-return'}">
+              <!-- <button
+                class="btn bg-gradient-dark mb-0"
+                onclick="window.location.href = '/sales/create-return'"
+              > -->
+              <button
+                class="btn btn__return__new bg-gradient-dark mb-0"
+              >
+              <img
+                    src="@/assets/img/whtplus.svg"
+                    style="width: 20.006px; margin-right: 0.529vw"
+                    alt=""
+                  />
                 Оформить возврат
               </button>
+              </router-link>
               <div class="table__inputs d-flex gap-3 align-content-center">
-                <div class="form-group m-0">
-                  <div class="input-group mt-1">
-                    <span class="input-group-text"
-                      ><img src="@/assets/css/icons/searchIcon.svg" alt=""
-                    /></span>
-                    <input
-                      class="form-control"
-                      placeholder="Поиск..."
-                      id="search"
-                      type="text"
-                    />
-                  </div>
-                </div>
-                <button class="btn btn-outline-dark mb-0">
-                  <span
-                    ><img
-                      src="@/assets/css/icons/print.svg"
-                      class="me-1"
-                      alt="" /></span
-                  >Печать
-                </button>
-                <button class="btn btn-outline-dark mb-0">
-                  <span
-                    ><img
-                      src="@/assets/css/icons/down-arrow.svg"
-                      class="me-1"
-                      alt="" /></span
-                  >Скачать
-                </button>
+                <list-search></list-search>
+                <print-button></print-button>
+                <download-button></download-button>
                 <filter-button class="mb-0"></filter-button>
               </div>
             </div>
@@ -80,7 +67,7 @@
                   <tbody>
                     <tr v-for="(order, i) of filteredOrders" :key="order.id">
                       <th scope="row">
-                        <div class="form-check">
+                        <div class="form-check mb-0 ms-2">
                           <input
                             class="form-check-input"
                             type="checkbox"
@@ -105,13 +92,24 @@
                       <td>{{ order.type }}</td>
                       <td>{{ order.amount }}</td>
                       <td>{{ order.sum }}</td>
-
                       <td>
-                        <img
-                          src="@/assets/img/dots.svg"
-                          style="width: 1.563vw; cursor: pointer"
-                          alt=""
-                        />
+                        <div class="dropdown">
+                          <img
+                            src="@/assets/img/dots.svg"
+                            style="width: 1.563vw; cursor: pointer"
+                            alt=""
+                          />
+                          <div class="dropdown-content">
+                            <router-link :to="{ name: 'return-edit'}">Редактировать</router-link>
+                            <hr />
+                            <a
+                              style="cursor: pointer"
+                              data-bs-toggle="modal"
+                              data-bs-target="#DeleteInv"
+                              >Удалить</a
+                            >
+                          </div>
+                        </div>
                       </td>
                     </tr>
                   </tbody>
@@ -420,6 +418,32 @@ export default {
 </script>
 
 <style scoped>
+.dropdown {
+  width: 100%;
+  display: inline-block;
+  position: relative;
+}
+.dropdown-content {
+  text-align: left;
+  display: none;
+  position: absolute;
+  width: 7.815vw;
+  overflow: auto;
+  background: #f8f9fa;
+  box-shadow: 2px 2px 5.5px rgba(0, 0, 0, 0.25);
+  border-radius: 12px;
+  right: 15px;
+  z-index: 1;
+  padding: 0.625vw 0.625vw 0.625vw 0.625vw;
+}
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+.dropdown-content a {
+  display: block;
+  color: #2d3748;
+  text-decoration: none;
+}
 /* CHECKBOX BUTTON */
 
 .cat {
@@ -521,9 +545,18 @@ table {
   align-items: flex-end;
 }
 td {
-  vertical-align: baseline;
+  vertical-align: middle;
 }
 th {
-  vertical-align: baseline;
+  vertical-align: middle;
+}
+.btn__return__new{
+  height: 40px;
+}
+</style>
+
+<style>
+.table .dropdown{
+  height: 100%;
 }
 </style>

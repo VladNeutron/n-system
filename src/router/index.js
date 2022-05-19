@@ -239,9 +239,9 @@ const routes = [
   {
     path: "/sales",
     name: "sales-main",
-    component: () => import("../views/Sales/OrderView.vue"),
+    component: () => import("../views/Sales/OrderListView.vue"),
     meta: { NavLink: "Продажи" },
-    redirect: "/sales/create-order",
+    redirect: "/sales/order-list",
   },
   {
     path: "/sales/create-order",
@@ -484,6 +484,24 @@ const routes = [
     name: "position-list",
     component: () => import("../views/Accounting/PositionList.vue"),
     meta: { NavLink: "Список должностей" },
+  },
+  {
+    path: "/accounting/new-contractor",
+    name: "new-contractor",
+    component: () => import("../views/Accounting/ContractorInfo.vue"),
+    meta: { NavLink: "Информация о контрагенте" },
+  },
+  {
+    path: "/accounting/edit-company",
+    name: "accounting-edit-company",
+    component: () => import("../views/EditOrganization.vue"),
+    meta: { NavLink: "Информация о компании" },
+  },
+  {
+    path: "/accounting/documents",
+    name: "documents",
+    component: () => import("../views/Accounting/AccDocs.vue"),
+    meta: { NavLink: "Документы" },
   },
   // БУХГАЛТЕРИЯ
 ];

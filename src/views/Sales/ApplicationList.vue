@@ -25,40 +25,25 @@
                 class="btn bg-gradient-dark mb-0"
                 data-bs-toggle="modal"
                 data-bs-target="#InpModal"
+                style="
+                  font-size: 14px;
+                  font-weight: 600;
+                  display: flex;
+                  align-items: center;
+                "
                 @click="isEdit = 'no'"
               >
+                <img
+                  src="@/assets/img/whtplus.svg"
+                  alt=""
+                  style="margin-right: 10px"
+                />
                 Создать заявку
               </button>
               <div class="table__inputs d-flex gap-3 align-content-center">
-                <div class="form-group m-0">
-                  <div class="input-group mt-1">
-                    <span class="input-group-text"
-                      ><img src="@/assets/css/icons/searchIcon.svg" alt=""
-                    /></span>
-                    <input
-                      class="form-control"
-                      placeholder="Поиск..."
-                      id="search"
-                      type="text"
-                    />
-                  </div>
-                </div>
-                <button class="btn btn-outline-dark mb-0">
-                  <span
-                    ><img
-                      src="@/assets/css/icons/print.svg"
-                      class="me-1"
-                      alt="" /></span
-                  >Печать
-                </button>
-                <button class="btn btn-outline-dark mb-0">
-                  <span
-                    ><img
-                      src="@/assets/css/icons/down-arrow.svg"
-                      class="me-1"
-                      alt="" /></span
-                  >Скачать
-                </button>
+                <list-search></list-search>
+                <print-button></print-button>
+                <download-button></download-button>
                 <filter-button class="mb-0"></filter-button>
               </div>
             </div>
@@ -312,57 +297,22 @@
     </inputs-modal>
   </main>
   <the-filter :orders="orders">
-    <div class="filters__period__flex">
-      <div class="filter__name__standart">Выберите период</div>
-      <div class="reset__date">Сбросить период</div>
+    <div class="text-start">
+      <label class="text-start" for="Склад">Статус заявки</label>
+      <select class="form-select" v-model="filterWarehouse">
+        <option v-for="warehouse of orderWarehouseList" :key="warehouse">
+          {{ warehouse }}
+        </option>
+      </select>
     </div>
-    <div class="filters__period">
-      <div class="form-group">
-        <input class="form-control" type="date" id="example-date-input" />
-      </div>
-      <div>
-        <img src="@/assets/img/line.svg" style="width: 1.927vw" alt="" />
-      </div>
-      <div class="form-group">
-        <input class="form-control" type="date" id="example-date-input" />
-      </div>
+    <div class="text-start">
+      <label class="text-start" for="Ответственный">Клиент</label>
+      <select class="form-select" v-model="filterResponsible">
+        <option v-for="responsible of orderResponsibleList" :key="responsible">
+          {{ responsible }}
+        </option>
+      </select>
     </div>
-    <label class="text-start" for="Статус">Статус заказа</label>
-    <div class="d-flex flex-wrap">
-      <div class="cat" v-for="status of orderStatusList" :key="status">
-        <label>
-          <input
-            type="checkbox"
-            :value="status"
-            v-model="filterStatusSelect"
-          /><span v-text="normalizeStatusName(status)"></span>
-        </label>
-      </div>
-    </div>
-    <label class="text-start" for="Склад">Склад</label>
-    <select class="form-select" v-model="filterWarehouse">
-      <option v-for="warehouse of orderWarehouseList" :key="warehouse">
-        {{ warehouse }}
-      </option>
-    </select>
-    <label class="text-start" for="Ответственный">Ответственный</label>
-    <select class="form-select" v-model="filterResponsible">
-      <option v-for="responsible of orderResponsibleList" :key="responsible">
-        {{ responsible }}
-      </option>
-    </select>
-    <label class="text-start" for="Клиент">Клиент</label>
-    <select class="form-select" v-model="filterClient">
-      <option v-for="client of orderClientList" :key="client">
-        {{ client }}
-      </option>
-    </select>
-    <label class="text-start" for="Тип заказа">Тип заказа</label>
-    <select class="form-select" v-model="filterOrderType">
-      <option v-for="orderType of orderTypeList" :key="orderType">
-        {{ orderType }}
-      </option>
-    </select>
   </the-filter>
 </template>
 
@@ -502,6 +452,15 @@ export default {
 </script>
 
 <style scoped>
+.bg-gradient-success {
+  background: linear-gradient(135deg, #98ec2d 0%, #17ad37 100%);
+}
+.bg-gradient-primary {
+  background: linear-gradient(135deg, #ff0080 0%, #7928ca 100%);
+}
+.bg-gradient-info {
+  background: linear-gradient(135deg, #b2dbfb 0%, #459cf6 100%);
+}
 .clients__delete {
   text-transform: none;
   border: 0;
@@ -652,8 +611,10 @@ th {
   color: #2d3748;
   font-size: 12px;
   text-align: center;
+  vertical-align: baseline;
 }
 td {
+  vertical-align: baseline;
   font-size: 14px;
   font-weight: 600;
   text-align: center;

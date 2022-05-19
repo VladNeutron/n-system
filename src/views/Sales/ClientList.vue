@@ -6,12 +6,10 @@
       <div class="row">
         <div class="col-12">
           <lists-header>
-            <template v-slot:title>
-              Список клиентов   
-            </template>  
+            <template v-slot:title> Список клиентов </template>
             <template v-slot:description>
-              Внесите изменения и не забудьте  нажать “Сохранить”    
-            </template>          
+              Внесите изменения и не забудьте нажать “Сохранить”
+            </template>
           </lists-header>
           <!-- <div class="inv__title">
             <p class="inv__title__text">Список клиентов</p>
@@ -22,23 +20,6 @@
           <div class="card">
             <div class="inv__buttons p-4">
               <div class="inv__left__btn">
-                <div class="form-group">
-                  <div class="input-group">
-                    <span class="input-group-text"
-                      ><img
-                        src="@/assets/css/icons/searchIcon.svg"
-                        style="width: 0.833vw"
-                        alt=""
-                    /></span>
-                    <input
-                      class="form-control form-control-lg inv__inp"
-                      placeholder="Поиск"
-                      type="text"
-                      id="search"
-                      v-model.trim="search"
-                    />
-                  </div>
-                </div>
                 <button
                   type="button"
                   class="btn bg-gradient-secondary mb-0"
@@ -54,29 +35,10 @@
                   Добавить клиента
                 </button>
               </div>
-              <div class="inv__right__btn">
-                <button
-                  type="button"
-                  class="inv__btn btn btn-outline-dark mb-0"
-                >
-                  <img
-                    src="@/assets/img/print.svg"
-                    style="width: 24px; margin-right: 0.417vw"
-                    alt=""
-                  />
-                  печать
-                </button>
-                <button
-                  type="button"
-                  class="inv__btn btn btn-outline-dark mb-0"
-                >
-                  <img
-                    src="@/assets/img/download.svg"
-                    style="width: 24px; margin-right: 0.417vw"
-                    alt=""
-                  />
-                  скачать
-                </button>
+              <div class="inv__right__btn gap-3">
+                <list-search></list-search>
+                <print-button></print-button>
+                <download-button></download-button>
               </div>
             </div>
             <div class="inv__block">
@@ -124,7 +86,7 @@
                   <tbody>
                     <!-- v-for="(item, i) in filteredClients" :key="item" -->
                     <tr v-for="(item, i) in filteredClients" :key="item">
-                      <th scope="row" style="border-right: 0">{{ i + 1 }}</th>
+                      <td scope="row" style="border-right: 0">{{ i + 1 }}</td>
                       <td style="border-left: 0; border-right: 0">
                         {{ item.name }}
                       </td>
@@ -437,6 +399,18 @@ export default {
           email: "v.kurochkin@gmail.com",
           adres: "г. Алматы, ул. Байзакова д. 280, кв. 12",
         },
+        {
+          name: "Курочкин Василий Петрович",
+          phone: "+7 705 6665599",
+          email: "v.kurochkin@gmail.com",
+          adres: "г. Алматы, ул. Байзакова д. 280, кв. 12",
+        },
+        {
+          name: "Курочкин Василий Петрович",
+          phone: "+7 705 6665599",
+          email: "v.kurochkin@gmail.com",
+          adres: "г. Алматы, ул. Байзакова д. 280, кв. 12",
+        },
       ],
       search: "",
     };
@@ -554,8 +528,8 @@ export default {
   max-height: 80vh;
 }
 .inv__content {
-  height: 100%;
-  overflow-y: scroll;
+  height: 30vw;
+  overflow-y: auto;
 }
 
 .inv__btn {
@@ -583,7 +557,7 @@ export default {
   font-weight: 600;
   font-size: 13.997px;
   align-items: center;
-  height: 49.997px;
+  height: 40px;
   text-transform: none;
 }
 .inv__buttons {

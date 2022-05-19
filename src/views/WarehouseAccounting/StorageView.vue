@@ -4,12 +4,12 @@
     <the-header></the-header>
     <storage>
       <template #storage>
-        <div class="storage__padding">
-          <div class="storage__header">
+        <div class="container-fluid">
+          <div class="storage__header mb-2">
             <div class="storage__name">
               <p class="storage__main">Склад 1</p>
               <p class="storage__sec">
-                Внесите изменения в штрихкод и выберите действия
+                Заполните данные о складе и нажмите “Сохранить”
               </p>
             </div>
             <div class="storage__save">
@@ -91,7 +91,7 @@
                     </div>
                   </div>
                   <div class="storage__checkbox">
-                    <div class="form-check">
+                    <div class="form-check d-flex align-items-center">
                       <input
                         class="form-check-input"
                         type="checkbox"
@@ -99,7 +99,7 @@
                         id="customCheck1"
                       />
                       <label
-                        class="custom-control-label storage__label"
+                        class="custom-control-label storage__label mb-0 ms-2"
                         for="customCheck1"
                         >Закрыть склад</label
                       >
@@ -478,7 +478,8 @@ export default {
 }
 .types {
   display: flex;
-  justify-content: space-between;
+  /* justify-content: space-between; */
+  align-items: center;
   margin-bottom: 1.771vw;
 }
 .right__col {
@@ -492,6 +493,8 @@ export default {
   color: #2d3748;
   font-weight: 400;
   font-size: 0.833vw;
+  margin-bottom: 0;
+  margin-left: 10px;
 }
 .storage__types-text {
   text-align: left;
@@ -536,6 +539,7 @@ export default {
   font-weight: 600;
   font-size: 0.729vw;
   color: #2d3748;
+  /* margin-bottom: 0; */
 }
 .storage__name {
   margin-right: 2.604vw;
@@ -626,6 +630,7 @@ export default {
 .storage__header {
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 .storage__padding {
   padding: 1.475vw 2.083vw 1vw 2.083vw;

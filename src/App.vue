@@ -10,49 +10,60 @@
     <router-link to="/table">Table</router-link>
   </nav> -->
   <router-view />
-      <delete-modal>
-      <template #header>
-        <p class="modal__title">
-          Вы уверены, что хотите удалить документ “Инвентаризация №19”?
-        </p>
-      </template>
-    </delete-modal>
+  <delete-modal>
+    <template #header>
+      <p class="modal__title">
+        Вы уверены, что хотите удалить документ “Инвентаризация №19”?
+      </p>
+    </template>
+  </delete-modal>
 </template>
 
 <script>
 import DeleteModal from "@/components/DeleteModal.vue";
 export default {
-  components:{
-DeleteModal
+  components: {
+    DeleteModal,
   },
   methods: {
     openFilters() {
       let filtersContainer = document.querySelector(".filters__container");
       filtersContainer.classList.add("filters__show");
     },
-  }
-}
+  },
+};
 </script>
 
 <style>
-td{
-  color:#2D3748
+.form-select:hover:focus {
+  background-image: url(@/assets/img/arrow__flip.svg) !important;
+  transition: 0.3s;
+}
+table th {
+  font-size: 12px;
+  font-weight: 600;
+  color: rgba(160, 174, 192, 1);
+}
+td {
+  color: #2d3748;
+  font-weight: 600;
 }
 .page__name h3 {
-    font-size: 24px;
-    line-height: 32px;
-    font-weight: 600;
+  font-size: 24px;
+  line-height: 32px;
+  font-weight: 600;
 }
 
 .page__name p {
-    font-size: 14px;
-    line-height: 19px;
-    font-weight: 400;
-    color: gray;
+  font-size: 14px;
+  line-height: 19px;
+  font-weight: 400;
+  color: gray;
 }
 .form-select {
-  border: 1px solid #A0AEC0 !important;
+  border: 1px solid #a0aec0 !important;
   border-radius: 8px;
+  background-image: url(@/assets/img/arrow.svg) !important;
 }
 
 #app {

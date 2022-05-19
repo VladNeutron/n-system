@@ -2014,8 +2014,8 @@ textarea.form-control-lg {
     margin-left: -1.73em; }
 
 .form-check-input {
-  width: 1.23em;
-  height: 1.23em;
+  width: 1.43em;
+  height: 1.43em;
   margin-top: 0.135em;
   vertical-align: top;
   background-color: #fff;
@@ -12470,6 +12470,9 @@ textarea.form-control-lg {
 
 .btn-dark,
 .btn.bg-gradient-dark {
+  font-size: 14px;
+  line-height: 14px;
+  font-weight: 600;
   color: #fff; }
   .btn-dark:hover,
   .btn.bg-gradient-dark:hover {
@@ -14846,7 +14849,9 @@ hr.horizontal {
   padding: 0.75rem 1.5rem;
   text-transform: capitalize;
   letter-spacing: 0px;
-  border-bottom: 1px solid #e9ecef; }
+  border-bottom: 1px solid #e9ecef;
+  text-transform: uppercase;
+  color: rgba(160, 174, 192, 1); }
 
 .table th {
   font-weight: 600; }

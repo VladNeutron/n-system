@@ -2,95 +2,142 @@
   <the-navbar></the-navbar>
   <main class="main-content border-radius-lg">
     <the-header></the-header>
-    <div class="page__name d-flex align-items-center ms-4">
-      <div class="page__name-title text-start">
-        <h3>Список имуществ</h3>
-        <p class="mb-0">Внесите изменения и не забудьте  нажать “Сохранить”</p>
-      </div>
-    </div>
-    <div class="card pt-4 pb-6 m-4">
-      <div class="d-flex justify-content-between align-items-center mx-4 mb-4">
-        <div>
-          <button class="btn bg-gradient-dark mb-0" style="margin-right: 0.833vw" data-bs-toggle="modal"
-          data-bs-target="#InpModal"  @click="isEdit = 'no'">
-            <img src="@/assets/img/whtplus.svg" alt="" /> Добавить имущество
-          </button>
-        </div>
-      </div>
-      <div class="page__table">
-        <table class="table table-hover">
-          <thead>
-            <tr class="">
-              
-              <th width="1%" scope="col" class="th__col">№</th>
-              <th scope="col" class="th__col">Название имущества</th>
-              <th scope="col" class="th__col">Тип имущества</th>
-              <th scope="col" class="th__col">Стоимость</th>
-              <th scope="col" class="th__col">Действия</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr v-for="(order, i) of orders" :key="order.id">
-              <th width="1%">{{ i + 1 }}</th>
-              <td>{{ order.name}}</td>
-              <td>{{ order.type }}</td>
-              <td>{{ order.price }} ₸</td>
-              <td>
-                <div class="dropdown">
-                  <img src="@/assets/img/dots.svg" style="width: 1.563vw; cursor: pointer" alt="" />
-                  <div class="dropdown-content">
-                    <a style="cursor: pointer" data-bs-toggle="modal" data-bs-target="#InpModal" @click="isEdit = 'yes'">Редактировать</a>
-                    <hr />
-                    <a style="cursor: pointer" data-bs-toggle="modal" data-bs-target="#DeleteInv">Удалить</a>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+          <lists-header>
+            <template v-slot:title> Список имуществ </template>
+            <template v-slot:description>
+              Внесите изменения и не забудьте нажать “Сохранить”
+            </template>
+          </lists-header>
+          <div class="card pt-4 pb-6">
+            <div
+              class="d-flex justify-content-between align-items-center mx-4 mb-4"
+            >
+              <div>
+                <button
+                  class="btn bg-gradient-dark mb-0"
+                  style="
+                    margin-right: 0.833vw;
+                    display: flex;
+                    align-items: center;
+                  "
+                  data-bs-toggle="modal"
+                  data-bs-target="#InpModal"
+                  @click="isEdit = 'no'"
+                >
+                  <img
+                    src="@/assets/img/whtplus.svg"
+                    style="margin-right: 10px"
+                    alt=""
+                  />
+                  Добавить имущество
+                </button>
+              </div>
+            </div>
+            <div class="page__table">
+              <table class="table table-hover">
+                <thead>
+                  <tr class="">
+                    <th width="1%" scope="col" class="th__col">№</th>
+                    <th scope="col" class="th__col">Название имущества</th>
+                    <th scope="col" class="th__col">Тип имущества</th>
+                    <th scope="col" class="th__col">Стоимость</th>
+                    <th scope="col" class="th__col">Действия</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr v-for="(order, i) of orders" :key="order.id">
+                    <td width="1%">{{ i + 1 }}</td>
+                    <td>{{ order.name }}</td>
+                    <td>{{ order.type }}</td>
+                    <td>{{ order.price }} ₸</td>
+                    <td class="dropdown">
+                      <img
+                        src="@/assets/img/dots.svg"
+                        style="width: 1.563vw; cursor: pointer"
+                        alt=""
+                      />
+                      <div class="dropdown-content">
+                        <a
+                          style="cursor: pointer"
+                          data-bs-toggle="modal"
+                          data-bs-target="#InpModal"
+                          @click="isEdit = 'yes'"
+                          >Редактировать</a
+                        >
+                        <hr />
+                        <a
+                          style="cursor: pointer"
+                          data-bs-toggle="modal"
+                          data-bs-target="#DeleteInv"
+                          >Удалить</a
+                        >
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div
+              class="pagination d-flex justify-content-end align-items-center me-4 mt-4"
+            >
+              <div class="d-flex align-items-center gap-3">
+                <div>
+                  <p class="m-0">Показано<span> 2112 12121</span></p>
+                </div>
+
+                <div class="page__search-pages d-flex align-content-center">
+                  <div class="pagination-container d-flex justify-items-center">
+                    <ul class="pagination pagination-info mb-0 pe-0">
+                      <li class="page-item">
+                        <a
+                          class="page-link"
+                          href="javascript:;"
+                          aria-label="Previous"
+                        >
+                          <span aria-hidden="true"
+                            ><i
+                              class="fa fa-angle-double-left"
+                              aria-hidden="true"
+                            ></i
+                          ></span>
+                        </a>
+                      </li>
+                      <li class="page-item">
+                        <a class="page-link" href="javascript:;">1</a>
+                      </li>
+                      <li class="page-item">
+                        <a class="page-link" href="javascript:;">2</a>
+                      </li>
+                      <li class="page-item active">
+                        <a class="page-link" href="javascript:;">3</a>
+                      </li>
+                      <li class="page-item">
+                        <a class="page-link" href="javascript:;">4</a>
+                      </li>
+                      <li class="page-item">
+                        <a class="page-link" href="javascript:;">5</a>
+                      </li>
+                      <li class="page-item">
+                        <a
+                          class="page-link"
+                          href="javascript:;"
+                          aria-label="Next"
+                        >
+                          <span aria-hidden="true"
+                            ><i
+                              class="fa fa-angle-double-right"
+                              aria-hidden="true"
+                            ></i
+                          ></span>
+                        </a>
+                      </li>
+                    </ul>
                   </div>
                 </div>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="
-          pagination
-          d-flex
-          justify-content-end
-          align-items-center
-          me-4
-          mt-4
-        ">
-        <div class="d-flex align-items-center gap-3">
-          <div>
-            <p class="m-0">Показано<span> 2112 12121</span></p>
-          </div>
-
-          <div class="page__search-pages d-flex align-content-center">
-            <div class="pagination-container d-flex justify-items-center">
-              <ul class="pagination pagination-info mb-0 pe-0">
-                <li class="page-item">
-                  <a class="page-link" href="javascript:;" aria-label="Previous">
-                    <span aria-hidden="true"><i class="fa fa-angle-double-left" aria-hidden="true"></i></span>
-                  </a>
-                </li>
-                <li class="page-item">
-                  <a class="page-link" href="javascript:;">1</a>
-                </li>
-                <li class="page-item">
-                  <a class="page-link" href="javascript:;">2</a>
-                </li>
-                <li class="page-item active">
-                  <a class="page-link" href="javascript:;">3</a>
-                </li>
-                <li class="page-item">
-                  <a class="page-link" href="javascript:;">4</a>
-                </li>
-                <li class="page-item">
-                  <a class="page-link" href="javascript:;">5</a>
-                </li>
-                <li class="page-item">
-                  <a class="page-link" href="javascript:;" aria-label="Next">
-                    <span aria-hidden="true"><i class="fa fa-angle-double-right" aria-hidden="true"></i></span>
-                  </a>
-                </li>
-              </ul>
+              </div>
             </div>
           </div>
         </div>
@@ -100,7 +147,9 @@
       <template #head>
         <div style="text-align: left" v-if="isEdit == 'no'">
           <p class="header__main">Добавление имущества</p>
-          <p class="header__sec">Введите данные имущества и нажмите “Добавить”</p>
+          <p class="header__sec">
+            Введите данные имущества и нажмите “Добавить”
+          </p>
         </div>
         <div style="text-align: left" v-if="isEdit == 'yes'">
           <p class="header__main">BMW X15</p>
@@ -126,8 +175,8 @@
             >
             <select class="form-select">
               <option selected disabled>Выберите</option>
-              <option >Мебель</option>
-              <option >Недвижимость</option>
+              <option>Мебель</option>
+              <option>Недвижимость</option>
             </select>
           </div>
           <div class="form-group">
@@ -160,8 +209,8 @@
             >
             <select class="form-select">
               <option selected disabled>Выберите</option>
-              <option >Мебель</option>
-              <option >Недвижимость</option>
+              <option>Мебель</option>
+              <option>Недвижимость</option>
             </select>
           </div>
           <div class="form-group">
@@ -204,72 +253,73 @@ export default {
         {
           id: 0,
           name: "BMW M5",
-          type: 'Транспорт',
+          type: "Транспорт",
           price: 999999,
         },
         {
           id: 1,
           name: "Дом на Саина",
-          type: 'Недвижимость',
+          type: "Недвижимость",
           price: 7540000,
         },
         {
           id: 2,
           name: "Дом в Алмате",
-          type: 'Недвижимость',
+          type: "Недвижимость",
           price: 9650421,
         },
         {
           id: 3,
           name: "Техника",
-          type: 'Техника',
+          type: "Техника",
           price: 965421,
         },
         {
           id: 4,
           name: "Офисный стеллаж",
-          type: 'Мебель',
+          type: "Мебель",
           price: 95421,
         },
       ],
-      isEdit: 'no',
+      isEdit: "no",
     };
   },
   components: {
     "the-filter": Filter,
-    'inputs-modal': InputsModal,
+    "inputs-modal": InputsModal,
   },
 };
 </script>
 
 <style scoped>
 .dropdown {
-    display: inline-block;
-    position: relative;
+  width: 100%;
+  display: inline-block;
+  position: relative;
 }
 
 .dropdown-content {
-    text-align: left;
-    display: none;
-    position: absolute;
-    width: 7.815vw;
-    overflow: auto;
-    background: #f8f9fa;
-    box-shadow: 2px 2px 5.5px rgba(0, 0, 0, 0.25);
-    border-radius: 12px;
-    right: 15px;
-    z-index: 1;
-    padding: 0.625vw 0.625vw 0.625vw 0.625vw;
+  text-align: left;
+  display: none;
+  position: absolute;
+  width: 7.815vw;
+  overflow: auto;
+  background: #f8f9fa;
+  box-shadow: 2px 2px 5.5px rgba(0, 0, 0, 0.25);
+  border-radius: 12px;
+  right: 15px;
+  z-index: 1;
+  padding: 0.625vw 0.625vw 0.625vw 0.625vw;
 }
 
 .dropdown:hover .dropdown-content {
-    display: block;
+  display: block;
 }
 
 .dropdown-content a {
-    display: block;
-    color: #2d3748;
-    text-decoration: none;
+  display: block;
+  color: #2d3748;
+  text-decoration: none;
 }
 .form__width {
   width: 15.99vw !important;
@@ -315,19 +365,19 @@ td {
 .pagination {
   align-self: end;
 }
-th{
+th {
   text-transform: uppercase !important;
 }
 
 /* FORM */
-.clients__footer{
+.clients__footer {
   flex-grow: 1;
   width: 100%;
 }
-.clients__footer button{
+.clients__footer button {
   width: 60%;
 }
-.form-group{
+.form-group {
   text-align: left;
 }
 </style>

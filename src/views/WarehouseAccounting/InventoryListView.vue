@@ -6,9 +6,7 @@
       <div class="row">
         <div class="col-12">
           <lists-header>
-            <template v-slot:title>
-              Список инвентаризаций   
-            </template>         
+            <template v-slot:title> Список инвентаризаций </template>
           </lists-header>
           <!-- <div class="inv__title">
             <p class="inv__title__text">Список инвентаризаций</p>
@@ -18,47 +16,33 @@
               <div class="inv__left__btn">
                 <button
                   type="button"
+                  style="
+                    font-size: 14px;
+                    font-weight: 600;
+                    display: flex;
+                    align-items: center;
+                  "
                   class="btn bg-gradient-secondary"
                   onclick="window.location.href = '/warehouse-accounting/create-inv-list'"
                 >
-                  + Новая инвентаризация
+                  <img
+                    src="@/assets/img/whtplus.svg"
+                    alt=""
+                    style="margin-right: 10px"
+                  />
+                  Новая инвентаризация
                 </button>
               </div>
-              <div class="inv__right__btn">
-                <div class="form-group">
-                  <div class="input-group mt-1">
-                    <span class="input-group-text"
-                      ><i class="ni ni-zoom-split-in"></i
-                    ></span>
-                    <input
-                      class="form-control inv__inp"
-                      placeholder="Поиск"
-                      type="text"
-                    />
-                  </div>
-                </div>
+              <div class="inv__right__btn gap-3">
+                <list-search></list-search>
+                <print-button></print-button>
+                <download-button></download-button>
                 <filters-button></filters-button>
-                <button type="button" class="inv__btn btn btn-outline-dark">
-                  <img
-                    src="@/assets/img/print.svg"
-                    style="width: 1.25vw; margin-right: 0.417vw"
-                    alt=""
-                  />
-                  печать
-                </button>
-                <button type="button" class="inv__btn btn btn-outline-dark">
-                  <img
-                    src="@/assets/img/download.svg"
-                    style="width: 1.25vw; margin-right: 0.417vw"
-                    alt=""
-                  />
-                  скачать
-                </button>
               </div>
             </div>
             <div class="inv__block">
               <div class="inv__content">
-                <table class="table table-bordered table-hover table-striped">
+                <table class="table table-hover table-striped">
                   <thead>
                     <tr>
                       <th scope="col" class="th__col">№</th>
@@ -82,25 +66,23 @@
                       <td>{{ item.name }}</td>
                       <td>{{ item.isReady }}</td>
                       <td>{{ item.count }}</td>
-                      <td>
-                        <div class="dropdown">
-                          <img
-                            src="@/assets/img/dots.svg"
-                            style="width: 1.563vw; cursor: pointer"
-                            alt=""
-                          />
-                          <div class="dropdown-content">
-                            <a href="/warehouse-accounting/edit-inv"
-                              >Редактировать</a
-                            >
-                            <hr />
-                            <a
-                              style="cursor: pointer"
-                              data-bs-toggle="modal"
-                              data-bs-target="#DeleteInv"
-                              >Удалить</a
-                            >
-                          </div>
+                      <td class="dropdown">
+                        <img
+                          src="@/assets/img/dots.svg"
+                          style="width: 1.563vw; cursor: pointer"
+                          alt=""
+                        />
+                        <div class="dropdown-content">
+                          <a href="/warehouse-accounting/edit-inv"
+                            >Редактировать</a
+                          >
+                          <hr />
+                          <a
+                            style="cursor: pointer"
+                            data-bs-toggle="modal"
+                            data-bs-target="#DeleteInv"
+                            >Удалить</a
+                          >
                         </div>
                       </td>
                     </tr>
@@ -206,6 +188,70 @@ export default {
           isReady: "Завершена",
           count: "15",
         },
+        {
+          date: "11 янв, 19:23, 2021",
+          id: "19",
+          place: "ТРЦ Москва",
+          name: "Мильчаков Валерий",
+          isReady: "Завершена",
+          count: "15",
+        },
+        {
+          date: "11 янв, 19:23, 2021",
+          id: "19",
+          place: "ТРЦ Москва",
+          name: "Мильчаков Валерий",
+          isReady: "Завершена",
+          count: "15",
+        },
+        {
+          date: "11 янв, 19:23, 2021",
+          id: "19",
+          place: "ТРЦ Москва",
+          name: "Мильчаков Валерий",
+          isReady: "Завершена",
+          count: "15",
+        },
+        {
+          date: "11 янв, 19:23, 2021",
+          id: "19",
+          place: "ТРЦ Москва",
+          name: "Мильчаков Валерий",
+          isReady: "Завершена",
+          count: "15",
+        },
+        {
+          date: "11 янв, 19:23, 2021",
+          id: "19",
+          place: "ТРЦ Москва",
+          name: "Мильчаков Валерий",
+          isReady: "Завершена",
+          count: "15",
+        },
+        {
+          date: "11 янв, 19:23, 2021",
+          id: "19",
+          place: "ТРЦ Москва",
+          name: "Мильчаков Валерий",
+          isReady: "Завершена",
+          count: "15",
+        },
+        {
+          date: "11 янв, 19:23, 2021",
+          id: "19",
+          place: "ТРЦ Москва",
+          name: "Мильчаков Валерий",
+          isReady: "Завершена",
+          count: "15",
+        },
+        {
+          date: "11 янв, 19:23, 2021",
+          id: "19",
+          place: "ТРЦ Москва",
+          name: "Мильчаков Валерий",
+          isReady: "Завершена",
+          count: "15",
+        },
       ],
     };
   },
@@ -213,10 +259,8 @@ export default {
 </script>
 
 <style scoped>
-hr {
-  border: 1px solid #2d3748;
-}
 .dropdown {
+  width: 100%;
   display: inline-block;
   position: relative;
 }
@@ -241,6 +285,9 @@ hr {
   color: #2d3748;
   text-decoration: none;
 }
+hr {
+  border: 1px solid #2d3748;
+}
 .th__col {
   color: #a0aec0 !important;
 }
@@ -259,8 +306,6 @@ hr {
   background-color: #e2e8f0;
 }
 .inv__content {
-  padding-left: 1.354vw;
-  padding-right: 1.354vw;
   height: 30.469vw;
   overflow-y: scroll;
 }

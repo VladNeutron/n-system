@@ -6,14 +6,12 @@
       <div class="row">
         <div class="col-12">
           <lists-header>
-            <template v-slot:title>
-              Список скидок   
-            </template>            
+            <template v-slot:title> Список скидок </template>
           </lists-header>
           <div class="card">
             <div class="inv__buttons">
               <div class="inv__left__btn">
-                <div class="form-group">
+                <!-- <div class="form-group">
                   <div class="input-group">
                     <span class="input-group-text"
                       ><img
@@ -29,12 +27,10 @@
                       v-model.trim="search"
                     />
                   </div>
-                </div>
+                </div> -->
                 <button
                   type="button"
                   class="btn bg-gradient-secondary"
-                  data-bs-toggle="modal"
-                  data-bs-target="#SelectDisc"
                 >
                   <img
                     src="@/assets/img/whtplus.svg"
@@ -44,81 +40,50 @@
                   Добавить скидку
                 </button>
               </div>
-              <div class="inv__right__btn">
-                <button type="button" class="inv__btn btn btn-outline-dark">
-                  <img
-                    src="@/assets/img/print.svg"
-                    style="width: 1.25vw; margin-right: 0.417vw"
-                    alt=""
-                  />
-                  печать
-                </button>
-                <button type="button" class="inv__btn btn btn-outline-dark">
-                  <img
-                    src="@/assets/img/download.svg"
-                    style="width: 1.25vw; margin-right: 0.417vw"
-                    alt=""
-                  />
-                  скачать
-                </button>
+              <div class="inv__right__btn gap-3">
+                <list-search></list-search>
+                <print-button></print-button>
+                <download-button></download-button>
               </div>
             </div>
             <div class="inv__block">
               <div class="inv__content">
-                <table class="table table-bordered table-hover table-striped">
+                <table class="table table-hover table-striped">
                   <thead>
                     <tr>
-                      <th scope="col" class="th__col" style="border-right: 0">
-                        №
-                      </th>
-                      <th
-                        scope="col"
-                        class="th__col"
-                        style="border-left: 0; border-right: 0"
-                      >
-                        Тип скидки
-                      </th>
-                      <th
-                        scope="col"
-                        class="th__col"
-                        style="border-left: 0; border-right: 0"
-                      >
-                        Период действия
-                      </th>
+                      <th scope="col" class="th__col">№</th>
+                      <th scope="col" class="th__col">Тип скидки</th>
+                      <th scope="col" class="th__col">Период действия</th>
 
-                      <th scope="col" class="th__col" style="border-left: 0">
-                        Действия
-                      </th>
+                      <th scope="col" class="th__col">Действия</th>
                     </tr>
                   </thead>
                   <tbody>
                     <tr v-for="(item, i) in filteredDiscounts" :key="item">
-                      <th scope="row" style="border-right: 0">
+                      <th scope="row">
                         {{ i + 1 }}
                       </th>
-                      <td style="border-left: 0; border-right: 0">
+                      <td>
                         {{ item.type }}
                       </td>
-                      <td width="75%" style="border-left: 0; border-right: 0">
+                      <td width="75%">
                         {{ item.period }}
                       </td>
-                      <td style="border-left: 0">
-                        <div class="dropdown">
-                          <img
-                            src="@/assets/img/dots.svg"
-                            style="width: 1.563vw; cursor: pointer"
-                            alt=""
-                          />
-                          <div class="dropdown-content">
-                            <a href="#">Редактировать</a>
-                            <hr />
-                            <a
-                              style="cursor: pointer"
-                              data-bs-toggle="modal"
-                              data-bs-target="#DeleteInv"
-                              >Удалить</a
-                            >
-                          </div>
+                      <td class="dropdown">
+                        <img
+                          src="@/assets/img/dots.svg"
+                          style="width: 1.563vw; cursor: pointer"
+                          alt=""
+                        />
+                        <div class="dropdown-content">
+                          <a href="#">Редактировать</a>
+                          <hr />
+                          <a
+                            style="cursor: pointer"
+                            data-bs-toggle="modal"
+                            data-bs-target="#DeleteInv"
+                            >Удалить</a
+                          >
                         </div>
                       </td>
                     </tr>
@@ -315,6 +280,7 @@ hr {
   border: 1px solid #2d3748;
 }
 .dropdown {
+  width: 100%;
   display: inline-block;
   position: relative;
 }
@@ -367,10 +333,8 @@ td {
   background-color: #e2e8f0;
 }
 .inv__content {
-  padding-left: 1.354vw;
-  padding-right: 1.354vw;
   height: 27.363vw;
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 
 .inv__btn {

@@ -3,15 +3,13 @@
   <main class="main-content border-radius-lg">
     <the-header></the-header>
     <div class="container-fluid">
-      <div class="row ">
+      <div class="row">
         <div class="col-12">
           <lists-header>
-            <template v-slot:title>
-              Список касс   
-            </template>  
+            <template v-slot:title> Список касс </template>
             <template v-slot:description>
-              Внесите изменения и не забудьте  нажать “Сохранить”    
-            </template>          
+              Внесите изменения и не забудьте нажать “Сохранить”
+            </template>
           </lists-header>
           <div class="card" style="padding-top: 1.25vw">
             <div style="text-align: left; margin-left: 1.25vw">
@@ -20,91 +18,69 @@
                 data-bs-toggle="modal"
                 data-bs-target="#InpModal"
                 @click="isEdit = 'no'"
+                style="
+                  font-size: 14px;
+                  font-weight: 600;
+                  display: flex;
+                  align-items: center;
+                "
               >
-                <img src="@/assets/img/whtplus.svg" alt="" />
+                <img
+                  src="@/assets/img/whtplus.svg"
+                  alt=""
+                  style="margin-right: 10px"
+                />
                 Добавить кассу
               </button>
             </div>
             <div class="inv__block">
               <div class="inv__content">
-                <table class="table table-bordered table-hover table-striped">
+                <table class="table table-hover table-striped">
                   <thead>
                     <tr>
-                      <th
-                        scope="col"
-                        class="th__col"
-                        style="border-left: 0; border-right: 0"
-                      >
-                        №
-                      </th>
-                      <th
-                        scope="col"
-                        class="th__col"
-                        style="border-left: 0; border-right: 0"
-                      >
-                        Название кассы
-                      </th>
-                      <th
-                        scope="col"
-                        class="th__col"
-                        style="border-left: 0; border-right: 0"
-                      >
-                        Tорговая точка
-                      </th>
-                      <th
-                        scope="col"
-                        class="th__col"
-                        style="border-left: 0; border-right: 0"
-                      >
-                        Cтатус
-                      </th>
-                      <th
-                        scope="col"
-                        class="th__col"
-                        style="border-left: 0; border-right: 0"
-                      >
-                        Действия
-                      </th>
+                      <th scope="col" class="th__col">№</th>
+                      <th scope="col" class="th__col">Название кассы</th>
+                      <th scope="col" class="th__col">Tорговая точка</th>
+                      <th scope="col" class="th__col">Cтатус</th>
+                      <th scope="col" class="th__col">Действия</th>
                     </tr>
                   </thead>
                   <tbody>
                     <!-- v-for="(item, i) in filteredClients" :key="item" -->
                     <tr v-for="(item, i) in items" :key="item">
-                      <th scope="row" style="border-left: 0; border-right: 0">
+                      <td scope="row">
                         {{ i + 1 }}
-                      </th>
-                      <td style="border-left: 0; border-right: 0">
+                      </td>
+                      <td>
                         {{ item.name }}
                       </td>
-                      <td style="border-left: 0; border-right: 0">
+                      <td>
                         {{ item.tradePoint }}
                       </td>
-                      <td style="border-left: 0; border-right: 0">
+                      <td>
                         {{ item.status }}
                       </td>
-                      <td style="border-left: 0; border-right: 0">
-                        <div class="dropdown">
-                          <img
-                            src="@/assets/img/dots.svg"
-                            style="width: 1.563vw; cursor: pointer"
-                            alt=""
-                          />
-                          <div class="dropdown-content">
-                            <a
-                              style="cursor: pointer"
-                              data-bs-toggle="modal"
-                              data-bs-target="#InpModal"
-                              @click="isEdit = 'yes'"
-                              >Редактировать</a
-                            >
-                            <hr />
-                            <a
-                              style="cursor: pointer"
-                              data-bs-toggle="modal"
-                              data-bs-target="#DeleteInv"
-                              >Удалить</a
-                            >
-                          </div>
+                      <td class="dropdown">
+                        <img
+                          src="@/assets/img/dots.svg"
+                          style="width: 1.563vw; cursor: pointer"
+                          alt=""
+                        />
+                        <div class="dropdown-content">
+                          <a
+                            style="cursor: pointer"
+                            data-bs-toggle="modal"
+                            data-bs-target="#InpModal"
+                            @click="isEdit = 'yes'"
+                            >Редактировать</a
+                          >
+                          <hr />
+                          <a
+                            style="cursor: pointer"
+                            data-bs-toggle="modal"
+                            data-bs-target="#DeleteInv"
+                            >Удалить</a
+                          >
                         </div>
                       </td>
                     </tr>
@@ -202,9 +178,8 @@
               >Торговая точка</label
             >
             <div class="select3">
-              <img src="@/assets/img/arrow.svg" style="width: 0.833vw" alt="" />
               <select
-                class="form-control disc__form"
+                class="form-select disc__form"
                 id="exampleFormControlSelect1"
               >
                 <option disabled selected>Выберите торговую точку</option>
@@ -232,9 +207,8 @@
               >Торговая точка</label
             >
             <div class="select3">
-              <img src="@/assets/img/arrow.svg" style="width: 0.833vw" alt="" />
               <select
-                class="form-control disc__form"
+                class="form-select disc__form"
                 id="exampleFormControlSelect1"
               >
                 <option disabled selected>Выберите торговую точку</option>
@@ -421,9 +395,10 @@ export default {
 }
 .inv__content {
   height: 27.363vw;
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 .dropdown {
+  width: 100%;
   display: inline-block;
   position: relative;
 }
@@ -436,7 +411,7 @@ export default {
   background: #f8f9fa;
   box-shadow: 2px 2px 5.5px rgba(0, 0, 0, 0.25);
   border-radius: 12px;
-  right: 15px;
+  right: 8.333vw;
   z-index: 1;
   padding: 0.625vw 0.625vw 0.625vw 0.625vw;
 }

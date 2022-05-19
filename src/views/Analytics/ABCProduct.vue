@@ -68,7 +68,7 @@
         </div>
         <div class="table__inputs d-flex gap-3 align-content-center">
           <div class="form-group m-0 form__pc" style="text-align: left">
-            <div class="input-group mt-1">
+            <div class="input-group mt-0">
               <span class="input-group-text"
                 ><img src="@/assets/css/icons/searchIcon.svg" alt="" />
               </span>
@@ -81,15 +81,8 @@
               />
             </div>
           </div>
-          <button class="btn btn-outline-dark mb-0">
-            <span
-              ><img
-                src="@/assets/css/icons/down-arrow.svg"
-                class="me-1"
-                alt="" /></span
-            >Выгрузить
-          </button>
-          <button class="btn btn-outline-dark mb-0">Фильтры</button>
+          <export2-button></export2-button>
+          <filters-button></filters-button>
         </div>
       </div>
       <div class="d-flex" style="margin-left: 25px">
@@ -143,12 +136,14 @@
               <th scope="col" class="th__col">Количество продаж</th>
               <th scope="col" class="th__col">Сумма продаж</th>
               <th scope="col" class="th__col">% от продаж</th>
-              <th scope="col" class="th__col">ABC анализ</th>
+              <th scope="col" class="th__col" style="padding-right: 7.656vw">
+                ABC анализ
+              </th>
             </tr>
           </thead>
           <tbody>
             <tr v-for="(order, i) of orders" :key="order.id">
-              <th>{{ i + 1 }}</th>
+              <td>{{ i + 1 }}</td>
               <td>{{ order.name }}</td>
               <td>{{ order.color }}</td>
               <td>{{ order.size }}</td>
@@ -159,7 +154,7 @@
               </td>
               <td>{{ order.sum }} ₸</td>
               <td>{{ order.percent }} %</td>
-              <td>
+              <td style="padding-right: 7.656vw">
                 <div class="btn mb-0 w-100" :class="getClass(order.status)">
                   {{ buttonText }}
                 </div>
@@ -443,6 +438,10 @@ export default {
   color: #2d3748;
   text-decoration: underline;
   cursor: pointer;
+}
+.form__mob,
+.buttons__mob {
+  display: none;
 }
 @media screen and (max-width: 1600px) {
   .btn {

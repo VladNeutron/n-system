@@ -2,10 +2,10 @@
   <the-navbar></the-navbar>
   <main class="main-content border-radius-lg">
     <the-header></the-header>
-    <div class="order__content">
+    <div class="container-fluid">
       <div class="order__header">
         <div class="order__header-content">
-          <div class="order__header-main">
+          <div class="order__header-main pt-2">
             <div class="order__header-text">
               <p class="order__header__main">Создание возврата</p>
               <p class="order__header__sec">
@@ -13,31 +13,10 @@
               </p>
             </div>
             <div class="drop__buttons">
-              <button class="btn comment">
-                <img src="@/assets/img/comment.svg" style="width: 1.042vw; margin-right: 0.417vw" alt="" />
-                Комментарии <span class="count">4</span>
-              </button>
-              <div class="dropdown">
-                <button class="btn action" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown"
-                  aria-expanded="false">
-                  <img src="@/assets/img/action.svg" style="width: 1.042vw; margin-right: 0.417vw" alt="" />
-                  Действия
-                </button>
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                  <li>
-                    <a class="dropdown-item" href="javascript:;">Печать</a>
-                  </li>
-                  <li>
-                    <a class="dropdown-item" href="javascript:;">Скачать</a>
-                  </li>
-                  <li>
-                    <a class="dropdown-item" href="javascript:;">Удалить</a>
-                  </li>
-                </ul>
-              </div>
+              <comment-button style="margin-right: 24px"></comment-button>
+              <action-button style="margin-right: 24px"></action-button>
               <button class="btn save__btn">Сохранить</button>
             </div>
-
           </div>
           <div class="order__body">
             <div class="row">
@@ -45,18 +24,41 @@
                 <div class="order__body__content">
                   <div class="order__first__row">
                     <div class="form-group">
-                      <label for="example-text-input" class="form-control-label order__label">№ Возврата</label>
-                      <input class="form-control" type="text" id="example-text-input" placeholder="№ 9876543" />
+                      <label
+                        for="example-text-input"
+                        class="form-control-label order__label"
+                        >№ Возврата</label
+                      >
+                      <input
+                        class="form-control"
+                        type="text"
+                        id="example-text-input"
+                        placeholder="№ 9876543"
+                      />
                     </div>
                     <div class="form-group">
-                      <label for="example-date-input" class="form-control-label order__label">Дата возврата</label>
-                      <input class="form-control" type="date" id="example-date-input" />
+                      <label
+                        for="example-date-input"
+                        class="form-control-label order__label"
+                        >Дата возврата</label
+                      >
+                      <input
+                        class="form-control"
+                        type="date"
+                        id="example-date-input"
+                      />
                     </div>
                     <div class="form-group">
-                      <label for="exampleFormControlSelect1" class="order__label">Ответственный</label>
+                      <label
+                        for="exampleFormControlSelect1"
+                        class="order__label"
+                        >Ответственный</label
+                      >
                       <div class="select">
-                        <img src="@/assets/img/arrow.svg" style="width: 0.833vw" alt="" />
-                        <select class="form-control" id="exampleFormControlSelect1">
+                        <select
+                          class="form-select"
+                          id="exampleFormControlSelect1"
+                        >
                           <option>Выберите</option>
                           <option>Иванов И.</option>
                           <option>Иванов И.</option>
@@ -66,10 +68,16 @@
                       </div>
                     </div>
                     <div class="form-group">
-                      <label for="exampleFormControlSelect1" class="order__label">Склад</label>
+                      <label
+                        for="exampleFormControlSelect1"
+                        class="order__label"
+                        >Склад</label
+                      >
                       <div class="select">
-                        <img src="@/assets/img/arrow.svg" style="width: 0.833vw" alt="" />
-                        <select class="form-control" id="exampleFormControlSelect1">
+                        <select
+                          class="form-select"
+                          id="exampleFormControlSelect1"
+                        >
                           <option>Выберите</option>
                           <option>Склад 1</option>
                           <option>Склад 1</option>
@@ -79,10 +87,16 @@
                       </div>
                     </div>
                     <div class="form-group">
-                      <label for="exampleFormControlSelect1" class="order__label">Способ возврата средств</label>
+                      <label
+                        for="exampleFormControlSelect1"
+                        class="order__label"
+                        >Способ возврата средств</label
+                      >
                       <div class="select">
-                        <img src="@/assets/img/arrow.svg" style="width: 0.833vw" alt="" />
-                        <select class="form-control" id="exampleFormControlSelect1">
+                        <select
+                          class="form-select"
+                          id="exampleFormControlSelect1"
+                        >
                           <option>Выберите</option>
                           <option>Безналичный расчет</option>
                           <option>Наличный расчет</option>
@@ -93,10 +107,16 @@
                   </div>
                   <div class="order__second__row">
                     <div class="form-group">
-                      <label for="exampleFormControlSelect1" class="order__label">Статус возврата</label>
+                      <label
+                        for="exampleFormControlSelect1"
+                        class="order__label"
+                        >Статус возврата</label
+                      >
                       <div class="select2">
-                        <img src="@/assets/img/arrow.svg" style="width: 0.833vw" alt="" />
-                        <select class="form-control first__s" id="exampleFormControlSelect1">
+                        <select
+                          class="form-select first__s"
+                          id="exampleFormControlSelect1"
+                        >
                           <option>Выберите</option>
                           <option>Новый заказ</option>
                           <option>Новый заказ</option>
@@ -105,19 +125,43 @@
                       </div>
                     </div>
                     <div class="form-group">
-                      <label for="example-text-input" class="form-control-label order__label">ФИО клиента</label>
-                      <input class="form-control second__s" type="text" id="example-text-input"
-                        placeholder="Иванов Иван Иванович" />
+                      <label
+                        for="example-text-input"
+                        class="form-control-label order__label"
+                        >ФИО клиента</label
+                      >
+                      <input
+                        class="form-control second__s"
+                        type="text"
+                        id="example-text-input"
+                        placeholder="Иванов Иван Иванович"
+                      />
                     </div>
                     <div class="form-group">
-                      <label for="example-text-input" class="form-control-label order__label">Номер телефона</label>
-                      <input class="form-control third__s" type="tel" id="example-text-input"
-                        placeholder="+7 777 123 45 67" />
+                      <label
+                        for="example-text-input"
+                        class="form-control-label order__label"
+                        >Номер телефона</label
+                      >
+                      <input
+                        class="form-control third__s"
+                        type="tel"
+                        id="example-text-input"
+                        placeholder="+7 777 123 45 67"
+                      />
                     </div>
                     <div class="form-group">
-                      <label for="example-text-input" class="form-control-label order__label">E-mail</label>
-                      <input class="form-control fourth__s" type="email" id="example-text-input"
-                        placeholder="iva.noff@example.com" />
+                      <label
+                        for="example-text-input"
+                        class="form-control-label order__label"
+                        >E-mail</label
+                      >
+                      <input
+                        class="form-control fourth__s"
+                        type="email"
+                        id="example-text-input"
+                        placeholder="iva.noff@example.com"
+                      />
                     </div>
                   </div>
                 </div>
@@ -127,21 +171,33 @@
                 <div class="order__ready">
                   <div class="order__ready__content">
                     <div class="form-group">
-                      <label for="exampleFormControlSelect1" class="order__label">Способ доставки</label>
+                      <label
+                        for="exampleFormControlSelect1"
+                        class="order__label"
+                        >Способ доставки</label
+                      >
                       <div class="select2">
-                        <img src="@/assets/img/arrow.svg" style="width: 0.833vw" alt="" />
-                        <select class="form-control five__s" id="exampleFormControlSelect1"
-                          @change="isPickup = !isPickup">
+                        <select
+                          class="form-select five__s"
+                          id="exampleFormControlSelect1"
+                          @change="isPickup = !isPickup"
+                        >
                           <option>Самовывоз</option>
                           <option>Доставка</option>
                         </select>
                       </div>
                     </div>
                     <div class="form-group" v-if="isPickup == true">
-                      <label for="exampleFormControlSelect1" class="order__label">Пункт самовывоза</label>
+                      <label
+                        for="exampleFormControlSelect1"
+                        class="order__label"
+                        >Пункт самовывоза</label
+                      >
                       <div class="select2">
-                        <img src="@/assets/img/arrow.svg" style="width: 0.833vw" alt="" />
-                        <select class="form-control five__s" id="exampleFormControlSelect1">
+                        <select
+                          class="form-select five__s"
+                          id="exampleFormControlSelect1"
+                        >
                           <option>Выберите</option>
                           <option>Склад 1</option>
                           <option>Склад 2</option>
@@ -149,9 +205,17 @@
                       </div>
                     </div>
                     <div class="form-group" v-if="isPickup == false">
-                      <label for="example-text-input" class="form-control-label order__label">Адрес доставки</label>
-                      <input class="form-control five__s" type="text" id="example-text-input"
-                        placeholder="Введите адрес" />
+                      <label
+                        for="example-text-input"
+                        class="form-control-label order__label"
+                        >Адрес доставки</label
+                      >
+                      <input
+                        class="form-control five__s"
+                        type="text"
+                        id="example-text-input"
+                        placeholder="Введите адрес"
+                      />
                     </div>
                   </div>
                 </div>
@@ -166,22 +230,39 @@
             <div class="barcodes">
               <div class="form-group">
                 <div class="input-group">
-                  <input class="form-control barcode__inp" placeholder="Введите штрихкод" id="search-barcode"
-                    type="text" />
-                  <span class="input-group-text py-0"><img src="@/assets/css/icons/barcode.svg" alt="" /></span>
+                  <input
+                    class="form-control barcode__inp"
+                    placeholder="Введите штрихкод"
+                    id="search-barcode"
+                    type="text"
+                  />
+                  <span class="input-group-text py-0"
+                    ><img src="@/assets/css/icons/barcode.svg" alt=""
+                  /></span>
                 </div>
               </div>
               <button class="btn barcode__btn">Выбрать из списка</button>
             </div>
             <div class="search">
-              <button class="btn disc__btn" data-bs-toggle="modal" data-bs-target="#DiscModal">
+              <button
+                class="btn disc__btn"
+                data-bs-toggle="modal"
+                data-bs-target="#DiscModal"
+              >
                 Применить скидку
               </button>
               <div class="form-group m-0">
                 <div class="input-group mt-1">
-                  <span class="input-group-text"><img src="@/assets/css/icons/searchIcon.svg" alt="" /></span>
-                  <input class="form-control search__inp" placeholder="Поиск..." id="search" type="text"
-                    v-model.trim="search" />
+                  <span class="input-group-text"
+                    ><img src="@/assets/css/icons/searchIcon.svg" alt=""
+                  /></span>
+                  <input
+                    class="form-control search__inp"
+                    placeholder="Поиск..."
+                    id="search"
+                    type="text"
+                    v-model.trim="search"
+                  />
                 </div>
               </div>
             </div>
@@ -198,90 +279,72 @@
             </div>
           </div>
           <div class="order__table__body" v-else>
-            <table class="table table-bordered table-hover table-striped">
+            <table class="table table-hover table-striped">
               <thead>
                 <tr>
-                  <th scope="col" class="th__col" style="border-left: 0; border-right: 0">
-                    №
-                  </th>
-                  <th scope="col" class="th__col" style="border-left: 0; border-right: 0">
-                    Товар
-                  </th>
-                  <th scope="col" class="th__col" style="border-left: 0; border-right: 0">
-                    Штрихкод
-                  </th>
-                  <th scope="col" class="th__col" style="border-left: 0; border-right: 0">
-                    Цвет
-                  </th>
-                  <th scope="col" class="th__col" style="border-left: 0; border-right: 0">
-                    Размер
-                  </th>
-                  <th scope="col" class="th__col" style="border-left: 0; border-right: 0">
-                    Себестоимость
-                  </th>
-                  <th scope="col" class="th__col" style="border-left: 0; border-right: 0">
-                    Цена продажи
-                  </th>
-                  <th scope="col" class="th__col" style="border-left: 0; border-right: 0">
-                    Кол-во
-                  </th>
-                  <th scope="col" class="th__col" style="border-left: 0; border-right: 0">
-                    Скидка
-                  </th>
-                  <th scope="col" class="th__col" style="border-left: 0; border-right: 0">
-                    Сумма
-                  </th>
-                  <th scope="col" class="th__col" style="border-left: 0; border-right: 0">
-                    Действия
-                  </th>
+                  <th scope="col" class="th__col">№</th>
+                  <th scope="col" class="th__col">Товар</th>
+                  <th scope="col" class="th__col">Штрихкод</th>
+                  <th scope="col" class="th__col">Цвет</th>
+                  <th scope="col" class="th__col">Размер</th>
+                  <th scope="col" class="th__col">Себестоимость</th>
+                  <th scope="col" class="th__col">Цена продажи</th>
+                  <th scope="col" class="th__col">Кол-во</th>
+                  <th scope="col" class="th__col">Скидка</th>
+                  <th scope="col" class="th__col">Сумма</th>
+                  <th scope="col" class="th__col">Действия</th>
                 </tr>
               </thead>
               <tbody>
                 <!-- v-for="(item, i) in items" :key="item" -->
                 <tr v-for="(item, i) in filteredProducts" :key="item">
-                  <th scope="row" style="border-right: 0; border-left: 0">
+                  <th scope="row">
                     {{ i + 1 }}
                   </th>
-                  <td style="border-left: 0; border-right: 0; display: flex">
-                    <img :src="item.img" style="width: 2.5vw; margin-right: 0.833vw" alt="" />
+                  <td style="display: flex">
+                    <img
+                      :src="item.img"
+                      style="width: 2.5vw; margin-right: 0.833vw"
+                      alt=""
+                    />
                     {{ item.name }}
                   </td>
-                  <td style="border-left: 0; border-right: 0">
+                  <td>
                     {{ item.barcode }}
                   </td>
-                  <td style="border-left: 0; border-right: 0">
+                  <td>
                     {{ item.color }}
                   </td>
-                  <td style="border-left: 0; border-right: 0">
+                  <td>
                     {{ item.size }}
                   </td>
-                  <td style="border-left: 0; border-right: 0">
-                    {{ item.costPrice }} ₸
-                  </td>
-                  <td style="border-left: 0; border-right: 0">
-                    {{ item.price }} ₸
-                  </td>
-                  <td style="border-left: 0; border-right: 0">
+                  <td>{{ item.costPrice }} ₸</td>
+                  <td>{{ item.price }} ₸</td>
+                  <td>
                     {{ item.count }}
                   </td>
-                  <td style="border-left: 0; border-right: 0">
+                  <td>
                     {{ item.disc }}
                   </td>
-                  <td style="border-left: 0; border-right: 0">
-                    {{ item.price * item.count }} ₸
-                  </td>
-                  <td style="border-left: 0; border-right: 0">
+                  <td>{{ item.price * item.count }} ₸</td>
+                  <td>
                     <div class="dropdown">
-                      <img src="@/assets/img/dots.svg" style="
-                          width: 1.563vw;
-                          cursor: pointer;
-                          transform: rotate(90deg);
-                        " alt="" />
+                      <img
+                        src="@/assets/img/dots.svg"
+                        style="width: 1.563vw; cursor: pointer"
+                        alt=""
+                      />
                       <div class="dropdown-content">
-                        <a href="#" data-bs-toggle="modal" data-bs-target="#InpModal"
-                          @click="isColor = true">Редактировать</a>
+                        <a href="/warehouse-accounting/edit-inv"
+                          >Редактировать</a
+                        >
                         <hr />
-                        <a style="cursor: pointer" data-bs-toggle="modal" data-bs-target="#DeleteInv">Удалить</a>
+                        <a
+                          style="cursor: pointer"
+                          data-bs-toggle="modal"
+                          data-bs-target="#DeleteInv"
+                          >Удалить</a
+                        >
                       </div>
                     </div>
                   </td>
@@ -290,19 +353,19 @@
             </table>
           </div>
           <div class="order__ready_block" v-if="!isAdded">
-            <div style="text-align:left">
+            <div style="text-align: left">
               <p class="order__ready__main">Сумма</p>
               <p class="order__ready__sec">280 000 ₸</p>
             </div>
-            <div style="text-align:left">
+            <div style="text-align: left">
               <p class="order__ready__main">Кол-во товаров</p>
               <p class="order__ready__sec">26 шт</p>
             </div>
-            <div style="text-align:left">
+            <div style="text-align: left">
               <p class="order__ready__main">Общая скидка</p>
               <p class="order__ready__sec">10 %</p>
             </div>
-            <div style="text-align:left">
+            <div style="text-align: left">
               <p class="order__ready__result">Итог</p>
               <p class="order__ready__sum">320 000 ₸</p>
             </div>
@@ -319,19 +382,30 @@
       </template>
       <template #body>
         <div class="search__buttons">
-          <button :class="['left__btn', { active: onStorage == 'yes' }]" @click="onStorage = 'yes'">
+          <button
+            :class="['left__btn', { active: onStorage == 'yes' }]"
+            @click="onStorage = 'yes'"
+          >
             Выбрать из списка
           </button>
-          <button :class="['right__btn', { active2: onStorage == 'all' }]" @click="onStorage = 'all'">
+          <button
+            :class="['right__btn', { active2: onStorage == 'all' }]"
+            @click="onStorage = 'all'"
+          >
             Ввести вручную
           </button>
         </div>
         <div class="modal__flex__disc" v-if="onStorage == 'yes'">
           <div class="form-group mr">
-            <label for="exampleFormControlSelect1" class="order__label__disc">Выберите скидку</label>
+            <label for="exampleFormControlSelect1" class="order__label__disc"
+              >Выберите скидку</label
+            >
             <div class="select3">
               <img src="@/assets/img/arrow.svg" style="width: 0.833vw" alt="" />
-              <select class="form-control disc__form" id="exampleFormControlSelect1">
+              <select
+                class="form-control disc__form"
+                id="exampleFormControlSelect1"
+              >
                 <option>Выберите</option>
                 <option>Скидка "8 марта"</option>
                 <option>Скидка "8 марта"</option>
@@ -342,8 +416,15 @@
         </div>
         <div class="modal__flex__disc" v-if="onStorage == 'all'">
           <div class="form-group mr">
-            <label for="exampleFormControlSelect1" class="order__label__disc">Ручная скидка</label>
-            <input class="form-control disc__form" type="text" placeholder="Введите значение" id="example-text-input">
+            <label for="exampleFormControlSelect1" class="order__label__disc"
+              >Ручная скидка</label
+            >
+            <input
+              class="form-control disc__form"
+              type="text"
+              placeholder="Введите значение"
+              id="example-text-input"
+            />
           </div>
         </div>
       </template>
@@ -356,29 +437,54 @@
   </main>
 </template>
 
-
 <style scoped>
+.dropdown {
+  width: 100%;
+  display: inline-block;
+  position: relative;
+}
+.dropdown-content {
+  text-align: left;
+  display: none;
+  position: absolute;
+  width: 7.815vw;
+  overflow: auto;
+  background: #f8f9fa;
+  box-shadow: 2px 2px 5.5px rgba(0, 0, 0, 0.25);
+  border-radius: 12px;
+  right: 15px;
+  z-index: 1;
+  padding: 0.625vw 0.625vw 0.625vw 0.625vw;
+}
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+.dropdown-content a {
+  display: block;
+  color: #2d3748;
+  text-decoration: none;
+}
 .not__added__main {
   font-weight: 600;
   font-size: 1.25vw;
-  color: #2D3748;
+  color: #2d3748;
 }
 
 .not__added__sec {
   font-weight: 400;
   font-size: 0.833vw;
-  color: #2D3748;
+  color: #2d3748;
 }
 
 .btn__chose {
-  background: linear-gradient(83.56deg, #7092E0 10.01%, #8BAEF3 75.36%);
-  box-shadow: 0px 4px 7px -1px rgba(0, 0, 0, 0.11), 0px 2px 4px -1px rgba(0, 0, 0, 0.07);
+  background: linear-gradient(83.56deg, #7092e0 10.01%, #8baef3 75.36%);
+  box-shadow: 0px 4px 7px -1px rgba(0, 0, 0, 0.11),
+    0px 2px 4px -1px rgba(0, 0, 0, 0.07);
   border-radius: 8px;
   padding: 0.625vw 1.875vw 0.625vw 1.875vw;
   font-weight: 700;
   font-size: 0.833vw;
-  color: #FFFFFF;
-
+  color: #ffffff;
 }
 
 .drop__buttons {
@@ -429,21 +535,21 @@
 .order__ready__result {
   font-weight: 600;
   font-size: 1.042vw;
-  color: #2D3748;
+  color: #2d3748;
   margin: 0;
 }
 
 .order__ready__sum {
   font-weight: 600;
-  font-size: 1vw;
-  color: #2D3748;
+  font-size: 1.2vw;
+  color: #2d3748;
 }
 
 .order__ready_block {
   margin-left: 28.073vw;
   margin-top: 8px;
   display: flex;
-  justify-content: space-around
+  justify-content: space-around;
 }
 
 .five__s {
@@ -502,18 +608,22 @@
 }
 
 .active {
-  background: linear-gradient(83.56deg,
-      #7092e0 10.01%,
-      #8baef3 75.36%) !important;
+  background: linear-gradient(
+    83.56deg,
+    #7092e0 10.01%,
+    #8baef3 75.36%
+  ) !important;
   border-radius: 8px 0px 0px 8px !important;
   font-size: 0.729vw !important;
   color: #ffffff !important;
 }
 
 .active2 {
-  background: linear-gradient(83.56deg,
-      #7092e0 10.01%,
-      #8baef3 75.36%) !important;
+  background: linear-gradient(
+    83.56deg,
+    #7092e0 10.01%,
+    #8baef3 75.36%
+  ) !important;
   border-radius: 0px 8px 8px 0px !important;
   font-size: 0.729vw !important;
   color: #ffffff !important;
@@ -586,7 +696,7 @@
 }
 
 .order__table__body {
-  height: 19.792vw;
+  height: 18.792vw;
   overflow-y: scroll;
 }
 
@@ -676,7 +786,7 @@
   background: #ffffff;
   box-shadow: 0px 3.5px 5.5px rgba(0, 0, 0, 0.02);
   border-radius: 15px;
-  padding: 8px 0 0 0;
+  padding: 16px 0 0 0;
 }
 
 .order__table {
@@ -781,7 +891,8 @@
   margin-right: 1.25vw;
 }
 
-.form-control {
+.form-control,
+.form-select {
   border: 1px solid #a0aec0;
   width: 9.948vw;
 }
@@ -808,11 +919,12 @@
   box-shadow: 0px 4px 7px -1px rgba(0, 0, 0, 0.11),
     0px 2px 4px -1px rgba(0, 0, 0, 0.07);
   border-radius: 8px;
-  padding: 0.625vw 3.646vw 0.625vw 3.646vw;
-  font-weight: 700;
-  font-size: 0.833vw;
+  padding: 0.425vw 3.646vw 0.625vw 3.646vw;
+  font-weight: 600;
+  font-size: 14px;
   color: #fff;
   text-transform: none;
+  height: 40px;
 }
 
 .order__header__sec {
@@ -820,7 +932,11 @@
   font-size: 0.729vw;
   color: #a0aec0;
 }
-
+td {
+  font-weight: 600;
+  font-size: 14px;
+  color: #2d3748;
+}
 .order__header__main {
   font-weight: 600;
   font-size: 1.25vw;
@@ -854,7 +970,7 @@ export default {
   },
   methods: {
     test() {
-      alert('Успех')
+      alert("Успех");
     },
   },
   data() {

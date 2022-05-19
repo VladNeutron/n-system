@@ -4,8 +4,8 @@
     <the-header></the-header>
     <storage>
       <template #storage>
-        <div class="storage__padding">
-          <div class="storage__header">
+        <div class="container-fluid">
+          <div class="storage__header mb-2">
             <div class="storage__name">
               <p class="storage__main">Новый склад</p>
               <p class="storage__sec">
@@ -463,8 +463,9 @@ export default {
 }
 .types {
   display: flex;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   margin-bottom: 1.771vw;
+  align-items: center;
 }
 .right__col {
   margin-left: 1.406vw;
@@ -477,6 +478,9 @@ export default {
   color: #2d3748;
   font-weight: 400;
   font-size: 0.833vw;
+  line-height: 0.833vw;
+  margin-bottom: 0;
+  margin-left: 10px;
 }
 .storage__types-text {
   text-align: left;
@@ -573,7 +577,7 @@ export default {
   color: #2d3748;
 }
 .storage__img-content {
-  padding: 1.25vw 1.25vw 1.25vw 1.25vw;
+  padding: 1vw 1.25vw 1vw 1.25vw;
 }
 .storage__img {
   width: 25.521vw;
@@ -611,6 +615,7 @@ export default {
 .storage__header {
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 .storage__padding {
   padding: 1.475vw 2.083vw 1vw 2.083vw;

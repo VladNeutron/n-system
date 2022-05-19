@@ -2,52 +2,19 @@
   <the-navbar></the-navbar>
   <main class="main-content border-radius-lg">
     <the-header></the-header>
-    <div class="order__content">
+    <div class="container-fluid">
       <div class="order__header">
         <div class="order__header-content">
-          <div class="order__header-main">
+          <div class="order__header-main pt-2">
             <div class="order__header-text">
-              <p class="order__header__main">Возврат №</p>
+              <p class="order__header__main">Возврат №121455</p>
               <p class="order__header__sec">
                 Настройте все параметры и нажмите “Сохранить”
               </p>
             </div>
             <div class="drop__buttons">
-              <button class="btn comment">
-                <img
-                  src="@/assets/img/comment.svg"
-                  style="width: 1.042vw; margin-right: 0.417vw"
-                  alt=""
-                />
-                Комментарии <span class="count">4</span>
-              </button>
-              <div class="dropdown">
-                <button
-                  class="btn action"
-                  type="button"
-                  id="dropdownMenuButton"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
-                  <img
-                    src="@/assets/img/action.svg"
-                    style="width: 1.042vw; margin-right: 0.417vw"
-                    alt=""
-                  />
-                  Действия
-                </button>
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                  <li>
-                    <a class="dropdown-item" href="javascript:;">Печать</a>
-                  </li>
-                  <li>
-                    <a class="dropdown-item" href="javascript:;">Скачать</a>
-                  </li>
-                  <li>
-                    <a class="dropdown-item" href="javascript:;">Удалить</a>
-                  </li>
-                </ul>
-              </div>
+              <comment-button style="margin-right: 24px"></comment-button>
+              <action-button style="margin-right: 24px"></action-button>
               <button class="btn save__btn">Сохранить</button>
             </div>
           </div>
@@ -342,95 +309,29 @@
             </div>
           </div>
           <div class="order__table__body" v-else>
-            <table class="table table-bordered table-hover table-striped">
+            <table class="table table-hover table-striped">
               <thead>
                 <tr>
-                  <th
-                    scope="col"
-                    class="th__col"
-                    style="border-left: 0; border-right: 0"
-                  >
-                    №
-                  </th>
-                  <th
-                    scope="col"
-                    class="th__col"
-                    style="border-left: 0; border-right: 0"
-                  >
-                    Товар
-                  </th>
-                  <th
-                    scope="col"
-                    class="th__col"
-                    style="border-left: 0; border-right: 0"
-                  >
-                    Штрихкод
-                  </th>
-                  <th
-                    scope="col"
-                    class="th__col"
-                    style="border-left: 0; border-right: 0"
-                  >
-                    Цвет
-                  </th>
-                  <th
-                    scope="col"
-                    class="th__col"
-                    style="border-left: 0; border-right: 0"
-                  >
-                    Размер
-                  </th>
-                  <th
-                    scope="col"
-                    class="th__col"
-                    style="border-left: 0; border-right: 0"
-                  >
-                    Себестоимость
-                  </th>
-                  <th
-                    scope="col"
-                    class="th__col"
-                    style="border-left: 0; border-right: 0"
-                  >
-                    Цена продажи
-                  </th>
-                  <th
-                    scope="col"
-                    class="th__col"
-                    style="border-left: 0; border-right: 0"
-                  >
-                    Кол-во
-                  </th>
-                  <th
-                    scope="col"
-                    class="th__col"
-                    style="border-left: 0; border-right: 0"
-                  >
-                    Скидка
-                  </th>
-                  <th
-                    scope="col"
-                    class="th__col"
-                    style="border-left: 0; border-right: 0"
-                  >
-                    Сумма
-                  </th>
-                  <th
-                    scope="col"
-                    class="th__col"
-                    style="border-left: 0; border-right: 0"
-                  >
-                    Действия
-                  </th>
+                  <th scope="col" class="th__col">№</th>
+                  <th scope="col" class="th__col">Товар</th>
+                  <th scope="col" class="th__col">Штрихкод</th>
+                  <th scope="col" class="th__col">Цвет</th>
+                  <th scope="col" class="th__col">Размер</th>
+                  <th scope="col" class="th__col">Себестоимость</th>
+                  <th scope="col" class="th__col">Цена продажи</th>
+                  <th scope="col" class="th__col">Кол-во</th>
+                  <th scope="col" class="th__col">Скидка</th>
+                  <th scope="col" class="th__col">Сумма</th>
+                  <th scope="col" class="th__col">Действия</th>
                 </tr>
               </thead>
               <tbody>
                 <!-- v-for="(item, i) in items" :key="item" -->
                 <tr v-for="(item, i) in filteredProducts" :key="item">
-                  <th scope="row" style="border-right: 0; border-left: 0">
+                  <th scope="row">
                     {{ i + 1 }}
                   </th>
-                  <td style="border-left: 0; border-right: 0; display: flex">
+                  <td style="display: flex">
                     <img
                       :src="item.img"
                       style="width: 2.5vw; margin-right: 0.833vw"
@@ -438,47 +339,33 @@
                     />
                     {{ item.name }}
                   </td>
-                  <td style="border-left: 0; border-right: 0">
+                  <td>
                     {{ item.barcode }}
                   </td>
-                  <td style="border-left: 0; border-right: 0">
+                  <td>
                     {{ item.color }}
                   </td>
-                  <td style="border-left: 0; border-right: 0">
+                  <td>
                     {{ item.size }}
                   </td>
-                  <td style="border-left: 0; border-right: 0">
-                    {{ item.costPrice }} ₸
-                  </td>
-                  <td style="border-left: 0; border-right: 0">
-                    {{ item.price }} ₸
-                  </td>
-                  <td style="border-left: 0; border-right: 0">
+                  <td>{{ item.costPrice }} ₸</td>
+                  <td>{{ item.price }} ₸</td>
+                  <td>
                     {{ item.count }}
                   </td>
-                  <td style="border-left: 0; border-right: 0">
+                  <td>
                     {{ item.disc }}
                   </td>
-                  <td style="border-left: 0; border-right: 0">
-                    {{ item.price * item.count }} ₸
-                  </td>
-                  <td style="border-left: 0; border-right: 0">
+                  <td>{{ item.price * item.count }} ₸</td>
+                  <td>
                     <div class="dropdown">
                       <img
                         src="@/assets/img/dots.svg"
-                        style="
-                          width: 1.563vw;
-                          cursor: pointer;
-                          transform: rotate(90deg);
-                        "
+                        style="width: 1.563vw; cursor: pointer"
                         alt=""
                       />
                       <div class="dropdown-content">
-                        <a
-                          href="#"
-                          data-bs-toggle="modal"
-                          data-bs-target="#InpModal"
-                          @click="isColor = true"
+                        <a href="/warehouse-accounting/edit-inv"
                           >Редактировать</a
                         >
                         <hr />
@@ -581,6 +468,32 @@
 </template>
 
 <style scoped>
+.dropdown {
+  width: 100%;
+  display: inline-block;
+  position: relative;
+}
+.dropdown-content {
+  text-align: left;
+  display: none;
+  position: absolute;
+  width: 7.815vw;
+  overflow: auto;
+  background: #f8f9fa;
+  box-shadow: 2px 2px 5.5px rgba(0, 0, 0, 0.25);
+  border-radius: 12px;
+  right: 15px;
+  z-index: 1;
+  padding: 0.625vw 0.625vw 0.625vw 0.625vw;
+}
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+.dropdown-content a {
+  display: block;
+  color: #2d3748;
+  text-decoration: none;
+}
 .not__added__main {
   font-weight: 600;
   font-size: 1.25vw;
@@ -813,7 +726,7 @@
 }
 
 .order__table__body {
-  height: 19.792vw;
+  height: 18.792vw;
   overflow-y: scroll;
 }
 
@@ -903,7 +816,7 @@
   background: #ffffff;
   box-shadow: 0px 3.5px 5.5px rgba(0, 0, 0, 0.02);
   border-radius: 15px;
-  padding: 8px 0 0 0;
+  padding: 16px 0 0 0;
 }
 
 .order__table {
@@ -1035,11 +948,12 @@
   box-shadow: 0px 4px 7px -1px rgba(0, 0, 0, 0.11),
     0px 2px 4px -1px rgba(0, 0, 0, 0.07);
   border-radius: 8px;
-  padding: 0.625vw 3.646vw 0.625vw 3.646vw;
-  font-weight: 700;
-  font-size: 0.833vw;
+  padding: 0.425vw 3.646vw 0.625vw 3.646vw;
+  font-weight: 600;
+  font-size: 14px;
   color: #fff;
   text-transform: none;
+  height: 40px;
 }
 
 .order__header__sec {
@@ -1070,6 +984,11 @@
 
 .order__content {
   padding: 0 2.083vw 0 2.083vw;
+}
+td {
+  font-weight: 600;
+  font-size: 14px;
+  color: #2d3748;
 }
 </style>
 

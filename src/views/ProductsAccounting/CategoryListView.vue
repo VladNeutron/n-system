@@ -6,14 +6,12 @@
       <div class="row">
         <div class="col-12">
           <lists-header>
-            <template v-slot:title>
-              Список категорий   
-            </template>          
+            <template v-slot:title> Список категорий </template>
           </lists-header>
           <div class="card">
             <div class="inv__buttons">
               <div class="inv__left__btn">
-                <div class="form-group">
+                <!-- <div class="form-group">
                   <div class="input-group">
                     <span class="input-group-text"
                       ><img
@@ -29,7 +27,7 @@
                       v-model.trim="search"
                     />
                   </div>
-                </div>
+                </div> -->
                 <button
                   type="button"
                   class="btn bg-gradient-secondary"
@@ -44,82 +42,51 @@
                   Добавить новую категорию
                 </button>
               </div>
-              <div class="inv__right__btn">
+              <div class="inv__right__btn gap-3">
+                <list-search></list-search>
+                <print-button></print-button>
+                <download-button></download-button>
                 <filters-button></filters-button>
-                <button type="button" class="inv__btn btn btn-outline-dark">
-                  <img
-                    src="@/assets/img/print.svg"
-                    style="width: 1.25vw; margin-right: 0.417vw"
-                    alt=""
-                  />
-                  печать
-                </button>
-                <button type="button" class="inv__btn btn btn-outline-dark">
-                  <img
-                    src="@/assets/img/download.svg"
-                    style="width: 1.25vw; margin-right: 0.417vw"
-                    alt=""
-                  />
-                  скачать
-                </button>
               </div>
             </div>
             <div class="inv__block">
               <div class="inv__content">
-                <table class="table table-bordered table-hover table-striped">
+                <table class="table table-hover table-striped">
                   <thead>
                     <tr>
-                      <th scope="col" class="th__col" style="border-right: 0">
-                        №
-                      </th>
-                      <th
-                        scope="col"
-                        class="th__col"
-                        style="border-left: 0; border-right: 0"
-                      >
-                        Категория
-                      </th>
-                      <th
-                        scope="col"
-                        class="th__col"
-                        style="border-left: 0; border-right: 0"
-                      >
-                        Основная Категория
-                      </th>
+                      <th scope="col" class="th__col">№</th>
+                      <th scope="col" class="th__col">Категория</th>
+                      <th scope="col" class="th__col">Основная Категория</th>
 
-                      <th scope="col" class="th__col" style="border-left: 0">
-                        Действия
-                      </th>
+                      <th scope="col" class="th__col">Действия</th>
                     </tr>
                   </thead>
                   <tbody>
                     <tr v-for="(item, i) in filteredCategory" :key="item">
-                      <th scope="row" style="border-right: 0">
+                      <td>
                         {{ i + 1 }}
-                      </th>
-                      <td style="border-left: 0; border-right: 0">
+                      </td>
+                      <td>
                         {{ item.category }}
                       </td>
-                      <td width="75%" style="border-left: 0; border-right: 0">
+                      <td width="75%">
                         {{ item.maincat }}
                       </td>
-                      <td style="border-left: 0">
-                        <div class="dropdown">
-                          <img
-                            src="@/assets/img/dots.svg"
-                            style="width: 1.563vw; cursor: pointer"
-                            alt=""
-                          />
-                          <div class="dropdown-content">
-                            <a href="#">Редактировать</a>
-                            <hr />
-                            <a
-                              style="cursor: pointer"
-                              data-bs-toggle="modal"
-                              data-bs-target="#DeleteInv"
-                              >Удалить</a
-                            >
-                          </div>
+                      <td class="dropdown">
+                        <img
+                          src="@/assets/img/dots.svg"
+                          style="width: 1.563vw; cursor: pointer"
+                          alt=""
+                        />
+                        <div class="dropdown-content">
+                          <a href="#">Редактировать</a>
+                          <hr />
+                          <a
+                            style="cursor: pointer"
+                            data-bs-toggle="modal"
+                            data-bs-target="#DeleteInv"
+                            >Удалить</a
+                          >
                         </div>
                       </td>
                     </tr>
@@ -210,14 +177,14 @@
               placeholder="Введите название"
             />
           </div>
-          <div class="form-check" style="text-align: left">
+          <div class="form-check d-flex align-items-center" style="text-align: left">
             <input
               class="form-check-input"
               type="checkbox"
               value=""
               id="fcustomCheck1"
             />
-            <label class="custom-control-label label__check" for="customCheck1"
+            <label class="custom-control-label label__check mb-0" for="customCheck1"
               >Подчиненная категория</label
             >
           </div>
@@ -419,6 +386,7 @@ hr {
   border: 1px solid #2d3748;
 }
 .dropdown {
+  width: 100%;
   display: inline-block;
   position: relative;
 }
@@ -471,10 +439,8 @@ td {
   background-color: #e2e8f0;
 }
 .inv__content {
-  padding-left: 1.354vw;
-  padding-right: 1.354vw;
   height: 27.363vw;
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 
 .inv__btn {
@@ -495,7 +461,7 @@ td {
   display: flex;
   background: linear-gradient(81.62deg, #313860 2.25%, #151928 79.87%);
   border-radius: 0.417vw;
-  padding: 0.521vw 1.25vw 0.573vw 2.188vw;
+  padding: 0.521vw 1.25vw 0.573vw 1.188vw;
   font-weight: 600;
   font-size: 0.729vw;
   align-items: center;

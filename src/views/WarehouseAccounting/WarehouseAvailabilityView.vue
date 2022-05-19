@@ -12,12 +12,10 @@
       <div class="row">
         <div class="col-12">
           <lists-header>
-            <template v-slot:title>
-              Наличие на складе  
-            </template>  
+            <template v-slot:title> Наличие на складе </template>
             <template v-slot:description>
-              Внесите изменения и не забудьте  нажать “Сохранить”    
-            </template>          
+              Внесите изменения и не забудьте нажать “Сохранить”
+            </template>
           </lists-header>
           <div class="card">
             <div
@@ -26,8 +24,9 @@
               <div class="search__menu-left d-flex gap-4">
                 <div
                   class="form-group m-0 d-flex flex-column align-items-start"
+                  style="width: 307px"
                 >
-                  <label for="search">Список товаров</label>
+                  <label for="search" class="custom__label">Список товаров</label>
                   <div class="input-group mt-1">
                     <span class="input-group-text"
                       ><img src="@/assets/css/icons/searchIcon.svg" alt="" />
@@ -42,10 +41,10 @@
                   </div>
                 </div>
                 <div
-                  class="form-group m-0 d-flex flex-column align-items-start"
-                  style="width: 200px"
+                  class="form-group m-0 mt-1 d-flex flex-column align-items-start"
+                  style="width: 393px"
                 >
-                  <label for="search">Выберите склад</label>
+                  <label for="search" class="custom__label">Выберите склад</label>
                   <select class="form-select form__adapt" v-model="selected">
                     <option
                       v-for="(warehouse, i) in warehousesArr"
@@ -60,10 +59,13 @@
                 </div>
               </div>
               <div class="search__menu-right d-flex align-items-end gap-4">
-                <button class="btn btn-outline-dark mb-0">ФИЛЬТРЫ</button>
-                <button class="btn btn-outline-dark mb-0">
+                <filters-button></filters-button>
+                <button class="btn btn-outline-dark mb-0" style="height: 40px">
                   <span class="btn-inner--icon"
-                    ><img src="@/assets/css/icons/chemodan.svg" alt="" /></span
+                    ><img
+                      src="@/assets/css/icons/chemodan.svg"
+                      alt=""
+                      style="margin-right: 5px; margin-bottom: 2px" /></span
                   >ЭКСПОРТ
                 </button>
               </div>
@@ -86,7 +88,7 @@
                 </thead>
                 <tbody class="table-body">
                   <tr v-for="(item, i) in filteredWarehouse" :key="item">
-                    <th scope="row">{{ i + 1 }}</th>
+                    <td scope="row">{{ i + 1 }}</td>
                     <td class="d-flex gap-2">
                       <img :src="item.img" />{{ item.name }}
                     </td>
@@ -167,11 +169,64 @@
         </div>
       </div>
     </div>
+    <filters>
+      <div class="filters__period__flex">
+        <div class="filter__name__standart">Выберите период</div>
+        <div class="reset__date">Сбросить период</div>
+      </div>
+      <div class="filters__period">
+        <div class="form-group">
+          <input
+            class="form-control period__s"
+            type="date"
+            id="example-date-input"
+          />
+        </div>
+        <div>
+          <img src="@/assets/img/line.svg" style="width: 1.927vw" alt="" />
+        </div>
+        <div class="form-group">
+          <input
+            class="form-control period__s"
+            type="date"
+            id="example-date-input"
+          />
+        </div>
+      </div>
+      <div class="text-start">
+        <label class="text-start" for="">Категория</label>
+        <select class="form-select">
+          <option></option>
+        </select>
+      </div>
+      <div
+        class="form-check d-flex align-items-center"
+        style="text-align: left; margin-top: 0.833vw"
+      >
+        <input
+          class="form-check-input"
+          type="checkbox"
+          value=""
+          id="fcustomCheck1"
+        />
+        <label
+          class="custom-control-label filters__checkbox__label"
+          for="customCheck1"
+          >Есть в наличии</label
+        >
+      </div>
+    </filters>
   </main>
 </template>
 
 <script>
+import FiltersButton from "@/components/buttons/FiltersButton.vue";
+import Filters from "@/components/Filters.vue";
 export default {
+  components: {
+    FiltersButton,
+    Filters,
+  },
   data() {
     return {
       items: [
@@ -260,6 +315,9 @@ export default {
 </script>
 
 <style scoped>
+.period__s {
+  width: 191px !important;
+}
 .page__name h3 {
   font-weight: 700;
   line-height: 1.667vw;
@@ -281,6 +339,11 @@ tbody {
 tbody img {
   width: 48px;
   height: 48px;
+}
+.custom__label{
+  font-weight: 600;
+  font-size: 14px;
+  color: #2D3748;  
 }
 @media screen and (max-width: 1600px) {
   td,

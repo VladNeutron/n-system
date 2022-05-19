@@ -10,7 +10,7 @@
         <p class="mb-0">Внесите изменения и не забудьте нажать “Сохранить”</p>
       </div>
       <div class="page__name-buttons d-flex gap-3 mx-4">
-        <button class="btn btn-outline-dark mb-0">Управление товаром</button>
+        <router-link :to="{ name: 'product-edit' }"><button class="btn btn-outline-dark mb-0">Управление товаром</button></router-link>
         <button class="btn bg-gradient-dark mb-0">Сохранить</button>
       </div>
     </div>
@@ -272,14 +272,26 @@ export default {
     };
   },
   mounted() {
-    var quill = new Quill("#editor", {
+    if(document.querySelectorAll('.ql-toolbar').length == 0){
+      var quill = new Quill("#editor", {
       theme: "snow", // Specify theme in configuration
     });
+    }
   },
 };
 </script>
 
 <style scoped>
+.info__card-quill{
+  width: 50%;
+}
+.ql-toolbar{
+  text-align: start;
+}
+.radio-wrap .form-check-input::after{
+    width: 0.7375rem !important;
+    height: 0.7375rem !important;  
+}
 label {
   font-family: Open Sans;
   font-size: 14px;
@@ -306,6 +318,8 @@ label {
 .page__name-buttons button {
   width: 241px;
   height: 47px;
+  font-weight: 700;
+  font-size: 16px;
 }
 .page__name h3 {
   font-size: 24px;
@@ -316,7 +330,7 @@ label {
   font-size: 14px;
   line-height: 19px;
   font-weight: 400;
-  color: gray;
+  color: #A0AEC0;
 }
 .img__card {
   min-width: 490px;
@@ -407,5 +421,10 @@ label {
 }
 label {
   font-size: 14px;
+}
+</style>
+<style>
+.ql-toolbar{
+  text-align: start;
 }
 </style>

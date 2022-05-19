@@ -2,14 +2,14 @@
   <the-navbar></the-navbar>
   <main class="main-content border-radius-lg">
     <the-header></the-header>
-    <div class="container-fluid py-4">
-      <div class="row mt-4">
+    <div class="container-fluid">
+      <div class="row">
         <div class="col-12">
           <drop-down>
             <template #header>
               <div class="drop__header">
                 <div>
-                  <p class="dropdown__title">Перемещение №19</p>
+                  <p class="dropdown__title">Создание перемещения</p>
                   <p class="dropdown__sec">
                     Настройте все параметры и нажмите “Завершить перемещение"
                   </p>
@@ -71,7 +71,7 @@
                 <div class="items__block">
                   <p class="items__title">Склад отправитель</p>
                   <div class="dropdown">
-                    <p class="items__tex items__flex" style="cursor: pointer">
+                    <p class="items__tex items__flex items__text" style="cursor: pointer">
                       ТРЦ Москва
                       <img
                         src="@/assets/img/down.svg"
@@ -90,7 +90,7 @@
                 <div class="items__block">
                   <p class="items__title">Склад получатель</p>
                   <div class="dropdown">
-                    <p class="items__tex items__flex" style="cursor: pointer">
+                    <p class="items__tex items__flex items__text" style="cursor: pointer">
                       ТРЦ Москва
                       <img
                         src="@/assets/img/down.svg"
@@ -129,11 +129,10 @@
                   </div>
                 </div>
                 <div class="items__block">
-                  <p class="items__title">Инвентаризация</p>
-                  <p class="items__text">
-                    <span style="cursor: pointer">Инвентаризация №19</span
-                    >,<br />
-                    <span style="cursor: pointer">от 11.11.21</span>
+                  <p class="items__title">Статус перемещения</p>
+                  <p class="items__text text-center">
+                    <span style="cursor: pointer">Новый</span
+                    >
                   </p>
                 </div>
               </div>
@@ -141,7 +140,7 @@
           </drop-down>
           <div class="card pl-pr">
             <div class="main-page text-start">
-              <label class="form-control-label ps-3 pt-3" for="search"
+              <label class="form-control-label ps-3 pt-3 custom__label" for="search"
                 >Добавить по штрихкоду</label
               >
               <div class="d-flex justify-content-between ps-3">
@@ -189,12 +188,10 @@
                   </div>
                 </div>
               </div>
-              <div class="inv__block ps-3">
+              <div class="inv__block">
                 <div class="inv__content">
                   <div>
-                    <table
-                      class="table table-bordered table-hover text-center table-striped"
-                    >
+                    <table class="table table-hover text-center table-striped">
                       <thead>
                         <tr>
                           <th scope="col" class="">№</th>
@@ -402,9 +399,9 @@ export default {
   border-radius: 8px;
 }
 .pl-pr {
-  margin-left: 1.146vw;
+  /* margin-left: 1.146vw; */
   margin-top: 1.094vw;
-  margin-right: 3.385vw;
+  /* margin-right: 3.385vw; */
 }
 .page__search-inputs {
   gap: 1.042vw;
@@ -417,7 +414,6 @@ th {
   align-self: flex-start;
 }
 .inv__content {
-  padding-right: 1.354vw;
   height: 90%;
 }
 .inv__block {

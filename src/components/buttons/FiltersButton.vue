@@ -1,5 +1,5 @@
 <template>
-  <button type="button" class="inv__btn btn btn-outline-dark openFilters" @click="openFilters">
+  <button type="button" class="inv__btn btn btn-outline-dark openFilters mb-0" @click="openFilters">
 
     ФИЛЬТРЫ
   </button>
@@ -25,10 +25,10 @@ export default {
 
 <style scoped>
 .inv__btn {
-  display: flex;
-  align-items: center;
   text-transform: uppercase;
-  font-size: 0.8vw;
+  font-weight: 600;
+  font-size: 12px;
+  height: 40px;
 }
 .inv__btn,
 .inv__inp {
