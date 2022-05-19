@@ -35,8 +35,9 @@ export default {
 </script>
 
 <style>
-.form-select:focus {
+.form-select:hover {
   background-image: url(@/assets/img/arrow__flip.svg) !important;
+  transition: 0.3s;
 }
 table th {
   font-size: 12px;
