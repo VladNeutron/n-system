@@ -239,9 +239,9 @@ const routes = [
   {
     path: "/sales",
     name: "sales-main",
-    component: () => import("../views/Sales/OrderView.vue"),
+    component: () => import("../views/Sales/OrderListView.vue"),
     meta: { NavLink: "Продажи" },
-    redirect: "/sales/create-order"
+    redirect: "/sales/order-list"
   },
   {
     path: "/sales/create-order",

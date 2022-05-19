@@ -2,10 +2,10 @@
   <the-navbar></the-navbar>
   <main class="main-content border-radius-lg">
     <the-header></the-header>
-    <div class="order__content">
+    <div class="container-fluid">
       <div class="order__header">
         <div class="order__header-content">
-          <div class="order__header-main">
+          <div class="order__header-main pt-2">
             <div class="order__header-text">
               <p class="order__header__main">Создание возврата</p>
               <p class="order__header__sec">
@@ -891,7 +891,7 @@
   background: #ffffff;
   box-shadow: 0px 3.5px 5.5px rgba(0, 0, 0, 0.02);
   border-radius: 15px;
-  padding: 8px 0 0 0;
+  padding: 16px 0 0 0;
 }
 
 .order__table {
