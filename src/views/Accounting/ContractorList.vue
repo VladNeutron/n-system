@@ -21,14 +21,23 @@
                   style="margin-right: 0.833vw"
                   onclick="window.location.href = '/accounting/new-contractor'"
                 >
-                  <img src="@/assets/img/whtplus.svg" alt="" /> Добавить
-                  контрагента
+                  <img
+                    src="@/assets/img/whtplus.svg"
+                    style="margin-right: 7px"
+                    alt=""
+                  />
+                  Добавить контрагента
                 </button>
                 <button
                   class="btn bg-gradient-dark mb-0"
                   style="margin-right: 0.833vw"
                 >
-                  <img src="@/assets/img/DocumentsBtn.svg" alt="" /> Документы
+                  <img
+                    src="@/assets/img/DocumentsBtn.svg"
+                    style="margin-right: 7px"
+                    alt=""
+                  />
+                  Документы
                 </button>
               </div>
               <div class="table__inputs d-flex gap-3 align-content-center">
@@ -42,7 +51,11 @@
               <table class="table table-hover">
                 <thead>
                   <tr class="">
-                    <th scope="col" class="th__col" style="width: 25px"></th>
+                    <th
+                      scope="col"
+                      class="th__col"
+                      style="width: 25px; padding-left: 27px"
+                    ></th>
                     <th width="1%" scope="col" class="th__col">№</th>
                     <th scope="col" class="th__col">Название компании</th>
                     <th scope="col" class="th__col">БИН/ИИН</th>
@@ -59,7 +72,7 @@
                     :key="item.id"
                     @click="openModal(item.id)"
                   >
-                    <th scope="row">
+                    <th scope="row" style="padding-left: 27px">
                       <div class="form-check">
                         <input
                           class="form-check-input"
@@ -69,7 +82,7 @@
                         />
                       </div>
                     </th>
-                    <th width="1%">{{ i + 1 }}</th>
+                    <td width="1%">{{ i + 1 }}</td>
                     <td>{{ item.name }}</td>
                     <td>{{ item.bin }}</td>
                     <td>{{ item.companyType }}</td>
@@ -167,6 +180,7 @@
         </div>
       </div>
     </div>
+    <the-filter></the-filter>
     <counter-modal :product="modal.modalProductName"></counter-modal>
   </main>
 </template>
@@ -174,7 +188,7 @@
 <script>
 import CounterModal from "@/components/CounterModal.vue";
 import Filter from "../../components/Filters.vue";
-import FiltersButton from '@/components/buttons/FiltersButton.vue';
+import FiltersButton from "@/components/buttons/FiltersButton.vue";
 export default {
   data() {
     return {

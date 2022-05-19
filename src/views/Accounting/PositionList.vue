@@ -18,13 +18,21 @@
               <div>
                 <button
                   class="btn bg-gradient-dark mb-0"
-                  style="margin-right: 0.833vw"
+                  style="
+                    margin-right: 0.833vw;
+                    display: flex;
+                    align-items: center;
+                  "
                   data-bs-toggle="modal"
                   data-bs-target="#InpModal"
                   @click="isEdit = 'no'"
                 >
-                  <img src="@/assets/img/whtplus.svg" alt="" /> Добавить
-                  имущество
+                  <img
+                    src="@/assets/img/whtplus.svg"
+                    style="margin-right: 10px"
+                    alt=""
+                  />
+                  Добавить имущество
                 </button>
               </div>
             </div>
@@ -41,7 +49,7 @@
                 </thead>
                 <tbody>
                   <tr v-for="(order, i) of orders" :key="order.id">
-                    <th width="1%">{{ i + 1 }}</th>
+                    <td width="1%">{{ i + 1 }}</td>
                     <td>{{ order.name }}</td>
                     <td>{{ order.shop }}</td>
                     <td>{{ order.status }}</td>
