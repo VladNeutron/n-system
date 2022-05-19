@@ -101,7 +101,7 @@
                       <div class="dropdown-content">
                         <a
                           style="cursor: pointer"
-                          onclick="window.location.href = '/purchases/edit-income'"
+                          onclick="window.location.href = '/accounting/new-contractor'"
                           >Редактировать</a
                         >
                         <hr />

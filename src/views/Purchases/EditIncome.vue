@@ -2,7 +2,7 @@
   <the-navbar></the-navbar>
   <main class="main-content border-radius-lg">
     <the-header></the-header>
-    <div class="order__content">
+    <div class="container-fluid">
       <div class="order__header">
         <div class="order__header-content">
           <div class="order__header-main">
@@ -411,7 +411,7 @@
 
 .order__ready__sum {
   font-weight: 600;
-  font-size: 1vw;
+  font-size: 1.2vw;
   color: #2d3748;
 }
 

@@ -2,8 +2,9 @@
   <the-navbar></the-navbar>
   <main class="main-content border-radius-lg main__padding">
     <the-header></the-header>
+    <div class="container-fluid">
     <div
-      class="page__name d-flex align-items-center ms-4 justify-content-between px-4"
+      class="page__name d-flex align-items-center justify-content-between"
     >
       <div class="page__name-title text-start" v-if="activeBtn == 1">
         <h3>Добавление контрагента</h3>
@@ -40,9 +41,10 @@
         </button>
       </div>
     </div>
-    <div class="card pt-2 pb-4 mx-5 mt-4 px-4">
+    <div class="card pt-2 pb-4 mt-4 px-4">
       <contractor-info-comp v-if="activeBtn == 1"></contractor-info-comp>
       <contractor-bank-info v-if="activeBtn == 2"></contractor-bank-info>
+    </div>
     </div>
   </main>
 </template>
