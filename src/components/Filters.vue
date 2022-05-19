@@ -14,7 +14,7 @@
         @click="filtersClose"
       />
     </div>
-    <hr />
+    <hr class="hr__header" />
     <div class="filters__body">
       <slot> Фильтр </slot>
     </div>
@@ -150,7 +150,7 @@ export default {
 }
 .filters__header {
   display: flex;
-  padding: 2.125vw 2.083vw 16px 2.083vw;
+  padding: 1.125vw 2.083vw 10px 2.083vw;
   justify-content: space-between;
   align-items: baseline;
 }
@@ -170,13 +170,16 @@ export default {
   cursor: pointer;
 }
 .filters__body {
-  padding: 1.667vw 2.083vw 1.563vw 2.083vw;
+  padding: 0.267vw 2.083vw 0.563vw 2.083vw;
 }
 .filters__body .filter__name__standart {
   font-weight: 600;
   font-size: 20px;
   color: #2d3748;
   text-align: left;
+}
+.hr__header{
+  margin: 10px 0;
 }
 </style>
 <style>
