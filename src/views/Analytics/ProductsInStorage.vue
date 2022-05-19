@@ -52,12 +52,9 @@
                     />
                   </div>
                 </div>
-                <button class="btn btn-outline-dark mb-0">ФИЛЬТРЫ</button>
-                <button class="btn btn-outline-dark mb-0">
-                  <span class="btn-inner--icon"
-                    ><img src="@/assets/css/icons/chemodan.svg" alt="" /></span
-                  >ЭКСПОРТ
-                </button>
+
+                <filters-button></filters-button>
+                <export-button></export-button>
               </div>
             </div>
             <div class="table__body">
@@ -78,7 +75,7 @@
                 </thead>
                 <tbody class="table-body">
                   <tr v-for="(item, i) in filteredWarehouse" :key="item">
-                    <th scope="row">{{ i + 1 }}</th>
+                    <td scope="row">{{ i + 1 }}</td>
                     <td class="d-flex gap-2">
                       <img :src="item.img" />{{ item.name }}
                     </td>
@@ -159,11 +156,16 @@
         </div>
       </div>
     </div>
+    <Filters></Filters>
   </main>
 </template>
 
 <script>
+import Filters from "@/components/Filters.vue";
 export default {
+  components: {
+    Filters,
+  },
   data() {
     return {
       items: [
@@ -252,23 +254,23 @@ export default {
 </script>
 
 <style scoped>
-.form_s2{
-  width:20.469vw !important;
+.form_s2 {
+  width: 20.469vw !important;
 }
-.form__size{
-  width:15.99vw !important;
+.form__size {
+  width: 15.99vw !important;
 }
 .page__name h3 {
-    font-size: 24px;
-    line-height: 32px;
-    font-weight: 600;
+  font-size: 24px;
+  line-height: 32px;
+  font-weight: 600;
 }
 
 .page__name p {
-    font-size: 14px;
-    line-height: 19px;
-    font-weight: 400;
-    color: gray;
+  font-size: 14px;
+  line-height: 19px;
+  font-weight: 400;
+  color: gray;
 }
 thead {
   color: rgba(160, 174, 192, 1);

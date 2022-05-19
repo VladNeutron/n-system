@@ -18,10 +18,21 @@
               <div>
                 <button
                   class="btn bg-gradient-dark mb-0"
-                  style="margin-right: 0.833vw"
+                  style="
+                    margin-right: 0.833vw;
+                    font-size: 14px;
+                    font-weight: 600;
+                    display: flex;
+                    align-items: center;
+                  "
                   onclick="window.location.href = '/purchases/create-supplier-return'"
                 >
-                  <img src="@/assets/img/whtplus.svg" alt="" /> Новый возврат
+                  <img
+                    src="@/assets/img/whtplus.svg"
+                    alt=""
+                    style="margin-right: 10px"
+                  />
+                  Новый возврат
                 </button>
               </div>
               <div class="table__inputs d-flex gap-3 align-content-center">
@@ -29,14 +40,17 @@
                 <print-button></print-button>
                 <download-button></download-button>
                 <FiltersButton></FiltersButton>
-                
               </div>
             </div>
             <div class="page__table">
               <table class="table table-hover">
                 <thead>
                   <tr class="">
-                    <th scope="col" class="th__col" style="width: 25px"></th>
+                    <th
+                      scope="col"
+                      class="th__col"
+                      style="width: 25px padding-left:27px"
+                    ></th>
                     <th width="1%" scope="col" class="th__col">№</th>
                     <th scope="col" class="th__col">Номер Возврата</th>
                     <th scope="col" class="th__col">Дата</th>
@@ -50,7 +64,7 @@
                 </thead>
                 <tbody>
                   <tr v-for="(order, i) of orders" :key="order.id">
-                    <th scope="row">
+                    <th scope="row" style="padding-left: 27px">
                       <div class="form-check">
                         <input
                           class="form-check-input"
@@ -60,7 +74,7 @@
                         />
                       </div>
                     </th>
-                    <th width="1%">{{ i + 1 }}</th>
+                    <td width="1%">{{ i + 1 }}</td>
                     <td>{{ order.id }}</td>
                     <td>{{ order.date }}</td>
                     <td>{{ order.responsible }}</td>
@@ -212,8 +226,8 @@ export default {
   },
   components: {
     "the-filter": Filter,
-    FiltersButton
-},
+    FiltersButton,
+  },
 };
 </script>
 

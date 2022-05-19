@@ -68,23 +68,9 @@
           </div>
         </div>
         <div class="table__inputs d-flex gap-3 align-content-center">
-          <button class="btn btn-outline-dark mb-0">
-            <span
-              ><img
-                src="@/assets/css/icons/print.svg"
-                class="me-1"
-                alt="" /></span
-            >Печать
-          </button>
-          <button class="btn btn-outline-dark mb-0">
-            <span
-              ><img
-                src="@/assets/css/icons/down-arrow.svg"
-                class="me-1"
-                alt="" /></span
-            >Скачать
-          </button>
-          <button class="btn btn-outline-dark mb-0">Фильтры</button>
+          <print-button></print-button>
+          <download-button></download-button>
+          <filters-button></filters-button>
         </div>
       </div>
       <div class="best__products">
@@ -144,67 +130,25 @@
         </div>
       </div>
       <div class="order__table__body mt-4">
-        <table class="table table-bordered table-hover table-striped">
+        <table class="table table-hover table-striped">
           <thead>
             <tr>
-              <th
-                scope="col"
-                class="th__col"
-                style="border-left: 0; border-right: 0"
-              >
-                №
-              </th>
-              <th
-                scope="col"
-                class="th__col"
-                style="border-left: 0; border-right: 0"
-              >
-                Товар
-              </th>
-              <th
-                scope="col"
-                class="th__col"
-                style="border-left: 0; border-right: 0"
-              >
-                Себестоимость
-              </th>
-              <th
-                scope="col"
-                class="th__col"
-                style="border-left: 0; border-right: 0"
-              >
-                Кол-во
-              </th>
-              <th
-                scope="col"
-                class="th__col"
-                style="border-left: 0; border-right: 0"
-              >
-                Цена продажи
-              </th>
-              <th
-                scope="col"
-                class="th__col"
-                style="border-left: 0; border-right: 0"
-              >
-                Сумма продаж
-              </th>
-              <th
-                scope="col"
-                class="th__col"
-                style="border-left: 0; border-right: 0"
-              >
-                Маржинальность
-              </th>
+              <th scope="col" class="th__col">№</th>
+              <th scope="col" class="th__col">Товар</th>
+              <th scope="col" class="th__col">Себестоимость</th>
+              <th scope="col" class="th__col">Кол-во</th>
+              <th scope="col" class="th__col">Цена продажи</th>
+              <th scope="col" class="th__col">Сумма продаж</th>
+              <th scope="col" class="th__col">Маржинальность</th>
             </tr>
           </thead>
           <tbody>
             <!-- v-for="(item, i) in items" :key="item" -->
             <tr v-for="(item, i) in items" :key="item">
-              <th scope="row" style="border-right: 0; border-left: 0">
+              <td scope="row">
                 {{ i + 4 }}
-              </th>
-              <td style="border-left: 0; border-right: 0; display: flex">
+              </td>
+              <td style="display: flex">
                 <img
                   :src="item.img"
                   style="width: 2.5vw; margin-right: 0.833vw"
@@ -212,19 +156,13 @@
                 />
                 {{ item.name }}
               </td>
-              <td style="border-left: 0; border-right: 0">
-                {{ item.costPrice }} ₸
-              </td>
-              <td style="border-left: 0; border-right: 0">
+              <td>{{ item.costPrice }} ₸</td>
+              <td>
                 {{ item.count }}
               </td>
-              <td style="border-left: 0; border-right: 0">
-                {{ item.price }} ₸
-              </td>
-              <td style="border-left: 0; border-right: 0">
-                {{ item.count * item.price }} ₸
-              </td>
-              <td style="border-left: 0; border-right: 0">{{ item.marj }} ₸</td>
+              <td>{{ item.price }} ₸</td>
+              <td>{{ item.count * item.price }} ₸</td>
+              <td>{{ item.marj }} ₸</td>
             </tr>
           </tbody>
         </table>

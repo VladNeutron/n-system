@@ -4,13 +4,11 @@
     <the-header></the-header>
     <div class="page__name d-flex align-items-center ms-4">
       <lists-header>
-            <template v-slot:title>
-              Список чеков   
-            </template>  
-            <template v-slot:description>
-              Внесите изменения и не забудьте  нажать “Сохранить”    
-            </template>          
-          </lists-header>
+        <template v-slot:title> Список чеков </template>
+        <template v-slot:description>
+          Внесите изменения и не забудьте нажать “Сохранить”
+        </template>
+      </lists-header>
     </div>
     <div class="card pt-4 pb-6 mb-4 ms-4">
       <div class="d-flex justify-content-between align-items-center mx-4 mb-4">
@@ -18,11 +16,25 @@
           <button
             class="btn bg-gradient-dark mb-0"
             style="margin-right: 0.833vw"
+            onclick="window.location.href = '/cash-register/cash-register-sale'"
           >
-            <img src="@/assets/img/whtplus.svg" alt="" /> Новая продажа
+            <img
+              src="@/assets/img/whtplus.svg"
+              alt=""
+              style="margin-right: 10px"
+            />
+            Новая продажа
           </button>
-          <button class="btn bg-gradient-dark mb-0">
-            <img src="@/assets/img/whtplus.svg" alt="" /> Оформить возврат
+          <button
+            class="btn bg-gradient-dark mb-0"
+            onclick="window.location.href = '/cash-register/cash-register-return'"
+          >
+            <img
+              src="@/assets/img/whtplus.svg"
+              alt=""
+              style="margin-right: 10px"
+            />
+            Оформить возврат
           </button>
         </div>
         <div class="table__inputs d-flex gap-3 align-content-center">
@@ -51,21 +63,31 @@
         <table class="table table-hover">
           <thead>
             <tr class="">
-              <th scope="col" class="th__col" style="width: 25px"></th>
+              <th
+                scope="col"
+                class="th__col"
+                style="width: 25px; padding-left: 27px"
+              ></th>
               <th width="1%" scope="col" class="th__col">№</th>
               <th scope="col" class="th__col">№ чека</th>
               <th scope="col" class="th__col">Дата</th>
               <th scope="col" class="th__col">Кассир</th>
-              <th scope="col" class="th__col">Статус</th>
+              <th
+                scope="col"
+                class="th__col"
+                style="padding-right: 15.625vw; width: 147px"
+              >
+                Статус
+              </th>
               <th scope="col" class="th__col">Кол-во</th>
               <th scope="col" class="th__col">Сумма</th>
 
-              <th scope="col" class="th__col"></th>
+              <th scope="col" class="th__col" style="padding-right: 27px"></th>
             </tr>
           </thead>
           <tbody>
             <tr v-for="(order, i) of orders" :key="order.checkId">
-              <th scope="row">
+              <th scope="row" style="padding-left: 27px">
                 <div class="form-check">
                   <input
                     class="form-check-input"
@@ -75,11 +97,11 @@
                   />
                 </div>
               </th>
-              <th width="1%">{{ i + 1 }}</th>
+              <td width="1%">{{ i + 1 }}</td>
               <td>{{ order.checkId }}</td>
               <td>{{ order.date }}</td>
               <td>{{ order.cashier }}</td>
-              <td>
+              <td style="padding-right: 15.625vw">
                 <div
                   class="btn mb-0 w-100"
                   v-text="normalizeStatusName(order.status)"
@@ -89,7 +111,7 @@
               <td>{{ order.amount }}</td>
               <td>{{ order.sum }}</td>
 
-              <td>
+              <td style="padding-right: 27px">
                 <img
                   src="@/assets/img/dots.svg"
                   style="width: 1.563vw; cursor: pointer"
@@ -154,6 +176,7 @@
       </div>
     </div>
   </main>
+  <the-filter></the-filter>
 </template>
 
 <script>
@@ -261,6 +284,21 @@ export default {
 </script>
 
 <style scoped>
+.bg-gradient-success {
+  background: linear-gradient(135deg, #98ec2d 0%, #17ad37 100%);
+}
+.bg-gradient-warning {
+  background: linear-gradient(135deg, #f6ca65 0%, #ef8734 100%);
+}
+.bg-gradient-danger {
+  background: linear-gradient(135deg, #ff667c 0%, #ea0706 100%);
+}
+.bg-gradient-primary {
+  background: linear-gradient(135deg, #ff0080 0%, #7928ca 100%);
+}
+.bg-gradient-info {
+  background: linear-gradient(135deg, #b2dbfb 0%, #459cf6 100%);
+}
 .form__width {
   width: 15.99vw !important;
 }

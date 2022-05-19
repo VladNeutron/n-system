@@ -18,11 +18,21 @@
               <div>
                 <button
                   class="btn bg-gradient-dark mb-0"
-                  style="margin-right: 0.833vw"
+                  style="
+                    margin-right: 0.833vw;
+                    font-size: 14px;
+                    font-weight: 600;
+                    display: flex;
+                    align-items: center;
+                  "
                   onclick="window.location.href = '/purchases/create-income'"
                 >
-                  <img src="@/assets/img/whtplus.svg" alt="" /> Новое
-                  поступление
+                  <img
+                    src="@/assets/img/whtplus.svg"
+                    alt=""
+                    style="margin-right: 10px"
+                  />
+                  Новое поступление
                 </button>
               </div>
               <div class="table__inputs d-flex gap-3 align-content-center">
@@ -36,7 +46,11 @@
               <table class="table table-hover">
                 <thead>
                   <tr class="">
-                    <th scope="col" class="th__col" style="width: 25px"></th>
+                    <th
+                      scope="col"
+                      class="th__col"
+                      style="width: 25px; padding-left: 27px"
+                    ></th>
                     <th width="1%" scope="col" class="th__col">№</th>
                     <th scope="col" class="th__col">Номер Поступления</th>
                     <th scope="col" class="th__col">Дата</th>
@@ -50,7 +64,7 @@
                 </thead>
                 <tbody>
                   <tr v-for="(order, i) of orders" :key="order.id">
-                    <th scope="row">
+                    <th scope="row" style="padding-left: 27px">
                       <div class="form-check">
                         <input
                           class="form-check-input"
@@ -60,7 +74,7 @@
                         />
                       </div>
                     </th>
-                    <th width="1%">{{ i + 1 }}</th>
+                    <td width="1%">{{ i + 1 }}</td>
                     <td>{{ order.id }}</td>
                     <td>{{ order.date }}</td>
                     <td>{{ order.responsible }}</td>
@@ -163,7 +177,7 @@
 </template>
 
 <script>
-import FiltersButton from '@/components/buttons/FiltersButton.vue';
+import FiltersButton from "@/components/buttons/FiltersButton.vue";
 import Filter from "../../components/Filters.vue";
 export default {
   data() {

@@ -18,13 +18,21 @@
               <div>
                 <button
                   class="btn bg-gradient-dark mb-0"
-                  style="margin-right: 0.833vw"
+                  style="
+                    margin-right: 0.833vw;
+                    display: flex;
+                    align-items: center;
+                  "
                   data-bs-toggle="modal"
                   data-bs-target="#InpModal"
                   @click="isEdit = 'no'"
                 >
-                  <img src="@/assets/img/whtplus.svg" alt="" /> Добавить
-                  сотрудника
+                  <img
+                    src="@/assets/img/whtplus.svg"
+                    style="margin-right: 10px"
+                    alt=""
+                  />
+                  Добавить сотрудника
                 </button>
               </div>
               <div class="table__inputs d-flex gap-3 align-content-center">
@@ -38,7 +46,11 @@
               <table class="table table-hover">
                 <thead>
                   <tr class="">
-                    <th scope="col" class="th__col" style="width: 25px"></th>
+                    <th
+                      scope="col"
+                      class="th__col"
+                      style="width: 25px; padding-left: 27px"
+                    ></th>
                     <th width="1%" scope="col" class="th__col">№</th>
                     <th scope="col" class="th__col">ФИО</th>
                     <th scope="col" class="th__col">Должность</th>
@@ -49,7 +61,7 @@
                 </thead>
                 <tbody>
                   <tr v-for="(order, i) of orders" :key="order.id">
-                    <td scope="row">
+                    <td scope="row" style="padding-left: 27px">
                       <div class="form-check">
                         <input
                           class="form-check-input"
@@ -59,7 +71,7 @@
                         />
                       </div>
                     </td>
-                    <th width="1%">{{ i + 1 }}</th>
+                    <td width="1%">{{ i + 1 }}</td>
                     <td>{{ order.name }}</td>
                     <td>{{ order.position }}</td>
                     <td>{{ order.phoneNumber }}</td>
@@ -271,13 +283,14 @@
         </div>
       </template>
     </inputs-modal>
+    <the-filter></the-filter>
   </main>
 </template>
 
 <script>
 import Filter from "../../components/Filters.vue";
 import InputsModal from "@/components/InputsModal.vue";
-import FiltersButton from '@/components/buttons/FiltersButton.vue';
+import FiltersButton from "@/components/buttons/FiltersButton.vue";
 export default {
   data() {
     return {

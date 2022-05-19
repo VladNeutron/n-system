@@ -163,6 +163,7 @@
         <canvas id="myChart3" class="w-100"></canvas>
       </div>
     </div>
+    <the-filter></the-filter>
   </main>
 </template>
 <script>
