@@ -35,7 +35,7 @@ export default {
 </script>
 
 <style>
-.form-select:hover {
+.form-select:hover:focus {
   background-image: url(@/assets/img/arrow__flip.svg) !important;
   transition: 0.3s;
 }
