@@ -2014,8 +2014,8 @@ textarea.form-control-lg {
     margin-left: -1.73em; }
 
 .form-check-input {
-  width: 1.23em;
-  height: 1.23em;
+  width: 1.53em;
+  height: 1.53em;
   margin-top: 0.135em;
   vertical-align: top;
   background-color: #fff;
@@ -12470,6 +12470,9 @@ textarea.form-control-lg {
 
 .btn-dark,
 .btn.bg-gradient-dark {
+  font-size: 14px;
+  line-height: 14px;
+  font-weight: 600;
   color: #fff; }
   .btn-dark:hover,
   .btn.bg-gradient-dark:hover {

@@ -21,12 +21,22 @@
             <div
               class="d-flex justify-content-between align-items-center mx-4 mb-4"
             >
-              <button
+              <router-link :to="{ name: 'create-return'}">
+              <!-- <button
                 class="btn bg-gradient-dark mb-0"
-                onclick="window.location.href = '/sales/edit-return'"
+                onclick="window.location.href = '/sales/create-return'"
+              > -->
+              <button
+                class="btn btn__return__new bg-gradient-dark mb-0"
               >
+              <img
+                    src="@/assets/img/whtplus.svg"
+                    style="width: 20.006px; margin-right: 0.529vw"
+                    alt=""
+                  />
                 Оформить возврат
               </button>
+              </router-link>
               <div class="table__inputs d-flex gap-3 align-content-center">
                 <list-search></list-search>
                 <print-button></print-button>
@@ -57,7 +67,7 @@
                   <tbody>
                     <tr v-for="(order, i) of filteredOrders" :key="order.id">
                       <th scope="row">
-                        <div class="form-check">
+                        <div class="form-check mb-0 ms-2">
                           <input
                             class="form-check-input"
                             type="checkbox"
@@ -91,7 +101,7 @@
                             alt=""
                           />
                           <div class="dropdown-content">
-                            <a href="/sales/create-return">Редактировать</a>
+                            <router-link :to="{ name: 'return-edit'}">Редактировать</router-link>
                             <hr />
                             <a
                               style="cursor: pointer"
@@ -540,6 +550,9 @@ td {
 }
 th {
   vertical-align: middle;
+}
+.btn__return__new{
+  height: 40px;
 }
 </style>
 
