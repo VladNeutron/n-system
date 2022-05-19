@@ -51,6 +51,7 @@
                 <list-search></list-search>
                 <print-button></print-button>
                 <download-button></download-button>
+                <upload-button></upload-button>
                 <filters-button></filters-button>
               </div>
             </div>
@@ -130,7 +131,7 @@
                             alt=""
                           />
                           <div class="dropdown-content">
-                            <a href="/warehouse-accounting/edit-inv"
+                            <a href="/products-accounting/product"
                               >Редактировать</a
                             >
                             <hr />
