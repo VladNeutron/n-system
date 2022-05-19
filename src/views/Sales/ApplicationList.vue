@@ -452,6 +452,15 @@ export default {
 </script>
 
 <style scoped>
+.bg-gradient-success {
+  background: linear-gradient(135deg, #98ec2d 0%, #17ad37 100%);
+}
+.bg-gradient-primary {
+  background: linear-gradient(135deg, #ff0080 0%, #7928ca 100%);
+}
+.bg-gradient-info {
+  background: linear-gradient(135deg, #b2dbfb 0%, #459cf6 100%);
+}
 .clients__delete {
   text-transform: none;
   border: 0;

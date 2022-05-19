@@ -11,7 +11,7 @@
       <div class="modal-content">
         <div class="modal-header header-flex">
           <div style="text-align: left">
-            <slot name="head">Удаление записи</slot>
+            <p class="header__main">Удаление записи</p>
             <p class="header__sec">Подтвердите свои действия</p>
           </div>
           <img
@@ -64,7 +64,7 @@ export default {};
 }
 .modal__body__text {
   font-weight: 600;
-  font-size: 1.042vw;
+  font-size: 20.006px;
   color: #2d3748;
 }
 </style>
@@ -88,12 +88,16 @@ export default {};
 }
 .btn-outline-dark {
   padding: 0.625vw 4.219vw 0.625vw 4.219vw;
+  font-size: 16px;
+  font-weight: 700;
 }
 .bg-gradient-secondary {
   background: linear-gradient(81.62deg, #313860 2.25%, #151928 79.87%);
   border-radius: 8px;
   text-transform: uppercase;
   padding: 0.625vw 4.219vw 0.625vw 4.219vw;
+  font-size: 16px;
+  font-weight: 700;
 }
 .del__btn {
   margin-right: 3.542vw;

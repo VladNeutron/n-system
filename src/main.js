@@ -22,6 +22,7 @@ import Register from "./components/Register.vue";
 import Cookie from "./components/Cookie.vue";
 import ListsHeader from '@/components/ListsHeader.vue';
 import PrintButton from '@/components/buttons/PrintButton.vue';
+import UploadButton from '@/components/buttons/UploadButton.vue'
 import DownloadButton from '@/components/buttons/DownloadButton.vue';
 import ListSearch from '@/components/inputs/ListSearch.vue';
 
@@ -36,6 +37,7 @@ app.component("register", Register);
 app.component("cookie", Cookie);
 app.component("lists-header", ListsHeader);
 app.component("print-button", PrintButton);
+app.component("upload-button", UploadButton);
 app.component("download-button", DownloadButton);
 app.component("list-search", ListSearch);
 

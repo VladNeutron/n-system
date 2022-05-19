@@ -35,12 +35,16 @@ export default {
 </script>
 
 <style>
+.form-select:focus {
+  background-image: url(@/assets/img/arrow__flip.svg) !important;
+}
 table th {
   font-size: 12px;
   font-weight: 600;
 }
 td {
   color: #2d3748;
+  font-weight: 600;
 }
 .page__name h3 {
   font-size: 24px;
@@ -57,6 +61,7 @@ td {
 .form-select {
   border: 1px solid #a0aec0 !important;
   border-radius: 8px;
+  background-image: url(@/assets/img/arrow.svg) !important;
 }
 
 #app {

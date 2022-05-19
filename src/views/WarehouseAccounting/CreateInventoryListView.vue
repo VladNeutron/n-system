@@ -407,7 +407,6 @@ tbody {
   align-self: flex-start;
 }
 .inv__content {
-  padding-right: 1.354vw;
   height: 90%;
 }
 

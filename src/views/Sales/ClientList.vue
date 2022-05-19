@@ -6,12 +6,10 @@
       <div class="row">
         <div class="col-12">
           <lists-header>
-            <template v-slot:title>
-              Список клиентов   
-            </template>  
+            <template v-slot:title> Список клиентов </template>
             <template v-slot:description>
-              Внесите изменения и не забудьте  нажать “Сохранить”    
-            </template>          
+              Внесите изменения и не забудьте нажать “Сохранить”
+            </template>
           </lists-header>
           <!-- <div class="inv__title">
             <p class="inv__title__text">Список клиентов</p>
@@ -88,7 +86,7 @@
                   <tbody>
                     <!-- v-for="(item, i) in filteredClients" :key="item" -->
                     <tr v-for="(item, i) in filteredClients" :key="item">
-                      <th scope="row" style="border-right: 0">{{ i + 1 }}</th>
+                      <td scope="row" style="border-right: 0">{{ i + 1 }}</td>
                       <td style="border-left: 0; border-right: 0">
                         {{ item.name }}
                       </td>
@@ -401,6 +399,18 @@ export default {
           email: "v.kurochkin@gmail.com",
           adres: "г. Алматы, ул. Байзакова д. 280, кв. 12",
         },
+        {
+          name: "Курочкин Василий Петрович",
+          phone: "+7 705 6665599",
+          email: "v.kurochkin@gmail.com",
+          adres: "г. Алматы, ул. Байзакова д. 280, кв. 12",
+        },
+        {
+          name: "Курочкин Василий Петрович",
+          phone: "+7 705 6665599",
+          email: "v.kurochkin@gmail.com",
+          adres: "г. Алматы, ул. Байзакова д. 280, кв. 12",
+        },
       ],
       search: "",
     };
@@ -518,8 +528,8 @@ export default {
   max-height: 80vh;
 }
 .inv__content {
-  height: 100%;
-  overflow-y: scroll;
+  height: 30vw;
+  overflow-y: auto;
 }
 
 .inv__btn {
