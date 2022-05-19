@@ -14,9 +14,20 @@
                 <button
                   type="button"
                   class="btn bg-gradient-secondary"
+                  style="
+                    font-size: 14px;
+                    font-weight: 600;
+                    display: flex;
+                    align-items: center;
+                  "
                   onclick="window.location.href = '/warehouse-accounting/create-oprih'"
                 >
-                  + Создать оприходование
+                  <img
+                    src="@/assets/img/whtplus.svg"
+                    alt=""
+                    style="margin-right: 10px"
+                  />
+                  Создать оприходование
                 </button>
               </div>
               <div class="inv__right__btn gap-3">
@@ -28,7 +39,7 @@
             </div>
             <div class="inv__block">
               <div class="inv__content">
-                <table class="table table-bordered table-hover table-striped">
+                <table class="table table-hover table-striped">
                   <thead>
                     <tr>
                       <th scope="col" class="th__col">№</th>
@@ -45,7 +56,7 @@
                   </thead>
                   <tbody>
                     <tr v-for="(item, i) in items" :key="item">
-                      <th scope="row">{{ i + 1 }}</th>
+                      <td scope="row">{{ i + 1 }}</td>
                       <td>{{ item.id }}</td>
                       <td>{{ item.date }}</td>
                       <td>{{ item.place }}</td>
@@ -204,10 +215,6 @@ hr {
 .th__col {
   color: #a0aec0 !important;
 }
-td,
-th {
-  color: #2d3748;
-}
 .inv__content::-webkit-scrollbar {
   background: #e2e8f0;
   border-radius: 0.78vw;
@@ -223,8 +230,6 @@ th {
   background-color: #e2e8f0;
 }
 .inv__content {
-  padding-left: 1.354vw;
-  padding-right: 1.354vw;
   height: 30.469vw;
   overflow-y: scroll;
 }

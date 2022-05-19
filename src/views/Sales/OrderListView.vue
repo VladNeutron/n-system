@@ -23,11 +23,24 @@
             >
               <button
                 class="btn bg-gradient-dark mb-0"
+                style="
+                  font-size: 14px;
+                  font-weight: 600;
+                  display: flex;
+                  align-items: center;
+                "
                 onclick="window.location.href = '/sales/create-order'"
               >
+                <img
+                  src="@/assets/img/whtplus.svg"
+                  alt=""
+                  style="margin-right: 10px"
+                />
                 Новый заказ
               </button>
-              <div class="table__inputs d-flex gap-3 align-content-center align-items-center">
+              <div
+                class="table__inputs d-flex gap-3 align-content-center align-items-center"
+              >
                 <list-search></list-search>
                 <print-button></print-button>
                 <download-button></download-button>
@@ -39,7 +52,11 @@
                 <table class="table table-hover text-wrap text-start">
                   <thead>
                     <tr class="text-start">
-                      <th scope="col" class="th__col" style="width: 25px"></th>
+                      <th
+                        scope="col"
+                        class="th__col"
+                        style="width: 1px; padding-left: 27px"
+                      ></th>
                       <th scope="col" class="th__col">№</th>
                       <th scope="col" class="th__col">№ Заказа</th>
                       <th scope="col" class="th__col">Дата</th>
@@ -51,12 +68,16 @@
                       <th scope="col" class="th__col">Кол-во</th>
                       <th scope="col" class="th__col">Сумма</th>
 
-                      <th scope="col" class="th__col"></th>
+                      <th
+                        scope="col"
+                        class="th__col"
+                        style="padding-right: 27px"
+                      ></th>
                     </tr>
                   </thead>
                   <tbody>
                     <tr v-for="(order, i) of filteredOrders" :key="order.id">
-                      <th scope="row">
+                      <th scope="row" style="padding-left: 27px">
                         <div class="form-check">
                           <input
                             class="form-check-input"
@@ -83,7 +104,10 @@
                       <td>{{ order.type }}</td>
                       <td>{{ order.amount }}</td>
                       <td>{{ order.sum }}</td>
-                      <td class="dropdown" style="border-left: 0">
+                      <td
+                        class="dropdown"
+                        style="border-left: 0; padding-right: 27px"
+                      >
                         <img
                           src="@/assets/img/dots.svg"
                           style="width: 1.563vw; cursor: pointer"
@@ -176,13 +200,21 @@
     </div>
     <div class="filters__period">
       <div class="form-group">
-        <input class="form-control" type="date" id="example-date-input" />
+        <input
+          class="form-control period__s"
+          type="date"
+          id="example-date-input"
+        />
       </div>
       <div>
         <img src="@/assets/img/line.svg" style="width: 1.927vw" alt="" />
       </div>
       <div class="form-group">
-        <input class="form-control" type="date" id="example-date-input" />
+        <input
+          class="form-control period__s"
+          type="date"
+          id="example-date-input"
+        />
       </div>
     </div>
     <p class="text-start my-2 fw-bold" for="Статус">Статус заказа</p>
@@ -338,6 +370,8 @@ export default {
         ? "bg-gradient-secondary"
         : stat === "ready"
         ? "bg-gradient-blue"
+        : stat === "shipped"
+        ? "bg-gradient-success"
         : "bg-gradient-success";
     },
     normalizeStatusName(name) {
@@ -413,6 +447,51 @@ export default {
 </script>
 
 <style scoped>
+.period__s {
+  width: 191px !important;
+}
+.form-check-input[type="checkbox"] {
+  border-radius: 0;
+}
+.form-check:not(.form-switch) .form-check-input[type="checkbox"],
+.form-check:not(.form-switch) .form-check-input[type="radio"] {
+  width: 18px;
+  height: 18px;
+}
+.form-check:not(.form-switch) .form-check-input[type="checkbox"]:checked,
+.form-check:not(.form-switch) .form-check-input[type="radio"]:checked {
+  width: 18px;
+  height: 18px;
+}
+.bg-gradient-success {
+  background: linear-gradient(135deg, #98ec2d 0%, #17ad37 100%);
+  font-size: 12px;
+}
+.bg-gradient-blue {
+  background: linear-gradient(135deg, #99fff3 0%, #62c7ba 100%);
+  font-size: 12px;
+  color: #fff;
+}
+.bg-gradient-secondary {
+  background: linear-gradient(135deg, #a8b8d8 0%, #627594 100%);
+  font-size: 12px;
+}
+.bg-gradient-warning {
+  background: linear-gradient(135deg, #f6ca65 0%, #ef8734 100%);
+  font-size: 12px;
+}
+.bg-gradient-danger {
+  background: linear-gradient(135deg, #ff667c 0%, #ea0706 100%);
+  font-size: 12px;
+}
+.bg-gradient-primary {
+  background: linear-gradient(135deg, #ff0080 0%, #7928ca 100%);
+  font-size: 12px;
+}
+.bg-gradient-info {
+  background: linear-gradient(135deg, #b2dbfb 0%, #459cf6 100%);
+  font-size: 12px;
+}
 .dropdown {
   width: 100%;
   display: inline-block;

@@ -35,6 +35,10 @@ export default {
 </script>
 
 <style>
+table th {
+  font-size: 12px;
+  font-weight: 600;
+}
 td {
   color: #2d3748;
 }
