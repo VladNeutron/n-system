@@ -3,7 +3,7 @@
   <main class="main-content border-radius-lg">
     <the-header></the-header>
     <div class="container-fluid pb-4">
-      <div class="row mt-4">
+      <div class="row">
         <div class="col-12">
           <drop-down>
             <template #header>
@@ -69,7 +69,7 @@
                 <div class="items__block">
                   <p class="items__title">Склад отправитель</p>
                   <div class="dropdown">
-                    <p class="items__tex items__flex" style="cursor: pointer">
+                    <p class="items__tex items__flex items__text" style="cursor: pointer">
                       ТРЦ Москва
                       <img
                         src="@/assets/img/down.svg"
@@ -88,7 +88,7 @@
                 <div class="items__block">
                   <p class="items__title">Склад получатель</p>
                   <div class="dropdown">
-                    <p class="items__tex items__flex" style="cursor: pointer">
+                    <p class="items__tex items__flex items__text" style="cursor: pointer">
                       ТРЦ Москва
                       <img
                         src="@/assets/img/down.svg"
@@ -127,11 +127,10 @@
                   </div>
                 </div>
                 <div class="items__block">
-                  <p class="items__title">Инвентаризация</p>
-                  <p class="items__text">
-                    <span style="cursor: pointer">Инвентаризация №19</span
-                    >,<br />
-                    <span style="cursor: pointer">от 11.11.21</span>
+                  <p class="items__title">Статус перемещения</p>
+                  <p class="items__text text-center">
+                    <span style="cursor: pointer">Завершен</span
+                    >
                   </p>
                 </div>
               </div>
@@ -139,7 +138,7 @@
           </drop-down>
           <div class="card pl-pr">
             <div class="main-page text-start">
-              <label class="form-control-label ps-3 pt-3" for="search"
+              <label class="form-control-label ps-3 pt-3 custom__label" for="search"
                 >Добавить по штрихкоду</label
               >
               <div class="d-flex justify-content-between ps-3">
@@ -408,9 +407,9 @@ export default {
   margin: 0;
 }
 .pl-pr {
-  margin-left: 1.146vw;
+  /* margin-left: 1.146vw; */
   margin-top: 1.094vw;
-  margin-right: 3.385vw;
+  /* margin-right: 3.385vw; */
 }
 btn-outline-dark {
   display: flex;

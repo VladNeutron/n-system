@@ -145,6 +145,18 @@ export default {
   box-shadow: -10px 0px 40px rgba(0, 0, 0, 0.1);
   overflow-y: auto;
 }
+
+.filters__container::-webkit-scrollbar {
+    width: 5px;
+}
+.filters__container::-webkit-scrollbar-track {
+    background-color: #E9ECEF;
+    border-radius: 5px;
+}
+.filters__container::-webkit-scrollbar-thumb {
+    background-color: #313860;
+    border-radius: 8px;
+}
 .filters__show {
   right: 0;
 }

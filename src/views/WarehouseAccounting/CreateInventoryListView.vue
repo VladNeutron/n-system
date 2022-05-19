@@ -69,7 +69,7 @@
                 <div class="items__block">
                   <p class="items__title">Склад</p>
                   <div class="dropdown">
-                    <p class="items__tex items__flex" style="cursor: pointer">
+                    <p class="items__tex items__flex items__text" style="cursor: pointer">
                       ТРЦ Москва
                       <img
                         src="@/assets/img/down.svg"
@@ -108,7 +108,7 @@
                   </div>
                 </div>
                 <div class="items__block">
-                  <p class="items__title">Синвентаризация</p>
+                  <p class="items__title">Статус инвентаризации</p>
                   <p class="items__text">
                     <span style="cursor: pointer">Завершена</span>,
                     <span style="cursor: pointer">не закрыта</span>
@@ -119,7 +119,7 @@
           </drop-down>
           <div class="card pl-pr">
             <div class="main-page text-start">
-              <label class="form-control-label ps-3 pt-3" for="search"
+              <label class="form-control-label ps-3 pt-3 addBarcodeLabel" for="search"
                 >Добавить по штрихкоду</label
               >
               <div class="d-flex justify-content-between ps-3">
@@ -382,9 +382,9 @@ export default {
   height: 40px;
 }
 .pl-pr {
-  margin-left: 1.146vw;
+  /* margin-left: 1.146vw; */
   margin-top: 1.094vw;
-  margin-right: 3.385vw;
+  /* margin-right: 3.385vw; */
 }
 .page__search-inputs {
   gap: 1.042vw;
@@ -425,6 +425,10 @@ tbody {
 }
 .dropdown__items {
   padding: 20px;
+}
+.addBarcodeLabel{
+  font-weight: 600;
+  font-size: 14px;
 }
 @media screen and (max-width: 1600px) {
   .btn {

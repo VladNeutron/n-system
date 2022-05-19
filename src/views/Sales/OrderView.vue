@@ -2,12 +2,12 @@
   <the-navbar></the-navbar>
   <main class="main-content border-radius-lg">
     <the-header></the-header>
-    <div class="order__content">
+    <div class="container-fluid">
       <div class="order__header">
         <div class="order__header-content">
           <div class="order__header-main">
             <div class="order__header-text">
-              <p class="order__header__main">Заказ №</p>
+              <p class="order__header__main">Заказ №15478</p>
               <p class="order__header__sec">
                 Настройте все параметры и нажмите “Сохранить”
               </p>
@@ -586,7 +586,7 @@
 
 .order__ready__sum {
   font-weight: 600;
-  font-size: 1vw;
+  font-size: 1.2vw;
   color: #2d3748;
 }
 
@@ -995,6 +995,11 @@
   box-shadow: 0px 3.5px 5.5px rgba(0, 0, 0, 0.02);
   border-radius: 15px;
   padding: 0 1.25vw 1.25vw 1.25vw;
+}
+.form-control,
+.form-select {
+  border: 1px solid #a0aec0;
+  width: 9.948vw;
 }
 
 .order__content {

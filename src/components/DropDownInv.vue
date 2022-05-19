@@ -67,14 +67,14 @@ export default {};
 }
 .dropdown__inv {
   margin-top: 1.25vw;
-  margin-left: 1.25vw;
-  margin-right: 3.646vw;
+  /* margin-left: 1.25vw; */
+  /* margin-right: 3.646vw; */
 }
 .dropdown__inv__content {
   padding-left: 1.146vw;
-  padding-top: 1.094vw;
-  padding-bottom: 2.24vw;
-  padding-right: 3.385vw;
+  padding-top: 1vw;
+  padding-bottom: 1vw;
+  padding-right: 1.146vw;
 }
 .dropdown__title {
   font-weight: 600;
