@@ -31,8 +31,6 @@
                 <button
                   type="button"
                   class="btn bg-gradient-secondary"
-                  data-bs-toggle="modal"
-                  data-bs-target="#SelectDisc"
                 >
                   <img
                     src="@/assets/img/whtplus.svg"

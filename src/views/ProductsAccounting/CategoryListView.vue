@@ -177,14 +177,14 @@
               placeholder="Введите название"
             />
           </div>
-          <div class="form-check" style="text-align: left">
+          <div class="form-check d-flex align-items-center" style="text-align: left">
             <input
               class="form-check-input"
               type="checkbox"
               value=""
               id="fcustomCheck1"
             />
-            <label class="custom-control-label label__check" for="customCheck1"
+            <label class="custom-control-label label__check mb-0" for="customCheck1"
               >Подчиненная категория</label
             >
           </div>
@@ -461,7 +461,7 @@ td {
   display: flex;
   background: linear-gradient(81.62deg, #313860 2.25%, #151928 79.87%);
   border-radius: 0.417vw;
-  padding: 0.521vw 1.25vw 0.573vw 2.188vw;
+  padding: 0.521vw 1.25vw 0.573vw 1.188vw;
   font-weight: 600;
   font-size: 0.729vw;
   align-items: center;
