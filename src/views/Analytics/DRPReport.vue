@@ -56,34 +56,44 @@
       <p class="selected-date">21.04.2022 - 21.05.2022</p>
     </div>
     <div class="main__table card mx-4 d-flex flex-column">
-      <table class="table table-bordered">
-        <thead>
-          <tr>
-            <th class="p-0">
-              <update-rating-cell></update-rating-cell>
-            </th>
+      <div class="table-wrapper">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th class="p-0">
+                <update-rating-cell></update-rating-cell>
+              </th>
 
-            <th class="p-0" v-for="(month, idx) of months" :key="month">
-              <month-cell :monthIdx="idx" @new-month="changeMonth"></month-cell>
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr v-for="product of productName" :key="product">
-            <td>
-              <div class="table__product d-flex gap-3">
-                <img src="@/assets/img/tshirt.png" alt="product" />
-                <p>{{ product }}</p>
-              </div>
-            </td>
-            <td v-for="month in months" :key="month">
-              <info-cell
-                :info="getProductIncomeByMonth(product, month)"
-              ></info-cell>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+              <th class="p-0" v-for="(month, idx) of months" :key="idx">
+                <month-cell
+                  :monthIdx="idx"
+                  @new-month="changeMonth"
+                ></month-cell>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="product of productName" :key="product">
+              <td class="px-4 py-2 sticky-products">
+                <div class="table__product d-flex gap-3">
+                  <img src="@/assets/img/tshirt.png" alt="product" />
+                  <p>{{ product }}</p>
+                </div>
+              </td>
+              <td class="py-2" v-for="month in months" :key="month">
+                <info-cell
+                  :info="
+                    getProductIncomeByMonth(
+                      product,
+                      this.selectedMonth || month
+                    )
+                  "
+                ></info-cell>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </main>
 </template>
@@ -985,7 +995,7 @@ export default {
         "Ноябрь",
         "Декабрь",
       ],
-      selectedMonth: "" || "Январь",
+      selectedMonth: "",
     };
   },
   methods: {
@@ -1007,6 +1017,7 @@ export default {
       return this.products.map((p) => p.product.name);
     },
   },
+  watch: {},
   components: {
     FiltersButton,
     MonthCell,
@@ -1088,7 +1099,23 @@ export default {
 .main__table {
   height: 600px;
 }
-
+.table-wrapper {
+  overflow: auto;
+}
+thead {
+  position: sticky;
+  background-color: #fff;
+  top: 0;
+}
+th {
+  border-right: #a0aec0;
+  border-bottom: #a0aec0;
+}
+tbody {
+  overflow-x: auto;
+}
+.sticky-products {
+}
 .table-months {
   overflow-y: hidden;
 }

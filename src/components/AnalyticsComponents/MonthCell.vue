@@ -9,9 +9,7 @@
         @click="startMonth = startMonth - 1"
         v-if="startMonth > 0"
       />
-      <p @update="$emit('newMonth', selectedMonth)" class="mb-0">
-        {{ selectedMonth }} 2022
-      </p>
+      <p class="mb-0">{{ selectedMonth }} 2022</p>
 
       <img
         src="@/assets/css/icons/arrow-right-enabled.svg"
@@ -65,7 +63,13 @@ export default {
       return this.months.length - 1;
     },
   },
-  watch: {},
+  watch: {
+    selectedMonth(newVal, oldVal) {
+      if (newVal !== oldVal) {
+        return this.$emit("newMonth", this.selectedMonth);
+      }
+    },
+  },
 };
 </script>
 <style scoped>
