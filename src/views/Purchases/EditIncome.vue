@@ -13,41 +13,8 @@
               </p>
             </div>
             <div class="drop__buttons">
-              <button class="btn comment">
-                <img
-                  src="@/assets/img/comment.svg"
-                  style="width: 1.042vw; margin-right: 0.417vw"
-                  alt=""
-                />
-                Комментарии <span class="count">4</span>
-              </button>
-              <div class="dropdown">
-                <button
-                  class="btn action"
-                  type="button"
-                  id="dropdownMenuButton"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
-                  <img
-                    src="@/assets/img/action.svg"
-                    style="width: 1.042vw; margin-right: 0.417vw"
-                    alt=""
-                  />
-                  Действия
-                </button>
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                  <li>
-                    <a class="dropdown-item" href="javascript:;">Печать</a>
-                  </li>
-                  <li>
-                    <a class="dropdown-item" href="javascript:;">Скачать</a>
-                  </li>
-                  <li>
-                    <a class="dropdown-item" href="javascript:;">Удалить</a>
-                  </li>
-                </ul>
-              </div>
+              <comment-button style="margin-right: 24px"></comment-button>
+              <action-button style="margin-right: 24px"></action-button>
               <button class="btn save__btn">Сохранить</button>
             </div>
           </div>
@@ -823,9 +790,9 @@
   box-shadow: 0px 4px 7px -1px rgba(0, 0, 0, 0.11),
     0px 2px 4px -1px rgba(0, 0, 0, 0.07);
   border-radius: 8px;
-  padding: 0.625vw 3.646vw 0.625vw 3.646vw;
-  font-weight: 700;
-  font-size: 0.833vw;
+  padding: 0.425vw 3.646vw 0.625vw 3.646vw;
+  font-weight: 600;
+  font-size: 14px;
   color: #fff;
   text-transform: none;
 }

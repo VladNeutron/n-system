@@ -51,44 +51,28 @@
             </div>
             <div class="inv__block">
               <div class="inv__content">
-                <table class="table table-bordered table-hover table-striped">
+                <table class="table table-hover table-striped">
                   <thead>
                     <tr>
-                      <th scope="col" class="th__col" style="border-right: 0">
-                        №
-                      </th>
-                      <th
-                        scope="col"
-                        class="th__col"
-                        style="border-left: 0; border-right: 0"
-                      >
-                        Категория
-                      </th>
-                      <th
-                        scope="col"
-                        class="th__col"
-                        style="border-left: 0; border-right: 0"
-                      >
-                        Основная Категория
-                      </th>
+                      <th scope="col" class="th__col">№</th>
+                      <th scope="col" class="th__col">Категория</th>
+                      <th scope="col" class="th__col">Основная Категория</th>
 
-                      <th scope="col" class="th__col" style="border-left: 0">
-                        Действия
-                      </th>
+                      <th scope="col" class="th__col">Действия</th>
                     </tr>
                   </thead>
                   <tbody>
                     <tr v-for="(item, i) in filteredCategory" :key="item">
-                      <th scope="row" style="border-right: 0">
+                      <td>
                         {{ i + 1 }}
-                      </th>
-                      <td style="border-left: 0; border-right: 0">
+                      </td>
+                      <td>
                         {{ item.category }}
                       </td>
-                      <td width="75%" style="border-left: 0; border-right: 0">
+                      <td width="75%">
                         {{ item.maincat }}
                       </td>
-                      <td class="dropdown" style="border-left: 0">
+                      <td class="dropdown">
                         <img
                           src="@/assets/img/dots.svg"
                           style="width: 1.563vw; cursor: pointer"
@@ -455,10 +439,8 @@ td {
   background-color: #e2e8f0;
 }
 .inv__content {
-  padding-left: 1.354vw;
-  padding-right: 1.354vw;
   height: 27.363vw;
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 
 .inv__btn {

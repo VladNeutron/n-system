@@ -50,59 +50,33 @@
                   </button>
                 </div>
                 <div class="character__body">
-                  <table class="table table-bordered table-hover table-striped">
+                  <table class="table table-hover table-striped">
                     <thead>
                       <tr>
-                        <th
-                          scope="col"
-                          class="th__col"
-                          width="15%"
-                          style="border-left: 0; border-right: 0"
-                        >
-                          №
-                        </th>
+                        <th scope="col" class="th__col" width="15%">№</th>
                         <th
                           scope="col"
                           class="th__col"
                           width="75%"
-                          style="
-                            text-align: left;
-                            border-left: 0;
-                            border-right: 0;
-                          "
+                          style="text-align: left"
                         >
                           Значение характеристики
                         </th>
-                        <th
-                          scope="col"
-                          class="th__col"
-                          style="border-left: 0; border-right: 0"
-                        >
-                          Действия
-                        </th>
+                        <th scope="col" class="th__col">Действия</th>
                       </tr>
                     </thead>
                     <tbody>
                       <!-- v-for="(item, i) in items" :key="item" -->
                       <tr v-for="(item, i) in sizes" :key="item">
-                        <td scope="row" style="border-right: 0; border-left: 0">
+                        <td scope="row">
                           {{ i + 1 }}
                         </td>
-                        <td
-                          style="
-                            text-align: left;
-                            border-left: 0;
-                            border-right: 0;
-                          "
-                        >
+                        <td style="text-align: left">
                           <span style="margin-left: 0.677vw">{{
                             item.size
                           }}</span>
                         </td>
-                        <td
-                          class="dropdown"
-                          style="border-left: 0; border-right: 0"
-                        >
+                        <td class="dropdown">
                           <img
                             src="@/assets/img/dots.svg"
                             style="width: 1.563vw; cursor: pointer"
@@ -169,59 +143,33 @@
                   </button>
                 </div>
                 <div class="character__body">
-                  <table class="table table-bordered table-hover table-striped">
+                  <table class="table table-hover table-striped">
                     <thead>
                       <tr>
-                        <th
-                          scope="col"
-                          class="th__col"
-                          width="15%"
-                          style="border-left: 0; border-right: 0"
-                        >
-                          №
-                        </th>
+                        <th scope="col" class="th__col" width="15%">№</th>
                         <th
                           scope="col"
                           class="th__col"
                           width="75%"
-                          style="
-                            text-align: left;
-                            border-left: 0;
-                            border-right: 0;
-                          "
+                          style="text-align: left"
                         >
                           Значение характеристики
                         </th>
-                        <th
-                          scope="col"
-                          class="th__col"
-                          style="border-left: 0; border-right: 0"
-                        >
-                          Действия
-                        </th>
+                        <th scope="col" class="th__col">Действия</th>
                       </tr>
                     </thead>
                     <tbody>
                       <!-- v-for="(item, i) in items" :key="item" -->
                       <tr v-for="(item, i) in colors" :key="item">
-                        <td scope="row" style="border-right: 0; border-left: 0">
+                        <td scope="row">
                           {{ i + 1 }}
                         </td>
-                        <td
-                          style="
-                            text-align: left;
-                            border-left: 0;
-                            border-right: 0;
-                          "
-                        >
+                        <td style="text-align: left">
                           <span style="margin-left: 0.677vw">{{
                             item.name
                           }}</span>
                         </td>
-                        <td
-                          class="dropdown"
-                          style="border-left: 0; border-right: 0"
-                        >
+                        <td class="dropdown">
                           <img
                             src="@/assets/img/dots.svg"
                             style="width: 1.563vw; cursor: pointer"

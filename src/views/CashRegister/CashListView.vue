@@ -18,72 +18,49 @@
                 data-bs-toggle="modal"
                 data-bs-target="#InpModal"
                 @click="isEdit = 'no'"
+                style="
+                  font-size: 14px;
+                  font-weight: 600;
+                  display: flex;
+                  align-items: center;
+                "
               >
-                <img src="@/assets/img/whtplus.svg" alt="" />
+                <img
+                  src="@/assets/img/whtplus.svg"
+                  alt=""
+                  style="margin-right: 10px"
+                />
                 Добавить кассу
               </button>
             </div>
             <div class="inv__block">
               <div class="inv__content">
-                <table class="table table-bordered table-hover table-striped">
+                <table class="table table-hover table-striped">
                   <thead>
                     <tr>
-                      <th
-                        scope="col"
-                        class="th__col"
-                        style="border-left: 0; border-right: 0"
-                      >
-                        №
-                      </th>
-                      <th
-                        scope="col"
-                        class="th__col"
-                        style="border-left: 0; border-right: 0"
-                      >
-                        Название кассы
-                      </th>
-                      <th
-                        scope="col"
-                        class="th__col"
-                        style="border-left: 0; border-right: 0"
-                      >
-                        Tорговая точка
-                      </th>
-                      <th
-                        scope="col"
-                        class="th__col"
-                        style="border-left: 0; border-right: 0"
-                      >
-                        Cтатус
-                      </th>
-                      <th
-                        scope="col"
-                        class="th__col"
-                        style="border-left: 0; border-right: 0"
-                      >
-                        Действия
-                      </th>
+                      <th scope="col" class="th__col">№</th>
+                      <th scope="col" class="th__col">Название кассы</th>
+                      <th scope="col" class="th__col">Tорговая точка</th>
+                      <th scope="col" class="th__col">Cтатус</th>
+                      <th scope="col" class="th__col">Действия</th>
                     </tr>
                   </thead>
                   <tbody>
                     <!-- v-for="(item, i) in filteredClients" :key="item" -->
                     <tr v-for="(item, i) in items" :key="item">
-                      <th scope="row" style="border-left: 0; border-right: 0">
+                      <td scope="row">
                         {{ i + 1 }}
-                      </th>
-                      <td style="border-left: 0; border-right: 0">
+                      </td>
+                      <td>
                         {{ item.name }}
                       </td>
-                      <td style="border-left: 0; border-right: 0">
+                      <td>
                         {{ item.tradePoint }}
                       </td>
-                      <td style="border-left: 0; border-right: 0">
+                      <td>
                         {{ item.status }}
                       </td>
-                      <td
-                        class="dropdown"
-                        style="border-left: 0; border-right: 0"
-                      >
+                      <td class="dropdown">
                         <img
                           src="@/assets/img/dots.svg"
                           style="width: 1.563vw; cursor: pointer"
@@ -418,7 +395,7 @@ export default {
 }
 .inv__content {
   height: 27.363vw;
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 .dropdown {
   width: 100%;

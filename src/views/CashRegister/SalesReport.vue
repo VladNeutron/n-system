@@ -11,41 +11,8 @@
           </p>
         </div>
         <div class="buttons">
-          <button class="btn comment">
-            <img
-              src="@/assets/img/comment.svg"
-              style="width: 1.042vw; margin-right: 0.417vw"
-              alt=""
-            />
-            Комментарии <span class="count">4</span>
-          </button>
-          <div class="dropdown">
-            <button
-              class="btn action"
-              type="button"
-              id="dropdownMenuButton"
-              data-bs-toggle="dropdown"
-              aria-expanded="false"
-            >
-              <img
-                src="@/assets/img/action.svg"
-                style="width: 1.042vw; margin-right: 0.417vw"
-                alt=""
-              />
-              Действия
-            </button>
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-              <li>
-                <a class="dropdown-item" href="javascript:;">Печать</a>
-              </li>
-              <li>
-                <a class="dropdown-item" href="javascript:;">Скачать</a>
-              </li>
-              <li>
-                <a class="dropdown-item" href="javascript:;">Удалить</a>
-              </li>
-            </ul>
-          </div>
+          <comment-button style="margin-right: 24px"></comment-button>
+          <action-button style="margin-right: 24px"></action-button>
           <filters-button></filters-button>
         </div>
       </div>
@@ -219,6 +186,7 @@
       </div>
     </div>
     <checks-modal :product="modal.modalProductName"></checks-modal>
+    <filters></filters>
   </main>
 </template>
 <style scoped>
@@ -443,11 +411,13 @@ import ChecksModal from "@/components/ChecksModal.vue";
 import FiltersButton from "@/components/buttons/FiltersButton.vue";
 import Chart from "@/assets/js/plugins/chartjs.min.js";
 import CounterModal from "@/components/CounterModal.vue";
+import Filters from "@/components/Filters.vue";
 export default {
   components: {
     FiltersButton,
     ChecksModal,
     CounterModal,
+    Filters,
   },
   data() {
     return {

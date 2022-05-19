@@ -25,6 +25,8 @@ import PrintButton from '@/components/buttons/PrintButton.vue';
 import UploadButton from '@/components/buttons/UploadButton.vue'
 import DownloadButton from '@/components/buttons/DownloadButton.vue';
 import ListSearch from '@/components/inputs/ListSearch.vue';
+import CommentButton from '@/components/buttons/CommentButton.vue'
+import ActionButton from '@/components/buttons/ActionButton.vue'
 
 
 const app = createApp(App).use(store).use(router);
@@ -39,6 +41,8 @@ app.component("lists-header", ListsHeader);
 app.component("print-button", PrintButton);
 app.component("upload-button", UploadButton);
 app.component("download-button", DownloadButton);
+app.component("comment-button", CommentButton);
+app.component("action-button", ActionButton);
 app.component("list-search", ListSearch);
 
 app.mount("#app", Login);
