@@ -331,53 +331,89 @@ export default {
       headerToolbar: {
         start: 'title', // will normally be on the left. if RTL, will be on the right
         center: '',
-        end: 'today prev,next' // will normally be on the right. if RTL, will be on the left
+        // end: 'prev,next' // will normally be on the right. if RTL, will be on the left
+        end: ''
       },
-      height: '280px',
+      height: '20vw',
       // height: '100%',
       fixedWeekCount: false,
       // expandRows: true,
       selectable: true,
       editable: true,
       aspectRatio: 2,
-      initialDate: '2022-04-01',
+      initialDate: '2022-05-01',
       events: [{
-          title: 'Call with Dave',
+          title: 'Созвон с Пашей',
           start: '2022-04-18',
           end: '2022-04-18',
           className: 'bg-gradient-danger'
         },
 
         {
-          title: 'Lunch meeting',
+          title: 'Встреча в кафе',
           start: '2022-04-21',
           end: '2022-04-22',
           className: 'bg-gradient-warning'
         },
 
         {
-          title: 'All day conference',
+          title: 'Конференция',
           start: '2022-04-29',
           end: '2022-04-29',
           className: 'bg-gradient-success'
         },
 
         {
-          title: 'Meeting with Mary',
+          title: 'Встреча с Ильёй',
           start: '2022-04-01',
           end: '2022-04-01',
           className: 'bg-gradient-info'
         },
 
         {
-          title: 'Winter Hackaton',
+          title: 'Созвон с клиентом',
+          start: '2022-05-17',
+          end: '2022-04-22',
+          className: 'bg-gradient-warning'
+        },
+
+        {
+          title: 'Весенний марафон',
+          start: '2022-05-07',
+          end: '2022-04-29',
+          className: 'bg-gradient-success'
+        },
+
+        {
+          title: 'ДР Павла',
+          start: '2022-05-01',
+          end: '2022-04-01',
+          className: 'bg-gradient-info'
+        },
+
+        {
+          title: 'ДР Даниила',
+          start: '2022-05-12',
+          end: '2022-04-01',
+          className: 'bg-gradient-info'
+        },
+
+        {
+          title: 'Бизнес-форум',
+          start: '2022-05-20',
+          end: '2022-04-01',
+          className: 'bg-gradient-danger'
+        },
+
+        {
+          title: 'Весенний хакатон',
           start: '2020-12-03',
           end: '2020-12-03',
           className: 'bg-gradient-danger'
         },
 
         {
-          title: 'Digital event',
+          title: 'Собрание',
           start: '2020-12-07',
           end: '2020-12-09',
           className: 'bg-gradient-warning'
@@ -435,7 +471,7 @@ export default {
         }
       },
     });
-
+    calendar.setOption('locale', 'ru');
     calendar.render();
 
 
@@ -689,6 +725,7 @@ export default {
 }
 
 
+
 @media screen and (max-width: 1800px){
   .main__best__table{
     border-spacing: 0 0.5vw;
@@ -759,6 +796,12 @@ export default {
       border-radius: 8px;
   }
   .ChartContainer{
-    max-height: 234px !important;
+    max-height: 15.46vw !important;
+  }
+  .fc .fc-toolbar-title {
+  text-transform: capitalize !important;
+  }
+  .fc .fc-toolbar.fc-header-toolbar{
+    margin-bottom: 10px !important;
   }
 </style>
