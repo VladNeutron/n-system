@@ -35,17 +35,14 @@
                   </div>
                 </div> -->
                 <router-link :to="{ name: 'product' }" class="nav-link">
-                <button
-                  type="button"
-                  class="btn bg-gradient-secondary"
-                >
-                  <img
-                    src="@/assets/img/whtplus.svg"
-                    style="width: 1.042vw; margin-right: 0.729vw"
-                    alt=""
-                  />
-                  Добавить товар
-                </button>
+                  <button type="button" class="btn bg-gradient-secondary">
+                    <img
+                      src="@/assets/img/whtplus.svg"
+                      style="width: 1.042vw; margin-right: 0.729vw"
+                      alt=""
+                    />
+                    Добавить товар
+                  </button>
                 </router-link>
               </div>
               <div class="inv__right__btn gap-3">
@@ -58,73 +55,38 @@
             </div>
             <div class="inv__block">
               <div class="inv__content">
-                <table class="table table-bordered table-hover table-striped">
+                <table class="table table-hover table-striped">
                   <thead>
                     <tr>
-                      <th scope="col" class="th__col" style="border-right: 0">
-                        №
-                      </th>
-                      <th
-                        scope="col"
-                        class="th__col"
-                        style="border-left: 0; border-right: 0"
-                      >
-                        Товар
-                      </th>
-                      <th
-                        scope="col"
-                        class="th__col"
-                        style="border-left: 0; border-right: 0"
-                      >
-                        Категория
-                      </th>
-                      <th
-                        scope="col"
-                        class="th__col"
-                        style="border-left: 0; border-right: 0"
-                      >
-                        Себестоимость
-                      </th>
-                      <th
-                        scope="col"
-                        class="th__col"
-                        style="border-left: 0; border-right: 0"
-                      >
-                        Цена продажи
-                      </th>
+                      <th scope="col" class="th__col">№</th>
+                      <th scope="col" class="th__col">Товар</th>
+                      <th scope="col" class="th__col">Категория</th>
+                      <th scope="col" class="th__col">Себестоимость</th>
+                      <th scope="col" class="th__col">Цена продажи</th>
 
-                      <th scope="col" class="th__col" style="border-left: 0">
-                        Действия
-                      </th>
+                      <th scope="col" class="th__col">Действия</th>
                     </tr>
                   </thead>
                   <tbody>
                     <tr v-for="(item, i) in filteredProducts" :key="item">
-                      <th scope="row" style="border-right: 0" width="1%">
+                      <td scope="row" width="1%">
                         {{ i + 1 }}
-                      </th>
-                      <td
-                        style="
-                          border-left: 0;
-                          border-right: 0;
-                          display: flex;
-                          justify-content: center;
-                        "
-                      >
+                      </td>
+                      <td style="display: flex; justify-content: center">
                         <img :src="item.img" style="margin-right: 0.833vw" />{{
                           item.name
                         }}
                       </td>
-                      <td style="border-left: 0; border-right: 0">
+                      <td>
                         {{ item.category }}
                       </td>
-                      <td style="border-left: 0; border-right: 0">
+                      <td>
                         {{ item.costPrice }}
                       </td>
-                      <td style="border-left: 0; border-right: 0">
+                      <td>
                         {{ item.price }}
                       </td>
-                      <td style="border-left: 0; border-right: 0">
+                      <td>
                         <div class="dropdown">
                           <img
                             src="@/assets/img/dots.svg"
@@ -498,10 +460,8 @@ td {
   background-color: #e2e8f0;
 }
 .inv__content {
-  padding-left: 1.354vw;
-  padding-right: 1.354vw;
   height: 27.363vw;
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 
 .inv__btn {
