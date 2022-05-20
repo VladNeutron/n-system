@@ -7,6 +7,9 @@
         <div class="col-12">
           <lists-header>
             <template v-slot:title> Список скидок </template>
+            <template v-slot:description
+              >Внесите изменения и не забудьте нажать “Сохранить”</template
+            >
           </lists-header>
           <div class="card">
             <div class="inv__buttons">
@@ -31,6 +34,7 @@
                 <button
                   type="button"
                   class="btn bg-gradient-secondary"
+                  onclick="window.location.href = '/products-accounting/discounts/discount-create'"
                 >
                   <img
                     src="@/assets/img/whtplus.svg"
@@ -44,6 +48,7 @@
                 <list-search></list-search>
                 <print-button></print-button>
                 <download-button></download-button>
+                <filters-button></filters-button>
               </div>
             </div>
             <div class="inv__block">
@@ -60,9 +65,9 @@
                   </thead>
                   <tbody>
                     <tr v-for="(item, i) in filteredDiscounts" :key="item">
-                      <th scope="row">
+                      <td scope="row">
                         {{ i + 1 }}
-                      </th>
+                      </td>
                       <td>
                         {{ item.type }}
                       </td>
@@ -76,7 +81,9 @@
                           alt=""
                         />
                         <div class="dropdown-content">
-                          <a href="#">Редактировать</a>
+                          <a href="/products-accounting/discounts/discount-edit"
+                            >Редактировать</a
+                          >
                           <hr />
                           <a
                             style="cursor: pointer"
@@ -152,15 +159,18 @@
         </div>
       </div>
     </div>
+    <Filters></Filters>
     <select-product-discount></select-product-discount>
   </main>
 </template>
 
 <script>
+import Filters from "@/components/Filters.vue";
 import SelectProductDiscount from "../../components/SelectProductDiscount.vue";
 export default {
   components: {
     SelectProductDiscount,
+    Filters,
   },
   data() {
     return {
@@ -268,7 +278,7 @@ export default {
   background-image: linear-gradient(83.56deg, #7092e0 10.01%, #8baef3 75.36%);
 }
 .inv__block {
-  padding-bottom: 2vw;
+  padding-bottom: 1vw;
 }
 .form-control {
   width: 15.99vw;
@@ -333,7 +343,7 @@ td {
   background-color: #e2e8f0;
 }
 .inv__content {
-  height: 27.363vw;
+  height: 30.363vw;
   overflow-y: auto;
 }
 
@@ -365,7 +375,6 @@ td {
   padding-top: 0.729vw;
   padding-left: 1.25vw;
   padding-right: 1.25vw;
-  padding-bottom: 2.083vw;
   display: flex;
   justify-content: space-between;
 }

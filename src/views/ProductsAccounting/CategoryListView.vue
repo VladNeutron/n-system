@@ -7,30 +7,17 @@
         <div class="col-12">
           <lists-header>
             <template v-slot:title> Список категорий </template>
+            <template v-slot:description
+              >Внесите изменения и не забудьте нажать “Сохранить”</template
+            >
           </lists-header>
           <div class="card">
             <div class="inv__buttons">
               <div class="inv__left__btn">
-                <!-- <div class="form-group">
-                  <div class="input-group">
-                    <span class="input-group-text"
-                      ><img
-                        src="@/assets/css/icons/searchIcon.svg"
-                        style="width: 0.833vw"
-                        alt=""
-                    /></span>
-                    <input
-                      class="form-control form-control-lg inv__inp"
-                      placeholder="Поиск"
-                      type="text"
-                      id="search"
-                      v-model.trim="search"
-                    />
-                  </div>
-                </div> -->
                 <button
                   type="button"
                   class="btn bg-gradient-secondary"
+                  @click="isEdit = false"
                   data-bs-toggle="modal"
                   data-bs-target="#InpModal"
                 >
@@ -79,7 +66,13 @@
                           alt=""
                         />
                         <div class="dropdown-content">
-                          <a href="#">Редактировать</a>
+                          <a
+                            @click="isEdit = true"
+                            data-bs-toggle="modal"
+                            data-bs-target="#InpModal"
+                            style="cursor: pointer"
+                            >Редактировать</a
+                          >
                           <hr />
                           <a
                             style="cursor: pointer"
@@ -157,15 +150,21 @@
     </div>
     <inputs-modal>
       <template #head>
-        <div style="text-align: left">
+        <div style="text-align: left" v-if="isEdit == false">
           <p class="header__main">Добавление категории</p>
           <p class="header__sec">
             Введите название категории и нажмите “Добавить”
           </p>
         </div>
+        <div style="text-align: left" v-if="isEdit == true">
+          <p class="header__main">Редактирование категории</p>
+          <p class="header__sec">
+            Введите название категории и нажмите “Сохранить”
+          </p>
+        </div>
       </template>
       <template #body>
-        <div class="body__content">
+        <div class="body__content" v-if="isEdit == false">
           <div class="form-group" style="text-align: left">
             <label for="exampleFormControlInput1" class="label__text"
               >Название категории</label
@@ -177,14 +176,19 @@
               placeholder="Введите название"
             />
           </div>
-          <div class="form-check d-flex align-items-center" style="text-align: left">
+          <div
+            class="form-check d-flex align-items-center"
+            style="text-align: left"
+          >
             <input
               class="form-check-input"
               type="checkbox"
               value=""
               id="fcustomCheck1"
             />
-            <label class="custom-control-label label__check mb-0" for="customCheck1"
+            <label
+              class="custom-control-label label__check mb-0"
+              for="customCheck1"
               >Подчиненная категория</label
             >
           </div>
@@ -193,7 +197,50 @@
               >Основная категория</label
             >
             <select
+              class="form-select modal__inp"
+              id="exampleFormControlSelect1"
+              v-model="selected"
+            >
+              <option>Верхняя одежда</option>
+              <option>Нижнее белье</option>
+              <option>Штаны</option>
+            </select>
+          </div>
+        </div>
+        <div class="body__content" v-if="isEdit == true">
+          <div class="form-group" style="text-align: left">
+            <label for="exampleFormControlInput1" class="label__text"
+              >Название категории</label
+            >
+            <input
+              type="text"
               class="form-control modal__inp"
+              id="exampleFormControlInput1"
+              placeholder="Введите название"
+            />
+          </div>
+          <div
+            class="form-check d-flex align-items-center"
+            style="text-align: left"
+          >
+            <input
+              class="form-check-input"
+              type="checkbox"
+              value=""
+              id="fcustomCheck1"
+            />
+            <label
+              class="custom-control-label label__check mb-0"
+              for="customCheck1"
+              >Подчиненная категория</label
+            >
+          </div>
+          <div class="form-group" style="text-align: left">
+            <label for="exampleFormControlSelect1" class="label__text"
+              >Основная категория</label
+            >
+            <select
+              class="form-select modal__inp"
               id="exampleFormControlSelect1"
               v-model="selected"
             >
@@ -205,8 +252,11 @@
         </div>
       </template>
       <template #footer>
-        <div class="footer__btn">
+        <div class="footer__btn" v-if="isEdit == false">
           <button class="footer__button">Добавить</button>
+        </div>
+        <div class="footer__btn" v-if="isEdit == true">
+          <button class="footer__button">Сохранить</button>
         </div>
       </template>
     </inputs-modal>
@@ -310,6 +360,7 @@ export default {
       ],
       search: "",
       selected: "",
+      isEdit: false,
     };
   },
   computed: {
@@ -374,7 +425,7 @@ export default {
   background-image: linear-gradient(83.56deg, #7092e0 10.01%, #8baef3 75.36%);
 }
 .inv__block {
-  padding-bottom: 2vw;
+  padding-bottom: 1vw;
 }
 .form-control {
   width: 15.99vw;
@@ -439,7 +490,7 @@ td {
   background-color: #e2e8f0;
 }
 .inv__content {
-  height: 27.363vw;
+  height: 30.363vw;
   overflow-y: auto;
 }
 

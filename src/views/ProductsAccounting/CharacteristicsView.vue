@@ -330,8 +330,20 @@ export default {
         {
           size: "XXL",
         },
+        {
+          size: "XXL",
+        },
+        {
+          size: "XXL",
+        },
       ],
       colors: [
+        {
+          name: "Белый",
+        },
+        {
+          name: "Белый",
+        },
         {
           name: "Белый",
         },
@@ -424,8 +436,8 @@ export default {
   background-color: #e2e8f0;
 }
 .character__body {
-  overflow-y: scroll;
-  height: 590px;
+  overflow-y: auto;
+  height: 33.729vw;
 }
 .dropdown {
   width: 100%;

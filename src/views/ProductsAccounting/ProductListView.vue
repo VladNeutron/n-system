@@ -60,6 +60,7 @@
                     <tr>
                       <th scope="col" class="th__col">№</th>
                       <th scope="col" class="th__col">Товар</th>
+                      <th scope="col" class="th__col">Артикул</th>
                       <th scope="col" class="th__col">Категория</th>
                       <th scope="col" class="th__col">Себестоимость</th>
                       <th scope="col" class="th__col">Цена продажи</th>
@@ -76,6 +77,9 @@
                         <img :src="item.img" style="margin-right: 0.833vw" />{{
                           item.name
                         }}
+                      </td>
+                      <td>
+                        {{ item.barcode }}
                       </td>
                       <td>
                         {{ item.category }}
@@ -277,6 +281,7 @@ export default {
         {
           img: require("@/assets/img/green.png"),
           name: "Куртка зеленая",
+          barcode: "123125525",
           category: "Верхняя одежда",
           costPrice: "12 000 ₸",
           price: "29 000 ₸",
@@ -284,6 +289,7 @@ export default {
         {
           img: require("@/assets/img/green.png"),
           name: "Куртка зеленая",
+          barcode: "123125525",
           category: "Верхняя одежда",
           costPrice: "12 000 ₸",
           price: "29 000 ₸",
@@ -291,6 +297,7 @@ export default {
         {
           img: require("@/assets/img/green.png"),
           name: "Куртка зеленая",
+          barcode: "123125525",
           category: "Верхняя одежда",
           costPrice: "12 000 ₸",
           price: "29 000 ₸",
@@ -298,6 +305,7 @@ export default {
         {
           img: require("@/assets/img/green.png"),
           name: "Куртка зеленая",
+          barcode: "123125525",
           category: "Верхняя одежда",
           costPrice: "12 000 ₸",
           price: "29 000 ₸",
@@ -305,6 +313,7 @@ export default {
         {
           img: require("@/assets/img/green.png"),
           name: "Куртка зеленая",
+          barcode: "123125525",
           category: "Верхняя одежда",
           costPrice: "12 000 ₸",
           price: "29 000 ₸",
@@ -312,6 +321,7 @@ export default {
         {
           img: require("@/assets/img/green.png"),
           name: "Куртка зеленая",
+          barcode: "123125525",
           category: "Верхняя одежда",
           costPrice: "12 000 ₸",
           price: "29 000 ₸",
@@ -319,6 +329,7 @@ export default {
         {
           img: require("@/assets/img/green.png"),
           name: "Куртка зеленая",
+          barcode: "123125525",
           category: "Верхняя одежда",
           costPrice: "12 000 ₸",
           price: "29 000 ₸",
@@ -326,6 +337,7 @@ export default {
         {
           img: require("@/assets/img/green.png"),
           name: "Куртка зеленая",
+          barcode: "123125525",
           category: "Верхняя одежда",
           costPrice: "12 000 ₸",
           price: "29 000 ₸",
@@ -339,7 +351,8 @@ export default {
       return this.items.filter((item) => {
         return (
           item.name.toLowerCase().includes(this.search.toLowerCase()) ||
-          item.category.toLowerCase().includes(this.search.toLowerCase())
+          item.category.toLowerCase().includes(this.search.toLowerCase()) ||
+          item.barcode.toString().includes(this.search.toLowerCase())
         );
       });
     },
@@ -396,7 +409,7 @@ export default {
   background-image: linear-gradient(83.56deg, #7092e0 10.01%, #8baef3 75.36%);
 }
 .inv__block {
-  padding-bottom: 2vw;
+  padding-bottom: 1vw;
 }
 .form-control {
   width: 15.99vw;
@@ -460,7 +473,7 @@ td {
   background-color: #e2e8f0;
 }
 .inv__content {
-  height: 27.363vw;
+  height: 30.363vw;
   overflow-y: auto;
 }
 
@@ -492,7 +505,6 @@ td {
   padding-top: 0.729vw;
   padding-left: 1.25vw;
   padding-right: 1.25vw;
-  padding-bottom: 2.083vw;
   display: flex;
   justify-content: space-between;
 }
