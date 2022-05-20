@@ -561,36 +561,22 @@ export default {
         },
 
         scales: {
-          yAxes: [
-            {
-              gridLines: {
-                display: true,
-              },
-              ticks: {
-                suggestedMin: 0,
-                suggestedMax: 500,
-                beginAtZero: true,
-                padding: 0,
-                fontSize: 14,
-                lineHeight: 3,
-                fontColor: "red",
-                fontStyle: "normal",
-                fontFamily: "Open-Sans",
-              },
-            },
-          ],
-          xAxes: [
-            {
-              gridLines: {
-                display: true,
-              },
-              ticks: {
-                display: true,
-                padding: 20,
-                color: "green",
-              },
-            },
-          ],
+          x: {
+            grid: {
+              display: false,
+              drawBorder: true,
+              drawOnChartArea: true,
+              drawTicks: true,
+            }
+          },
+          y: {
+            grid: {
+              display: true,
+              drawBorder: false,
+              drawOnChartArea: true,
+              drawTicks: true,
+            }
+          },
         },
       },
     });
