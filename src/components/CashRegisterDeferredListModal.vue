@@ -38,7 +38,7 @@
               </div>
             </div>
             <div class="search__buttons">
-              <button class="btn bg-gradient-dark">
+              <button class="btn bg-gradient-dark" data-bs-dismiss="modal">
                 Продолжить продажу <img src="@/assets/img/cash-register/rightDeferred.svg" class="ms-1" alt="">  
               </button>  
             </div>
@@ -326,7 +326,7 @@ export default {
     rgba(112, 146, 224, 0.1) 10.01%,
     rgba(139, 174, 243, 0.1) 75.36%
   );
-  backdrop-filter: blur(50px);
+  
 }
 .btn-outline-dark {
   padding: 0.625vw 4.219vw 0.625vw 4.219vw;
