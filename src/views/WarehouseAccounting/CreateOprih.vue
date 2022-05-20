@@ -194,7 +194,7 @@
               <div class="inv__block">
                 <div class="inv__content">
                   <div>
-                    <table class="table table-hover text-center table-striped">
+                    <table class="table table-hover text-center">
                       <thead>
                         <tr>
                           <th scope="col" class="">№</th>
