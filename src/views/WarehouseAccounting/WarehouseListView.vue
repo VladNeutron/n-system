@@ -65,18 +65,24 @@
                       </div>
                     </td>
                     <td></td>
-                    <td>
-                      <a href="/warehouse-accounting/storage"
-                        ><img src="@/assets/css/icons/editIcon.svg" alt="edit"
-                      /></a>
-                      <a
-                        data-bs-toggle="modal"
-                        data-bs-target="#DeleteInv"
-                        style="cursor: pointer"
-                        ><img
-                          src="@/assets/css/icons/deleteIcon.svg"
-                          alt="delete"
-                      /></a>
+                    <td class="dropdown" style="padding-left: 100px">
+                      <img
+                        src="@/assets/img/dots.svg"
+                        style="width: 1.563vw; cursor: pointer"
+                        alt=""
+                      />
+                      <div class="dropdown-content">
+                        <a href="/warehouse-accounting/storage"
+                          >Редактировать</a
+                        >
+                        <hr />
+                        <a
+                          style="cursor: pointer"
+                          data-bs-toggle="modal"
+                          data-bs-target="#DeleteInv"
+                          >Удалить</a
+                        >
+                      </div>
                     </td>
                   </tr>
                 </table>
@@ -136,6 +142,32 @@ export default {
 </script>
 
 <style scoped>
+.dropdown {
+  width: 100%;
+  display: inline-block;
+  position: relative;
+}
+.dropdown-content {
+  text-align: left;
+  display: none;
+  position: absolute;
+  width: 7.815vw;
+  overflow: auto;
+  background: #f8f9fa;
+  box-shadow: 2px 2px 5.5px rgba(0, 0, 0, 0.25);
+  border-radius: 12px;
+  right: 15px;
+  z-index: 1;
+  padding: 0.625vw 0.625vw 0.625vw 0.625vw;
+}
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+.dropdown-content a {
+  display: block;
+  color: #2d3748;
+  text-decoration: none;
+}
 .table {
   display: flex;
   min-width: 95%;

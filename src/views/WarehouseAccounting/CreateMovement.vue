@@ -55,7 +55,6 @@
                       Комментарии <span class="count">4</span>
                     </button>
                   </div>
-                  
                 </div>
               </div>
             </template>
@@ -65,14 +64,22 @@
                   <p class="items__title">№ перемещения</p>
                   <p class="items__text">№ 19</p>
                 </div>
-                <div class="items__block">
+                <div
+                  class="items__block"
+                  data-bs-toggle="modal"
+                  data-bs-target="#InpModal"
+                  style="cursor: pointer"
+                >
                   <p class="items__title">дата и время</p>
                   <p class="items__text">11 ноя, 19:23, 2021</p>
                 </div>
                 <div class="items__block">
                   <p class="items__title">Склад отправитель</p>
                   <div class="dropdown">
-                    <p class="items__tex items__flex items__text" style="cursor: pointer">
+                    <p
+                      class="items__tex items__flex items__text"
+                      style="cursor: pointer"
+                    >
                       ТРЦ Москва
                       <img
                         src="@/assets/img/down.svg"
@@ -91,7 +98,10 @@
                 <div class="items__block">
                   <p class="items__title">Склад получатель</p>
                   <div class="dropdown">
-                    <p class="items__tex items__flex items__text" style="cursor: pointer">
+                    <p
+                      class="items__tex items__flex items__text"
+                      style="cursor: pointer"
+                    >
                       ТРЦ Москва
                       <img
                         src="@/assets/img/down.svg"
@@ -132,8 +142,7 @@
                 <div class="items__block">
                   <p class="items__title">Статус перемещения</p>
                   <p class="items__text text-center">
-                    <span style="cursor: pointer">Новый</span
-                    >
+                    <span style="cursor: pointer">Новый</span>
                   </p>
                 </div>
               </div>
@@ -141,7 +150,9 @@
           </drop-down>
           <div class="card pl-pr">
             <div class="main-page text-start">
-              <label class="form-control-label ps-3 pt-3 custom__label" for="search"
+              <label
+                class="form-control-label ps-3 pt-3 custom__label"
+                for="search"
                 >Добавить по штрихкоду</label
               >
               <div class="d-flex justify-content-between ps-3">
@@ -192,11 +203,11 @@
               <div class="inv__block">
                 <div class="inv__content">
                   <div>
-                    <table class="table table-hover text-center table-striped">
+                    <table class="table table-hover text-center">
                       <thead>
                         <tr>
                           <th scope="col" class="">№</th>
-                          <th scope="col" class="">Штрихкод</th>
+                          <th scope="col" class="">Артикул</th>
                           <th scope="col" class="">Товар</th>
                           <th scope="col" class="">Категория</th>
                           <th scope="col" class="">Кол-во</th>
@@ -291,11 +302,41 @@
         </div>
       </div>
     </div>
+    <inputs-modal>
+      <template #head>
+        <div style="text-align: left">
+          <p class="header__main">Изменение Даты</p>
+          <p class="header__sec">Измените данные и нажмите “Сохранить”</p>
+        </div>
+      </template>
+      <template #body>
+        <div class="clients__modal">
+          <div class="form-group text-start">
+            <label for="example-datetime-local-input" class="form-control-label"
+              >Выберите дату и время</label
+            >
+            <input
+              class="form-control"
+              type="datetime-local"
+              value="2018-11-23T10:30:00"
+              id="example-datetime-local-input"
+            />
+          </div>
+        </div>
+      </template>
+      <template #footer>
+        <div class="clients__footer">
+          <button class="btn clients__save">Сохранить</button>
+        </div>
+      </template>
+    </inputs-modal>
   </main>
 </template>
 
 <script>
+import InputsModal from "@/components/InputsModal.vue";
 export default {
+  components: { InputsModal },
   data() {
     return {
       items: [
@@ -327,6 +368,21 @@ export default {
 </script>
 
 <style scoped>
+.bg-gradient-dark {
+  font-weight: 500;
+  font-size: 14px;
+}
+.clients__save {
+  background: linear-gradient(81.62deg, #313860 2.25%, #151928 79.87%);
+  box-shadow: 0px 4px 7px -1px rgba(0, 0, 0, 0.11),
+    0px 2px 4px -1px rgba(0, 0, 0, 0.07);
+  border-radius: 8px;
+  padding: 0.429vw 5.208vw 0.729vw 5.208vw;
+  text-transform: none;
+  font-weight: 700;
+  font-size: 0.833vw;
+  color: #ffffff;
+}
 .dropdown__sec {
   font-weight: 400;
   font-size: 0.729vw;
@@ -398,6 +454,8 @@ export default {
   box-shadow: 0px 4px 6px -1px rgba(0, 0, 0, 0.12),
     0px 2px 4px -1px rgba(0, 0, 0, 0.07);
   border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
 }
 .pl-pr {
   /* margin-left: 1.146vw; */
