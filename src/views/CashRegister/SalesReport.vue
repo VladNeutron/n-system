@@ -489,7 +489,10 @@ export default {
   },
   mounted() {
     const ctx = document.getElementById("chart-bars").getContext("2d");
+    Chart.defaults.color = "#fff";
     const myChart = new Chart(ctx, {
+      responsive: true,
+      scaleFontColor: "#FFFFFF",
       type: "bar",
       data: {
         labels: [
@@ -521,6 +524,7 @@ export default {
         ],
         datasets: [
           {
+            backgroundColor: "#fff",
             label: "Кол-во",
             tension: 0.4,
             borderWidth: 0,
@@ -539,8 +543,15 @@ export default {
       options: {
         responsive: true,
         maintainAspectRatio: false,
-        legend: {
-          display: false,
+        plugins: {
+          title: {
+            display: true,
+            text: "Продажи по часам",
+            color: "#fff",
+          },
+          legend: {
+            display: false,
+          },
         },
 
         tooltips: {
@@ -548,11 +559,12 @@ export default {
           mode: "index",
           intersect: false,
         },
+
         scales: {
           yAxes: [
             {
               gridLines: {
-                display: false,
+                display: true,
               },
               ticks: {
                 suggestedMin: 0,
@@ -561,20 +573,21 @@ export default {
                 padding: 0,
                 fontSize: 14,
                 lineHeight: 3,
-                fontColor: "#fff",
+                fontColor: "red",
                 fontStyle: "normal",
-                fontFamily: "Open Sans",
+                fontFamily: "Open-Sans",
               },
             },
           ],
           xAxes: [
             {
               gridLines: {
-                display: false,
+                display: true,
               },
               ticks: {
-                display: false,
+                display: true,
                 padding: 20,
+                color: "green",
               },
             },
           ],
