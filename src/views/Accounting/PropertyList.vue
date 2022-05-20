@@ -159,7 +159,7 @@
       <template #body>
         <div class="clients__modal" v-if="isEdit == 'no'">
           <div class="form-group">
-            <label for="example-text-input" class="form-control-label"
+            <label for="example-text-input" class="form-control-label custom__label"
               >Название</label
             >
             <input
@@ -170,17 +170,20 @@
             />
           </div>
           <div class="form-group">
-            <label class="form-control-label" for="Статус заявки"
+            <label class="form-control-label custom__label" for="Статус заявки"
               >Тип имущества</label
             >
-            <select class="form-select">
+            <select class="form-select custom__label">
               <option selected disabled>Выберите</option>
               <option>Мебель</option>
               <option>Недвижимость</option>
+              <option>Транспорт</option>
+              <option>Техника</option>
+              <option>Оборудование</option>
             </select>
           </div>
           <div class="form-group">
-            <label for="example-text-input1" class="form-control-label"
+            <label for="example-text-input1" class="form-control-label custom__label"
               >Стоимость</label
             >
             <input
@@ -193,7 +196,7 @@
         </div>
         <div class="clients__modal" v-if="isEdit == 'yes'">
           <div class="form-group">
-            <label for="example-text-input" class="form-control-label"
+            <label for="example-text-input" class="form-control-label custom__label"
               >Название</label
             >
             <input
@@ -204,17 +207,20 @@
             />
           </div>
           <div class="form-group">
-            <label class="form-control-label" for="Статус заявки"
+            <label class="form-control-label custom__label" for="Статус заявки"
               >Тип имущества</label
             >
             <select class="form-select">
               <option selected disabled>Выберите</option>
               <option>Мебель</option>
               <option>Недвижимость</option>
+              <option>Транспорт</option>
+              <option>Техника</option>
+              <option>Оборудование</option>
             </select>
           </div>
           <div class="form-group">
-            <label for="example-text-input1" class="form-control-label"
+            <label for="example-text-input1" class="form-control-label custom__label"
               >Стоимость</label
             >
             <input
@@ -327,10 +333,15 @@ export default {
 
 .bg-gradient-dark {
   font-weight: 600;
-  font-size: 0.729vw;
+  font-size: 16px;
+  line-height: 1.4;
   color: #ffffff;
 }
-
+.btn-outline-dark{
+  font-size: 16px;
+  font-weight: 600;
+  color: #2D3748;
+}
 .page__name h3 {
   font-size: 24px;
   line-height: 32px;

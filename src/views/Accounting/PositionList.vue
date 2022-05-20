@@ -32,12 +32,12 @@
                     style="margin-right: 10px"
                     alt=""
                   />
-                  Добавить имущество
+                  Добавить должность
                 </button>
               </div>
             </div>
             <div class="page__table">
-              <table class="table table-hover">
+              <table class="table table-hover table-striped">
                 <thead>
                   <tr class="">
                     <th width="1%" scope="col" class="th__col">№</th>
@@ -175,7 +175,7 @@
               checked=""
             />
             <label class="form-check-label" for="flexSwitchCheckDefault"
-              >Статус должности</label
+              >Активна</label
             >
           </div>
         </div>
@@ -199,7 +199,7 @@
               checked=""
             />
             <label class="form-check-label" for="flexSwitchCheckDefault"
-              >Статус должности</label
+              >Активна</label
             >
           </div>
         </div>
@@ -212,7 +212,7 @@
           <button class="btn bg-gradient-dark">Сохранить</button>
         </div>
         <div class="clients__footer" v-if="isEdit == 'yes'">
-          <button class="btn btn-outline-dark">Удалить должность</button>
+          <button class="btn delete__btn">Удалить должность</button>
         </div>
       </template>
     </inputs-modal>
@@ -238,7 +238,7 @@ export default {
           id: 1,
           name: "Бухгалтер",
           shop: "Москва",
-          status: "Не в сети",
+          status: "Не активна",
         },
         {
           id: 2,
@@ -250,7 +250,7 @@ export default {
           id: 3,
           name: "Консультант",
           shop: "Апорт",
-          status: "Не в сети",
+          status: "Не активна",
         },
         {
           id: 4,
@@ -305,7 +305,7 @@ export default {
 
 .bg-gradient-dark {
   font-weight: 600;
-  font-size: 0.729vw;
+  font-size: 14px;
   color: #ffffff;
 }
 
