@@ -285,6 +285,9 @@ td {
 .pagination {
   align-self: end;
 }
+.search__adapt__mob {
+  display: none;
+}
 @media screen and (max-width: 1600px) {
   .btn {
     font-size: 12px !important;

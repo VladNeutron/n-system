@@ -77,7 +77,7 @@
                 class="th__col"
                 style="padding-right: 15.625vw; width: 147px"
               >
-                Статус
+                Торговая Точка
               </th>
               <th scope="col" class="th__col">Кол-во</th>
               <th scope="col" class="th__col">Сумма</th>
@@ -102,11 +102,7 @@
               <td>{{ order.date }}</td>
               <td>{{ order.cashier }}</td>
               <td style="padding-right: 15.625vw">
-                <div
-                  class="btn mb-0 w-100"
-                  v-text="normalizeStatusName(order.status)"
-                  :class="getClass(order.status)"
-                ></div>
+                {{ order.trPoint }}
               </td>
               <td>{{ order.amount }}</td>
               <td>{{ order.sum }}</td>
@@ -192,55 +188,31 @@ export default {
           checkId: 1213215,
           date: "11 ноя, 2021 19:23",
           cashier: "Тихонова А.Р.",
-          status: "new",
+          trPoint: "ТРЦ МОСКВА",
           amount: 8,
           sum: 12000,
         },
         {
-          checkId: 12132145,
+          checkId: 1213215,
           date: "11 ноя, 2021 19:23",
           cashier: "Тихонова А.Р.",
-          status: "in-process",
+          trPoint: "ТРЦ МОСКВА",
           amount: 8,
           sum: 12000,
         },
         {
-          checkId: 12132145,
+          checkId: 1213215,
           date: "11 ноя, 2021 19:23",
           cashier: "Тихонова А.Р.",
-          status: "refused",
+          trPoint: "ТРЦ МОСКВА",
           amount: 8,
           sum: 12000,
         },
         {
-          checkId: 12132145,
+          checkId: 1213215,
           date: "11 ноя, 2021 19:23",
           cashier: "Тихонова А.Р.",
-          status: "approved",
-          amount: 8,
-          sum: 12000,
-        },
-        {
-          checkId: 12132145,
-          date: "11 ноя, 2021 19:23",
-          cashier: "Тихонова А.Р.",
-          status: "refused",
-          amount: 8,
-          sum: 12000,
-        },
-        {
-          checkId: 12132145,
-          date: "11 ноя, 2021 19:23",
-          cashier: "Тихонова А.Р.",
-          status: "approved",
-          amount: 8,
-          sum: 12000,
-        },
-        {
-          checkId: 12132145,
-          date: "11 ноя, 2021 19:23",
-          cashier: "Тихонова А.Р.",
-          status: "processed",
+          trPoint: "ТРЦ МОСКВА",
           amount: 8,
           sum: 12000,
         },
