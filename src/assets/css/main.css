@@ -26,3 +26,15 @@ body::-webkit-scrollbar {
   font-size: 14px;
   color: #2D3748;
 }
+
+.btn-dark, .btn.bg-gradient-dark{
+  font-weight: 500 !important;
+}
+
+.delete__btn{
+  font-weight: 600 !important;
+  font-size: 16px !important;  
+  color: #2D3748 !important;
+  background-color: unset !important;
+  box-shadow: unset !important;
+}
