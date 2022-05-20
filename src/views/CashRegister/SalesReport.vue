@@ -5,14 +5,14 @@
     <div class="card pt-4 pb-4 card__padding">
       <div class="page__name d-flex align-items-center justify-content-between">
         <div class="page__name-title text-start">
-          <h3>Отчеты “Продажи по кассе”</h3>
+          <h3>Отчет “Продажи по кассе”</h3>
           <p class="mb-0">
             Здесь можно увидеть все данные по продажам по кассе
           </p>
         </div>
         <div class="buttons">
-          <comment-button style="margin-right: 24px"></comment-button>
-          <action-button style="margin-right: 24px"></action-button>
+          <download-button style="margin-right: 24px"></download-button>
+          <print-button style="margin-right: 24px"></print-button>
           <filters-button></filters-button>
         </div>
       </div>
@@ -81,65 +81,17 @@
       <div class="order__table">
         <div class="order__table__content">
           <div class="order__table__body">
-            <table class="table table-bordered table-hover table-striped">
+            <table class="table table-hover">
               <thead>
                 <tr>
-                  <th
-                    scope="col"
-                    class="th__col"
-                    style="border-left: 0; border-right: 0"
-                  >
-                    №
-                  </th>
-                  <th
-                    scope="col"
-                    class="th__col"
-                    style="border-left: 0; border-right: 0"
-                  >
-                    Товар
-                  </th>
-                  <th
-                    scope="col"
-                    class="th__col"
-                    style="border-left: 0; border-right: 0"
-                  >
-                    Категория
-                  </th>
-                  <th
-                    scope="col"
-                    class="th__col"
-                    style="border-left: 0; border-right: 0"
-                  >
-                    Цвет
-                  </th>
-                  <th
-                    scope="col"
-                    class="th__col"
-                    style="border-left: 0; border-right: 0"
-                  >
-                    Кол-во
-                  </th>
-                  <th
-                    scope="col"
-                    class="th__col"
-                    style="border-left: 0; border-right: 0"
-                  >
-                    Цена продажи
-                  </th>
-                  <th
-                    scope="col"
-                    class="th__col"
-                    style="border-left: 0; border-right: 0"
-                  >
-                    Сумма скидки
-                  </th>
-                  <th
-                    scope="col"
-                    class="th__col"
-                    style="border-left: 0; border-right: 0"
-                  >
-                    Сумма
-                  </th>
+                  <th scope="col" class="th__col">№</th>
+                  <th scope="col" class="th__col">Товар</th>
+                  <th scope="col" class="th__col">Категория</th>
+                  <th scope="col" class="th__col">Цвет</th>
+                  <th scope="col" class="th__col">Кол-во</th>
+                  <th scope="col" class="th__col">Цена продажи</th>
+                  <th scope="col" class="th__col">Сумма скидки</th>
+                  <th scope="col" class="th__col">Сумма</th>
                 </tr>
               </thead>
               <tbody>
@@ -149,10 +101,10 @@
                   :key="item"
                   @click="openModal(item.id)"
                 >
-                  <th scope="row" style="border-right: 0; border-left: 0">
+                  <td scope="row">
                     {{ i + 1 }}
-                  </th>
-                  <td style="border-left: 0; border-right: 0; display: flex">
+                  </td>
+                  <td style="display: flex">
                     <img
                       :src="item.img"
                       style="width: 2.5vw; margin-right: 0.833vw"
@@ -160,24 +112,18 @@
                     />
                     {{ item.name }}
                   </td>
-                  <td style="border-left: 0; border-right: 0">
+                  <td>
                     {{ item.category }}
                   </td>
-                  <td style="border-left: 0; border-right: 0">
+                  <td>
                     {{ item.color }}
                   </td>
-                  <td style="border-left: 0; border-right: 0">
+                  <td>
                     {{ item.count }}
                   </td>
-                  <td style="border-left: 0; border-right: 0">
-                    {{ item.price }} ₸
-                  </td>
-                  <td style="border-left: 0; border-right: 0">
-                    {{ item.discount }} ₸
-                  </td>
-                  <td style="border-left: 0; border-right: 0">
-                    {{ item.price * item.count - item.discount }} ₸
-                  </td>
+                  <td>{{ item.price }} ₸</td>
+                  <td>{{ item.discount }} ₸</td>
+                  <td>{{ item.price * item.count - item.discount }} ₸</td>
                 </tr>
               </tbody>
             </table>
@@ -351,7 +297,7 @@
   cursor: pointer;
 }
 
-.filters__body .filter__name__standart {
+.filter__name__standart {
   font-weight: 600;
   font-size: 20px;
   color: #2d3748;
@@ -531,8 +477,8 @@ export default {
               1200, 400,
             ],
             maxBarThickness: 6,
-            color: "#fff",
-            borderColor: "#fff",
+            color: "#000",
+            borderColor: "#000",
           },
         ],
       },

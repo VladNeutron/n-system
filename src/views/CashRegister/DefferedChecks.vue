@@ -25,7 +25,7 @@
         </div>
         <div class="table__inputs d-flex gap-3 align-content-center">
           <div class="form-group m-0">
-            <div class="input-group mt-1">
+            <div class="input-group">
               <span class="input-group-text"
                 ><img src="@/assets/css/icons/searchIcon.svg" alt=""
               /></span>
@@ -37,23 +37,9 @@
               />
             </div>
           </div>
-          <button class="btn btn-outline-dark mb-0">
-            <span
-              ><img
-                src="@/assets/css/icons/print.svg"
-                class="me-1"
-                alt="" /></span
-            >Печать
-          </button>
-          <button class="btn btn-outline-dark mb-0">
-            <span
-              ><img
-                src="@/assets/css/icons/down-arrow.svg"
-                class="me-1"
-                alt="" /></span
-            >Скачать
-          </button>
-          <button class="btn btn-outline-dark mb-0">Фильтры</button>
+          <print-button></print-button>
+          <download-button></download-button>
+          <filters-button></filters-button>
         </div>
       </div>
       <div class="page__table">
@@ -65,7 +51,7 @@
               <th scope="col" class="th__col">№ чека</th>
               <th scope="col" class="th__col">Дата</th>
               <th scope="col" class="th__col">Кассир</th>
-              <th scope="col" class="th__col">Статус</th>
+              <th scope="col" class="th__col">Торговая Точка</th>
               <th scope="col" class="th__col">Кол-во</th>
               <th scope="col" class="th__col">Сумма</th>
 
@@ -89,11 +75,7 @@
               <td>{{ order.date }}</td>
               <td>{{ order.cashier }}</td>
               <td>
-                <div
-                  class="btn mb-0 w-100"
-                  v-text="normalizeStatusName(order.status)"
-                  :class="getClass(order.status)"
-                ></div>
+                {{ order.trPoint }}
               </td>
               <td>{{ order.amount }}</td>
               <td>{{ order.sum }}</td>
@@ -162,6 +144,7 @@
         </div>
       </div>
     </div>
+    <the-filter></the-filter>
   </main>
 </template>
 
@@ -177,55 +160,47 @@ export default {
           checkId: 1213215,
           date: "11 ноя, 2021 19:23",
           cashier: "Тихонова А.Р.",
-          status: "new",
+          trPoint: "ТРЦ Москва",
           amount: 8,
           sum: 12000,
         },
         {
-          checkId: 12132145,
+          checkId: 1213215,
           date: "11 ноя, 2021 19:23",
           cashier: "Тихонова А.Р.",
-          status: "in-process",
+          trPoint: "ТРЦ Москва",
           amount: 8,
           sum: 12000,
         },
         {
-          checkId: 12132145,
+          checkId: 1213215,
           date: "11 ноя, 2021 19:23",
           cashier: "Тихонова А.Р.",
-          status: "refused",
+          trPoint: "ТРЦ Москва",
           amount: 8,
           sum: 12000,
         },
         {
-          checkId: 12132145,
+          checkId: 1213215,
           date: "11 ноя, 2021 19:23",
           cashier: "Тихонова А.Р.",
-          status: "approved",
+          trPoint: "ТРЦ Москва",
           amount: 8,
           sum: 12000,
         },
         {
-          checkId: 12132145,
+          checkId: 1213215,
           date: "11 ноя, 2021 19:23",
           cashier: "Тихонова А.Р.",
-          status: "refused",
+          trPoint: "ТРЦ Москва",
           amount: 8,
           sum: 12000,
         },
         {
-          checkId: 12132145,
+          checkId: 1213215,
           date: "11 ноя, 2021 19:23",
           cashier: "Тихонова А.Р.",
-          status: "approved",
-          amount: 8,
-          sum: 12000,
-        },
-        {
-          checkId: 12132145,
-          date: "11 ноя, 2021 19:23",
-          cashier: "Тихонова А.Р.",
-          status: "processed",
+          trPoint: "ТРЦ Москва",
           amount: 8,
           sum: 12000,
         },
