@@ -4,7 +4,7 @@
     <the-header></the-header>
     <div class="page__name d-flex align-items-center ms-4">
       <div class="page__name-title text-start">
-        <h3>Список возвратов чеков</h3>
+        <h3>Список возвратов</h3>
         <p class="mb-0">Внесите изменения и не забудьте нажать “Сохранить”</p>
       </div>
     </div>
@@ -23,7 +23,7 @@
         </div>
         <div class="table__inputs d-flex gap-3 align-content-center">
           <div class="form-group m-0 search__adapt">
-            <div class="input-group mt-1">
+            <div class="input-group">
               <span class="input-group-text"
                 ><img src="@/assets/css/icons/searchIcon.svg" alt=""
               /></span>
@@ -35,23 +35,9 @@
               />
             </div>
           </div>
-          <button class="btn btn-outline-dark mb-0">
-            <span
-              ><img
-                src="@/assets/css/icons/print.svg"
-                class="me-1"
-                alt="" /></span
-            >Печать
-          </button>
-          <button class="btn btn-outline-dark mb-0">
-            <span
-              ><img
-                src="@/assets/css/icons/down-arrow.svg"
-                class="me-1"
-                alt="" /></span
-            >Скачать
-          </button>
-          <button class="btn btn-outline-dark mb-0">Фильтры</button>
+          <print-button></print-button>
+          <download-button></download-button>
+          <filters-button></filters-button>
         </div>
       </div>
       <div style="margin-left: 25px">
@@ -171,6 +157,7 @@
         </div>
       </div>
     </div>
+    <the-filter></the-filter>
   </main>
 </template>
 
@@ -284,6 +271,9 @@ td {
 
 .pagination {
   align-self: end;
+}
+.search__adapt__mob {
+  display: none;
 }
 @media screen and (max-width: 1600px) {
   .btn {

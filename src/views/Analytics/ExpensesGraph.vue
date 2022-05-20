@@ -17,16 +17,14 @@
       <div class="header__settings d-flex gap-6 p-4 mt-4">
         <div class="header__settings-date">
           <div class="filters__period__flex">
-            <div class="filter__name__standart fs-5 fw-bold">
-              Выберите период
-            </div>
+            <div class="filter__name__standart">Выберите период</div>
             <div class="reset__date">Сбросить период</div>
           </div>
           <div class="filters__period mt-3 align-items-center">
             <div class="form-group mb-0">
               <input class="form-control" type="date" id="example-date-input" />
             </div>
-            <div class="mx-2">
+            <div class="mx-4">
               <img src="@/assets/img/line.svg" style="width: 1.927vw" alt="" />
             </div>
             <div class="form-group mb-0">
@@ -214,10 +212,34 @@ export default {
   align-items: baseline;
   margin-bottom: 0;
 }
+.filter__name__standart {
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 27px;
+
+  letter-spacing: -0.553191px;
+
+  color: #2d3748;
+}
+.form-group {
+  width: 190px;
+}
+.reset__date {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 19px;
+
+  text-align: right;
+  letter-spacing: -0.387234px;
+  text-decoration-line: underline;
+  cursor: pointer;
+  /* Black for text */
+  color: #2d3748;
+}
 .filters__period__flex {
   display: flex !important;
   justify-content: space-between;
-  align-items: flex-end;
+  align-items: center;
 }
 .form-switch .form-check-input:checked {
   background: linear-gradient(83.56deg, #7092e0 10.01%, #8baef3 75.36%);
@@ -228,6 +250,9 @@ export default {
   border-color: rgba(112, 146, 224, 1);
   color: #fff;
   font-size: 14px;
+  letter-spacing: -0.387234px;
+  line-height: 19px;
+  font-weight: 600;
 }
 .page__content {
   max-height: 608px;
