@@ -36,7 +36,7 @@
                             </select> 
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="row mx-1">
                         <div class="col-8">
                             <div class="product">
                                 <div class="product__top">
@@ -51,6 +51,7 @@
                                     <div class="product__price" v-else>
                                         0 ₸  
                                     </div>
+                                    <div class="product__imputs__cont">
                                     <div class="product__amount">
                                         <div class="product__amount__btn product__amount__btn__minus" @click="productAmount-=1">
                                             <img src="@/assets/img/cash-register/cashminus.svg" alt="">
@@ -76,9 +77,10 @@
                                             ₸
                                         </div>
                                     </div>
-                                    <button class="btn bg-gradient-dark mb-0" @click="saveProduct">
+                                    <button class="btn bg-gradient-dark mb-0 ms-3" style="height: 40px; line-height: 14px;" @click="saveProduct">
                                         <img src="@/assets/img/cash-register/cashSave.svg" alt=""> Сохранить
                                     </button>
+                                    </div>
                                     <div class="product__result">
                                         {{productSum}} ₸  
                                     </div>
@@ -138,7 +140,10 @@
                                             <td>
                                                 {{product.amount}}
                                             </td>
-                                            <td>
+                                            <td v-if="product.discount!=0 && product.discount != 'нет'">
+                                                {{product.discount}} ₸
+                                            </td>
+                                            <td v-else>
                                                 {{product.discount}}
                                             </td>
                                             <td>
@@ -161,7 +166,7 @@
                                     <img src="@/assets/img/cash-register/cashPercentBtn.svg" alt=""> 
                                 </div>
                                 <div class="btn__deferred action__button"  data-bs-toggle="modal" data-bs-target="#DeferredList">
-                                    <img src="@/assets/img/cash-register/cashDefferedBtn.svg" alt=""> 
+                                    <img src="@/assets/img/cash-register/CashOtlNew.svg" alt=""> 
                                 </div>
                                 <div class="btn__deleteBarcode action__button"  data-bs-toggle="modal" data-bs-target="#DiscModal" @click="modalState = 1">
                                     <img src="@/assets/img/cash-register/cashDeleteBarc.svg" alt=""> 
@@ -761,6 +766,11 @@ export default {
 </script>
 
 <style scoped>
+.btn-outline-dark{
+    font-weight: 600;
+    font-size: 14px;    
+    color: #2D3748;
+}
 /* HEADER */
 .cash__header{
     display: flex;
@@ -768,6 +778,11 @@ export default {
     padding: 1.042vw 1.250vw;
     background: #D4E0FD;
     border-radius: 15px 15px 0px 0px;
+}
+.cash__header .btn .bg-gradient-info{
+    font-weight: 600;
+    font-size: 14px;    
+    color: #FFFFFF;
 }
 .cash__header__left{
     display: flex;
@@ -791,6 +806,15 @@ export default {
 .cash__header__right .form-select{
     margin-left: 16px;
     padding-right: 2rem;
+    width: 180px;
+    font-weight: 600;
+    font-size: 16px;
+    color: #2D3748;
+}
+.cash__header__right .form-select option{
+    font-weight: 600;
+    font-size: 16px;
+    color: #2D3748;
 }
 .bg-gradient-info {
   background: linear-gradient(83.56deg, #7092e0 10.01%, #8baef3 75.36%);
@@ -801,6 +825,10 @@ export default {
 .cash__header select{
     background-color: white;
     color: rgba(45, 55, 72, 1);
+}
+.cash__header .btn{
+    height: 40px;
+    line-height: 14px;
 }
 /* HEADER */
 
@@ -842,8 +870,11 @@ export default {
 .product__amount input{
     margin-left: 7px;
     margin-right: 7px;
-    width: 4.031vw;
+    width: 5.031vw;
+    font-weight: 600;
     font-size: 20px;
+    color: #2D3748;
+    text-align: center;
 }
 .product__amount__btn{
     cursor: pointer;
@@ -859,9 +890,21 @@ export default {
     align-items: center;
     padding: 20px 14px;
 }
+
+.product__amount input::-webkit-outer-spin-button,
+.product__amount input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+.product__amount input{
+    -moz-appearance: textfield;
+}
+
+
+
 .product__discount{
     display: flex;
     align-items: center;
+    margin-left: 1.2vw;
 }
 .product__discount input{
     width: 9.375vw;
@@ -898,6 +941,9 @@ export default {
     font-weight: 600;
     font-size: 24px;
     color: #2D3748;
+}
+.product__imputs__cont{
+    display: flex;
 }
 /* PRODUCT */
 
@@ -945,11 +991,19 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 10px;
+    padding: 5px;
 }
 .action__button img{
-    width: 1.12vw;
-   
+    width: 1.3vw;
+}
+.btn__discount img{
+    width: 1.46vw;    
+}
+.btn__deferred img{
+    width: 1.8vw; 
+}
+.btn__deleteBarcode img{
+    width: 1.8vw;    
 }
 /* ACTIONBUTTONS */
 

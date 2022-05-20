@@ -19,6 +19,7 @@
           <div class="card barcodes__card">
             <div>
               <div class="topbuttons__cont">
+                <div class="d-flex">
                 <div class="form-group m-0">
                   <div class="input-group barcode__search">
                     <span class="input-group-text"
@@ -33,11 +34,15 @@
                   </div>
                 </div>
 
+                <button class="btn ms-3 bg-gradient-secondaryBlue" data-bs-toggle="modal" data-bs-target="#SelectDisc">
+                  Выбрать из списка
+                </button>
+                </div>
                 <div class="topbuttons__contRight">
                   <button class="btn btn-outline-dark reloadData__btn">
                     <img
                       src="@/assets/img/reloadData.svg"
-                      class="reloadDataImg"
+                      class="reloadDataImg me-1"
                       alt=""
                     />
                     Обновить данные
@@ -54,7 +59,7 @@
                       <th
                         class="ps-2"
                       >
-                        штрихкод
+                        Артикул
                       </th>
                       <th class="ps-2">название</th>
                       <th class="ps-2">цена</th>
@@ -287,6 +292,7 @@
       :selectedArray="selectedProducts"
       :option="activeOption"
     ></barcode-modal>
+    <select-product-discount></select-product-discount>
     <filters>
       <div class="filter__name__standart">Категория</div>
       <select class="form-select">
@@ -323,6 +329,7 @@ import BarcodeModal from "@/components/BarcodeModal.vue";
 import { Modal } from "@/assets/js/core/bootstrap.min.js";
 import Filters from "@/components/Filters.vue";
 import FiltersButton from "@/components/buttons/FiltersButton.vue";
+import SelectProductDiscount from "../../components/SelectProductDiscount.vue";
 export default {
   data() {
     return {
@@ -484,6 +491,7 @@ export default {
     BarcodeModal,
     Filters,
     FiltersButton,
+    SelectProductDiscount,
   },
 };
 </script>
@@ -544,6 +552,10 @@ export default {
   align-items: center;
   margin-right: 0.833vw;
   height: 40px;
+  font-weight: 600;
+  font-size: 12px;
+  color: #2D3748;
+  text-transform: uppercase !important;
 }
 .reloadDataImg {
   width: 1.042vw;
@@ -671,6 +683,18 @@ td {
   color: #000000;
   border-left: 1px solid rgba(0, 0, 0, 0.11);
   padding: 6px;
+}
+.bg-gradient-secondaryBlue {
+  background: linear-gradient(83.56deg, #7092E0 10.01%, #8BAEF3 75.36%);
+  box-shadow: 0px 4px 7px -1px rgba(0, 0, 0, 0.11),
+    0px 2px 4px -1px rgba(0, 0, 0, 0.07);
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 14px;
+  padding: 0.729vw 1.302vw 0.729vw 1.302vw;
+  text-transform: none;
+  color: white;
+  height: 40px;
 }
 
 @media screen and (max-width: 1600px) {
