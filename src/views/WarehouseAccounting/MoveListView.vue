@@ -190,6 +190,9 @@ export default {
 </script>
 
 <style scoped>
+.inv__block {
+  padding-bottom: 3vw;
+}
 hr {
   border: 1px solid #2d3748;
 }
