@@ -101,9 +101,9 @@
                   :key="item"
                   @click="openModal(item.id)"
                 >
-                  <th scope="row">
+                  <td scope="row">
                     {{ i + 1 }}
-                  </th>
+                  </td>
                   <td style="display: flex">
                     <img
                       :src="item.img"
