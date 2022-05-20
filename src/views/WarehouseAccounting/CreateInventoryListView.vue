@@ -15,14 +15,6 @@
                   </p>
                 </div>
                 <div class="drop__buttons">
-                  <button class="btn comment mb-0">
-                    <img
-                      src="@/assets/img/comment.svg"
-                      style="width: 1.042vw; margin-right: 0.417vw"
-                      alt=""
-                    />
-                    Комментарии <span class="count">4</span>
-                  </button>
                   <div class="dropdown">
                     <button
                       class="btn action"
@@ -53,6 +45,15 @@
                       </li>
                     </ul>
                   </div>
+                  <button class="btn comment mb-0 ms-3">
+                    <img
+                      src="@/assets/img/comment.svg"
+                      style="width: 1.042vw; margin-right: 0.417vw"
+                      alt=""
+                    />
+                    Комментарии <span class="count">4</span>
+                  </button>
+                  
                 </div>
               </div>
             </template>
@@ -270,6 +271,8 @@
         </div>
       </div>
     </div>
+      
+    
   </main>
 </template>
 
