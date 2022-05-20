@@ -36,7 +36,7 @@
                             </select> 
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="row mx-1">
                         <div class="col-8">
                             <div class="product">
                                 <div class="product__top">
@@ -51,34 +51,36 @@
                                     <div class="product__price" v-else>
                                         0 ₸  
                                     </div>
-                                    <div class="product__amount">
-                                        <div class="product__amount__btn product__amount__btn__minus" @click="productAmount-=1">
-                                            <img src="@/assets/img/cash-register/cashminus.svg" alt="">
+                                    <div class="product__buttons__center">
+                                        <div class="product__amount">
+                                            <div class="product__amount__btn product__amount__btn__minus" @click="productAmount-=1">
+                                                <img src="@/assets/img/cash-register/cashminus.svg" alt="">
+                                            </div>
+                                            <input type="number" class="form-control" placeholder="шт." 
+                                            v-model="productAmount"
+                                            min="1"
+                                            >
+                                            <div class="product__amount__btn" @click="productAmount+=1">+</div>
                                         </div>
-                                        <input type="number" class="form-control" placeholder="шт." 
-                                        v-model="productAmount"
-                                        min="1"
-                                        >
-                                        <div class="product__amount__btn" @click="productAmount+=1">+</div>
+                                        <!-- <div class="product__discount">
+                                            <input type="number" v-model="percentValue" class="form-control" placeholder="Скидка">
+                                            <div 
+                                            :class="['product__percent', {'product__discount__active' : discountType == 'percent'}]"
+                                            @click="discountType = 'percent'"
+                                            >
+                                                %
+                                            </div>
+                                            <div
+                                            :class="['product__tenge', {'product__discount__active' : discountType == 'tenge'}]"
+                                            @click="discountType = 'tenge'"
+                                            >
+                                                ₸
+                                            </div>
+                                        </div> -->
+                                        <button class="btn bg-gradient-dark mb-0 ms-3" @click="saveProduct">
+                                            <img src="@/assets/img/cash-register/cashSave.svg" alt=""> Сохранить
+                                        </button>
                                     </div>
-                                    <!-- <div class="product__discount">
-                                        <input type="number" v-model="percentValue" class="form-control" placeholder="Скидка">
-                                        <div 
-                                        :class="['product__percent', {'product__discount__active' : discountType == 'percent'}]"
-                                        @click="discountType = 'percent'"
-                                        >
-                                            %
-                                        </div>
-                                        <div
-                                        :class="['product__tenge', {'product__discount__active' : discountType == 'tenge'}]"
-                                        @click="discountType = 'tenge'"
-                                        >
-                                            ₸
-                                        </div>
-                                    </div> -->
-                                    <button class="btn bg-gradient-dark mb-0" @click="saveProduct">
-                                        <img src="@/assets/img/cash-register/cashSave.svg" alt=""> Сохранить
-                                    </button>
                                     <div class="product__result">
                                         {{productSum}} ₸  
                                     </div>
@@ -161,7 +163,7 @@
                                     <img src="@/assets/img/cash-register/cashPercentBtn.svg" alt=""> 
                                 </div> -->
                                 <div class="btn__deferred action__button" data-bs-toggle="modal" data-bs-target="#DiscModal" @click="modalState = 0">
-                                    <img src="@/assets/img/cash-register/returnCheck.png" alt=""> 
+                                    <img src="@/assets/img/cash-register/CashCheckNumberModal.svg" alt=""> 
                                 </div>
                                 <div class="btn__deleteBarcode action__button"  data-bs-toggle="modal" data-bs-target="#DiscModal" @click="modalState = 1">
                                     <img src="@/assets/img/cash-register/cashDeleteBarc.svg" alt=""> 
@@ -189,7 +191,7 @@
                                     </div>
                                     <div class="calculator__payment">
                                         <div class="calculator__payment__title">
-                                            Способ оплаты
+                                            Способ возврата средств
                                         </div>
                                         <div class="calculator__payment__method">
                                             <select class="form-select calculator__payment__method__select" v-model="paymentMethod">
@@ -797,6 +799,9 @@ export default {
 /* HEADER */
 
 /* PRODUCT */
+.product__buttons__center{
+    display: flex;
+}
 .product{
     padding: 0.833vw 1.250vw 1.250vw 1.250vw;
     background: rgba(253, 67, 26, 0.3);
@@ -937,11 +942,22 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 10px 5px;
+    padding: 5px 5px;
 }
 .action__button img{
     width: 1.25vw;
-   
+}
+.action__button img{
+    width: 1.3vw;
+}
+.btn__discount img{
+    width: 1.46vw;    
+}
+.btn__deferred img{
+    width: 1.8vw; 
+}
+.btn__deleteBarcode img{
+    width: 1.8vw;    
 }
 /* ACTIONBUTTONS */
 
@@ -1125,6 +1141,7 @@ export default {
     font-weight: 600;
     font-size: 24px;
     text-transform: none;
+    line-height: 24px;
 }
 .calculator__delete{
     grid-column-start: 4;
