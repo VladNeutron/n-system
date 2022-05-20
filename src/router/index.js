@@ -224,6 +224,20 @@ const routes = [
       import("../views/ProductsAccounting/DiscountsListView.vue"),
     meta: { NavLink: "Список скидок" },
   },
+  {
+    path: "/products-accounting/discounts/discount-edit",
+    name: "discount-edit",
+    component: () =>
+      import("../views/ProductsAccounting/EditDiscount.vue"),
+    meta: { NavLink: "Скидка “8 марта”" },
+  },
+  {
+    path: "/products-accounting/discounts/discount-create",
+    name: "discount-create",
+    component: () =>
+      import("../views/ProductsAccounting/CreateDiscount.vue"),
+    meta: { NavLink: "Создание скидки" },
+  },
   // СКИДКИ
   // ХАРАКТЕРИСТИКИ
   {
