@@ -118,9 +118,9 @@
                           id="exampleFormControlSelect1"
                         >
                           <option>Выберите</option>
-                          <option>Новый заказ</option>
-                          <option>Новый заказ</option>
-                          <option>Новый заказ</option>
+                          <option>Новый возврат</option>
+                          <option>Новый возврат</option>
+                          <option>Новый возврат</option>
                         </select>
                       </div>
                     </div>
@@ -249,7 +249,7 @@
                 data-bs-toggle="modal"
                 data-bs-target="#DiscModal"
               >
-                Применить скидку
+                Ввести номер поступления
               </button>
               <div class="form-group m-0">
                 <div class="input-group mt-1">
@@ -272,19 +272,19 @@
               <img src="@/assets/img/add.png" style="width: 6.667vw" alt="" />
               <p class="not__added__main">Товары не выбраны</p>
               <p class="not__added__sec">
-                Для того чтобы создать заказ, необходимо<br />
+                Для того чтобы создать возврат, необходимо<br />
                 выбрать товары из списка
               </p>
               <button class="btn btn__chose">Выбрать из списка</button>
             </div>
           </div>
           <div class="order__table__body" v-else>
-            <table class="table table-hover table-striped">
+            <table class="table table-hover">
               <thead>
                 <tr>
                   <th scope="col" class="th__col">№</th>
                   <th scope="col" class="th__col">Товар</th>
-                  <th scope="col" class="th__col">Штрихкод</th>
+                  <th scope="col" class="th__col">Артикул</th>
                   <th scope="col" class="th__col">Цвет</th>
                   <th scope="col" class="th__col">Размер</th>
                   <th scope="col" class="th__col">Себестоимость</th>
@@ -298,9 +298,9 @@
               <tbody>
                 <!-- v-for="(item, i) in items" :key="item" -->
                 <tr v-for="(item, i) in filteredProducts" :key="item">
-                  <th scope="row">
+                  <td scope="row">
                     {{ i + 1 }}
-                  </th>
+                  </td>
                   <td style="display: flex">
                     <img
                       :src="item.img"
@@ -438,6 +438,9 @@
 </template>
 
 <style scoped>
+.not__added {
+  padding-bottom: 130px;
+}
 .dropdown {
   width: 100%;
   display: inline-block;
@@ -540,20 +543,21 @@
 }
 
 .order__ready__sum {
-  font-weight: 600;
-  font-size: 1.2vw;
+  font-weight: 800;
+  font-size: 1.4vw;
   color: #2d3748;
 }
 
 .order__ready_block {
   margin-left: 28.073vw;
+  margin-right: 7.813vw;
   margin-top: 8px;
   display: flex;
   justify-content: space-around;
 }
 
 .five__s {
-  width: 15.531vw !important;
+  width: 19.531vw !important;
 }
 
 .accept__btn {
@@ -737,7 +741,7 @@
   border-radius: 8px;
   padding: 0.521vw 1.25vw 0.521vw 1.25vw;
   text-transform: none;
-  font-weight: 600;
+  font-weight: 500;
   font-size: 0.729vw;
   color: #ffffff;
 }
@@ -758,7 +762,7 @@
   border-radius: 8px;
   padding: 0.521vw 1.25vw 0.521vw 1.25vw;
   text-transform: none;
-  font-weight: 600;
+  font-weight: 500;
   font-size: 0.729vw;
   color: #ffffff;
 }
@@ -786,7 +790,7 @@
   background: #ffffff;
   box-shadow: 0px 3.5px 5.5px rgba(0, 0, 0, 0.02);
   border-radius: 15px;
-  padding: 16px 0 0 0;
+  padding: 10px 0 0 0;
 }
 
 .order__table {
@@ -898,7 +902,7 @@
 }
 
 .order__ready {
-  margin-left: 5.49vw;
+  margin-left: 40px;
   width: 20.031vw;
   background: #f8f9fa;
   border-radius: 12px;
@@ -1068,7 +1072,7 @@ export default {
         },
       ],
       search: "",
-      isAdded: false,
+      isAdded: true,
     };
   },
   computed: {

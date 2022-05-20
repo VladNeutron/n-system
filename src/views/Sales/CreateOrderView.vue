@@ -245,14 +245,19 @@
             </div>
             <div class="search">
               <button
-                class="btn disc__btn"
+                class="btn disc__btn d-flex align-items-start"
                 data-bs-toggle="modal"
                 data-bs-target="#DiscModal"
               >
+                <img
+                  src="@/assets/img/percent.svg"
+                  style="margin-right: 10px"
+                  alt=""
+                />
                 Применить скидку
               </button>
               <div class="form-group m-0">
-                <div class="input-group mt-1">
+                <div class="input-group">
                   <span class="input-group-text"
                     ><img src="@/assets/css/icons/searchIcon.svg" alt=""
                   /></span>
@@ -279,12 +284,12 @@
             </div>
           </div>
           <div class="order__table__body" v-else>
-            <table class="table table-hover table-striped">
+            <table class="table table-hover">
               <thead>
                 <tr>
                   <th scope="col" class="th__col">№</th>
                   <th scope="col" class="th__col">Товар</th>
-                  <th scope="col" class="th__col">Штрихкод</th>
+                  <th scope="col" class="th__col">Артикул</th>
                   <th scope="col" class="th__col">Цвет</th>
                   <th scope="col" class="th__col">Размер</th>
                   <th scope="col" class="th__col">Себестоимость</th>
@@ -419,16 +424,56 @@
           </div>
         </div>
         <div class="modal__flex__disc" v-if="onStorage == 'all'">
-          <div class="form-group mr">
-            <label for="exampleFormControlSelect1" class="order__label__disc"
-              >Ручная скидка</label
-            >
-            <input
-              class="form-control disc__form"
-              type="text"
-              placeholder="Введите значение"
-              id="example-text-input"
-            />
+          <div class="form-group m-0">
+            <label for="type__disc" class="order__label">Ручная скидка</label>
+            <div class="input-group flex-nowrap" style="width: 367px">
+              <input
+                class="form-control"
+                placeholder="10"
+                id="type__disc"
+                type="text"
+              />
+              <span
+                class="input-group-text input-group-text2 py-0"
+                @click="isClicked = 1"
+                ><div
+                  class="not__selected"
+                  :class="{ selected: isClicked == 1 }"
+                >
+                  <svg
+                    width="16"
+                    height="15"
+                    viewBox="0 0 16 15"
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="not__selected__img"
+                    :class="{ selected__img: isClicked == 1 }"
+                  >
+                    <path
+                      d="M2.5024 5C2.5024 5.74414 2.56686 6.30078 2.69576 6.66992C2.83053 7.0332 3.0444 7.21484 3.33736 7.21484C3.89986 7.21484 4.18111 6.47656 4.18111 5C4.18111 3.53516 3.89986 2.80273 3.33736 2.80273C3.0444 2.80273 2.83053 2.98438 2.69576 3.34766C2.56686 3.70508 2.5024 4.25586 2.5024 5ZM6.39596 4.98242C6.39596 6.33008 6.13522 7.34375 5.61373 8.02344C5.09225 8.69727 4.3276 9.03418 3.31979 9.03418C2.35299 9.03418 1.60592 8.68848 1.07858 7.99707C0.551232 7.2998 0.28756 6.29492 0.28756 4.98242C0.28756 2.30469 1.2983 0.96582 3.31979 0.96582C4.31002 0.96582 5.06881 1.31445 5.59615 2.01172C6.12936 2.70312 6.39596 3.69336 6.39596 4.98242ZM12.4428 1.15039L5.3149 14H3.20553L10.3335 1.15039H12.4428ZM11.5024 10.1328C11.5024 10.877 11.5669 11.4336 11.6958 11.8027C11.8305 12.166 12.0444 12.3477 12.3374 12.3477C12.8999 12.3477 13.1811 11.6094 13.1811 10.1328C13.1811 8.66797 12.8999 7.93555 12.3374 7.93555C12.0444 7.93555 11.8305 8.11719 11.6958 8.48047C11.5669 8.83789 11.5024 9.38867 11.5024 10.1328ZM15.396 10.1152C15.396 11.457 15.1352 12.4678 14.6137 13.1475C14.0922 13.8213 13.3276 14.1582 12.3198 14.1582C11.353 14.1582 10.6059 13.8125 10.0786 13.1211C9.55123 12.4238 9.28756 11.4219 9.28756 10.1152C9.28756 7.4375 10.2983 6.09863 12.3198 6.09863C13.31 6.09863 14.0688 6.44727 14.5962 7.14453C15.1294 7.83594 15.396 8.82617 15.396 10.1152Z"
+                    />
+                  </svg></div
+              ></span>
+              <span
+                class="input-group-text input-group-text2 py-0"
+                @click="isClicked = 2"
+                ><div
+                  class="not__selected"
+                  :class="{ selected: isClicked == 2 }"
+                >
+                  <svg
+                    width="11"
+                    height="13"
+                    viewBox="0 0 11 13"
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="not__selected__img"
+                    :class="{ selected__img: isClicked == 2 }"
+                  >
+                    <path
+                      d="M7.20424 13H4.48624V5.944H0.99424V3.676H10.6962V5.944H7.20424V13ZM0.99424 0.147999H10.6962V2.416H0.99424V0.147999Z"
+                    />
+                  </svg></div
+              ></span>
+            </div>
           </div>
         </div>
       </template>
@@ -442,6 +487,37 @@
 </template>
 
 <style scoped>
+.selected {
+  background: #2d3748 !important;
+}
+.not__selected__img {
+  fill: #a0aec0;
+}
+.selected__img {
+  fill: #ffffff;
+}
+.not__selected {
+  padding: 5px 9px 5px 9px;
+  background: #e2e8f0;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 34px;
+}
+.input-group-text2 {
+  padding: 0 !important;
+  padding-right: 4px !important;
+  padding-left: 4px !important;
+}
+.input-group
+  > :not(:first-child):not(.dropdown-menu):not(.valid-tooltip):not(.valid-feedback):not(.invalid-tooltip):not(.invalid-feedback) {
+  margin-left: -1px;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  border-left: 0;
+}
+.not__added {
+  padding-bottom: 150px;
+}
 .not__added__main {
   font-weight: 600;
   font-size: 1.25vw;
@@ -518,20 +594,21 @@
 }
 
 .order__ready__sum {
-  font-weight: 600;
-  font-size: 1.2vw;
+  font-weight: 800;
+  font-size: 1.4vw;
   color: #2d3748;
 }
 
 .order__ready_block {
   margin-left: 28.073vw;
+  margin-right: 7.813vw;
   margin-top: 8px;
   display: flex;
   justify-content: space-around;
 }
 
 .five__s {
-  width: 15.531vw !important;
+  width: 19.531vw !important;
 }
 
 .accept__btn {
@@ -717,8 +794,8 @@
   border-radius: 8px;
   padding: 0.521vw 1.25vw 0.521vw 1.25vw;
   text-transform: none;
-  font-weight: 600;
-  font-size: 0.729vw;
+  font-weight: 500;
+  font-size: 14px;
   color: #ffffff;
 }
 
@@ -728,7 +805,6 @@
 
 .search {
   display: flex;
-  align-items: baseline;
 }
 
 .barcode__btn {
@@ -738,8 +814,8 @@
   border-radius: 8px;
   padding: 0.521vw 1.25vw 0.521vw 1.25vw;
   text-transform: none;
-  font-weight: 600;
-  font-size: 0.729vw;
+  font-weight: 500;
+  font-size: 14px;
   color: #ffffff;
 }
 
@@ -878,7 +954,7 @@
 }
 
 .order__ready {
-  margin-left: 5.49vw;
+  margin-left: 40px;
   width: 20.031vw;
   background: #f8f9fa;
   border-radius: 12px;
@@ -981,6 +1057,7 @@ export default {
   },
   data() {
     return {
+      isClicked: 0,
       isPickup: true,
       onStorage: "yes",
       items: [

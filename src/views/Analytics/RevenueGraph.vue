@@ -91,7 +91,7 @@
             {{ chartPercent }} % больше
             <span class="chart__stats__year"> в 2022</span>
           </div>
-          <div class="chart__stats" v-else>
+          <div class="chart__stats" v-if="chartPercent < 0">
             <img src="@/assets/img/home/percentNegative.svg" alt="" /> на
             {{ chartPercent }} % больше
             <span class="chart__stats__year">в 2022</span>
@@ -118,7 +118,7 @@
             {{ chartPercent }} % больше
             <span class="chart__stats__year"> в 2022</span>
           </div>
-          <div class="chart__stats" v-else>
+          <div class="chart__stats" v-if="chartPercent > 0">
             <img src="@/assets/img/home/percentNegative.svg" alt="" /> на
             {{ chartPercent }} % больше
             <span class="chart__stats__year">в 2022</span>
@@ -145,7 +145,7 @@
             {{ chartPercent }} % больше
             <span class="chart__stats__year"> в 2022</span>
           </div>
-          <div class="chart__stats" v-else>
+          <div class="chart__stats" v-if="chartPercent < 0">
             <img src="@/assets/img/home/percentNegative.svg" alt="" /> на
             {{ chartPercent }} % больше
             <span class="chart__stats__year">в 2022</span>
@@ -176,7 +176,7 @@ export default {
       revenueSwitch: true,
       incomeSwitch: true,
       avgSwitch: true,
-      chartPercent: 4,
+      chartPercent: 0,
       selectChartsDate: [
         "Сегодня",
         "День",
@@ -303,9 +303,9 @@ export default {
 }
 .graphs {
   display: grid;
-  height: auto;
-  grid-auto-columns: minmax(516px, 70%);
-  grid-auto-rows: minmax(406px, 700px);
+  height: minmax(auto, 600px);
+  grid-auto-columns: minmax(516px, 60%);
+  grid-auto-rows: minmax(406px, 560px);
   grid-auto-flow: column;
 
   align-items: flex-start;

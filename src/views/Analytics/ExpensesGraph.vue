@@ -34,50 +34,6 @@
             </div>
           </div>
         </div>
-        <div
-          class="header__settings-options d-flex flex-column justify-content-between align-items-start"
-        >
-          <p class="fs-5 fw-bold m-0">Настройте видимость</p>
-
-          <div class="d-flex gap-6 mb-2">
-            <div class="form-switch d-flex align-items-center gap-2 m-0">
-              <input
-                class="form-check-input"
-                type="checkbox"
-                id="revenue"
-                checked=""
-                v-model="revenueSwitch"
-              />
-              <label class="form-check-label text-start m-0 fs-6" for="revenue"
-                >Доходы</label
-              >
-            </div>
-            <div class="form-switch d-flex align-items-center gap-2 m-0">
-              <input
-                class="form-check-input"
-                type="checkbox"
-                id="expenses"
-                checked=""
-                v-model="expensesSwitch"
-              />
-              <label class="form-check-label text-start m-0 fs-6" for="expenses"
-                >Расходы</label
-              >
-            </div>
-            <div class="form-switch d-flex align-items-center gap-2 m-0">
-              <input
-                class="form-check-input"
-                type="checkbox"
-                id="income"
-                checked=""
-                v-model="incomeSwitch"
-              />
-              <label class="form-check-label text-start m-0 fs-6" for="income"
-                >Прибыль</label
-              >
-            </div>
-          </div>
-        </div>
       </div>
     </div>
     <div class="page__content mx-4 d-flex gap-4">
