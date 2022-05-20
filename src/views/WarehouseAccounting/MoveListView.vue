@@ -16,7 +16,7 @@
                   class="btn bg-gradient-secondary"
                   style="
                     font-size: 14px;
-                    font-weight: 600;
+                    font-weight: 500;
                     display: flex;
                     align-items: center;
                   "
@@ -39,7 +39,7 @@
             </div>
             <div class="inv__block">
               <div class="inv__content">
-                <table class="table table-hover table-striped">
+                <table class="table table-bordered table-hover table-striped">
                   <thead>
                     <tr>
                       <th scope="col" class="th__col">№</th>
@@ -49,7 +49,7 @@
                       <th scope="col" class="th__col">Дата и время</th>
                       <th scope="col" class="th__col">Склад</th>
                       <th scope="col" class="th__col">Ответственный</th>
-                      <th scope="col" class="th__col">Статус инвентаризации</th>
+                      <th scope="col" class="th__col">Статус документа</th>
                       <th scope="col" class="th__col">Кол-во товаров</th>
                       <th scope="col" class="th__col"></th>
                     </tr>
@@ -155,7 +155,7 @@ export default {
           id: "23",
           place: "ТРЦ Москва",
           name: "Мильчаков Валерий",
-          isReady: "Завершена",
+          isReady: "Завершен",
           count: "15",
         },
         {
@@ -163,7 +163,7 @@ export default {
           id: "23",
           place: "ТРЦ Москва",
           name: "Мильчаков Валерий",
-          isReady: "Завершена",
+          isReady: "Завершен",
           count: "15",
         },
         {
@@ -171,7 +171,7 @@ export default {
           id: "23",
           place: "ТРЦ Москва",
           name: "Мильчаков Валерий",
-          isReady: "Завершена",
+          isReady: "Новый",
           count: "15",
         },
         {
@@ -179,7 +179,7 @@ export default {
           id: "23",
           place: "ТРЦ Москва",
           name: "Мильчаков Валерий",
-          isReady: "Завершена",
+          isReady: "Новый",
           count: "15",
         },
       ],

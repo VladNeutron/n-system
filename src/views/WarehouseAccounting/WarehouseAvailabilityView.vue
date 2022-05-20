@@ -26,7 +26,9 @@
                   class="form-group m-0 d-flex flex-column align-items-start"
                   style="width: 307px"
                 >
-                  <label for="search" class="custom__label">Список товаров</label>
+                  <label for="search" class="custom__label"
+                    >Список товаров</label
+                  >
                   <div class="input-group mt-1">
                     <span class="input-group-text"
                       ><img src="@/assets/css/icons/searchIcon.svg" alt="" />
@@ -44,7 +46,9 @@
                   class="form-group m-0 mt-1 d-flex flex-column align-items-start"
                   style="width: 393px"
                 >
-                  <label for="search" class="custom__label">Выберите склад</label>
+                  <label for="search" class="custom__label"
+                    >Выберите склад</label
+                  >
                   <select class="form-select form__adapt" v-model="selected">
                     <option
                       v-for="(warehouse, i) in warehousesArr"
@@ -199,6 +203,12 @@
           <option></option>
         </select>
       </div>
+      <div class="text-start">
+        <label class="text-start" for="">Склад</label>
+        <select class="form-select">
+          <option></option>
+        </select>
+      </div>
       <div
         class="form-check d-flex align-items-center"
         style="text-align: left; margin-top: 0.833vw"
@@ -340,10 +350,10 @@ tbody img {
   width: 48px;
   height: 48px;
 }
-.custom__label{
+.custom__label {
   font-weight: 600;
   font-size: 14px;
-  color: #2D3748;  
+  color: #2d3748;
 }
 @media screen and (max-width: 1600px) {
   td,

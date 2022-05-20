@@ -18,7 +18,7 @@
                   type="button"
                   style="
                     font-size: 14px;
-                    font-weight: 600;
+                    font-weight: 500;
                     display: flex;
                     align-items: center;
                   "
@@ -42,7 +42,7 @@
             </div>
             <div class="inv__block">
               <div class="inv__content">
-                <table class="table table-hover table-striped">
+                <table class="table table-bordered table-hover table-striped">
                   <thead>
                     <tr>
                       <th scope="col" class="th__col">№</th>
@@ -259,6 +259,9 @@ export default {
 </script>
 
 <style scoped>
+.inv__block {
+  padding-bottom: 3vw;
+}
 .dropdown {
   width: 100%;
   display: inline-block;
