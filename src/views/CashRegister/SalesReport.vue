@@ -508,9 +508,9 @@ export default {
         scales: {
           x: {
             grid: {
-              display: false,
+              display: true,
               drawBorder: true,
-              drawOnChartArea: true,
+              drawOnChartArea: false,
               drawTicks: true,
             },
           },
@@ -519,9 +519,9 @@ export default {
               display: true,
               drawBorder: false,
               drawOnChartArea: true,
-              drawTicks: true,
-              color: '#fff',
-              borderDash: [8, 4],
+              drawTicks: false,
+              color: 'rgba(160, 174, 192, 0.2)',
+              borderDash: [4, 4],
             },
           },
         },
