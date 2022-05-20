@@ -53,13 +53,13 @@
                         </div>
                       </div>
                     </router-link>
-                    <div class="card__adapt" style="display: none">
+                    <div class="card__adapt">
                       <router-link :to="{ name: 'deffered-checks' }">
                         <div class="cash__blue__block">
                           <div class="cash__blue__content">
                             <div
-                              class="cash__blue__text align-items-baseline"
-                              style="margin-top: -2.25vw"
+                              class="cash__blue__text align-items-start"
+                              
                             >
                               <img
                                 src="@/assets/img/remove_shopping_cart.svg"
@@ -77,12 +77,12 @@
                     <router-link :to="{ name: 'deffered-checks' }">
                       <div
                         class="cash__blue__block"
-                        style="margin-top: 40px; margin-right: 1.042vw"
+                        style="margin-top: 3vw; margin-right: 1.042vw"
                       >
                         <div class="cash__blue__content">
                           <div
-                            class="cash__blue__text align-items-baseline"
-                            style="margin-top: -2.25vw"
+                            class="cash__blue__text align-items-start text-start"
+                            
                           >
                             <img
                               src="@/assets/img/remove_shopping_cart.svg"
@@ -380,11 +380,13 @@ export default {
   color: #2d3748;
 }
 .cash__blue__text {
+  height: 100%;
   display: flex;
-  align-items: center;
+  align-items: end;
   font-weight: 600;
   font-size: 1.25vw;
   color: #ffffff;
+  line-height: 1.67vw;
 }
 .cash__left__green {
   text-align: left;
@@ -409,7 +411,7 @@ export default {
   transition: 0.1s;
 }
 .cash__blue__content {
-  padding: 4.169vw 3.906vw 1.25vw 1.25vw;
+  padding: 3.169vw 3.906vw 1.25vw 1.25vw;
   background: #4f72ef;
   border-radius: 12px;
   width: 17.833vw;
