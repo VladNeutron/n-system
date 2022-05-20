@@ -328,6 +328,7 @@ export default {
     
     var calendar = new FullCalendar.Calendar(document.getElementById("calendar"), {
       initialView: "dayGridMonth",
+      titleFormat: { year: 'numeric', month: '2-digit', day: '2-digit' },
       headerToolbar: {
         start: 'title', // will normally be on the left. if RTL, will be on the right
         center: '',

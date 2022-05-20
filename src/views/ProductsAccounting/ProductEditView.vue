@@ -10,7 +10,9 @@
         <p class="mb-0">Настройка изображение размеры</p>
       </div>
       <div class="page__name-buttons d-flex gap-3 mx-4">
-        <router-link :to="{ name: 'product' }"><button class="btn btn-outline-dark mb-0">Назад</button></router-link>
+        <router-link :to="{ name: 'product' }"
+          ><button class="btn btn-outline-dark mb-0">Назад</button></router-link
+        >
         <button class="btn bg-gradient-dark mb-0">Сохранить</button>
       </div>
     </div>
@@ -108,7 +110,7 @@
             <div class="d-flex justify-content-between mb-2">
               <div>
                 <p class="m-0 fw-bold text-start">
-                  {{ color.name }}
+                  {{ color }}
                   <span class="ms-2"
                     ><img class="pb-1" src="@/assets/css/icons/pen.svg" alt=""
                   /></span>
@@ -187,7 +189,7 @@
           </div>
           <div class="sizes__body d-flex py-2 gap-3">
             <div
-              v-for="(size) in sizes"
+              v-for="size in sizes"
               :key="size"
               @click="selectSize(size)"
               class="btn mb-0"
@@ -228,7 +230,7 @@
                   <label for="Barcode">Штрихкод</label>
                   <input
                     class="form-control"
-                    placeholder="Категория"
+                    placeholder="1204124124"
                     id="Barcode"
                     type="text"
                   />
@@ -293,10 +295,38 @@
         <label for="Color" class="m-0">Выберите цвет</label>
         <select class="form-select" id="Color" v-model="colorSelected">
           <option v-for="color in colors" :key="color">
-            {{ color.name }}
+            {{ color }}
           </option>
         </select>
-        <a href="" class="text-end">+ Создать цвет</a>
+        <a
+          href="#"
+          class="text-end"
+          v-if="!colorCreateButton"
+          @click="colorCreateButton = true"
+          >+ Создать цвет</a
+        >
+        <div
+          class="form-group mt-2 d-flex gap-3 text-start"
+          v-if="colorCreateButton"
+        >
+          <input
+            class="form-control"
+            placeholder="Название цвета"
+            id="Color"
+            type="text"
+            v-model="colorInput"
+          />
+          <img
+            src="@/assets/css/icons/agree.svg"
+            alt="add"
+            @click="addColor()"
+          />
+          <img
+            src="@/assets/css/icons/cancel.svg"
+            alt="cancel"
+            @click="colorCreateButton = false"
+          />
+        </div>
       </div>
       <div
         class="form-group text-start me-2"
@@ -308,16 +338,61 @@
             {{ size }}
           </option>
         </select>
-        <a href="" class="">+ Создать размер</a>
+        <a
+          href="#"
+          class=""
+          v-if="!sizeCreateButton"
+          @click="sizeCreateButton = true"
+          >+ Создать размер</a
+        >
+        <div
+          class="form-group mt-2 d-flex gap-3 text-start"
+          v-if="sizeCreateButton"
+        >
+          <input
+            class="form-control"
+            placeholder="Название размера"
+            id="Size"
+            type="text"
+            v-model="sizeInput"
+          />
+          <img
+            src="@/assets/css/icons/agree.svg"
+            alt="add"
+            @click="addSize()"
+          />
+          <img
+            src="@/assets/css/icons/cancel.svg"
+            alt="cancel"
+            @click="sizeCreateButton = false"
+          />
+        </div>
       </div>
       <div class="modal__barcode d-flex" v-if="modalId === 'articles'">
         <div class="modal__barcode-size w-50 text-start">
-          <label for="Size" class="mt-2 ms-4 fw-light">Артикул</label>
-          <p class="mb-2 ms-4 fw-bold">Артикул</p>
+          <div class="form-group mx-4 text-start">
+            <label for="Article" class="mt-2 ms-4 fw-light">Артикул</label>
+            <input
+              class="form-control"
+              placeholder="123123123"
+              id="Article"
+              type="text"
+              v-model="articleInput"
+            />
+          </div>
         </div>
+
         <div class="modal__barcode-generate w-50 text-start">
-          <label for="Barcode" class="mt-2 ms-4 fw-light">Штрихкод</label>
-          <p class="mb-2 ms-4 fw-bold">1231232132231</p>
+          <div class="form-group mx-4 text-start">
+            <label for="Barcode" class="mt-2 ms-4 fw-light">Штрихкод</label>
+            <input
+              class="form-control"
+              placeholder="123123123"
+              id="Barcode"
+              type="text"
+              v-model="barcodeInput"
+            />
+          </div>
         </div>
       </div>
     </template>
@@ -334,25 +409,33 @@ export default {
   data() {
     return {
       sizes: ["XS", "S", "M", "L", "XL"],
-      colors: [
-        { name: "Белый" },
-        { name: "Коричневый" },
-        { name: "Бежевый" },
-        { name: "Черный" },
-        { name: "Серый" },
-      ],
+      colors: ["Белый", "Коричневый", "Бежевый", "Черный", "Серый"],
       selected: "",
       modalId: "",
       sizeSelected: "",
       sizeToDelete: "",
       colorSelected: "",
-      sizeMap: [],
+      sizeCreateButton: false,
+      colorCreateButton: false,
+      sizeInput: "",
+      colorInput: "",
+      articleInput: "",
+      barcodeInput: "",
+      productInfo: [],
     };
   },
   components: {
     InputsModal,
   },
   methods: {
+    addSize() {
+      this.sizes.push(this.sizeInput);
+      this.sizeInput = "";
+    },
+    addColor() {
+      this.colors.push(this.colorInput);
+      this.colorInput = "";
+    },
     getModalId(id) {
       return (this.modalId = id);
     },
@@ -460,7 +543,7 @@ a {
   font-size: 14px;
   line-height: 19px;
   font-weight: 400;
-  color: #A0AEC0;
+  color: #a0aec0;
 }
 .remove-button {
   position: relative;

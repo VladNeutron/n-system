@@ -312,8 +312,8 @@
                 type="number"
                 class="form-control modal__inp"
                 id="exampleFormControlInput1"
-                placeholder="0"
-                v-model="discountModalInput"
+                placeholder="Введите номер чека"
+                v-model="modalCheckNumber"
                 />
           </div>    
         </div>
@@ -498,6 +498,7 @@ export default {
             deletedProductId: -1,
             modalState: 0, 
             discountModalInput: 0,
+            modalCheckNumber: '',
             discountModalValue: 0,
             checkNumber: 3800961,
             cashRegisterNumber: 'Касса 1',
@@ -773,6 +774,15 @@ export default {
 .cash__header__right .form-select{
     margin-left: 16px;
     padding-right: 2rem;
+    width: 180px;
+    font-weight: 600;
+    font-size: 16px;
+    color: #2D3748;
+}
+.cash__header__right .form-select option{
+    font-weight: 600;
+    font-size: 16px;
+    color: #2D3748;
 }
 .bg-gradient-info {
   background: linear-gradient(83.56deg, #7092e0 10.01%, #8baef3 75.36%);
