@@ -520,6 +520,8 @@ export default {
               drawBorder: false,
               drawOnChartArea: true,
               drawTicks: true,
+              color: '#fff',
+              borderDash: [8, 4],
             },
           },
         },
