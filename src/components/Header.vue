@@ -6,7 +6,7 @@
         <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
           <li class="breadcrumb-item text-sm">
             <a class=" text-dark" href="javascript:;">
-              <img src="@/assets/img/headerBreadIcon.svg" style="width:15px; height:15px;" class="mb-1" alt="">
+              <img src="@/assets/img/headerBreadIcon.svg" style="width:20px; height:20px;" class="mb-1" alt="">
             </a>
           </li>
           <!-- <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="javascript:;">Pages</a></li> -->
@@ -31,16 +31,17 @@
           <div class="input-group">
             <span class="input-group-text text-body"><i class="fas fa-search" aria-hidden="true"></i></span>
   
-            <input type="text" class="form-control" placeholder="Type here...">
+            <input type="text" class="form-control" placeholder="Поиск...">
   
           </div>
         </div>
         <ul class="navbar-nav  justify-content-end">
           <li class="nav-item d-flex align-items-center">
             <a href="./pages/authentication/signin/illustration.html" class="nav-link text-body font-weight-bold px-0" target="_blank">
-              <i class="fa fa-user me-sm-1"></i>
+              <!-- <i class="fa fa-user me-sm-1"></i> -->
+                  <img src="@/assets/img/header/HeaderProfile.svg" class="me-2 header__images" alt="">
   
-              <span class="d-sm-inline d-none">Евгений</span>
+              <span class="d-sm-inline d-none header__name">Евгений</span>
   
             </a>
           </li>
@@ -55,12 +56,14 @@
           </li>
           <li class="nav-item px-3 d-flex align-items-center">
             <a href="javascript:;" class="nav-link text-body p-0">
-              <i class="fa fa-cog fixed-plugin-button-nav cursor-pointer"></i>
+              <!-- <i class="fa fa-cog fixed-plugin-button-nav cursor-pointer"></i> -->
+              <img src="@/assets/img/header/HeaderSetings.svg" class="header__images" alt="">
             </a>
           </li>
           <li class="nav-item dropdown pe-2 d-flex align-items-center">
             <a href="javascript:;" class="nav-link text-body p-0" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-              <i class="fa fa-bell cursor-pointer"></i>
+              <!-- <i class="fa fa-bell cursor-pointer"></i> -->
+              <img src="@/assets/img/header/HeaderNotification.svg" class="header__images" alt="">
             </a>
   
             <ul class="dropdown-menu dropdown-menu-end px-2 py-3 me-sm-n4" aria-labelledby="dropdownMenuButton">
@@ -72,17 +75,17 @@
                     </div>
                     <div class="d-flex flex-column justify-content-center">
                       <h6 class="text-sm font-weight-normal mb-1">
-                        <span class="font-weight-bold">New message</span> from Laur
+                        <span class="font-weight-bold">Новое сообщение</span> от Ильи
                       </h6>
                       <p class="text-xs text-secondary mb-0">
                         <i class="fa fa-clock me-1"></i>
-                        13 minutes ago
+                        2 минуты назад
                       </p>
                     </div>
                   </div>
                 </a>
               </li>
-              <li class="mb-2">
+              <!-- <li class="mb-2">
                 <a class="dropdown-item border-radius-md" href="javascript:;">
                   <div class="d-flex py-1">
                     <div class="my-auto">
@@ -99,7 +102,7 @@
                     </div>
                   </div>
                 </a>
-              </li>
+              </li> -->
               <li>
                 <a class="dropdown-item border-radius-md" href="javascript:;">
                   <div class="d-flex py-1">
@@ -108,11 +111,11 @@
                     </div>
                     <div class="d-flex flex-column justify-content-center">
                       <h6 class="text-sm font-weight-normal mb-1">
-                        Payment successfully completed
+                        Новый заказ
                       </h6>
                       <p class="text-xs text-secondary mb-0">
                         <i class="fa fa-clock me-1"></i>
-                        2 days
+                        15 минут
                       </p>
                     </div>
                   </div>
@@ -397,7 +400,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .header__breadcrumbs{
   background: #E9ECEF;
   border-radius: 8px; 
@@ -417,5 +420,17 @@ export default {
 }
 .header__breadcrumbs .sidenav-toggler-inner .sidenav-toggler-line{
 background: linear-gradient(81.62deg, #313860 2.25%, #151928 79.87%);  
+}
+.fa-search, .fa-user, .fa-cog, .fa-bell{
+  color: #2D3748;
+}
+.header__images{
+  width: 24px;
+  height: 24px;
+}
+.header__name{
+  font-weight: 400;
+  font-size: 16px;  
+  color: #2D3748;
 }
 </style>
