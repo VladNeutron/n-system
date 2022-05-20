@@ -17,7 +17,7 @@
             >
               <div>
                 <button
-                  class="btn bg-gradient-dark mb-0"
+                  class="btn bg-gradient-dark btn-add mb-0"
                   style="
                     margin-right: 0.833vw;
                     display: flex;
@@ -60,7 +60,7 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr v-for="(order, i) of orders" :key="order.id">
+                  <tr v-for="(order, i) of filteredList" :key="order.id">
                     <td scope="row" style="padding-left: 27px">
                       <div class="form-check">
                         <input
@@ -283,7 +283,16 @@
         </div>
       </template>
     </inputs-modal>
-    <the-filter></the-filter>
+    <the-filter @no-filter="cancelFilters">
+      <p class="text-start my-2 fw-bold" for="position">Должность</p>
+      <select class="form-select" v-model="filterPosition">
+        <option value="" disabled>Выберите должность</option>
+        <option v-for="position of orderPositionsList" :key="position">
+          {{ position }}
+        </option>
+        <option value=""></option>
+      </select>
+    </the-filter>
   </main>
 </template>
 
@@ -334,7 +343,29 @@ export default {
         },
       ],
       isEdit: "no",
+      filterPosition: "",
     };
+  },
+  methods: {
+    cancelFilters() {
+      this.filterPosition = "";
+    },
+    createFilteredSet(key) {
+      const unfiltered = this.orders.map((obj) => obj[key]);
+      return [...new Set(unfiltered)];
+    },
+  },
+  computed: {
+    orderPositionsList() {
+      return this.createFilteredSet("position");
+    },
+    filteredList() {
+      return this.orders.filter((order) =>
+        this.filterPosition === ""
+          ? true
+          : order.position === this.filterPosition
+      );
+    },
   },
   components: {
     "the-filter": Filter,
@@ -345,6 +376,18 @@ export default {
 </script>
 
 <style scoped>
+.btn-add {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 19px;
+
+  /* identical to box height */
+  display: flex;
+
+  letter-spacing: -0.387234px;
+
+  color: #ffffff;
+}
 .dropdown {
   width: 100%;
   display: inline-block;
