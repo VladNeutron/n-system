@@ -5,7 +5,7 @@
     <div class="card pt-4 pb-4 card__padding">
       <div class="page__name d-flex align-items-center justify-content-between">
         <div class="page__name-title text-start">
-          <h3>Отчеты “Продажи по кассе”</h3>
+          <h3>Отчет “Продажи по кассе”</h3>
           <p class="mb-0">
             Здесь можно увидеть все данные по продажам по кассе
           </p>
