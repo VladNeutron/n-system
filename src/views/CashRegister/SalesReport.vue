@@ -434,6 +434,8 @@ export default {
   },
   mounted() {
     const ctx = document.getElementById("chart-bars").getContext("2d");
+    Chart.defaults.font.family = "Open-Sans";
+    Chart.defaults.font.size = 14;
     Chart.defaults.color = "#fff";
     const myChart = new Chart(ctx, {
       responsive: true,
@@ -520,7 +522,7 @@ export default {
               drawBorder: false,
               drawOnChartArea: true,
               drawTicks: false,
-              color: 'rgba(160, 174, 192, 0.2)',
+              color: "rgba(160, 174, 192, 0.2)",
               borderDash: [4, 4],
             },
           },
