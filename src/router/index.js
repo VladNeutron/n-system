@@ -241,7 +241,7 @@ const routes = [
     name: "sales-main",
     component: () => import("../views/Sales/OrderListView.vue"),
     meta: { NavLink: "Продажи" },
-    redirect: "/sales/order-list"
+    redirect: "/sales/order-list",
   },
   {
     path: "/sales/create-order",
@@ -399,6 +399,13 @@ const routes = [
     component: () => import("../views/Analytics/ABCProduct.vue"),
     meta: { NavLink: "Куртка зеленая" },
   },
+  {
+    path: "/analytics/revenue-profit-avgcheck/report",
+    name: "rpa-report",
+    component: () => import("../views/Analytics/DRPReport.vue"),
+    meta: { NavLink: "Отчет Доходы - Расходы - Прибыль" },
+  },
+
   //АНАЛИТИКА
 
   // ЗАКУПКИ

@@ -80,7 +80,6 @@
                       <td>{{ order.id }}</td>
                       <td>{{ order.date }}</td>
                       <td>{{ order.warehouse }}</td>
-
                       <td>{{ order.responsible }}</td>
                       <td>
                         <div
