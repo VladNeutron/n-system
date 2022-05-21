@@ -63,7 +63,7 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr v-for="(order, i) of orders" :key="order.id">
+                  <tr v-for="(order, i) of filteredOrders" :key="order.id">
                     <th scope="row" style="padding-left: 27px">
                       <div class="form-check">
                         <input
@@ -173,6 +173,55 @@
         </div>
       </div>
     </div>
+    <the-filter @no-filter="cancelFilters">
+      <div class="filters__period__flex">
+        <div class="filter__name__standart">Выберите период</div>
+        <div class="reset__date">Сбросить период</div>
+      </div>
+      <div class="filters__period">
+        <div class="form-group mb-0">
+          <input
+            class="form-control period__s"
+            type="date"
+            id="example-date-input"
+          />
+        </div>
+        <div>
+          <img src="@/assets/img/line.svg" style="width: 1.927vw" alt="" />
+        </div>
+        <div class="form-group mb-0">
+          <input
+            class="form-control period__s"
+            type="date"
+            id="example-date-input"
+          />
+        </div>
+      </div>
+      <p class="text-start my-2 fw-bold" for="storage">Склад</p>
+      <select class="form-select" v-model="filterStorage">
+        <option value="" disabled>Выберите склад</option>
+        <option v-for="storage of orderStorageList" :key="storage">
+          {{ storage }}
+        </option>
+        <option value=""></option>
+      </select>
+      <p class="text-start my-2 fw-bold" for="responsible">Ответственный</p>
+      <select class="form-select" v-model="filterResponsible">
+        <option value="" disabled>Выберите ответственного</option>
+        <option v-for="responsible of orderResponsibleList" :key="responsible">
+          {{ responsible }}
+        </option>
+        <option value=""></option>
+      </select>
+      <p class="text-start my-2 fw-bold" for="supplier">Поставщик</p>
+      <select class="form-select" v-model="filterSupplier">
+        <option value="" disabled>Выберите поставщика</option>
+        <option v-for="supplier of orderSupplierList" :key="supplier">
+          {{ supplier }}
+        </option>
+        <option value=""></option>
+      </select>
+    </the-filter>
     <delete-modal
       :title="'поступления'"
       :text="`документ &quot;Поступление №12132415&quot;`"
@@ -226,7 +275,46 @@ export default {
           sum: 12000,
         },
       ],
+      filterStorage: "",
+      filterResponsible: "",
+      filterSupplier: "",
     };
+  },
+  methods: {
+    cancelFilters() {
+      this.filterStorage = "";
+      this.filterResponsible = "";
+      this.filterSupplier = "";
+    },
+    createFilteredSet(key) {
+      const unfiltered = this.orders.map((obj) => obj[key]);
+      return [...new Set(unfiltered)];
+    },
+  },
+  computed: {
+    orderStorageList() {
+      return this.createFilteredSet("storage");
+    },
+    orderResponsibleList() {
+      return this.createFilteredSet("responsible");
+    },
+    orderSupplierList() {
+      return this.createFilteredSet("supplier");
+    },
+    filteredOrders() {
+      return this.orders.filter(
+        (order) =>
+          (this.filterStorage === ""
+            ? true
+            : order.storage === this.filterStorage) &&
+          (this.filterResponsible === ""
+            ? true
+            : order.responsible === this.filterResponsible) &&
+          (this.filterSupplier === ""
+            ? true
+            : order.supplier === this.filterSupplier)
+      );
+    },
   },
   components: {
     "the-filter": Filter,
