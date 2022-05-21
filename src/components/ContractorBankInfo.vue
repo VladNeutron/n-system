@@ -19,6 +19,7 @@
             /></span>
           </div>
           <img
+            @click="openModal(item.id)"
             src="@/assets/img/edit.svg"
             style="width: 1.25vw; cursor: pointer"
             alt=""
@@ -65,20 +66,37 @@
       </div>
     </div>
     <add-bank-info-modal></add-bank-info-modal>
+    <edit-bank-info-modal
+      :product="modal.modalProductName"
+    ></edit-bank-info-modal>
   </div>
 </template>
 
 <script>
+import EditBankInfoModal from "@/components/EditBankInfoModal.vue";
 import AddBankInfoModal from "@/components/AddBankInfoModal.vue";
 export default {
   components: {
     AddBankInfoModal,
+    EditBankInfoModal,
+  },
+  methods: {
+    openModal(id) {
+      this.modal.modalProductName = this.items.filter(
+        (item) => item.id == id
+      )[0];
+      $("#EditBank").modal("show");
+    },
   },
   data() {
     return {
+      modal: {
+        modalProductName: {},
+      },
       items: [
         {
-          name: "Сбербанк Основной",
+          id: 1,
+          name: "Сбербанк Евро",
           fullName: "Дочерний банк акционерное общество «Сбербанк»",
           bik: "SABRKZKA",
           kbe: "14",
@@ -87,7 +105,8 @@ export default {
           img: require("@/assets/img/euro.svg"),
         },
         {
-          name: "Сбербанк Основной",
+          id: 2,
+          name: "Сбербанк Тенге",
           fullName: "Дочерний банк акционерное общество «Сбербанк»",
           bik: "SABRKZKA",
           kbe: "14",
@@ -96,6 +115,7 @@ export default {
           img: require("@/assets/img/tenge.svg"),
         },
         {
+          id: 3,
           name: "Сбербанк Основной",
           fullName: "Дочерний банк акционерное общество «Сбербанк»",
           bik: "SABRKZKA",

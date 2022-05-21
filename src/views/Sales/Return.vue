@@ -21,21 +21,19 @@
             <div
               class="d-flex justify-content-between align-items-center mx-4 mb-4"
             >
-              <router-link :to="{ name: 'create-return'}">
-              <!-- <button
+              <router-link :to="{ name: 'create-return' }">
+                <!-- <button
                 class="btn bg-gradient-dark mb-0"
                 onclick="window.location.href = '/sales/create-return'"
               > -->
-              <button
-                class="btn btn__return__new bg-gradient-dark mb-0"
-              >
-              <img
+                <button class="btn btn__return__new bg-gradient-dark mb-0">
+                  <img
                     src="@/assets/img/whtplus.svg"
                     style="width: 20.006px; margin-right: 0.529vw"
                     alt=""
                   />
-                Оформить возврат
-              </button>
+                  Оформить возврат
+                </button>
               </router-link>
               <div class="table__inputs d-flex gap-3 align-content-center">
                 <list-search></list-search>
@@ -46,7 +44,9 @@
             </div>
             <div class="page__table">
               <div class="table-wrapper">
-                <table class="table table-hover text-wrap text-start">
+                <table
+                  class="table table-hover text-wrap text-start table-striped"
+                >
                   <thead>
                     <tr class="text-start">
                       <th scope="col" class="th__col" style="width: 25px"></th>
@@ -100,7 +100,9 @@
                             alt=""
                           />
                           <div class="dropdown-content">
-                            <router-link :to="{ name: 'return-edit'}">Редактировать</router-link>
+                            <router-link :to="{ name: 'return-edit' }"
+                              >Редактировать</router-link
+                            >
                             <hr />
                             <a
                               style="cursor: pointer"
@@ -241,7 +243,10 @@
       <option value=""></option>
     </select>
   </the-filter>
-  <delete-modal :title="'возврата'" :text='`документ "Возврат №12154"`'></delete-modal>
+  <delete-modal
+    :title="'возврата'"
+    :text="`документ &quot;Возврат №12154&quot;`"
+  ></delete-modal>
 </template>
 
 <script>
@@ -551,13 +556,13 @@ td {
 th {
   vertical-align: middle;
 }
-.btn__return__new{
+.btn__return__new {
   height: 40px;
 }
 </style>
 
 <style>
-.table .dropdown{
+.table .dropdown {
   height: 100%;
 }
 </style>

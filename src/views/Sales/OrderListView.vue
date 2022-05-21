@@ -49,7 +49,9 @@
             </div>
             <div class="page__table">
               <div class="table-wrapper">
-                <table class="table table-hover text-wrap text-start">
+                <table
+                  class="table table-hover text-wrap text-start table-striped"
+                >
                   <thead>
                     <tr class="text-start">
                       <th
@@ -262,7 +264,10 @@
       <option value=""></option>
     </select>
   </the-filter>
-  <delete-modal :title="'заказа'" :text='`документ  "Заказ №12132145"`'></delete-modal>
+  <delete-modal
+    :title="'заказа'"
+    :text="`документ  &quot;Заказ №12132145&quot;`"
+  ></delete-modal>
 </template>
 
 <script>

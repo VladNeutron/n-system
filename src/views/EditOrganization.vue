@@ -219,6 +219,7 @@
                           /></span>
                         </div>
                         <img
+                          @click="openModal(item.id)"
                           src="@/assets/img/edit.svg"
                           style="width: 1.25vw; cursor: pointer"
                           alt=""
@@ -283,18 +284,34 @@
         </div>
       </div>
     </div>
+    <add-bank-info-modal></add-bank-info-modal>
+    <edit-bank-info-modal
+      :product="modal.modalProductName"
+    ></edit-bank-info-modal>
   </main>
-  <add-bank-info-modal></add-bank-info-modal>
 </template>
 
 <script>
+import EditBankInfoModal from "@/components/EditBankInfoModal.vue";
 import AddBankInfoModal from "@/components/AddBankInfoModal.vue";
 export default {
   components: {
     AddBankInfoModal,
+    EditBankInfoModal,
+  },
+  methods: {
+    openModal(id) {
+      this.modal.modalProductName = this.items.filter(
+        (item) => item.id == id
+      )[0];
+      $("#EditBank").modal("show");
+    },
   },
   data() {
     return {
+      modal: {
+        modalProductName: {},
+      },
       isAdded: true,
       items: [
         {
