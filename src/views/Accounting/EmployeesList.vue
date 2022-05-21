@@ -43,7 +43,7 @@
               </div>
             </div>
             <div class="page__table">
-              <table class="table table-hover">
+              <table class="table table-hover table-striped">
                 <thead>
                   <tr class="">
                     <th
@@ -279,7 +279,13 @@
           <button class="btn bg-gradient-dark">Сохранить</button>
         </div>
         <div class="clients__footer" v-if="isEdit == 'yes'">
-          <button class="btn btn-outline-dark">Удалить сотрудника</button>
+          <button
+            class="btn delete__btn"
+            data-bs-toggle="modal"
+            data-bs-target="#DeleteInv"
+          >
+            Удалить сотрудника
+          </button>
         </div>
       </template>
     </inputs-modal>
@@ -293,6 +299,10 @@
         <option value=""></option>
       </select>
     </the-filter>
+    <delete-modal
+      :title="'сотрудника'"
+      :text="`сотрудника &quot;Ильясов Д.С.&quot;`"
+    ></delete-modal>
   </main>
 </template>
 
@@ -300,6 +310,7 @@
 import Filter from "../../components/Filters.vue";
 import InputsModal from "@/components/InputsModal.vue";
 import FiltersButton from "@/components/buttons/FiltersButton.vue";
+import { CloseInvModal } from "@/assets/js/closeModalDeleteOpen";
 export default {
   data() {
     return {
@@ -367,6 +378,9 @@ export default {
       );
     },
   },
+  mounted() {
+    CloseInvModal();
+  },
   components: {
     "the-filter": Filter,
     "inputs-modal": InputsModal,
@@ -423,8 +437,9 @@ export default {
 
 .bg-gradient-dark {
   font-weight: 600;
-  font-size: 0.729vw;
+  font-size: 16px;
   color: #ffffff;
+  margin-bottom: 0;
 }
 
 .page__name h3 {

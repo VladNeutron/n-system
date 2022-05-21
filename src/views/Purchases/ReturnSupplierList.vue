@@ -43,7 +43,7 @@
               </div>
             </div>
             <div class="page__table">
-              <table class="table table-hover">
+              <table class="table table-hover table-striped">
                 <thead>
                   <tr class="">
                     <th
@@ -173,6 +173,10 @@
         </div>
       </div>
     </div>
+    <delete-modal
+      :title="'возврата поставщикам'"
+      :text="`документ &quot;Возврат №12132145&quot;`"
+    ></delete-modal>
   </main>
 </template>
 

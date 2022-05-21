@@ -19,92 +19,73 @@
             </div>
           </div>
           <div class="order__body">
-            <div class="row">
-              <div class="col-8">
-                <div class="order__body__content">
-                  <div class="order__first__row">
-                    <div class="form-group">
-                      <label
-                        for="example-text-input"
-                        class="form-control-label order__label"
-                        >№ Поступления</label
-                      >
-                      <input
-                        class="form-control"
-                        type="text"
-                        id="example-text-input"
-                        value="№2354657"
-                        disabled
-                      />
-                    </div>
-                    <div class="form-group">
-                      <label
-                        for="example-date-input"
-                        class="form-control-label order__label"
-                        >Дата поступления</label
-                      >
-                      <input
-                        class="form-control"
-                        type="date"
-                        id="example-date-input"
-                      />
-                    </div>
-                    <div class="form-group">
-                      <label
-                        for="exampleFormControlSelect1"
-                        class="order__label"
-                        >Ответственный</label
-                      >
-                      <div class="select">
-                        <select
-                          class="form-select"
-                          id="exampleFormControlSelect1"
-                        >
-                          <option>Выберите</option>
-                          <option>Иванов И.</option>
-                          <option>Иванов И.</option>
-                          <option>Иванов И.</option>
-                          <option>Иванов И.</option>
-                        </select>
-                      </div>
-                    </div>
-                    <div class="form-group">
-                      <label
-                        for="exampleFormControlSelect1"
-                        class="order__label"
-                        >Склад</label
-                      >
-                      <div class="select">
-                        <select
-                          class="form-select"
-                          id="exampleFormControlSelect1"
-                        >
-                          <option>Выберите</option>
-                          <option>Склад 1</option>
-                          <option>Склад 1</option>
-                          <option>Склад 1</option>
-                          <option>Склад 1</option>
-                        </select>
-                      </div>
-                    </div>
-                    <div class="form-group">
-                      <label
-                        for="exampleFormControlSelect1"
-                        class="order__label"
-                        >Контрагент</label
-                      >
-                      <div class="select">
-                        <select
-                          class="form-select"
-                          id="exampleFormControlSelect1"
-                        >
-                          <option>Выберите</option>
-                          <option>Безналичный расчет</option>
-                          <option>Наличный расчет</option>
-                          <option>Оплата онлайн</option>
-                        </select>
-                      </div>
-                    </div>
+            <div class="order__body__content">
+              <div class="order__first__row">
+                <div class="form-group">
+                  <label
+                    for="example-text-input"
+                    class="form-control-label order__label"
+                    >№ Поступления</label
+                  >
+                  <input
+                    class="form-control"
+                    type="text"
+                    id="example-text-input"
+                    value="№2354657"
+                    disabled
+                  />
+                </div>
+                <div class="form-group">
+                  <label
+                    for="example-date-input"
+                    class="form-control-label order__label"
+                    >Дата поступления</label
+                  >
+                  <input
+                    class="form-control"
+                    type="date"
+                    id="example-date-input"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="exampleFormControlSelect1" class="order__label"
+                    >Ответственный</label
+                  >
+                  <div class="select">
+                    <select class="form-select" id="exampleFormControlSelect1">
+                      <option>Выберите</option>
+                      <option>Иванов И.</option>
+                      <option>Иванов И.</option>
+                      <option>Иванов И.</option>
+                      <option>Иванов И.</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="exampleFormControlSelect1" class="order__label"
+                    >Склад</label
+                  >
+                  <div class="select">
+                    <select class="form-select" id="exampleFormControlSelect1">
+                      <option>Выберите</option>
+                      <option>Склад 1</option>
+                      <option>Склад 1</option>
+                      <option>Склад 1</option>
+                      <option>Склад 1</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="exampleFormControlSelect1" class="order__label"
+                    >Контрагент</label
+                  >
+                  <div class="select">
+                    <select class="form-select" id="exampleFormControlSelect1">
+                      <option>Выберите</option>
+                      <option>Безналичный расчет</option>
+                      <option>Наличный расчет</option>
+                      <option>Оплата онлайн</option>
+                    </select>
                   </div>
                 </div>
               </div>
@@ -237,22 +218,83 @@
               </tbody>
             </table>
           </div>
-          <div class="order__ready_block" v-if="!isAdded">
-            <div style="text-align: left">
-              <p class="order__ready__main">Сумма</p>
-              <p class="order__ready__sec">280 000 ₸</p>
+          <div class="d-flex justify-content-between" v-if="!isAdded">
+            <div class="order__ready_block">
+              <div
+                style="
+                  text-align: left;
+                  margin-right: 7.344vw;
+                  margin-left: 24px;
+                "
+              >
+                <p class="order__ready__main">Сумма</p>
+                <p class="order__ready__sec">280 000 ₸</p>
+              </div>
+              <div style="text-align: left; margin-right: 7.344vw">
+                <p class="order__ready__main">Кол-во товаров</p>
+                <p class="order__ready__sec">26 шт</p>
+              </div>
+              <div style="text-align: left; margin-right: 7.344vw">
+                <p class="order__ready__result">Итог</p>
+                <p class="order__ready__sum">320 000 ₸</p>
+              </div>
             </div>
-            <div style="text-align: left">
-              <p class="order__ready__main">Кол-во товаров</p>
-              <p class="order__ready__sec">26 шт</p>
-            </div>
-            <div style="text-align: left">
-              <p class="order__ready__main">Общая скидка</p>
-              <p class="order__ready__sec">10 %</p>
-            </div>
-            <div style="text-align: left">
-              <p class="order__ready__result">Итог</p>
-              <p class="order__ready__sum">320 000 ₸</p>
+            <div class="pagination d-flex justify-content-end pe-5 pb-2">
+              <div class="d-flex align-items-center gap-3 pb-4">
+                <div>
+                  <p class="m-0">Показано<span> 2112 12121</span></p>
+                </div>
+
+                <div class="page__search-pages d-flex align-content-center">
+                  <div class="pagination-container d-flex justify-items-center">
+                    <ul class="pagination pagination-info mb-0 pe-0">
+                      <li class="page-item">
+                        <a
+                          class="page-link"
+                          href="javascript:;"
+                          aria-label="Previous"
+                        >
+                          <span aria-hidden="true"
+                            ><i
+                              class="fa fa-angle-double-left"
+                              aria-hidden="true"
+                            ></i
+                          ></span>
+                        </a>
+                      </li>
+                      <li class="page-item">
+                        <a class="page-link" href="javascript:;">1</a>
+                      </li>
+                      <li class="page-item">
+                        <a class="page-link" href="javascript:;">2</a>
+                      </li>
+                      <li class="page-item active">
+                        <a class="page-link" href="javascript:;">3</a>
+                      </li>
+                      <li class="page-item">
+                        <a class="page-link" href="javascript:;">4</a>
+                      </li>
+                      <li class="page-item">
+                        <a class="page-link" href="javascript:;">5</a>
+                      </li>
+                      <li class="page-item">
+                        <a
+                          class="page-link"
+                          href="javascript:;"
+                          aria-label="Next"
+                        >
+                          <span aria-hidden="true"
+                            ><i
+                              class="fa fa-angle-double-right"
+                              aria-hidden="true"
+                            ></i
+                          ></span>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -338,13 +380,12 @@
 }
 
 .order__ready__sum {
-  font-weight: 600;
-  font-size: 1.2vw;
+  font-weight: 800;
+  font-size: 1.4vw;
   color: #2d3748;
 }
 
 .order__ready_block {
-  margin-left: 28.073vw;
   margin-top: 8px;
   display: flex;
   justify-content: space-around;
@@ -403,28 +444,6 @@
   margin-top: 1.25vw;
   display: flex;
   justify-content: center;
-}
-
-.active {
-  background: linear-gradient(
-    83.56deg,
-    #7092e0 10.01%,
-    #8baef3 75.36%
-  ) !important;
-  border-radius: 8px 0px 0px 8px !important;
-  font-size: 0.729vw !important;
-  color: #ffffff !important;
-}
-
-.active2 {
-  background: linear-gradient(
-    83.56deg,
-    #7092e0 10.01%,
-    #8baef3 75.36%
-  ) !important;
-  border-radius: 0px 8px 8px 0px !important;
-  font-size: 0.729vw !important;
-  color: #ffffff !important;
 }
 
 .search__buttons {
@@ -683,7 +702,6 @@
   background: #f8f9fa;
   border-radius: 12px;
   padding: 0.833vw 1.25vw 0.833vw 1.25vw;
-  width: 57.031vw;
 }
 
 .form-group {

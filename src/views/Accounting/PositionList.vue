@@ -212,16 +212,18 @@
           <button class="btn bg-gradient-dark">Сохранить</button>
         </div>
         <div class="clients__footer" v-if="isEdit == 'yes'">
-          <button class="btn delete__btn">Удалить должность</button>
+          <button class="btn delete__btn" data-bs-toggle="modal" data-bs-target="#DeleteInv">Удалить должность</button>
         </div>
       </template>
     </inputs-modal>
+    <delete-modal :title="'должности'" :text='`должность "Кассир"`'></delete-modal>
   </main>
 </template>
 
 <script>
 import Filter from "../../components/Filters.vue";
 import InputsModal from "@/components/InputsModal.vue";
+import {CloseInvModal} from "@/assets/js/closeModalDeleteOpen";
 export default {
   data() {
     return {
@@ -265,6 +267,9 @@ export default {
   components: {
     "the-filter": Filter,
     "inputs-modal": InputsModal,
+  },
+  mounted(){
+    CloseInvModal();
   },
 };
 </script>

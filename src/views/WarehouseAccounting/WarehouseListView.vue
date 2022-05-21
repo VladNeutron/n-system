@@ -106,6 +106,10 @@
         <option>Закрыт</option>
       </select>
     </filters>
+    <delete-modal
+      :title="'склада'"
+      :text="`склад &quot;ТЦ “Jam mall”&quot;`"
+    ></delete-modal>
   </main>
 </template>
 
@@ -191,6 +195,7 @@ td {
   color: black;
   border-color: #e2e8f0;
   padding: 0.521vw 0;
+  border: 0;
 }
 .table__status__closed {
   background-color: rgba(235, 87, 87, 0.3);

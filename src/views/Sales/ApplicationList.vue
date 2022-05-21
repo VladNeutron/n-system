@@ -49,7 +49,9 @@
             </div>
             <div class="page__table mb-4">
               <div class="table-wrapper">
-                <table class="table table-hover text-wrap text-start">
+                <table
+                  class="table table-hover text-wrap text-start table-striped"
+                >
                   <thead>
                     <tr class="text-center">
                       <th scope="col" class="th__col">№</th>
@@ -314,6 +316,7 @@
       </select>
     </div>
   </the-filter>
+  <delete-modal :title="'заявки'" :text="`заявку №1`"></delete-modal>
 </template>
 
 <script>

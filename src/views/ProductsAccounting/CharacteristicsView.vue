@@ -282,6 +282,7 @@
       </div>
     </template>
   </inputs-modal>
+  <delete-modal :title="'характеристики'" :text='`значение характеристики "XXL"`'></delete-modal>
 </template>
 
 <script>

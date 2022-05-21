@@ -42,7 +42,7 @@
               </div>
             </div>
           </div>
-          <div class="mt-2 buttons__pc" style="margin-left: 1.25vw">
+          <div class="mt-3 buttons__pc" style="margin-left: 1.25vw">
             <button
               class="btn first__btn mb-0"
               :class="{ active1: isActive == 1 }"
@@ -66,8 +66,12 @@
             </button>
           </div>
         </div>
-        <div class="table__inputs d-flex gap-3 align-content-center">
+        <div
+          class="table__inputs d-flex gap-3 align-items-end"
+          style="margin-top: -20px"
+        >
           <div class="form-group m-0 form__pc" style="text-align: left">
+            <label for="search">Поиск товаров</label>
             <div class="input-group mt-0">
               <span class="input-group-text"
                 ><img src="@/assets/css/icons/searchIcon.svg" alt="" />
@@ -130,7 +134,6 @@
             <tr class="">
               <th scope="col" class="th__col">№</th>
               <th scope="col" class="th__col">Название товара</th>
-              <th scope="col" class="th__col">Размер</th>
               <th scope="col" class="th__col">Категория</th>
               <th scope="col" class="th__col">Количество продаж</th>
               <th scope="col" class="th__col">Сумма продаж</th>
@@ -141,11 +144,13 @@
             </tr>
           </thead>
           <tbody>
-            <tr v-for="(order, i) of orders" :key="order.id">
+            <tr
+              v-for="(order, i) of orders"
+              :key="order.id"
+              onclick="window.location.href = '/analytics/abc-analysis/abc-product'"
+            >
               <td>{{ i + 1 }}</td>
               <td>{{ order.name }}</td>
-
-              <td>{{ order.size }}</td>
 
               <td>{{ order.category }}</td>
               <td>
@@ -298,6 +303,18 @@ export default {
           sum: 12000,
           percent: 10,
         },
+        {
+          name: "Куртка зеленая",
+          color: "Изумрудный",
+          size: "XS",
+          category: "Верхняя одежда",
+          status: "C",
+          count: 1234,
+          sum: 120340,
+          amount: 8,
+          sum: 12000,
+          percent: 10,
+        },
       ],
     };
   },
@@ -322,6 +339,12 @@ export default {
 </script>
 
 <style scoped>
+.filter__name__standart {
+  font-weight: 600;
+  font-size: 20px;
+  color: #2d3748;
+  text-align: left;
+}
 .active3 {
   background: linear-gradient(
     83.56deg,
@@ -357,7 +380,6 @@ export default {
   font-size: 14px !important;
   color: #fff !important;
 }
-
 .data__size {
   height: 2.396vw !important;
 }

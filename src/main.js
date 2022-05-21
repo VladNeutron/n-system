@@ -1,4 +1,4 @@
-import { createApp } from "vue";
+import { createApp, VueElement } from "vue";
 import App from "./App.vue";
 import router from "./router";
 import store from "./store";
@@ -30,6 +30,7 @@ import ActionButton from '@/components/buttons/ActionButton.vue'
 import FiltersButton from '@/components/buttons/FiltersButton.vue'
 import ExportButton from '@/components/buttons/ExportButton.vue'
 import Export2Button from '@/components/buttons/Export2Button.vue'
+import DeleteModal from "@/components/DeleteModal.vue";
 
 
 const app = createApp(App).use(store).use(router);
@@ -50,5 +51,8 @@ app.component("filters-button", FiltersButton);
 app.component("export-button", ExportButton);
 app.component("export2-button", Export2Button);
 app.component("list-search", ListSearch);
+app.component('delete-modal',DeleteModal);
+
+
 
 app.mount("#app", Login);

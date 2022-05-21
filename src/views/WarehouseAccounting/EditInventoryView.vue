@@ -195,7 +195,7 @@
                       </thead>
                       <tbody>
                         <tr v-for="(item, i) in items" :key="item">
-                          <th scope="row">{{ i + 1 }}</th>
+                          <td scope="row">{{ i + 1 }}</td>
                           <td>{{ item.code }}</td>
                           <td>{{ item.name }}</td>
                           <td>{{ item.category }}</td>

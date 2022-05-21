@@ -434,8 +434,9 @@ export default {
   },
   mounted() {
     const ctx = document.getElementById("chart-bars").getContext("2d");
-    Chart.defaults.font.family = "Open-Sans";
+    Chart.defaults.font.family = "Open Sans";
     Chart.defaults.font.size = 14;
+    Chart.defaults.font.weight = 500;
     Chart.defaults.color = "#fff";
     const myChart = new Chart(ctx, {
       responsive: true,
@@ -473,9 +474,10 @@ export default {
           {
             backgroundColor: "#fff",
             label: "Кол-во",
-            tension: 0.4,
+            tension: 0.2,
             borderWidth: 0,
-            pointRadius: 0,
+            borderRadius: 15,
+            pointRadius: 15,
             backgroundColor: "#fff",
             data: [
               400, 400, 800, 1000, 1200, 1200, 1200, 1250, 1280, 1200, 1000,
@@ -524,6 +526,9 @@ export default {
               drawTicks: false,
               color: "rgba(160, 174, 192, 0.2)",
               borderDash: [4, 4],
+            },
+            ticks: {
+              padding: 17,
             },
           },
         },

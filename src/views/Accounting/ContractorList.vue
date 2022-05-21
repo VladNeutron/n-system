@@ -31,6 +31,7 @@
                 <button
                   class="btn bg-gradient-dark mb-0"
                   style="margin-right: 0.833vw"
+                  @click="openModal(0)"
                 >
                   <img
                     src="@/assets/img/DocumentsBtn.svg"
@@ -48,7 +49,7 @@
               </div>
             </div>
             <div class="page__table">
-              <table class="table table-hover">
+              <table class="table table-hover table-striped">
                 <thead>
                   <tr class="">
                     <th
@@ -70,7 +71,6 @@
                   <tr
                     v-for="(item, i) of items"
                     :key="item.id"
-                    @click="openModal(item.id)"
                   >
                     <th scope="row" style="padding-left: 27px">
                       <div class="form-check">
@@ -181,6 +181,7 @@
       </div>
     </div>
     <the-filter></the-filter>
+    <delete-modal :title="'контрагента'" :text='`контрагента "Тихонова А.Р"`'></delete-modal>
     <counter-modal :product="modal.modalProductName"></counter-modal>
   </main>
 </template>
