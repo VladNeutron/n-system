@@ -314,6 +314,7 @@
       </select>
     </div>
   </the-filter>
+  <delete-modal :title="'заявки'" :text='`заявку №1`'></delete-modal>
 </template>
 
 <script>

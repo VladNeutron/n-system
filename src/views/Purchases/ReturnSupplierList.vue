@@ -173,6 +173,7 @@
         </div>
       </div>
     </div>
+    <delete-modal :title="'возврата поставщикам'" :text='`документ "Возврат №12132145"`'></delete-modal>
   </main>
 </template>
 

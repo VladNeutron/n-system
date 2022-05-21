@@ -223,7 +223,7 @@
       <template #footer>
         <div class="cash__accept__button" v-if="isEdit == 'yes'">
           <button class="btn accept__btn">Сохранить</button>
-          <button class="btn delete__btn">Удалить кассу</button>
+          <button class="btn delete__btn" data-bs-toggle="modal" data-bs-target="#DeleteInv">Удалить кассу</button>
         </div>
         <div class="cash__accept__button" v-if="isEdit == 'no'">
           <button class="btn accept__btn">Добавить</button>
@@ -231,22 +231,14 @@
       </template>
     </inputs-modal>
 
-    <delete-modal>
-      <template #head>
-        <p class="header__main">Удаление кассы</p>
-      </template>
-      <template #header>
-        <p class="modal__body__text">
-          Вы уверены, что хотите удалить кассу “Касса №1”?
-        </p>
-      </template>
-    </delete-modal>
+    <delete-modal :title="'кассы'" :text='`кассу "Касса ТРЦ МОСКВА"`'></delete-modal>
   </main>
 </template>
 
 <script>
 import InputsModal from "@/components/InputsModal.vue";
 import DeleteModal from "@/components/DeleteModal.vue";
+import {CloseInvModal} from "@/assets/js/closeModalDeleteOpen";
 export default {
   components: {
     InputsModal,
@@ -314,6 +306,9 @@ export default {
       ],
     };
   },
+  mounted(){
+    CloseInvModal();
+  }
 };
 </script>
 

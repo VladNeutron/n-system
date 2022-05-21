@@ -348,7 +348,7 @@ const routes = [
     path: "/cash-register/return-checks",
     name: "return-checks",
     component: () => import("../views/CashRegister/ReturnChecksList.vue"),
-    meta: { NavLink: "Список возвратов чеков" },
+    meta: { NavLink: "Список возвратов" },
   },
   {
     path: "/cash-register/cash-startup",

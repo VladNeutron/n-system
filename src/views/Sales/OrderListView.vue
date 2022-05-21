@@ -262,6 +262,7 @@
       <option value=""></option>
     </select>
   </the-filter>
+  <delete-modal :title="'заказа'" :text='`документ  "Заказ №12132145"`'></delete-modal>
 </template>
 
 <script>

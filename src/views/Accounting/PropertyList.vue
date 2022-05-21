@@ -37,7 +37,7 @@
               </div>
             </div>
             <div class="page__table">
-              <table class="table table-hover">
+              <table class="table table-hover table-striped">
                 <thead>
                   <tr class="">
                     <th width="1%" scope="col" class="th__col">№</th>
@@ -236,20 +236,22 @@
         <div class="clients__footer" v-if="isEdit == 'no'">
           <button class="btn bg-gradient-dark">Добавить</button>
         </div>
-        <div class="clients__footer" v-if="isEdit == 'yes'">
+        <div class="clients__footer mb-0" v-if="isEdit == 'yes'">
           <button class="btn bg-gradient-dark">Сохранить</button>
         </div>
         <div class="clients__footer" v-if="isEdit == 'yes'">
-          <button class="btn btn-outline-dark">Удалить имущество</button>
+          <button class="btn delete__btn" data-bs-toggle="modal" data-bs-target="#DeleteInv">Удалить имущество</button>
         </div>
       </template>
     </inputs-modal>
+    <delete-modal :title="'имущества'" :text='`имущество "BMW M5"`'></delete-modal>
   </main>
 </template>
 
 <script>
 import Filter from "../../components/Filters.vue";
 import InputsModal from "@/components/InputsModal.vue";
+import {CloseInvModal} from "@/assets/js/closeModalDeleteOpen";
 export default {
   data() {
     return {
@@ -294,6 +296,9 @@ export default {
     "the-filter": Filter,
     "inputs-modal": InputsModal,
   },
+  mounted(){
+    CloseInvModal();
+  }
 };
 </script>
 
@@ -333,7 +338,7 @@ export default {
 
 .bg-gradient-dark {
   font-weight: 600;
-  font-size: 16px;
+  /* font-size: 16px; */
   line-height: 1.4;
   color: #ffffff;
 }

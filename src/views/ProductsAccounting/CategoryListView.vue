@@ -284,6 +284,7 @@
         >
       </div>
     </filters>
+    <delete-modal :title="'категории'" :text='`категорию "Зимняя одежда"`'></delete-modal>
   </main>
 </template>
 

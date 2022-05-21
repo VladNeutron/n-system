@@ -94,11 +94,21 @@
               <td>{{ order.sum }}</td>
 
               <td>
-                <img
-                  src="@/assets/img/dots.svg"
-                  style="width: 1.563vw; cursor: pointer"
-                  alt=""
-                />
+                <div class="dropdown">
+                          <img
+                            src="@/assets/img/dots.svg"
+                            style="width: 1.563vw; cursor: pointer"
+                            alt=""
+                          />
+                          <div class="dropdown-content">
+                            <a
+                              style="cursor: pointer"
+                              data-bs-toggle="modal"
+                              data-bs-target="#DeleteInv"
+                              >Удалить</a
+                            >
+                          </div>
+                </div>
               </td>
             </tr>
           </tbody>
@@ -158,6 +168,7 @@
       </div>
     </div>
     <the-filter></the-filter>
+    <delete-modal :title="'возврата'" :text='`чек возврата "Чек №1213215"`'></delete-modal>
   </main>
 </template>
 

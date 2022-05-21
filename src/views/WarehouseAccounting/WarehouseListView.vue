@@ -106,6 +106,7 @@
         <option>Закрыт</option>
       </select>
     </filters>
+    <delete-modal :title="'склада'" :text='`склад "ТЦ “Jam mall”"`'></delete-modal>
   </main>
 </template>
 
