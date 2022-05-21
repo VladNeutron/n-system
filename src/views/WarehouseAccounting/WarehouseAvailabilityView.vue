@@ -64,18 +64,11 @@
               </div>
               <div class="search__menu-right d-flex align-items-end gap-4">
                 <filters-button></filters-button>
-                <button class="btn btn-outline-dark mb-0" style="height: 40px">
-                  <span class="btn-inner--icon"
-                    ><img
-                      src="@/assets/css/icons/chemodan.svg"
-                      alt=""
-                      style="margin-right: 5px; margin-bottom: 2px" /></span
-                  >ЭКСПОРТ
-                </button>
+                <export-button></export-button>
               </div>
             </div>
-            <div class="table__body px-4">
-              <table class="table table-hover text-center">
+            <div class="table__body">
+              <table class="table table-hover text-center table-striped">
                 <thead>
                   <tr>
                     <th scope="col" class="">№</th>
@@ -325,6 +318,9 @@ export default {
 </script>
 
 <style scoped>
+.btn-outline-dark{
+  font-weight: 500;
+}
 .period__s {
   width: 191px !important;
 }
