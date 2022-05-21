@@ -517,7 +517,6 @@ export default {
               drawOnChartArea: false,
               drawTicks: true,
             },
-            
           },
           y: {
             grid: {
@@ -528,9 +527,9 @@ export default {
               color: "rgba(160, 174, 192, 0.2)",
               borderDash: [4, 4],
             },
-            ticks:{
-              padding: 17
-            }
+            ticks: {
+              padding: 17,
+            },
           },
         },
       },

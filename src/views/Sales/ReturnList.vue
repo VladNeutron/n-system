@@ -247,7 +247,7 @@
               <button
                 class="btn disc__btn"
                 data-bs-toggle="modal"
-                data-bs-target="#DiscModal"
+                data-bs-target="#InpModal"
               >
                 Ввести номер поступления
               </button>
@@ -373,71 +373,49 @@
         </div>
       </div>
     </div>
-    <discount-modal>
+    <InputsModal>
       <template #head>
         <div style="text-align: left">
-          <p class="header__main">Применить скидку</p>
-          <p class="header__sec">Выберите скидку и нажмите “Применить”</p>
+          <p class="header__main">Возврат по номеру поступления</p>
+          <p class="header__sec">Введите номер заказа и нажмите “Добавить”</p>
         </div>
       </template>
       <template #body>
-        <div class="search__buttons">
-          <button
-            :class="['left__btn', { active: onStorage == 'yes' }]"
-            @click="onStorage = 'yes'"
+        <div class="form-group label__text" style="text-align: left">
+          <label for="exampleFormControlInput1" class="label__text"
+            >Номер поступления</label
           >
-            Выбрать из списка
-          </button>
-          <button
-            :class="['right__btn', { active2: onStorage == 'all' }]"
-            @click="onStorage = 'all'"
-          >
-            Ввести вручную
-          </button>
-        </div>
-        <div class="modal__flex__disc" v-if="onStorage == 'yes'">
-          <div class="form-group mr">
-            <label for="exampleFormControlSelect1" class="order__label__disc"
-              >Выберите скидку</label
-            >
-            <div class="select3">
-              <img src="@/assets/img/arrow.svg" style="width: 0.833vw" alt="" />
-              <select
-                class="form-control disc__form"
-                id="exampleFormControlSelect1"
-              >
-                <option>Выберите</option>
-                <option>Скидка "8 марта"</option>
-                <option>Скидка "8 марта"</option>
-                <option>Скидка "8 марта"</option>
-              </select>
-            </div>
-          </div>
-        </div>
-        <div class="modal__flex__disc" v-if="onStorage == 'all'">
-          <div class="form-group mr">
-            <label for="exampleFormControlSelect1" class="order__label__disc"
-              >Ручная скидка</label
-            >
+          <div class="d-flex">
             <input
-              class="form-control disc__form"
-              type="text"
-              placeholder="Введите значение"
-              id="example-text-input"
+              type="number"
+              class="form-control modal__inp w-100"
+              id="exampleFormControlInput1"
+              placeholder="Введите номер поступления"
             />
           </div>
         </div>
       </template>
       <template #footer>
-        <div class="accept__button">
-          <button class="btn accept__btn">Применить</button>
+        <div class="footer__btn">
+          <button class="footer__button">Добавить</button>
         </div>
-      </template>
-    </discount-modal>
+      </template></InputsModal
+    >
   </main>
 </template>
 
 <style scoped>
+.footer__button {
+  font-weight: 700;
+  font-size: 0.833vw;
+  color: #fff;
+  border: 0;
+  background: linear-gradient(81.62deg, #313860 2.25%, #151928 79.87%);
+  box-shadow: 0px 4px 7px -1px rgba(0, 0, 0, 0.11),
+    0px 2px 4px -1px rgba(0, 0, 0, 0.07);
+  border-radius: 8px;
+  padding: 0.729vw 5.906vw 0.729vw 5.906vw;
+}
 .not__added {
   padding-bottom: 130px;
 }
@@ -903,7 +881,7 @@
 
 .order__ready {
   margin-left: 40px;
-  width: 20.031vw;
+  width: 22.031vw;
   background: #f8f9fa;
   border-radius: 12px;
   padding: 0.833vw 1.25vw 0.833vw 1.25vw;
@@ -967,10 +945,12 @@ td {
 </style>
 
 <script>
+import InputsModal from "@/components/InputsModal.vue";
 import DiscountModal from "@/components/DiscountModal.vue";
 export default {
   components: {
     DiscountModal,
+    InputsModal,
   },
   methods: {
     test() {

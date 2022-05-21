@@ -42,7 +42,7 @@
               </div>
             </div>
           </div>
-          <div class="mt-2 buttons__pc" style="margin-left: 1.25vw">
+          <div class="mt-3 buttons__pc" style="margin-left: 1.25vw">
             <button
               class="btn first__btn mb-0"
               :class="{ active1: isActive == 1 }"
@@ -66,8 +66,12 @@
             </button>
           </div>
         </div>
-        <div class="table__inputs d-flex gap-3 align-content-center">
+        <div
+          class="table__inputs d-flex gap-3 align-items-end"
+          style="margin-top: -20px"
+        >
           <div class="form-group m-0 form__pc" style="text-align: left">
+            <label for="search">Поиск товаров</label>
             <div class="input-group mt-0">
               <span class="input-group-text"
                 ><img src="@/assets/css/icons/searchIcon.svg" alt="" />
@@ -320,6 +324,12 @@ export default {
 </script>
 
 <style scoped>
+.filter__name__standart {
+  font-weight: 600;
+  font-size: 20px;
+  color: #2d3748;
+  text-align: left;
+}
 .active3 {
   background: linear-gradient(
     83.56deg,

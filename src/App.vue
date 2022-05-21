@@ -35,6 +35,26 @@ export default {
 </script>
 
 <style>
+.not__added {
+  padding-bottom: 150px;
+}
+.filter__name__standart {
+  font-weight: 600;
+  font-size: 20px;
+  color: #2d3748;
+  text-align: left;
+}
+input[type="date"] {
+  width: 191px;
+  height: 40.39px;
+}
+input[type="date"]::-webkit-calendar-picker-indicator {
+  color: #2d3748;
+  position: relative;
+  opacity: 1;
+  cursor: pointer;
+  font-size: 27px;
+}
 .form-select:hover:focus {
   background-image: url(@/assets/img/arrow__flip.svg) !important;
   transition: 0.3s;

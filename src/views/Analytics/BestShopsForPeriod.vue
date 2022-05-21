@@ -70,7 +70,6 @@
         <div class="table__inputs d-flex gap-3 align-content-center">
           <print-button></print-button>
           <download-button></download-button>
-          <filters-button></filters-button>
         </div>
       </div>
       <div class="best__products">
@@ -130,7 +129,7 @@
         </div>
       </div>
       <div class="order__table__body mt-4">
-        <table class="table table-hover table-striped">
+        <table class="table table-hover">
           <thead>
             <tr>
               <th scope="col" class="th__col">№</th>
@@ -247,14 +246,14 @@ export default {
 <style scoped>
 .top__number3 {
   position: absolute;
-  left: 17.806vw;
-  top: 0.781vw;
+  right: -10px;
+  top: 0.9vw;
   opacity: 0.1;
 }
 
 .top__number2 {
   position: absolute;
-  left: 17.72vw;
+  right: -5px;
   top: 0.938vw;
   opacity: 0.2;
 }
@@ -331,6 +330,7 @@ export default {
   box-shadow: 0px 4px 6px -1px rgba(0, 0, 0, 0.12),
     0px 2px 4px -1px rgba(0, 0, 0, 0.07);
   border-radius: 8px;
+  overflow: hidden;
 }
 
 .best__products {

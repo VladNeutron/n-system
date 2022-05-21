@@ -19,91 +19,72 @@
             </div>
           </div>
           <div class="order__body">
-            <div class="row">
-              <div class="col-8">
-                <div class="order__body__content">
-                  <div class="order__first__row">
-                    <div class="form-group">
-                      <label
-                        for="example-text-input"
-                        class="form-control-label order__label"
-                        >№ Поступления</label
-                      >
-                      <input
-                        class="form-control"
-                        type="text"
-                        id="example-text-input"
-                        placeholder="№ 9876543"
-                      />
-                    </div>
-                    <div class="form-group">
-                      <label
-                        for="example-date-input"
-                        class="form-control-label order__label"
-                        >Дата поступления</label
-                      >
-                      <input
-                        class="form-control"
-                        type="date"
-                        id="example-date-input"
-                      />
-                    </div>
-                    <div class="form-group">
-                      <label
-                        for="exampleFormControlSelect1"
-                        class="order__label"
-                        >Ответственный</label
-                      >
-                      <div class="select">
-                        <select
-                          class="form-select"
-                          id="exampleFormControlSelect1"
-                        >
-                          <option>Выберите</option>
-                          <option>Иванов И.</option>
-                          <option>Иванов И.</option>
-                          <option>Иванов И.</option>
-                          <option>Иванов И.</option>
-                        </select>
-                      </div>
-                    </div>
-                    <div class="form-group">
-                      <label
-                        for="exampleFormControlSelect1"
-                        class="order__label"
-                        >Склад</label
-                      >
-                      <div class="select">
-                        <select
-                          class="form-select"
-                          id="exampleFormControlSelect1"
-                        >
-                          <option>Выберите</option>
-                          <option>Склад 1</option>
-                          <option>Склад 1</option>
-                          <option>Склад 1</option>
-                          <option>Склад 1</option>
-                        </select>
-                      </div>
-                    </div>
-                    <div class="form-group">
-                      <label
-                        for="exampleFormControlSelect1"
-                        class="order__label"
-                        >Контрагент</label
-                      >
-                      <div class="select">
-                        <select
-                          class="form-select"
-                          id="exampleFormControlSelect1"
-                        >
-                          <option>Выберите</option>
-                          <option>Безналичный расчет</option>
-                          <option>Наличный расчет</option>
-                          <option>Оплата онлайн</option>
-                        </select>
-                      </div>
-                    </div>
+            <div class="order__body__content">
+              <div class="order__first__row">
+                <div class="form-group">
+                  <label
+                    for="example-text-input"
+                    class="form-control-label order__label"
+                    >№ Поступления</label
+                  >
+                  <input
+                    class="form-control"
+                    type="text"
+                    id="example-text-input"
+                    placeholder="№ 9876543"
+                  />
+                </div>
+                <div class="form-group">
+                  <label
+                    for="example-date-input"
+                    class="form-control-label order__label"
+                    >Дата поступления</label
+                  >
+                  <input
+                    class="form-control"
+                    type="date"
+                    id="example-date-input"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="exampleFormControlSelect1" class="order__label"
+                    >Ответственный</label
+                  >
+                  <div class="select">
+                    <select class="form-select" id="exampleFormControlSelect1">
+                      <option>Выберите</option>
+                      <option>Иванов И.</option>
+                      <option>Иванов И.</option>
+                      <option>Иванов И.</option>
+                      <option>Иванов И.</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="exampleFormControlSelect1" class="order__label"
+                    >Склад</label
+                  >
+                  <div class="select">
+                    <select class="form-select" id="exampleFormControlSelect1">
+                      <option>Выберите</option>
+                      <option>Склад 1</option>
+                      <option>Склад 1</option>
+                      <option>Склад 1</option>
+                      <option>Склад 1</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="exampleFormControlSelect1" class="order__label"
+                    >Контрагент</label
+                  >
+                  <div class="select">
+                    <select class="form-select" id="exampleFormControlSelect1">
+                      <option>Выберите</option>
+                      <option>Безналичный расчет</option>
+                      <option>Наличный расчет</option>
+                      <option>Оплата онлайн</option>
+                    </select>
                   </div>
                 </div>
               </div>
@@ -152,7 +133,7 @@
               <img src="@/assets/img/add.png" style="width: 6.667vw" alt="" />
               <p class="not__added__main">Товары не выбраны</p>
               <p class="not__added__sec">
-                Для того чтобы создать заказ, необходимо<br />
+                Для того чтобы создать поступление, необходимо<br />
                 выбрать товары из списка
               </p>
               <button class="btn btn__chose">Выбрать из списка</button>
@@ -682,7 +663,6 @@
   background: #f8f9fa;
   border-radius: 12px;
   padding: 0.833vw 1.25vw 0.833vw 1.25vw;
-  width: 57.031vw;
 }
 
 .form-group {
@@ -779,10 +759,12 @@
 </style>
 
 <script>
+import InputsModal from "@/components/InputsModal.vue";
 import DiscountModal from "@/components/DiscountModal.vue";
 export default {
   components: {
     DiscountModal,
+    InputsModal,
   },
   methods: {
     test() {
