@@ -259,6 +259,7 @@
         >
       </div>
     </filters>
+    <delete-modal :title="'товара'" :text='`товар "Куртка зеленая"`'></delete-modal>
   </main>
 </template>
 

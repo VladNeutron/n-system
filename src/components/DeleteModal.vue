@@ -11,7 +11,7 @@
       <div class="modal-content">
         <div class="modal-header header-flex">
           <div style="text-align: left">
-            <p class="header__main">Удаление записи</p>
+            <p class="header__main">Удаление {{title}}</p>
             <p class="header__sec">Подтвердите свои действия</p>
           </div>
           <img
@@ -22,14 +22,17 @@
           />
         </div>
         <div class="modal-body modal__padding">
-          <slot name="header">default header</slot>
+          <p class="modal__title">
+            Вы уверены, что хотите удалить {{text}}?
+          </p>
         </div>
         <div class="modal-footer">
           <div class="modal__btns">
-            <button
+            <button 
               type="button"
               class="del__btn btn btn-outline-dark"
               data-bs-dismiss="modal"
+              @click="$emit('delte-item-modal')"
             >
               Удалить
             </button>
@@ -48,7 +51,12 @@
 </template>
 
 <script>
-export default {};
+export default {
+  props: {
+    title: String,
+    text: String,
+  }
+};
 </script>
 <style>
 .header__sec {
@@ -108,7 +116,7 @@ export default {};
 }
 .modal__padding {
   padding-top: 1.563vw;
-  padding-left: 6.667vw;
+  padding-left: 5.367vw;
   padding-right: 6.667vw;
 }
 .modal__title {

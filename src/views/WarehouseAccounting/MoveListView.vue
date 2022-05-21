@@ -148,13 +148,7 @@
         </div>
       </div>
     </div>
-    <delete-modal>
-      <template #header>
-        <p class="modal__title">
-          Вы уверены, что хотите удалить документ “Перемещение №1”?
-        </p>
-      </template>
-    </delete-modal>
+    <delete-modal :title="'перемещения'" :text='`документ "Перемещение №23"`'></delete-modal>
     <filters>
       <div class="filters__period__flex">
         <div class="filter__name__standart">Выберите период</div>

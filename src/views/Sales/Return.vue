@@ -241,6 +241,7 @@
       <option value=""></option>
     </select>
   </the-filter>
+  <delete-modal :title="'возврата'" :text='`документ "Возврат №12154"`'></delete-modal>
 </template>
 
 <script>

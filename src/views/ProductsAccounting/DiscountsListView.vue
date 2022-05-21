@@ -161,6 +161,7 @@
     </div>
     <Filters></Filters>
     <select-product-discount></select-product-discount>
+    <delete-modal :title="'скидки'" :text='`скидку "Скидка №1"`'></delete-modal>
   </main>
 </template>
 

@@ -102,11 +102,21 @@
               <td>{{ order.sum }}</td>
 
               <td style="padding-right: 27px">
-                <img
-                  src="@/assets/img/dots.svg"
-                  style="width: 1.563vw; cursor: pointer"
-                  alt=""
-                />
+                <div class="dropdown">
+                          <img
+                            src="@/assets/img/dots.svg"
+                            style="width: 1.563vw; cursor: pointer"
+                            alt=""
+                          />
+                          <div class="dropdown-content">
+                            <a
+                              style="cursor: pointer"
+                              data-bs-toggle="modal"
+                              data-bs-target="#DeleteInv"
+                              >Удалить</a
+                            >
+                          </div>
+                  </div>
               </td>
             </tr>
           </tbody>
@@ -201,12 +211,13 @@
     <p class="text-start my-2 fw-bold" for="marketplace">Торговая точка</p>
     <select class="form-select" v-model="filterMarketPlace">
       <option value="" disabled>Выберите торговую точку</option>
-      <option v-for="marketplace of orderMarketplaceList" :key="cashier">
+      <option v-for="marketplace of orderMarketplaceList" :key="marketplace">
         {{ marketplace }}
       </option>
       <option value=""></option>
     </select>
   </the-filter>
+  <delete-modal :title="'чека'" :text='`чек "Чек №1213215"`'></delete-modal>
 </template>
 
 <script>

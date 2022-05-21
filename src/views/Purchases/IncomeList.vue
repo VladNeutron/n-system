@@ -173,6 +173,7 @@
         </div>
       </div>
     </div>
+    <delete-modal :title="'поступления'" :text='`документ "Поступление №12132415"`'></delete-modal>
   </main>
 </template>
 

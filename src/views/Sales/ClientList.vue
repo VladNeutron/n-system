@@ -320,17 +320,19 @@
       <template #footer>
         <div class="clients__footer">
           <button class="btn clients__save">Сохранить</button>
-          <button class="btn clients__delete" v-if="isEdit == 'yes'">
+          <button class="btn clients__delete" data-bs-toggle="modal" data-bs-target="#DeleteInv" v-if="isEdit == 'yes'">
             Удалить клиента
           </button>
         </div>
       </template>
     </inputs-modal>
+    <delete-modal :title="'возврата'" :text='`клиента "Курочкин Василий Петрович"`'></delete-modal>
   </main>
 </template>
 
 <script>
 import InputsModal from "@/components/InputsModal.vue";
+import {CloseInvModal} from "@/assets/js/closeModalDeleteOpen";
 export default {
   components: {
     InputsModal,
@@ -426,6 +428,9 @@ export default {
       });
     },
   },
+  mounted(){
+    CloseInvModal();
+  }
 };
 </script>
 
