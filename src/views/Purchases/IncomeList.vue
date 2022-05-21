@@ -43,7 +43,7 @@
               </div>
             </div>
             <div class="page__table">
-              <table class="table table-hover">
+              <table class="table table-hover table-striped">
                 <thead>
                   <tr class="">
                     <th
@@ -173,7 +173,10 @@
         </div>
       </div>
     </div>
-    <delete-modal :title="'поступления'" :text='`документ "Поступление №12132415"`'></delete-modal>
+    <delete-modal
+      :title="'поступления'"
+      :text="`документ &quot;Поступление №12132415&quot;`"
+    ></delete-modal>
   </main>
 </template>
 
