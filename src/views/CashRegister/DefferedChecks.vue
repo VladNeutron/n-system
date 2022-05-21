@@ -59,7 +59,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr v-for="(order, i) of orders" :key="order.checkId">
+            <tr v-for="(order, i) of filteredOrders" :key="order.checkId">
               <th scope="row">
                 <div class="form-check">
                   <input
@@ -75,7 +75,7 @@
               <td>{{ order.date }}</td>
               <td>{{ order.cashier }}</td>
               <td>
-                {{ order.trPoint }}
+                {{ order.marketplace }}
               </td>
               <td>{{ order.amount }}</td>
               <td>{{ order.sum }}</td>
@@ -144,7 +144,47 @@
         </div>
       </div>
     </div>
-    <the-filter></the-filter>
+    <the-filter @no-filter="cancelFilters">
+      <div class="filters__period__flex">
+        <div class="filter__name__standart">Выберите период</div>
+        <div class="reset__date">Сбросить период</div>
+      </div>
+      <div class="filters__period">
+        <div class="form-group mb-0">
+          <input
+            class="form-control period__s"
+            type="date"
+            id="example-date-input"
+          />
+        </div>
+        <div>
+          <img src="@/assets/img/line.svg" style="width: 1.927vw" alt="" />
+        </div>
+        <div class="form-group mb-0">
+          <input
+            class="form-control period__s"
+            type="date"
+            id="example-date-input"
+          />
+        </div>
+      </div>
+      <p class="text-start my-2 fw-bold" for="cashier">Кассир</p>
+      <select class="form-select" v-model="filterCashier">
+        <option value="" disabled>Выберите кассира</option>
+        <option v-for="cashier of orderCashierList" :key="cashier">
+          {{ cashier }}
+        </option>
+        <option value=""></option>
+      </select>
+      <p class="text-start my-2 fw-bold" for="marketplace">Торговая точка</p>
+      <select class="form-select" v-model="filterMarketPlace">
+        <option value="" disabled>Выберите торговую точку</option>
+        <option v-for="marketplace of orderMarketplaceList" :key="cashier">
+          {{ marketplace }}
+        </option>
+        <option value=""></option>
+      </select>
+    </the-filter>
   </main>
 </template>
 
@@ -160,7 +200,7 @@ export default {
           checkId: 1213215,
           date: "11 ноя, 2021 19:23",
           cashier: "Тихонова А.Р.",
-          trPoint: "ТРЦ Москва",
+          marketplace: "ТРЦ Москва",
           amount: 8,
           sum: 12000,
         },
@@ -168,7 +208,7 @@ export default {
           checkId: 1213215,
           date: "11 ноя, 2021 19:23",
           cashier: "Тихонова А.Р.",
-          trPoint: "ТРЦ Москва",
+          marketplace: "ТРЦ Москва",
           amount: 8,
           sum: 12000,
         },
@@ -176,7 +216,7 @@ export default {
           checkId: 1213215,
           date: "11 ноя, 2021 19:23",
           cashier: "Тихонова А.Р.",
-          trPoint: "ТРЦ Москва",
+          marketplace: "ТРЦ Москва",
           amount: 8,
           sum: 12000,
         },
@@ -184,7 +224,7 @@ export default {
           checkId: 1213215,
           date: "11 ноя, 2021 19:23",
           cashier: "Тихонова А.Р.",
-          trPoint: "ТРЦ Москва",
+          marketplace: "ТРЦ Москва",
           amount: 8,
           sum: 12000,
         },
@@ -192,7 +232,7 @@ export default {
           checkId: 1213215,
           date: "11 ноя, 2021 19:23",
           cashier: "Тихонова А.Р.",
-          trPoint: "ТРЦ Москва",
+          marketplace: "ТРЦ Москва",
           amount: 8,
           sum: 12000,
         },
@@ -200,38 +240,42 @@ export default {
           checkId: 1213215,
           date: "11 ноя, 2021 19:23",
           cashier: "Тихонова А.Р.",
-          trPoint: "ТРЦ Москва",
+          marketplace: "ТРЦ Москва",
           amount: 8,
           sum: 12000,
         },
       ],
+      filterCashier: "",
+      filterMarketPlace: "",
     };
   },
   methods: {
-    getClass(stat) {
-      return stat === "new"
-        ? "bg-gradient-info"
-        : stat === "in-process"
-        ? "bg-gradient-primary"
-        : stat === "refused"
-        ? "bg-gradient-danger"
-        : stat === "processed"
-        ? "bg-gradient-success"
-        : "bg-gradient-warning";
-    },
-    normalizeStatusName(name) {
-      const statusMap = {
-        new: "Новый возврат",
-        "in-process": "В обработке",
-        refused: "Отказ",
-        approved: "Одобрен",
-        processed: "Оформлен",
-      };
-      return statusMap[name] || "Статус не найден";
+    cancelFilters() {
+      this.filterCashier = "";
+      this.filterMarketPlace = "";
     },
     createFilteredSet(key) {
       const unfiltered = this.orders.map((obj) => obj[key]);
       return [...new Set(unfiltered)];
+    },
+  },
+  computed: {
+    orderCashierList() {
+      return this.createFilteredSet("cashier");
+    },
+    orderMarketplaceList() {
+      return this.createFilteredSet("marketplace");
+    },
+    filteredOrders() {
+      return this.orders.filter(
+        (order) =>
+          (this.filterCashier === ""
+            ? true
+            : order.cashier === this.filterCashier) &&
+          (this.filterMarketPlace === ""
+            ? true
+            : order.marketplace === this.filterMarketPlace)
+      );
     },
   },
   components: {
@@ -283,6 +327,35 @@ td {
 
 .pagination {
   align-self: end;
+}
+.period__s {
+  width: 191px !important;
+}
+.reset__date {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 19px;
+  display: flex;
+
+  letter-spacing: -0.387234px;
+  text-decoration-line: underline;
+
+  /* Black for text */
+  color: #2d3748;
+}
+.filters__period {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  align-items: baseline;
+  margin-top: 0.833vw;
+  margin-bottom: 0.833vw;
+}
+.filters__period__flex {
+  display: flex !important;
+  justify-content: space-between;
+  align-items: center;
 }
 @media screen and (max-width: 1600px) {
   .btn {
