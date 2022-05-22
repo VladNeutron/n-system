@@ -168,14 +168,27 @@
         </table>
       </div>
     </div>
-    <filters></filters>
+    <the-filter @no-filter="cancelFilters">
+      <h1>Пока невозможно сделать фильтр</h1>
+      <p class="text-start my-2 fw-bold" for="category">Категория</p>
+      <select class="form-select">
+        <option value="" disabled>Выберите категории</option>
+
+        <option value=""></option>
+      </select>
+      <p class="text-start my-2 fw-bold" for="warehouse">Склад</p>
+      <select class="form-select">
+        <option value="" disabled>Выберите склад</option>
+
+        <option value=""></option>
+      </select>
+    </the-filter>
   </main>
 </template>
 
 <script>
 import Filters from "@/components/Filters.vue";
 export default {
-  components: { Filters },
   data() {
     return {
       activeBtn: 1,
@@ -230,6 +243,9 @@ export default {
         },
       ],
     };
+  },
+  components: {
+    "the-filter": Filters,
   },
 };
 </script>
@@ -395,6 +411,7 @@ export default {
   font-weight: 400;
   color: gray;
 }
+
 @media screen and (max-width: 1600px) {
   .btn {
     font-size: 12px !important;

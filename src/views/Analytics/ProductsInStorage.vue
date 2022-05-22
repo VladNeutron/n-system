@@ -18,10 +18,32 @@
               <div class="search__menu-left d-flex gap-4">
                 <div
                   class="form-group m-0 d-flex flex-column align-items-start"
-                  style="width: 200px"
+                  style="width: 307px"
                 >
-                  <label for="search">Выберите склад</label>
-                  <select class="form-select form_s2" v-model="selected">
+                  <label for="search" class="custom__label"
+                    >Список товаров</label
+                  >
+                  <div class="input-group mt-1">
+                    <span class="input-group-text"
+                      ><img src="@/assets/css/icons/searchIcon.svg" alt="" />
+                    </span>
+                    <input
+                      class="form-control"
+                      placeholder="Поиск..."
+                      id="search"
+                      type="text"
+                      v-model.trim="search"
+                    />
+                  </div>
+                </div>
+                <div
+                  class="form-group m-0 mt-1 d-flex flex-column align-items-start"
+                  style="width: 393px"
+                >
+                  <label for="search" class="custom__label"
+                    >Выберите склад</label
+                  >
+                  <select class="form-select form__adapt" v-model="selected">
                     <option
                       v-for="(warehouse, i) in warehousesArr"
                       :key="i"
@@ -35,35 +57,17 @@
                 </div>
               </div>
               <div class="search__menu-right d-flex align-items-end gap-4">
-                <div
-                  class="form-group m-0 d-flex flex-column align-items-start"
-                >
-                  <label for="search">Поиск товаров</label>
-                  <div class="input-group mt-1">
-                    <span class="input-group-text"
-                      ><img src="@/assets/css/icons/searchIcon.svg" alt="" />
-                    </span>
-                    <input
-                      class="form-control form__size"
-                      placeholder="Поиск..."
-                      id="search"
-                      type="text"
-                      v-model.trim="search"
-                    />
-                  </div>
-                </div>
-
                 <filters-button></filters-button>
                 <export-button></export-button>
               </div>
             </div>
             <div class="table__body">
-              <table class="table table-hover text-center">
+              <table class="table table-hover text-center table-striped">
                 <thead>
                   <tr>
                     <th scope="col" class="">№</th>
                     <th scope="col" class="">Товар</th>
-                    <th scope="col" class="">Штрихкод</th>
+                    <th scope="col" class="">Артикул</th>
                     <th scope="col" class="">Цвет</th>
                     <th scope="col" class="">Размер</th>
                     <th scope="col" class="">Склад</th>

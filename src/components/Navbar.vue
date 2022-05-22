@@ -332,6 +332,27 @@
                   <span class="sidenav-normal">Продажи по кассе </span>
                 </router-link>
               </li>
+
+              <li class="nav-item">
+                <router-link :to="{ name: 'return-checks' }" class="nav-link">
+                  <span class="sidenav-mini-icon"> В </span>
+                  <span class="sidenav-normal">Список возвратов </span>
+                </router-link>
+              </li>
+
+              <li class="nav-item">
+                <router-link :to="{ name: 'checks-list' }" class="nav-link">
+                  <span class="sidenav-mini-icon"> Ч </span>
+                  <span class="sidenav-normal">Список чеков </span>
+                </router-link>
+              </li>
+
+              <li class="nav-item">
+                <router-link :to="{ name: 'deffered-checks' }" class="nav-link">
+                  <span class="sidenav-mini-icon"> О </span>
+                  <span class="sidenav-normal">Отложенные чеки </span>
+                </router-link>
+              </li>
             </ul>
           </div>
         </li>
