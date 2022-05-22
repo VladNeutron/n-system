@@ -7,7 +7,7 @@
         <div class="order__header-content">
           <div class="order__header-main">
             <div class="order__header-text">
-              <p class="order__header__main">Возврат №2354657</p>
+              <p class="order__header__main">Создание счета</p>
               <p class="order__header__sec">
                 Настройте все параметры и нажмите “Сохранить”
               </p>
@@ -21,75 +21,66 @@
           <div class="order__body">
             <div class="order__body__content">
               <div class="order__first__row">
-                <div class="form-group" v-if="isSelected">
+                <div class="form-group">
                   <label
                     for="example-text-input"
                     class="form-control-label order__label"
-                    >№ возврата</label
+                    >№ Счета</label
                   >
                   <input
-                    disabled
                     class="form-control"
                     type="text"
                     id="example-text-input"
-                    :value="message"
-                  />
-                </div>
-                <div class="form-group" v-if="!isSelected">
-                  <label
-                    for="example-text-input"
-                    class="form-control-label order__label"
-                    >№ возврата</label
-                  >
-                  <input
+                    value="№2354657"
+                    style="width: 191px"
                     disabled
-                    data-bs-toggle="modal"
-                    data-bs-target="#InpModal"
-                    class="form-control"
-                    type="text"
-                    id="example-text-input"
-                    placeholder="Выберите поступление"
-                    style="cursor: pointer"
-                    :value="message"
                   />
                 </div>
                 <div class="form-group">
                   <label
-                    for="example-date-input"
+                    for="example-datetime-local-input"
                     class="form-control-label order__label"
-                    >Дата поступления</label
+                    >Дата и время</label
                   >
                   <input
+                    style="width: 301px"
                     class="form-control"
-                    type="date"
-                    id="example-date-input"
+                    type="datetime-local"
+                    value="2018-11-23T10:30:00"
+                    id="example-datetime-local-input"
                   />
                 </div>
                 <div class="form-group">
                   <label for="exampleFormControlSelect1" class="order__label"
-                    >Ответственный</label
+                    >Организация</label
                   >
                   <div class="select">
-                    <select class="form-select" id="exampleFormControlSelect1">
+                    <select
+                      class="form-select"
+                      id="exampleFormControlSelect1"
+                      style="width: 247px"
+                    >
                       <option>Выберите</option>
-                      <option>Иванов И.</option>
-                      <option>Иванов И.</option>
-                      <option>Иванов И.</option>
-                      <option>Иванов И.</option>
+                      <option>ТОО “Ромашка”</option>
+                      <option>ТОО “Ромашка”</option>
+                      <option>ТОО “Ромашка”</option>
+                      <option>ТОО “Ромашка”</option>
                     </select>
                   </div>
                 </div>
                 <div class="form-group">
                   <label for="exampleFormControlSelect1" class="order__label"
-                    >Склад</label
+                    >Счет организации</label
                   >
                   <div class="select">
-                    <select class="form-select" id="exampleFormControlSelect1">
+                    <select
+                      class="form-select"
+                      id="exampleFormControlSelect1"
+                      style="width: 214px"
+                    >
                       <option>Выберите</option>
-                      <option>Склад 1</option>
-                      <option>Склад 1</option>
-                      <option>Склад 1</option>
-                      <option>Склад 1</option>
+                      <option>Какой-то банк</option>
+                      <option>Какой-то банк</option>
                     </select>
                   </div>
                 </div>
@@ -98,24 +89,102 @@
                     >Контрагент</label
                   >
                   <div class="select">
-                    <select class="form-select" id="exampleFormControlSelect1">
-                      <option>Выберите</option>
+                    <select
+                      class="form-select"
+                      id="exampleFormControlSelect1"
+                      style="width: 214px"
+                    >
+                      <option>Выберите контрагента</option>
                       <option>ТОО “Ромашка”</option>
-                      <option>ТОО “Ромашка”</option>
-                      <option>ТОО “Ромашка”</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <div class="order__first__row">
+                <div class="form-group">
+                  <label
+                    for="example-text-input"
+                    class="form-control-label order__label"
+                    >Договор</label
+                  >
+                  <input
+                    class="form-control"
+                    type="text"
+                    id="example-text-input"
+                    value="Договор №1 от 12.02.22"
+                    style="width: 276px"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="exampleFormControlSelect1" class="order__label"
+                    >Вид номенклатуры</label
+                  >
+                  <div class="select">
+                    <select
+                      class="form-select"
+                      id="exampleFormControlSelect1"
+                      style="width: 169px"
+                    >
+                      <option>Товар</option>
+                      <option>Товар</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label
+                    for="example-text-input"
+                    class="form-control-label order__label"
+                    >КНП</label
+                  >
+                  <input
+                    class="form-control"
+                    type="text"
+                    id="example-text-input"
+                    value="710"
+                    style="width: 169px"
+                  />
+                </div>
+                <div class="form-group">
+                  <label
+                    for="example-text-input"
+                    class="form-control-label order__label"
+                    >Накладная</label
+                  >
+                  <input
+                    class="form-control"
+                    type="text"
+                    id="example-text-input"
+                    value="Накладная №4 от 22.02.2022"
+                    style="width: 225px"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="exampleFormControlSelect1" class="order__label"
+                    >Ответственный</label
+                  >
+                  <div class="select">
+                    <select
+                      class="form-select"
+                      id="exampleFormControlSelect1"
+                      style="width: 248px"
+                    >
+                      <option>Иванов Иван Иванович</option>
+                      <option>Иванов Иван Иванович</option>
                     </select>
                   </div>
                 </div>
                 <div class="form-group">
                   <label for="exampleFormControlSelect1" class="order__label"
-                    >Поступление</label
+                    >Счет контрагента</label
                   >
                   <div class="select">
-                    <select class="form-select" id="exampleFormControlSelect1">
-                      <option>Выберите</option>
-                      <option>№123213 от 11.05.2022</option>
-                      <option>№123213 от 11.05.2022</option>
-                      <option>№123213 от 11.05.2022</option>
+                    <select
+                      class="form-select"
+                      id="exampleFormControlSelect1"
+                      style="width: 214px"
+                    >
+                      <option>Какой-то счёт 2</option>
+                      <option>Какой-то счёт 2</option>
                     </select>
                   </div>
                 </div>
@@ -144,13 +213,6 @@
               <button class="btn barcode__btn">Выбрать из списка</button>
             </div>
             <div class="search">
-              <button
-                class="btn disc__btn"
-                data-bs-toggle="modal"
-                data-bs-target="#InpModal"
-              >
-                Ввести номер поступления
-              </button>
               <div class="form-group m-0">
                 <div class="input-group mt-1">
                   <span class="input-group-text"
@@ -188,7 +250,6 @@
                   <th scope="col" class="th__col">Цвет</th>
                   <th scope="col" class="th__col">Размер</th>
                   <th scope="col" class="th__col">Себестоимость</th>
-                  <th scope="col" class="th__col">Цена продажи</th>
                   <th scope="col" class="th__col">Кол-во</th>
                   <th scope="col" class="th__col">Сумма</th>
                   <th scope="col" class="th__col">Действия</th>
@@ -218,7 +279,6 @@
                     {{ item.size }}
                   </td>
                   <td>{{ item.costPrice }} ₸</td>
-                  <td>{{ item.price }} ₸</td>
                   <td>
                     {{ item.count }}
                   </td>
@@ -334,178 +394,10 @@
         </div>
       </div>
     </div>
-    <InputsModal>
-      <template #head>
-        <div style="text-align: left">
-          <p class="header__main">Возврат по номеру поступления</p>
-          <p class="header__sec">Введите номер заказа и нажмите “Добавить”</p>
-        </div>
-      </template>
-      <template #body>
-        <div class="form-group label__text" style="text-align: left">
-          <label for="exampleFormControlInput1" class="label__text"
-            >Номер поступления</label
-          >
-          <div class="d-flex">
-            <input
-              type="number"
-              class="form-control modal__inp w-100"
-              id="exampleFormControlInput1"
-              placeholder="Введите номер поступления"
-            />
-          </div>
-        </div>
-      </template>
-      <template #footer>
-        <div class="footer__btn">
-          <button class="footer__button" @click="addNumber">Добавить</button>
-        </div>
-      </template></InputsModal
-    >
   </main>
 </template>
-<script>
-import DiscountModal from "@/components/DiscountModal.vue";
-import InputsModal from "../../components/InputsModal.vue";
-export default {
-  components: {
-    DiscountModal,
-    InputsModal,
-  },
-  methods: {
-    test() {
-      alert("Успех");
-    },
-    addNumber() {
-      this.message = document.getElementById("exampleFormControlInput1").value;
-      this.isSelected = true;
-      $("#InpModal").modal("hide");
-    },
-  },
-  data() {
-    return {
-      message: "",
-      isPickup: true,
-      onStorage: "yes",
-      items: [
-        {
-          img: require("@/assets/img/tshirt.png"),
-          barcode: "876543456",
-          name: "Куртка зеленая",
-          color: "Белый",
-          size: "S",
-          costPrice: 12000,
-          price: 29000,
-          count: 2,
-          disc: "нет",
-        },
-        {
-          img: require("@/assets/img/tshirt.png"),
-          barcode: "2146543456",
-          name: "Куртка Черная",
-          color: "Белый",
-          size: "S",
-          costPrice: 12000,
-          price: 29000,
-          count: 3,
-          disc: "нет",
-        },
-        {
-          img: require("@/assets/img/tshirt.png"),
-          barcode: "5246543456",
-          name: "Куртка Белая",
-          color: "Белый",
-          size: "S",
-          costPrice: 12000,
-          price: 29000,
-          count: 1,
-          disc: "нет",
-        },
-        {
-          img: require("@/assets/img/tshirt.png"),
-          barcode: "876543456",
-          name: "Куртка зеленая",
-          color: "Белый",
-          size: "S",
-          costPrice: 12000,
-          price: 29000,
-          count: 2,
-          disc: "нет",
-        },
-        {
-          img: require("@/assets/img/tshirt.png"),
-          barcode: "876543456",
-          name: "Куртка зеленая",
-          color: "Белый",
-          size: "S",
-          costPrice: 12000,
-          price: 29000,
-          count: 2,
-          disc: "нет",
-        },
-        {
-          img: require("@/assets/img/tshirt.png"),
-          barcode: "876543456",
-          name: "Куртка зеленая",
-          color: "Белый",
-          size: "S",
-          costPrice: 12000,
-          price: 29000,
-          count: 2,
-          disc: "нет",
-        },
-        {
-          img: require("@/assets/img/tshirt.png"),
-          barcode: "876543456",
-          name: "Куртка зеленая",
-          color: "Белый",
-          size: "S",
-          costPrice: 12000,
-          price: 29000,
-          count: 2,
-          disc: "нет",
-        },
-        {
-          img: require("@/assets/img/tshirt.png"),
-          barcode: "876543456",
-          name: "Куртка зеленая",
-          color: "Белый",
-          size: "S",
-          costPrice: 12000,
-          price: 29000,
-          count: 2,
-          disc: "нет",
-        },
-      ],
-      search: "",
-      isAdded: false,
-      isSelected: false,
-    };
-  },
-  computed: {
-    filteredProducts() {
-      return this.items.filter((item) => {
-        return (
-          item.name.toLowerCase().includes(this.search.toLowerCase()) ||
-          item.barcode.toString().includes(this.search.toLowerCase())
-        );
-      });
-    },
-  },
-};
-</script>
+
 <style scoped>
-.footer__button {
-  font-weight: 700;
-  font-size: 0.833vw;
-  color: #fff;
-  border: 0;
-  background: linear-gradient(81.62deg, #313860 2.25%, #151928 79.87%);
-  box-shadow: 0px 4px 7px -1px rgba(0, 0, 0, 0.11),
-    0px 2px 4px -1px rgba(0, 0, 0, 0.07);
-  border-radius: 8px;
-  padding: 0.729vw 5.906vw 0.729vw 5.906vw;
-}
 .not__added__main {
   font-weight: 600;
   font-size: 1.25vw;
@@ -579,12 +471,14 @@ export default {
   font-size: 1.042vw;
   color: #2d3748;
   margin: 0;
+  white-space: nowrap;
 }
 
 .order__ready__sum {
   font-weight: 800;
   font-size: 1.4vw;
   color: #2d3748;
+  white-space: nowrap;
 }
 
 .order__ready_block {
@@ -647,6 +541,7 @@ export default {
   display: flex;
   justify-content: center;
 }
+
 .search__buttons {
   margin-top: 0.7vw;
 }
@@ -714,7 +609,7 @@ export default {
 }
 
 .order__table__body {
-  height: 21.992vw;
+  height: 18.792vw;
   overflow-y: scroll;
 }
 
@@ -831,6 +726,7 @@ export default {
   font-size: 1vw;
   color: #2d3748;
   margin: 0;
+  white-space: nowrap;
 }
 
 .order__ready__main {
@@ -838,6 +734,7 @@ export default {
   font-size: 1.042vw;
   color: #2d3748;
   margin: 0;
+  white-space: nowrap;
 }
 
 .order__ready__text {
@@ -854,7 +751,7 @@ export default {
 }
 
 .second__s {
-  width: 21.198vw !important;
+  width: 21.615vw !important;
 }
 
 .first__s {
@@ -997,3 +894,125 @@ export default {
   }
 }
 </style>
+
+<script>
+import DiscountModal from "@/components/DiscountModal.vue";
+export default {
+  components: {
+    DiscountModal,
+  },
+  methods: {
+    test() {
+      alert("Успех");
+    },
+  },
+  data() {
+    return {
+      isPickup: true,
+      onStorage: "yes",
+      items: [
+        {
+          img: require("@/assets/img/tshirt.png"),
+          barcode: "876543456",
+          name: "Куртка зеленая",
+          color: "Белый",
+          size: "S",
+          costPrice: 12000,
+          price: 29000,
+          count: 2,
+          disc: "нет",
+        },
+        {
+          img: require("@/assets/img/tshirt.png"),
+          barcode: "2146543456",
+          name: "Куртка Черная",
+          color: "Белый",
+          size: "S",
+          costPrice: 12000,
+          price: 29000,
+          count: 3,
+          disc: "нет",
+        },
+        {
+          img: require("@/assets/img/tshirt.png"),
+          barcode: "5246543456",
+          name: "Куртка Белая",
+          color: "Белый",
+          size: "S",
+          costPrice: 12000,
+          price: 29000,
+          count: 1,
+          disc: "нет",
+        },
+        {
+          img: require("@/assets/img/tshirt.png"),
+          barcode: "876543456",
+          name: "Куртка зеленая",
+          color: "Белый",
+          size: "S",
+          costPrice: 12000,
+          price: 29000,
+          count: 2,
+          disc: "нет",
+        },
+        {
+          img: require("@/assets/img/tshirt.png"),
+          barcode: "876543456",
+          name: "Куртка зеленая",
+          color: "Белый",
+          size: "S",
+          costPrice: 12000,
+          price: 29000,
+          count: 2,
+          disc: "нет",
+        },
+        {
+          img: require("@/assets/img/tshirt.png"),
+          barcode: "876543456",
+          name: "Куртка зеленая",
+          color: "Белый",
+          size: "S",
+          costPrice: 12000,
+          price: 29000,
+          count: 2,
+          disc: "нет",
+        },
+        {
+          img: require("@/assets/img/tshirt.png"),
+          barcode: "876543456",
+          name: "Куртка зеленая",
+          color: "Белый",
+          size: "S",
+          costPrice: 12000,
+          price: 29000,
+          count: 2,
+          disc: "нет",
+        },
+        {
+          img: require("@/assets/img/tshirt.png"),
+          barcode: "876543456",
+          name: "Куртка зеленая",
+          color: "Белый",
+          size: "S",
+          costPrice: 12000,
+          price: 29000,
+          count: 2,
+          disc: "нет",
+        },
+      ],
+      search: "",
+      isAdded: false,
+    };
+  },
+  computed: {
+    filteredProducts() {
+      return this.items.filter((item) => {
+        return (
+          item.name.toLowerCase().includes(this.search.toLowerCase()) ||
+          item.barcode.toString().includes(this.search.toLowerCase())
+        );
+      });
+    },
+  },
+};
+</script>

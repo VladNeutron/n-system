@@ -27,8 +27,7 @@ export default {
       filtersContainer.classList.add("filters__show");
     },
   },
-  mounted(){
-  }
+  mounted() {},
 };
 </script>
 
@@ -42,11 +41,22 @@ export default {
   color: #2d3748;
   text-align: left;
 }
+input[type="datetime-local"] {
+  width: 191px;
+  height: 40.39px;
+}
 input[type="date"] {
   width: 191px;
   height: 40.39px;
 }
 input[type="date"]::-webkit-calendar-picker-indicator {
+  color: #2d3748;
+  position: relative;
+  opacity: 1;
+  cursor: pointer;
+  font-size: 27px;
+}
+input[type="datetime-local"]::-webkit-calendar-picker-indicator {
   color: #2d3748;
   position: relative;
   opacity: 1;

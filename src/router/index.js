@@ -517,6 +517,30 @@ const routes = [
     component: () => import("../views/Accounting/AccDocs.vue"),
     meta: { NavLink: "Документы" },
   },
+  {
+    path: "/accounting/documents/invoice-list",
+    name: "documents",
+    component: () => import("../views/Accounting/InvoiceList.vue"),
+    meta: { NavLink: "Счет-фактуры" },
+  },
+  {
+    path: "/accounting/documents/create-invoice",
+    name: "create-invoice",
+    component: () => import("../views/Accounting/CreateInvoice.vue"),
+    meta: { NavLink: "Создание счет-фактуры" },
+  },
+  {
+    path: "/accounting/documents/accounts-list",
+    name: "accounts-list",
+    component: () => import("../views/Accounting/AccountsList.vue"),
+    meta: { NavLink: "Счета" },
+  },
+  {
+    path: "/accounting/documents/create-account",
+    name: "create-account",
+    component: () => import("../views/Accounting/CreateAccount.vue"),
+    meta: { NavLink: "Создание счета" },
+  },
   // БУХГАЛТЕРИЯ
 ];
 
