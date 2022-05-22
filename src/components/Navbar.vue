@@ -564,6 +564,64 @@
                   <span class="sidenav-normal">Имущество </span>
                 </router-link>
               </li>
+
+              <li class="nav-item">
+                <a
+                  class="nav-link"
+                  data-bs-toggle="collapse"
+                  aria-expanded="false"
+                  href="#documents"
+                >
+                  <span class="sidenav-mini-icon"> К </span>
+                  <span class="sidenav-normal"
+                    >Документы <b class="caret"></b
+                  ></span>
+                </a>
+
+                <div class="collapse" id="documents">
+                  <ul class="nav nav-sm flex-column">
+                    <li class="nav-item">
+                      <router-link
+                        :to="{ name: 'accounts-list' }"
+                        class="nav-link"
+                      >
+                        <span class="sidenav-mini-icon"> С </span>
+                        <span class="sidenav-normal">Счета</span>
+                      </router-link>
+                    </li>
+
+                    <li class="nav-item">
+                      <router-link
+                        :to="{ name: 'invoice-list' }"
+                        class="nav-link"
+                      >
+                        <span class="sidenav-mini-icon text-xs"> Ф </span>
+                        <span class="sidenav-normal">Счет-фактуры</span>
+                      </router-link>
+                    </li>
+
+                    <li class="nav-item">
+                      <router-link
+                        :to="{ name: 'acts-list' }"
+                        class="nav-link"
+                      >
+                        <span class="sidenav-mini-icon text-xs"> А </span>
+                        <span class="sidenav-normal">Акты</span>
+                      </router-link>
+                    </li>
+
+                    <li class="nav-item">
+                      <router-link
+                        :to="{ name: 'implementation-list' }"
+                        class="nav-link"
+                      >
+                        <span class="sidenav-mini-icon text-xs"> Р </span>
+                        <span class="sidenav-normal">Реализации</span>
+                      </router-link>
+                    </li>
+                  </ul>
+                </div>
+              </li>
             </ul>
           </div>
         </li>
