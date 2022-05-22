@@ -318,7 +318,7 @@
                 style="
                   text-align: left;
                   margin-right: 7.344vw;
-                  margin-left: 24px;
+                  margin-left: 147px;
                 "
               >
                 <p class="order__ready__main">Сумма</p>
@@ -1001,7 +1001,7 @@ export default {
         },
       ],
       search: "",
-      isAdded: false,
+      isAdded: true,
     };
   },
   computed: {
