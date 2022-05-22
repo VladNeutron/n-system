@@ -7,7 +7,7 @@
         <div class="order__header-content">
           <div class="order__header-main">
             <div class="order__header-text">
-              <p class="order__header__main">Создание счет-фактуры</p>
+              <p class="order__header__main">Редактирование акта №</p>
               <p class="order__header__sec">
                 Настройте все параметры и нажмите “Сохранить”
               </p>
@@ -25,14 +25,14 @@
                   <label
                     for="example-text-input"
                     class="form-control-label order__label"
-                    >№ Счета</label
+                    >№ Акта</label
                   >
                   <input
                     class="form-control"
                     type="text"
                     id="example-text-input"
                     value="№2354657"
-                    style="width: 159.994px"
+                    style="width: 191px"
                     disabled
                   />
                 </div>
@@ -43,7 +43,7 @@
                     >Дата и время</label
                   >
                   <input
-                    style="width: 210.01px"
+                    style="width: 301px"
                     class="form-control"
                     type="datetime-local"
                     value="2018-11-23T10:30:00"
@@ -58,29 +58,13 @@
                     <select
                       class="form-select"
                       id="exampleFormControlSelect1"
-                      style="width: 207.994px"
+                      style="width: 247px"
                     >
                       <option>Выберите</option>
                       <option>ТОО “Ромашка”</option>
                       <option>ТОО “Ромашка”</option>
                       <option>ТОО “Ромашка”</option>
                       <option>ТОО “Ромашка”</option>
-                    </select>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label for="exampleFormControlSelect1" class="order__label"
-                    >Счет организации</label
-                  >
-                  <div class="select">
-                    <select
-                      class="form-select"
-                      id="exampleFormControlSelect1"
-                      style="width: 174.01px"
-                    >
-                      <option>Выберите</option>
-                      <option>Какой-то банк</option>
-                      <option>Какой-то банк</option>
                     </select>
                   </div>
                 </div>
@@ -92,25 +76,10 @@
                     <select
                       class="form-select"
                       id="exampleFormControlSelect1"
-                      style="width: 199.008px"
+                      style="width: 214px"
                     >
                       <option>Выберите контрагента</option>
                       <option>ТОО “Ромашка”</option>
-                    </select>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label for="exampleFormControlSelect1" class="order__label"
-                    >Счет контрагента</label
-                  >
-                  <div class="select">
-                    <select
-                      class="form-select"
-                      id="exampleFormControlSelect1"
-                      style="width: 171px"
-                    >
-                      <option>Какой-то банк 2</option>
-                      <option>Какой-то банк 2</option>
                     </select>
                   </div>
                 </div>
@@ -125,83 +94,11 @@
                     type="text"
                     id="example-text-input"
                     value="Договор №1 от 12.02.22"
+                    style="width: 276px"
                   />
                 </div>
               </div>
               <div class="order__first__row">
-                <div class="form-group">
-                  <label for="exampleFormControlSelect1" class="order__label"
-                    >Условие оплаты</label
-                  >
-                  <div class="select">
-                    <select
-                      class="form-select"
-                      id="exampleFormControlSelect1"
-                      style="width: 158px"
-                    >
-                      <option>Наличные</option>
-                      <option>Наличные</option>
-                    </select>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label for="exampleFormControlSelect1" class="order__label"
-                    >Вид номенклатуры</label
-                  >
-                  <div class="select">
-                    <select
-                      class="form-select"
-                      id="exampleFormControlSelect1"
-                      style="width: 169px"
-                    >
-                      <option>Товар</option>
-                      <option>Товар</option>
-                    </select>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label for="exampleFormControlSelect1" class="order__label"
-                    >Вид отправления</label
-                  >
-                  <div class="select">
-                    <select
-                      class="form-select"
-                      id="exampleFormControlSelect1"
-                      style="width: 151px"
-                    >
-                      <option>Самовывоз</option>
-                      <option>Самовывоз</option>
-                    </select>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label
-                    for="example-text-input"
-                    class="form-control-label order__label"
-                    >Адрес</label
-                  >
-                  <input
-                    style="width: 210px"
-                    class="form-control"
-                    type="text"
-                    id="example-text-input"
-                    value="г.Алматы Аксай-2, д.39"
-                  />
-                </div>
-                <div class="form-group">
-                  <label
-                    for="example-text-input"
-                    class="form-control-label order__label"
-                    >Накладная</label
-                  >
-                  <input
-                    style="width: 225px"
-                    class="form-control"
-                    type="text"
-                    id="example-text-input"
-                    value="Накладная №4 от 22.02.2022"
-                  />
-                </div>
                 <div class="form-group">
                   <label for="exampleFormControlSelect1" class="order__label"
                     >Ответственный</label
@@ -210,7 +107,7 @@
                     <select
                       class="form-select"
                       id="exampleFormControlSelect1"
-                      style="width: 227px"
+                      style="width: 326px"
                     >
                       <option>Иванов Иван Иванович</option>
                       <option>Иванов Иван Иванович</option>
@@ -274,13 +171,11 @@
               <thead>
                 <tr>
                   <th scope="col" class="th__col">№</th>
-                  <th scope="col" class="th__col">Товар</th>
-                  <th scope="col" class="th__col">Артикул</th>
-                  <th scope="col" class="th__col">Цвет</th>
-                  <th scope="col" class="th__col">Размер</th>
-                  <th scope="col" class="th__col">Себестоимость</th>
+                  <th scope="col" class="th__col">Услуга</th>
+                  <th scope="col" class="th__col">дата выполнения работ</th>
                   <th scope="col" class="th__col">Кол-во</th>
-                  <th scope="col" class="th__col">Сумма</th>
+                  <th scope="col" class="th__col">Цена</th>
+                  <th scope="col" class="th__col">сумма</th>
                   <th scope="col" class="th__col">Действия</th>
                 </tr>
               </thead>
@@ -299,19 +194,13 @@
                     {{ item.name }}
                   </td>
                   <td>
-                    {{ item.barcode }}
+                    {{ item.date }}
                   </td>
-                  <td>
-                    {{ item.color }}
-                  </td>
-                  <td>
-                    {{ item.size }}
-                  </td>
-                  <td>{{ item.costPrice }} ₸</td>
                   <td>
                     {{ item.count }}
                   </td>
-                  <td>{{ item.price * item.count }} ₸</td>
+                  <td>{{ item.price }} ₸</td>
+                  <td>{{ item.count * item.price }} ₸</td>
                   <td>
                     <div class="dropdown">
                       <img
@@ -347,21 +236,17 @@
                 style="
                   text-align: left;
                   margin-right: 7.344vw;
-                  margin-left: 147px;
+                  margin-left: 146px;
                 "
               >
                 <p class="order__ready__main">Сумма</p>
                 <p class="order__ready__sec">280 000 ₸</p>
               </div>
-              <div style="text-align: left; margin-right: 5.208vw">
+              <div style="text-align: left; margin-right: 7.344vw">
                 <p class="order__ready__main">Кол-во товаров</p>
                 <p class="order__ready__sec">26 шт</p>
               </div>
-              <div style="text-align: left; margin-right: 5.208vw">
-                <p class="order__ready__main">Общая скидка</p>
-                <p class="order__ready__sec">10%</p>
-              </div>
-              <div style="text-align: left; margin-right: 5.208vw">
+              <div style="text-align: left; margin-right: 7.344vw">
                 <p class="order__ready__result">Итог</p>
                 <p class="order__ready__sum">320 000 ₸</p>
               </div>
@@ -946,95 +831,49 @@ export default {
       items: [
         {
           img: require("@/assets/img/tshirt.png"),
-          barcode: "876543456",
-          name: "Куртка зеленая",
-          color: "Белый",
-          size: "S",
-          costPrice: 12000,
+          name: "Услуга 1",
           price: 29000,
           count: 2,
-          disc: "нет",
+          date: "25.09.1998",
         },
         {
           img: require("@/assets/img/tshirt.png"),
-          barcode: "2146543456",
-          name: "Куртка Черная",
-          color: "Белый",
-          size: "S",
-          costPrice: 12000,
-          price: 29000,
-          count: 3,
-          disc: "нет",
-        },
-        {
-          img: require("@/assets/img/tshirt.png"),
-          barcode: "5246543456",
-          name: "Куртка Белая",
-          color: "Белый",
-          size: "S",
-          costPrice: 12000,
-          price: 29000,
-          count: 1,
-          disc: "нет",
-        },
-        {
-          img: require("@/assets/img/tshirt.png"),
-          barcode: "876543456",
-          name: "Куртка зеленая",
-          color: "Белый",
-          size: "S",
-          costPrice: 12000,
+          name: "Услуга 1",
           price: 29000,
           count: 2,
-          disc: "нет",
+          date: "25.09.1998",
         },
         {
           img: require("@/assets/img/tshirt.png"),
-          barcode: "876543456",
-          name: "Куртка зеленая",
-          color: "Белый",
-          size: "S",
-          costPrice: 12000,
+          name: "Услуга 1",
           price: 29000,
           count: 2,
-          disc: "нет",
+          date: "25.09.1998",
         },
         {
           img: require("@/assets/img/tshirt.png"),
-          barcode: "876543456",
-          name: "Куртка зеленая",
-          color: "Белый",
-          size: "S",
-          costPrice: 12000,
+          name: "Услуга 1",
           price: 29000,
           count: 2,
-          disc: "нет",
+          date: "25.09.1998",
         },
         {
           img: require("@/assets/img/tshirt.png"),
-          barcode: "876543456",
-          name: "Куртка зеленая",
-          color: "Белый",
-          size: "S",
-          costPrice: 12000,
+          name: "Услуга 1",
           price: 29000,
           count: 2,
-          disc: "нет",
+          date: "25.09.1998",
         },
         {
           img: require("@/assets/img/tshirt.png"),
-          barcode: "876543456",
-          name: "Куртка зеленая",
-          color: "Белый",
-          size: "S",
-          costPrice: 12000,
+          name: "Услуга 1",
           price: 29000,
           count: 2,
-          disc: "нет",
+          date: "25.09.1998",
         },
       ],
       search: "",
-      isAdded: true,
+      isAdded: false,
     };
   },
   computed: {

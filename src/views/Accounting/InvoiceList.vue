@@ -29,7 +29,7 @@
                   display: flex;
                   align-items: center;
                 "
-                onclick="window.location.href = '/sales/create-order'"
+                onclick="window.location.href = '/accounting/documents/create-invoice'"
               >
                 <img
                   src="@/assets/img/whtplus.svg"
@@ -98,7 +98,9 @@
                           alt=""
                         />
                         <div class="dropdown-content">
-                          <a href="/sales/order">Редактировать</a>
+                          <a href="/accounting/documents/edit-invoice"
+                            >Редактировать</a
+                          >
                           <hr />
                           <a
                             style="cursor: pointer"
@@ -247,8 +249,8 @@
     </select>
   </the-filter>
   <delete-modal
-    :title="'заказа'"
-    :text="`документ  &quot;Заказ №12132145&quot;`"
+    :title="'счет-фактуры'"
+    :text="`документ  &quot;счет-фактура №12132145&quot;`"
   ></delete-modal>
 </template>
 

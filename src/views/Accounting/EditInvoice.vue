@@ -7,7 +7,7 @@
         <div class="order__header-content">
           <div class="order__header-main">
             <div class="order__header-text">
-              <p class="order__header__main">Создание счет-фактуры</p>
+              <p class="order__header__main">Редактирование счет-фактуры №</p>
               <p class="order__header__sec">
                 Настройте все параметры и нажмите “Сохранить”
               </p>
@@ -1034,7 +1034,7 @@ export default {
         },
       ],
       search: "",
-      isAdded: true,
+      isAdded: false,
     };
   },
   computed: {
