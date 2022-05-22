@@ -171,7 +171,7 @@
               <thead>
                 <tr>
                   <th scope="col" class="th__col">№</th>
-                  <th scope="col" class="th__col">Товар</th>
+                  <th scope="col" class="th__col">Услуга</th>
                   <th scope="col" class="th__col">дата выполнения работ</th>
                   <th scope="col" class="th__col">Кол-во</th>
                   <th scope="col" class="th__col">Цена</th>
@@ -831,56 +831,42 @@ export default {
       items: [
         {
           img: require("@/assets/img/tshirt.png"),
-          name: "Куртка зеленая",
+          name: "Услуга 1",
           price: 29000,
           count: 2,
           date: "25.09.1998",
         },
         {
           img: require("@/assets/img/tshirt.png"),
-          name: "Куртка зеленая",
+          name: "Услуга 1",
           price: 29000,
           count: 2,
           date: "25.09.1998",
         },
         {
           img: require("@/assets/img/tshirt.png"),
-          name: "Куртка зеленая",
+          name: "Услуга 1",
           price: 29000,
           count: 2,
           date: "25.09.1998",
         },
         {
           img: require("@/assets/img/tshirt.png"),
-          name: "Куртка зеленая",
+          name: "Услуга 1",
           price: 29000,
           count: 2,
           date: "25.09.1998",
         },
         {
           img: require("@/assets/img/tshirt.png"),
-          name: "Куртка зеленая",
+          name: "Услуга 1",
           price: 29000,
           count: 2,
           date: "25.09.1998",
         },
         {
           img: require("@/assets/img/tshirt.png"),
-          name: "Куртка зеленая",
-          price: 29000,
-          count: 2,
-          date: "25.09.1998",
-        },
-        {
-          img: require("@/assets/img/tshirt.png"),
-          name: "Куртка зеленая",
-          price: 29000,
-          count: 2,
-          date: "25.09.1998",
-        },
-        {
-          img: require("@/assets/img/tshirt.png"),
-          name: "Куртка зеленая",
+          name: "Услуга 1",
           price: 29000,
           count: 2,
           date: "25.09.1998",
