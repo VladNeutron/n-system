@@ -132,7 +132,32 @@
       </div>
     </div>
     <checks-modal :product="modal.modalProductName"></checks-modal>
-    <filters></filters>
+    <Filter @no-filter="cancelFilters">
+      <p class="text-start my-2 fw-bold" for="Ответственный">Ответственный</p>
+      <select class="form-select" v-model="filterResponsible">
+        <option value="" disabled>Выберите ответственного</option>
+
+        <option value=""></option>
+      </select>
+      <p class="text-start my-2 fw-bold" for="Ответственный">Склад</p>
+      <select class="form-select" v-model="filterResponsible">
+        <option value="" disabled>Выберите склад</option>
+
+        <option value=""></option>
+      </select>
+      <p class="text-start my-2 fw-bold" for="Ответственный">Товар</p>
+      <select class="form-select" v-model="filterResponsible">
+        <option value="" disabled>Выберите товар</option>
+
+        <option value=""></option>
+      </select>
+      <p class="text-start my-2 fw-bold" for="Ответственный">Категория</p>
+      <select class="form-select" v-model="filterResponsible">
+        <option value="" disabled>Выберите категорию</option>
+
+        <option value=""></option>
+      </select>
+    </Filter>
   </main>
 </template>
 <style scoped>
@@ -356,13 +381,13 @@ import ChecksModal from "@/components/ChecksModal.vue";
 import FiltersButton from "@/components/buttons/FiltersButton.vue";
 import Chart from "@/assets/js/plugins/chartjs.min.js";
 import CounterModal from "@/components/CounterModal.vue";
-import Filters from "@/components/Filters.vue";
+import Filter from "@/components/Filters.vue";
 export default {
   components: {
     FiltersButton,
     ChecksModal,
     CounterModal,
-    Filters,
+    Filter,
   },
   data() {
     return {

@@ -3,16 +3,17 @@
   <main class="main-content border-radius-lg main__padding">
     <the-header></the-header>
     <div
-      class="page__name d-flex align-items-center ms-4 justify-content-between px-4"
+      class="page__name d-flex align-items-center justify-content-between px-4"
     >
       <div class="page__name-title text-start">
         <h3>Документы</h3>
         <p class="mb-0">Выберите необходимые вам документы</p>
       </div>
     </div>
-    <div class="card pt-2 pb-12 mx-5 mt-4 px-4">
+    <div class="card pt-4 pb-12 mx-4 mt-4 px-4">
       <div class="row">
         <div class="col-4">
+          <router-link :to="{ name: 'income-list' }">
           <div class="docs__content">
             <div class="docs__flex">
               <img
@@ -20,11 +21,13 @@
                 style="width: 1.667vw; margin-right: 18px"
                 alt=""
               />
-              <p class="docs__text">Накладные</p>
+              <p class="docs__text">Поступления</p>
             </div>
           </div>
+          </router-link>
         </div>
         <div class="col-4">
+          <router-link :to="{ name: 'accounts-list' }">
           <div class="docs__content">
             <div class="docs__flex">
               <img
@@ -35,8 +38,10 @@
               <p class="docs__text">Счета</p>
             </div>
           </div>
+          </router-link>
         </div>
         <div class="col-4">
+          <router-link :to="{ name: 'invoice-list' }">
           <div class="docs__content">
             <div class="docs__flex">
               <img
@@ -47,10 +52,12 @@
               <p class="docs__text">Счет-фактуры</p>
             </div>
           </div>
+          </router-link>
         </div>
       </div>
       <div class="row mt-4">
         <div class="col-4">
+          <router-link :to="{ name: 'acts-list' }">
           <div class="docs__content">
             <div class="docs__flex">
               <img
@@ -61,8 +68,10 @@
               <p class="docs__text">Акты</p>
             </div>
           </div>
+          </router-link>
         </div>
         <div class="col-4">
+          <router-link :to="{ name: 'implementation-list' }">
           <div class="docs__content">
             <div class="docs__flex">
               <img
@@ -73,6 +82,7 @@
               <p class="docs__text">Реализации</p>
             </div>
           </div>
+          </router-link>
         </div>
       </div>
     </div>

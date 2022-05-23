@@ -49,7 +49,7 @@
             </div>
             <div class="page__table">
               <div class="table-wrapper">
-                <table class="table table-hover text-wrap text-start">
+                <table class="table table-hover text-wrap text-start  table-striped">
                   <thead>
                     <tr class="text-start">
                       <th
