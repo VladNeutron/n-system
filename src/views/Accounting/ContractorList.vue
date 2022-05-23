@@ -68,10 +68,7 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr
-                    v-for="(item, i) of items"
-                    :key="item.id"
-                  >
+                  <tr v-for="(item, i) of filteredItems" :key="item.id">
                     <th scope="row" style="padding-left: 27px">
                       <div class="form-check">
                         <input
@@ -180,8 +177,42 @@
         </div>
       </div>
     </div>
-    <the-filter></the-filter>
-    <delete-modal :title="'контрагента'" :text='`контрагента "Тихонова А.Р"`'></delete-modal>
+    <the-filter @no-filter="cancelFilters"
+      ><div class="filters__period__flex">
+        <div class="filter__name__standart">Выберите период</div>
+        <div class="reset__date">Сбросить период</div>
+      </div>
+      <div class="filters__period">
+        <div class="form-group">
+          <input
+            class="form-control period__s"
+            type="date"
+            id="example-date-input"
+          />
+        </div>
+        <div>
+          <img src="@/assets/img/line.svg" style="width: 1.927vw" alt="" />
+        </div>
+        <div class="form-group">
+          <input
+            class="form-control period__s"
+            type="date"
+            id="example-date-input"
+          />
+        </div>
+      </div>
+      <p class="text-start my-2 fw-bold" for="supplier">Тип компании</p>
+      <select class="form-select" v-model="filterCompanyType">
+        <option value="" disabled>Выберите тип компании</option>
+        <option v-for="companyType of itemsCompanyType" :key="companyType">
+          {{ companyType }}
+        </option>
+        <option value=""></option></select
+    ></the-filter>
+    <delete-modal
+      :title="'контрагента'"
+      :text="`контрагента &quot;Тихонова А.Р&quot;`"
+    ></delete-modal>
     <counter-modal :product="modal.modalProductName"></counter-modal>
   </main>
 </template>
@@ -196,6 +227,7 @@ export default {
       modal: {
         modalProductName: {},
       },
+      filterCompanyType: "",
       status: null,
       buttonText: "",
       items: [
@@ -244,6 +276,26 @@ export default {
         (item) => item.id == id
       )[0];
       $("#CounterModal").modal("show");
+    },
+    cancelFilters() {
+      this.filterCompanyType = "";
+    },
+    createFilteredSet(key) {
+      const unfiltered = this.items.map((obj) => obj[key]);
+      return [...new Set(unfiltered)];
+    },
+  },
+  computed: {
+    itemsCompanyType() {
+      return this.createFilteredSet("companyType");
+    },
+
+    filteredItems() {
+      return this.items.filter((item) =>
+        this.filterCompanyType === ""
+          ? true
+          : this.filterCompanyType === item.companyType
+      );
     },
   },
   components: {
