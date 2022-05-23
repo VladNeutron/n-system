@@ -34,7 +34,20 @@
                 </button>
               </div>
               <div class="inv__right__btn gap-3">
-                <list-search></list-search>
+                <div class="form-group m-0">
+                  <div class="input-group">
+                    <span class="input-group-text"
+                      ><img src="@/assets/css/icons/searchIcon.svg" alt=""
+                    /></span>
+                    <input
+                      class="form-control"
+                      placeholder="Поиск..."
+                      id="myInputTextField"
+                      type="text"
+                    />
+                  </div>
+                </div>
+                <!-- <list-search></list-search> -->
                 <print-button></print-button>
                 <download-button></download-button>
                 <filters-button></filters-button>
@@ -42,7 +55,10 @@
             </div>
             <div class="inv__block">
               <div class="inv__content">
-                <table class="table table-bordered table-hover table-striped">
+                <table
+                  class="table table-bordered table-hover table-striped display"
+                  id="table_id"
+                >
                   <thead>
                     <tr>
                       <th scope="col" class="th__col">№</th>
@@ -151,7 +167,10 @@
         </div>
       </div>
     </div>
-    <delete-modal :title="'инвентаризации'" :text='`документ "Инвентаризация №19"`'></delete-modal>
+    <delete-modal
+      :title="'инвентаризации'"
+      :text="`документ &quot;Инвентаризация №19&quot;`"
+    ></delete-modal>
     <filters>
       <div class="filters__period__flex">
         <div class="filter__name__standart">Выберите период</div>
@@ -199,6 +218,46 @@ import FiltersButton from "@/components/buttons/FiltersButton.vue";
 import DeleteModal from "@/components/DeleteModal.vue";
 
 export default {
+  mounted() {
+    $(document).ready(function () {
+      let oTable = $("#table_id").DataTable({
+        language: {
+          paginate: {
+            previous: "‹",
+            next: "›",
+          },
+          aria: {
+            paginate: {
+              previous: "Previous",
+              next: "Next",
+            },
+          },
+        },
+        paging: true,
+        ordering: false,
+        info: false,
+        search: false,
+        responsive: true,
+
+        // scrollY: "30vw",
+        // scrollCollapse: true,
+      });
+      $("#myInputTextField").keyup(function () {
+        oTable.search($(this).val()).draw();
+      });
+    });
+    // const dataTable = new simpleDatatables.DataTable("#table_id", {
+    //   searchable: false,
+    //   fixedHeight: false,
+    //   perPage: 10,
+    //   labels: {
+    //     placeholder: "Search...",
+    //     perPage: "{select} строчек на странице",
+    //     noRows: "Ничего не найдено",
+    //     info: "Показано {start}-{end} из {rows}",
+    //   },
+    // });
+  },
   components: {
     DeleteModal,
     Filters,
@@ -211,7 +270,15 @@ export default {
           date: "11 янв, 19:23, 2021",
           id: "19",
           place: "ТРЦ Москва",
-          name: "Мильчаков Валерий",
+          name: "Макаров Антон",
+          isReady: "Завершена",
+          count: "15",
+        },
+        {
+          date: "11 янв, 19:23, 2021",
+          id: "19",
+          place: "ТРЦ Москва",
+          name: "Влад  не ппомню фамилию",
           isReady: "Завершена",
           count: "15",
         },
@@ -308,6 +375,19 @@ export default {
   },
 };
 </script>
+<style>
+.dataTables_filter {
+  display: none;
+}
+.paginate_button {
+  background: transparent;
+  background-image: linear-gradient(310deg, #7928ca 0%, #ff0080 100%);
+  box-shadow: 0 3px 5px -1px rgb(0 0 0 / 9%), 0 2px 3px -1px rgb(0 0 0 / 7%);
+  color: #fff;
+  border: none;
+  border-radius: 50% !important;
+}
+</style>
 
 <style scoped>
 .inv__block {
@@ -345,7 +425,7 @@ hr {
 .th__col {
   color: #a0aec0 !important;
 }
-.inv__content::-webkit-scrollbar {
+/* .inv__content::-webkit-scrollbar {
   background: #e2e8f0;
   border-radius: 0.78vw;
   width: 0.37vw;
@@ -362,7 +442,7 @@ hr {
 .inv__content {
   height: 30.469vw;
   overflow-y: scroll;
-}
+} */
 
 .inv__btn {
   display: flex;
