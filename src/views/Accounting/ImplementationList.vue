@@ -69,7 +69,7 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr v-for="(order, i) of filteredOrders" :key="order.id">
+                    <tr v-for="(order, i) of filteredOrders" :key="order.id" ondblclick="window.location.href = '/accounting/documents/edit-implementation'">
                       <th scope="row" style="padding-left: 27px">
                         <div class="form-check">
                           <input
