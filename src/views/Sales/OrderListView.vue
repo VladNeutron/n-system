@@ -51,6 +51,7 @@
               <div class="table-wrapper">
                 <table
                   class="table table-hover text-wrap text-start table-striped"
+                  id="table_id"
                 >
                   <thead>
                     <tr class="text-start">
@@ -78,7 +79,7 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr v-for="(order, i) of filteredOrders" :key="order.id">
+                    <tr v-for="(order, i) of paginationList" :key="order.id">
                       <th scope="row" style="padding-left: 27px">
                         <div class="form-check">
                           <input
@@ -107,9 +108,10 @@
                       <td>{{ order.amount }}</td>
                       <td>{{ order.sum }}</td>
                       <td
-                        class="dropdown"
+                        
                         style="border-left: 0; padding-right: 27px"
                       >
+                      <div class="dropdown">
                         <img
                           src="@/assets/img/dots.svg"
                           style="width: 1.563vw; cursor: pointer"
@@ -125,71 +127,14 @@
                             >Удалить</a
                           >
                         </div>
+                        </div>
                       </td>
                     </tr>
                   </tbody>
                 </table>
               </div>
             </div>
-            <div
-              class="pagination d-flex justify-content-end align-items-center me-4 mt-auto"
-            >
-              <div class="d-flex align-items-center gap-3">
-                <div>
-                  <p class="m-0">Показано<span> 2112 12121</span></p>
-                </div>
-
-                <div class="page__search-pages d-flex align-content-center">
-                  <div class="pagination-container d-flex justify-items-center">
-                    <ul class="pagination pagination-info mb-0 pe-0">
-                      <li class="page-item">
-                        <a
-                          class="page-link"
-                          href="javascript:;"
-                          aria-label="Previous"
-                        >
-                          <span aria-hidden="true"
-                            ><i
-                              class="fa fa-angle-double-left"
-                              aria-hidden="true"
-                            ></i
-                          ></span>
-                        </a>
-                      </li>
-                      <li class="page-item">
-                        <a class="page-link" href="javascript:;">1</a>
-                      </li>
-                      <li class="page-item">
-                        <a class="page-link" href="javascript:;">2</a>
-                      </li>
-                      <li class="page-item active">
-                        <a class="page-link" href="javascript:;">3</a>
-                      </li>
-                      <li class="page-item">
-                        <a class="page-link" href="javascript:;">4</a>
-                      </li>
-                      <li class="page-item">
-                        <a class="page-link" href="javascript:;">5</a>
-                      </li>
-                      <li class="page-item">
-                        <a
-                          class="page-link"
-                          href="javascript:;"
-                          aria-label="Next"
-                        >
-                          <span aria-hidden="true"
-                            ><i
-                              class="fa fa-angle-double-right"
-                              aria-hidden="true"
-                            ></i
-                          ></span>
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <pagination-component :filteredArr="filteredOrders" @PaginationReload="reloadPagination"></pagination-component>
           </div>
         </div>
       </div>
@@ -273,6 +218,7 @@
 <script>
 import Filter from "@/components/Filters.vue";
 import FilterButton from "@/components/buttons/FiltersButton.vue";
+import PaginationComponent from '@/components/Pagination/PaginationComponent.vue';
 export default {
   data() {
     return {
@@ -354,12 +300,794 @@ export default {
           amount: 8,
           sum: 12000,
         },
+        {
+          id: 12,
+          date: "11 ноя, 2021 19:23",
+          warehouse: "что-там",
+          responsible: "Тихонова А.Р",
+          status: "new",
+          client: "Мария Калашникова",
+          type: "Создан вручную",
+          amount: 8,
+          sum: 12000,
+        },
+        {
+          id: 13,
+          date: "11 ноя, 2021 19:23",
+          warehouse: "где-то-там",
+          responsible: "Тихонова А.Р",
+          status: "in-process",
+          client: "Мария Калашникова",
+          type: "Интернет-магазин",
+          amount: 8,
+          sum: 12000,
+        },
+        {
+          id: 14,
+          date: "11 ноя, 2021 19:23",
+          warehouse: "Киров",
+          responsible: "Тихонова А.Р",
+          status: "canceled",
+          client: "Мария Калашникова",
+          type: "Создан вручную",
+          amount: 8,
+          sum: 12000,
+        },
+        {
+          id: 15,
+          date: "11 ноя, 2021 19:23",
+          responsible: "Тихонова А.Р",
+          warehouse: "что-там",
+          status: "processed",
+          client: "Мария Калашникова",
+          type: "Интернет-магазин",
+          amount: 8,
+          sum: 12000,
+        },
+        {
+          id: 16,
+          date: "11 ноя, 2021 19:23",
+          warehouse: "Алматы",
+          responsible: "Тихонова А.Р",
+          status: "assembly",
+          client: "Мария Калашникова",
+          type: "Интернет-магазин",
+          amount: 8,
+          sum: 12000,
+        },
+        {
+          id: 17,
+          date: "11 ноя, 2021 19:23",
+          warehouse: "что-там",
+          responsible: "Тихонова А.Р",
+          status: "ready",
+          client: "Мария Калашникова",
+          type: "Создан вручную",
+          amount: 8,
+          sum: 12000,
+        },
+        {
+          id: 18,
+          date: "11 ноя, 2021 19:23",
+          warehouse: "что-там",
+          responsible: "Тихонова А.Р",
+          status: "shipped",
+          client: "Мария Калашникова",
+          type: "Создан вручную",
+          amount: 8,
+          sum: 12000,
+        },
+        {
+          id: 19,
+          date: "11 ноя, 2021 19:23",
+          warehouse: "что-там",
+          responsible: "Тихонова А.Р",
+          status: "new",
+          client: "Мария Калашникова",
+          type: "Создан вручную",
+          amount: 8,
+          sum: 12000,
+        },
+        {
+          id: 20,
+          date: "11 ноя, 2021 19:23",
+          warehouse: "где-то-там",
+          responsible: "Тихонова А.Р",
+          status: "in-process",
+          client: "Мария Калашникова",
+          type: "Интернет-магазин",
+          amount: 8,
+          sum: 12000,
+        },
+        {
+          id: 21,
+          date: "11 ноя, 2021 19:23",
+          warehouse: "Киров",
+          responsible: "Тихонова А.Р",
+          status: "canceled",
+          client: "Мария Калашникова",
+          type: "Создан вручную",
+          amount: 8,
+          sum: 12000,
+        },
+        {
+          id: 22,
+          date: "11 ноя, 2021 19:23",
+          responsible: "Тихонова А.Р",
+          warehouse: "что-там",
+          status: "processed",
+          client: "Мария Калашникова",
+          type: "Интернет-магазин",
+          amount: 8,
+          sum: 12000,
+        },
+        {
+          id: 23,
+          date: "11 ноя, 2021 19:23",
+          warehouse: "Алматы",
+          responsible: "Тихонова А.Р",
+          status: "assembly",
+          client: "Мария Калашникова",
+          type: "Интернет-магазин",
+          amount: 8,
+          sum: 12000,
+        },
+        {
+          id: 24,
+          date: "11 ноя, 2021 19:23",
+          warehouse: "что-там",
+          responsible: "Тихонова А.Р",
+          status: "ready",
+          client: "Мария Калашникова",
+          type: "Создан вручную",
+          amount: 8,
+          sum: 12000,
+        },
+        {
+          id: 25,
+          date: "11 ноя, 2021 19:23",
+          warehouse: "что-там",
+          responsible: "Тихонова А.Р",
+          status: "shipped",
+          client: "Мария Калашникова",
+          type: "Создан вручную",
+          amount: 8,
+          sum: 12000,
+        },
+        {
+          id: 26,
+          date: "11 ноя, 2021 19:23",
+          warehouse: "что-там",
+          responsible: "Тихонова А.Р",
+          status: "new",
+          client: "Мария Калашникова",
+          type: "Создан вручную",
+          amount: 8,
+          sum: 12000,
+        },
+        {
+          id: 27,
+          date: "11 ноя, 2021 19:23",
+          warehouse: "где-то-там",
+          responsible: "Тихонова А.Р",
+          status: "in-process",
+          client: "Мария Калашникова",
+          type: "Интернет-магазин",
+          amount: 8,
+          sum: 12000,
+        },
+        {
+          id: 28,
+          date: "11 ноя, 2021 19:23",
+          warehouse: "Киров",
+          responsible: "Тихонова А.Р",
+          status: "canceled",
+          client: "Мария Калашникова",
+          type: "Создан вручную",
+          amount: 8,
+          sum: 12000,
+        },
+        {
+          id: 29,
+          date: "11 ноя, 2021 19:23",
+          responsible: "Тихонова А.Р",
+          warehouse: "что-там",
+          status: "processed",
+          client: "Мария Калашникова",
+          type: "Интернет-магазин",
+          amount: 8,
+          sum: 12000,
+        },
+        {
+          id: 30,
+          date: "11 ноя, 2021 19:23",
+          warehouse: "Алматы",
+          responsible: "Тихонова А.Р",
+          status: "assembly",
+          client: "Мария Калашникова",
+          type: "Интернет-магазин",
+          amount: 8,
+          sum: 12000,
+        },
+        {
+          id: 31,
+          date: "11 ноя, 2021 19:23",
+          warehouse: "что-там",
+          responsible: "Тихонова А.Р",
+          status: "ready",
+          client: "Мария Калашникова",
+          type: "Создан вручную",
+          amount: 8,
+          sum: 12000,
+        },
+        {
+          id: 32,
+          date: "11 ноя, 2021 19:23",
+          warehouse: "что-там",
+          responsible: "Тихонова А.Р",
+          status: "shipped",
+          client: "Мария Калашникова",
+          type: "Создан вручную",
+          amount: 8,
+          sum: 12000,
+        },
+        {
+          id: 33,
+          date: "11 ноя, 2021 19:23",
+          warehouse: "что-там",
+          responsible: "Тихонова А.Р",
+          status: "new",
+          client: "Мария Калашникова",
+          type: "Создан вручную",
+          amount: 8,
+          sum: 12000,
+        },
+        {
+          id: 34,
+          date: "11 ноя, 2021 19:23",
+          warehouse: "где-то-там",
+          responsible: "Тихонова А.Р",
+          status: "in-process",
+          client: "Мария Калашникова",
+          type: "Интернет-магазин",
+          amount: 8,
+          sum: 12000,
+        },
+        {
+          id: 35,
+          date: "11 ноя, 2021 19:23",
+          warehouse: "Киров",
+          responsible: "Тихонова А.Р",
+          status: "canceled",
+          client: "Мария Калашникова",
+          type: "Создан вручную",
+          amount: 8,
+          sum: 12000,
+        },
+        {
+          id: 36,
+          date: "11 ноя, 2021 19:23",
+          responsible: "Тихонова А.Р",
+          warehouse: "что-там",
+          status: "processed",
+          client: "Мария Калашникова",
+          type: "Интернет-магазин",
+          amount: 8,
+          sum: 12000,
+        },
+        {
+          id: 37,
+          date: "11 ноя, 2021 19:23",
+          warehouse: "Алматы",
+          responsible: "Тихонова А.Р",
+          status: "assembly",
+          client: "Мария Калашникова",
+          type: "Интернет-магазин",
+          amount: 8,
+          sum: 12000,
+        },
+        {
+          id: 38,
+          date: "11 ноя, 2021 19:23",
+          warehouse: "что-там",
+          responsible: "Тихонова А.Р",
+          status: "ready",
+          client: "Мария Калашникова",
+          type: "Создан вручную",
+          amount: 8,
+          sum: 12000,
+        },
+        {
+          id: 39,
+          date: "11 ноя, 2021 19:23",
+          warehouse: "что-там",
+          responsible: "Тихонова А.Р",
+          status: "shipped",
+          client: "Мария Калашникова",
+          type: "Создан вручную",
+          amount: 8,
+          sum: 12000,
+        },
+        {
+          id: 40,
+          date: "11 ноя, 2021 19:23",
+          warehouse: "что-там",
+          responsible: "Тихонова А.Р",
+          status: "new",
+          client: "Мария Калашникова",
+          type: "Создан вручную",
+          amount: 8,
+          sum: 12000,
+        },
+        {
+          id: 41,
+          date: "11 ноя, 2021 19:23",
+          warehouse: "где-то-там",
+          responsible: "Тихонова А.Р",
+          status: "in-process",
+          client: "Мария Калашникова",
+          type: "Интернет-магазин",
+          amount: 8,
+          sum: 12000,
+        },
+        {
+          id: 42,
+          date: "11 ноя, 2021 19:23",
+          warehouse: "Киров",
+          responsible: "Тихонова А.Р",
+          status: "canceled",
+          client: "Мария Калашникова",
+          type: "Создан вручную",
+          amount: 8,
+          sum: 12000,
+        },
+        {
+          id: 43,
+          date: "11 ноя, 2021 19:23",
+          responsible: "Тихонова А.Р",
+          warehouse: "что-там",
+          status: "processed",
+          client: "Мария Калашникова",
+          type: "Интернет-магазин",
+          amount: 8,
+          sum: 12000,
+        },
+        {
+          id: 44,
+          date: "11 ноя, 2021 19:23",
+          warehouse: "Алматы",
+          responsible: "Тихонова А.Р",
+          status: "assembly",
+          client: "Мария Калашникова",
+          type: "Интернет-магазин",
+          amount: 8,
+          sum: 12000,
+        },
+        {
+          id: 45,
+          date: "11 ноя, 2021 19:23",
+          warehouse: "что-там",
+          responsible: "Тихонова А.Р",
+          status: "ready",
+          client: "Мария Калашникова",
+          type: "Создан вручную",
+          amount: 8,
+          sum: 12000,
+        },
+        {
+          id: 46,
+          date: "11 ноя, 2021 19:23",
+          warehouse: "что-там",
+          responsible: "Тихонова А.Р",
+          status: "shipped",
+          client: "Мария Калашникова",
+          type: "Создан вручную",
+          amount: 8,
+          sum: 12000,
+        },
+        {
+          id: 47,
+          date: "11 ноя, 2021 19:23",
+          warehouse: "что-там",
+          responsible: "Тихонова А.Р",
+          status: "new",
+          client: "Мария Калашникова",
+          type: "Создан вручную",
+          amount: 8,
+          sum: 12000,
+        },
+        {
+          id: 48,
+          date: "11 ноя, 2021 19:23",
+          warehouse: "где-то-там",
+          responsible: "Тихонова А.Р",
+          status: "in-process",
+          client: "Мария Калашникова",
+          type: "Интернет-магазин",
+          amount: 8,
+          sum: 12000,
+        },
+        {
+          id: 49,
+          date: "11 ноя, 2021 19:23",
+          warehouse: "Киров",
+          responsible: "Тихонова А.Р",
+          status: "canceled",
+          client: "Мария Калашникова",
+          type: "Создан вручную",
+          amount: 8,
+          sum: 12000,
+        },
+        {
+          id: 50,
+          date: "11 ноя, 2021 19:23",
+          responsible: "Тихонова А.Р",
+          warehouse: "что-там",
+          status: "processed",
+          client: "Мария Калашникова",
+          type: "Интернет-магазин",
+          amount: 8,
+          sum: 12000,
+        },
+        {
+          id: 51,
+          date: "11 ноя, 2021 19:23",
+          warehouse: "Алматы",
+          responsible: "Тихонова А.Р",
+          status: "assembly",
+          client: "Мария Калашникова",
+          type: "Интернет-магазин",
+          amount: 8,
+          sum: 12000,
+        },
+        {
+          id: 52,
+          date: "11 ноя, 2021 19:23",
+          warehouse: "что-там",
+          responsible: "Тихонова А.Р",
+          status: "ready",
+          client: "Мария Калашникова",
+          type: "Создан вручную",
+          amount: 8,
+          sum: 12000,
+        },
+        {
+          id: 53,
+          date: "11 ноя, 2021 19:23",
+          warehouse: "что-там",
+          responsible: "Тихонова А.Р",
+          status: "shipped",
+          client: "Мария Калашникова",
+          type: "Создан вручную",
+          amount: 8,
+          sum: 12000,
+        },
+        {
+          id: 54,
+          date: "11 ноя, 2021 19:23",
+          warehouse: "что-там",
+          responsible: "Тихонова А.Р",
+          status: "new",
+          client: "Мария Калашникова",
+          type: "Создан вручную",
+          amount: 8,
+          sum: 12000,
+        },
+        {
+          id: 55,
+          date: "11 ноя, 2021 19:23",
+          warehouse: "где-то-там",
+          responsible: "Тихонова А.Р",
+          status: "in-process",
+          client: "Мария Калашникова",
+          type: "Интернет-магазин",
+          amount: 8,
+          sum: 12000,
+        },
+        {
+          id: 56,
+          date: "11 ноя, 2021 19:23",
+          warehouse: "Киров",
+          responsible: "Тихонова А.Р",
+          status: "canceled",
+          client: "Мария Калашникова",
+          type: "Создан вручную",
+          amount: 8,
+          sum: 12000,
+        },
+        {
+          id: 57,
+          date: "11 ноя, 2021 19:23",
+          responsible: "Тихонова А.Р",
+          warehouse: "что-там",
+          status: "processed",
+          client: "Мария Калашникова",
+          type: "Интернет-магазин",
+          amount: 8,
+          sum: 12000,
+        },
+        {
+          id: 58,
+          date: "11 ноя, 2021 19:23",
+          warehouse: "Алматы",
+          responsible: "Тихонова А.Р",
+          status: "assembly",
+          client: "Мария Калашникова",
+          type: "Интернет-магазин",
+          amount: 8,
+          sum: 12000,
+        },
+        {
+          id: 59,
+          date: "11 ноя, 2021 19:23",
+          warehouse: "что-там",
+          responsible: "Тихонова А.Р",
+          status: "ready",
+          client: "Мария Калашникова",
+          type: "Создан вручную",
+          amount: 8,
+          sum: 12000,
+        },
+        {
+          id: 60,
+          date: "11 ноя, 2021 19:23",
+          warehouse: "что-там",
+          responsible: "Тихонова А.Р",
+          status: "shipped",
+          client: "Мария Калашникова",
+          type: "Создан вручную",
+          amount: 8,
+          sum: 12000,
+        },
+        {
+          id: 61,
+          date: "11 ноя, 2021 19:23",
+          warehouse: "что-там",
+          responsible: "Тихонова А.Р",
+          status: "shipped",
+          client: "Мария Калашникова",
+          type: "Создан вручную",
+          amount: 8,
+          sum: 12000,
+        },
+        {
+          id: 62,
+          date: "11 ноя, 2021 19:23",
+          warehouse: "что-там",
+          responsible: "Тихонова А.Р",
+          status: "new",
+          client: "Мария Калашникова",
+          type: "Создан вручную",
+          amount: 8,
+          sum: 12000,
+        },
+        {
+          id: 63,
+          date: "11 ноя, 2021 19:23",
+          warehouse: "где-то-там",
+          responsible: "Тихонова А.Р",
+          status: "in-process",
+          client: "Мария Калашникова",
+          type: "Интернет-магазин",
+          amount: 8,
+          sum: 12000,
+        },
+        {
+          id: 64,
+          date: "11 ноя, 2021 19:23",
+          warehouse: "Киров",
+          responsible: "Тихонова А.Р",
+          status: "canceled",
+          client: "Мария Калашникова",
+          type: "Создан вручную",
+          amount: 8,
+          sum: 12000,
+        },
+        {
+          id: 65,
+          date: "11 ноя, 2021 19:23",
+          responsible: "Тихонова А.Р",
+          warehouse: "что-там",
+          status: "processed",
+          client: "Мария Калашникова",
+          type: "Интернет-магазин",
+          amount: 8,
+          sum: 12000,
+        },
+        {
+          id: 66,
+          date: "11 ноя, 2021 19:23",
+          warehouse: "Алматы",
+          responsible: "Тихонова А.Р",
+          status: "assembly",
+          client: "Мария Калашникова",
+          type: "Интернет-магазин",
+          amount: 8,
+          sum: 12000,
+        },
+        {
+          id: 67,
+          date: "11 ноя, 2021 19:23",
+          warehouse: "что-там",
+          responsible: "Тихонова А.Р",
+          status: "ready",
+          client: "Мария Калашникова",
+          type: "Создан вручную",
+          amount: 8,
+          sum: 12000,
+        },
+        {
+          id: 68,
+          date: "11 ноя, 2021 19:23",
+          warehouse: "что-там",
+          responsible: "Тихонова А.Р",
+          status: "shipped",
+          client: "Мария Калашникова",
+          type: "Создан вручную",
+          amount: 8,
+          sum: 12000,
+        },
+        {
+          id: 69,
+          date: "11 ноя, 2021 19:23",
+          warehouse: "что-там",
+          responsible: "Тихонова А.Р",
+          status: "new",
+          client: "Мария Калашникова",
+          type: "Создан вручную",
+          amount: 8,
+          sum: 12000,
+        },
+        {
+          id: 70,
+          date: "11 ноя, 2021 19:23",
+          warehouse: "где-то-там",
+          responsible: "Тихонова А.Р",
+          status: "in-process",
+          client: "Мария Калашникова",
+          type: "Интернет-магазин",
+          amount: 8,
+          sum: 12000,
+        },
+        {
+          id: 71,
+          date: "11 ноя, 2021 19:23",
+          warehouse: "Киров",
+          responsible: "Тихонова А.Р",
+          status: "canceled",
+          client: "Мария Калашникова",
+          type: "Создан вручную",
+          amount: 8,
+          sum: 12000,
+        },
+        {
+          id: 72,
+          date: "11 ноя, 2021 19:23",
+          responsible: "Тихонова А.Р",
+          warehouse: "что-там",
+          status: "processed",
+          client: "Мария Калашникова",
+          type: "Интернет-магазин",
+          amount: 8,
+          sum: 12000,
+        },
+        {
+          id: 73,
+          date: "11 ноя, 2021 19:23",
+          warehouse: "Алматы",
+          responsible: "Тихонова А.Р",
+          status: "assembly",
+          client: "Мария Калашникова",
+          type: "Интернет-магазин",
+          amount: 8,
+          sum: 12000,
+        },
+        {
+          id: 74,
+          date: "11 ноя, 2021 19:23",
+          warehouse: "что-там",
+          responsible: "Тихонова А.Р",
+          status: "ready",
+          client: "Мария Калашникова",
+          type: "Создан вручную",
+          amount: 8,
+          sum: 12000,
+        },
+        {
+          id: 75,
+          date: "11 ноя, 2021 19:23",
+          warehouse: "что-там",
+          responsible: "Тихонова А.Р",
+          status: "shipped",
+          client: "Мария Калашникова",
+          type: "Создан вручную",
+          amount: 8,
+          sum: 12000,
+        },
+        {
+          id: 76,
+          date: "11 ноя, 2021 19:23",
+          warehouse: "что-там",
+          responsible: "Тихонова А.Р",
+          status: "new",
+          client: "Мария Калашникова",
+          type: "Создан вручную",
+          amount: 8,
+          sum: 12000,
+        },
+        {
+          id: 77,
+          date: "11 ноя, 2021 19:23",
+          warehouse: "где-то-там",
+          responsible: "Тихонова А.Р",
+          status: "in-process",
+          client: "Мария Калашникова",
+          type: "Интернет-магазин",
+          amount: 8,
+          sum: 12000,
+        },
+        {
+          id: 78,
+          date: "11 ноя, 2021 19:23",
+          warehouse: "Киров",
+          responsible: "Тихонова А.Р",
+          status: "canceled",
+          client: "Мария Калашникова",
+          type: "Создан вручную",
+          amount: 8,
+          sum: 12000,
+        },
+        {
+          id: 79,
+          date: "11 ноя, 2021 19:23",
+          responsible: "Тихонова А.Р",
+          warehouse: "что-там",
+          status: "processed",
+          client: "Мария Калашникова",
+          type: "Интернет-магазин",
+          amount: 8,
+          sum: 12000,
+        },
+        {
+          id: 80,
+          date: "11 ноя, 2021 19:23",
+          warehouse: "Алматы",
+          responsible: "Тихонова А.Р",
+          status: "assembly",
+          client: "Мария Калашникова",
+          type: "Интернет-магазин",
+          amount: 8,
+          sum: 12000,
+        },
+        {
+          id: 81,
+          date: "11 ноя, 2021 19:23",
+          warehouse: "что-там",
+          responsible: "Тихонова А.Р",
+          status: "ready",
+          client: "Мария Калашникова",
+          type: "Создан вручную",
+          amount: 8,
+          sum: 12000,
+        },
+        {
+          id: 82,
+          date: "11 ноя, 2021 19:23",
+          warehouse: "что-там",
+          responsible: "Тихонова А.Р",
+          status: "shipped",
+          client: "Мария Калашникова",
+          type: "Создан вручную",
+          amount: 8,
+          sum: 12000,
+        },
       ],
       filterStatusSelect: [],
       filterResponsible: "",
       filterClient: "",
       filterOrderType: "",
       filterWarehouse: "",
+      paginationList: [],
     };
   },
   methods: {
@@ -403,6 +1131,10 @@ export default {
       this.filterOrderType = "";
       this.filterWarehouse = "";
     },
+    reloadPagination(arr){
+      // console.log(arr);
+      this.paginationList = arr;
+    }
   },
 
   computed: {
@@ -448,10 +1180,17 @@ export default {
   components: {
     "the-filter": Filter,
     "filter-button": FilterButton,
+    PaginationComponent,
   },
 };
 </script>
 
+
+<style>
+.dataTables_filter{
+  display: none;
+}
+</style>
 <style scoped>
 .period__s {
   width: 191px !important;

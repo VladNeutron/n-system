@@ -38,3 +38,7 @@ body::-webkit-scrollbar {
   background-color: unset !important;
   box-shadow: unset !important;
 }
+
+.table thead th{
+  text-align: center !important;
+}

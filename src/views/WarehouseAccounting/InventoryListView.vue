@@ -56,7 +56,7 @@
             <div class="inv__block">
               <div class="inv__content">
                 <table
-                  class="table table-bordered table-hover table-striped display"
+                  class="table table-bordered table-hover table-striped"
                   id="table_id"
                 >
                   <thead>
@@ -82,11 +82,13 @@
                       <td>{{ item.name }}</td>
                       <td>{{ item.isReady }}</td>
                       <td>{{ item.count }}</td>
-                      <td class="dropdown">
+                      <td class="">
+                        <div class="dropdown">
                         <img
                           src="@/assets/img/dots.svg"
                           style="width: 1.563vw; cursor: pointer"
                           alt=""
+                          class=""
                         />
                         <div class="dropdown-content">
                           <a href="/warehouse-accounting/edit-inv"
@@ -100,7 +102,26 @@
                             >Удалить</a
                           >
                         </div>
+                        </div>
                       </td>
+                      <!-- <td class="">
+                        <div class="dropstart">
+                        <a class="" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                          <img
+                          src="@/assets/img/dots.svg"
+                          style="width: 1.563vw; cursor: pointer"
+                          alt=""
+                          class=""
+                          />
+                        </a>
+
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                          <li><a class="dropdown-item" href="#">Action</a></li>
+                          <li><a class="dropdown-item" href="#">Another action</a></li>
+                          <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        </ul>
+                        </div>
+                      </td> -->
                     </tr>
                   </tbody>
                 </table>
@@ -234,11 +255,11 @@ export default {
           },
         },
         paging: true,
-        ordering: false,
+        ordering: true,
         info: false,
         search: false,
         responsive: true,
-
+        "lengthChange": false,
         // scrollY: "30vw",
         // scrollCollapse: true,
       });
@@ -379,13 +400,19 @@ export default {
 .dataTables_filter {
   display: none;
 }
-.paginate_button {
-  background: transparent;
-  background-image: linear-gradient(310deg, #7928ca 0%, #ff0080 100%);
-  box-shadow: 0 3px 5px -1px rgb(0 0 0 / 9%), 0 2px 3px -1px rgb(0 0 0 / 7%);
-  color: #fff;
-  border: none;
+.paginate_button{
+  color: #8392AB !important;
+  padding: 0 !important;
+  margin: 0 3px;
   border-radius: 50% !important;
+  width: 36px;
+  height: 36px;
+  font-size: 0.875rem;
+  line-height: 2rem;
+}
+.paginate_button.current{
+  background-image: linear-gradient(83.56deg, #7092E0 10.01%, #8BAEF3 75.36%) !important;
+  border: none !important;
 }
 </style>
 

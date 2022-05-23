@@ -31,6 +31,7 @@ import FiltersButton from '@/components/buttons/FiltersButton.vue'
 import ExportButton from '@/components/buttons/ExportButton.vue'
 import Export2Button from '@/components/buttons/Export2Button.vue'
 import DeleteModal from "@/components/DeleteModal.vue";
+import PaginationComponent from "@/components/Pagination/PaginationComponent.vue";
 
 
 const app = createApp(App).use(store).use(router);
@@ -52,6 +53,7 @@ app.component("export-button", ExportButton);
 app.component("export2-button", Export2Button);
 app.component("list-search", ListSearch);
 app.component('delete-modal',DeleteModal);
+app.component('pagination-component',PaginationComponent);
 
 
 
