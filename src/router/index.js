@@ -588,8 +588,17 @@ const routes = [
     name: "edit-implementation",
     component: () => import("../views/Accounting/EditImplementation.vue"),
     meta: { NavLink: "Редактирование реализации" },
-  }
+  },
   // БУХГАЛТЕРИЯ
+
+  // МЕНЕДЖМЕНТ
+  {
+    path: "/management/deal-list",
+    name: "deal-list",
+    component: () => import("../views/Management/DealList.vue"),
+    meta: { NavLink: "Список сделок" },
+  },
+  // МЕНЕДЖМЕНТ
 ];
 
 const router = createRouter({
