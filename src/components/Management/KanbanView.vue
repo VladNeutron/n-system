@@ -14,6 +14,7 @@ export default {
           gutter: "10px",
           widthBoard: "400px",
           responsivePercentage: false, 
+          dragBoards       : false,
           click: el => {
             
           },
@@ -157,6 +158,7 @@ export default {
     font-size: 16px;  
     color: #2D3748;  
     text-align: left;
+    margin-bottom: 8px;
 }
 .kanban-item:hover{
     background: top 50% right 5% no-repeat url("@/assets/img/Management/EditPencil.svg"), linear-gradient(0deg, rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.05)), #FFFFFF;
