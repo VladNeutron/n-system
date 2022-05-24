@@ -1099,9 +1099,7 @@ export default {
   overflow: auto;
 }
 thead {
-  position: sticky;
   background-color: #fff;
-  top: 0;
 }
 th {
   border-right: #a0aec0;
