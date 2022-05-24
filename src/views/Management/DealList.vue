@@ -27,14 +27,14 @@
                             v-else
                         >
                         <img 
-                            class="view__images view__images__table ms-2" 
+                            class="view__images view__images__table ms-4" 
                             src="@/assets/img/Management/TableView.svg" 
                             alt="" 
                             @click="pageView=0" 
                             v-if="pageView==0"
                         >
                         <img 
-                            class="view__images view__images__table ms-2" 
+                            class="view__images view__images__table ms-4" 
                             src="@/assets/img/Management/TableViewUnselected.svg" 
                             alt="" 
                             @click="pageView=0"
@@ -43,7 +43,7 @@
                         </div>
                     </template>
                 </lists-header>
-                <kanban-view v-if="pageView==1"></kanban-view>
+                <kanban-view v-if="pageView==1" :dealStages="dealStages" :dealsList="dealsList"></kanban-view>
                 <table-view v-if="pageView==0" :dealsList="dealsList"></table-view>
                 </div>
             </div>
@@ -58,6 +58,29 @@ export default {
     data(){
         return{
             pageView: 1,
+            dealStages: [
+                {
+                    id: 'Stage0',
+                    name: 'Первичный контакт',
+                },
+                {
+                    id: 'Stage1',
+                    name: 'Переговоры',
+                },
+                {
+                    id: 'Stage2',
+                    name: 'Договор',
+                },
+                {
+                    id: 'Stage3',
+                    name: 'Ожидание оплаты',
+                },
+                {
+                    id: 'Stage4',
+                    name: 'Начало работы',
+                },
+
+            ],
             dealsList: [
                 {
                     id:0,
@@ -70,7 +93,7 @@ export default {
                 },
                 {
                     id:1,
-                    dealName: "ТОО “Рога и копыта”",
+                    dealName: "ИП Ромашкин",
                     dealLastDate: '21.05.2022 18:46',
                     responsible: 'Тихонов А.',
                     client: 'Тихонов А.',
@@ -79,7 +102,7 @@ export default {
                 },
                 {
                     id:2,
-                    dealName: "ТОО “Рога и копыта”",
+                    dealName: "ИП Весёлов",
                     dealLastDate: '21.05.2022 18:46',
                     responsible: 'Тихонов А.',
                     client: 'Тихонов А.',
@@ -88,16 +111,16 @@ export default {
                 },
                 {
                     id:3,
-                    dealName: "ТОО “Рога и копыта”",
+                    dealName: "ТОО “Будь уверен”",
                     dealLastDate: '21.05.2022 18:46',
                     responsible: 'Тихонов А.',
                     client: 'Тихонов А.',
-                    stage: 'Переговоры',
+                    stage: 'Договор',
                     budget: '1 500 000 ₸',
                 },
                 {
                     id:4,
-                    dealName: "ТОО “Рога и копыта”",
+                    dealName: "ИП Весёлов",
                     dealLastDate: '21.05.2022 18:46',
                     responsible: 'Тихонов А.',
                     client: 'Тихонов А.',
@@ -106,16 +129,16 @@ export default {
                 },
                 {
                     id:5,
-                    dealName: "ТОО “Рога и копыта”",
+                    dealName: "ИП Ромашкин",
                     dealLastDate: '21.05.2022 18:46',
                     responsible: 'Тихонов А.',
                     client: 'Тихонов А.',
-                    stage: 'Первичный контакт',
+                    stage: 'Ожидание оплаты',
                     budget: '1 500 000 ₸',
                 },
                 {
                     id:6,
-                    dealName: "ТОО “Рога и копыта”",
+                    dealName: "ТОО “Будь уверен”",
                     dealLastDate: '21.05.2022 18:46',
                     responsible: 'Тихонов А.',
                     client: 'Тихонов А.',
@@ -124,7 +147,7 @@ export default {
                 },
                 {
                     id:8,
-                    dealName: "ТОО “Рога и копыта”",
+                    dealName: "ТОО “Вектор”",
                     dealLastDate: '21.05.2022 18:46',
                     responsible: 'Тихонов А.',
                     client: 'Тихонов А.',
@@ -133,7 +156,7 @@ export default {
                 },
                 {
                     id:9,
-                    dealName: "ТОО “Рога и копыта”",
+                    dealName: "ТОО “Стэлс”",
                     dealLastDate: '21.05.2022 18:46',
                     responsible: 'Тихонов А.',
                     client: 'Тихонов А.',
@@ -142,7 +165,7 @@ export default {
                 },
                 {
                     id:10,
-                    dealName: "ТОО “Рога и копыта”",
+                    dealName: "ИП Семен",
                     dealLastDate: '21.05.2022 18:46',
                     responsible: 'Тихонов А.',
                     client: 'Тихонов А.',
@@ -151,7 +174,7 @@ export default {
                 },
                 {
                     id:11,
-                    dealName: "ТОО “Рога и копыта”",
+                    dealName: "ИП Лидер",
                     dealLastDate: '21.05.2022 18:46',
                     responsible: 'Тихонов А.',
                     client: 'Тихонов А.',
@@ -173,7 +196,7 @@ export default {
                     dealLastDate: '21.05.2022 18:46',
                     responsible: 'Тихонов А.',
                     client: 'Тихонов А.',
-                    stage: 'Переговоры',
+                    stage: 'Начало работы',
                     budget: '1 500 000 ₸',
                 },
             ],
