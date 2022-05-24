@@ -593,10 +593,22 @@ const routes = [
 
   // МЕНЕДЖМЕНТ
   {
+    path: "/management",
+    name: "management",
+    component: () => import("../views/Management/WorkSpace.vue"),
+    meta: { NavLink: "Менеджмет" },
+  },
+  {
     path: "/management/deal-list",
     name: "deal-list",
     component: () => import("../views/Management/DealList.vue"),
     meta: { NavLink: "Список сделок" },
+  },
+  {
+    path: "/management/workspace",
+    name: "workspace",
+    component: () => import("../views/Management/WorkSpace.vue"),
+    meta: { NavLink: "Рабочая область" },
   },
   // МЕНЕДЖМЕНТ
 ];
