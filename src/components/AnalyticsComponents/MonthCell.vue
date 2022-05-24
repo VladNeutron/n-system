@@ -66,7 +66,7 @@ export default {
   watch: {
     selectedMonth(newVal, oldVal) {
       if (newVal !== oldVal) {
-        return this.$emit("newMonth", this.selectedMonth);
+        return this.$emit("newMonth", this.selectedMonth, this.monthIdx);
       }
     },
   },

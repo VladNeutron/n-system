@@ -83,12 +83,7 @@
               </td>
               <td class="py-2" v-for="month in months" :key="month">
                 <info-cell
-                  :info="
-                    getProductIncomeByMonth(
-                      product,
-                      this.selectedMonth || month
-                    )
-                  "
+                  :info="getProductIncomeByMonth(product, month)"
                 ></info-cell>
               </td>
             </tr>
@@ -1009,8 +1004,8 @@ export default {
 
       return selectedProduct;
     },
-    changeMonth(value) {
-      this.selectedMonth = value;
+    changeMonth(month, idx) {
+      this.months.splice(idx, 1, month);
     },
   },
   computed: {
