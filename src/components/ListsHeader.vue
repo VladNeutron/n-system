@@ -1,9 +1,12 @@
 <template>
-    <div class="page__name d-flex align-items-center mb-4">
+    <div class="page__name d-flex align-items-center mb-4 justify-content-between">
       <div class="page__name-title text-start">
         <h3><slot name="title"></slot></h3>
         <p class="mb-0"><slot name="description"></slot></p>
       </div>
+      <slot name="add">
+
+      </slot>
     </div>
 </template>
 

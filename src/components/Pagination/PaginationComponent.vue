@@ -4,7 +4,7 @@
             >
               <div class="d-flex align-items-center gap-3">
                 <div>
-                  <p class="m-0">Показано<span> {{pageNumber}} из {{MaxPages}} </span></p>
+                  <p class="m-0 pagination__text">Показано <span> {{pageNumber == 1 ? 1 : (pageNumber-1)*9+1}}-{{pageNumber == 1 ? pageWeaponsList.length : (pageNumber-1)*9+pageWeaponsList.length}} из {{filteredArr.length}} </span></p>
                 </div>
 
                 <div class="page__search-pages d-flex align-content-center">
@@ -162,6 +162,16 @@ mounted(){
 }
 </script>
 
-<style>
-
+<style scoped>
+.page-item{
+  cursor: pointer;
+}
+.page-item.active .page-link{
+  background: linear-gradient(83.56deg, #7092E0 10.01%, #8BAEF3 75.36%);
+}
+.pagination__text{
+  font-weight: 400;
+  font-size: 14px;
+  color: #A0AEC0;
+}
 </style>
