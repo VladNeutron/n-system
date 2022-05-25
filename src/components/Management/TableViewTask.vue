@@ -134,7 +134,7 @@
               <th>Действия</th>
             </thead>
             <tbody>
-              <tr v-for="(item, i) in items" :key="item">
+              <tr v-for="(item, i) in pagFunnel" :key="item">
                 <td>{{ i + 1 }}</td>
                 <td>{{ item.name }}</td>
                 <td>
@@ -167,7 +167,8 @@
           </table>
         </div>
         <pagination-component
-          :filteredArr="dealsList"
+          :filteredArr="items"
+          :strAmount="5"
           @PaginationReload="reloadPagination1"
         ></pagination-component>
       </template>
@@ -234,6 +235,18 @@ export default {
           id: 5,
           name: "Начало работы",
         },
+        {
+          id: 6,
+          name: "Начало работы",
+        },
+        {
+          id: 7,
+          name: "Начало работы",
+        },
+        {
+          id: 8,
+          name: "Начало работы",
+        },
       ],
     };
   },
@@ -241,11 +254,12 @@ export default {
     dealsList: Array,
   },
   methods: {
-    reloadPagination1(arr){
-      console.log('asd')
+    reloadPagination1(arr) {
+      console.log(arr);
+      this.pagFunnel = arr;
     },
     reloadPagination(arr) {
-      console.log(arr)
+      console.log(arr);
       this.paginationList = arr;
     },
     openModal() {
@@ -315,10 +329,11 @@ export default {
     0px 2px 4px -1px rgba(0, 0, 0, 0.07);
   border-radius: 8px;
 }
-label, .form-label,
-.form-control-label{
+label,
+.form-label,
+.form-control-label {
   font-weight: 600 !important;
   font-size: 14px !important;
-  color: #2D3748 !important;
+  color: #2d3748 !important;
 }
 </style>
