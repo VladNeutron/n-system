@@ -10,7 +10,7 @@
 export default {
     data(){
         return{
-            
+            kanbanTest: {},
         }
     },
     props: {
@@ -18,7 +18,8 @@ export default {
         dealsList: Array,
     },
     mounted(){
-        var KanbanTest = new jKanban({
+        // var KanbanTest
+        this.kanbanTest  = new jKanban({
           element: "#myKanban",
           gutter: "10px",
           widthBoard: "400px",
@@ -27,35 +28,17 @@ export default {
           click: el => {
             
           },
-          buttonClick: function(el, boardId) {
+          buttonClick: () => {
+              this.kanbanTest.addElement('Stage2', {
+                  id: 409,
+                  title: 'Новый',
+                  class: ["border-radius-md"]
+                });
           },
           addItemButton: true,
             boards: this.boards,
-        //     boards: [{
-        //       id: "_backlog1",
-        //       title: "Backlog",
-        //       item: [{
-        //           id: "_task_1_title_id",
-        //           title: 'Click me to change title',
-        //           class: ["border-radius-md"]
-        //         },
-        //         {
-        //           id: "_task_2_title_id",
-        //           title: 'Drag me to "In progress" section',
-        //           class: ["border-radius-md"]
-        //         },
-        //         {
-        //           id: "_task_do_something_id",
-        //           title: 'Website Design: New cards for blog section and profile details',
-        //           assignee: "Done Joe",
-        //           description: "This task's description is for something, but not for anything",
-        //           class: ["border-radius-md"]
-        //         },
-        //       ]
-        //     },
-        //   ]
         });
-        console.log(this.boards);
+        // console.log(this.boards);
     },
     computed:{
         boards(){
@@ -81,9 +64,18 @@ export default {
                     boards.push(board)
                 }
             )
-            console.log(boards);
+            // console.log(boards);
             return boards
         }
+    },
+    methods:{
+        addElKanban(){
+            this.kanbanTest.addElement('Stage2', {
+                  id: 409,
+                  title: 'Новый',
+                  class: ["border-radius-md"]
+                });
+        },
     },
 //     watch: {
 //     // whenever question changes, this function will run

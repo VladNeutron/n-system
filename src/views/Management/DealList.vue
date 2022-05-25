@@ -205,6 +205,7 @@ export default {
     components:{
         KanbanView, TableView
     },
+    mounted(){}
 }
 </script>
 
