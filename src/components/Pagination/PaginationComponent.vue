@@ -150,7 +150,7 @@ computed:{
 },
 methods:{
     nextPage(){
-            if(this.pageNumber < this.filteredArr.length/(this.stringAmount+1)){
+            if(this.pageNumber < Math.ceil(this.filteredArr.length/(this.stringAmount))){
                 this.pageNumber = this.pageNumber + 1;
                 // console.log(this.pageNumber)
             }

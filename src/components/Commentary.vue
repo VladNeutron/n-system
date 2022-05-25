@@ -8,10 +8,15 @@
           <img src="@/assets/css/icons/question_answer.svg" alt="" />
           <h3 class="m-0">Комментарии</h3>
         </div>
-        <img src="@/assets/img/filtersClose.svg" class="me-2" alt="" />
+        <img
+          src="@/assets/img/filtersClose.svg"
+          @click="closeCommentary"
+          class="me-2"
+          alt=""
+        />
       </div>
       <div class="commentary__header-description">
-        <p class="text-start m-0 mt-2">Название страницы</p>
+        <p class="text-start m-0 mt-2">#{{ pageTitle }}</p>
       </div>
     </div>
     <div class="commentary__body">
@@ -51,6 +56,9 @@
 import Quill from "@/assets/js/plugins/quill.min.js";
 
 export default {
+  props: {
+    pageTitle: String,
+  },
   data() {
     return {
       users: [
@@ -115,6 +123,11 @@ export default {
       // соединить компоненты в дату
       return d.slice(0, 3).join(".") + " " + d.slice(3).join(":");
     },
+    closeCommentary() {
+      document
+        .querySelector(".commentary__container")
+        .classList.remove("commentary-show");
+    },
   },
   computed: {},
   mounted() {
@@ -131,12 +144,15 @@ export default {
   height: 100vh;
   z-index: 1200;
   position: fixed;
-  right: 0px;
+  right: -560px;
   top: 0px;
   background-color: white;
   transition: all 0.8s;
   box-shadow: -10px 0px 40px rgba(0, 0, 0, 0.1);
   overflow-y: auto;
+}
+.commentary-show {
+  right: 0;
 }
 .commentary__header {
   height: 145px;
@@ -156,6 +172,9 @@ export default {
   line-height: 22px;
   letter-spacing: -0.442553px;
   color: #a0aec0;
+}
+.commentary__header img {
+  cursor: pointer;
 }
 .commentary__body {
   height: 70%;

@@ -19,7 +19,7 @@
           </div> -->
           <div class="card py-4 main__card">
             <div
-              class="d-flex justify-content-between align-items-center mx-4 mb-4"
+              class="d-flex justify-content-between align-items-center mx-4 mb-2"
             >
               <button
                 class="btn bg-gradient-dark mb-0"
@@ -58,7 +58,7 @@
                       <th
                         scope="col"
                         class="th__col"
-                        style="width: 1px; padding-left: 27px"
+                        style="width: 1px;"
                       ></th>
                       <th scope="col" class="th__col">№</th>
                       <th scope="col" class="th__col">№ Заказа</th>
@@ -80,7 +80,7 @@
                   </thead>
                   <tbody>
                     <tr v-for="(order, i) of paginationList" :key="order.id">
-                      <th scope="row" style="padding-left: 27px">
+                      <th scope="row" style="">
                         <div class="form-check">
                           <input
                             class="form-check-input"
@@ -134,7 +134,7 @@
                 </table>
               </div>
             </div>
-            <pagination-component :filteredArr="filteredOrders" @PaginationReload="reloadPagination"></pagination-component>
+            <pagination-component :filteredArr="filteredOrders" :strAmount="paginationAmount" @PaginationReload="reloadPagination"></pagination-component>
           </div>
         </div>
       </div>
@@ -1175,6 +1175,15 @@ export default {
             : order.type === this.filterOrderType)
       );
     },
+
+    paginationAmount(){
+      if(document.documentElement.clientWidth < 1700){
+        return 7
+      }
+      else{
+        return 9
+      }
+    },
   },
 
   components: {
@@ -1186,11 +1195,7 @@ export default {
 </script>
 
 
-<style>
-.dataTables_filter{
-  display: none;
-}
-</style>
+
 <style scoped>
 .period__s {
   width: 191px !important;
@@ -1325,7 +1330,7 @@ export default {
   color: gray;
 }
 .main__card {
-  max-height: 80vh;
+  height: 80vh;
 }
 .th__col {
   color: #a0aec0 !important;
@@ -1369,5 +1374,8 @@ td {
   .dropdown-content {
     width: 130px;
   }
+  .main__card {
+  height: 80vh;
+}
 }
 </style>
