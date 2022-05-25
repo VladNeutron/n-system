@@ -394,6 +394,7 @@
         </div>
       </div>
     </div>
+    <Commentary></Commentary>
   </main>
 </template>
 
@@ -897,9 +898,12 @@
 
 <script>
 import DiscountModal from "@/components/DiscountModal.vue";
+import Commentary from "@/components/Commentary.vue";
+
 export default {
   components: {
     DiscountModal,
+    Commentary,
   },
   methods: {
     test() {
