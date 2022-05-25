@@ -24,7 +24,7 @@
 </template>
 
 <script>
-import { Quill } from "@/assets/js/plugins/quill.min";
+import Quill from "@/assets/js/plugins/quill.min.js";
 
 export default {
   data() {
