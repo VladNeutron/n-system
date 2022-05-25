@@ -4,7 +4,7 @@
             >
               <div class="d-flex align-items-center gap-3">
                 <div>
-                  <p class="m-0 pagination__text">Показано <span> {{pageNumber == 1 ? 1 : (pageNumber-1)*9+1}}-{{pageNumber == 1 ? pageWeaponsList.length : (pageNumber-1)*9+pageWeaponsList.length}} из {{filteredArr.length}} </span></p>
+                  <p class="m-0 pagination__text">Показано <span> {{pageNumber == 1 ? 1 : (pageNumber-1)*strAmount+1}}-{{pageNumber == 1 ? pageWeaponsList.length : (pageNumber-1)*strAmount+pageWeaponsList.length}} из {{filteredArr.length}} </span></p>
                 </div>
 
                 <div class="page__search-pages d-flex align-content-center">
@@ -117,6 +117,8 @@ computed:{
                 ind = (this.pageNumber-1)*this.stringAmount
             }
             for(let i = ind; i <= ind + this.stringAmount -1 && i<this.filteredArr.length; i++){
+                let temp = this.filteredArr[i];
+                temp.listNumber = i;
                 pageWeapons.push(this.filteredArr[i])
             }
             // console.log(pageWeapons)
@@ -165,11 +167,11 @@ methods:{
 watch: {
     // whenever question changes, this function will run
     pageWeaponsList(newQuestion) {
-      this.$emit('PaginationReload', this.pageWeaponsList)
+      this.$emit('PaginationReload', this.pageWeaponsList, this.pageNumber)
     },
 },
 mounted(){
-    this.$emit('PaginationReload', this.pageWeaponsList)
+    this.$emit('PaginationReload', this.pageWeaponsList, this.pageNumber)
 }
 }
 </script>

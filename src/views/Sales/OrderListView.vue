@@ -79,7 +79,7 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr v-for="(order, i) of paginationList" :key="order.id">
+                    <tr v-for="(order) of paginationList" :key="order.id">
                       <th scope="row" style="">
                         <div class="form-check">
                           <input
@@ -90,7 +90,7 @@
                           />
                         </div>
                       </th>
-                      <th>{{ i + 1 }}</th>
+                      <th>{{ order.listNumber + 1 }}</th>
                       <td>{{ order.id }}</td>
                       <td>{{ order.date }}</td>
                       <td>{{ order.warehouse }}</td>
