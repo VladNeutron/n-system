@@ -92,4 +92,10 @@
 .modal-dialog {
   max-width: 28.854vw;
 }
+label, .form-label,
+.form-control-label{
+  font-weight: 600 !important;
+  font-size: 14px !important;
+  color: #2D3748 !important;
+}
 </style>
