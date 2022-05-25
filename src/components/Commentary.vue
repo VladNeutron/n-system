@@ -14,10 +14,34 @@
         <p class="text-start m-0 mt-2">Название страницы</p>
       </div>
     </div>
-    <div class="commentary__body"></div>
-    <div class="commentary__bottom">
+    <div class="commentary__body">
+      <div
+        class="message d-flex gap-3 mb-4"
+        v-for="message in chatHistory"
+        :key="message"
+      >
+        <div class="message-img">
+          <img src="@/assets/img/chatAvatar1.png" alt="ava" />
+        </div>
+        <div class="message-body">
+          <div class="message-name d-flex gap-2">
+            <h6 class="m-0">{{ message.name }}</h6>
+            <p class="m-0">{{ formatDate(message.date) }}</p>
+          </div>
+          <div class="message-content text-start">
+            <p class="m-0">{{ message.text }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="commentary__bottom px-4" pb-4>
       <div class="commentary__bottom-input">
-        <div id="editor"></div>
+        <div id="editor" @keyup.enter="sendMessage"></div>
+      </div>
+      <div class="buttondiv">
+        <button @click="sendMessage" class="send-btn">
+          <img src="@/assets/css/icons/send.svg" alt="" />
+        </button>
       </div>
     </div>
   </div>
@@ -42,13 +66,59 @@ export default {
         },
       ],
       chatHistory: [],
-      message: "",
+      message: {},
+      quill: {},
     };
   },
-  methods: {},
+  methods: {
+    sendMessage() {
+      const messageText = this.quill.getText();
+
+      if (messageText !== "") {
+        const messageTime = new Date();
+        this.message = {
+          userid: this.users[0].id,
+          image: this.users[0].image,
+          name: this.users[0].name,
+          date: messageTime,
+          text: messageText,
+        };
+        this.quill.setText("");
+
+        this.chatHistory.push(this.message);
+      }
+    },
+    formatDate(date) {
+      let diff = new Date() - date; // разница в миллисекундах
+      if (diff < 1000) {
+        // меньше 1 секунды
+        return "прямо сейчас";
+      }
+      let sec = Math.floor(diff / 1000); // преобразовать разницу в секунды
+      if (sec < 60) {
+        return sec + " сек. назад";
+      }
+      let min = Math.floor(diff / 60000); // преобразовать разницу в минуты
+      if (min < 60) {
+        return min + " мин. назад";
+      }
+      // отформатировать дату
+      // добавить ведущие нули к единственной цифре дню/месяцу/часам/минутам
+      let d = date;
+      d = [
+        "0" + d.getDate(),
+        "0" + (d.getMonth() + 1),
+        "" + d.getFullYear(),
+        "0" + d.getHours(),
+        "0" + d.getMinutes(),
+      ].map((component) => component.slice(-2)); // взять последние 2 цифры из каждой компоненты
+      // соединить компоненты в дату
+      return d.slice(0, 3).join(".") + " " + d.slice(3).join(":");
+    },
+  },
   computed: {},
   mounted() {
-    var quill = new Quill("#editor", {
+    this.quill = new Quill("#editor", {
       theme: "snow",
     });
   },
@@ -88,9 +158,50 @@ export default {
   color: #a0aec0;
 }
 .commentary__body {
-  height: 500px;
+  height: 70%;
+  padding: 32px 40px 32px 32px;
+  overflow-x: auto;
+}
+.message-name h6 {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 22px;
+  letter-spacing: -0.442553px;
+  color: #2d3748;
+}
+.message-name p {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 19px;
+  letter-spacing: -0.387234px;
+  color: #a0aec0;
+}
+.message-content p {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 22px;
+  letter-spacing: -0.442553px;
+  color: #2d3748;
 }
 .commentary__bottom {
   height: 160px;
+}
+#editor {
+  height: 100px;
+  padding-bottom: 46px;
+}
+.buttondiv {
+  position: relative;
+}
+.send-btn {
+  position: absolute;
+  top: -40px;
+  right: 10px;
+  background-color: #2d3748;
+  border-radius: 5px;
+  width: 42px;
+  height: 30px;
+  border: none;
+  text-align: center;
 }
 </style>
