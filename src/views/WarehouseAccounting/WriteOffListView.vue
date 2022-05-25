@@ -55,8 +55,8 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr v-for="(item, i) in items" :key="item">
-                      <th scope="row">{{ i + 1 }}</th>
+                    <tr v-for="(item, i) in paginationList" :key="item">
+                      <td scope="row">{{ i + 1 }}</td>
                       <td>{{ item.id }}</td>
                       <td>{{ item.date }}</td>
                       <td>{{ item.place }}</td>
@@ -87,68 +87,20 @@
                 </table>
               </div>
             </div>
-            <div class="pagination d-flex justify-content-end pe-5 pb-2">
-              <div class="d-flex align-items-center gap-3 pb-4">
-                <div>
-                  <p class="m-0">Показано<span> 2112 12121</span></p>
-                </div>
-
-                <div class="page__search-pages d-flex align-content-center">
-                  <div class="pagination-container d-flex justify-items-center">
-                    <ul class="pagination pagination-info mb-0 pe-0">
-                      <li class="page-item">
-                        <a
-                          class="page-link"
-                          href="javascript:;"
-                          aria-label="Previous"
-                        >
-                          <span aria-hidden="true"
-                            ><i
-                              class="fa fa-angle-double-left"
-                              aria-hidden="true"
-                            ></i
-                          ></span>
-                        </a>
-                      </li>
-                      <li class="page-item">
-                        <a class="page-link" href="javascript:;">1</a>
-                      </li>
-                      <li class="page-item">
-                        <a class="page-link" href="javascript:;">2</a>
-                      </li>
-                      <li class="page-item active">
-                        <a class="page-link" href="javascript:;">3</a>
-                      </li>
-                      <li class="page-item">
-                        <a class="page-link" href="javascript:;">4</a>
-                      </li>
-                      <li class="page-item">
-                        <a class="page-link" href="javascript:;">5</a>
-                      </li>
-                      <li class="page-item">
-                        <a
-                          class="page-link"
-                          href="javascript:;"
-                          aria-label="Next"
-                        >
-                          <span aria-hidden="true"
-                            ><i
-                              class="fa fa-angle-double-right"
-                              aria-hidden="true"
-                            ></i
-                          ></span>
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <pagination-component
+              :filteredArr="items"
+              :strAmount="10"
+              @PaginationReload="reloadPagination"
+              class="pb-4"
+            ></pagination-component>
           </div>
         </div>
       </div>
     </div>
-    <delete-modal :title="'списания'" :text='`документ "Списание №23"`'></delete-modal>
+    <delete-modal
+      :title="'списания'"
+      :text="`документ &quot;Списание №23&quot;`"
+    ></delete-modal>
     <filters>
       <div class="filters__period__flex">
         <div class="filter__name__standart">Выберите период</div>
@@ -187,6 +139,11 @@ import Filters from "@/components/Filters.vue";
 import FiltersButton from "@/components/buttons/FiltersButton.vue";
 import DeleteModal from "@/components/DeleteModal.vue";
 export default {
+  methods: {
+    reloadPagination(arr) {
+      this.paginationList = arr;
+    },
+  },
   components: {
     DeleteModal,
     Filters,
@@ -194,7 +151,72 @@ export default {
   },
   data() {
     return {
+      paginationList: [],
       items: [
+        {
+          date: "11 янв, 19:23, 2021",
+          id: "23",
+          place: "ТРЦ Москва",
+          name: "Мильчаков Валерий",
+          isReady: "Завершен",
+          count: "15",
+        },
+        {
+          date: "11 янв, 19:23, 2021",
+          id: "23",
+          place: "ТРЦ Москва",
+          name: "Мильчаков Валерий",
+          isReady: "Завершен",
+          count: "15",
+        },
+        {
+          date: "11 янв, 19:23, 2021",
+          id: "23",
+          place: "ТРЦ Москва",
+          name: "Мильчаков Валерий",
+          isReady: "Новый",
+          count: "15",
+        },
+        {
+          date: "11 янв, 19:23, 2021",
+          id: "23",
+          place: "ТРЦ Москва",
+          name: "Мильчаков Валерий",
+          isReady: "Новый",
+          count: "15",
+        },
+        {
+          date: "11 янв, 19:23, 2021",
+          id: "23",
+          place: "ТРЦ Москва",
+          name: "Мильчаков Валерий",
+          isReady: "Завершен",
+          count: "15",
+        },
+        {
+          date: "11 янв, 19:23, 2021",
+          id: "23",
+          place: "ТРЦ Москва",
+          name: "Мильчаков Валерий",
+          isReady: "Завершен",
+          count: "15",
+        },
+        {
+          date: "11 янв, 19:23, 2021",
+          id: "23",
+          place: "ТРЦ Москва",
+          name: "Мильчаков Валерий",
+          isReady: "Новый",
+          count: "15",
+        },
+        {
+          date: "11 янв, 19:23, 2021",
+          id: "23",
+          place: "ТРЦ Москва",
+          name: "Мильчаков Валерий",
+          isReady: "Новый",
+          count: "15",
+        },
         {
           date: "11 янв, 19:23, 2021",
           id: "23",
@@ -288,7 +310,7 @@ th {
   background-color: #e2e8f0;
 }
 .inv__content {
-  height: 30.469vw;
+  height: 27.669vw;
   overflow-y: scroll;
 }
 

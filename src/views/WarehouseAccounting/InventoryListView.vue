@@ -55,10 +55,7 @@
             </div>
             <div class="inv__block">
               <div class="inv__content">
-                <table
-                  class="table table-bordered table-hover table-striped"
-                  id="table_id"
-                >
+                <table class="table table-bordered table-hover table-striped">
                   <thead>
                     <tr>
                       <th scope="col" class="th__col">№</th>
@@ -74,7 +71,7 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr v-for="(item, i) in items" :key="item">
+                    <tr v-for="(item, i) in paginationList" :key="item">
                       <td scope="row">{{ i + 1 }}</td>
                       <td>{{ item.id }}</td>
                       <td>{{ item.date }}</td>
@@ -84,24 +81,24 @@
                       <td>{{ item.count }}</td>
                       <td class="">
                         <div class="dropdown">
-                        <img
-                          src="@/assets/img/dots.svg"
-                          style="width: 1.563vw; cursor: pointer"
-                          alt=""
-                          class=""
-                        />
-                        <div class="dropdown-content">
-                          <a href="/warehouse-accounting/edit-inv"
-                            >Редактировать</a
-                          >
-                          <hr />
-                          <a
-                            style="cursor: pointer"
-                            data-bs-toggle="modal"
-                            data-bs-target="#DeleteInv"
-                            >Удалить</a
-                          >
-                        </div>
+                          <img
+                            src="@/assets/img/dots.svg"
+                            style="width: 1.563vw; cursor: pointer"
+                            alt=""
+                            class=""
+                          />
+                          <div class="dropdown-content">
+                            <a href="/warehouse-accounting/edit-inv"
+                              >Редактировать</a
+                            >
+                            <hr />
+                            <a
+                              style="cursor: pointer"
+                              data-bs-toggle="modal"
+                              data-bs-target="#DeleteInv"
+                              >Удалить</a
+                            >
+                          </div>
                         </div>
                       </td>
                       <!-- <td class="">
@@ -127,63 +124,12 @@
                 </table>
               </div>
             </div>
-            <div class="pagination d-flex justify-content-end pe-5 pb-2">
-              <div class="d-flex align-items-center gap-3 pb-4">
-                <div>
-                  <p class="m-0">Показано<span> 2112 12121</span></p>
-                </div>
-
-                <div class="page__search-pages d-flex align-content-center">
-                  <div class="pagination-container d-flex justify-items-center">
-                    <ul class="pagination pagination-info mb-0 pe-0">
-                      <li class="page-item">
-                        <a
-                          class="page-link"
-                          href="javascript:;"
-                          aria-label="Previous"
-                        >
-                          <span aria-hidden="true"
-                            ><i
-                              class="fa fa-angle-double-left"
-                              aria-hidden="true"
-                            ></i
-                          ></span>
-                        </a>
-                      </li>
-                      <li class="page-item">
-                        <a class="page-link" href="javascript:;">1</a>
-                      </li>
-                      <li class="page-item">
-                        <a class="page-link" href="javascript:;">2</a>
-                      </li>
-                      <li class="page-item active">
-                        <a class="page-link" href="javascript:;">3</a>
-                      </li>
-                      <li class="page-item">
-                        <a class="page-link" href="javascript:;">4</a>
-                      </li>
-                      <li class="page-item">
-                        <a class="page-link" href="javascript:;">5</a>
-                      </li>
-                      <li class="page-item">
-                        <a
-                          class="page-link"
-                          href="javascript:;"
-                          aria-label="Next"
-                        >
-                          <span aria-hidden="true"
-                            ><i
-                              class="fa fa-angle-double-right"
-                              aria-hidden="true"
-                            ></i
-                          ></span>
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <pagination-component
+              :filteredArr="items"
+              :strAmount="10"
+              @PaginationReload="reloadPagination"
+              class="pb-4"
+            ></pagination-component>
           </div>
         </div>
       </div>
@@ -239,53 +185,20 @@ import FiltersButton from "@/components/buttons/FiltersButton.vue";
 import DeleteModal from "@/components/DeleteModal.vue";
 
 export default {
-  mounted() {
-    $(document).ready(function () {
-      let oTable = $("#table_id").DataTable({
-        language: {
-          paginate: {
-            previous: "‹",
-            next: "›",
-          },
-          aria: {
-            paginate: {
-              previous: "Previous",
-              next: "Next",
-            },
-          },
-        },
-        paging: true,
-        ordering: true,
-        info: false,
-        search: false,
-        responsive: true,
-        "lengthChange": false,
-        // scrollY: "30vw",
-        // scrollCollapse: true,
-      });
-      $("#myInputTextField").keyup(function () {
-        oTable.search($(this).val()).draw();
-      });
-    });
-    // const dataTable = new simpleDatatables.DataTable("#table_id", {
-    //   searchable: false,
-    //   fixedHeight: false,
-    //   perPage: 10,
-    //   labels: {
-    //     placeholder: "Search...",
-    //     perPage: "{select} строчек на странице",
-    //     noRows: "Ничего не найдено",
-    //     info: "Показано {start}-{end} из {rows}",
-    //   },
-    // });
-  },
   components: {
     DeleteModal,
     Filters,
     FiltersButton,
   },
+  methods: {
+    reloadPagination(arr) {
+      console.log(arr);
+      this.paginationList = arr;
+    },
+  },
   data() {
     return {
+      paginationList: [],
       items: [
         {
           date: "11 янв, 19:23, 2021",
@@ -400,8 +313,8 @@ export default {
 .dataTables_filter {
   display: none;
 }
-.paginate_button{
-  color: #8392AB !important;
+.paginate_button {
+  color: #8392ab !important;
   padding: 0 !important;
   margin: 0 3px;
   border-radius: 50% !important;
@@ -410,8 +323,12 @@ export default {
   font-size: 0.875rem;
   line-height: 2rem;
 }
-.paginate_button.current{
-  background-image: linear-gradient(83.56deg, #7092E0 10.01%, #8BAEF3 75.36%) !important;
+.paginate_button.current {
+  background-image: linear-gradient(
+    83.56deg,
+    #7092e0 10.01%,
+    #8baef3 75.36%
+  ) !important;
   border: none !important;
 }
 </style>
@@ -452,7 +369,7 @@ hr {
 .th__col {
   color: #a0aec0 !important;
 }
-/* .inv__content::-webkit-scrollbar {
+.inv__content::-webkit-scrollbar {
   background: #e2e8f0;
   border-radius: 0.78vw;
   width: 0.37vw;
@@ -467,9 +384,9 @@ hr {
   background-color: #e2e8f0;
 }
 .inv__content {
-  height: 30.469vw;
-  overflow-y: scroll;
-} */
+  height: 27.669vw;
+  overflow-y: auto;
+}
 
 .inv__btn {
   display: flex;
