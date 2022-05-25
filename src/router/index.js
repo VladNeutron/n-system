@@ -610,6 +610,12 @@ const routes = [
     component: () => import("../views/Management/WorkSpace.vue"),
     meta: { NavLink: "Рабочая область" },
   },
+  {
+    path: "/management/task-list",
+    name: "task-list",
+    component: () => import("../views/Management/TaskList.vue"),
+    meta: { NavLink: "Список задач" },
+  },
   // МЕНЕДЖМЕНТ
 ];
 
