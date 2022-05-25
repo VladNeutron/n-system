@@ -17,7 +17,7 @@
             alt=""
             style="margin-right: 10px"
           />
-          Добавить сделку
+          Добавить задачу
         </button>
         <button
           class="btn bg-gradient-dark mb-0 topTable__btn"
@@ -30,7 +30,7 @@
           data-bs-toggle="modal"
           data-bs-target="#Funnel"
         >
-          Настроить воронку
+          Управление этапами
         </button>
       </div>
       <div
@@ -59,7 +59,7 @@
               <th scope="col" class="th__col">ответственный</th>
               <th scope="col" class="th__col">клиент</th>
               <th scope="col" class="th__col">этап сделки</th>
-              <th scope="col" class="th__col">бюджет</th>
+              <th scope="col" class="th__col">Статус задачи</th>
             </tr>
           </thead>
           <tbody>
@@ -93,12 +93,13 @@
     </div>
     <pagination-component
       :filteredArr="dealsList"
+      :strAmount="5"
       @PaginationReload="reloadPagination"
     ></pagination-component>
     <funnel-modal>
       <template #head>
         <div class="text-start">
-          <p class="header__main">Настройка воронки</p>
+          <p class="header__main">Управление этапами</p>
           <p class="header__sec">
             Внесите изменения в этапы и нажмите “Добавить этап”
           </p>
@@ -167,7 +168,7 @@
         </div>
         <pagination-component
           :filteredArr="dealsList"
-          @PaginationReload="reloadPagination"
+          @PaginationReload="reloadPagination1"
         ></pagination-component>
       </template>
     </funnel-modal>
@@ -181,7 +182,7 @@
       <template #body>
         <div class="form-group text-start">
           <label for="example-text-input" class="form-control-label"
-            >Название этапа сделки</label
+            >Название этапа задачи</label
           >
           <input
             class="form-control"
@@ -240,7 +241,11 @@ export default {
     dealsList: Array,
   },
   methods: {
+    reloadPagination1(arr){
+      console.log('asd')
+    },
     reloadPagination(arr) {
+      console.log(arr)
       this.paginationList = arr;
     },
     openModal() {
@@ -309,5 +314,11 @@ export default {
   box-shadow: 0px 4px 7px -1px rgba(0, 0, 0, 0.11),
     0px 2px 4px -1px rgba(0, 0, 0, 0.07);
   border-radius: 8px;
+}
+label, .form-label,
+.form-control-label{
+  font-weight: 600 !important;
+  font-size: 14px !important;
+  color: #2D3748 !important;
 }
 </style>

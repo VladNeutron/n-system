@@ -90,21 +90,33 @@ export default {
 data(){
     return{
         pageNumber: 1,
+        // stringAmountDefault: 9,
     }
 },
 props:{
     filteredArr: Array,
+    strAmount: {
+      type: Number,
+      default: 9,
+      },
 },
 emits: ['PaginationReload'],
 computed:{
+    stringAmount(){
+      if(this.strAmount){
+        return Number(this.strAmount)
+      }
+      else return 9
+    },
     pageWeaponsList(){
         if(this.filteredArr.length>0){
             let pageWeapons = [];
             let ind = 0;
+            console.log(this.stringAmount)
             if (this.pageNumber > 1){
-                ind = (this.pageNumber-1)*9
+                ind = (this.pageNumber-1)*this.stringAmount
             }
-            for(let i = ind; i <= ind + 8 && i<this.filteredArr.length; i++){
+            for(let i = ind; i <= ind + this.stringAmount -1 && i<this.filteredArr.length; i++){
                 pageWeapons.push(this.filteredArr[i])
             }
             // console.log(pageWeapons)
@@ -112,7 +124,7 @@ computed:{
         }
     },
     MaxPages(){
-        return Math.ceil(this.filteredArr.length/9);
+        return Math.ceil(this.filteredArr.length/this.stringAmount);
     },
     pagesList(){
         if(this.pageNumber<4){
@@ -138,7 +150,7 @@ computed:{
 },
 methods:{
     nextPage(){
-            if(this.pageNumber < this.filteredArr.length/10){
+            if(this.pageNumber < this.filteredArr.length/(this.stringAmount+1)){
                 this.pageNumber = this.pageNumber + 1;
                 // console.log(this.pageNumber)
             }
@@ -154,7 +166,7 @@ watch: {
     // whenever question changes, this function will run
     pageWeaponsList(newQuestion) {
       this.$emit('PaginationReload', this.pageWeaponsList)
-    }
+    },
 },
 mounted(){
     this.$emit('PaginationReload', this.pageWeaponsList)

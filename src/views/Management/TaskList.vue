@@ -6,9 +6,14 @@
             <div class="row">
                 <div class="col-12">
                 <lists-header>
-                    <template v-slot:title> Сделки компании </template>
-                    <template v-slot:description>
-                        Доска сделок компании
+                    <template v-slot:title> Задачи компании </template>
+                    <template v-slot:description >
+                        <span v-if="pageView==1">
+                            Доска задач компании
+                        </span>
+                        <span v-else>
+                            Список задач компании
+                        </span>
                     </template>
                     <template v-slot:add>
                         <div>
@@ -43,8 +48,8 @@
                         </div>
                     </template>
                 </lists-header>
-                <kanban-view v-if="pageView==1" :dealStages="dealStages" :dealsList="dealsList"></kanban-view>
-                <table-view v-if="pageView==0" :dealsList="dealsList"></table-view>
+                <kanban-view-task v-if="pageView==1" :dealStages="dealStagesPar" :dealsList="dealsListPar"></kanban-view-task>
+                <table-view-task v-if="pageView==0" :dealsList="dealsListPar"></table-view-task>
                 </div>
             </div>
         </div>
@@ -52,13 +57,13 @@
 </template>
 
 <script>
-import KanbanView from "@/components/Management/KanbanView.vue"
-import TableView from "@/components/Management/TableView.vue"
+import KanbanViewTask from "@/components/Management/KanbanViewTask.vue"
+import TableViewTask from "@/components/Management/TableViewTask.vue"
 export default {
     data(){
         return{
             pageView: 1,
-            dealStages: [
+            dealStagesPar: [
                 {
                     id: 'Stage0',
                     name: 'Первичный контакт',
@@ -81,7 +86,7 @@ export default {
                 },
 
             ],
-            dealsList: [
+            dealsListPar: [
                 {
                     id:0,
                     dealName: "ТОО “Рога и копыта”",
@@ -89,7 +94,7 @@ export default {
                     responsible: 'Тихонов А.',
                     client: 'Тихонов А.',
                     stage: 'Первичный контакт',
-                    budget: '1 500 000 ₸',
+                    budget: 'Выполнено',
                 },
                 {
                     id:1,
@@ -98,7 +103,7 @@ export default {
                     responsible: 'Тихонов А.',
                     client: 'Тихонов А.',
                     stage: 'Переговоры',
-                    budget: '1 500 000 ₸',
+                    budget: 'Выполнено',
                 },
                 {
                     id:2,
@@ -107,7 +112,7 @@ export default {
                     responsible: 'Тихонов А.',
                     client: 'Тихонов А.',
                     stage: 'Переговоры',
-                    budget: '1 500 000 ₸',
+                    budget: 'Выполнено',
                 },
                 {
                     id:3,
@@ -116,7 +121,7 @@ export default {
                     responsible: 'Тихонов А.',
                     client: 'Тихонов А.',
                     stage: 'Договор',
-                    budget: '1 500 000 ₸',
+                    budget: 'Выполнено',
                 },
                 {
                     id:4,
@@ -125,7 +130,7 @@ export default {
                     responsible: 'Тихонов А.',
                     client: 'Тихонов А.',
                     stage: 'Первичный контакт',
-                    budget: '1 500 000 ₸',
+                    budget: 'Выполнено',
                 },
                 {
                     id:5,
@@ -134,7 +139,7 @@ export default {
                     responsible: 'Тихонов А.',
                     client: 'Тихонов А.',
                     stage: 'Ожидание оплаты',
-                    budget: '1 500 000 ₸',
+                    budget: 'Выполнено',
                 },
                 {
                     id:6,
@@ -143,7 +148,7 @@ export default {
                     responsible: 'Тихонов А.',
                     client: 'Тихонов А.',
                     stage: 'Переговоры',
-                    budget: '1 500 000 ₸',
+                    budget: 'Выполнено',
                 },
                 {
                     id:8,
@@ -152,7 +157,7 @@ export default {
                     responsible: 'Тихонов А.',
                     client: 'Тихонов А.',
                     stage: 'Первичный контакт',
-                    budget: '1 500 000 ₸',
+                    budget: 'Выполнено',
                 },
                 {
                     id:9,
@@ -161,7 +166,7 @@ export default {
                     responsible: 'Тихонов А.',
                     client: 'Тихонов А.',
                     stage: 'Переговоры',
-                    budget: '1 500 000 ₸',
+                    budget: 'Выполнено',
                 },
                 {
                     id:10,
@@ -170,7 +175,7 @@ export default {
                     responsible: 'Тихонов А.',
                     client: 'Тихонов А.',
                     stage: 'Первичный контакт',
-                    budget: '1 500 000 ₸',
+                    budget: 'Выполнено',
                 },
                 {
                     id:11,
@@ -179,7 +184,7 @@ export default {
                     responsible: 'Тихонов А.',
                     client: 'Тихонов А.',
                     stage: 'Первичный контакт',
-                    budget: '1 500 000 ₸',
+                    budget: 'Выполнено',
                 },
                 {
                     id:12,
@@ -188,7 +193,7 @@ export default {
                     responsible: 'Тихонов А.',
                     client: 'Тихонов А.',
                     stage: 'Переговоры',
-                    budget: '1 500 000 ₸',
+                    budget: 'Выполнено',
                 },
                 {
                     id:13,
@@ -197,13 +202,13 @@ export default {
                     responsible: 'Тихонов А.',
                     client: 'Тихонов А.',
                     stage: 'Начало работы',
-                    budget: '1 500 000 ₸',
+                    budget: 'Выполнено',
                 },
             ],
         }
     },
     components:{
-        KanbanView, TableView
+        KanbanViewTask, TableViewTask
     },
     mounted(){}
 }

@@ -1,10 +1,10 @@
 <template>
   <div
     class="modal fade"
-    id="InpModal"
+    id="Funnel"
     tabindex="-1"
     role="dialog"
-    aria-labelledby="InpModal"
+    aria-labelledby="Funnel"
     aria-hidden="true"
   >
     <div class="modal-dialog modal-dialog-centered" role="document">
@@ -18,7 +18,7 @@
             data-bs-dismiss="modal"
           />
         </div>
-        <div class="modal-body modal__padding">
+        <div class="modal-body">
           <slot name="body">default header</slot>
         </div>
         <div class="modal-footer">
@@ -30,7 +30,8 @@
 </template>
 
 <script></script>
-<style>
+
+<style scoped>
 .header__sec {
   font-weight: 400;
   font-size: 0.833vw;
@@ -48,20 +49,6 @@
   justify-content: space-between;
   align-items: baseline;
 }
-</style>
-<style scoped>
-.header__sec {
-  font-weight: 400;
-  font-size: 0.833vw;
-  color: #a0aec0;
-}
-.header__main {
-  margin: 0;
-  font-weight: 700;
-  font-size: 1.563vw;
-  color: #252f40;
-}
-
 .btn-outline-dark {
   padding: 0.625vw 4.219vw 0.625vw 4.219vw;
 }
@@ -78,24 +65,20 @@
   justify-content: center;
   border-top: 0;
   padding-bottom: 2.083vw;
-  flex-direction: column;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
-.modal__padding {
-  padding-left: 2.083vw;
-  padding-right: 2.083vw;
-}
+/* .modal__padding {
+  padding-top: 1.563vw;
+  padding-left: 6.667vw;
+  padding-right: 6.667vw;
+} */
 .modal__title {
   font-weight: 600;
   font-size: 1.042vw;
   color: #2d3748;
 }
 .modal-dialog {
-  max-width: 28.854vw;
-}
-label, .form-label,
-.form-control-label{
-  font-weight: 600 !important;
-  font-size: 14px !important;
-  color: #2D3748 !important;
+  max-width: 39.635vw;
 }
 </style>
