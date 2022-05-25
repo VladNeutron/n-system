@@ -394,7 +394,7 @@
         </div>
       </div>
     </div>
-    <Commentary></Commentary>
+    <Commentary :pageTitle="'Создание счета'"></Commentary>
   </main>
 </template>
 
@@ -898,12 +898,14 @@
 
 <script>
 import DiscountModal from "@/components/DiscountModal.vue";
+import CommentButton from "@/components/buttons/CommentButton.vue";
 import Commentary from "@/components/Commentary.vue";
 
 export default {
   components: {
     DiscountModal,
     Commentary,
+    CommentButton,
   },
   methods: {
     test() {

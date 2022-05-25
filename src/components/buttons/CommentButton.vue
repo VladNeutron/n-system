@@ -1,5 +1,8 @@
 <template>
-  <button class="btn btn-outline-dark mb-0 comment__button">
+  <button
+    class="btn btn-outline-dark mb-0 comment__button"
+    @click="openComments"
+  >
     <img
       src="@/assets/img/comment.svg"
       style="width: 1.042vw; margin-right: 0.417vw"
@@ -10,7 +13,14 @@
 </template>
 
 <script>
-export default {};
+export default {
+  methods: {
+    openComments() {
+      let filtersContainer = document.querySelector(".commentary__container");
+      filtersContainer.classList.add("commentary-show");
+    },
+  },
+};
 </script>
 
 <style scoped>
