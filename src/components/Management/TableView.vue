@@ -133,7 +133,7 @@
               <th>Действия</th>
             </thead>
             <tbody>
-              <tr v-for="(item, i) in items" :key="item">
+              <tr v-for="(item, i) in pagFunnel" :key="item">
                 <td>{{ i + 1 }}</td>
                 <td>{{ item.name }}</td>
                 <td>
@@ -166,8 +166,9 @@
           </table>
         </div>
         <pagination-component
-          :filteredArr="dealsList"
-          @PaginationReload="reloadPagination"
+          :filteredArr="items"
+          @PaginationReload="reloadPaginationModal"
+          :strAmount="5"
         ></pagination-component>
       </template>
     </funnel-modal>
@@ -242,6 +243,9 @@ export default {
   methods: {
     reloadPagination(arr) {
       this.paginationList = arr;
+    },
+    reloadPaginationModal(arr){
+      this.pagFunnel = arr;
     },
     openModal() {
       $("#Funnel").modal("hide");
