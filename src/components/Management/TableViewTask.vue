@@ -93,6 +93,7 @@
     </div>
     <pagination-component
       :filteredArr="dealsList"
+      :strAmount="5"
       @PaginationReload="reloadPagination"
     ></pagination-component>
     <funnel-modal>
@@ -167,7 +168,7 @@
         </div>
         <pagination-component
           :filteredArr="dealsList"
-          @PaginationReload="reloadPagination"
+          @PaginationReload="reloadPagination1"
         ></pagination-component>
       </template>
     </funnel-modal>
@@ -240,7 +241,11 @@ export default {
     dealsList: Array,
   },
   methods: {
+    reloadPagination1(arr){
+      console.log('asd')
+    },
     reloadPagination(arr) {
+      console.log(arr)
       this.paginationList = arr;
     },
     openModal() {

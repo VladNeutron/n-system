@@ -48,8 +48,8 @@
                         </div>
                     </template>
                 </lists-header>
-                <kanban-view-task v-if="pageView==1" :dealStages="dealStages" :dealsList="dealsList"></kanban-view-task>
-                <table-view-task v-if="pageView==0" :dealsList="dealsList"></table-view-task>
+                <kanban-view-task v-if="pageView==1" :dealStages="dealStagesPar" :dealsList="dealsListPar"></kanban-view-task>
+                <table-view-task v-if="pageView==0" :dealsList="dealsListPar"></table-view-task>
                 </div>
             </div>
         </div>
@@ -63,7 +63,7 @@ export default {
     data(){
         return{
             pageView: 1,
-            dealStages: [
+            dealStagesPar: [
                 {
                     id: 'Stage0',
                     name: 'Первичный контакт',
@@ -86,7 +86,7 @@ export default {
                 },
 
             ],
-            dealsList: [
+            dealsListPar: [
                 {
                     id:0,
                     dealName: "ТОО “Рога и копыта”",
