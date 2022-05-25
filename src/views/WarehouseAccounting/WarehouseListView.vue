@@ -35,58 +35,69 @@
                   <filters-button></filters-button>
                 </div>
               </div>
-              <div class="table">
-                <table>
-                  <tr>
-                    <th>№</th>
-                    <th>НАИМЕНОВАНИЕ СКЛАДА</th>
-                    <th>ТИП СКЛАДА</th>
-                    <th>АДРЕСС СКЛАДА</th>
-                    <th>СТАТУС</th>
-                  </tr>
-                  <tr
-                    v-for="(warehouse, index) in warehouses"
-                    :key="warehouse.id"
-                  >
-                    <td>{{ index + 1 }}</td>
-                    <td>{{ warehouse.name }}</td>
-                    <td>{{ warehouse.type }}</td>
-                    <td>{{ warehouse.adress }}</td>
-                    <td>
-                      <div
-                        :class="[
-                          { table__status__open: warehouse.status != 'Закрыт' },
-                          {
-                            table__status__closed: warehouse.status == 'Закрыт',
-                          },
-                        ]"
-                      >
-                        <p class="tag">{{ warehouse.status }}</p>
-                      </div>
-                    </td>
-                    <td></td>
-                    <td class="dropdown" style="padding-left: 100px">
-                      <img
-                        src="@/assets/img/dots.svg"
-                        style="width: 1.563vw; cursor: pointer"
-                        alt=""
-                      />
-                      <div class="dropdown-content">
-                        <a href="/warehouse-accounting/storage"
-                          >Редактировать</a
+              <div class="table__h">
+                <div class="table">
+                  <table>
+                    <tr>
+                      <th>№</th>
+                      <th>НАИМЕНОВАНИЕ СКЛАДА</th>
+                      <th>ТИП СКЛАДА</th>
+                      <th>АДРЕСС СКЛАДА</th>
+                      <th>СТАТУС</th>
+                    </tr>
+                    <tr
+                      v-for="(warehouse, index) in paginationList"
+                      :key="warehouse.id"
+                    >
+                      <td>{{ index + 1 }}</td>
+                      <td>{{ warehouse.name }}</td>
+                      <td>{{ warehouse.type }}</td>
+                      <td>{{ warehouse.adress }}</td>
+                      <td>
+                        <div
+                          :class="[
+                            {
+                              table__status__open: warehouse.status != 'Закрыт',
+                            },
+                            {
+                              table__status__closed:
+                                warehouse.status == 'Закрыт',
+                            },
+                          ]"
                         >
-                        <hr />
-                        <a
-                          style="cursor: pointer"
-                          data-bs-toggle="modal"
-                          data-bs-target="#DeleteInv"
-                          >Удалить</a
-                        >
-                      </div>
-                    </td>
-                  </tr>
-                </table>
+                          <p class="tag">{{ warehouse.status }}</p>
+                        </div>
+                      </td>
+                      <td></td>
+                      <td class="dropdown" style="padding-left: 100px">
+                        <img
+                          src="@/assets/img/dots.svg"
+                          style="width: 1.563vw; cursor: pointer"
+                          alt=""
+                        />
+                        <div class="dropdown-content">
+                          <a href="/warehouse-accounting/storage"
+                            >Редактировать</a
+                          >
+                          <hr />
+                          <a
+                            style="cursor: pointer"
+                            data-bs-toggle="modal"
+                            data-bs-target="#DeleteInv"
+                            >Удалить</a
+                          >
+                        </div>
+                      </td>
+                    </tr>
+                  </table>
+                </div>
               </div>
+              <pagination-component
+                :filteredArr="warehouses"
+                :strAmount="10"
+                @PaginationReload="reloadPagination"
+                class="pb-4"
+              ></pagination-component>
             </div>
           </div>
         </div>
@@ -118,9 +129,86 @@ import Filters from "@/components/Filters.vue";
 import FiltersButton from "@/components/buttons/FiltersButton.vue";
 
 export default {
+  methods: {
+    reloadPagination(arr) {
+      this.paginationList = arr;
+    },
+  },
   data() {
     return {
+      paginationList: [],
       warehouses: [
+        {
+          id: 1,
+          name: "ТЦ “Jam mall”",
+          type: "Торговая точка",
+          adress: "Ул. Горького, 5",
+          status: "Закрыт",
+        },
+        {
+          id: 2,
+          name: "ТЦ “Москва”",
+          type: "Торговая точка",
+          adress: "8-й микрорайон, 37/1",
+          status: "Открыт",
+        },
+        {
+          id: 1,
+          name: "ТЦ “Jam mall”",
+          type: "Торговая точка",
+          adress: "Ул. Горького, 5",
+          status: "Закрыт",
+        },
+        {
+          id: 2,
+          name: "ТЦ “Москва”",
+          type: "Торговая точка",
+          adress: "8-й микрорайон, 37/1",
+          status: "Открыт",
+        },
+        {
+          id: 1,
+          name: "ТЦ “Jam mall”",
+          type: "Торговая точка",
+          adress: "Ул. Горького, 5",
+          status: "Закрыт",
+        },
+        {
+          id: 2,
+          name: "ТЦ “Москва”",
+          type: "Торговая точка",
+          adress: "8-й микрорайон, 37/1",
+          status: "Открыт",
+        },
+        {
+          id: 1,
+          name: "ТЦ “Jam mall”",
+          type: "Торговая точка",
+          adress: "Ул. Горького, 5",
+          status: "Закрыт",
+        },
+        {
+          id: 2,
+          name: "ТЦ “Москва”",
+          type: "Торговая точка",
+          adress: "8-й микрорайон, 37/1",
+          status: "Открыт",
+        },
+
+        {
+          id: 1,
+          name: "ТЦ “Jam mall”",
+          type: "Торговая точка",
+          adress: "Ул. Горького, 5",
+          status: "Закрыт",
+        },
+        {
+          id: 2,
+          name: "ТЦ “Москва”",
+          type: "Торговая точка",
+          adress: "8-й микрорайон, 37/1",
+          status: "Открыт",
+        },
         {
           id: 1,
           name: "ТЦ “Jam mall”",
@@ -146,6 +234,9 @@ export default {
 </script>
 
 <style scoped>
+.table__h {
+  height: 30vw;
+}
 .dropdown {
   width: 100%;
   display: inline-block;
