@@ -85,7 +85,7 @@
                   </thead>
                   <tbody>
                     <!-- v-for="(item, i) in filteredClients" :key="item" -->
-                    <tr v-for="(item, i) in filteredClients" :key="item">
+                    <tr v-for="(item, i) in paginationList" :key="item">
                       <td scope="row" style="border-right: 0">{{ i + 1 }}</td>
                       <td style="border-left: 0; border-right: 0">
                         {{ item.name }}
@@ -129,63 +129,11 @@
                 </table>
               </div>
             </div>
-            <div class="pagination d-flex justify-content-end pe-5 mt-auto">
-              <div class="d-flex align-items-baseline gap-3 pb-4">
-                <div>
-                  <p class="m-0">Показано<span> 1-10 из 100</span></p>
-                </div>
-
-                <div class="page__search-pages d-flex align-content-center">
-                  <div class="pagination-container d-flex justify-items-center">
-                    <ul class="pagination pagination-info mb-0 pe-0">
-                      <li class="page-item">
-                        <a
-                          class="page-link"
-                          href="javascript:;"
-                          aria-label="Previous"
-                        >
-                          <span aria-hidden="true"
-                            ><i
-                              class="fa fa-angle-double-left"
-                              aria-hidden="true"
-                            ></i
-                          ></span>
-                        </a>
-                      </li>
-                      <li class="page-item">
-                        <a class="page-link" href="javascript:;">1</a>
-                      </li>
-                      <li class="page-item">
-                        <a class="page-link" href="javascript:;">2</a>
-                      </li>
-                      <li class="page-item active">
-                        <a class="page-link" href="javascript:;">3</a>
-                      </li>
-                      <li class="page-item">
-                        <a class="page-link" href="javascript:;">4</a>
-                      </li>
-                      <li class="page-item">
-                        <a class="page-link" href="javascript:;">5</a>
-                      </li>
-                      <li class="page-item">
-                        <a
-                          class="page-link"
-                          href="javascript:;"
-                          aria-label="Next"
-                        >
-                          <span aria-hidden="true"
-                            ><i
-                              class="fa fa-angle-double-right"
-                              aria-hidden="true"
-                            ></i
-                          ></span>
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <pagination-component
+              :filteredArr="filteredClients"
+              :strAmount="paginationAmount"
+              @pagination-reload="reloadPagination"
+            ></pagination-component>
           </div>
         </div>
       </div>
@@ -423,7 +371,14 @@ export default {
         },
       ],
       search: "",
+      paginationList: [],
     };
+  },
+  methods: {
+    reloadPagination(arr) {
+      // console.log(arr);
+      this.paginationList = arr;
+    },
   },
   computed: {
     filteredClients() {
@@ -434,6 +389,13 @@ export default {
           item.email.toLowerCase().includes(this.search.toLowerCase())
         );
       });
+    },
+    paginationAmount() {
+      if (document.documentElement.clientWidth < 1700) {
+        return 7;
+      } else {
+        return 9;
+      }
     },
   },
   mounted() {

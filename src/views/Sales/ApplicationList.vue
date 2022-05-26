@@ -64,7 +64,7 @@
                     </tr>
                   </thead>
                   <tbody class="text-center">
-                    <tr v-for="(order, i) of filteredOrders" :key="order.id">
+                    <tr v-for="(order, i) of paginationList" :key="order.id">
                       <th>{{ i + 1 }}</th>
                       <td>{{ order.date }}</td>
                       <td>{{ order.fio }}</td>
@@ -107,65 +107,11 @@
                 </table>
               </div>
             </div>
-            <div
-              class="pagination d-flex justify-content-end align-items-center me-4 mt-auto"
-            >
-              <div class="d-flex align-items-center gap-3">
-                <div>
-                  <p class="m-0">Показано<span> 2112 12121</span></p>
-                </div>
-
-                <div class="page__search-pages d-flex align-content-center">
-                  <div class="pagination-container d-flex justify-items-center">
-                    <ul class="pagination pagination-info mb-0 pe-0">
-                      <li class="page-item">
-                        <a
-                          class="page-link"
-                          href="javascript:;"
-                          aria-label="Previous"
-                        >
-                          <span aria-hidden="true"
-                            ><i
-                              class="fa fa-angle-double-left"
-                              aria-hidden="true"
-                            ></i
-                          ></span>
-                        </a>
-                      </li>
-                      <li class="page-item">
-                        <a class="page-link" href="javascript:;">1</a>
-                      </li>
-                      <li class="page-item">
-                        <a class="page-link" href="javascript:;">2</a>
-                      </li>
-                      <li class="page-item active">
-                        <a class="page-link" href="javascript:;">3</a>
-                      </li>
-                      <li class="page-item">
-                        <a class="page-link" href="javascript:;">4</a>
-                      </li>
-                      <li class="page-item">
-                        <a class="page-link" href="javascript:;">5</a>
-                      </li>
-                      <li class="page-item">
-                        <a
-                          class="page-link"
-                          href="javascript:;"
-                          aria-label="Next"
-                        >
-                          <span aria-hidden="true"
-                            ><i
-                              class="fa fa-angle-double-right"
-                              aria-hidden="true"
-                            ></i
-                          ></span>
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <pagination-component
+              :filteredArr="filteredOrders"
+              :strAmount="paginationAmount"
+              @paginationReload="reloadPagination"
+            ></pagination-component>
           </div>
         </div>
       </div>
@@ -298,21 +244,27 @@
       </template>
     </inputs-modal>
   </main>
-  <the-filter :orders="orders">
-    <div class="text-start">
-      <label class="text-start" for="Склад">Статус заявки</label>
-      <select class="form-select" v-model="filterWarehouse">
-        <option v-for="warehouse of orderWarehouseList" :key="warehouse">
-          {{ warehouse }}
-        </option>
-      </select>
+  <the-filter @no-filter="cancelFilters">
+    <p class="text-start my-2 fw-bold" for="Статус">Статус заказа</p>
+    <div class="d-flex flex-wrap">
+      <div class="cat" v-for="status of orderStatusList" :key="status">
+        <label>
+          <input
+            type="checkbox"
+            :value="status"
+            v-model="filterStatusSelect"
+          /><span v-text="normalizeStatusName(status)"></span>
+        </label>
+      </div>
     </div>
     <div class="text-start">
       <label class="text-start" for="Ответственный">Клиент</label>
-      <select class="form-select" v-model="filterResponsible">
-        <option v-for="responsible of orderResponsibleList" :key="responsible">
-          {{ responsible }}
+      <select class="form-select" v-model="filterClient">
+        <option value="" disabled>Выберите клиента</option>
+        <option v-for="client of orderClientList" :key="client">
+          {{ client }}
         </option>
+        <option value=""></option>
       </select>
     </div>
   </the-filter>
@@ -371,12 +323,94 @@ export default {
           phone: "+7 705 6665599",
           email: "v.kurochkin@gmail.com",
         },
+        {
+          date: "11 ноя, 2021 19:23",
+          fio: "Курочкин Василий Петрович",
+          status: "new",
+          phone: "+7 705 6665599",
+          email: "v.kurochkin@gmail.com",
+        },
+        {
+          date: "11 ноя, 2021 19:23",
+          fio: "Курочкин Василий Петрович",
+          status: "in-process",
+          phone: "+7 705 6665599",
+          email: "v.kurochkin@gmail.com",
+        },
+        {
+          date: "11 ноя, 2021 19:23",
+          fio: "Курочкин Василий Петрович",
+          status: "canceled",
+          phone: "+7 705 6665599",
+          email: "v.kurochkin@gmail.com",
+        },
+        {
+          date: "11 ноя, 2021 19:23",
+          fio: "Курочкин Василий Петрович",
+          status: "new",
+          phone: "+7 705 6665599",
+          email: "v.kurochkin@gmail.com",
+        },
+        {
+          date: "11 ноя, 2021 19:23",
+          fio: "Курочкин Василий Петрович",
+          status: "new",
+          phone: "+7 705 6665599",
+          email: "v.kurochkin@gmail.com",
+        },
+        {
+          date: "11 ноя, 2021 19:23",
+          fio: "Курочкин Василий Петрович",
+          status: "new",
+          phone: "+7 705 6665599",
+          email: "v.kurochkin@gmail.com",
+        },
+        {
+          date: "11 ноя, 2021 19:23",
+          fio: "тест",
+          status: "new",
+          phone: "+7 705 6665599",
+          email: "v.kurochkin@gmail.com",
+        },
+        {
+          date: "11 ноя, 2021 19:23",
+          fio: "тест",
+          status: "in-process",
+          phone: "+7 705 6665599",
+          email: "v.kurochkin@gmail.com",
+        },
+        {
+          date: "11 ноя, 2021 19:23",
+          fio: "Курочкин Василий Петрович",
+          status: "canceled",
+          phone: "+7 705 6665599",
+          email: "v.kurochkin@gmail.com",
+        },
+        {
+          date: "11 ноя, 2021 19:23",
+          fio: "Курочкин Василий Петрович",
+          status: "new",
+          phone: "+7 705 6665599",
+          email: "v.kurochkin@gmail.com",
+        },
+        {
+          date: "11 ноя, 2021 19:23",
+          fio: "Курочкин Василий Петрович",
+          status: "new",
+          phone: "+7 705 6665599",
+          email: "v.kurochkin@gmail.com",
+        },
+        {
+          date: "11 ноя, 2021 19:23",
+          fio: "Курочкин Василий Петрович",
+          status: "new",
+          phone: "+7 705 6665599",
+          email: "v.kurochkin@gmail.com",
+        },
       ],
       filterStatusSelect: [],
-      filterResponsible: "",
       filterClient: "",
-      filterOrderType: "",
-      filterWarehouse: "",
+      paginationList: [],
     };
   },
   methods: {
@@ -399,50 +433,40 @@ export default {
       const unfiltered = this.orders.map((obj) => obj[key]);
       return [...new Set(unfiltered)];
     },
+    reloadPagination(arr) {
+      // console.log(arr);
+      this.paginationList = arr;
+    },
     cancelFilters() {
       this.filterStatusSelect = [];
-      this.filterResponsible = "";
       this.filterClient = "";
-      this.filterOrderType = "";
-      this.filterWarehouse = "";
     },
   },
   computed: {
     orderStatusList() {
       return this.createFilteredSet("status");
     },
-    orderResponsibleList() {
-      return this.createFilteredSet("responsible");
-    },
+
     orderClientList() {
-      return this.createFilteredSet("client");
+      return this.createFilteredSet("fio");
     },
-    orderTypeList() {
-      return this.createFilteredSet("type");
-    },
-    orderWarehouseList() {
-      return this.createFilteredSet("warehouse");
-    },
+
     filteredOrders() {
-      const statusCheckIfEmpty = this.filterStatusSelect > 0;
+      const statusCheckIfEmpty = this.filterStatusSelect.length > 0;
       return this.orders.filter(
         (order) =>
           (statusCheckIfEmpty
             ? this.filterStatusSelect.includes(order.status)
             : true) &&
-          (this.filterWarehouse === ""
-            ? true
-            : order.warehouse === this.filterWarehouse) &&
-          (this.filterResponsible === ""
-            ? true
-            : order.responsible === this.filterResponsible) &&
-          (this.filterClient === ""
-            ? true
-            : order.client === this.filterClient) &&
-          (this.filterOrderType === ""
-            ? true
-            : order.type === this.filterOrderType)
+          (this.filterClient === "" ? true : order.fio === this.filterClient)
       );
+    },
+    paginationAmount() {
+      if (document.documentElement.clientWidth < 1700) {
+        return 7;
+      } else {
+        return 9;
+      }
     },
   },
 
