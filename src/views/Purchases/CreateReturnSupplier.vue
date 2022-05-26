@@ -165,7 +165,7 @@
                 <tr>
                   <th scope="col" class="th__col">№</th>
                   <th scope="col" class="th__col">Товар</th>
-                  <th scope="col" class="th__col">Штрихкод</th>
+                  <th scope="col" class="th__col">Артикул</th>
                   <th scope="col" class="th__col">Цвет</th>
                   <th scope="col" class="th__col">Размер</th>
                   <th scope="col" class="th__col">Себестоимость</th>
@@ -178,10 +178,10 @@
               </thead>
               <tbody>
                 <!-- v-for="(item, i) in items" :key="item" -->
-                <tr v-for="(item, i) in filteredProducts" :key="item">
-                  <th scope="row">
+                <tr v-for="(item, i) in paginationList" :key="item">
+                  <td scope="row">
                     {{ i + 1 }}
-                  </th>
+                  </td>
                   <td style="display: flex">
                     <img
                       :src="item.img"
@@ -237,23 +237,33 @@
               </tbody>
             </table>
           </div>
-          <div class="order__ready_block" v-if="!isAdded">
-            <div style="text-align: left">
-              <p class="order__ready__main">Сумма</p>
-              <p class="order__ready__sec">280 000 ₸</p>
+          <div class="d-flex justify-content-between" v-if="!isAdded">
+            <div class="order__ready_block">
+              <div
+                style="
+                  text-align: left;
+                  margin-right: 7.344vw;
+                  margin-left: 24px;
+                "
+              >
+                <p class="order__ready__main">Сумма</p>
+                <p class="order__ready__sec">280 000 ₸</p>
+              </div>
+              <div style="text-align: left; margin-right: 7.344vw">
+                <p class="order__ready__main">Кол-во товаров</p>
+                <p class="order__ready__sec">26 шт</p>
+              </div>
+              <div style="text-align: left; margin-right: 7.344vw">
+                <p class="order__ready__result">Итог</p>
+                <p class="order__ready__sum">320 000 ₸</p>
+              </div>
             </div>
-            <div style="text-align: left">
-              <p class="order__ready__main">Кол-во товаров</p>
-              <p class="order__ready__sec">26 шт</p>
-            </div>
-            <div style="text-align: left">
-              <p class="order__ready__main">Общая скидка</p>
-              <p class="order__ready__sec">10 %</p>
-            </div>
-            <div style="text-align: left">
-              <p class="order__ready__result">Итог</p>
-              <p class="order__ready__sum">320 000 ₸</p>
-            </div>
+            <pagination-component
+              :filteredArr="filteredProducts"
+              :strAmount="10"
+              @PaginationReload="reloadPagination"
+              class="pb-5"
+            ></pagination-component>
           </div>
         </div>
       </div>
@@ -383,7 +393,6 @@
 }
 
 .order__ready_block {
-  margin-left: 28.073vw;
   margin-top: 8px;
   display: flex;
   justify-content: space-around;
@@ -534,7 +543,7 @@
 
 .order__table__body {
   height: 19.792vw;
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 
 .dropdown {
@@ -827,6 +836,10 @@ export default {
     InputsModal,
   },
   methods: {
+    reloadPagination(arr) {
+      console.log(arr);
+      this.paginationList = arr;
+    },
     test() {
       alert("Успех");
     },
@@ -835,7 +848,96 @@ export default {
     return {
       isPickup: true,
       onStorage: "yes",
+      paginationList: [],
       items: [
+        {
+          img: require("@/assets/img/tshirt.png"),
+          barcode: "876543456",
+          name: "Куртка зеленая",
+          color: "Белый",
+          size: "S",
+          costPrice: 12000,
+          price: 29000,
+          count: 2,
+          disc: "нет",
+        },
+        {
+          img: require("@/assets/img/tshirt.png"),
+          barcode: "2146543456",
+          name: "Куртка Черная",
+          color: "Белый",
+          size: "S",
+          costPrice: 12000,
+          price: 29000,
+          count: 3,
+          disc: "нет",
+        },
+        {
+          img: require("@/assets/img/tshirt.png"),
+          barcode: "5246543456",
+          name: "Куртка Белая",
+          color: "Белый",
+          size: "S",
+          costPrice: 12000,
+          price: 29000,
+          count: 1,
+          disc: "нет",
+        },
+        {
+          img: require("@/assets/img/tshirt.png"),
+          barcode: "876543456",
+          name: "Куртка зеленая",
+          color: "Белый",
+          size: "S",
+          costPrice: 12000,
+          price: 29000,
+          count: 2,
+          disc: "нет",
+        },
+        {
+          img: require("@/assets/img/tshirt.png"),
+          barcode: "876543456",
+          name: "Куртка зеленая",
+          color: "Белый",
+          size: "S",
+          costPrice: 12000,
+          price: 29000,
+          count: 2,
+          disc: "нет",
+        },
+        {
+          img: require("@/assets/img/tshirt.png"),
+          barcode: "876543456",
+          name: "Куртка зеленая",
+          color: "Белый",
+          size: "S",
+          costPrice: 12000,
+          price: 29000,
+          count: 2,
+          disc: "нет",
+        },
+        {
+          img: require("@/assets/img/tshirt.png"),
+          barcode: "876543456",
+          name: "Куртка зеленая",
+          color: "Белый",
+          size: "S",
+          costPrice: 12000,
+          price: 29000,
+          count: 2,
+          disc: "нет",
+        },
+        {
+          img: require("@/assets/img/tshirt.png"),
+          barcode: "876543456",
+          name: "Куртка зеленая",
+          color: "Белый",
+          size: "S",
+          costPrice: 12000,
+          price: 29000,
+          count: 2,
+          disc: "нет",
+        },
         {
           img: require("@/assets/img/tshirt.png"),
           barcode: "876543456",
