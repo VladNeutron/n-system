@@ -169,6 +169,9 @@ watch: {
     pageWeaponsList(newQuestion) {
       this.$emit('PaginationReload', this.pageWeaponsList, this.pageNumber)
     },
+    filteredArr(newArr,oldArr){
+      this.pageNumber = 1;
+    }
 },
 mounted(){
     this.$emit('PaginationReload', this.pageWeaponsList, this.pageNumber)

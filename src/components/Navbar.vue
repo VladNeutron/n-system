@@ -626,6 +626,62 @@
           </div>
         </li>
 
+        <!-- Аналитика -->
+        <li class="nav-item">
+          <a
+            data-bs-toggle="collapse"
+            href="#Management"
+            class="nav-link"
+            aria-controls="Management"
+            role="button"
+            aria-expanded="false"
+          >
+            <div
+              class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center d-flex align-items-center justify-content-center me-2"
+            >
+              <img src="@/assets/img/NavManagement.svg" alt="" />
+            </div>
+
+            <span class="nav-link-text ms-1">Менеджмент</span>
+          </a>
+
+          <div class="collapse" id="Management">
+            <ul class="nav ms-4 ps-3">
+              <li class="nav-item">
+                <router-link :to="{ name: 'management-workspace' }" class="nav-link">
+                  <span class="sidenav-mini-icon"> Р </span>
+                  <span class="sidenav-normal">Рабочий стол </span>
+                </router-link>
+              </li>
+
+              <li class="nav-item">
+                <router-link
+                  :to="{ name: 'task-list' }"
+                  class="nav-link"
+                >
+                  <span class="sidenav-mini-icon"> З </span>
+                  <span class="sidenav-normal">Управление задачами </span>
+                </router-link>
+              </li>
+
+              <li class="nav-item">
+                <router-link :to="{ name: 'deal-list' }" class="nav-link">
+                  <span class="sidenav-mini-icon"> С </span>
+                  <span class="sidenav-normal">Управление сделками </span>
+                </router-link>
+              </li>
+
+              <li class="nav-item">
+                <router-link :to="{ name: 'management-calendar' }" class="nav-link">
+                  <span class="sidenav-mini-icon"> Р </span>
+                  <span class="sidenav-normal">Рабочий календарь </span>
+                </router-link>
+              </li>
+
+            </ul>
+          </div>
+        </li>
+
         <!-- <li class="nav-item">
       
       
