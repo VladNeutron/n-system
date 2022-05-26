@@ -145,7 +145,7 @@
           </thead>
           <tbody>
             <tr
-              v-for="(order, i) of orders"
+              v-for="(order, i) of paginationList"
               :key="order.id"
               onclick="window.location.href = '/analytics/abc-analysis/abc-product'"
             >
@@ -167,58 +167,12 @@
           </tbody>
         </table>
       </div>
-      <div
-        class="pagination d-flex justify-content-end align-items-center me-4 mt-4"
-      >
-        <div class="d-flex align-items-center gap-3">
-          <div>
-            <p class="m-0">Показано<span> 2112 12121</span></p>
-          </div>
-
-          <div class="page__search-pages d-flex align-content-center">
-            <div class="pagination-container d-flex justify-items-center">
-              <ul class="pagination pagination-info mb-0 pe-0">
-                <li class="page-item">
-                  <a
-                    class="page-link"
-                    href="javascript:;"
-                    aria-label="Previous"
-                  >
-                    <span aria-hidden="true"
-                      ><i class="fa fa-angle-double-left" aria-hidden="true"></i
-                    ></span>
-                  </a>
-                </li>
-                <li class="page-item">
-                  <a class="page-link" href="javascript:;">1</a>
-                </li>
-                <li class="page-item">
-                  <a class="page-link" href="javascript:;">2</a>
-                </li>
-                <li class="page-item active">
-                  <a class="page-link" href="javascript:;">3</a>
-                </li>
-                <li class="page-item">
-                  <a class="page-link" href="javascript:;">4</a>
-                </li>
-                <li class="page-item">
-                  <a class="page-link" href="javascript:;">5</a>
-                </li>
-                <li class="page-item">
-                  <a class="page-link" href="javascript:;" aria-label="Next">
-                    <span aria-hidden="true"
-                      ><i
-                        class="fa fa-angle-double-right"
-                        aria-hidden="true"
-                      ></i
-                    ></span>
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
+      <pagination-component
+        :filteredArr="orders"
+        :strAmount="8"
+        @PaginationReload="reloadPagination"
+        class="pb-2"
+      ></pagination-component>
     </div>
     <Filters></Filters>
   </main>
@@ -230,6 +184,7 @@ export default {
   data() {
     return {
       isActive: 1,
+      paginationList: [],
       orders: [
         {
           name: "Куртка зеленая",
@@ -315,10 +270,62 @@ export default {
           sum: 12000,
           percent: 10,
         },
+        {
+          name: "Куртка зеленая",
+          color: "Изумрудный",
+          size: "XS",
+          category: "Верхняя одежда",
+          status: "C",
+          count: 1234,
+          sum: 120340,
+          amount: 8,
+          sum: 12000,
+          percent: 10,
+        },
+        {
+          name: "Куртка зеленая",
+          color: "Изумрудный",
+          size: "XS",
+          category: "Верхняя одежда",
+          status: "C",
+          count: 1234,
+          sum: 120340,
+          amount: 8,
+          sum: 12000,
+          percent: 10,
+        },
+        {
+          name: "Куртка зеленая",
+          color: "Изумрудный",
+          size: "XS",
+          category: "Верхняя одежда",
+          status: "C",
+          count: 1234,
+          sum: 120340,
+          amount: 8,
+          sum: 12000,
+          percent: 10,
+        },
+        {
+          name: "Куртка зеленая",
+          color: "Изумрудный",
+          size: "XS",
+          category: "Верхняя одежда",
+          status: "C",
+          count: 1234,
+          sum: 120340,
+          amount: 8,
+          sum: 12000,
+          percent: 10,
+        },
       ],
     };
   },
   methods: {
+    reloadPagination(arr) {
+      console.log(arr);
+      this.paginationList = arr;
+    },
     getClass(stat) {
       if (stat === "A") {
         this.buttonText = "A";
@@ -467,6 +474,9 @@ export default {
 .buttons__mob {
   display: none;
 }
+.page__table {
+  height: 27.3vw;
+}
 @media screen and (max-width: 1600px) {
   .btn {
     font-size: 12px !important;
@@ -511,7 +521,8 @@ export default {
   }
 
   .page__table {
-    overflow-x: scroll;
+    height: 27.6vw;
+    overflow-x: auto;
   }
 }
 </style>

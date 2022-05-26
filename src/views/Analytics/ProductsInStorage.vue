@@ -78,7 +78,7 @@
                   </tr>
                 </thead>
                 <tbody class="table-body">
-                  <tr v-for="(item, i) in filteredWarehouse" :key="item">
+                  <tr v-for="(item, i) in paginationList" :key="item">
                     <td scope="row">{{ i + 1 }}</td>
                     <td class="d-flex gap-2">
                       <img :src="item.img" />{{ item.name }}
@@ -96,65 +96,12 @@
               </table>
             </div>
             <div class="table__pagination pb-2">
-              <div class="pagination d-flex justify-content-end px-5">
-                <div class="d-flex align-items-center gap-3 pb-4">
-                  <div>
-                    <p class="m-0">Показано<span> 2112 12121</span></p>
-                  </div>
-
-                  <div class="page__search-pages d-flex align-content-center">
-                    <div
-                      class="pagination-container d-flex justify-items-center"
-                    >
-                      <ul class="pagination pagination-info mb-0 pe-0">
-                        <li class="page-item">
-                          <a
-                            class="page-link"
-                            href="javascript:;"
-                            aria-label="Previous"
-                          >
-                            <span aria-hidden="true"
-                              ><i
-                                class="fa fa-angle-left"
-                                aria-hidden="true"
-                              ></i
-                            ></span>
-                          </a>
-                        </li>
-                        <li class="page-item active">
-                          <a class="page-link" href="javascript:;">1</a>
-                        </li>
-                        <li class="page-item">
-                          <a class="page-link" href="javascript:;">2</a>
-                        </li>
-                        <li class="page-item">
-                          <a class="page-link" href="javascript:;">3</a>
-                        </li>
-                        <li class="page-item">
-                          <a class="page-link" href="javascript:;">4</a>
-                        </li>
-                        <li class="page-item">
-                          <a class="page-link" href="javascript:;">5</a>
-                        </li>
-                        <li class="page-item">
-                          <a
-                            class="page-link"
-                            href="javascript:;"
-                            aria-label="Next"
-                          >
-                            <span aria-hidden="true"
-                              ><i
-                                class="fa fa-angle-right"
-                                aria-hidden="true"
-                              ></i
-                            ></span>
-                          </a>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              <pagination-component
+                :filteredArr="filteredWarehouse"
+                :strAmount="8"
+                @PaginationReload="reloadPagination"
+                class="pb-2"
+              ></pagination-component>
             </div>
           </div>
         </div>
@@ -172,7 +119,118 @@ export default {
   },
   data() {
     return {
+      paginationList: [],
       items: [
+        {
+          name: "Куртка зеленая",
+          img: require("@/assets/css/images/pants.png"),
+          barcode: 1234567890456,
+          color: "Зеленый",
+          size: "S",
+          warehouse: "ТЦ “Jam Mall”",
+          startPrice: 12000,
+          currentPrice: 29000,
+          amount: 1,
+        },
+        {
+          name: "Куртка красная",
+          img: require("@/assets/css/images/pants.png"),
+          barcode: 1231236554634,
+          color: "Красный",
+          size: "M",
+          warehouse: "ТЦ “Jam Mall”",
+          startPrice: 20000,
+          currentPrice: 40000,
+          amount: 1,
+        },
+        {
+          name: "Футболка синяя",
+          img: require("@/assets/css/images/pants.png"),
+          barcode: 2354325423,
+          color: "Синий",
+          size: "XL",
+          warehouse: "ТЦ “Апорт”",
+          startPrice: 10000,
+          currentPrice: 27000,
+          amount: 1,
+        },
+        {
+          name: "Штаны дорогие",
+          img: require("@/assets/css/images/pants.png"),
+          barcode: 55555778080,
+          color: "Синий",
+          size: "L",
+          warehouse: "ТЦ “Апорт”",
+          startPrice: 40,
+          currentPrice: 40,
+          amount: 1,
+        },
+        {
+          name: "Шлем воина",
+          img: require("@/assets/css/images/pants.png"),
+          barcode: 2123123121,
+          color: "Черный",
+          size: "M",
+          warehouse: "ТЦ “Jam Mall”",
+          startPrice: 1000000,
+          currentPrice: 12000000,
+          amount: 1,
+        },
+        {
+          name: "Куртка зеленая",
+          img: require("@/assets/css/images/pants.png"),
+          barcode: 1234567890456,
+          color: "Зеленый",
+          size: "S",
+          warehouse: "ТЦ “Jam Mall”",
+          startPrice: 12000,
+          currentPrice: 29000,
+          amount: 1,
+        },
+        {
+          name: "Куртка красная",
+          img: require("@/assets/css/images/pants.png"),
+          barcode: 1231236554634,
+          color: "Красный",
+          size: "M",
+          warehouse: "ТЦ “Jam Mall”",
+          startPrice: 20000,
+          currentPrice: 40000,
+          amount: 1,
+        },
+        {
+          name: "Футболка синяя",
+          img: require("@/assets/css/images/pants.png"),
+          barcode: 2354325423,
+          color: "Синий",
+          size: "XL",
+          warehouse: "ТЦ “Апорт”",
+          startPrice: 10000,
+          currentPrice: 27000,
+          amount: 1,
+        },
+        {
+          name: "Штаны дорогие",
+          img: require("@/assets/css/images/pants.png"),
+          barcode: 55555778080,
+          color: "Синий",
+          size: "L",
+          warehouse: "ТЦ “Апорт”",
+          startPrice: 40,
+          currentPrice: 40,
+          amount: 1,
+        },
+        {
+          name: "Шлем воина",
+          img: require("@/assets/css/images/pants.png"),
+          barcode: 2123123121,
+          color: "Черный",
+          size: "M",
+          warehouse: "ТЦ “Jam Mall”",
+          startPrice: 1000000,
+          currentPrice: 12000000,
+          amount: 1,
+        },
         {
           name: "Куртка зеленая",
           img: require("@/assets/css/images/pants.png"),
@@ -234,7 +292,12 @@ export default {
       selected: "",
     };
   },
-  methods: {},
+  methods: {
+    reloadPagination(arr) {
+      console.log(arr);
+      this.paginationList = arr;
+    },
+  },
   computed: {
     filteredWarehouse() {
       if (this.selected) {
@@ -258,6 +321,9 @@ export default {
 </script>
 
 <style scoped>
+.table__body {
+  height: 30.8vw;
+}
 .form_s2 {
   width: 20.469vw !important;
 }
