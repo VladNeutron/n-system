@@ -131,8 +131,9 @@
             </div>
             <pagination-component
               :filteredArr="filteredClients"
-              :strAmount="paginationAmount"
+              :strAmount="10"
               @pagination-reload="reloadPagination"
+              class="mb-4"
             ></pagination-component>
           </div>
         </div>
