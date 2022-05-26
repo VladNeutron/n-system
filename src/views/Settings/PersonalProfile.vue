@@ -44,8 +44,9 @@
                   class="form-control"
                   type="text"
                   id="example-text-input"
-                  v-model="fio"
                   style="width: 380px"
+                  :value="fio"
+                  v-on:keyup.enter="fioAdd"
                 />
               </div>
               <div class="form-group mx-5">
@@ -55,7 +56,8 @@
                 <input
                   class="form-control"
                   type="text"
-                  v-model="mail"
+                  :value="mail"
+                  v-on:keyup.enter="MailAdd"
                   id="example-text-input1"
                   style="width: 380px"
                 />
@@ -70,7 +72,7 @@
                   class="form-control"
                   type="text"
                   placeholder="pepe123"
-                  id="example-text-input"
+                  id="example-text-input2"
                   style="width: 380px"
                 />
               </div>
@@ -82,7 +84,7 @@
                   class="form-control"
                   type="text"
                   value="Хорошая булочка"
-                  id="example-text-input1"
+                  id="example-text-input3"
                   style="width: 191px"
                 />
               </div>
@@ -99,7 +101,7 @@
                   class="form-control"
                   type="password"
                   value="password"
-                  id="example-text-input"
+                  id="example-text-input4"
                   style="width: 380px"
                 />
               </div>
@@ -111,7 +113,7 @@
                   class="form-control"
                   type="password"
                   value="password"
-                  id="example-text-input"
+                  id="example-text-input5"
                   style="width: 380px"
                 />
               </div>
@@ -123,7 +125,7 @@
                   class="form-control"
                   type="password"
                   value="password"
-                  id="example-text-input"
+                  id="example-text-input6"
                   style="width: 380px"
                 />
               </div>
@@ -140,6 +142,16 @@
 
 <script>
 export default {
+  methods: {
+    fioAdd() {
+      let input = document.getElementById("example-text-input").value;
+      this.fio = input;
+    },
+    MailAdd() {
+      let input = document.getElementById("example-text-input1").value;
+      this.mail = input;
+    },
+  },
   data() {
     return {
       fio: "Пепе Мемасов",
