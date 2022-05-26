@@ -606,7 +606,7 @@ const routes = [
   },
   {
     path: "/management/workspace",
-    name: "workspace",
+    name: "management-workspace",
     component: () => import("../views/Management/WorkSpace.vue"),
     meta: { NavLink: "Рабочая область" },
   },
@@ -615,6 +615,12 @@ const routes = [
     name: "task-list",
     component: () => import("../views/Management/TaskList.vue"),
     meta: { NavLink: "Список задач" },
+  },
+  {
+    path: "/management/calendar",
+    name: "management-calendar",
+    component: () => import("../views/Management/TaskList.vue"),
+    meta: { NavLink: "Рабочий календарь" },
   },
   // МЕНЕДЖМЕНТ
 ];

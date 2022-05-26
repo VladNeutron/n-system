@@ -172,7 +172,7 @@
                     value="г.Алматы Аксай-2, д.39"
                   />
                 </div>
-                
+
                 <div class="form-group">
                   <label for="exampleFormControlSelect1" class="order__label"
                     >Ответственный</label
@@ -213,7 +213,9 @@
               <button class="btn barcode__btn">Выбрать из списка</button>
             </div>
             <div class="search">
-              <button class="btn bg-gradient-dark mb-0" style="height:40px;">Применить скидку</button>
+              <button class="btn bg-gradient-dark mb-0" style="height: 40px">
+                Применить скидку
+              </button>
               <div class="form-group m-0 ms-2">
                 <div class="input-group mt-1">
                   <span class="input-group-text"
@@ -260,7 +262,7 @@
               </thead>
               <tbody>
                 <!-- v-for="(item, i) in items" :key="item" -->
-                <tr v-for="(item, i) in filteredProducts" :key="item">
+                <tr v-for="(item, i) in paginationList" :key="item">
                   <td scope="row">
                     {{ i + 1 }}
                   </td>
@@ -342,63 +344,12 @@
                 <p class="order__ready__sum">320 000 ₸</p>
               </div>
             </div>
-            <div class="pagination d-flex justify-content-end pe-5 pb-2">
-              <div class="d-flex align-items-center gap-3 pb-4">
-                <div>
-                  <p class="m-0">Показано<span> 2112 12121</span></p>
-                </div>
-
-                <div class="page__search-pages d-flex align-content-center">
-                  <div class="pagination-container d-flex justify-items-center">
-                    <ul class="pagination pagination-info mb-0 pe-0">
-                      <li class="page-item">
-                        <a
-                          class="page-link"
-                          href="javascript:;"
-                          aria-label="Previous"
-                        >
-                          <span aria-hidden="true"
-                            ><i
-                              class="fa fa-angle-double-left"
-                              aria-hidden="true"
-                            ></i
-                          ></span>
-                        </a>
-                      </li>
-                      <li class="page-item">
-                        <a class="page-link" href="javascript:;">1</a>
-                      </li>
-                      <li class="page-item">
-                        <a class="page-link" href="javascript:;">2</a>
-                      </li>
-                      <li class="page-item active">
-                        <a class="page-link" href="javascript:;">3</a>
-                      </li>
-                      <li class="page-item">
-                        <a class="page-link" href="javascript:;">4</a>
-                      </li>
-                      <li class="page-item">
-                        <a class="page-link" href="javascript:;">5</a>
-                      </li>
-                      <li class="page-item">
-                        <a
-                          class="page-link"
-                          href="javascript:;"
-                          aria-label="Next"
-                        >
-                          <span aria-hidden="true"
-                            ><i
-                              class="fa fa-angle-double-right"
-                              aria-hidden="true"
-                            ></i
-                          ></span>
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <pagination-component
+              :filteredArr="filteredProducts"
+              :strAmount="10"
+              @PaginationReload="reloadPagination"
+              class="pb-5"
+            ></pagination-component>
           </div>
         </div>
       </div>
@@ -911,12 +862,16 @@ export default {
     DiscountModal,
   },
   methods: {
+    reloadPagination(arr) {
+      this.paginationList = arr;
+    },
     test() {
       alert("Успех");
     },
   },
   data() {
     return {
+      paginationList: [],
       isPickup: true,
       onStorage: "yes",
       items: [

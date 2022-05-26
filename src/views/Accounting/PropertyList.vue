@@ -48,7 +48,7 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr v-for="(order, i) of orders" :key="order.id">
+                  <tr v-for="(order, i) of paginationList" :key="order.id">
                     <td width="1%">{{ i + 1 }}</td>
                     <td>{{ order.name }}</td>
                     <td>{{ order.type }}</td>
@@ -80,65 +80,11 @@
                 </tbody>
               </table>
             </div>
-            <div
-              class="pagination d-flex justify-content-end align-items-center me-4 mt-4"
-            >
-              <div class="d-flex align-items-center gap-3">
-                <div>
-                  <p class="m-0">Показано<span> 2112 12121</span></p>
-                </div>
-
-                <div class="page__search-pages d-flex align-content-center">
-                  <div class="pagination-container d-flex justify-items-center">
-                    <ul class="pagination pagination-info mb-0 pe-0">
-                      <li class="page-item">
-                        <a
-                          class="page-link"
-                          href="javascript:;"
-                          aria-label="Previous"
-                        >
-                          <span aria-hidden="true"
-                            ><i
-                              class="fa fa-angle-double-left"
-                              aria-hidden="true"
-                            ></i
-                          ></span>
-                        </a>
-                      </li>
-                      <li class="page-item">
-                        <a class="page-link" href="javascript:;">1</a>
-                      </li>
-                      <li class="page-item">
-                        <a class="page-link" href="javascript:;">2</a>
-                      </li>
-                      <li class="page-item active">
-                        <a class="page-link" href="javascript:;">3</a>
-                      </li>
-                      <li class="page-item">
-                        <a class="page-link" href="javascript:;">4</a>
-                      </li>
-                      <li class="page-item">
-                        <a class="page-link" href="javascript:;">5</a>
-                      </li>
-                      <li class="page-item">
-                        <a
-                          class="page-link"
-                          href="javascript:;"
-                          aria-label="Next"
-                        >
-                          <span aria-hidden="true"
-                            ><i
-                              class="fa fa-angle-double-right"
-                              aria-hidden="true"
-                            ></i
-                          ></span>
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <pagination-component
+              :filteredArr="orders"
+              :strAmount="10"
+              @PaginationReload="reloadPagination"
+            ></pagination-component>
           </div>
         </div>
       </div>
@@ -159,7 +105,9 @@
       <template #body>
         <div class="clients__modal" v-if="isEdit == 'no'">
           <div class="form-group">
-            <label for="example-text-input" class="form-control-label custom__label"
+            <label
+              for="example-text-input"
+              class="form-control-label custom__label"
               >Название</label
             >
             <input
@@ -183,7 +131,9 @@
             </select>
           </div>
           <div class="form-group">
-            <label for="example-text-input1" class="form-control-label custom__label"
+            <label
+              for="example-text-input1"
+              class="form-control-label custom__label"
               >Стоимость</label
             >
             <input
@@ -196,7 +146,9 @@
         </div>
         <div class="clients__modal" v-if="isEdit == 'yes'">
           <div class="form-group">
-            <label for="example-text-input" class="form-control-label custom__label"
+            <label
+              for="example-text-input"
+              class="form-control-label custom__label"
               >Название</label
             >
             <input
@@ -220,7 +172,9 @@
             </select>
           </div>
           <div class="form-group">
-            <label for="example-text-input1" class="form-control-label custom__label"
+            <label
+              for="example-text-input1"
+              class="form-control-label custom__label"
               >Стоимость</label
             >
             <input
@@ -240,21 +194,31 @@
           <button class="btn bg-gradient-dark">Сохранить</button>
         </div>
         <div class="clients__footer" v-if="isEdit == 'yes'">
-          <button class="btn delete__btn" data-bs-toggle="modal" data-bs-target="#DeleteInv">Удалить имущество</button>
+          <button
+            class="btn delete__btn"
+            data-bs-toggle="modal"
+            data-bs-target="#DeleteInv"
+          >
+            Удалить имущество
+          </button>
         </div>
       </template>
     </inputs-modal>
-    <delete-modal :title="'имущества'" :text='`имущество "BMW M5"`'></delete-modal>
+    <delete-modal
+      :title="'имущества'"
+      :text="`имущество &quot;BMW M5&quot;`"
+    ></delete-modal>
   </main>
 </template>
 
 <script>
 import Filter from "../../components/Filters.vue";
 import InputsModal from "@/components/InputsModal.vue";
-import {CloseInvModal} from "@/assets/js/closeModalDeleteOpen";
+import { CloseInvModal } from "@/assets/js/closeModalDeleteOpen";
 export default {
   data() {
     return {
+      paginationList: [],
       status: null,
       buttonText: "",
       orders: [
@@ -288,21 +252,120 @@ export default {
           type: "Мебель",
           price: 95421,
         },
+        {
+          id: 0,
+          name: "BMW M5",
+          type: "Транспорт",
+          price: 999999,
+        },
+        {
+          id: 1,
+          name: "Дом на Саина",
+          type: "Недвижимость",
+          price: 7540000,
+        },
+        {
+          id: 2,
+          name: "Дом в Алмате",
+          type: "Недвижимость",
+          price: 9650421,
+        },
+        {
+          id: 3,
+          name: "Техника",
+          type: "Техника",
+          price: 965421,
+        },
+        {
+          id: 4,
+          name: "Офисный стеллаж",
+          type: "Мебель",
+          price: 95421,
+        },
+        {
+          id: 0,
+          name: "BMW M5",
+          type: "Транспорт",
+          price: 999999,
+        },
+        {
+          id: 1,
+          name: "Дом на Саина",
+          type: "Недвижимость",
+          price: 7540000,
+        },
+        {
+          id: 2,
+          name: "Дом в Алмате",
+          type: "Недвижимость",
+          price: 9650421,
+        },
+        {
+          id: 3,
+          name: "Техника",
+          type: "Техника",
+          price: 965421,
+        },
+        {
+          id: 4,
+          name: "Офисный стеллаж",
+          type: "Мебель",
+          price: 95421,
+        },
+        {
+          id: 0,
+          name: "BMW M5",
+          type: "Транспорт",
+          price: 999999,
+        },
+        {
+          id: 1,
+          name: "Дом на Саина",
+          type: "Недвижимость",
+          price: 7540000,
+        },
+        {
+          id: 2,
+          name: "Дом в Алмате",
+          type: "Недвижимость",
+          price: 9650421,
+        },
+        {
+          id: 3,
+          name: "Техника",
+          type: "Техника",
+          price: 965421,
+        },
+        {
+          id: 4,
+          name: "Офисный с321теллаж",
+          type: "Мебель",
+          price: 95421,
+        },
       ],
       isEdit: "no",
     };
+  },
+  methods: {
+    reloadPagination(arr) {
+      console.log(arr);
+      this.paginationList = arr;
+    },
   },
   components: {
     "the-filter": Filter,
     "inputs-modal": InputsModal,
   },
-  mounted(){
+  mounted() {
     CloseInvModal();
-  }
+  },
 };
 </script>
 
 <style scoped>
+.page__table {
+  height: 27.6vw;
+}
 .dropdown {
   width: 100%;
   display: inline-block;
@@ -342,10 +405,10 @@ export default {
   line-height: 1.4;
   color: #ffffff;
 }
-.btn-outline-dark{
+.btn-outline-dark {
   font-size: 16px;
   font-weight: 600;
-  color: #2D3748;
+  color: #2d3748;
 }
 .page__name h3 {
   font-size: 24px;
