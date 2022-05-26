@@ -623,6 +623,22 @@ const routes = [
     meta: { NavLink: "Рабочий календарь" },
   },
   // МЕНЕДЖМЕНТ
+
+  // НАСТРОЙКИ
+{
+  path: "/settings",
+  name: "settings",
+  component: () => import("../views/Settings/PersonalProfile.vue"),
+  meta: { NavLink: "Настройки" },
+},
+{
+  path: "/settings/profile",
+  name: "profile",
+  component: () => import("../views/Settings/PersonalProfile.vue"),
+  meta: { NavLink: "Личный профиль" },
+},
+// НАСТРОЙКИ
+
 ];
 
 const router = createRouter({
