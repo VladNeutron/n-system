@@ -60,7 +60,7 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr v-for="(order, i) of filteredList" :key="order.id">
+                  <tr v-for="(order, i) of paginationList" :key="order.id">
                     <td scope="row" style="padding-left: 27px">
                       <div class="form-check">
                         <input
@@ -103,65 +103,11 @@
                 </tbody>
               </table>
             </div>
-            <div
-              class="pagination d-flex justify-content-end align-items-center me-4 mt-4"
-            >
-              <div class="d-flex align-items-center gap-3">
-                <div>
-                  <p class="m-0">Показано<span> 2112 12121</span></p>
-                </div>
-
-                <div class="page__search-pages d-flex align-content-center">
-                  <div class="pagination-container d-flex justify-items-center">
-                    <ul class="pagination pagination-info mb-0 pe-0">
-                      <li class="page-item">
-                        <a
-                          class="page-link"
-                          href="javascript:;"
-                          aria-label="Previous"
-                        >
-                          <span aria-hidden="true"
-                            ><i
-                              class="fa fa-angle-double-left"
-                              aria-hidden="true"
-                            ></i
-                          ></span>
-                        </a>
-                      </li>
-                      <li class="page-item">
-                        <a class="page-link" href="javascript:;">1</a>
-                      </li>
-                      <li class="page-item">
-                        <a class="page-link" href="javascript:;">2</a>
-                      </li>
-                      <li class="page-item active">
-                        <a class="page-link" href="javascript:;">3</a>
-                      </li>
-                      <li class="page-item">
-                        <a class="page-link" href="javascript:;">4</a>
-                      </li>
-                      <li class="page-item">
-                        <a class="page-link" href="javascript:;">5</a>
-                      </li>
-                      <li class="page-item">
-                        <a
-                          class="page-link"
-                          href="javascript:;"
-                          aria-label="Next"
-                        >
-                          <span aria-hidden="true"
-                            ><i
-                              class="fa fa-angle-double-right"
-                              aria-hidden="true"
-                            ></i
-                          ></span>
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <pagination-component
+              :filteredArr="filteredList"
+              :strAmount="10"
+              @PaginationReload="reloadPagination"
+            ></pagination-component>
           </div>
         </div>
       </div>
@@ -314,9 +260,80 @@ import { CloseInvModal } from "@/assets/js/closeModalDeleteOpen";
 export default {
   data() {
     return {
+      paginationList: [],
       status: null,
       buttonText: "",
       orders: [
+        {
+          id: 0,
+          name: "Тихонова А.Р",
+          position: "Кассир",
+          phoneNumber: "+7 999 999 99 99",
+          email: "kassir@neutron.kz",
+        },
+        {
+          id: 1,
+          name: "Ильясов С.Д",
+          position: "Исполнитель",
+          phoneNumber: "+7 322 998 25 09",
+          email: "isp@neutron.kz",
+        },
+        {
+          id: 2,
+          name: "Павлов Л.В",
+          position: "Технический директор",
+          phoneNumber: "+7 322 998 01 05",
+          email: "tech@neutron.kz",
+        },
+        {
+          id: 3,
+          name: "Валерьянов М.С",
+          position: "Full Stack программист",
+          phoneNumber: "+7 322 001 15 02",
+          email: "full@neutron.kz",
+        },
+        {
+          id: 4,
+          name: "Владосов Л.В",
+          position: "Стажёр",
+          phoneNumber: "+7 322 999 07 10",
+          email: "vlv@neutron.kz",
+        },
+        {
+          id: 0,
+          name: "Тихонова А.Р",
+          position: "Кассир",
+          phoneNumber: "+7 999 999 99 99",
+          email: "kassir@neutron.kz",
+        },
+        {
+          id: 1,
+          name: "Ильясов С.Д",
+          position: "Исполнитель",
+          phoneNumber: "+7 322 998 25 09",
+          email: "isp@neutron.kz",
+        },
+        {
+          id: 2,
+          name: "Павлов Л.В",
+          position: "Технический директор",
+          phoneNumber: "+7 322 998 01 05",
+          email: "tech@neutron.kz",
+        },
+        {
+          id: 3,
+          name: "Валерьянов М.С",
+          position: "Full Stack программист",
+          phoneNumber: "+7 322 001 15 02",
+          email: "full@neutron.kz",
+        },
+        {
+          id: 4,
+          name: "Владосов Л.В",
+          position: "Стажёр",
+          phoneNumber: "+7 322 999 07 10",
+          email: "vlv@neutron.kz",
+        },
         {
           id: 0,
           name: "Тихонова А.Р",
@@ -358,6 +375,10 @@ export default {
     };
   },
   methods: {
+    reloadPagination(arr) {
+      console.log(arr);
+      this.paginationList = arr;
+    },
     cancelFilters() {
       this.filterPosition = "";
     },
@@ -390,6 +411,9 @@ export default {
 </script>
 
 <style scoped>
+.page__table {
+  height: 27.6vw;
+}
 .btn-add {
   font-weight: 600;
   font-size: 14px;

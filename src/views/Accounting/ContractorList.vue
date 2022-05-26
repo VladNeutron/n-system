@@ -68,7 +68,7 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr v-for="(item, i) of filteredItems" :key="item.id">
+                  <tr v-for="(item, i) of paginationList" :key="item.id">
                     <th scope="row" style="padding-left: 27px">
                       <div class="form-check">
                         <input
@@ -114,65 +114,11 @@
                 </tbody>
               </table>
             </div>
-            <div
-              class="pagination d-flex justify-content-end align-items-center me-4 mt-4"
-            >
-              <div class="d-flex align-items-center gap-3">
-                <div>
-                  <p class="m-0">Показано<span> 2112 12121</span></p>
-                </div>
-
-                <div class="page__search-pages d-flex align-content-center">
-                  <div class="pagination-container d-flex justify-items-center">
-                    <ul class="pagination pagination-info mb-0 pe-0">
-                      <li class="page-item">
-                        <a
-                          class="page-link"
-                          href="javascript:;"
-                          aria-label="Previous"
-                        >
-                          <span aria-hidden="true"
-                            ><i
-                              class="fa fa-angle-double-left"
-                              aria-hidden="true"
-                            ></i
-                          ></span>
-                        </a>
-                      </li>
-                      <li class="page-item">
-                        <a class="page-link" href="javascript:;">1</a>
-                      </li>
-                      <li class="page-item">
-                        <a class="page-link" href="javascript:;">2</a>
-                      </li>
-                      <li class="page-item active">
-                        <a class="page-link" href="javascript:;">3</a>
-                      </li>
-                      <li class="page-item">
-                        <a class="page-link" href="javascript:;">4</a>
-                      </li>
-                      <li class="page-item">
-                        <a class="page-link" href="javascript:;">5</a>
-                      </li>
-                      <li class="page-item">
-                        <a
-                          class="page-link"
-                          href="javascript:;"
-                          aria-label="Next"
-                        >
-                          <span aria-hidden="true"
-                            ><i
-                              class="fa fa-angle-double-right"
-                              aria-hidden="true"
-                            ></i
-                          ></span>
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <pagination-component
+              :filteredArr="filteredItems"
+              :strAmount="10"
+              @PaginationReload="reloadPagination"
+            ></pagination-component>
           </div>
         </div>
       </div>
@@ -224,6 +170,7 @@ import FiltersButton from "@/components/buttons/FiltersButton.vue";
 export default {
   data() {
     return {
+      paginationList: [],
       modal: {
         modalProductName: {},
       },
@@ -267,10 +214,86 @@ export default {
           phoneNumber: "+7 999 999 99 99",
           adress: "г.Алматы, ул.Жолдасбекова 97",
         },
+        {
+          id: 0,
+          name: "Тихонова А.Р",
+          bin: 111111111111,
+          companyType: "ТОО",
+          contractorType: "Клиент",
+          phoneNumber: "+7 999 999 99 99",
+          adress: "г.Алматы, ул.Жолдасбекова 97",
+        },
+        {
+          id: 1,
+          name: "ИП Ромашкин",
+          bin: 222222222222,
+          companyType: "ИП",
+          contractorType: "Клиент",
+          phoneNumber: "+7 999 999 99 99",
+          adress: "г.Алматы, ул.Жолдасбекова 97",
+        },
+        {
+          id: 2,
+          name: "ИП Весёлов",
+          bin: 333333333333,
+          companyType: "ИП",
+          contractorType: "Клиент",
+          phoneNumber: "+7 999 999 99 99",
+          adress: "г.Алматы, ул.Жолдасбекова 97",
+        },
+        {
+          id: 3,
+          name: "ТОО “Будь уверен”",
+          bin: 444444444444,
+          companyType: "ТОО",
+          contractorType: "Поставщик",
+          phoneNumber: "+7 999 999 99 99",
+          adress: "г.Алматы, ул.Жолдасбекова 97",
+        },
+        {
+          id: 0,
+          name: "Тихонова А.Р",
+          bin: 111111111111,
+          companyType: "ТОО",
+          contractorType: "Клиент",
+          phoneNumber: "+7 999 999 99 99",
+          adress: "г.Алматы, ул.Жолдасбекова 97",
+        },
+        {
+          id: 1,
+          name: "ИП Ромашкин",
+          bin: 222222222222,
+          companyType: "ИП",
+          contractorType: "Клиент",
+          phoneNumber: "+7 999 999 99 99",
+          adress: "г.Алматы, ул.Жолдасбекова 97",
+        },
+        {
+          id: 2,
+          name: "ИП Весёлов",
+          bin: 333333333333,
+          companyType: "ИП",
+          contractorType: "Клиент",
+          phoneNumber: "+7 999 999 99 99",
+          adress: "г.Алматы, ул.Жолдасбекова 97",
+        },
+        {
+          id: 3,
+          name: "ТОО “Будь уверен”",
+          bin: 444444444444,
+          companyType: "ТОО",
+          contractorType: "Поставщик",
+          phoneNumber: "+7 999 999 99 99",
+          adress: "г.Алматы, ул.Жолдасбекова 97",
+        },
       ],
     };
   },
   methods: {
+    reloadPagination(arr) {
+      console.log(arr);
+      this.paginationList = arr;
+    },
     openModal(id) {
       this.modal.modalProductName = this.items.filter(
         (item) => item.id == id
@@ -307,6 +330,9 @@ export default {
 </script>
 
 <style scoped>
+.page__table {
+  height: 27.6vw;
+}
 .dropdown {
   width: 100%;
   display: inline-block;

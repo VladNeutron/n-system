@@ -48,7 +48,7 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr v-for="(order, i) of orders" :key="order.id">
+                  <tr v-for="(order, i) of paginationList" :key="order.id">
                     <td width="1%">{{ i + 1 }}</td>
                     <td>{{ order.name }}</td>
                     <td>{{ order.shop }}</td>
@@ -80,65 +80,11 @@
                 </tbody>
               </table>
             </div>
-            <div
-              class="pagination d-flex justify-content-end align-items-center me-4 mt-4"
-            >
-              <div class="d-flex align-items-center gap-3">
-                <div>
-                  <p class="m-0">Показано<span> 2112 12121</span></p>
-                </div>
-
-                <div class="page__search-pages d-flex align-content-center">
-                  <div class="pagination-container d-flex justify-items-center">
-                    <ul class="pagination pagination-info mb-0 pe-0">
-                      <li class="page-item">
-                        <a
-                          class="page-link"
-                          href="javascript:;"
-                          aria-label="Previous"
-                        >
-                          <span aria-hidden="true"
-                            ><i
-                              class="fa fa-angle-double-left"
-                              aria-hidden="true"
-                            ></i
-                          ></span>
-                        </a>
-                      </li>
-                      <li class="page-item">
-                        <a class="page-link" href="javascript:;">1</a>
-                      </li>
-                      <li class="page-item">
-                        <a class="page-link" href="javascript:;">2</a>
-                      </li>
-                      <li class="page-item active">
-                        <a class="page-link" href="javascript:;">3</a>
-                      </li>
-                      <li class="page-item">
-                        <a class="page-link" href="javascript:;">4</a>
-                      </li>
-                      <li class="page-item">
-                        <a class="page-link" href="javascript:;">5</a>
-                      </li>
-                      <li class="page-item">
-                        <a
-                          class="page-link"
-                          href="javascript:;"
-                          aria-label="Next"
-                        >
-                          <span aria-hidden="true"
-                            ><i
-                              class="fa fa-angle-double-right"
-                              aria-hidden="true"
-                            ></i
-                          ></span>
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <pagination-component
+              :filteredArr="orders"
+              :strAmount="10"
+              @PaginationReload="reloadPagination"
+            ></pagination-component>
           </div>
         </div>
       </div>
@@ -212,24 +158,94 @@
           <button class="btn bg-gradient-dark">Сохранить</button>
         </div>
         <div class="clients__footer" v-if="isEdit == 'yes'">
-          <button class="btn delete__btn" data-bs-toggle="modal" data-bs-target="#DeleteInv">Удалить должность</button>
+          <button
+            class="btn delete__btn"
+            data-bs-toggle="modal"
+            data-bs-target="#DeleteInv"
+          >
+            Удалить должность
+          </button>
         </div>
       </template>
     </inputs-modal>
-    <delete-modal :title="'должности'" :text='`должность "Кассир"`'></delete-modal>
+    <delete-modal
+      :title="'должности'"
+      :text="`должность &quot;Кассир&quot;`"
+    ></delete-modal>
   </main>
 </template>
 
 <script>
 import Filter from "../../components/Filters.vue";
 import InputsModal from "@/components/InputsModal.vue";
-import {CloseInvModal} from "@/assets/js/closeModalDeleteOpen";
+import { CloseInvModal } from "@/assets/js/closeModalDeleteOpen";
 export default {
   data() {
     return {
+      paginationList: [],
       status: null,
       buttonText: "",
       orders: [
+        {
+          id: 0,
+          name: "Кассир",
+          shop: "Москва",
+          status: "Активна",
+        },
+        {
+          id: 1,
+          name: "Бухгалтер",
+          shop: "Москва",
+          status: "Не активна",
+        },
+        {
+          id: 2,
+          name: "Фасовщик",
+          shop: "Апорт",
+          status: "Активна",
+        },
+        {
+          id: 3,
+          name: "Консультант",
+          shop: "Апорт",
+          status: "Не активна",
+        },
+        {
+          id: 4,
+          name: "Управляющий",
+          shop: "Апорт",
+          status: "Активна",
+        },
+        {
+          id: 0,
+          name: "Кассир",
+          shop: "Москва",
+          status: "Активна",
+        },
+        {
+          id: 1,
+          name: "Бухгалтер",
+          shop: "Москва",
+          status: "Не активна",
+        },
+        {
+          id: 2,
+          name: "Фасовщик",
+          shop: "Апорт",
+          status: "Активна",
+        },
+        {
+          id: 3,
+          name: "Консультант",
+          shop: "Апорт",
+          status: "Не активна",
+        },
+        {
+          id: 4,
+          name: "Управляющий",
+          shop: "Апорт",
+          status: "Активна",
+        },
         {
           id: 0,
           name: "Кассир",
@@ -268,13 +284,22 @@ export default {
     "the-filter": Filter,
     "inputs-modal": InputsModal,
   },
-  mounted(){
+  mounted() {
     CloseInvModal();
+  },
+  methods: {
+    reloadPagination(arr) {
+      console.log(arr);
+      this.paginationList = arr;
+    },
   },
 };
 </script>
 
 <style scoped>
+.page__table {
+  height: 27.6vw;
+}
 .dropdown {
   width: 100%;
   display: inline-block;
