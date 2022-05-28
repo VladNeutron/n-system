@@ -27,7 +27,7 @@ export default {
           responsivePercentage: false, 
           dragBoards       : false,
           click: el => {
-            
+            console.log(el);
           },
           buttonClick: () => {
               $("#AddDealModal").modal("show");
@@ -45,15 +45,11 @@ export default {
           widthBoard: "400px",
           responsivePercentage: false, 
           dragBoards       : false,
-          click: el => {
-            
+          click            : function (el) {
+            console.log(el);
           },
           buttonClick: () => {
-              this.kanbanTest.addElement('Stage2', {
-                  id: 409,
-                  title: 'Новый',
-                  class: ["border-radius-md"]
-                });
+               $("#AddDealModal").modal("show");
           },
           addItemButton: true,
             boards: this.boards,
@@ -74,11 +70,30 @@ export default {
                     };
                     this.dealsList.forEach( elem => {
                         if(elem.stage == el.name){
+                            let titleTemp = ''
+                            let classlist = ["border-radius-md"];
+                            if(elem.color){
+                                titleTemp = `<div class="kanban__coloredCont">
+                                <div style="background-color:${elem.color};" class='kanban__colorLeft'></div>
+                                <div>
+                                <p>${elem.dealName}</p>
+                                <button class='btn bg-gradient-dark kanban__date'><img src='../images/ClockIcon.svg'></img> ${elem.date ? elem.date : ''}</button>
+                                </div>
+                                </div>
+                                 
+                                `
+                            }
+                            if(elem.date){
+                                classlist.push('show__date')
+                            }
+                            else{
+                                titleTemp = `<p>${elem.dealName}</p>`
+                            }
                             board.item.push(
                                 {
                                     id: elem.id,
-                                    title: elem.dealName,
-                                    class: ["border-radius-md"]
+                                    title: titleTemp,
+                                    class: classlist
                                 }
                             )
                         }
@@ -160,9 +175,49 @@ export default {
     color: #2D3748;  
     text-align: left;
     margin-bottom: 8px;
+    padding-left: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    overflow: hidden;
 }
 .kanban-item:hover{
     background: top 50% right 5% no-repeat url("@/assets/img/Management/EditPencil.svg"), linear-gradient(0deg, rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.05)), #FFFFFF;
     transition: background-img 0s;
 }
+
+.kanban__coloredCont{
+    display: flex;
+}
+.kanban__colorLeft{
+    width: 11px;
+}
+
+.kanban-item p{
+    padding: 16px;
+    margin-bottom: 0;
+    font-weight: 600;
+    font-size: 16px;  
+    color: #2D3748;  
+}
+.kanban-item div p{
+    padding: 16px;
+    padding-left: 5px;
+    margin-bottom: 0;
+    font-weight: 600;
+    font-size: 16px;  
+    color: #2D3748;  
+}
+.kanban__date{
+    display: none;
+}
+.show__date .kanban__date{
+    display: block;
+    margin-left: 5px;
+    padding: 8px 16px;
+    margin-bottom: 16px;
+}
+.show__date div p{
+    padding-bottom: 8px;
+}
+
 </style>

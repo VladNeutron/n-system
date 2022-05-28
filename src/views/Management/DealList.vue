@@ -92,6 +92,8 @@ export default {
                     client: 'Тихонов А.',
                     stage: 'Первичный контакт',
                     budget: '1 500 000 ₸',
+                    color: 'rgb(97, 189, 79)',
+                    date: '16 янв'
                 },
                 {
                     id:1,
@@ -110,6 +112,8 @@ export default {
                     client: 'Тихонов А.',
                     stage: 'Переговоры',
                     budget: '1 500 000 ₸',
+                    color: 'rgb(235, 90, 70)',
+                    date: '25 июн'
                 },
                 {
                     id:3,
