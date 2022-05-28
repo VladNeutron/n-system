@@ -10,7 +10,7 @@
             display: flex;
             align-items: center;
           "
-          onclick="window.location.href = '/sales/create-order'"
+          data-bs-toggle="modal" data-bs-target="#AddDealModal"
         >
           <img
             src="@/assets/img/whtplus.svg"

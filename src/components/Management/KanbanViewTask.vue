@@ -19,6 +19,7 @@ export default {
     },
     mounted(){
         // var KanbanTest
+        if(!document.querySelector('.kanban-container')){
         this.kanbanTest  = new jKanban({
           element: "#myKanban",
           gutter: "10px",
@@ -38,6 +39,29 @@ export default {
           addItemButton: true,
             boards: this.boards,
         });
+        }
+        else{
+            document.querySelector('.kanban-container').remove();   
+            this.kanbanTest  = new jKanban({
+          element: "#myKanban",
+          gutter: "10px",
+          widthBoard: "400px",
+          responsivePercentage: false, 
+          dragBoards       : false,
+          click: el => {
+            
+          },
+          buttonClick: () => {
+              this.kanbanTest.addElement('Stage2', {
+                  id: 409,
+                  title: 'Новый',
+                  class: ["border-radius-md"]
+                });
+          },
+          addItemButton: true,
+            boards: this.boards,
+        }); 
+        }
         // console.log(this.boards);
     },
     computed:{

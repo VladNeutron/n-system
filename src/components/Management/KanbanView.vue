@@ -19,7 +19,27 @@ export default {
     },
     mounted(){
         // var KanbanTest
-        this.kanbanTest  = new jKanban({
+        if(!document.querySelector('.kanban-container')){
+            this.kanbanTest  = new jKanban({
+          element: "#myKanban",
+          gutter: "10px",
+          widthBoard: "400px",
+          responsivePercentage: false, 
+          dragBoards       : false,
+          click: el => {
+            
+          },
+          buttonClick: () => {
+              $("#AddDealModal").modal("show");
+          },
+          addItemButton: true,
+            boards: this.boards,
+        });
+
+        }
+        else{
+            document.querySelector('.kanban-container').remove();   
+            this.kanbanTest  = new jKanban({
           element: "#myKanban",
           gutter: "10px",
           widthBoard: "400px",
@@ -37,7 +57,9 @@ export default {
           },
           addItemButton: true,
             boards: this.boards,
-        });
+        }); 
+        }
+        
         // console.log(this.boards);
     },
     computed:{

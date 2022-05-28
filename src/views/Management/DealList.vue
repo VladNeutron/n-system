@@ -48,12 +48,14 @@
                 </div>
             </div>
         </div>
+        <add-deal-modal></add-deal-modal>
     </main>
 </template>
 
 <script>
 import KanbanView from "@/components/Management/KanbanView.vue"
 import TableView from "@/components/Management/TableView.vue"
+import AddDealModal from "@/components/Management/AddDealModal.vue"
 export default {
     data(){
         return{
@@ -203,7 +205,7 @@ export default {
         }
     },
     components:{
-        KanbanView, TableView
+        KanbanView, TableView, AddDealModal
     },
     mounted(){}
 }
