@@ -1,6 +1,6 @@
 <template>
   <div class="modal fade" id="AddDealModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-lg">
+  <div class="modal-dialog modal-dialog-centered modal-lg modal-dialog-scrollable">
     <div class="modal-content">
       <div class="modal-header">
         <div class="d-flex flex-column">
@@ -17,22 +17,10 @@
       <div class="modal-body">
           <div class="row">
               <div class="col-6">
+                  <p class="modalTitles">Название сделки</p>
                 <div class="form-group addDeal__formgroup">
-                    <label for="dealName">Название сделки</label>
                     <input class="form-control" id="dealName" placeholder="Введите название">
                 </div>    
-                <div class="form-group addDeal__formgroup">
-                    <label for="dealDesc">Описание сделки</label>
-                    <textarea class="form-control" id="dealDesc" rows="3" placeholder="Введите описание сделки"></textarea>
-                </div>
-                <div class="form-group addDeal__formgroup">
-                <label for="dealCLient">Клиент</label>
-                <select class="form-select" id="dealCLient">
-                    <option disabled="" selected value="">Выберите</option>
-                    <option>ТОО "Ясный ум"</option>
-                    <option>ИП "Ромашка"</option>
-                </select>
-                </div>
               </div>
               <div class="col-6">
                   <div class="participants">
@@ -46,6 +34,14 @@
                         </button>    
                     </div>
                   </div>
+              </div>
+              <div class="col-6 mt-3">
+                    <p class="modalTitles">Описание сделки</p>
+                    <div class="form-group addDeal__formgroup">
+                        <textarea class="form-control" id="dealDesc" rows="3" placeholder="Введите описание сделки"></textarea>
+                    </div>
+              </div>
+              <div class="col-6 mt-3">
                   <div class="labels">
                     <p>
                         Метки        
@@ -60,11 +56,62 @@
                     </div>
                   </div>
               </div>
+              <div class="col-6">
+                  <div class="form-group addDeal__formgroup">
+                <label for="dealCLient">Клиент</label>
+                <select class="form-select" id="dealCLient">
+                    <option disabled="" selected value="">Выберите</option>
+                    <option>ТОО "Ясный ум"</option>
+                    <option>ИП "Ромашка"</option>
+                </select>
+                </div>
+              </div>
+              <div class="col-6">
+                  
+                  
+                  <div class="form-group addDeal__formgroup">
+                    <label for="endDAte">Срок выполнения</label>
+                    <div class="d-flex">
+                        <input class="form-control" type="date" id="endDate" placeholder="Введите название">
+                        <input class="form-control inp-time ms-2" type="time" id="endDate" placeholder="Введите название">
+                    </div>
+                </div>   
+              </div>
           </div>
+
+        <div class="coments__block">
+            <div class="row" v-for="comment in comments" :key="comment">
+                <div class="col-1">
+                    <img class="footer__img" src="@/assets/img/Management/participants1.png" alt="">
+                </div>
+                <div class="col-11">
+                    <div class="coment__title">
+                        <span class="coment__name">{{comment.name}}</span>
+                        <span class="coment__time">{{comment.date}}</span>
+                    </div>
+                    <div class="coment__body">
+                        {{comment.coment}}
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-1">
+                    <img class="footer__img" src="@/assets/img/Management/participants1.png" alt="">
+                </div>
+                <div class="col-11">
+                    <div class="form-group comment__formgroup">
+                        <textarea class="form-control" id="input-comment" rows="4" placeholder="Напишите комментарий..." v-model="inputComent"></textarea>
+                        <button class="bg-gradient-dark comment__save__btn btn" @click="addComment">
+                            Сохранить
+                        </button>
+                    </div>
+                </div>    
+            </div>
+        </div>
+        
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+          <button type="button" class="btn bg-gradient-dark w-60" data-bs-dismiss="modal">Добавить сделку</button>
       </div>
     </div>
   </div>
@@ -180,6 +227,8 @@ export default {
                 },
             ],
             selectedLabel: {},
+            inputComent: '',
+            comments: [],
         }
     },
     computed:{
@@ -267,6 +316,21 @@ export default {
             else{
                 this.selectedLabel = val;
             }
+        },
+        addComment(){
+            if(this.inputComent != ''){
+                let date = new Date();
+
+                this.comments.push(
+                {
+                    coment: this.inputComent,
+                    date: date.getDate()+ '.' + date.getMonth() + '.' + date.getFullYear() ,
+                    name: 'Андрей Андреев',
+                    img: '',
+                }
+            );
+            this.inputComent = '';
+            }
         }
     },
     mounted(){
@@ -297,6 +361,13 @@ export default {
 </script>
 
 <style scoped>
+.modalTitles{
+    font-weight: 600;
+    font-size: 14px;
+    color: #2D3748;
+    margin-bottom: 0.5rem;
+    text-align: left;
+}
 .modal-title{
     font-weight: 700;
     font-size: 30px;    
@@ -461,5 +532,62 @@ export default {
     height: 38px;
     border-radius: 5px;
     margin-right: 5px;
+}
+
+/* DATE */
+.inp-time{
+    width: 30%;
+}
+
+/* FOOTER */
+.modal-footer{
+    display: block;
+    border-top: unset;
+}
+.input-comment{
+
+}
+.comment__formgroup{
+    position: relative;
+}
+.comment__save__btn{
+    position: absolute;
+    right: 16px;
+    bottom: 12px;  
+    margin-bottom: 0;  
+}
+.footer__img{
+   width: 3vw;
+   height: 3vw; 
+}
+/* COMENTS */
+.coment__title{
+    text-align: left;
+    line-height: 14px;
+}
+.coment__name{
+    font-weight: 700;
+    font-size: 16px;
+    color: #2D3748;
+}
+.coment__time{
+    font-weight: 400;
+    font-size: 14px;
+    color: #A0AEC0;
+    margin-left: 8px;
+}
+.coment__body{
+    margin-top: 8px;
+    text-align: left;
+    max-width: 29.17vw;
+    margin-bottom: 32px;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 22px;
+    color: #2D3748;
+}
+.coments__block{
+    border-top: 1px solid #dee2e6;    
+    padding-top: 32px;
 }
 </style>
