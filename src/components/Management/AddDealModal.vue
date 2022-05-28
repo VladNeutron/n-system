@@ -46,6 +46,19 @@
                         </button>    
                     </div>
                   </div>
+                  <div class="labels">
+                    <p>
+                        Метки        
+                    </p>
+                    <div class="labels__container">
+                        <div v-if="selectedLabel.color" class="labels__selected" :style="{backgroundColor: selectedLabel.color}">
+
+                        </div>
+                        <button class="labels__add__btn btn" @click="labelsSelectShow()">
+                            <img src="@/assets/img/Management/addModal.svg" alt="">
+                        </button> 
+                    </div>
+                  </div>
               </div>
           </div>
       </div>
@@ -56,7 +69,6 @@
     </div>
   </div>
   <div class="participantsSelect__container">
-    
         <div class="participantsSelect__container__header">
             <span class="">
                 Участники
@@ -74,8 +86,30 @@
                 </div>
             </div>
         </div>
-    
-</div>
+    </div>
+    <div class="labelsSelect__container">
+        <div class="labelsSelect__container__header">
+            <span class="">
+                Метки
+            </span>
+            <img src="@/assets/img/closemodal.svg" style="width: 15px; cursor: pointer" @click="labelsSelectClose">
+        </div>
+        <div class="labelsSelect__container__body">
+            <!-- <div class="form-group addDeal__formgroup">
+                <input type="text" class="form-control" id="asd" v-model="selectPartInput" placeholder="Введите название">
+            </div>  -->
+            <div>
+                <div class="labelsSelectColor" 
+                v-for="label in labels" 
+                :key="label.id" 
+                :style="{backgroundColor: label.color}"
+                @click="selectLabel(label)"
+                >
+                    <img class="labelsSelectColor__img" v-if="selectedLabel.id == label.id" src="@/assets/img/Management/labelDone.png" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 </template>
@@ -123,6 +157,29 @@ export default {
             },
             selectPartInput: '',
             selectedPart: [],
+            labels:[
+                {
+                    id: 0,
+                    color: '#61bd4f'
+                },
+                {
+                    id: 1,
+                    color: '#f2d600'
+                },
+                {
+                    id: 2,
+                    color: '#eb5a46'
+                },
+                {
+                    id: 3,
+                    color: '#c377e0'
+                },
+                {
+                    id: 4,
+                    color: '#0079bf'
+                },
+            ],
+            selectedLabel: {},
         }
     },
     computed:{
@@ -185,6 +242,12 @@ export default {
         participantsSelectClose(){
             document.querySelector('.participantsSelect__container').classList.remove('participantsSelect__container__show');    
         },
+        labelsSelectShow(){
+            document.querySelector('.labelsSelect__container').classList.add('d-block');    
+        },
+        labelsSelectClose(){
+            document.querySelector('.labelsSelect__container').classList.remove('d-block');    
+        },
         addPart(el){
             if(this.selectedPart.includes(el.id)){
                 this.selectedPart.splice(this.selectedPart.indexOf(el.id),1);
@@ -196,6 +259,14 @@ export default {
         },
         isSelected(el){
             this.selectedPart.includes(el);
+        },
+        selectLabel(val){
+            if(this.selectedLabel == val){
+                this.selectedLabel = {}
+            }
+            else{
+                this.selectedLabel = val;
+            }
         }
     },
     mounted(){
@@ -210,6 +281,11 @@ export default {
             pos.y = document.querySelector(".participants__container").getBoundingClientRect().y; 
             document.querySelector('.participantsSelect__container').style.left = pos.x + 'px'
             document.querySelector('.participantsSelect__container').style.top = pos.y + 'px'
+
+            pos.x = document.querySelector(".labels__container").getBoundingClientRect().x; 
+            pos.y = document.querySelector(".labels__container").getBoundingClientRect().y; 
+            document.querySelector('.labelsSelect__container').style.left = pos.x + 'px'
+            document.querySelector('.labelsSelect__container').style.top = pos.y + 'px'
             // $('#asd').trigger('focus')
         })
 
@@ -230,6 +306,7 @@ export default {
    font-size: 16px;
    font-weight: 400;
    color: #A0AEC0;
+   text-align: left;
 }
 .addDeal__formgroup{
     text-align: left;
@@ -248,14 +325,29 @@ export default {
     color: #2D3748;
     margin-bottom: 0.5rem;
 }
+
+.participants__container{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.participants__container img{
+    width: 58px;
+    height: 58px;
+    margin-right: 5px;
+    margin-bottom: 5px;
+}
 .participants__add__btn{
     background: #E2E8F0;
     border-radius: 5px;
     padding: 20px;
+    margin-bottom: 5px;
 }
 .participants__add__btn img{
     width: 18px;
-    height: 18px;    
+    height: 18px; 
+    margin-right: 0px;
+    margin-bottom: 0px;  
 }
 .participantsSelect__container{
     position: absolute;
@@ -284,6 +376,90 @@ export default {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    cursor: pointer; 
+    
+}
+.part__cont:hover{
+    background-color: #091e420a;
+}
+.part__cont span{
+    flex-grow: 1;
+    text-align: left;
+}
+
+/* LABELS */
+.labels{
+    text-align: left;
+}
+.labels p{
+    font-weight: 600;
+    font-size: 14px;
+    color: #2D3748;
+    margin-bottom: 0.5rem;
+}
+
+.labels__container{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+/* .participants__container img{
+    width: 58px;
+    height: 58px;
+    margin-right: 5px;
+    margin-bottom: 5px;
+} */
+.labels__add__btn{
+    background: #E2E8F0;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 0px;
+}
+.labels__add__btn img{
+    width: 18px;
+    height: 18px; 
+    margin-right: 0px;
+    margin-bottom: 0px;  
+}
+.labelsSelect__container{
+    position: absolute;
+    display: none;
+    z-index: 1100;
+    background-color: white;
+    padding: 8px;
+    box-shadow: 0 8px 16px -4px #091e4240, 0 0 0 1px #091e4214;
+}
+.labelsSelect__container__show{
+    display: block;
+}
+.labelsSelect__container__header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 5px;
+}
+.labelsSelectColor{
+    width: 200px;
+    height: 30px;
+    margin-bottom: 5px;
+    text-align: right;
     cursor: pointer;
+}
+.labelsSelectColor__img{
+    width: 15px;
+    height: 15px;
+    margin-right: 10px;
+}
+.labelsSelect__container__header span{
+
+}
+.labelsSelect__container__body{
+
+}
+.labels__selected{
+    width: 38px;
+    height: 38px;
+    border-radius: 5px;
+    margin-right: 5px;
 }
 </style>
