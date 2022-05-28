@@ -125,7 +125,7 @@
       </div>
     </div>
   </main>
-  <the-filter :orders="orders" @no-filter="cancelFilters">
+  <the-filter @no-filter="cancelFilters">
     <div class="filters__period__flex">
       <div class="filter__name__standart">Выберите период</div>
       <div class="reset__date">Сбросить период</div>
@@ -149,23 +149,20 @@
         />
       </div>
     </div>
-    <p class="text-start my-2 fw-bold" for="Статус">Статус заказа</p>
-    <div class="d-flex flex-wrap">
-      <div class="cat" v-for="status of orderStatusList" :key="status">
-        <label>
-          <input
-            type="checkbox"
-            :value="status"
-            v-model="filterStatusSelect"
-          /><span v-text="normalizeStatusName(status)"></span>
-        </label>
-      </div>
-    </div>
-    <p class="text-start my-2 fw-bold" for="Склад">Склад</p>
-    <select class="form-select" v-model="filterWarehouse">
-      <option value="" disabled>Выберите склад</option>
-      <option v-for="warehouse of orderWarehouseList" :key="warehouse">
-        {{ warehouse }}
+
+    <p class="text-start my-2 fw-bold" for="Контрагент">Контрагент</p>
+    <select class="form-select" v-model="filterName">
+      <option value="" disabled>Выберите наименование документа</option>
+      <option v-for="name of orderNameList" :key="name">
+        {{ name }}
+      </option>
+      <option value=""></option>
+    </select>
+    <p class="text-start my-2 fw-bold" for="контрагент">Контрагент</p>
+    <select class="form-select" v-model="filterContragent">
+      <option value="" disabled>Выберите когтрагента</option>
+      <option v-for="contragent of orderContragentList" :key="contragent">
+        {{ contragent }}
       </option>
       <option value=""></option>
     </select>
@@ -175,22 +172,7 @@
       <option v-for="responsible of orderResponsibleList" :key="responsible">
         {{ responsible }}
       </option>
-      <option value=""></option>
-    </select>
-    <p class="text-start my-2 fw-bold" for="Клиент">Клиент</p>
-    <select class="form-select" v-model="filterClient">
-      <option value="" disabled>Выберите клиента</option>
-      <option v-for="client of orderClientList" :key="client">
-        {{ client }}
-      </option>
-      <option value=""></option>
-    </select>
-    <p class="text-start my-2 fw-bold" for="Тип заказа">Тип заказа</p>
-    <select class="form-select" v-model="filterOrderType">
-      <option value="" disabled>Выберите тип заказа</option>
-      <option v-for="orderType of orderTypeList" :key="orderType">
-        {{ orderType }}
-      </option>
+      responsible
       <option value=""></option>
     </select>
   </the-filter>
@@ -249,95 +231,48 @@ export default {
           sum: 12890,
         },
       ],
-      filterStatusSelect: [],
+      filterName: "",
       filterResponsible: "",
-      filterClient: "",
-      filterOrderType: "",
-      filterWarehouse: "",
+      filterContragent: "",
     };
   },
   methods: {
     reloadPagination(arr) {
       this.paginationList = arr;
     },
-    getClass(stat) {
-      return stat === "new"
-        ? "bg-gradient-info"
-        : stat === "in-process"
-        ? "bg-gradient-primary"
-        : stat === "canceled"
-        ? "bg-gradient-danger"
-        : stat === "processed"
-        ? "bg-gradient-warning"
-        : stat === "assembly"
-        ? "bg-gradient-secondary"
-        : stat === "ready"
-        ? "bg-gradient-blue"
-        : stat === "shipped"
-        ? "bg-gradient-success"
-        : "bg-gradient-success";
-    },
-    normalizeStatusName(name) {
-      const statusMap = {
-        new: "Новый заказ",
-        "in-process": "В обработке",
-        canceled: "Отменен",
-        processed: "Обработан",
-        assembly: "В сборке",
-        ready: "Готов к выдаче",
-        shipped: "Отправлен",
-      };
-      return statusMap[name] || "Статус не найден";
-    },
+
     createFilteredSet(key) {
       const unfiltered = this.orders.map((obj) => obj[key]);
       return [...new Set(unfiltered)];
     },
     cancelFilters() {
-      this.filterStatusSelect = [];
-      this.filterResponsible = "";
-      this.filterClient = "";
-      this.filterOrderType = "";
-      this.filterWarehouse = "";
+      filterName = "";
+      filterResponsible = "";
+      filterContragent = "";
     },
   },
 
   computed: {
-    orderStatusList() {
-      return this.createFilteredSet("status");
+    orderNameList() {
+      return this.createFilteredSet("name");
     },
     orderResponsibleList() {
       return this.createFilteredSet("responsible");
     },
-    orderClientList() {
-      return this.createFilteredSet("client");
-    },
-    orderTypeList() {
-      return this.createFilteredSet("type");
-    },
-    orderWarehouseList() {
-      return this.createFilteredSet("warehouse");
+    orderContragentList() {
+      return this.createFilteredSet("contractor");
     },
 
     filteredOrders() {
-      const statusCheckIfEmpty = this.filterStatusSelect.length > 0;
       return this.orders.filter(
         (order) =>
-          (statusCheckIfEmpty
-            ? this.filterStatusSelect.includes(order.status)
-            : true) &&
-          (this.filterWarehouse === ""
-            ? true
-            : order.warehouse === this.filterWarehouse) &&
+          (this.filterName === "" ? true : order.name === this.filterName) &&
           (this.filterResponsible === ""
             ? true
             : order.responsible === this.filterResponsible) &&
-          (this.filterClient === ""
+          (this.filterContragent === ""
             ? true
-            : order.client === this.filterClient) &&
-          (this.filterOrderType === ""
-            ? true
-            : order.type === this.filterOrderType)
+            : order.contractor === this.filterContragent)
       );
     },
   },
