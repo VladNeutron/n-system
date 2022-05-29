@@ -20,25 +20,22 @@ export default {
     mounted(){
         // var KanbanTest
         if(!document.querySelector('.kanban-container')){
-        this.kanbanTest  = new jKanban({
+            this.kanbanTest  = new jKanban({
           element: "#myKanban",
           gutter: "10px",
           widthBoard: "400px",
           responsivePercentage: false, 
           dragBoards       : false,
           click: el => {
-            
+            $("#EditTaskModal").modal("show");
           },
           buttonClick: () => {
-              this.kanbanTest.addElement('Stage2', {
-                  id: 409,
-                  title: 'Новый',
-                  class: ["border-radius-md"]
-                });
+              $("#AddTaskModal").modal("show");
           },
           addItemButton: true,
             boards: this.boards,
         });
+
         }
         else{
             document.querySelector('.kanban-container').remove();   
@@ -48,15 +45,11 @@ export default {
           widthBoard: "400px",
           responsivePercentage: false, 
           dragBoards       : false,
-          click: el => {
-            
+          click            : function (el) {
+             $("#EditTaskModal").modal("show");
           },
           buttonClick: () => {
-              this.kanbanTest.addElement('Stage2', {
-                  id: 409,
-                  title: 'Новый',
-                  class: ["border-radius-md"]
-                });
+               $("#AddTaskModal").modal("show");
           },
           addItemButton: true,
             boards: this.boards,
@@ -76,11 +69,30 @@ export default {
                     };
                     this.dealsList.forEach( elem => {
                         if(elem.stage == el.name){
+                            let titleTemp = ''
+                            let classlist = ["border-radius-md"];
+                            if(elem.color){
+                                titleTemp = `<div class="kanban__coloredCont">
+                                <div style="background-color:${elem.color};" class='kanban__colorLeft'></div>
+                                <div>
+                                <p>${elem.dealName}</p>
+                                <button class='btn bg-gradient-dark kanban__date'><img src='../images/ClockIcon.svg'></img> ${elem.date ? elem.date : ''}</button>
+                                </div>
+                                </div>
+                                 
+                                `
+                            }
+                            if(elem.date){
+                                classlist.push('show__date')
+                            }
+                            else{
+                                titleTemp = `<p>${elem.dealName}</p>`
+                            }
                             board.item.push(
                                 {
                                     id: elem.id,
-                                    title: elem.dealName,
-                                    class: ["border-radius-md"]
+                                    title: titleTemp,
+                                    class: classlist
                                 }
                             )
                         }
@@ -130,14 +142,52 @@ export default {
 }
 #myKanban{
     overflow-x: auto;
-    overflow-y: auto;
+    overflow-y: hidden;
+    height: 80vh;
+}
+
+#myKanban::-webkit-scrollbar {
+    background: #e2e8f0;
+    border-radius: 0.78vw;
+    width: 0.37vw;
+    height: 0.67vw;
+}
+  
+#myKanban::-webkit-scrollbar-thumb {
+    border-radius: 0.78vw;
+    background-color: #313860;
+}
+  
+#myKanban::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.2);
+    border-radius: 0.78vw;
+    background-color: #e2e8f0;
 }
 
 .kanban-board{
     background: #E9ECEF;      
     box-shadow: 0px 3.5px 5.5px rgba(0, 0, 0, 0.02);
     border-radius: 12px;  
+    max-height: 77vh;
+    overflow-y: auto;
 }
+.kanban-board::-webkit-scrollbar {
+    background: #e2e8f0;
+    border-radius: 0.78vw;
+    width: 0.37vw;
+}
+  
+.kanban-board::-webkit-scrollbar-thumb {
+    border-radius: 0.78vw;
+    background-color: #313860;
+}
+  
+.kanban-board::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.2);
+    border-radius: 0.78vw;
+    background-color: #e2e8f0;
+}
+
 .kanban-board header{
     display: flex;
     align-items: center;
@@ -162,9 +212,57 @@ export default {
     color: #2D3748;  
     text-align: left;
     margin-bottom: 8px;
+    padding-left: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    overflow: hidden;
 }
 .kanban-item:hover{
     background: top 50% right 5% no-repeat url("@/assets/img/Management/EditPencil.svg"), linear-gradient(0deg, rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.05)), #FFFFFF;
     transition: background-img 0s;
+}
+
+.kanban__coloredCont{
+    display: flex;
+}
+.kanban__colorLeft{
+    width: 11px;
+}
+
+.kanban-item p{
+    padding: 16px;
+    margin-bottom: 0;
+    font-weight: 600;
+    font-size: 16px;  
+    color: #2D3748;  
+}
+.kanban-item div p{
+    padding: 16px;
+    padding-left: 5px;
+    margin-bottom: 0;
+    font-weight: 600;
+    font-size: 16px;  
+    color: #2D3748;  
+}
+.kanban__date{
+    display: none;
+}
+.show__date .kanban__date{
+    display: block;
+    margin-left: 5px;
+    padding: 8px 16px;
+    margin-bottom: 16px;
+}
+.show__date div p{
+    padding-bottom: 8px;
+}
+
+@media screen and (max-width: 1800px){
+#myKanban{
+    height: 75vh;
+}
+.kanban-board{
+    max-height: 72vh;
+}
 }
 </style>

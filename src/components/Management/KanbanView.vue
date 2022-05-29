@@ -27,7 +27,7 @@ export default {
           responsivePercentage: false, 
           dragBoards       : false,
           click: el => {
-            console.log(el);
+            $("#EditDealModal").modal("show");
           },
           buttonClick: () => {
               $("#AddDealModal").modal("show");
@@ -46,7 +46,7 @@ export default {
           responsivePercentage: false, 
           dragBoards       : false,
           click            : function (el) {
-            console.log(el);
+             $("#EditDealModal").modal("show");
           },
           buttonClick: () => {
                $("#AddDealModal").modal("show");
@@ -143,14 +143,52 @@ export default {
 }
 #myKanban{
     overflow-x: auto;
-    overflow-y: auto;
+    overflow-y: hidden;
+    height: 80vh;
+}
+
+#myKanban::-webkit-scrollbar {
+    background: #e2e8f0;
+    border-radius: 0.78vw;
+    width: 0.37vw;
+    height: 0.67vw;
+}
+  
+#myKanban::-webkit-scrollbar-thumb {
+    border-radius: 0.78vw;
+    background-color: #313860;
+}
+  
+#myKanban::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.2);
+    border-radius: 0.78vw;
+    background-color: #e2e8f0;
 }
 
 .kanban-board{
     background: #E9ECEF;      
     box-shadow: 0px 3.5px 5.5px rgba(0, 0, 0, 0.02);
     border-radius: 12px;  
+    max-height: 77vh;
+    overflow-y: auto;
 }
+.kanban-board::-webkit-scrollbar {
+    background: #e2e8f0;
+    border-radius: 0.78vw;
+    width: 0.37vw;
+}
+  
+.kanban-board::-webkit-scrollbar-thumb {
+    border-radius: 0.78vw;
+    background-color: #313860;
+}
+  
+.kanban-board::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.2);
+    border-radius: 0.78vw;
+    background-color: #e2e8f0;
+}
+
 .kanban-board header{
     display: flex;
     align-items: center;
@@ -220,4 +258,12 @@ export default {
     padding-bottom: 8px;
 }
 
+@media screen and (max-width: 1800px){
+#myKanban{
+    height: 75vh;
+}
+.kanban-board{
+    max-height: 72vh;
+}
+}
 </style>

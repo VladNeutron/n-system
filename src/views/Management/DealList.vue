@@ -49,6 +49,7 @@
             </div>
         </div>
         <add-deal-modal></add-deal-modal>
+        <edit-deal-modal></edit-deal-modal>
     </main>
 </template>
 
@@ -56,6 +57,7 @@
 import KanbanView from "@/components/Management/KanbanView.vue"
 import TableView from "@/components/Management/TableView.vue"
 import AddDealModal from "@/components/Management/AddDealModal.vue"
+import EditDealModal from "@/components/Management/EditDealModal.vue"
 export default {
     data(){
         return{
@@ -209,7 +211,7 @@ export default {
         }
     },
     components:{
-        KanbanView, TableView, AddDealModal
+        KanbanView, TableView, AddDealModal, EditDealModal
     },
     mounted(){}
 }

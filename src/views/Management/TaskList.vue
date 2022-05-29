@@ -53,12 +53,16 @@
                 </div>
             </div>
         </div>
+        <add-task-modal></add-task-modal>
+        <edit-task-modal></edit-task-modal>
     </main>
 </template>
 
 <script>
 import KanbanViewTask from "@/components/Management/KanbanViewTask.vue"
 import TableViewTask from "@/components/Management/TableViewTask.vue"
+import AddTaskModal from "@/components/Management/AddTaskModal.vue"
+import EditTaskModal from "@/components/Management/EditTaskModal.vue"
 export default {
     data(){
         return{
@@ -95,6 +99,8 @@ export default {
                     client: 'Тихонов А.',
                     stage: 'Первичный контакт',
                     budget: 'Выполнено',
+                    color: 'rgb(0, 121, 191)',
+                    date: '16 июн'
                 },
                 {
                     id:1,
@@ -208,7 +214,7 @@ export default {
         }
     },
     components:{
-        KanbanViewTask, TableViewTask
+        KanbanViewTask, TableViewTask, AddTaskModal, EditTaskModal
     },
     mounted(){}
 }

@@ -63,7 +63,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr v-for="(deal, i) of paginationList" :key="deal.id">
+            <tr v-for="(deal, i) of paginationList" :key="deal.id" data-bs-toggle="modal" data-bs-target="#EditDealModal">
               <th scope="row" style="padding-left: 27px">
                 <div class="form-check">
                   <input
