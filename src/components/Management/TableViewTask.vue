@@ -93,7 +93,7 @@
     </div>
     <pagination-component
       :filteredArr="dealsList"
-      :strAmount="5"
+      :strAmount="9"
       @PaginationReload="reloadPagination"
     ></pagination-component>
     <funnel-modal>

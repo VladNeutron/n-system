@@ -619,7 +619,7 @@ const routes = [
   {
     path: "/management/calendar",
     name: "management-calendar",
-    component: () => import("../views/Management/TaskList.vue"),
+    component: () => import("../views/Management/WorkCalendar.vue"),
     meta: { NavLink: "Рабочий календарь" },
   },
   // МЕНЕДЖМЕНТ

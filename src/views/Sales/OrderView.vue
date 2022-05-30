@@ -241,7 +241,7 @@
                   /></span>
                 </div>
               </div>
-              <button class="btn barcode__btn">Выбрать из списка</button>
+              <button class="btn barcode__btn" data-bs-toggle="modal" data-bs-target="#SelectDisc">Выбрать из списка</button>
             </div>
             <div class="search">
               <button
@@ -483,6 +483,7 @@
         </div>
       </template>
     </discount-modal>
+    <select-product-discount></select-product-discount>
   </main>
 </template>
 
@@ -1046,9 +1047,10 @@
 
 <script>
 import DiscountModal from "@/components/DiscountModal.vue";
+import SelectProductDiscount from "@/components/SelectProductDiscount.vue";
 export default {
   components: {
-    DiscountModal,
+    DiscountModal,SelectProductDiscount
   },
   methods: {
     test() {

@@ -590,4 +590,20 @@ export default {
     border-top: 1px solid #dee2e6;    
     padding-top: 32px;
 }
+.modal-body::-webkit-scrollbar {
+    background: #e2e8f0;
+    border-radius: 0.78vw;
+    width: 0.37vw;
+  }
+  
+.modal-body::-webkit-scrollbar-thumb {
+    border-radius: 0.78vw;
+    background-color: #313860;
+  }
+  
+.modal-body::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.2);
+    border-radius: 0.78vw;
+    background-color: #e2e8f0;
+}
 </style>
