@@ -42,7 +42,7 @@ export default {
   color: #fff;
   border-radius: 50%;
   padding: 0 5px 0 5px;
-  left: 7.708vw;
+  right: -0.26vw;
   top: -0.26vw;
 }
 </style>

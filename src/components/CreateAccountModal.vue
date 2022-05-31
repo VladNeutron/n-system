@@ -3,7 +3,7 @@
     <div class="modal-content">
       <div class="modal-header header__flex">
         <div class="modal__title">
-          <p class="modal__text">Создание аккаунта</p>
+          <p class="modal__text mb-0">Создание аккаунта</p>
           <p class="modal__steps">Шаг 3 из 3</p>
         </div>
         <div class="modal__pagination">
@@ -12,11 +12,13 @@
             <li class="page-item active">
               <a class="page-link" href="#link" @click="firstStep">1</a>
             </li>
+            <div class="chain chain__active"></div>
             <li class="page-item active">
               <a class="page-link" href="#link" @click="secondStep">2</a>
             </li>
+            <div class="chain chain__active"></div>
             <li class="page-item active">
-              <a class="page-link" href="#link">3</a>
+              <a class="page-link">3</a>
             </li>
           </ul>
         </div>
@@ -80,7 +82,10 @@ export default {
   color: #a0aec0;
 }
 .page-item {
-  margin-right: 1.25vw;
+  margin-right: 0vw;
+}
+.page-link{
+  margin-right: 0;
 }
 .pagination.pagination-info .page-item.active > .page-link,
 .pagination.pagination-info .page-item.active > .page-link:focus,
@@ -206,5 +211,25 @@ select::-ms-expand {
 }
 .modal-content {
   border: 0;
+}
+.page-item .page-link, .page-item span{
+  width: 45px;
+  height: 45px;
+  font-size: 22px;
+  
+}
+.pagination.pagination-info .page-item.active > .page-link{
+  font-weight: 700;
+}
+.chain{
+  width: 26px;
+  height: 2px;
+  background-color: rgba(160, 174, 192, 1);
+}
+.chain__active{
+  background: linear-gradient(83.56deg, #7092E0 10.01%, #8BAEF3 75.36%)
+}
+.pagination{
+  align-items: center;
 }
 </style>

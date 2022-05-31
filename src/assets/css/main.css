@@ -42,3 +42,6 @@ body::-webkit-scrollbar {
 .table thead th{
   text-align: center !important;
 }
+.dropdown__content__top{
+  bottom: 40px;
+}

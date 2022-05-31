@@ -3,7 +3,7 @@
     <div class="modal-content">
       <div class="modal-header header__flex">
         <div class="modal__title">
-          <p class="modal__text">Информация о компании</p>
+          <p class="modal__text mb-0">Банковская информация</p>
           <p class="modal__steps">Шаг 2 из 3</p>
         </div>
         <div class="modal__pagination">
@@ -12,11 +12,13 @@
             <li class="page-item active">
               <a class="page-link" href="#link" @click="firstStep">1</a>
             </li>
+            <div class="chain chain__active"></div>
             <li class="page-item active">
               <a class="page-link" href="#link">2</a>
             </li>
+            <div class="chain"></div>
             <li class="page-item">
-              <a class="page-link" href="#link">3</a>
+              <a class="page-link" href="#link" @click="nextPage">3</a>
             </li>
           </ul>
         </div>
@@ -66,6 +68,20 @@
                   </div>
                 </div>
               </div>
+            </div>
+            <div class="col bank__width">
+            <button
+              class="bank__btn bank__btn__ins"
+              data-bs-toggle="modal"
+              data-bs-target="#InfoThird"
+            >
+              <img
+                src="@/assets/img/plus.svg"
+                style="width: 0.833vw; margin-right: 0.833vw"
+                alt=""
+              />
+              Добавить счет
+            </button>
             </div>
             
           </div>
@@ -128,7 +144,7 @@ import AddBankInfoModal from "./AddBankInfoModal.vue";
 export default {
   data() {
     return {
-      isAdded: true,
+      isAdded: false,
       items: [
         {
           name: "Сбербанк Основной",
@@ -148,15 +164,15 @@ export default {
           inn: "881206784000",
           img: require("@/assets/img/dollar.svg"),
         },
-        {
-          name: "Сбербанк Тенге",
-          fullName: "Дочерний банк акционерное общество «Сбербанк»",
-          bik: "SABRKZKA",
-          kbe: "14",
-          iik: "KZ82125KZT1001300306",
-          inn: "881206784000",
-          img: require("@/assets/img/tenge.svg"),
-        },
+        // {
+        //   name: "Сбербанк Тенге",
+        //   fullName: "Дочерний банк акционерное общество «Сбербанк»",
+        //   bik: "SABRKZKA",
+        //   kbe: "14",
+        //   iik: "KZ82125KZT1001300306",
+        //   inn: "881206784000",
+        //   img: require("@/assets/img/tenge.svg"),
+        // },
       ],
     };
   },
@@ -185,7 +201,7 @@ export default {
 }
 .overflow__bank::-webkit-scrollbar-thumb {
   border-radius: 0.78vw;
-  background-color: #a0aec0;
+  background-color: #313860 ;
 }
 .overflow__bank::-webkit-scrollbar-track {
   -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.2);
@@ -194,9 +210,10 @@ export default {
 }
 .bank__width {
   max-width: 22.188vw !important;
+  margin-bottom: 32px;
 }
 .overflow__bank {
-  height: 19.792vw;
+  height: 20.792vw;
   overflow: scroll;
   overflow-x: hidden;
 }
@@ -204,6 +221,7 @@ export default {
   font-weight: 400;
   font-size: 0.833vw;
   color: #a0aec0;
+  margin-bottom: 8px;
 }
 .info__right {
   font-weight: 600;
@@ -211,11 +229,12 @@ export default {
   color: #2d3748;
   text-align: right;
   padding-left: 4.625vw;
+  margin-bottom: 8px;
 }
 .bank__info-content {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 0.417vw;
+  /* margin-bottom: 0.417vw; */
 }
 .bank__money__type {
   display: flex;
@@ -268,8 +287,8 @@ export default {
   letter-spacing: -0.66383px;
 }
 .body__p {
-  padding-top: 2.396vw;
-  margin-bottom: 2vw;
+  padding-top: 1.396vw;
+  margin-bottom: 1vw;
 }
 .bank__btn {
   display: flex;
@@ -283,7 +302,10 @@ export default {
   background: transparent;
 }
 .page-item {
-  margin-right: 1.25vw;
+  margin-right: 0vw;
+}
+.page-link{
+  margin-right: 0;
 }
 .active {
   color: linear-gradient(83.56deg, #7092e0 10.01%, #8baef3 75.36%);
@@ -366,7 +388,7 @@ select::-ms-expand {
   text-align: left;
 }
 .body__p {
-  padding: 2.344vw 2.083vw 0 2.083vw;
+  padding: 1.344vw 2.083vw 0 2.083vw;
 }
 .modal__title {
   text-align: left;
@@ -392,7 +414,7 @@ select::-ms-expand {
 .modal-footer {
   border-top: 0;
   padding-right: 2.083vw;
-  padding-bottom: 1.744vw;
+  padding-bottom: 0.744vw;
 }
 .modal__first {
   max-width: 42.969vw !important;
@@ -403,5 +425,33 @@ select::-ms-expand {
 }
 .modal-content {
   border: 0;
+}
+.page-item .page-link, .page-item span{
+  width: 45px;
+  height: 45px;
+  font-size: 22px;
+  
+}
+.pagination.pagination-info .page-item.active > .page-link{
+  font-weight: 700;
+}
+.chain{
+  width: 26px;
+  height: 2px;
+  background-color: rgba(160, 174, 192, 1);
+}
+.chain__active{
+  background: linear-gradient(83.56deg, #7092E0 10.01%, #8BAEF3 75.36%)
+}
+.pagination{
+  align-items: center;
+}
+.bank__btn__ins{
+  text-align: center;
+  padding: 1.25vw 3.292vw 1.25vw 2.292vw;
+  width: 100%;
+  font-weight: 600;
+  font-size: 16px;
+  justify-content: center;
 }
 </style>

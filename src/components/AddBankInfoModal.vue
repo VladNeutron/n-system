@@ -21,7 +21,7 @@
         <div class="modal-body body__p">
           <div class="row accname">
             <div class="col">
-              <div class="form-group">
+              <div class="form-group mb-0">
                 <input
                   type="text"
                   class="form-control form-control-lg"
@@ -32,7 +32,7 @@
             </div>
             <div class="col">
               <div class="types__flex">
-                <p class="select__money">Выберите валюту:</p>
+                <p class="select__money mb-0">Выберите валюту:</p>
                 <div class="money__types">
                   <div
                     :class="[
@@ -78,7 +78,7 @@
             </div>
           </div>
           <hr />
-          <div class="row mt">
+          <div class="row">
             <div class="col">
               <div class="form-group">
                 <input
@@ -183,7 +183,7 @@ export default {
 }
 .types__flex {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
 }
 .accname {
   align-items: center;
@@ -230,5 +230,10 @@ export default {
 }
 .modal-dialog {
   max-width: 42.97vw;
+}
+input::placeholder {
+  color: #A0AEC0;
+  /* font-size: 1.2em;
+  font-style: italic; */
 }
 </style>
