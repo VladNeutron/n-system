@@ -357,23 +357,7 @@ export default {
             
             if(item != ''){
               currentRote = currentRote + '/' + item
-              // if(ind != 1){
-              //   for(let i=0; i < allRoutes.length; i++){
-              //   if(allRoutes[i].path.indexOf(item) != -1){
-              //     if(allRoutes[i].meta != undefined){
-              //       newRoute.push({
-              //         name: allRoutes[i].meta.NavLink,
-              //         path: allRoutes[i].path,
-              //       })
-              //       // newRoute += allRoutes[i].meta.NavLink;
-              //     }
-              //     else{
-              //       newRoute.push({name:'Задайте мета',path: '/'}) 
-              //     }
-              //     break
-              //   }
-              //   }
-              // }
+              
               
                 for(let i=0; i < allRoutes.length; i++){
                 if(allRoutes[i].path == currentRote){

@@ -9,6 +9,8 @@
                 placeholder="Поиск..."
                 id="search"
                 type="text"
+                v-model="searchInp"
+                @input="searchInput"
             />
         </div>
     </div>
@@ -16,7 +18,17 @@
 
 <script>
 export default {
-
+    data(){
+        return {
+            searchInp: '',
+        }
+    },
+    emits: ['searchFilter'],
+    methods: {
+        searchInput(){
+            this.$emit('searchFilter', this.searchInp)
+        }
+    }
 }
 </script>
 
