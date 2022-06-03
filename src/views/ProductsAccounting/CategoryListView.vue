@@ -209,7 +209,7 @@
         </div>
       </template>
     </inputs-modal>
-    <filters>
+    <filters @no-filter="cancelFilters">
       <div class="filter__name__standart">Категории</div>
       <select class="form-select" v-model="filterCategory">
         <option value="" disabled selected>Выберите категорию</option>
@@ -256,6 +256,9 @@ export default {
     createFilteredSet(key) {
       const unfiltered = this.items.map((obj) => obj[key]);
       return [...new Set(unfiltered)];
+    },
+    cancelFilters() {
+      this.filterCategory = "";
     },
   },
   data() {
