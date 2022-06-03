@@ -68,6 +68,22 @@
 
 <script>
 export default {
+  props: {
+    itemList: {
+      type: Array,
+      require: true,
+    },
+    timePeriod: {
+      type: Boolean,
+      require: false,
+      default: false,
+    },
+    dropdownList: {
+      type: Array,
+      require: false,
+      default: [],
+    },
+  },
   data() {
     return {};
   },
@@ -82,7 +98,11 @@ export default {
         .classList.remove("filters__show");
     },
   },
-  computed: {},
+  computed: {
+    filteredList() {
+      return;
+    },
+  },
   mounted() {
     document.querySelector("body").onclick = function (event) {
       if (
@@ -147,15 +167,15 @@ export default {
 }
 
 .filters__container::-webkit-scrollbar {
-    width: 5px;
+  width: 5px;
 }
 .filters__container::-webkit-scrollbar-track {
-    background-color: #E9ECEF;
-    border-radius: 5px;
+  background-color: #e9ecef;
+  border-radius: 5px;
 }
 .filters__container::-webkit-scrollbar-thumb {
-    background-color: #313860;
-    border-radius: 8px;
+  background-color: #313860;
+  border-radius: 8px;
 }
 .filters__show {
   right: 0;
@@ -190,7 +210,7 @@ export default {
   color: #2d3748;
   text-align: left;
 }
-.hr__header{
+.hr__header {
   margin: 10px 0;
 }
 </style>
