@@ -209,16 +209,15 @@
         </div>
       </template>
     </inputs-modal>
-    <filters>
+    <filters @no-filter="cancelFilters">
       <div class="filter__name__standart">Категории</div>
-      <select class="form-select">
+      <select class="form-select" v-model="filterCategory">
         <option value="" disabled selected>Выберите категорию</option>
-        <option v-if="check">Верхняя Одежда</option>
-        <option v-if="check">Штаны</option>
-        <option v-if="!check">Тренч</option>
-        <option v-if="!check">Пальто</option>
+        <option v-for="category in categoryList" :key="category">
+          {{ category }}
+        </option>
       </select>
-      <div class="form-check" style="text-align: left; margin-top: 0.833vw">
+      <!-- <div class="form-check" style="text-align: left; margin-top: 0.833vw">
         <input
           class="form-check-input"
           type="checkbox"
@@ -231,7 +230,7 @@
           for="fcustomCheck1"
           >Показывать только основные категории</label
         >
-      </div>
+      </div> -->
     </filters>
     <delete-modal
       :title="'категории'"
@@ -253,6 +252,13 @@ export default {
   methods: {
     reloadPagination(arr) {
       this.paginationList = arr;
+    },
+    createFilteredSet(key) {
+      const unfiltered = this.items.map((obj) => obj[key]);
+      return [...new Set(unfiltered)];
+    },
+    cancelFilters() {
+      this.filterCategory = "";
     },
   },
   data() {
@@ -318,16 +324,23 @@ export default {
         },
       ],
       search: "",
-      selected: "",
+      filterCategory: "",
       isEdit: false,
     };
   },
   computed: {
+    categoryList() {
+      return this.createFilteredSet("maincat");
+    },
+
     filteredCategory() {
       return this.items.filter((item) => {
         return (
-          item.category.toLowerCase().includes(this.search.toLowerCase()) ||
-          item.maincat.toLowerCase().includes(this.search.toLowerCase())
+          (item.category.toLowerCase().includes(this.search.toLowerCase()) ||
+            item.maincat.toLowerCase().includes(this.search.toLowerCase())) &&
+          (this.filterCategory === ""
+            ? true
+            : item.maincat === this.filterCategory)
         );
       });
     },

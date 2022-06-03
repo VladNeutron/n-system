@@ -48,12 +48,16 @@
                 </div>
             </div>
         </div>
+        <add-deal-modal></add-deal-modal>
+        <edit-deal-modal></edit-deal-modal>
     </main>
 </template>
 
 <script>
 import KanbanView from "@/components/Management/KanbanView.vue"
 import TableView from "@/components/Management/TableView.vue"
+import AddDealModal from "@/components/Management/AddDealModal.vue"
+import EditDealModal from "@/components/Management/EditDealModal.vue"
 export default {
     data(){
         return{
@@ -90,6 +94,8 @@ export default {
                     client: 'Тихонов А.',
                     stage: 'Первичный контакт',
                     budget: '1 500 000 ₸',
+                    color: 'rgb(97, 189, 79)',
+                    date: '16 янв'
                 },
                 {
                     id:1,
@@ -108,6 +114,8 @@ export default {
                     client: 'Тихонов А.',
                     stage: 'Переговоры',
                     budget: '1 500 000 ₸',
+                    color: 'rgb(235, 90, 70)',
+                    date: '25 июн'
                 },
                 {
                     id:3,
@@ -203,7 +211,7 @@ export default {
         }
     },
     components:{
-        KanbanView, TableView
+        KanbanView, TableView, AddDealModal, EditDealModal
     },
     mounted(){}
 }

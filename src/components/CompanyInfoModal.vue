@@ -4,7 +4,7 @@
     <div class="modal-content">
       <div class="modal-header header__flex">
         <div class="modal__title">
-          <p class="modal__text">Информация о компании</p>
+          <p class="modal__text mb-0">Информация о компании</p>
           <p class="modal__steps">Шаг 1 из 3</p>
         </div>
         <div class="modal__pagination">
@@ -13,11 +13,13 @@
             <li class="page-item active">
               <a class="page-link" href="#link">1</a>
             </li>
+            <div class="chain"></div>
             <li class="page-item">
-              <a class="page-link" href="#link">2</a>
+              <a class="page-link" href="#link" @click="secondStep">2</a>
             </li>
+            <div class="chain"></div>
             <li class="page-item">
-              <a class="page-link" href="#link">3</a>
+              <a class="page-link" href="#link" @click="thirdStep">3</a>
             </li>
           </ul>
         </div>
@@ -113,6 +115,7 @@
                   type="radio"
                   name="flexRadioDefault"
                   id="customRadio2"
+                  checked
                 />
                 <label class="custom-control-label" for="customRadio2"
                   >Нет</label
@@ -149,6 +152,12 @@ export default {
     nextPage() {
       this.$emit("pageNum", 2);
     },
+    thirdStep() {
+      this.$emit("pageNum", 3);
+    },
+    secondStep() {
+      this.$emit("pageNum", 2);
+    },
   },
   emits:{
         pageNum: Number
@@ -158,7 +167,10 @@ export default {
 
 <style scoped>
 .page-item {
-  margin-right: 1.25vw;
+  margin-right: 0vw;
+}
+.page-link{
+  margin-right: 0;
 }
 .pagination.pagination-info .page-item.active > .page-link,
 .pagination.pagination-info .page-item.active > .page-link:focus,
@@ -205,7 +217,7 @@ select::-ms-expand {
 .select {
   position: relative;
   display: flex;
-  width: 18.75vw;
+  /* width: 18.75vw; */
   height: 3em;
   border-radius: 0.25em;
   overflow: hidden;
@@ -271,7 +283,7 @@ select::-ms-expand {
   padding-bottom: 1.744vw;
 }
 .modal__first {
-  max-width: 42.969vw !important;
+  max-width: 50.208vw !important;
   box-shadow: 0px 4px 4px rgba(51, 51, 51, 0.04),
     0px 4px 16px rgba(51, 51, 51, 0.08);
   border-radius: 8px;
@@ -279,5 +291,32 @@ select::-ms-expand {
 }
 .modal-content {
   border: 0;
+}
+.radio__btns label{
+  font-weight: 400;
+  font-size: 14px;
+}
+.bg-gradient-secondary{
+  font-weight: 500;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+}
+.page-item .page-link, .page-item span{
+  width: 45px;
+  height: 45px;
+  font-size: 22px;
+  
+}
+.pagination.pagination-info .page-item.active > .page-link{
+  font-weight: 700;
+}
+.chain{
+  width: 26px;
+  height: 2px;
+  background-color: rgba(160, 174, 192, 1);
+}
+.pagination{
+  align-items: center;
 }
 </style>

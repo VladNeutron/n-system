@@ -10,7 +10,7 @@
             display: flex;
             align-items: center;
           "
-          onclick="window.location.href = '/sales/create-order'"
+          data-bs-toggle="modal" data-bs-target="#AddTaskModal"
         >
           <img
             src="@/assets/img/whtplus.svg"
@@ -63,7 +63,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr v-for="(deal, i) of paginationList" :key="deal.id">
+            <tr v-for="(deal, i) of paginationList" :key="deal.id" data-bs-toggle="modal" data-bs-target="#EditTaskModal">
               <th scope="row" style="padding-left: 27px">
                 <div class="form-check">
                   <input
@@ -93,7 +93,7 @@
     </div>
     <pagination-component
       :filteredArr="dealsList"
-      :strAmount="5"
+      :strAmount="9"
       @PaginationReload="reloadPagination"
     ></pagination-component>
     <funnel-modal>

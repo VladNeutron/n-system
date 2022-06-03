@@ -28,6 +28,7 @@
                   font-weight: 600;
                   display: flex;
                   align-items: center;
+                  height: 40px;
                 "
                 onclick="window.location.href = '/sales/create-order'"
               >
@@ -41,7 +42,7 @@
               <div
                 class="table__inputs d-flex gap-3 align-content-center align-items-center"
               >
-                <list-search></list-search>
+                <list-search @searchFilter="(a) => search = a"></list-search>
                 <print-button></print-button>
                 <download-button></download-button>
                 <filter-button class="mb-0"></filter-button>
@@ -79,7 +80,7 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr v-for="(order) of paginationList" :key="order.id">
+                    <tr v-for="(order,ind) of paginationList" :key="order.id">
                       <th scope="row" style="">
                         <div class="form-check">
                           <input
@@ -117,7 +118,7 @@
                           style="width: 1.563vw; cursor: pointer"
                           alt=""
                         />
-                        <div class="dropdown-content">
+                        <div :class="['dropdown-content', {'dropdown__content__top': ind >= paginationList.length - 2}]">
                           <a href="/sales/order">Редактировать</a>
                           <hr />
                           <a
@@ -213,12 +214,14 @@
     :title="'заказа'"
     :text="`документ  &quot;Заказ №12132145&quot;`"
   ></delete-modal>
+  <commentary></commentary>
 </template>
 
 <script>
 import Filter from "@/components/Filters.vue";
 import FilterButton from "@/components/buttons/FiltersButton.vue";
 import PaginationComponent from '@/components/Pagination/PaginationComponent.vue';
+import Commentary from '@/components/Commentary.vue';
 export default {
   data() {
     return {
@@ -1088,6 +1091,7 @@ export default {
       filterOrderType: "",
       filterWarehouse: "",
       paginationList: [],
+      search: '',
     };
   },
   methods: {
@@ -1173,6 +1177,8 @@ export default {
           (this.filterOrderType === ""
             ? true
             : order.type === this.filterOrderType)
+             && 
+            (String(order.id).includes(String(this.search).toLowerCase()))
       );
     },
 
@@ -1190,7 +1196,15 @@ export default {
     "the-filter": Filter,
     "filter-button": FilterButton,
     PaginationComponent,
+    Commentary,
   },
+  watch:{
+    search: {
+      handler(newq){
+        console.log(this.search)
+      }
+    }
+  }
 };
 </script>
 
@@ -1336,7 +1350,7 @@ export default {
   color: #a0aec0 !important;
 }
 table {
-  height: 100%;
+  /* height: 100%; */
 }
 .table-wrapper {
   overflow: auto;
@@ -1370,12 +1384,38 @@ td {
   justify-content: space-between;
   align-items: flex-end;
 }
+.table-wrapper::-webkit-scrollbar {
+    background: #e2e8f0;
+    border-radius: 0.78vw;
+    width: 0.37vw;
+    height: 0.5vw;
+}
+  
+.table-wrapper::-webkit-scrollbar-thumb {
+    border-radius: 0.78vw;
+    background-color: #313860;
+}
+  
+.table-wrapper::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.2);
+    border-radius: 0.78vw;
+    background-color: #e2e8f0;
+}
+
 @media screen and (max-width: 1600px) {
   .dropdown-content {
     width: 130px;
   }
   .main__card {
-  height: 80vh;
-}
+    height: 75vh;
+    padding-top: 1rem !important;
+    padding-bottom: 1rem !important;
+  }
+  .table-wrapper{
+    height: 57vh;
+  }
+  .btn{
+    padding: 0.45rem 1.5rem;
+  }
 }
 </style>

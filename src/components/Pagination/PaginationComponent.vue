@@ -4,7 +4,7 @@
             >
               <div class="d-flex align-items-center gap-3">
                 <div>
-                  <p class="m-0 pagination__text">Показано <span> {{pageNumber == 1 ? 1 : (pageNumber-1)*strAmount+1}}-{{pageNumber == 1 ? pageWeaponsList.length : (pageNumber-1)*strAmount+pageWeaponsList.length}} из {{filteredArr.length}} </span></p>
+                  <p class="m-0 pagination__text">Показано <span> {{pageNumber == 1 ? 1 : (pageNumber-1)*strAmount+1}}-{{pageNumber == 1 ? pageWeaponsList.length : (pageNumber-1)*strAmount+pageWeaponsList.length}} из {{filteredArr ? filteredArr.length : 0}} </span></p>
                 </div>
 
                 <div class="page__search-pages d-flex align-content-center">
@@ -109,7 +109,8 @@ computed:{
       else return 9
     },
     pageWeaponsList(){
-        if(this.filteredArr.length>0){
+        if(this.filteredArr){
+          if(this.filteredArr.length>0){
             let pageWeapons = [];
             let ind = 0;
             console.log(this.stringAmount)
@@ -124,9 +125,13 @@ computed:{
             // console.log(pageWeapons)
             return pageWeapons;
         }
+        else return []
+        }
     },
     MaxPages(){
+      if(this.filteredArr){
         return Math.ceil(this.filteredArr.length/this.stringAmount);
+      }
     },
     pagesList(){
         if(this.pageNumber<4){
@@ -148,11 +153,18 @@ computed:{
             console.log(pagesArr);
             return pagesArr
         }
+    },
+    testedArray(){
+      if(this.filteredArr){
+        return this.filteredArr   
+      }
+      else 
+      return []
     }
 },
 methods:{
     nextPage(){
-            if(this.pageNumber < Math.ceil(this.filteredArr.length/(this.stringAmount))){
+            if(this.pageNumber < Math.ceil(testedArray.length/(this.stringAmount))){
                 this.pageNumber = this.pageNumber + 1;
                 // console.log(this.pageNumber)
             }

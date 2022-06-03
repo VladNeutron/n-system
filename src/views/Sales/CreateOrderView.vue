@@ -15,12 +15,12 @@
             <div class="drop__buttons">
               <comment-button style="margin-right: 24px"></comment-button>
               <action-button style="margin-right: 24px"></action-button>
-              <button class="btn save__btn">Сохранить</button>
+              <button class="btn save__btn" onclick="window.location.href = '/sales/order-list'">Сохранить</button>
             </div>
           </div>
           <div class="order__body">
             <div class="row">
-              <div class="col-8">
+              <div class="col-9">
                 <div class="order__body__content">
                   <div class="order__first__row">
                     <div class="form-group">
@@ -167,7 +167,7 @@
                 </div>
               </div>
 
-              <div class="col-4">
+              <div class="col-3">
                 <div class="order__ready">
                   <div class="order__ready__content">
                     <div class="form-group">
@@ -241,7 +241,7 @@
                   /></span>
                 </div>
               </div>
-              <button class="btn barcode__btn">Выбрать из списка</button>
+              <button class="btn barcode__btn" data-bs-toggle="modal" data-bs-target="#SelectDisc">Выбрать из списка</button>
             </div>
             <div class="search">
               <button
@@ -280,7 +280,7 @@
                 Для того чтобы создать заказ, необходимо<br />
                 выбрать товары из списка
               </p>
-              <button class="btn btn__chose">Выбрать из списка</button>
+              <button class="btn btn__chose" data-bs-toggle="modal" data-bs-target="#SelectDisc">Выбрать из списка</button>
             </div>
           </div>
           <div class="order__table__body" v-else>
@@ -424,9 +424,9 @@
           </div>
         </div>
         <div class="modal__flex__disc" v-if="onStorage == 'all'">
-          <div class="form-group m-0">
+          <div class="form-group m-0" style="flex-grow:1;">
             <label for="type__disc" class="order__label">Ручная скидка</label>
-            <div class="input-group flex-nowrap" style="width: 367px">
+            <div class="input-group flex-nowrap ms-auto me-auto" style="width: 98%">
               <input
                 class="form-control"
                 placeholder="10"
@@ -479,10 +479,12 @@
       </template>
       <template #footer>
         <div class="accept__button">
-          <button class="btn accept__btn">Применить</button>
+          <button class="btn accept__btn" data-bs-dismiss="modal">Применить</button>
         </div>
       </template>
     </discount-modal>
+    <select-product-discount></select-product-discount>
+    <Commentary :pageTitle="'Создание заказа'"></Commentary>
   </main>
 </template>
 
@@ -608,7 +610,7 @@
 }
 
 .five__s {
-  width: 19.531vw !important;
+  width: 16.531vw !important;
 }
 
 .accept__btn {
@@ -940,7 +942,7 @@
   background: #f8f9fa;
   border-radius: 12px;
   padding: 0.833vw 1.25vw 0.833vw 1.25vw;
-  width: 57.031vw;
+  width: 100%;
 }
 
 .form-group {
@@ -954,8 +956,8 @@
 }
 
 .order__ready {
-  margin-left: 40px;
-  width: 20.031vw;
+  /* margin-left: 40px; */
+  /* width: 20.031vw; */
   background: #f8f9fa;
   border-radius: 12px;
   padding: 0.833vw 1.25vw 0.833vw 1.25vw;
@@ -1012,6 +1014,9 @@
 .order__content {
   padding: 0 2.083vw 0 2.083vw;
 }
+.col__bg{
+  background: #f8f9fa;
+}
 @media screen and (max-width: 1600px) {
   .btn {
     font-size: 12px !important;
@@ -1041,15 +1046,22 @@
   .order__header__sec {
     font-size: 14px;
   }
+  .five__s{
+    width: 15vw !important;
+  }
 }
 </style>
 
 <script>
 import DiscountModal from "@/components/DiscountModal.vue";
+import SelectProductDiscount from "@/components/SelectProductDiscount.vue";
+import Commentary from "@/components/Commentary.vue";
 export default {
   components: {
     DiscountModal,
-  },
+    SelectProductDiscount,
+    Commentary
+},
   methods: {
     test() {
       alert("Успех");

@@ -87,7 +87,7 @@
                 </thead>
                 <tbody>
                   <!-- v-for="(item, i) in filteredDiscounts" :key="item" -->
-                  <tr v-for="item in filteredProducts" :key="item">
+                  <tr v-for="item in paginationList" :key="item">
                     <td style="border-right: 0">{{ item.name }}</td>
                     <td style="border-left: 0; border-right: 0">
                       {{ item.color }}
@@ -113,7 +113,8 @@
           </div>
         </div>
         <div class="modal-footer">
-          <div class="pagination d-flex justify-content-end pe-5">
+          <pagination-component :strAmount="10" :filteredArr="filteredProducts" @PaginationReload="reloadPagination"></pagination-component>
+          <!-- <div class="pagination d-flex justify-content-end pe-5">
             <div class="d-flex align-items-center gap-3 pb-2">
               <div>
                 <p class="m-0">Показано<span> 1-10 из 324</span></p>
@@ -169,7 +170,7 @@
                 </div>
               </div>
             </div>
-          </div>
+          </div> -->
         </div>
       </div>
     </div>
@@ -177,12 +178,15 @@
 </template>
 
 <script>
+import PaginationComponent from './Pagination/PaginationComponent.vue';
 export default {
+  components: { PaginationComponent },
   data() {
     return {
       search: "",
       onStorage: "yes",
       added: false,
+      paginationList: [],
       items: [
         {
           name: "Куртка",
@@ -244,6 +248,66 @@ export default {
           size: "L",
           barcode: "1234567890",
         },
+        {
+          name: "Куртка",
+          color: "Изумрудный",
+          size: "XS",
+          barcode: "1234567890",
+        },
+        {
+          name: "Футболка",
+          color: "Серая",
+          size: "S",
+          barcode: "1234567890",
+        },
+        {
+          name: "Джоггеры",
+          color: "Красная",
+          size: "S",
+          barcode: "1234567890",
+        },
+        {
+          name: "Куртка",
+          color: "Изумрудный",
+          size: "XS",
+          barcode: "1234567890",
+        },
+        {
+          name: "Футболка",
+          color: "Серая",
+          size: "S",
+          barcode: "1234567890",
+        },
+        {
+          name: "Джоггеры",
+          color: "Красная",
+          size: "S",
+          barcode: "1234567890",
+        },
+        {
+          name: "Куртка",
+          color: "Изумрудный",
+          size: "XS",
+          barcode: "1234567890",
+        },
+        {
+          name: "Футболка",
+          color: "Серая",
+          size: "S",
+          barcode: "1234567890",
+        },
+        {
+          name: "Джоггеры",
+          color: "Красная",
+          size: "S",
+          barcode: "1234567890",
+        },
+        {
+          name: "Джинсы",
+          color: "Красная",
+          size: "S",
+          barcode: "1234567890",
+        },
       ],
     };
   },
@@ -257,6 +321,11 @@ export default {
       });
     },
   },
+  methods: {
+    reloadPagination(arr) {
+      this.paginationList = arr;
+    },
+  }
 };
 </script>
 
