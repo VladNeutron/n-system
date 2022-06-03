@@ -322,6 +322,22 @@ export default {
       isEdit: false,
     };
   },
+  methods: {
+    reloadPagination(arr) {
+      this.paginationList = arr;
+    },
+    cancelFilters() {
+      this.filterStatusSelect = [];
+      this.filterResponsible = "";
+      this.filterClient = "";
+      this.filterOrderType = "";
+      this.filterWarehouse = "";
+    },
+    createFilteredSet(key) {
+      const unfiltered = this.items.map((obj) => obj[key]);
+      return [...new Set(unfiltered)];
+    },
+  },
   computed: {
     filteredCategory() {
       return this.items.filter((item) => {
@@ -330,6 +346,12 @@ export default {
           item.maincat.toLowerCase().includes(this.search.toLowerCase())
         );
       });
+    },
+    mainCategoryList() {
+      return this.createFilteredSet("maincat");
+    },
+    categoryList() {
+      return this.createFilteredSet("category");
     },
   },
 };
