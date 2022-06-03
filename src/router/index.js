@@ -637,6 +637,30 @@ const routes = [
   component: () => import("../views/Settings/PersonalProfile.vue"),
   meta: { NavLink: "Личный профиль" },
 },
+{
+  path: "/settings/users",
+  name: "users",
+  component: () => import("../views/Settings/UsersList.vue"),
+  meta: { NavLink: "Список пользователей" },
+},
+{
+  path: "/settings/roles",
+  name: "roles",
+  component: () => import("../views/Settings/RoleList.vue"),
+  meta: { NavLink: "Список ролей" },
+},
+{
+  path: "/settings/user-logs",
+  name: "user-logs",
+  component: () => import("../views/Settings/UserLogs.vue"),
+  meta: { NavLink: "Логи пользователей" },
+},
+{
+  path: "/settings/payment-methods",
+  name: "payment-methods",
+  component: () => import("../views/Settings/PaymentMethods.vue"),
+  meta: { NavLink: "Методы оплаты" },
+},
 // НАСТРОЙКИ
 
 ];
