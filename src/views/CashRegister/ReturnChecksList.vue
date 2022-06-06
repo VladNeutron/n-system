@@ -95,19 +95,19 @@
 
               <td>
                 <div class="dropdown">
-                          <img
-                            src="@/assets/img/dots.svg"
-                            style="width: 1.563vw; cursor: pointer"
-                            alt=""
-                          />
-                          <div class="dropdown-content">
-                            <a
-                              style="cursor: pointer"
-                              data-bs-toggle="modal"
-                              data-bs-target="#DeleteInv"
-                              >Удалить</a
-                            >
-                          </div>
+                  <img
+                    src="@/assets/img/dots.svg"
+                    style="width: 1.563vw; cursor: pointer"
+                    alt=""
+                  />
+                  <div class="dropdown-content">
+                    <a
+                      style="cursor: pointer"
+                      data-bs-toggle="modal"
+                      data-bs-target="#DeleteInv"
+                      >Удалить</a
+                    >
+                  </div>
                 </div>
               </td>
             </tr>
@@ -167,8 +167,51 @@
         </div>
       </div>
     </div>
-    <the-filter></the-filter>
-    <delete-modal :title="'возврата'" :text='`чек возврата "Чек №1213215"`'></delete-modal>
+    <the-filter @no-filter="cancelFilters">
+      <div class="filters__period__flex">
+        <div class="filter__name__standart">Выберите период</div>
+        <div class="reset__date">Сбросить период</div>
+      </div>
+      <div class="filters__period">
+        <div class="form-group mb-0">
+          <input
+            class="form-control period__s"
+            type="date"
+            id="example-date-input"
+          />
+        </div>
+        <div>
+          <img src="@/assets/img/line.svg" style="width: 1.927vw" alt="" />
+        </div>
+        <div class="form-group mb-0">
+          <input
+            class="form-control period__s"
+            type="date"
+            id="example-date-input"
+          />
+        </div>
+      </div>
+      <p class="text-start my-2 fw-bold" for="cashier">Кассир</p>
+      <select class="form-select" v-model="filterResponsible">
+        <option value="" disabled>Выберите кассира</option>
+        <option v-for="cashier of responsibleList" :key="cashier">
+          {{ cashier }}
+        </option>
+        <option value=""></option>
+      </select>
+      <p class="text-start my-2 fw-bold" for="marketplace">Торговая точка</p>
+      <select class="form-select" v-model="filterStorage">
+        <option value="" disabled>Выберите торговую точку</option>
+        <option v-for="storage of storageList" :key="storage">
+          {{ storage }}
+        </option>
+        <option value=""></option>
+      </select>
+    </the-filter>
+    <delete-modal
+      :title="'возврата'"
+      :text="`чек возврата &quot;Чек №1213215&quot;`"
+    ></delete-modal>
   </main>
 </template>
 
@@ -231,7 +274,38 @@ export default {
           sum: 12000,
         },
       ],
+      filterResponsible: "",
+      filterStorage: "",
     };
+  },
+  methods: {
+    cancelFilters() {
+      this.filterResponsible = "";
+      this.filterStorage = "";
+    },
+    createFilteredSet(key) {
+      const unfiltered = this.orders.map((obj) => obj[key]);
+      return [...new Set(unfiltered)];
+    },
+  },
+  computed: {
+    responsibleList() {
+      return this.createFilteredSet("responsible");
+    },
+    storageList() {
+      return this.createFilteredSet("storage");
+    },
+    filteredOrders() {
+      return this.orders.filter(
+        (order) =>
+          (this.filterResponsible === ""
+            ? true
+            : order.responsible === this.filterResponsible) &&
+          (this.filterStorage === ""
+            ? true
+            : order.storage === this.filterStorage)
+      );
+    },
   },
   components: {
     "the-filter": Filter,

@@ -57,7 +57,6 @@
                 </div>
               </div>
               <div class="search__menu-right d-flex align-items-end gap-4">
-                <filters-button></filters-button>
                 <export-button></export-button>
               </div>
             </div>
@@ -107,7 +106,6 @@
         </div>
       </div>
     </div>
-    <Filters></Filters>
   </main>
 </template>
 
