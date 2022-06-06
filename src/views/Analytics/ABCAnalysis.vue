@@ -168,18 +168,35 @@
         </table>
       </div>
       <pagination-component
-        :filteredArr="orders"
+        :filteredArr="filteredOrders"
         :strAmount="8"
         @PaginationReload="reloadPagination"
         class="pb-2"
       ></pagination-component>
     </div>
-    <Filters></Filters>
+    <the-filter @no-filter="cancelFilters">
+      <p class="text-start my-2 fw-bold" for="marketplace">Торговая точка</p>
+      <select class="form-select" v-model="filterMarketPlace">
+        <option value="" disabled>Выберите точку</option>
+        <!-- <option v-for="cashier of orderCashierList" :key="cashier">
+        {{ cashier }}
+      </option> -->
+        <option value=""></option>
+      </select>
+      <p class="text-start my-2 fw-bold" for="marketplace">Категория</p>
+      <select class="form-select" v-model="filterCategory">
+        <option value="" disabled>Выберите торговую точку</option>
+        <option v-for="category of orderCategoryList" :key="category">
+          {{ category }}
+        </option>
+        <option value=""></option>
+      </select>
+    </the-filter>
   </main>
 </template>
 
 <script>
-import Filters from "@/components/Filters.vue";
+import Filter from "../../components/Filters.vue";
 export default {
   data() {
     return {
@@ -319,11 +336,12 @@ export default {
           percent: 10,
         },
       ],
+      filterCategory: "",
+      filterMarketPlace: "",
     };
   },
   methods: {
     reloadPagination(arr) {
-      console.log(arr);
       this.paginationList = arr;
     },
     getClass(stat) {
@@ -340,8 +358,34 @@ export default {
         return "bg-gradient-danger";
       }
     },
+    cancelFilters() {
+      this.filterCategory = "";
+      this.filterMarketPlace = "";
+    },
+    createFilteredSet(key) {
+      const unfiltered = this.orders.map((obj) => obj[key]);
+      return [...new Set(unfiltered)];
+    },
   },
-  components: { Filters },
+  computed: {
+    orderCategoryList() {
+      return this.createFilteredSet("category");
+    },
+    filteredOrders() {
+      return this.orders.filter(
+        (order) =>
+          (this.filterCategory === ""
+            ? true
+            : order.category === this.filterCategory) &&
+          (this.filterMarketPlace === ""
+            ? true
+            : order.marketplace === this.filterMarketPlace)
+      );
+    },
+  },
+  components: {
+    "the-filter": Filter,
+  },
 };
 </script>
 
