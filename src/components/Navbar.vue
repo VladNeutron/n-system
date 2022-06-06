@@ -1,26 +1,14 @@
 <template>
-  <aside
-    class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3"
-    id="sidenav-main"
-  >
+  <aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3"
+    id="sidenav-main">
     <div class="sidenav-header">
-      <i
-        class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none"
-        aria-hidden="true"
-        id="iconSidenav"
-      ></i>
+      <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none"
+        aria-hidden="true" id="iconSidenav"></i>
       <a class="navbar-brand m-0" href="/">
-        <img
-          src="../assets/img/NS-Logo.svg"
-          class="navbar-brand-img h-100"
-          alt="main_logo"
-        />
+        <img src="../assets/img/NS-Logo.svg" class="navbar-brand-img h-100" alt="main_logo" />
         <span>
-          <img
-            class="pt-1"
-            style="height: 2.083vw; width: 5.729vw; margin-left: 10px"
-            src="@/assets/img/test__logo.svg"
-          />
+          <img class="pt-1" style="height: 2.083vw; width: 5.729vw; margin-left: 10px"
+            src="@/assets/img/test__logo.svg" />
         </span>
         <!-- <span class="ms-1 font-weight-bold">Neutron System</span> -->
         <!-- <span class="ms-1 font-weight-bold"></span> -->
@@ -28,16 +16,12 @@
     </div>
     <hr class="horizontal dark mt-0" />
 
-    <div
-      class="collapse navbar-collapse w-auto h-auto max-height-vh-100 h-100"
-      id="sidenav-collapse-main"
-    >
+    <div class="collapse navbar-collapse w-auto h-auto max-height-vh-100 h-100" id="sidenav-collapse-main">
       <ul class="navbar-nav">
         <li class="nav-item">
           <router-link :to="{ name: 'home' }" class="nav-link">
             <div
-              class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center d-flex align-items-center justify-content-center me-2"
-            >
+              class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center d-flex align-items-center justify-content-center me-2">
               <img src="@/assets/img/NavMain.svg" alt="" />
             </div>
 
@@ -51,17 +35,10 @@
 
         <!-- Продажи -->
         <li class="nav-item">
-          <a
-            data-bs-toggle="collapse"
-            href="#Sales"
-            class="nav-link"
-            aria-controls="Sales"
-            role="button"
-            aria-expanded="false"
-          >
+          <a data-bs-toggle="collapse" href="#Sales" class="nav-link" aria-controls="Sales" role="button"
+            aria-expanded="false">
             <div
-              class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center d-flex align-items-center justify-content-center me-2"
-            >
+              class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center d-flex align-items-center justify-content-center me-2">
               <img src="@/assets/img/NavSales.svg" alt="" />
             </div>
 
@@ -73,39 +50,28 @@
               <li class="nav-item">
                 <router-link :to="{ name: 'order-list' }" class="nav-link">
                   <span class="sidenav-mini-icon"> З </span>
-                  <span class="sidenav-normal"
-                    >Заказы <b class="caret"></b
-                  ></span>
+                  <span class="sidenav-normal">Заказы <b class="caret"></b></span>
                 </router-link>
               </li>
 
               <li class="nav-item">
                 <router-link :to="{ name: 'return-list' }" class="nav-link">
                   <span class="sidenav-mini-icon"> В </span>
-                  <span class="sidenav-normal"
-                    >Возвраты <b class="caret"></b
-                  ></span>
+                  <span class="sidenav-normal">Возвраты <b class="caret"></b></span>
                 </router-link>
               </li>
 
               <li class="nav-item">
                 <router-link :to="{ name: 'client-list' }" class="nav-link">
                   <span class="sidenav-mini-icon"> К </span>
-                  <span class="sidenav-normal"
-                    >Клиентская база <b class="caret"></b
-                  ></span>
+                  <span class="sidenav-normal">Клиентская база <b class="caret"></b></span>
                 </router-link>
               </li>
 
               <li class="nav-item">
-                <router-link
-                  :to="{ name: 'application-list' }"
-                  class="nav-link"
-                >
+                <router-link :to="{ name: 'application-list' }" class="nav-link">
                   <span class="sidenav-mini-icon"> О </span>
-                  <span class="sidenav-normal"
-                    >Обратная связь <b class="caret"></b
-                  ></span>
+                  <span class="sidenav-normal">Обратная связь <b class="caret"></b></span>
                 </router-link>
               </li>
             </ul>
@@ -114,17 +80,10 @@
 
         <!-- СКЛАДСКОЙ УЧЁТ -->
         <li class="nav-item">
-          <a
-            data-bs-toggle="collapse"
-            href="#pagesExamples"
-            class="nav-link"
-            aria-controls="pagesExamples"
-            role="button"
-            aria-expanded="false"
-          >
+          <a data-bs-toggle="collapse" href="#pagesExamples" class="nav-link" aria-controls="pagesExamples"
+            role="button" aria-expanded="false">
             <div
-              class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center d-flex align-items-center justify-content-center me-2"
-            >
+              class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center d-flex align-items-center justify-content-center me-2">
               <img src="@/assets/img/NavWarehouse.svg" alt="" />
             </div>
 
@@ -136,60 +95,42 @@
               <li class="nav-item">
                 <router-link :to="{ name: 'warehouses' }" class="nav-link">
                   <span class="sidenav-mini-icon"> С </span>
-                  <span class="sidenav-normal"
-                    >Склады <b class="caret"></b
-                  ></span>
+                  <span class="sidenav-normal">Склады <b class="caret"></b></span>
                 </router-link>
               </li>
 
               <li class="nav-item">
-                <router-link
-                  :to="{ name: 'inventorization-list' }"
-                  class="nav-link"
-                >
+                <router-link :to="{ name: 'inventorization-list' }" class="nav-link">
                   <span class="sidenav-mini-icon"> И </span>
-                  <span class="sidenav-normal"
-                    >Инвентаризация <b class="caret"></b
-                  ></span>
+                  <span class="sidenav-normal">Инвентаризация <b class="caret"></b></span>
                 </router-link>
               </li>
 
               <li class="nav-item">
-                <router-link
-                  :to="{ name: 'available-warehouse' }"
-                  class="nav-link"
-                >
+                <router-link :to="{ name: 'available-warehouse' }" class="nav-link">
                   <span class="sidenav-mini-icon"> Н </span>
-                  <span class="sidenav-normal"
-                    >Наличие на складе <b class="caret"></b
-                  ></span>
+                  <span class="sidenav-normal">Наличие на складе <b class="caret"></b></span>
                 </router-link>
               </li>
 
               <li class="nav-item">
                 <router-link :to="{ name: 'post-list' }" class="nav-link">
                   <span class="sidenav-mini-icon"> О </span>
-                  <span class="sidenav-normal"
-                    >Оприходование товаров <b class="caret"></b
-                  ></span>
+                  <span class="sidenav-normal">Оприходование товаров <b class="caret"></b></span>
                 </router-link>
               </li>
 
               <li class="nav-item">
                 <router-link :to="{ name: 'move-list' }" class="nav-link">
                   <span class="sidenav-mini-icon"> П </span>
-                  <span class="sidenav-normal"
-                    >Перемещение товаров <b class="caret"></b
-                  ></span>
+                  <span class="sidenav-normal">Перемещение товаров <b class="caret"></b></span>
                 </router-link>
               </li>
 
               <li class="nav-item">
                 <router-link :to="{ name: 'write-off' }" class="nav-link">
                   <span class="sidenav-mini-icon"> С </span>
-                  <span class="sidenav-normal"
-                    >Списание товаров <b class="caret"></b
-                  ></span>
+                  <span class="sidenav-normal">Списание товаров <b class="caret"></b></span>
                 </router-link>
               </li>
 
@@ -234,17 +175,10 @@
 
         <!-- УЧЁТ ТОВАРОВ -->
         <li class="nav-item">
-          <a
-            data-bs-toggle="collapse"
-            href="#applicationsExamples"
-            class="nav-link"
-            aria-controls="applicationsExamples"
-            role="button"
-            aria-expanded="false"
-          >
+          <a data-bs-toggle="collapse" href="#applicationsExamples" class="nav-link"
+            aria-controls="applicationsExamples" role="button" aria-expanded="false">
             <div
-              class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center d-flex align-items-center justify-content-center me-2"
-            >
+              class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center d-flex align-items-center justify-content-center me-2">
               <img src="@/assets/img/ItemsAccount.svg" alt="" />
             </div>
 
@@ -293,17 +227,10 @@
 
         <!-- КАССА -->
         <li class="nav-item">
-          <a
-            data-bs-toggle="collapse"
-            href="#cash-register"
-            class="nav-link"
-            aria-controls="cash-register"
-            role="button"
-            aria-expanded="false"
-          >
+          <a data-bs-toggle="collapse" href="#cash-register" class="nav-link" aria-controls="cash-register"
+            role="button" aria-expanded="false">
             <div
-              class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center d-flex align-items-center justify-content-center me-2"
-            >
+              class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center d-flex align-items-center justify-content-center me-2">
               <img src="@/assets/img/NavCashRegister.svg" alt="" />
             </div>
 
@@ -359,17 +286,10 @@
 
         <!-- Закупки -->
         <li class="nav-item">
-          <a
-            data-bs-toggle="collapse"
-            href="#Purchases"
-            class="nav-link"
-            aria-controls="Purchases"
-            role="button"
-            aria-expanded="false"
-          >
+          <a data-bs-toggle="collapse" href="#Purchases" class="nav-link" aria-controls="Purchases" role="button"
+            aria-expanded="false">
             <div
-              class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center d-flex align-items-center justify-content-center me-2"
-            >
+              class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center d-flex align-items-center justify-content-center me-2">
               <img src="@/assets/img/NavPurchases.svg" alt="" />
             </div>
 
@@ -386,10 +306,7 @@
               </li>
 
               <li class="nav-item">
-                <router-link
-                  :to="{ name: 'return-supplier-list' }"
-                  class="nav-link"
-                >
+                <router-link :to="{ name: 'return-supplier-list' }" class="nav-link">
                   <span class="sidenav-mini-icon"> В </span>
                   <span class="sidenav-normal">Возвраты поставщикам </span>
                 </router-link>
@@ -400,17 +317,10 @@
 
         <!-- Аналитика -->
         <li class="nav-item">
-          <a
-            data-bs-toggle="collapse"
-            href="#Analitics"
-            class="nav-link"
-            aria-controls="Analitics"
-            role="button"
-            aria-expanded="false"
-          >
+          <a data-bs-toggle="collapse" href="#Analitics" class="nav-link" aria-controls="Analitics" role="button"
+            aria-expanded="false">
             <div
-              class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center d-flex align-items-center justify-content-center me-2"
-            >
+              class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center d-flex align-items-center justify-content-center me-2">
               <img src="@/assets/img/NavAnalitics.svg" alt="" />
             </div>
 
@@ -427,10 +337,7 @@
               </li>
 
               <li class="nav-item">
-                <router-link
-                  :to="{ name: 'remainder-storage' }"
-                  class="nav-link"
-                >
+                <router-link :to="{ name: 'remainder-storage' }" class="nav-link">
                   <span class="sidenav-mini-icon"> О </span>
                   <span class="sidenav-normal">Остатки товаров на складе </span>
                 </router-link>
@@ -439,8 +346,7 @@
               <li class="nav-item">
                 <router-link :to="{ name: 'revenue-profit' }" class="nav-link">
                   <span class="sidenav-mini-icon"> В </span>
-                  <span class="sidenav-normal"
-                    >Выручка/Прибыль/Средний чек
+                  <span class="sidenav-normal">Выручка/Прибыль/Средний чек
                   </span>
                 </router-link>
               </li>
@@ -460,20 +366,14 @@
               </li>
 
               <li class="nav-item">
-                <router-link
-                  :to="{ name: 'revenue-expenses-income' }"
-                  class="nav-link"
-                >
+                <router-link :to="{ name: 'revenue-expenses-income' }" class="nav-link">
                   <span class="sidenav-mini-icon"> Д </span>
                   <span class="sidenav-normal">Доходы/Расходы/Прибыль </span>
                 </router-link>
               </li>
 
               <li class="nav-item">
-                <router-link
-                  :to="{ name: 'revenue-expenses-income' }"
-                  class="nav-link"
-                >
+                <router-link :to="{ name: 'revenue-expenses-income' }" class="nav-link">
                   <span class="sidenav-mini-icon"> О </span>
                   <span class="sidenav-normal">Отчёт Доходы-Расходы </span>
                 </router-link>
@@ -484,17 +384,10 @@
 
         <!-- Бухгалтерия -->
         <li class="nav-item">
-          <a
-            data-bs-toggle="collapse"
-            href="#Accounting"
-            class="nav-link"
-            aria-controls="Accounting"
-            role="button"
-            aria-expanded="false"
-          >
+          <a data-bs-toggle="collapse" href="#Accounting" class="nav-link" aria-controls="Accounting" role="button"
+            aria-expanded="false">
             <div
-              class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center d-flex align-items-center justify-content-center me-2"
-            >
+              class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center d-flex align-items-center justify-content-center me-2">
               <img src="@/assets/img/NavAccounting.svg" alt="" />
             </div>
 
@@ -504,45 +397,29 @@
           <div class="collapse" id="Accounting">
             <ul class="nav ms-4 ps-3">
               <li class="nav-item">
-                <router-link
-                  :to="{ name: 'accounting-edit-company' }"
-                  class="nav-link"
-                >
+                <router-link :to="{ name: 'accounting-edit-company' }" class="nav-link">
                   <span class="sidenav-mini-icon"> К </span>
                   <span class="sidenav-normal">Компания</span>
                 </router-link>
               </li>
 
               <li class="nav-item">
-                <a
-                  class="nav-link"
-                  data-bs-toggle="collapse"
-                  aria-expanded="false"
-                  href="#employees"
-                >
+                <a class="nav-link" data-bs-toggle="collapse" aria-expanded="false" href="#employees">
                   <span class="sidenav-mini-icon"> К </span>
-                  <span class="sidenav-normal"
-                    >Кадры <b class="caret"></b
-                  ></span>
+                  <span class="sidenav-normal">Кадры <b class="caret"></b></span>
                 </a>
 
                 <div class="collapse" id="employees">
                   <ul class="nav nav-sm flex-column">
                     <li class="nav-item">
-                      <router-link
-                        :to="{ name: 'employees-list' }"
-                        class="nav-link"
-                      >
+                      <router-link :to="{ name: 'employees-list' }" class="nav-link">
                         <span class="sidenav-mini-icon"> С </span>
                         <span class="sidenav-normal">Список сотрудников</span>
                       </router-link>
                     </li>
 
                     <li class="nav-item">
-                      <router-link
-                        :to="{ name: 'position-list' }"
-                        class="nav-link"
-                      >
+                      <router-link :to="{ name: 'position-list' }" class="nav-link">
                         <span class="sidenav-mini-icon text-xs"> Д </span>
                         <span class="sidenav-normal">Список должностей</span>
                       </router-link>
@@ -566,55 +443,36 @@
               </li>
 
               <li class="nav-item">
-                <a
-                  class="nav-link"
-                  data-bs-toggle="collapse"
-                  aria-expanded="false"
-                  href="#documents"
-                >
+                <a class="nav-link" data-bs-toggle="collapse" aria-expanded="false" href="#documents">
                   <span class="sidenav-mini-icon"> К </span>
-                  <span class="sidenav-normal"
-                    >Документы <b class="caret"></b
-                  ></span>
+                  <span class="sidenav-normal">Документы <b class="caret"></b></span>
                 </a>
 
                 <div class="collapse" id="documents">
                   <ul class="nav nav-sm flex-column">
                     <li class="nav-item">
-                      <router-link
-                        :to="{ name: 'accounts-list' }"
-                        class="nav-link"
-                      >
+                      <router-link :to="{ name: 'accounts-list' }" class="nav-link">
                         <span class="sidenav-mini-icon"> С </span>
                         <span class="sidenav-normal">Счета</span>
                       </router-link>
                     </li>
 
                     <li class="nav-item">
-                      <router-link
-                        :to="{ name: 'invoice-list' }"
-                        class="nav-link"
-                      >
+                      <router-link :to="{ name: 'invoice-list' }" class="nav-link">
                         <span class="sidenav-mini-icon text-xs"> Ф </span>
                         <span class="sidenav-normal">Счет-фактуры</span>
                       </router-link>
                     </li>
 
                     <li class="nav-item">
-                      <router-link
-                        :to="{ name: 'acts-list' }"
-                        class="nav-link"
-                      >
+                      <router-link :to="{ name: 'acts-list' }" class="nav-link">
                         <span class="sidenav-mini-icon text-xs"> А </span>
                         <span class="sidenav-normal">Акты</span>
                       </router-link>
                     </li>
 
                     <li class="nav-item">
-                      <router-link
-                        :to="{ name: 'implementation-list' }"
-                        class="nav-link"
-                      >
+                      <router-link :to="{ name: 'implementation-list' }" class="nav-link">
                         <span class="sidenav-mini-icon text-xs"> Р </span>
                         <span class="sidenav-normal">Реализации</span>
                       </router-link>
@@ -628,17 +486,10 @@
 
         <!-- Аналитика -->
         <li class="nav-item">
-          <a
-            data-bs-toggle="collapse"
-            href="#Management"
-            class="nav-link"
-            aria-controls="Management"
-            role="button"
-            aria-expanded="false"
-          >
+          <a data-bs-toggle="collapse" href="#Management" class="nav-link" aria-controls="Management" role="button"
+            aria-expanded="false">
             <div
-              class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center d-flex align-items-center justify-content-center me-2"
-            >
+              class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center d-flex align-items-center justify-content-center me-2">
               <img src="@/assets/img/NavManagement.svg" alt="" />
             </div>
 
@@ -655,10 +506,7 @@
               </li>
 
               <li class="nav-item">
-                <router-link
-                  :to="{ name: 'task-list' }"
-                  class="nav-link"
-                >
+                <router-link :to="{ name: 'task-list' }" class="nav-link">
                   <span class="sidenav-mini-icon"> З </span>
                   <span class="sidenav-normal">Управление задачами </span>
                 </router-link>
@@ -675,6 +523,57 @@
                 <router-link :to="{ name: 'management-calendar' }" class="nav-link">
                   <span class="sidenav-mini-icon"> Р </span>
                   <span class="sidenav-normal">Рабочий календарь </span>
+                </router-link>
+              </li>
+
+            </ul>
+          </div>
+        </li>
+        <!-- Настройки -->
+        <li class="nav-item">
+          <a data-bs-toggle="collapse" href="#settings" class="nav-link" aria-controls="settings" role="button"
+            aria-expanded="false">
+            <div
+              class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center d-flex align-items-center justify-content-center me-2">
+              <img src="@/assets/img/settingsIcon.svg" alt="" />
+            </div>
+
+            <span class="nav-link-text ms-1">Настройки</span>
+          </a>
+
+          <div class="collapse" id="settings">
+            <ul class="nav ms-4 ps-3">
+              <li class="nav-item">
+                <router-link :to="{ name: 'profile' }" class="nav-link">
+                  <span class="sidenav-mini-icon"> Р </span>
+                  <span class="sidenav-normal">Личный профиль </span>
+                </router-link>
+              </li>
+
+              <li class="nav-item">
+                <router-link :to="{ name: 'users' }" class="nav-link">
+                  <span class="sidenav-mini-icon"> З </span>
+                  <span class="sidenav-normal">Список пользователей </span>
+                </router-link>
+              </li>
+
+              <li class="nav-item">
+                <router-link :to="{ name: 'roles' }" class="nav-link">
+                  <span class="sidenav-mini-icon"> С </span>
+                  <span class="sidenav-normal">Список ролей </span>
+                </router-link>
+              </li>
+
+              <li class="nav-item">
+                <router-link :to="{ name: 'user-logs' }" class="nav-link">
+                  <span class="sidenav-mini-icon"> Р </span>
+                  <span class="sidenav-normal">Логи пользователей </span>
+                </router-link>
+              </li>
+              <li class="nav-item">
+                <router-link :to="{ name: 'payment-methods' }" class="nav-link">
+                  <span class="sidenav-mini-icon"> Р </span>
+                  <span class="sidenav-normal">Методы оплаты </span>
                 </router-link>
               </li>
 
@@ -854,6 +753,7 @@ export default {
 .sidenav-normal {
   white-space: break-spaces;
 }
+
 .nav-link {
   text-align: left;
 }
