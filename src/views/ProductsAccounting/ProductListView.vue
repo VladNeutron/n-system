@@ -181,12 +181,14 @@
         </div>
       </template>
     </inputs-modal>
-    <filters>
+    <filters @no-filter="cancelFilters">
       <div class="filter__name__standart">Категория</div>
-      <select class="form-select">
+      <select class="form-select" v-model="filterCategory">
         <option value="" disabled selected>Выберите категорию</option>
-        <option>Склад 1</option>
-        <option>Склад 2</option>
+        <option v-for="category in categoryList" :key="category">
+          {{ category }}
+        </option>
+        <option value=""></option>
       </select>
       <div class="filter__name__standart mt-3">Склад</div>
       <select class="form-select">
@@ -231,11 +233,22 @@ export default {
     reloadPagination(arr) {
       this.paginationList = arr;
     },
+    cancelFilters() {
+      this.filterCategory = "";
+      this.filterWarehouse = "";
+      this.filterInStock = null;
+    },
+    createFilteredSet(key) {
+      const unfiltered = this.items.map((obj) => obj[key]);
+      return [...new Set(unfiltered)];
+    },
   },
   data() {
     return {
       paginationList: [],
-      selected: "",
+      filterCategory: "",
+      filterWarehouse: "",
+      filterInStock: null,
       items: [
         {
           img: require("@/assets/img/green.png"),
@@ -402,12 +415,21 @@ export default {
     };
   },
   computed: {
+    categoryList() {
+      return this.createFilteredSet("category");
+    },
+    warehouseList() {
+      return this.createFilteredSet("warehouse");
+    },
     filteredProducts() {
       return this.items.filter((item) => {
         return (
-          item.name.toLowerCase().includes(this.search.toLowerCase()) ||
-          item.category.toLowerCase().includes(this.search.toLowerCase()) ||
-          item.barcode.toString().includes(this.search.toLowerCase())
+          (item.name.toLowerCase().includes(this.search.toLowerCase()) ||
+            item.category.toLowerCase().includes(this.search.toLowerCase()) ||
+            item.barcode.toString().includes(this.search.toLowerCase())) &&
+          (this.filterCategory === ""
+            ? true
+            : item.category === this.filterCategory)
         );
       });
     },
