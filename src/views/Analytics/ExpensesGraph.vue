@@ -12,7 +12,6 @@
             <p class="mb-0">Настройте все параметры и нажмите “Сохранить”</p>
           </div>
         </div>
-        <filter-button class="m-0"></filter-button>
       </div>
       <div class="header__settings d-flex gap-6 p-4 mt-4">
         <div class="header__settings-date">
