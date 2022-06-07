@@ -88,7 +88,7 @@
               </div>
             </div>
             <pagination-component
-              :filteredArr="items"
+              :filteredArr="filteredItems"
               :strAmount="10"
               @PaginationReload="reloadPagination"
               class="pb-4"
@@ -119,16 +119,20 @@
       </div>
 
       <div class="filter__name__standart">Склад</div>
-      <select class="form-select">
+      <select class="form-select" v-model="filterWarehouse">
         <option value="" disabled selected>Выберите склад</option>
-        <option>Склад 1</option>
-        <option>Склад 2</option>
+        <option v-for="warehouse in warehouseList" :key="warehouse">
+          {{ warehouse }}
+        </option>
+        <option value=""></option>
       </select>
       <div class="filter__name__standart mt-3">Ответственный</div>
-      <select class="form-select">
+      <select class="form-select" v-model="filterResponsible">
         <option value="" disabled selected>Выберите ответственного</option>
-        <option>Открыт</option>
-        <option>Закрыт</option>
+        <option v-for="responsible in responsibleList" :key="responsible">
+          {{ responsible }}
+        </option>
+        <option value=""></option>
       </select>
     </filters>
   </main>
@@ -148,9 +152,39 @@ export default {
     reloadPagination(arr) {
       this.paginationList = arr;
     },
+    cancelFilters() {
+      this.filterWarehouse = "";
+      this.filterResponsible = "";
+    },
+    createFilteredSet(key) {
+      const unfiltered = this.items.map((obj) => obj[key]);
+      return [...new Set(unfiltered)];
+    },
+  },
+  computed: {
+    warehouseList() {
+      return this.createFilteredSet("place");
+    },
+    responsibleList() {
+      return this.createFilteredSet("name");
+    },
+
+    filteredItems() {
+      return this.items.filter(
+        (item) =>
+          (this.filterWarehouse === ""
+            ? true
+            : item.place === this.filterWarehouse) &&
+          (this.filterResponsible === ""
+            ? true
+            : item.name === this.filterResponsible)
+      );
+    },
   },
   data() {
     return {
+      filterResponsible: "",
+      filterWarehouse: "",
       paginationList: [],
       items: [
         {
