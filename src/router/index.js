@@ -8,18 +8,7 @@ const routes = [
     name: "home",
     component: HomeView,
   },
-  {
-    path: "/about",
-    name: "about",
-    component: () =>
-      import(/* webpackChunkName: "about" */ "../views/AboutView.vue"),
-  },
-  {
-    path: "/bank-info",
-    name: "bank-info",
-    component: () =>
-      import(/* webpackChunkName: "about" */ "../views/BankInfoView.vue"),
-  },
+
   {
     path: "/login",
     name: "login",
@@ -572,7 +561,7 @@ const routes = [
     meta: { NavLink: "Акт №" },
   },
   {
-  path: "/accounting/documents/implementation-list",
+    path: "/accounting/documents/implementation-list",
     name: "implementation-list",
     component: () => import("../views/Accounting/ImplementationList.vue"),
     meta: { NavLink: "Реализации" },
@@ -625,43 +614,43 @@ const routes = [
   // МЕНЕДЖМЕНТ
 
   // НАСТРОЙКИ
-{
-  path: "/settings",
-  name: "settings",
-  component: () => import("../views/Settings/PersonalProfile.vue"),
-  meta: { NavLink: "Настройки" },
-},
-{
-  path: "/settings/profile",
-  name: "profile",
-  component: () => import("../views/Settings/PersonalProfile.vue"),
-  meta: { NavLink: "Личный профиль" },
-},
-{
-  path: "/settings/users",
-  name: "users",
-  component: () => import("../views/Settings/UsersList.vue"),
-  meta: { NavLink: "Список пользователей" },
-},
-{
-  path: "/settings/roles",
-  name: "roles",
-  component: () => import("../views/Settings/RoleList.vue"),
-  meta: { NavLink: "Список ролей" },
-},
-{
-  path: "/settings/user-logs",
-  name: "user-logs",
-  component: () => import("../views/Settings/UserLogs.vue"),
-  meta: { NavLink: "Логи пользователей" },
-},
-{
-  path: "/settings/payment-methods",
-  name: "payment-methods",
-  component: () => import("../views/Settings/PaymentMethods.vue"),
-  meta: { NavLink: "Методы оплаты" },
-},
-// НАСТРОЙКИ
+  {
+    path: "/settings",
+    name: "settings",
+    component: () => import("../views/Settings/PersonalProfile.vue"),
+    meta: { NavLink: "Настройки" },
+  },
+  {
+    path: "/settings/profile",
+    name: "profile",
+    component: () => import("../views/Settings/PersonalProfile.vue"),
+    meta: { NavLink: "Личный профиль" },
+  },
+  {
+    path: "/settings/users",
+    name: "users",
+    component: () => import("../views/Settings/UsersList.vue"),
+    meta: { NavLink: "Список пользователей" },
+  },
+  {
+    path: "/settings/roles",
+    name: "roles",
+    component: () => import("../views/Settings/RoleList.vue"),
+    meta: { NavLink: "Список ролей" },
+  },
+  {
+    path: "/settings/user-logs",
+    name: "user-logs",
+    component: () => import("../views/Settings/UserLogs.vue"),
+    meta: { NavLink: "Логи пользователей" },
+  },
+  {
+    path: "/settings/payment-methods",
+    name: "payment-methods",
+    component: () => import("../views/Settings/PaymentMethods.vue"),
+    meta: { NavLink: "Методы оплаты" },
+  },
+  // НАСТРОЙКИ
 
 ];
 
