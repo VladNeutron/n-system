@@ -13,50 +13,30 @@
         <div class="d-flex">
           <div class="periods" style="margin-right: 24px">
             <div class="periods__content">
-              <div
-                class="test"
-                :class="{ active1: isActive == 1 }"
-                @click="isActive = 1"
-              >
+              <div class="test" :class="{ active1: isActive == 1 }" @click="isActive = 1">
                 Сегодня
               </div>
               <img src="@/assets/img/lineHr.svg" alt="" />
               <div>
-                <div
-                  class="test2"
-                  :class="{ active2: isActive == 2 }"
-                  @click="isActive = 2"
-                >
+                <div class="test2" :class="{ active2: isActive == 2 }" @click="isActive = 2">
                   Вчера
                 </div>
               </div>
               <img src="@/assets/img/lineHr.svg" alt="" />
               <div>
-                <div
-                  class="test3"
-                  :class="{ active2: isActive == 3 }"
-                  @click="isActive = 3"
-                >
+                <div class="test3" :class="{ active2: isActive == 3 }" @click="isActive = 3">
                   Неделя
                 </div>
               </div>
               <img src="@/assets/img/lineHr.svg" alt="" />
               <div>
-                <div
-                  class="test4"
-                  :class="{ active2: isActive == 4 }"
-                  @click="isActive = 4"
-                >
+                <div class="test4" :class="{ active2: isActive == 4 }" @click="isActive = 4">
                   Месяц
                 </div>
               </div>
               <img src="@/assets/img/lineHr.svg" alt="" />
               <div>
-                <div
-                  class="test5"
-                  :class="{ active3: isActive == 5 }"
-                  @click="isActive = 5"
-                >
+                <div class="test5" :class="{ active3: isActive == 5 }" @click="isActive = 5">
                   Период
                 </div>
               </div>
@@ -67,10 +47,7 @@
               <div>Все</div>
               <img src="@/assets/img/lineHr.svg" alt="" />
               <div class="form-group m-0" style="width: 120px">
-                <select
-                  class="form-select select__workspace m-0"
-                  id="exampleFormControlSelect1"
-                >
+                <select class="form-select select__workspace m-0" id="exampleFormControlSelect1">
                   <option>Выберите</option>
                   <option>Тихонов А.</option>
                   <option>Тихонов А.</option>
@@ -96,20 +73,14 @@
                 <div class="step__color__block">
                   <div>
                     <p class="step__count__main mb-0">+{{ step.countDeal }}</p>
-                    <p
-                      class="step__count mb-0"
-                      style="text-transform: uppercase"
-                    >
+                    <p class="step__count mb-0" style="text-transform: uppercase">
                       Новых сделок
                     </p>
                   </div>
                   <hr />
                   <div>
                     <p class="step__count__main mb-0">{{ step.sumDeal }}</p>
-                    <p
-                      class="step__count mb-0"
-                      style="text-transform: uppercase"
-                    >
+                    <p class="step__count mb-0" style="text-transform: uppercase">
                       Сумма сделок
                     </p>
                   </div>
@@ -117,11 +88,7 @@
               </div>
             </div>
             <div class="funnel__content" v-if="isActive == 2">
-              <div
-                v-for="step in steps2"
-                :key="step"
-                style="margin-right: 24px"
-              >
+              <div v-for="step in steps2" :key="step" style="margin-right: 24px">
                 <p class="step__main mb-0">{{ step.stepName }}</p>
                 <p class="step__count">
                   {{ step.stepCount }}, {{ step.stepCountSum }}
@@ -129,20 +96,14 @@
                 <div class="step__color__block">
                   <div>
                     <p class="step__count__main mb-0">+{{ step.countDeal }}</p>
-                    <p
-                      class="step__count mb-0"
-                      style="text-transform: uppercase"
-                    >
+                    <p class="step__count mb-0" style="text-transform: uppercase">
                       Новых сделок
                     </p>
                   </div>
                   <hr />
                   <div>
                     <p class="step__count__main mb-0">{{ step.sumDeal }}</p>
-                    <p
-                      class="step__count mb-0"
-                      style="text-transform: uppercase"
-                    >
+                    <p class="step__count mb-0" style="text-transform: uppercase">
                       Сумма сделок
                     </p>
                   </div>
@@ -150,11 +111,7 @@
               </div>
             </div>
             <div class="funnel__content" v-if="isActive == 3">
-              <div
-                v-for="step in steps3"
-                :key="step"
-                style="margin-right: 24px"
-              >
+              <div v-for="step in steps3" :key="step" style="margin-right: 24px">
                 <p class="step__main mb-0">{{ step.stepName }}</p>
                 <p class="step__count">
                   {{ step.stepCount }}, {{ step.stepCountSum }}
@@ -162,20 +119,14 @@
                 <div class="step__color__block">
                   <div>
                     <p class="step__count__main mb-0">+{{ step.countDeal }}</p>
-                    <p
-                      class="step__count mb-0"
-                      style="text-transform: uppercase"
-                    >
+                    <p class="step__count mb-0" style="text-transform: uppercase">
                       Новых сделок
                     </p>
                   </div>
                   <hr />
                   <div>
                     <p class="step__count__main mb-0">{{ step.sumDeal }}</p>
-                    <p
-                      class="step__count mb-0"
-                      style="text-transform: uppercase"
-                    >
+                    <p class="step__count mb-0" style="text-transform: uppercase">
                       Сумма сделок
                     </p>
                   </div>
@@ -183,11 +134,7 @@
               </div>
             </div>
             <div class="funnel__content" v-if="isActive == 4">
-              <div
-                v-for="step in steps4"
-                :key="step"
-                style="margin-right: 24px"
-              >
+              <div v-for="step in steps4" :key="step" style="margin-right: 24px">
                 <p class="step__main mb-0">{{ step.stepName }}</p>
                 <p class="step__count">
                   {{ step.stepCount }}, {{ step.stepCountSum }}
@@ -195,20 +142,14 @@
                 <div class="step__color__block">
                   <div>
                     <p class="step__count__main mb-0">+{{ step.countDeal }}</p>
-                    <p
-                      class="step__count mb-0"
-                      style="text-transform: uppercase"
-                    >
+                    <p class="step__count mb-0" style="text-transform: uppercase">
                       Новых сделок
                     </p>
                   </div>
                   <hr />
                   <div>
                     <p class="step__count__main mb-0">{{ step.sumDeal }}</p>
-                    <p
-                      class="step__count mb-0"
-                      style="text-transform: uppercase"
-                    >
+                    <p class="step__count mb-0" style="text-transform: uppercase">
                       Сумма сделок
                     </p>
                   </div>
@@ -216,11 +157,7 @@
               </div>
             </div>
             <div class="funnel__content" v-if="isActive == 5">
-              <div
-                v-for="step in steps5"
-                :key="step"
-                style="margin-right: 24px"
-              >
+              <div v-for="step in steps5" :key="step" style="margin-right: 24px">
                 <p class="step__main mb-0">{{ step.stepName }}</p>
                 <p class="step__count">
                   {{ step.stepCount }}, {{ step.stepCountSum }}
@@ -228,20 +165,14 @@
                 <div class="step__color__block">
                   <div>
                     <p class="step__count__main mb-0">+{{ step.countDeal }}</p>
-                    <p
-                      class="step__count mb-0"
-                      style="text-transform: uppercase"
-                    >
+                    <p class="step__count mb-0" style="text-transform: uppercase">
                       Новых сделок
                     </p>
                   </div>
                   <hr />
                   <div>
                     <p class="step__count__main mb-0">{{ step.sumDeal }}</p>
-                    <p
-                      class="step__count mb-0"
-                      style="text-transform: uppercase"
-                    >
+                    <p class="step__count mb-0" style="text-transform: uppercase">
                       Сумма сделок
                     </p>
                   </div>
@@ -356,148 +287,96 @@
             </div>
           </div>
           <div class="card px-4 py-4 pb-5 mt-4">
-            <div class="activity__header">
-              <p class="activity__main mb-0">
-                Использование системы за сегодня
-              </p>
-            </div>
-            <div class="activity__content">
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="d-flex align-items-center activity__margin">
-                  <img
-                    src="@/assets/img/avatar.svg"
-                    style="width: 24px; margin-right: 8px"
-                    alt=""
-                  />
-                  <p class="activity__name mb-0">Евгений</p>
-                </div>
-                <div class="progress-wrapper" style="width: 350px">
-                  <div class="progress-info">
-                    <div class="progress-percentage text-end">
-                      <span class="text-sm font-weight-bold"
-                        >10 ч. 32 мин.</span
-                      >
-                    </div>
-                  </div>
-                  <div class="progress">
-                    <div
-                      class="progress-bar bg-dark"
-                      role="progressbar"
-                      aria-valuenow="40"
-                      aria-valuemin="0"
-                      aria-valuemax="100"
-                      style="width: 40%"
-                    ></div>
-                  </div>
-                </div>
+            <div class="activity__scroll">
+              <div class="activity__header">
+                <p class="activity__main mb-0">
+                  Использование системы за сегодня
+                </p>
               </div>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="d-flex align-items-center activity__margin">
-                  <img
-                    src="@/assets/img/avatar.svg"
-                    style="width: 24px; margin-right: 8px"
-                    alt=""
-                  />
-                  <p class="activity__name mb-0">Роман Ромашков</p>
-                </div>
-                <div class="progress-wrapper" style="width: 350px">
-                  <div class="progress-info">
-                    <div class="progress-percentage text-end">
-                      <span class="text-sm font-weight-bold">7 ч. 11 мин.</span>
+              <div class="activity__content">
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="d-flex align-items-center activity__margin">
+                    <img src="@/assets/img/avatar.svg" style="width: 24px; margin-right: 8px" alt="" />
+                    <p class="activity__name mb-0">Евгений</p>
+                  </div>
+                  <div class="progress-wrapper" style="width: 350px">
+                    <div class="progress-info">
+                      <div class="progress-percentage text-end">
+                        <span class="text-sm font-weight-bold">10 ч. 32 мин.</span>
+                      </div>
+                    </div>
+                    <div class="progress">
+                      <div class="progress-bar bg-dark" role="progressbar" aria-valuenow="40" aria-valuemin="0"
+                        aria-valuemax="100" style="width: 40%"></div>
                     </div>
                   </div>
-                  <div class="progress">
-                    <div
-                      class="progress-bar bg-dark"
-                      role="progressbar"
-                      aria-valuenow="40"
-                      aria-valuemin="0"
-                      aria-valuemax="100"
-                      style="width: 20%"
-                    ></div>
+                </div>
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="d-flex align-items-center activity__margin">
+                    <img src="@/assets/img/avatar.svg" style="width: 24px; margin-right: 8px" alt="" />
+                    <p class="activity__name mb-0">Роман Ромашков</p>
                   </div>
-                </div>
-              </div>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="d-flex align-items-center activity__margin">
-                  <img
-                    src="@/assets/img/avatar.svg"
-                    style="width: 24px; margin-right: 8px"
-                    alt=""
-                  />
-                  <p class="activity__name mb-0">Елизавета Кирова</p>
-                </div>
-                <div class="progress-wrapper" style="width: 350px">
-                  <div class="progress-info">
-                    <div class="progress-percentage text-end">
-                      <span class="text-sm font-weight-bold"
-                        >22 ч. 08 мин.</span
-                      >
+                  <div class="progress-wrapper" style="width: 350px">
+                    <div class="progress-info">
+                      <div class="progress-percentage text-end">
+                        <span class="text-sm font-weight-bold">7 ч. 11 мин.</span>
+                      </div>
+                    </div>
+                    <div class="progress">
+                      <div class="progress-bar bg-dark" role="progressbar" aria-valuenow="40" aria-valuemin="0"
+                        aria-valuemax="100" style="width: 20%"></div>
                     </div>
                   </div>
-                  <div class="progress">
-                    <div
-                      class="progress-bar bg-dark"
-                      role="progressbar"
-                      aria-valuenow="40"
-                      aria-valuemin="0"
-                      aria-valuemax="100"
-                      style="width: 70%"
-                    ></div>
+                </div>
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="d-flex align-items-center activity__margin">
+                    <img src="@/assets/img/avatar.svg" style="width: 24px; margin-right: 8px" alt="" />
+                    <p class="activity__name mb-0">Елизавета Кирова</p>
                   </div>
-                </div>
-              </div>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="d-flex align-items-center activity__margin">
-                  <img
-                    src="@/assets/img/avatar.svg"
-                    style="width: 24px; margin-right: 8px"
-                    alt=""
-                  />
-                  <p class="activity__name mb-0">Роман Ромашков</p>
-                </div>
-                <div class="progress-wrapper" style="width: 350px">
-                  <div class="progress-info">
-                    <div class="progress-percentage text-end">
-                      <span class="text-sm font-weight-bold">7 ч. 11 мин.</span>
+                  <div class="progress-wrapper" style="width: 350px">
+                    <div class="progress-info">
+                      <div class="progress-percentage text-end">
+                        <span class="text-sm font-weight-bold">22 ч. 08 мин.</span>
+                      </div>
+                    </div>
+                    <div class="progress">
+                      <div class="progress-bar bg-dark" role="progressbar" aria-valuenow="40" aria-valuemin="0"
+                        aria-valuemax="100" style="width: 70%"></div>
                     </div>
                   </div>
-                  <div class="progress">
-                    <div
-                      class="progress-bar bg-dark"
-                      role="progressbar"
-                      aria-valuenow="40"
-                      aria-valuemin="0"
-                      aria-valuemax="100"
-                      style="width: 20%"
-                    ></div>
+                </div>
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="d-flex align-items-center activity__margin">
+                    <img src="@/assets/img/avatar.svg" style="width: 24px; margin-right: 8px" alt="" />
+                    <p class="activity__name mb-0">Роман Ромашков</p>
                   </div>
-                </div>
-              </div>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="d-flex align-items-center activity__margin">
-                  <img
-                    src="@/assets/img/avatar.svg"
-                    style="width: 24px; margin-right: 8px"
-                    alt=""
-                  />
-                  <p class="activity__name mb-0">Роман Ромашков</p>
-                </div>
-                <div class="progress-wrapper" style="width: 350px">
-                  <div class="progress-info">
-                    <div class="progress-percentage text-end">
-                      <span class="text-sm font-weight-bold">7 ч. 11 мин.</span>
+                  <div class="progress-wrapper" style="width: 350px">
+                    <div class="progress-info">
+                      <div class="progress-percentage text-end">
+                        <span class="text-sm font-weight-bold">7 ч. 11 мин.</span>
+                      </div>
+                    </div>
+                    <div class="progress">
+                      <div class="progress-bar bg-dark" role="progressbar" aria-valuenow="40" aria-valuemin="0"
+                        aria-valuemax="100" style="width: 20%"></div>
                     </div>
                   </div>
-                  <div class="progress">
-                    <div
-                      class="progress-bar bg-dark"
-                      role="progressbar"
-                      aria-valuenow="40"
-                      aria-valuemin="0"
-                      aria-valuemax="100"
-                      style="width: 20%"
-                    ></div>
+                </div>
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="d-flex align-items-center activity__margin">
+                    <img src="@/assets/img/avatar.svg" style="width: 24px; margin-right: 8px" alt="" />
+                    <p class="activity__name mb-0">Роман Ромашков</p>
+                  </div>
+                  <div class="progress-wrapper" style="width: 350px">
+                    <div class="progress-info">
+                      <div class="progress-percentage text-end">
+                        <span class="text-sm font-weight-bold">7 ч. 11 мин.</span>
+                      </div>
+                    </div>
+                    <div class="progress">
+                      <div class="progress-bar bg-dark" role="progressbar" aria-valuenow="40" aria-valuemin="0"
+                        aria-valuemax="100" style="width: 20%"></div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -730,59 +609,92 @@ export default {
 </script>
 
 <style scoped>
+.activity__content::-webkit-scrollbar {
+  background: #e2e8f0;
+  border-radius: 0.78vw;
+  width: 0.7vw;
+}
+
+.activity__content::-webkit-scrollbar-thumb {
+  border-radius: 0.78vw;
+  background-color: #313860;
+}
+
+.activity__content::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.2);
+  border-radius: 0.78vw;
+  background-color: #e2e8f0;
+}
+
+.activity__content {
+  height: 285px;
+  overflow-y: auto;
+}
+
 .activity__margin {
   margin-top: 31px;
 }
+
 .activity__name {
   font-weight: 400;
   font-size: 16px;
   color: #2d3748;
 }
+
 .activity__main {
   font-weight: 600;
   font-size: 20px;
   color: #2d3748;
 }
+
 .activity__header {
   text-align: left;
 }
+
 .deals__count {
   font-weight: 600;
   font-size: 36px;
   color: #2d3748;
 }
+
 .deals__main {
   font-weight: 600;
   font-size: 16px;
   color: #2d3748;
 }
+
 .manager__deals {
   text-align: left;
   background: #f8f9fa;
   border-radius: 12px;
   padding: 16px 0 16px 16px;
 }
+
 .task__today {
   font-weight: 400;
   font-size: 16px;
   color: #ffffff;
   opacity: 0.7;
 }
+
 .task__count {
   font-weight: 600;
   font-size: 48px;
   color: #ffffff;
 }
+
 .task__main {
   font-weight: 500;
   font-size: 14px;
   color: #ffffff;
   text-transform: uppercase;
 }
+
 .block:hover {
   box-shadow: 0px 3.5px 5.5px rgba(112, 146, 224, 1);
   transition: 0.2s;
 }
+
 .block {
   text-align: left;
   background: linear-gradient(83.56deg, #7092e0 10.01%, #8baef3 75.36%);
@@ -792,32 +704,38 @@ export default {
   margin-right: 8px;
   width: 313px;
 }
+
 .task__content {
   display: flex;
 }
+
 .step__count__main {
   font-weight: 600;
   font-size: 20px;
   color: #2d3748;
   white-space: nowrap;
 }
+
 .step__count {
   font-weight: 400;
   font-size: 14px;
   color: #a0aec0;
   white-space: nowrap;
 }
+
 .step__main {
   font-weight: 600;
   font-size: 16px;
   color: #2d3748;
   white-space: nowrap;
 }
+
 hr {
   border: 1px solid #e2e8f0;
   width: 74px;
   transform: rotate(90deg);
 }
+
 .step__color__block {
   display: flex;
   align-items: center;
@@ -825,19 +743,23 @@ hr {
   border-radius: 12px;
   padding: 28px 25px 28px 25px;
 }
+
 .card__header h4 {
   font-weight: 600;
   font-size: 20px;
   color: #2d3748;
 }
+
 .card__header p {
   font-weight: 400;
   font-size: 16px;
   color: #a0aec0;
 }
+
 .card__header {
   text-align: left;
 }
+
 .funnel__content::-webkit-scrollbar {
   background: #e2e8f0;
   border-radius: 0.78vw;
@@ -854,10 +776,12 @@ hr {
   border-radius: 0.78vw;
   background-color: #e2e8f0;
 }
+
 .funnel__content {
   display: flex;
   overflow-x: auto;
 }
+
 .deals__table::-webkit-scrollbar {
   background: #e2e8f0;
   border-radius: 0.78vw;
@@ -874,28 +798,34 @@ hr {
   border-radius: 0.78vw;
   background-color: #e2e8f0;
 }
+
 .deals__table {
   height: 19vw;
   overflow-y: auto;
 }
+
 .select__workspace {
   border: 0 !important;
 }
+
 .active1 {
   color: #ffffff;
   background: linear-gradient(83.56deg, #7092e0 10.01%, #8baef3 75.36%);
   border-radius: 6px 0px 0px 6px;
 }
+
 .active2 {
   color: #ffffff;
   background: linear-gradient(83.56deg, #7092e0 10.01%, #8baef3 75.36%);
   border-radius: 0px 0px 0px 0px;
 }
+
 .active3 {
   color: #ffffff;
   background: linear-gradient(83.56deg, #7092e0 10.01%, #8baef3 75.36%);
   border-radius: 0px 6px 6px 0px;
 }
+
 .test,
 .test2,
 .test3,
@@ -908,33 +838,39 @@ hr {
   justify-content: center;
   cursor: pointer;
 }
+
 .select {
   background: #ffffff;
   border: 1px solid #a0aec0;
   border-radius: 8px;
   width: 246px;
 }
+
 .periods {
   background: #ffffff;
   border: 1px solid #a0aec0;
   border-radius: 8px;
   width: 519px;
 }
+
 .select__content {
   display: flex;
   align-items: center;
   justify-content: space-evenly;
 }
+
 .periods__content {
   display: flex;
   align-items: center;
   justify-content: space-around;
 }
+
 .test5:hover {
   color: #ffffff;
   background: linear-gradient(83.56deg, #7092e0 10.01%, #8baef3 75.36%);
   border-radius: 0px 6px 6px 0px;
 }
+
 .test2:hover,
 .test3:hover,
 .test4:hover {
@@ -942,11 +878,13 @@ hr {
   background: linear-gradient(83.56deg, #7092e0 10.01%, #8baef3 75.36%);
   border-radius: 0px 0px 0px 0px;
 }
+
 .test:hover {
   color: #ffffff;
   background: linear-gradient(83.56deg, #7092e0 10.01%, #8baef3 75.36%);
   border-radius: 6px 0px 0px 6px;
 }
+
 .periods__content span {
   font-weight: 400;
   font-size: 14px;
