@@ -93,7 +93,7 @@
                 </div>
               </div>
               <pagination-component
-                :filteredArr="warehouses"
+                :filteredArr="filteredItems"
                 :strAmount="10"
                 @PaginationReload="reloadPagination"
                 class="pb-4"
@@ -103,18 +103,20 @@
         </div>
       </div>
     </div>
-    <filters>
+    <filters @no-filter="cancelFilters">
       <div class="filter__name__standart">Тип склада</div>
-      <select class="form-select">
+      <select class="form-select" v-model="filterWarehouse">
         <option value="" disabled selected>Выберите склад</option>
-        <option>Склад 1</option>
-        <option>Склад 2</option>
+        <option v-for="warehouse in warehouseList" :key="warehouse">
+          {{ warehouse }}
+        </option>
+        <option value=""></option>
       </select>
       <div class="filter__name__standart mt-3">Статус склада</div>
-      <select class="form-select">
+      <select class="form-select" v-model="filterStatus">
         <option value="" disabled selected>Выберите статус склада</option>
-        <option>Открыт</option>
-        <option>Закрыт</option>
+        <option v-for="status in statusList" :key="status">{{ status }}</option>
+        <option value=""></option>
       </select>
     </filters>
     <delete-modal
@@ -133,9 +135,19 @@ export default {
     reloadPagination(arr) {
       this.paginationList = arr;
     },
+    cancelFilters() {
+      this.filterWarehouse = "";
+      this.filterStatus = "";
+    },
+    createFilteredSet(key) {
+      const unfiltered = this.warehouses.map((obj) => obj[key]);
+      return [...new Set(unfiltered)];
+    },
   },
   data() {
     return {
+      filterStatus: "",
+      filterWarehouse: "",
       paginationList: [],
       warehouses: [
         {
@@ -153,42 +165,42 @@ export default {
           status: "Открыт",
         },
         {
-          id: 1,
+          id: 3,
           name: "ТЦ “Jam mall”",
           type: "Торговая точка",
           adress: "Ул. Горького, 5",
           status: "Закрыт",
         },
         {
-          id: 2,
+          id: 4,
           name: "ТЦ “Москва”",
           type: "Торговая точка",
           adress: "8-й микрорайон, 37/1",
           status: "Открыт",
         },
         {
-          id: 1,
+          id: 5,
           name: "ТЦ “Jam mall”",
           type: "Торговая точка",
           adress: "Ул. Горького, 5",
           status: "Закрыт",
         },
         {
-          id: 2,
+          id: 6,
           name: "ТЦ “Москва”",
           type: "Торговая точка",
           adress: "8-й микрорайон, 37/1",
           status: "Открыт",
         },
         {
-          id: 1,
+          id: 7,
           name: "ТЦ “Jam mall”",
           type: "Торговая точка",
           adress: "Ул. Горького, 5",
           status: "Закрыт",
         },
         {
-          id: 2,
+          id: 8,
           name: "ТЦ “Москва”",
           type: "Торговая точка",
           adress: "8-й микрорайон, 37/1",
@@ -196,28 +208,28 @@ export default {
         },
 
         {
-          id: 1,
+          id: 9,
           name: "ТЦ “Jam mall”",
           type: "Торговая точка",
           adress: "Ул. Горького, 5",
           status: "Закрыт",
         },
         {
-          id: 2,
+          id: 10,
           name: "ТЦ “Москва”",
           type: "Торговая точка",
           adress: "8-й микрорайон, 37/1",
           status: "Открыт",
         },
         {
-          id: 1,
+          id: 11,
           name: "ТЦ “Jam mall”",
           type: "Торговая точка",
           adress: "Ул. Горького, 5",
           status: "Закрыт",
         },
         {
-          id: 2,
+          id: 12,
           name: "ТЦ “Москва”",
           type: "Торговая точка",
           adress: "8-й микрорайон, 37/1",
@@ -225,6 +237,25 @@ export default {
         },
       ],
     };
+  },
+  computed: {
+    warehouseList() {
+      return this.createFilteredSet("name");
+    },
+    statusList() {
+      return this.createFilteredSet("status");
+    },
+    filteredItems() {
+      return this.warehouses.filter(
+        (warehouse) =>
+          (this.filterStatus === ""
+            ? true
+            : warehouse.status === this.filterStatus) &&
+          (this.filterWarehouse === ""
+            ? true
+            : warehouse.name === this.filterWarehouse)
+      );
+    },
   },
   components: {
     Filters,
