@@ -125,7 +125,7 @@
               </div>
             </div>
             <pagination-component
-              :filteredArr="items"
+              :filteredArr="filteredItems"
               :strAmount="10"
               @PaginationReload="reloadPagination"
               class="pb-4"
@@ -138,7 +138,7 @@
       :title="'инвентаризации'"
       :text="`документ &quot;Инвентаризация №19&quot;`"
     ></delete-modal>
-    <filters>
+    <filters @no-filter="cancelFilters">
       <div class="filters__period__flex">
         <div class="filter__name__standart">Выберите период</div>
         <div class="reset__date">Сбросить период</div>
@@ -156,24 +156,28 @@
       </div>
 
       <div class="filter__name__standart">Склад</div>
-      <select class="form-select">
+      <select class="form-select" v-model="filterWarehouse">
         <option value="" disabled selected>Выберите склад</option>
-        <option>Склад 1</option>
-        <option>Склад 2</option>
+        <option v-for="warehouse in warehouseList" :key="warehouse">
+          {{ warehouse }}
+        </option>
+        <option value=""></option>
       </select>
       <div class="filter__name__standart mt-3">Ответственный</div>
-      <select class="form-select">
+      <select class="form-select" v-model="filterResponsible">
         <option value="" disabled selected>Выберите ответственного</option>
-        <option>Открыт</option>
-        <option>Закрыт</option>
+        <option v-for="responsible in responsibleList" :key="responsible">
+          {{ responsible }}
+        </option>
+        <option value=""></option>
       </select>
       <div class="filter__name__standart mt-3">Статус инвентаризации</div>
-      <select class="form-select">
+      <select class="form-select" v-model="filterStatus">
         <option value="" disabled selected>
           Выберите статус инвентаризации
         </option>
-        <option>Открыт</option>
-        <option>Закрыт</option>
+        <option v-for="status in statusList" :key="status">{{ status }}</option>
+        <option value=""></option>
       </select>
     </filters>
   </main>
@@ -192,12 +196,46 @@ export default {
   },
   methods: {
     reloadPagination(arr) {
-      console.log(arr);
       this.paginationList = arr;
+    },
+    cancelFilters() {
+      this.filterWarehouse = "";
+      this.filterResponsible = "";
+      this.filterStatus = "";
+    },
+    createFilteredSet(key) {
+      const unfiltered = this.items.map((obj) => obj[key]);
+      return [...new Set(unfiltered)];
+    },
+  },
+  computed: {
+    warehouseList() {
+      return this.createFilteredSet("place");
+    },
+    responsibleList() {
+      return this.createFilteredSet("name");
+    },
+    statusList() {
+      return this.createFilteredSet("isReady");
+    },
+    filteredItems() {
+      return this.items.filter(
+        (item) =>
+          (this.filterWarehouse === ""
+            ? true
+            : item.place === this.filterWarehouse) &&
+          (this.filterResponsible === ""
+            ? true
+            : item.name === this.filterResponsible) &&
+          (this.filterStatus === "" ? true : item.isReady === this.filterStatus)
+      );
     },
   },
   data() {
     return {
+      filterWarehouse: "",
+      filterResponsible: "",
+      filterStatus: "",
       paginationList: [],
       items: [
         {
@@ -212,7 +250,7 @@ export default {
           date: "11 янв, 19:23, 2021",
           id: "19",
           place: "ТРЦ Москва",
-          name: "Влад  не ппомню фамилию",
+          name: "Влад не ппомню фамилию",
           isReady: "Завершена",
           count: "15",
         },
