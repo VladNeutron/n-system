@@ -154,6 +154,15 @@ export default {
     reloadPagination(arr) {
       this.paginationList = arr;
     },
+    cancelFilters() {
+      this.filterWarehouse = "";
+      this.filterResponsible = "";
+      this.filterStatus = "";
+    },
+    createFilteredSet(key) {
+      const unfiltered = this.items.map((obj) => obj[key]);
+      return [...new Set(unfiltered)];
+    },
   },
   data() {
     return {
