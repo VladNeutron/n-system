@@ -88,7 +88,7 @@
               </div>
             </div>
             <pagination-component
-              :filteredArr="items"
+              :filteredArr="filteredItems"
               :strAmount="10"
               @PaginationReload="reloadPagination"
               class="pb-4"
@@ -101,7 +101,7 @@
       :title="'перемещения'"
       :text="`документ &quot;Перемещение №23&quot;`"
     ></delete-modal>
-    <filters>
+    <filters @no-filter="cancelFilters">
       <div class="filters__period__flex">
         <div class="filter__name__standart">Выберите период</div>
         <div class="reset__date">Сбросить период</div>
@@ -119,22 +119,22 @@
       </div>
 
       <div class="filter__name__standart">Отправитель</div>
-      <select class="form-select">
+      <select class="form-select" v-model="filterSender">
         <option value="" disabled selected>Выберите отправителя</option>
-        <option>Склад 1</option>
-        <option>Склад 2</option>
+        <option value=""></option>
       </select>
       <div class="filter__name__standart mt-3">Получатель</div>
-      <select class="form-select">
+      <select class="form-select" v-model="filterReciever">
         <option value="" disabled selected>Выберите получателя</option>
-        <option>Открыт</option>
-        <option>Закрыт</option>
+        <option value=""></option>
       </select>
       <div class="filter__name__standart mt-3">Ответственный</div>
-      <select class="form-select">
+      <select class="form-select" v-model="filterResponsible">
         <option value="" disabled selected>Выберите ответственного</option>
-        <option>Открыт</option>
-        <option>Закрыт</option>
+        <option v-for="responsible in responsibleList" :key="responsible">
+          {{ responsible }}
+        </option>
+        <option value=""></option>
       </select>
     </filters>
   </main>
@@ -155,17 +155,40 @@ export default {
       this.paginationList = arr;
     },
     cancelFilters() {
-      this.filterWarehouse = "";
+      this.filterSender = "";
+      this.filterReciever = "";
       this.filterResponsible = "";
-      this.filterStatus = "";
     },
     createFilteredSet(key) {
       const unfiltered = this.items.map((obj) => obj[key]);
       return [...new Set(unfiltered)];
     },
   },
+  computed: {
+    responsibleList() {
+      return this.createFilteredSet("name");
+    },
+
+    filteredItems() {
+      return this.items.filter(
+        (item) =>
+          (this.filterSender === ""
+            ? true
+            : item.place === this.filterSender) &&
+          (this.filterResponsible === ""
+            ? true
+            : item.name === this.filterResponsible) &&
+          (this.filterReciever === ""
+            ? true
+            : item.isReady === this.filterReciever)
+      );
+    },
+  },
   data() {
     return {
+      filterReciever: "",
+      filterSender: "",
+      filterResponsible: "",
       paginationList: [],
       items: [
         {

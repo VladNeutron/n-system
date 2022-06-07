@@ -101,7 +101,7 @@
       :title="'оприходования'"
       :text="`документ &quot;Оприходование №23&quot;`"
     ></delete-modal>
-    <filters>
+    <filters @no-filter="cancelFilters">
       <div class="filters__period__flex">
         <div class="filter__name__standart">Выберите период</div>
         <div class="reset__date">Сбросить период</div>
