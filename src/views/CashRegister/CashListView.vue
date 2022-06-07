@@ -47,7 +47,7 @@
                   </thead>
                   <tbody>
                     <!-- v-for="(item, i) in filteredClients" :key="item" -->
-                    <tr v-for="(item, i) in items" :key="item">
+                    <tr v-for="(item, i) in paginationList" :key="item">
                       <td scope="row">
                         {{ i + 1 }}
                       </td>
@@ -88,63 +88,12 @@
                 </table>
               </div>
             </div>
-            <div class="pagination d-flex justify-content-end pe-5">
-              <div class="d-flex align-items-baseline gap-3 pb-4">
-                <div>
-                  <p class="m-0">Показано<span> 1-10 из 100</span></p>
-                </div>
-
-                <div class="page__search-pages d-flex align-content-center">
-                  <div class="pagination-container d-flex justify-items-center">
-                    <ul class="pagination pagination-info mb-0 pe-0">
-                      <li class="page-item">
-                        <a
-                          class="page-link"
-                          href="javascript:;"
-                          aria-label="Previous"
-                        >
-                          <span aria-hidden="true"
-                            ><i
-                              class="fa fa-angle-double-left"
-                              aria-hidden="true"
-                            ></i
-                          ></span>
-                        </a>
-                      </li>
-                      <li class="page-item">
-                        <a class="page-link" href="javascript:;">1</a>
-                      </li>
-                      <li class="page-item">
-                        <a class="page-link" href="javascript:;">2</a>
-                      </li>
-                      <li class="page-item active">
-                        <a class="page-link" href="javascript:;">3</a>
-                      </li>
-                      <li class="page-item">
-                        <a class="page-link" href="javascript:;">4</a>
-                      </li>
-                      <li class="page-item">
-                        <a class="page-link" href="javascript:;">5</a>
-                      </li>
-                      <li class="page-item">
-                        <a
-                          class="page-link"
-                          href="javascript:;"
-                          aria-label="Next"
-                        >
-                          <span aria-hidden="true"
-                            ><i
-                              class="fa fa-angle-double-right"
-                              aria-hidden="true"
-                            ></i
-                          ></span>
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <pagination-component
+              :filteredArr="items"
+              :strAmount="10"
+              @PaginationReload="reloadPagination"
+              class="pb-4"
+            ></pagination-component>
           </div>
         </div>
       </div>
@@ -223,7 +172,13 @@
       <template #footer>
         <div class="cash__accept__button" v-if="isEdit == 'yes'">
           <button class="btn accept__btn">Сохранить</button>
-          <button class="btn delete__btn" data-bs-toggle="modal" data-bs-target="#DeleteInv">Удалить кассу</button>
+          <button
+            class="btn delete__btn"
+            data-bs-toggle="modal"
+            data-bs-target="#DeleteInv"
+          >
+            Удалить кассу
+          </button>
         </div>
         <div class="cash__accept__button" v-if="isEdit == 'no'">
           <button class="btn accept__btn">Добавить</button>
@@ -231,18 +186,26 @@
       </template>
     </inputs-modal>
 
-    <delete-modal :title="'кассы'" :text='`кассу "Касса ТРЦ МОСКВА"`'></delete-modal>
+    <delete-modal
+      :title="'кассы'"
+      :text="`кассу &quot;Касса ТРЦ МОСКВА&quot;`"
+    ></delete-modal>
   </main>
 </template>
 
 <script>
 import InputsModal from "@/components/InputsModal.vue";
 import DeleteModal from "@/components/DeleteModal.vue";
-import {CloseInvModal} from "@/assets/js/closeModalDeleteOpen";
+import { CloseInvModal } from "@/assets/js/closeModalDeleteOpen";
 export default {
   components: {
     InputsModal,
     DeleteModal,
+  },
+  methods: {
+    reloadPagination(arr) {
+      this.paginationList = arr;
+    },
   },
   data() {
     return {
@@ -304,11 +267,12 @@ export default {
           status: "Активна",
         },
       ],
+      paginationList: [],
     };
   },
-  mounted(){
+  mounted() {
     CloseInvModal();
-  }
+  },
 };
 </script>
 
