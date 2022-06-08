@@ -12,32 +12,15 @@
             </template>
           </lists-header>
           <div class="card pt-4 pb-6">
-            <div
-              class="d-flex justify-content-between align-items-center mx-4 mb-4"
-            >
+            <div class="d-flex justify-content-between align-items-center mx-4 mb-4">
               <div>
-                <button
-                  class="btn bg-gradient-dark mb-0"
-                  style="margin-right: 0.833vw"
-                  onclick="window.location.href = '/accounting/new-contractor'"
-                >
-                  <img
-                    src="@/assets/img/whtplus.svg"
-                    style="margin-right: 7px"
-                    alt=""
-                  />
+                <button class="btn bg-gradient-dark mb-0" style="margin-right: 0.833vw"
+                  onclick="window.location.href = '/accounting/new-contractor'">
+                  <img src="@/assets/img/whtplus.svg" style="margin-right: 7px" alt="" />
                   Добавить контрагента
                 </button>
-                <button
-                  class="btn bg-gradient-dark mb-0"
-                  style="margin-right: 0.833vw"
-                  @click="openModal(0)"
-                >
-                  <img
-                    src="@/assets/img/DocumentsBtn.svg"
-                    style="margin-right: 7px"
-                    alt=""
-                  />
+                <button class="btn bg-gradient-dark mb-0" style="margin-right: 0.833vw" @click="openModal(0)">
+                  <img src="@/assets/img/DocumentsBtn.svg" style="margin-right: 7px" alt="" />
                   Документы
                 </button>
               </div>
@@ -52,11 +35,7 @@
               <table class="table table-hover table-striped">
                 <thead>
                   <tr class="">
-                    <th
-                      scope="col"
-                      class="th__col"
-                      style="width: 25px; padding-left: 27px"
-                    ></th>
+                    <th scope="col" class="th__col" style="width: 25px; padding-left: 27px"></th>
                     <th width="1%" scope="col" class="th__col">№</th>
                     <th scope="col" class="th__col">Название компании</th>
                     <th scope="col" class="th__col">БИН/ИИН</th>
@@ -71,12 +50,7 @@
                   <tr v-for="(item, i) of paginationList" :key="item.id">
                     <th scope="row" style="padding-left: 27px">
                       <div class="form-check">
-                        <input
-                          class="form-check-input"
-                          type="checkbox"
-                          value=""
-                          id="fcustomCheck1"
-                        />
+                        <input class="form-check-input" type="checkbox" value="" id="fcustomCheck1" />
                       </div>
                     </th>
                     <td width="1%">{{ i + 1 }}</td>
@@ -90,61 +64,38 @@
                     <td>{{ item.adress }}</td>
 
                     <td class="dropdown">
-                      <img
-                        src="@/assets/img/dots.svg"
-                        style="width: 1.563vw; cursor: pointer"
-                        alt=""
-                      />
+                      <img src="@/assets/img/dots.svg" style="width: 1.563vw; cursor: pointer" alt="" />
                       <div class="dropdown-content">
-                        <a
-                          style="cursor: pointer"
-                          onclick="window.location.href = '/accounting/new-contractor'"
-                          >Редактировать</a
-                        >
+                        <a style="cursor: pointer"
+                          onclick="window.location.href = '/accounting/new-contractor'">Редактировать</a>
                         <hr />
-                        <a
-                          style="cursor: pointer"
-                          data-bs-toggle="modal"
-                          data-bs-target="#DeleteInv"
-                          >Удалить</a
-                        >
+                        <a style="cursor: pointer" data-bs-toggle="modal" data-bs-target="#DeleteInv">Удалить</a>
                       </div>
                     </td>
                   </tr>
                 </tbody>
               </table>
             </div>
-            <pagination-component
-              :filteredArr="filteredItems"
-              :strAmount="10"
-              @PaginationReload="reloadPagination"
-            ></pagination-component>
+            <pagination-component :filteredArr="filteredItems" :strAmount="10" @PaginationReload="reloadPagination"
+              class="pagination__size"></pagination-component>
           </div>
         </div>
       </div>
     </div>
-    <the-filter @no-filter="cancelFilters"
-      ><div class="filters__period__flex">
+    <the-filter @no-filter="cancelFilters">
+      <div class="filters__period__flex">
         <div class="filter__name__standart">Выберите период</div>
         <div class="reset__date">Сбросить период</div>
       </div>
       <div class="filters__period">
         <div class="form-group">
-          <input
-            class="form-control period__s"
-            type="date"
-            id="example-date-input"
-          />
+          <input class="form-control period__s" type="date" id="example-date-input" />
         </div>
         <div>
           <img src="@/assets/img/line.svg" style="width: 1.927vw" alt="" />
         </div>
         <div class="form-group">
-          <input
-            class="form-control period__s"
-            type="date"
-            id="example-date-input"
-          />
+          <input class="form-control period__s" type="date" id="example-date-input" />
         </div>
       </div>
       <p class="text-start my-2 fw-bold" for="supplier">Тип компании</p>
@@ -153,12 +104,10 @@
         <option v-for="companyType of itemsCompanyType" :key="companyType">
           {{ companyType }}
         </option>
-        <option value=""></option></select
-    ></the-filter>
-    <delete-modal
-      :title="'контрагента'"
-      :text="`контрагента &quot;Тихонова А.Р&quot;`"
-    ></delete-modal>
+        <option value=""></option>
+      </select>
+    </the-filter>
+    <delete-modal :title="'контрагента'" :text="`контрагента &quot;Тихонова А.Р&quot;`"></delete-modal>
     <counter-modal :product="modal.modalProductName"></counter-modal>
   </main>
 </template>
@@ -333,6 +282,7 @@ export default {
 .page__table {
   height: 27.6vw;
 }
+
 .dropdown {
   width: 100%;
   display: inline-block;
@@ -362,6 +312,7 @@ export default {
   color: #2d3748;
   text-decoration: none;
 }
+
 .form__width {
   width: 15.99vw !important;
 }
@@ -406,7 +357,14 @@ td {
 .pagination {
   align-self: end;
 }
+
 th {
   text-transform: uppercase !important;
+}
+
+@media screen and (max-width: 1600px) {
+  .pagination__size {
+    padding-top: 50px;
+  }
 }
 </style>

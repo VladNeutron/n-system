@@ -12,26 +12,14 @@
             </template>
           </lists-header>
           <div class="card pt-4 pb-6">
-            <div
-              class="d-flex justify-content-between align-items-center mx-4 mb-4"
-            >
+            <div class="d-flex justify-content-between align-items-center mx-4 mb-4">
               <div>
-                <button
-                  class="btn bg-gradient-dark mb-0"
-                  style="
+                <button class="btn bg-gradient-dark mb-0" style="
                     margin-right: 0.833vw;
                     display: flex;
                     align-items: center;
-                  "
-                  data-bs-toggle="modal"
-                  data-bs-target="#InpModal"
-                  @click="isEdit = 'no'"
-                >
-                  <img
-                    src="@/assets/img/whtplus.svg"
-                    style="margin-right: 10px"
-                    alt=""
-                  />
+                  " data-bs-toggle="modal" data-bs-target="#InpModal" @click="isEdit = 'no'">
+                  <img src="@/assets/img/whtplus.svg" style="margin-right: 10px" alt="" />
                   Добавить должность
                 </button>
               </div>
@@ -54,37 +42,20 @@
                     <td>{{ order.shop }}</td>
                     <td>{{ order.status }}</td>
                     <td class="dropdown">
-                      <img
-                        src="@/assets/img/dots.svg"
-                        style="width: 1.563vw; cursor: pointer"
-                        alt=""
-                      />
+                      <img src="@/assets/img/dots.svg" style="width: 1.563vw; cursor: pointer" alt="" />
                       <div class="dropdown-content">
-                        <a
-                          style="cursor: pointer"
-                          data-bs-toggle="modal"
-                          data-bs-target="#InpModal"
-                          @click="isEdit = 'yes'"
-                          >Редактировать</a
-                        >
+                        <a style="cursor: pointer" data-bs-toggle="modal" data-bs-target="#InpModal"
+                          @click="isEdit = 'yes'">Редактировать</a>
                         <hr />
-                        <a
-                          style="cursor: pointer"
-                          data-bs-toggle="modal"
-                          data-bs-target="#DeleteInv"
-                          >Удалить</a
-                        >
+                        <a style="cursor: pointer" data-bs-toggle="modal" data-bs-target="#DeleteInv">Удалить</a>
                       </div>
                     </td>
                   </tr>
                 </tbody>
               </table>
             </div>
-            <pagination-component
-              :filteredArr="orders"
-              :strAmount="10"
-              @PaginationReload="reloadPagination"
-            ></pagination-component>
+            <pagination-component :filteredArr="orders" :strAmount="10" @PaginationReload="reloadPagination"
+              class="pagination__size"></pagination-component>
           </div>
         </div>
       </div>
@@ -103,50 +74,22 @@
       <template #body>
         <div class="clients__modal" v-if="isEdit == 'no'">
           <div class="form-group">
-            <label for="example-text-input" class="form-control-label"
-              >Название должности</label
-            >
-            <input
-              class="form-control"
-              type="text"
-              placeholder="Введите название"
-              id="example-text-input"
-            />
+            <label for="example-text-input" class="form-control-label">Название должности</label>
+            <input class="form-control" type="text" placeholder="Введите название" id="example-text-input" />
           </div>
           <div class="form-check form-switch">
-            <input
-              class="form-check-input"
-              type="checkbox"
-              id="flexSwitchCheckDefault"
-              checked=""
-            />
-            <label class="form-check-label" for="flexSwitchCheckDefault"
-              >Активна</label
-            >
+            <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" checked="" />
+            <label class="form-check-label" for="flexSwitchCheckDefault">Активна</label>
           </div>
         </div>
         <div class="clients__modal" v-if="isEdit == 'yes'">
           <div class="form-group">
-            <label for="example-text-input" class="form-control-label"
-              >Название должности</label
-            >
-            <input
-              class="form-control"
-              type="text"
-              placeholder="Введите название"
-              id="example-text-input"
-            />
+            <label for="example-text-input" class="form-control-label">Название должности</label>
+            <input class="form-control" type="text" placeholder="Введите название" id="example-text-input" />
           </div>
           <div class="form-check form-switch">
-            <input
-              class="form-check-input"
-              type="checkbox"
-              id="flexSwitchCheckDefault"
-              checked=""
-            />
-            <label class="form-check-label" for="flexSwitchCheckDefault"
-              >Активна</label
-            >
+            <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" checked="" />
+            <label class="form-check-label" for="flexSwitchCheckDefault">Активна</label>
           </div>
         </div>
       </template>
@@ -158,20 +101,13 @@
           <button class="btn bg-gradient-dark">Сохранить</button>
         </div>
         <div class="clients__footer" v-if="isEdit == 'yes'">
-          <button
-            class="btn delete__btn"
-            data-bs-toggle="modal"
-            data-bs-target="#DeleteInv"
-          >
+          <button class="btn delete__btn" data-bs-toggle="modal" data-bs-target="#DeleteInv">
             Удалить должность
           </button>
         </div>
       </template>
     </inputs-modal>
-    <delete-modal
-      :title="'должности'"
-      :text="`должность &quot;Кассир&quot;`"
-    ></delete-modal>
+    <delete-modal :title="'должности'" :text="`должность &quot;Кассир&quot;`"></delete-modal>
   </main>
 </template>
 
@@ -300,6 +236,7 @@ export default {
 .page__table {
   height: 27.6vw;
 }
+
 .dropdown {
   width: 100%;
   display: inline-block;
@@ -329,6 +266,7 @@ export default {
   color: #2d3748;
   text-decoration: none;
 }
+
 .form__width {
   width: 15.99vw !important;
 }
@@ -373,6 +311,7 @@ td {
 .pagination {
   align-self: end;
 }
+
 th {
   text-transform: uppercase !important;
 }
@@ -382,13 +321,22 @@ th {
   flex-grow: 1;
   width: 100%;
 }
+
 .clients__footer button {
   width: 60%;
 }
+
 .form-group {
   text-align: left;
 }
+
 .form-switch {
   text-align: left;
+}
+
+@media screen and (max-width:1600px) {
+  .pagination__size {
+    padding-top: 50px;
+  }
 }
 </style>

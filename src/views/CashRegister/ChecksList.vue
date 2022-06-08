@@ -13,27 +13,14 @@
     <div class="card pt-4 pb-6 mb-4 ms-4">
       <div class="d-flex justify-content-between align-items-center mx-4 mb-4">
         <div>
-          <button
-            class="btn bg-gradient-dark mb-0"
-            style="margin-right: 0.833vw"
-            onclick="window.location.href = '/cash-register/cash-register-sale'"
-          >
-            <img
-              src="@/assets/img/whtplus.svg"
-              alt=""
-              style="margin-right: 10px"
-            />
+          <button class="btn bg-gradient-dark mb-0" style="margin-right: 0.833vw"
+            onclick="window.location.href = '/cash-register/cash-register-sale'">
+            <img src="@/assets/img/whtplus.svg" alt="" style="margin-right: 10px" />
             Новая продажа
           </button>
-          <button
-            class="btn bg-gradient-dark mb-0"
-            onclick="window.location.href = '/cash-register/cash-register-return'"
-          >
-            <img
-              src="@/assets/img/whtplus.svg"
-              alt=""
-              style="margin-right: 10px"
-            />
+          <button class="btn bg-gradient-dark mb-0"
+            onclick="window.location.href = '/cash-register/cash-register-return'">
+            <img src="@/assets/img/whtplus.svg" alt="" style="margin-right: 10px" />
             Оформить возврат
           </button>
         </div>
@@ -47,15 +34,8 @@
       <div style="margin-left: 25px">
         <div class="form-group m-0 search__adapt__mob">
           <div class="input-group mt-1 search__size">
-            <span class="input-group-text"
-              ><img src="@/assets/css/icons/searchIcon.svg" alt=""
-            /></span>
-            <input
-              class="form-control form__width"
-              placeholder="Поиск..."
-              id="search"
-              type="text"
-            />
+            <span class="input-group-text"><img src="@/assets/css/icons/searchIcon.svg" alt="" /></span>
+            <input class="form-control form__width" placeholder="Поиск..." id="search" type="text" />
           </div>
         </div>
       </div>
@@ -63,11 +43,7 @@
         <table class="table table-hover">
           <thead>
             <tr class="">
-              <th
-                scope="col"
-                class="th__col"
-                style="width: 25px; padding-left: 27px"
-              ></th>
+              <th scope="col" class="th__col" style="width: 25px; padding-left: 27px"></th>
               <th width="1%" scope="col" class="th__col">№</th>
               <th scope="col" class="th__col">№ чека</th>
               <th scope="col" class="th__col">Дата</th>
@@ -83,12 +59,7 @@
             <tr v-for="(order, i) of paginationList" :key="order.checkId">
               <th scope="row" style="padding-left: 27px">
                 <div class="form-check">
-                  <input
-                    class="form-check-input"
-                    type="checkbox"
-                    value=""
-                    id="fcustomCheck1"
-                  />
+                  <input class="form-check-input" type="checkbox" value="" id="fcustomCheck1" />
                 </div>
               </th>
               <td width="1%">{{ i + 1 }}</td>
@@ -103,18 +74,9 @@
 
               <td style="padding-right: 27px">
                 <div class="dropdown">
-                  <img
-                    src="@/assets/img/dots.svg"
-                    style="width: 1.563vw; cursor: pointer"
-                    alt=""
-                  />
+                  <img src="@/assets/img/dots.svg" style="width: 1.563vw; cursor: pointer" alt="" />
                   <div class="dropdown-content">
-                    <a
-                      style="cursor: pointer"
-                      data-bs-toggle="modal"
-                      data-bs-target="#DeleteInv"
-                      >Удалить</a
-                    >
+                    <a style="cursor: pointer" data-bs-toggle="modal" data-bs-target="#DeleteInv">Удалить</a>
                   </div>
                 </div>
               </td>
@@ -122,12 +84,8 @@
           </tbody>
         </table>
       </div>
-      <pagination-component
-        :filteredArr="filteredOrders"
-        :strAmount="10"
-        @PaginationReload="reloadPagination"
-        class="pb-4"
-      ></pagination-component>
+      <pagination-component :filteredArr="filteredOrders" :strAmount="10" @PaginationReload="reloadPagination"
+        class="pb-4"></pagination-component>
     </div>
   </main>
   <the-filter @no-filter="cancelFilters">
@@ -137,21 +95,13 @@
     </div>
     <div class="filters__period">
       <div class="form-group mb-0">
-        <input
-          class="form-control period__s"
-          type="date"
-          id="example-date-input"
-        />
+        <input class="form-control period__s" type="date" id="example-date-input" />
       </div>
       <div>
         <img src="@/assets/img/line.svg" style="width: 1.927vw" alt="" />
       </div>
       <div class="form-group mb-0">
-        <input
-          class="form-control period__s"
-          type="date"
-          id="example-date-input"
-        />
+        <input class="form-control period__s" type="date" id="example-date-input" />
       </div>
     </div>
     <p class="text-start my-2 fw-bold" for="cashier">Кассир</p>
@@ -171,10 +121,7 @@
       <option value=""></option>
     </select>
   </the-filter>
-  <delete-modal
-    :title="'чека'"
-    :text="`чек &quot;Чек №1213215&quot;`"
-  ></delete-modal>
+  <delete-modal :title="'чека'" :text="`чек &quot;Чек №1213215&quot;`"></delete-modal>
 </template>
 
 <script>
@@ -293,21 +240,27 @@ export default {
 .bg-gradient-success {
   background: linear-gradient(135deg, #98ec2d 0%, #17ad37 100%);
 }
+
 .bg-gradient-warning {
   background: linear-gradient(135deg, #f6ca65 0%, #ef8734 100%);
 }
+
 .bg-gradient-danger {
   background: linear-gradient(135deg, #ff667c 0%, #ea0706 100%);
 }
+
 .bg-gradient-primary {
   background: linear-gradient(135deg, #ff0080 0%, #7928ca 100%);
 }
+
 .bg-gradient-info {
   background: linear-gradient(135deg, #b2dbfb 0%, #459cf6 100%);
 }
+
 .form__width {
   width: 15.99vw !important;
 }
+
 .bg-gradient-dark {
   font-weight: 600;
   font-size: 0.729vw;
@@ -348,12 +301,15 @@ td {
 .pagination {
   align-self: end;
 }
+
 .search__adapt__mob {
   display: none;
 }
+
 .period__s {
   width: 191px !important;
 }
+
 .reset__date {
   font-weight: 400;
   font-size: 14px;
@@ -366,6 +322,7 @@ td {
   /* Black for text */
   color: #2d3748;
 }
+
 .filters__period {
   display: flex;
   justify-content: space-between;
@@ -375,23 +332,28 @@ td {
   margin-top: 0.833vw;
   margin-bottom: 0.833vw;
 }
+
 .filters__period__flex {
   display: flex !important;
   justify-content: space-between;
   align-items: center;
 }
+
 @media screen and (max-width: 1600px) {
   .btn {
     font-size: 12px !important;
   }
+
   .search__adapt {
     display: none;
   }
+
   .search__adapt__mob {
     display: contents;
   }
+
   .search__size {
-    width: 240px;
+    width: 322px;
   }
 }
 </style>

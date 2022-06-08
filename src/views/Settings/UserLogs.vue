@@ -62,7 +62,7 @@
                             </table>
                         </div>
                         <pagination-component :filteredArr="filteredList" :strAmount="10"
-                            @PaginationReload="reloadPagination"></pagination-component>
+                            @PaginationReload="reloadPagination" class="pagination__size"></pagination-component>
                     </div>
                 </div>
             </div>
@@ -281,5 +281,11 @@ th {
 
 .form-group {
     text-align: left;
+}
+
+@media screen and (max-width: 1600px) {
+    .pagination__size {
+        padding-top: 50px
+    }
 }
 </style>
