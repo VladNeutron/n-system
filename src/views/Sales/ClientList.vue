@@ -36,7 +36,7 @@
                 </button>
               </div>
               <div class="inv__right__btn gap-3">
-                <list-search></list-search>
+                <list-search @searchFilter="(a) => search = a"></list-search>
                 <print-button></print-button>
                 <download-button></download-button>
               </div>
@@ -268,7 +268,8 @@
       </template>
       <template #footer>
         <div class="clients__footer">
-          <button class="btn clients__save">Сохранить</button>
+          <button class="btn clients__save" v-if="isEdit == 'yes'" data-bs-dismiss="modal">Сохранить</button>
+          <button class="btn clients__save" v-if="isEdit == 'no'" data-bs-dismiss="modal">Добавить</button>
           <button
             class="btn clients__delete"
             data-bs-toggle="modal"

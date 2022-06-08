@@ -484,7 +484,7 @@
       </template>
     </discount-modal>
     <select-product-discount></select-product-discount>
-    <Commentary :pageTitle="'Заказа №2354657'"></Commentary>
+    <Commentary :pageTitle="'Заказ №2354657'"></Commentary>
   </main>
 </template>
 

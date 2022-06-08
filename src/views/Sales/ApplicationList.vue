@@ -41,7 +41,7 @@
                 Создать заявку
               </button>
               <div class="table__inputs d-flex gap-3 align-content-center">
-                <list-search></list-search>
+                <list-search @searchFilter="(a) => search = a"></list-search>
                 <print-button></print-button>
                 <download-button></download-button>
                 <filter-button class="mb-0"></filter-button>
@@ -239,7 +239,10 @@
       </template>
       <template #footer>
         <div class="clients__footer">
-          <button class="btn clients__save">Сохранить</button>
+          <button class="btn clients__save" data-bs-dismiss="modal"  v-if="isEdit == 'no'">Добавить</button>
+        </div>
+        <div class="clients__footer">
+          <button class="btn clients__save" data-bs-dismiss="modal" v-if="isEdit == 'yes'">Сохранить</button>
         </div>
       </template>
     </inputs-modal>
@@ -379,20 +382,20 @@ export default {
           phone: "+7 705 6665599",
           email: "v.kurochkin@gmail.com",
         },
-        {
-          date: "11 ноя, 2021 19:23",
-          fio: "Курочкин Василий Петрович",
-          status: "canceled",
-          phone: "+7 705 6665599",
-          email: "v.kurochkin@gmail.com",
-        },
-        {
-          date: "11 ноя, 2021 19:23",
-          fio: "Курочкин Василий Петрович",
-          status: "new",
-          phone: "+7 705 6665599",
-          email: "v.kurochkin@gmail.com",
-        },
+        // {
+        //   date: "11 ноя, 2021 19:23",
+        //   fio: "Курочкин Василий Петрович",
+        //   status: "canceled",
+        //   phone: "+7 705 6665599",
+        //   email: "v.kurochkin@gmail.com",
+        // },
+        // {
+        //   date: "11 ноя, 2021 19:23",
+        //   fio: "Курочкин Василий Петрович",
+        //   status: "new",
+        //   phone: "+7 705 6665599",
+        //   email: "v.kurochkin@gmail.com",
+        // },
         {
           date: "11 ноя, 2021 19:23",
           fio: "Курочкин Василий Петрович",
@@ -411,6 +414,7 @@ export default {
       filterStatusSelect: [],
       filterClient: "",
       paginationList: [],
+      search: '',
     };
   },
   methods: {
@@ -459,6 +463,8 @@ export default {
             ? this.filterStatusSelect.includes(order.status)
             : true) &&
           (this.filterClient === "" ? true : order.fio === this.filterClient)
+          && 
+            (String(order.fio).toLowerCase().includes(String(this.search).toLowerCase()))
       );
     },
     paginationAmount() {
@@ -663,5 +669,13 @@ td {
   display: flex !important;
   justify-content: space-between;
   align-items: flex-end;
+}
+.main__card{
+  height: 80vh;
+}
+@media screen and (max-width: 1600px){
+  .main__card{
+    height: 75vh;
+  }
 }
 </style>

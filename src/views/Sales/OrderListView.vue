@@ -1202,7 +1202,7 @@ export default {
   watch:{
     search: {
       handler(newq){
-        console.log(this.search)
+        // console.log(this.search)
       }
     }
   }
