@@ -15,12 +15,12 @@
             <div class="drop__buttons">
               <comment-button style="margin-right: 24px"></comment-button>
               <action-button style="margin-right: 24px"></action-button>
-              <button class="btn save__btn">Сохранить</button>
+              <button class="btn save__btn" onclick="window.location.href = '/sales/order-list'">Сохранить</button>
             </div>
           </div>
           <div class="order__body">
             <div class="row">
-              <div class="col-8">
+              <div class="col-9">
                 <div class="order__body__content">
                   <div class="order__first__row">
                     <div class="form-group">
@@ -167,7 +167,7 @@
                 </div>
               </div>
 
-              <div class="col-4">
+              <div class="col-3">
                 <div class="order__ready">
                   <div class="order__ready__content">
                     <div class="form-group">
@@ -241,7 +241,7 @@
                   /></span>
                 </div>
               </div>
-              <button class="btn barcode__btn">Выбрать из списка</button>
+              <button class="btn barcode__btn" data-bs-toggle="modal" data-bs-target="#SelectDisc">Выбрать из списка</button>
             </div>
             <div class="search">
               <button
@@ -275,7 +275,7 @@
                 Для того чтобы создать возврат, необходимо<br />
                 выбрать товары из списка
               </p>
-              <button class="btn btn__chose">Выбрать из списка</button>
+              <button class="btn btn__chose" data-bs-toggle="modal" data-bs-target="#SelectDisc">Выбрать из списка</button>
             </div>
           </div>
           <div class="order__table__body" v-else>
@@ -401,6 +401,8 @@
         </div>
       </template></InputsModal
     >
+    <commentary :pageTitle="'Создание возврата'"></commentary>
+    <select-product-discount></select-product-discount>
   </main>
 </template>
 
@@ -535,7 +537,7 @@
 }
 
 .five__s {
-  width: 19.531vw !important;
+  width: 15.531vw !important;
 }
 
 .accept__btn {
@@ -866,7 +868,7 @@
   background: #f8f9fa;
   border-radius: 12px;
   padding: 0.833vw 1.25vw 0.833vw 1.25vw;
-  width: 57.031vw;
+  /* width: 57.031vw; */
 }
 
 .form-group {
@@ -880,8 +882,8 @@
 }
 
 .order__ready {
-  margin-left: 40px;
-  width: 22.031vw;
+  /* margin-left: 40px; */
+  /* width: 22.031vw; */
   background: #f8f9fa;
   border-radius: 12px;
   padding: 0.833vw 1.25vw 0.833vw 1.25vw;
@@ -947,10 +949,14 @@ td {
 <script>
 import InputsModal from "@/components/InputsModal.vue";
 import DiscountModal from "@/components/DiscountModal.vue";
+import SelectProductDiscount from "@/components/SelectProductDiscount.vue";
+import Commentary from "@/components/Commentary.vue";
 export default {
   components: {
     DiscountModal,
     InputsModal,
+    SelectProductDiscount,
+    Commentary
   },
   methods: {
     test() {

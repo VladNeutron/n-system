@@ -19,7 +19,7 @@
           </div> -->
           <div class="card py-4 main__card">
             <div
-              class="d-flex justify-content-between align-items-center mx-4 mb-4"
+              class="d-flex justify-content-between align-items-center mx-4 mb-2"
             >
               <router-link :to="{ name: 'create-return' }">
                 <!-- <button
@@ -36,7 +36,7 @@
                 </button>
               </router-link>
               <div class="table__inputs d-flex gap-3 align-content-center">
-                <list-search></list-search>
+                <list-search @searchFilter="(a) => search = a"></list-search>
                 <print-button></print-button>
                 <download-button></download-button>
                 <filter-button class="mb-0"></filter-button>
@@ -65,7 +65,7 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr v-for="(order, i) of filteredOrders" :key="order.id">
+                    <tr v-for="(order, i) of paginationList" :key="order.id">
                       <th scope="row">
                         <div class="form-check mb-0 ms-2">
                           <input
@@ -204,7 +204,7 @@ export default {
       buttonText: "",
       orders: [
         {
-          id: 12132145,
+          id: 1,
           date: "11 ноя, 2021 19:23",
           warehouse: "что-там",
           responsible: "Тихонова А.Р",
@@ -215,7 +215,7 @@ export default {
           sum: 12000,
         },
         {
-          id: 12132145,
+          id: 2,
           date: "11 ноя, 2021 19:23",
           warehouse: "где-то-там",
           responsible: "Тихонова А.Р",
@@ -226,7 +226,7 @@ export default {
           sum: 12000,
         },
         {
-          id: 32132312,
+          id: 3,
           date: "11 ноя, 2021 19:23",
           warehouse: "Киров",
           responsible: "Тихонова А.Р",
@@ -237,7 +237,7 @@ export default {
           sum: 12000,
         },
         {
-          id: 54354536,
+          id: 4,
           date: "11 ноя, 2021 19:23",
           responsible: "Тихонова А.Р",
           warehouse: "что-там",
@@ -248,7 +248,7 @@ export default {
           sum: 12000,
         },
         {
-          id: 12312556,
+          id: 5,
           date: "11 ноя, 2021 19:23",
           warehouse: "Алматы",
           responsible: "Тихонова А.Р",
@@ -259,7 +259,7 @@ export default {
           sum: 12000,
         },
         {
-          id: 442142132,
+          id: 6,
           date: "11 ноя, 2021 19:23",
           warehouse: "что-там",
           responsible: "Тихонова А.Р",
@@ -270,7 +270,95 @@ export default {
           sum: 12000,
         },
         {
-          id: 5426534654,
+          id: 7,
+          date: "11 ноя, 2021 19:23",
+          warehouse: "что-там",
+          responsible: "Тихонова А.Р",
+          status: "processed",
+          client: "Мария Калашникова",
+          type: "Создан вручную",
+          amount: 8,
+          sum: 12000,
+        },
+        {
+          id: 8,
+          date: "11 ноя, 2021 19:23",
+          warehouse: "что-там",
+          responsible: "Тихонова А.Р",
+          status: "processed",
+          client: "Мария Калашникова",
+          type: "Создан вручную",
+          amount: 8,
+          sum: 12000,
+        },
+        {
+          id: 9,
+          date: "11 ноя, 2021 19:23",
+          warehouse: "что-там",
+          responsible: "Тихонова А.Р",
+          status: "processed",
+          client: "Мария Калашникова",
+          type: "Создан вручную",
+          amount: 8,
+          sum: 12000,
+        },
+        {
+          id: 10,
+          date: "11 ноя, 2021 19:23",
+          warehouse: "что-там",
+          responsible: "Тихонова А.Р",
+          status: "processed",
+          client: "Мария Калашникова",
+          type: "Создан вручную",
+          amount: 8,
+          sum: 12000,
+        },
+        {
+          id: 11,
+          date: "11 ноя, 2021 19:23",
+          warehouse: "что-там",
+          responsible: "Тихонова А.Р",
+          status: "processed",
+          client: "Мария Калашникова",
+          type: "Создан вручную",
+          amount: 8,
+          sum: 12000,
+        },
+        {
+          id: 12,
+          date: "11 ноя, 2021 19:23",
+          warehouse: "что-там",
+          responsible: "Тихонова А.Р",
+          status: "processed",
+          client: "Мария Калашникова",
+          type: "Создан вручную",
+          amount: 8,
+          sum: 12000,
+        },
+        {
+          id: 13,
+          date: "11 ноя, 2021 19:23",
+          warehouse: "что-там",
+          responsible: "Тихонова А.Р",
+          status: "processed",
+          client: "Мария Калашникова",
+          type: "Создан вручную",
+          amount: 8,
+          sum: 12000,
+        },
+        {
+          id: 14,
+          date: "11 ноя, 2021 19:23",
+          warehouse: "что-там",
+          responsible: "Тихонова А.Р",
+          status: "processed",
+          client: "Мария Калашникова",
+          type: "Создан вручную",
+          amount: 8,
+          sum: 12000,
+        },
+        {
+          id: 15,
           date: "11 ноя, 2021 19:23",
           warehouse: "что-там",
           responsible: "Тихонова А.Р",
@@ -281,11 +369,13 @@ export default {
           sum: 12000,
         },
       ],
+      paginationList: [],
       filterStatusSelect: [],
       filterResponsible: "",
       filterClient: "",
       filterOrderType: "",
       filterWarehouse: "",
+      search: '',
     };
   },
   methods: {
@@ -361,7 +451,8 @@ export default {
             : order.client === this.filterClient) &&
           (this.filterOrderType === ""
             ? true
-            : order.type === this.filterOrderType)
+            : order.type === this.filterOrderType) && 
+            (String(order.id).includes(String(this.search).toLowerCase()))
       );
     },
     paginationAmount() {
@@ -473,7 +564,7 @@ export default {
 }
 
 .main__card {
-  max-height: 80vh;
+  height: 80vh;
 }
 th {
   color: #2d3748;
@@ -515,6 +606,19 @@ th {
 }
 .btn__return__new {
   height: 40px;
+}
+@media screen and (max-width: 1600px) {
+  .main__card{
+    height: 75vh;
+    padding-top: 1rem !important;
+    padding-bottom: 1rem !important;
+  }
+  .table-wrapper{
+    height: 57vh;
+  }
+  .btn{
+    padding: 0.45rem 1.5rem;
+  }
 }
 </style>
 
