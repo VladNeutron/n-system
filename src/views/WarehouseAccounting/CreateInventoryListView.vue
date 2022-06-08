@@ -15,44 +15,8 @@
                   </p>
                 </div>
                 <div class="drop__buttons">
-                  <div class="dropdown">
-                    <button
-                      class="btn action"
-                      type="button"
-                      id="dropdownMenuButton"
-                      data-bs-toggle="dropdown"
-                      aria-expanded="false"
-                    >
-                      <img
-                        src="@/assets/img/action.svg"
-                        style="width: 1.042vw; margin-right: 0.417vw"
-                        alt=""
-                      />
-                      Действия
-                    </button>
-                    <ul
-                      class="dropdown-menu"
-                      aria-labelledby="dropdownMenuButton"
-                    >
-                      <li>
-                        <a class="dropdown-item" href="javascript:;">Печать</a>
-                      </li>
-                      <li>
-                        <a class="dropdown-item" href="javascript:;">Скачать</a>
-                      </li>
-                      <li>
-                        <a class="dropdown-item" href="javascript:;">Удалить</a>
-                      </li>
-                    </ul>
-                  </div>
-                  <button class="btn comment mb-0 ms-3">
-                    <img
-                      src="@/assets/img/comment.svg"
-                      style="width: 1.042vw; margin-right: 0.417vw"
-                      alt=""
-                    />
-                    Комментарии <span class="count">4</span>
-                  </button>
+                  <action-button style="margin-right:24px;"></action-button>
+                  <comment-button></comment-button>
                 </div>
               </div>
             </template>
@@ -62,29 +26,17 @@
                   <p class="items__title">№ инвентаризации</p>
                   <p class="items__text">№ 19</p>
                 </div>
-                <div
-                  class="items__block"
-                  data-bs-toggle="modal"
-                  data-bs-target="#InpModal"
-                  style="cursor: pointer"
-                >
+                <div class="items__block" data-bs-toggle="modal" data-bs-target="#InpModal" style="cursor: pointer">
                   <p class="items__title">дата и время</p>
                   <p class="items__text">11 ноя, 19:23, 2021</p>
                 </div>
                 <div class="items__block">
                   <p class="items__title">Склад</p>
                   <div class="dropdown">
-                    <p
-                      class="items__tex items__flex items__text"
-                      style="cursor: pointer"
-                    >
+                    <p class="items__tex items__flex items__text" style="cursor: pointer">
                       ТРЦ Москва
-                      <img
-                        src="@/assets/img/down.svg"
-                        class="rotate"
-                        style="width: 0.729vw; margin-left: 0.417vw"
-                        alt=""
-                      />
+                      <img src="@/assets/img/down.svg" class="rotate" style="width: 0.729vw; margin-left: 0.417vw"
+                        alt="" />
                     </p>
                     <div class="dropdown-content">
                       <a style="cursor: pointer">ТЦ Европейский</a>
@@ -99,12 +51,8 @@
                   <div class="dropdown">
                     <p class="items__text items__flex" style="cursor: pointer">
                       Тихонов Александр
-                      <img
-                        src="@/assets/img/down.svg"
-                        class="rotate"
-                        style="width: 0.729vw; margin-left: 0.417vw"
-                        alt=""
-                      />
+                      <img src="@/assets/img/down.svg" class="rotate" style="width: 0.729vw; margin-left: 0.417vw"
+                        alt="" />
                     </p>
                     <div class="dropdown-content">
                       <a style="cursor: pointer">Антон</a>
@@ -127,48 +75,26 @@
           </drop-down>
           <div class="card pl-pr">
             <div class="main-page text-start">
-              <label
-                class="form-control-label ps-3 pt-3 addBarcodeLabel"
-                for="search"
-                >Добавить по штрихкоду</label
-              >
+              <label class="form-control-label ps-3 pt-3 addBarcodeLabel" for="search">Добавить по штрихкоду</label>
               <div class="d-flex justify-content-between ps-3">
                 <div class="page_search-inputs d-flex align-items-center gap-3">
                   <div class="form-group m-0">
                     <div class="input-group mt form__adapt2">
-                      <span class="input-group-text"
-                        ><img src="@/assets/css/icons/searchIcon.svg" alt=""
-                      /></span>
-                      <input
-                        class="form-control"
-                        placeholder="Введите штрихкод"
-                        id="search-barcode"
-                        type="text"
-                      />
-                      <span class="input-group-text py-0"
-                        ><img src="@/assets/css/icons/barcode.svg" alt=""
-                      /></span>
+                      <span class="input-group-text"><img src="@/assets/css/icons/searchIcon.svg" alt="" /></span>
+                      <input class="form-control" placeholder="Введите штрихкод" id="search-barcode" type="text" />
+                      <span class="input-group-text py-0"><img src="@/assets/css/icons/barcode.svg" alt="" /></span>
                     </div>
                   </div>
-                  <button class="btn bg-gradient-info mb-0">
+                  <button class="btn bg-gradient-info mb-0" data-bs-toggle="modal" data-bs-target="#SelectDisc">
                     Выбрать из списка
                   </button>
                 </div>
                 <div class="d-flex justify-content-between ps-3 pe-4">
-                  <div
-                    class="page_search-inputs d-flex align-items-center gap-3"
-                  >
+                  <div class="page_search-inputs d-flex align-items-center gap-3">
                     <div class="form-group m-0">
                       <div class="input-group form__adapt">
-                        <span class="input-group-text"
-                          ><img src="@/assets/css/icons/searchIcon.svg" alt=""
-                        /></span>
-                        <input
-                          class="form-control"
-                          placeholder="Поиск..."
-                          id="search"
-                          type="text"
-                        />
+                        <span class="input-group-text"><img src="@/assets/css/icons/searchIcon.svg" alt="" /></span>
+                        <input class="form-control" placeholder="Поиск..." id="search" type="text" />
                       </div>
                     </div>
                     <button class="btn bg-gradient-dark mb-0">
@@ -203,12 +129,8 @@
                           <td>{{ item.price }} <span>₸</span></td>
                           <td>{{ item.count * item.price }} <span>₸</span></td>
                           <td>
-                            <img
-                              src="@/assets/img/dots.svg"
-                              style="width: 1.563vw; cursor: pointer
-                              transform: rotate(40deg)"
-                              alt=""
-                            />
+                            <img src="@/assets/img/dots.svg" style="width: 1.563vw; cursor: pointer
+                              transform: rotate(40deg)" alt="" />
                           </td>
                         </tr>
                       </tbody>
@@ -216,12 +138,8 @@
                   </div>
                 </div>
               </div>
-              <pagination-component
-                :filteredArr="items"
-                :strAmount="7"
-                @PaginationReload="reloadPagination"
-                class="pb-4"
-              ></pagination-component>
+              <pagination-component :filteredArr="items" :strAmount="7" @PaginationReload="reloadPagination"
+                class="pb-4 pagination__size"></pagination-component>
             </div>
           </div>
         </div>
@@ -237,15 +155,9 @@
       <template #body>
         <div class="clients__modal">
           <div class="form-group text-start">
-            <label for="example-datetime-local-input" class="form-control-label"
-              >Выберите дату и время</label
-            >
-            <input
-              class="form-control"
-              type="datetime-local"
-              value="2018-11-23T10:30:00"
-              id="example-datetime-local-input"
-            />
+            <label for="example-datetime-local-input" class="form-control-label">Выберите дату и время</label>
+            <input class="form-control" type="datetime-local" value="2018-11-23T10:30:00"
+              id="example-datetime-local-input" />
           </div>
         </div>
       </template>
@@ -255,10 +167,14 @@
         </div>
       </template>
     </inputs-modal>
+    <select-product-discount></select-product-discount>
+    <commentary></commentary>
   </main>
 </template>
 
 <script>
+import Commentary from "@/components/Commentary.vue";
+import SelectProductDiscount from "@/components/SelectProductDiscount.vue";
 import InputsModal from "@/components/InputsModal.vue";
 export default {
   methods: {
@@ -266,7 +182,7 @@ export default {
       this.paginationList = arr;
     },
   },
-  components: { InputsModal },
+  components: { InputsModal, SelectProductDiscount, Commentary },
   data() {
     return {
       paginationList: [],
@@ -344,10 +260,12 @@ export default {
 .inv__content {
   height: 18.7vw;
 }
+
 .bg-gradient-dark {
   font-weight: 500;
   font-size: 14px;
 }
+
 .clients__save {
   background: linear-gradient(81.62deg, #313860 2.25%, #151928 79.87%);
   box-shadow: 0px 4px 7px -1px rgba(0, 0, 0, 0.11),
@@ -359,11 +277,13 @@ export default {
   font-size: 0.833vw;
   color: #ffffff;
 }
+
 .dropdown__sec {
   font-weight: 400;
   font-size: 0.729vw;
   color: #a0aec0;
 }
+
 .dropdown__title {
   font-weight: 600;
   font-size: 1.25vw;
@@ -371,11 +291,13 @@ export default {
   text-align: left;
   margin: 0;
 }
+
 .dropdown-item {
   font-weight: 400;
   font-size: 0.729vw;
   color: #2d3748;
 }
+
 .count {
   position: absolute;
   background: #eb5757;
@@ -387,6 +309,7 @@ export default {
   left: 7.708vw;
   top: -0.26vw;
 }
+
 .comment {
   position: relative;
   display: flex;
@@ -401,6 +324,7 @@ export default {
   margin-right: 1.25vw;
   text-transform: none;
 }
+
 .action {
   display: flex;
   border: 1px solid #2d3748;
@@ -413,18 +337,22 @@ export default {
   color: #2d3748;
   text-transform: none;
 }
+
 .drop__buttons {
   display: flex;
 }
+
 .drop__header {
   display: flex;
   justify-content: space-between;
 }
-.pagination.pagination-info .page-item.active > .page-link,
-.pagination.pagination-info .page-item.active > .page-link:focus,
-.pagination.pagination-info .page-item.active > .page-link:hover {
+
+.pagination.pagination-info .page-item.active>.page-link,
+.pagination.pagination-info .page-item.active>.page-link:focus,
+.pagination.pagination-info .page-item.active>.page-link:hover {
   background-image: linear-gradient(83.56deg, #7092e0 10.01%, #8baef3 75.36%);
 }
+
 .bg-gradient-info {
   background: linear-gradient(83.56deg, #7092e0 10.01%, #8baef3 75.36%);
   box-shadow: 0px 4px 6px -1px rgba(0, 0, 0, 0.12),
@@ -433,27 +361,34 @@ export default {
   font-weight: 500;
   font-size: 14px;
 }
+
 .btn {
   height: 40px;
 }
+
 .pl-pr {
   /* margin-left: 1.146vw; */
   margin-top: 1.094vw;
   /* margin-right: 3.385vw; */
 }
+
 .page__search-inputs {
   gap: 1.042vw;
 }
+
 .badge {
   top: -19px;
   right: -25px;
 }
+
 .align-self-start {
   align-self: flex-start;
 }
+
 .pagination {
   padding-right: 1.354vw;
 }
+
 .buttons__panel button {
   display: flex;
   justify-content: space-between;
@@ -461,48 +396,65 @@ export default {
   align-items: center;
   gap: 5px;
 }
+
 .pagination-info {
   margin-bottom: 0;
 }
+
 .dropdown__items {
   padding: 20px;
 }
+
 .addBarcodeLabel {
   font-weight: 600;
   font-size: 14px;
 }
+
 @media screen and (max-width: 1600px) {
+  .pagination__size {
+    padding-top: 24px;
+  }
+
   .btn {
     font-size: 12px !important;
   }
+
   td,
   th {
     font-size: 12px;
   }
+
   .items__text {
     font-size: 12px;
   }
+
   .items__title {
     font-size: 12px;
   }
+
   .form__adapt {
     width: 120px;
   }
+
   .form__adapt2 {
     width: 225px;
   }
+
   .comment,
   .action,
   .drowdown__items {
     align-items: center;
   }
+
   .count {
     left: 8.708vw;
     top: -0.26vw;
   }
+
   .dropdown__title {
     font-size: 20px;
   }
+
   .dropdown__sec {
     font-size: 12px;
   }
