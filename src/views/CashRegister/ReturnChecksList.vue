@@ -11,10 +11,7 @@
     <div class="card pt-4 pb-6 m-4">
       <div class="d-flex justify-content-between align-items-center mx-4 mb-4">
         <div>
-          <button
-            class="btn bg-gradient-dark mb-0"
-            style="margin-right: 0.833vw"
-          >
+          <button class="btn bg-gradient-dark mb-0" style="margin-right: 0.833vw">
             <img src="@/assets/img/whtplus.svg" alt="" /> Оформить возврат
           </button>
           <button class="btn bg-gradient-dark mb-0">
@@ -24,15 +21,8 @@
         <div class="table__inputs d-flex gap-3 align-content-center">
           <div class="form-group m-0 search__adapt">
             <div class="input-group">
-              <span class="input-group-text"
-                ><img src="@/assets/css/icons/searchIcon.svg" alt=""
-              /></span>
-              <input
-                class="form-control form__width"
-                placeholder="Поиск..."
-                id="search"
-                type="text"
-              />
+              <span class="input-group-text"><img src="@/assets/css/icons/searchIcon.svg" alt="" /></span>
+              <input class="form-control form__width" placeholder="Поиск..." id="search" type="text" />
             </div>
           </div>
           <print-button></print-button>
@@ -43,15 +33,8 @@
       <div style="margin-left: 25px">
         <div class="form-group m-0 search__adapt__mob">
           <div class="input-group mt-1 search__size">
-            <span class="input-group-text"
-              ><img src="@/assets/css/icons/searchIcon.svg" alt=""
-            /></span>
-            <input
-              class="form-control form__width"
-              placeholder="Поиск..."
-              id="search"
-              type="text"
-            />
+            <span class="input-group-text"><img src="@/assets/css/icons/searchIcon.svg" alt="" /></span>
+            <input class="form-control form__width" placeholder="Поиск..." id="search" type="text" />
           </div>
         </div>
       </div>
@@ -75,12 +58,7 @@
             <tr v-for="(order, i) of paginationList" :key="order.id">
               <th scope="row">
                 <div class="form-check">
-                  <input
-                    class="form-check-input"
-                    type="checkbox"
-                    value=""
-                    id="fcustomCheck1"
-                  />
+                  <input class="form-check-input" type="checkbox" value="" id="fcustomCheck1" />
                 </div>
               </th>
               <th width="1%">{{ i + 1 }}</th>
@@ -95,18 +73,9 @@
 
               <td>
                 <div class="dropdown">
-                  <img
-                    src="@/assets/img/dots.svg"
-                    style="width: 1.563vw; cursor: pointer"
-                    alt=""
-                  />
+                  <img src="@/assets/img/dots.svg" style="width: 1.563vw; cursor: pointer" alt="" />
                   <div class="dropdown-content">
-                    <a
-                      style="cursor: pointer"
-                      data-bs-toggle="modal"
-                      data-bs-target="#DeleteInv"
-                      >Удалить</a
-                    >
+                    <a style="cursor: pointer" data-bs-toggle="modal" data-bs-target="#DeleteInv">Удалить</a>
                   </div>
                 </div>
               </td>
@@ -114,12 +83,8 @@
           </tbody>
         </table>
       </div>
-      <pagination-component
-        :filteredArr="filteredOrders"
-        :strAmount="10"
-        @PaginationReload="reloadPagination"
-        class="pb-4"
-      ></pagination-component>
+      <pagination-component :filteredArr="filteredOrders" :strAmount="10" @PaginationReload="reloadPagination"
+        class="pb-4"></pagination-component>
     </div>
     <the-filter @no-filter="cancelFilters">
       <div class="filters__period__flex">
@@ -128,21 +93,13 @@
       </div>
       <div class="filters__period">
         <div class="form-group mb-0">
-          <input
-            class="form-control period__s"
-            type="date"
-            id="example-date-input"
-          />
+          <input class="form-control period__s" type="date" id="example-date-input" />
         </div>
         <div>
           <img src="@/assets/img/line.svg" style="width: 1.927vw" alt="" />
         </div>
         <div class="form-group mb-0">
-          <input
-            class="form-control period__s"
-            type="date"
-            id="example-date-input"
-          />
+          <input class="form-control period__s" type="date" id="example-date-input" />
         </div>
       </div>
       <p class="text-start my-2 fw-bold" for="cashier">Кассир</p>
@@ -162,10 +119,7 @@
         <option value=""></option>
       </select>
     </the-filter>
-    <delete-modal
-      :title="'возврата'"
-      :text="`чек возврата &quot;Чек №1213215&quot;`"
-    ></delete-modal>
+    <delete-modal :title="'возврата'" :text="`чек возврата &quot;Чек №1213215&quot;`"></delete-modal>
   </main>
 </template>
 
@@ -275,6 +229,7 @@ export default {
 .form__width {
   width: 15.99vw !important;
 }
+
 .bg-gradient-dark {
   font-weight: 600;
   font-size: 0.729vw;
@@ -315,21 +270,26 @@ td {
 .pagination {
   align-self: end;
 }
+
 .search__adapt__mob {
   display: none;
 }
+
 @media screen and (max-width: 1600px) {
   .btn {
     font-size: 12px !important;
   }
+
   .search__adapt {
     display: none;
   }
+
   .search__adapt__mob {
     display: contents;
   }
+
   .search__size {
-    width: 240px;
+    width: 322px;
   }
 }
 </style>

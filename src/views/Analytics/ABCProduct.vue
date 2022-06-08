@@ -2,9 +2,7 @@
   <the-navbar></the-navbar>
   <main class="main-content border-radius-lg main__padding">
     <the-header></the-header>
-    <div
-      class="page__name d-flex align-items-center ms-4 justify-content-between"
-    >
+    <div class="page__name d-flex align-items-center ms-4 justify-content-between">
       <div class="page__name-title text-start">
         <h3>Куртка зеленая</h3>
         <p class="mb-0">Внесите изменения и не забудьте нажать “Сохранить”</p>
@@ -20,69 +18,36 @@
             </div>
             <div class="filters__period">
               <div class="form-group">
-                <input
-                  class="form-control data__size"
-                  type="date"
-                  id="example-date-input"
-                />
+                <input class="form-control data__size" type="date" id="example-date-input" />
               </div>
               <div>
-                <img
-                  src="@/assets/img/line.svg"
-                  style="width: 1.927vw"
-                  alt=""
-                />
+                <img src="@/assets/img/line.svg" style="width: 1.927vw" alt="" />
               </div>
               <div class="form-group">
-                <input
-                  class="form-control data__size"
-                  type="date"
-                  id="example-date-input"
-                />
+                <input class="form-control data__size" type="date" id="example-date-input" />
               </div>
             </div>
           </div>
           <div class="mt-3 buttons__pc" style="margin-left: 1.25vw">
-            <button
-              class="btn first__btn mb-0"
-              :class="{ active1: isActive == 1 }"
-              @click="isActive = 1"
-            >
+            <button class="btn first__btn mb-0" :class="{ active1: isActive == 1 }" @click="isActive = 1">
               Квартал
             </button>
-            <button
-              class="btn second__btn mb-0"
-              :class="{ active2: isActive == 2 }"
-              @click="isActive = 2"
-            >
+            <button class="btn second__btn mb-0" :class="{ active2: isActive == 2 }" @click="isActive = 2">
               Полугодие
             </button>
-            <button
-              class="btn third__btn mb-0"
-              :class="{ active3: isActive == 3 }"
-              @click="isActive = 3"
-            >
+            <button class="btn third__btn mb-0" :class="{ active3: isActive == 3 }" @click="isActive = 3">
               Год
             </button>
           </div>
         </div>
-        <div
-          class="table__inputs d-flex gap-3 align-items-end"
-          style="margin-top: -20px"
-        >
+        <div class="table__inputs d-flex gap-3 align-items-end" style="margin-top: -20px">
           <div class="form-group m-0 form__pc" style="text-align: left">
             <label for="search">Поиск товаров</label>
             <div class="input-group mt-0">
-              <span class="input-group-text"
-                ><img src="@/assets/css/icons/searchIcon.svg" alt="" />
+              <span class="input-group-text"><img src="@/assets/css/icons/searchIcon.svg" alt="" />
               </span>
-              <input
-                class="form-control form__size"
-                placeholder="Поиск..."
-                id="search"
-                type="text"
-                v-model.trim="search"
-              />
+              <input class="form-control form__size" placeholder="Поиск..." id="search" type="text"
+                v-model.trim="search" />
             </div>
           </div>
           <export2-button></export2-button>
@@ -92,38 +57,20 @@
       <div class="d-flex" style="margin-left: 25px">
         <div class="form-group m-0 form__mob" style="text-align: left">
           <div class="input-group mt-1 form__mob__width">
-            <span class="input-group-text"
-              ><img src="@/assets/css/icons/searchIcon.svg" alt="" />
+            <span class="input-group-text"><img src="@/assets/css/icons/searchIcon.svg" alt="" />
             </span>
-            <input
-              class="form-control form__size"
-              placeholder="Поиск..."
-              id="search"
-              type="text"
-              v-model.trim="search"
-            />
+            <input class="form-control form__size" placeholder="Поиск..." id="search" type="text"
+              v-model.trim="search" />
           </div>
         </div>
         <div class="mt-2 buttons__mob" style="margin-left: 1.25vw">
-          <button
-            class="btn first__btn mb-0"
-            :class="{ active1: isActive == 1 }"
-            @click="isActive = 1"
-          >
+          <button class="btn first__btn mb-0" :class="{ active1: isActive == 1 }" @click="isActive = 1">
             Квартал
           </button>
-          <button
-            class="btn second__btn mb-0"
-            :class="{ active2: isActive == 2 }"
-            @click="isActive = 2"
-          >
+          <button class="btn second__btn mb-0" :class="{ active2: isActive == 2 }" @click="isActive = 2">
             Полугодие
           </button>
-          <button
-            class="btn third__btn mb-0"
-            :class="{ active3: isActive == 3 }"
-            @click="isActive = 3"
-          >
+          <button class="btn third__btn mb-0" :class="{ active3: isActive == 3 }" @click="isActive = 3">
             Год
           </button>
         </div>
@@ -167,12 +114,8 @@
           </tbody>
         </table>
       </div>
-      <pagination-component
-        :filteredArr="orders"
-        :strAmount="8"
-        @PaginationReload="reloadPagination"
-        class="pb-2"
-      ></pagination-component>
+      <pagination-component :filteredArr="orders" :strAmount="8" @PaginationReload="reloadPagination" class="pb-2">
+      </pagination-component>
     </div>
   </main>
 </template>
@@ -361,12 +304,11 @@ export default {
   color: #2d3748;
   text-align: left;
 }
+
 .active3 {
-  background: linear-gradient(
-    83.56deg,
-    #7092e0 10.01%,
-    #8baef3 75.36%
-  ) !important;
+  background: linear-gradient(83.56deg,
+      #7092e0 10.01%,
+      #8baef3 75.36%) !important;
   border-radius: 0px 8px 8px 0px !important;
   font-weight: 600 !important;
   font-size: 14px !important;
@@ -374,11 +316,9 @@ export default {
 }
 
 .active2 {
-  background: linear-gradient(
-    83.56deg,
-    #7092e0 10.01%,
-    #8baef3 75.36%
-  ) !important;
+  background: linear-gradient(83.56deg,
+      #7092e0 10.01%,
+      #8baef3 75.36%) !important;
   border-radius: 0px 0px 0px 0px !important;
   font-weight: 600 !important;
   font-size: 14px !important;
@@ -386,11 +326,9 @@ export default {
 }
 
 .active1 {
-  background: linear-gradient(
-    83.56deg,
-    #7092e0 10.01%,
-    #8baef3 75.36%
-  ) !important;
+  background: linear-gradient(83.56deg,
+      #7092e0 10.01%,
+      #8baef3 75.36%) !important;
   border-radius: 8px 0px 0px 8px !important;
   font-weight: 600 !important;
   font-size: 14px !important;
@@ -480,39 +418,49 @@ export default {
   text-decoration: underline;
   cursor: pointer;
 }
+
 .form__mob,
 .buttons__mob {
   display: none;
 }
+
 .page__table {
   height: 27.3vw;
 }
+
 @media screen and (max-width: 1600px) {
   .btn {
     font-size: 12px !important;
   }
+
   .form__pc,
   .buttons__pc {
     display: none;
   }
+
   .form__mob,
   .buttons__mob {
     display: contents;
   }
+
   .form__mob__width {
-    width: 235px !important;
+    width: 413px !important;
   }
+
   .active1,
   .active2 {
     font-size: 12px !important;
     font-weight: 400 !important;
   }
+
   .first__btn {
     margin-left: 25px;
   }
+
   .data__size {
     height: 46px !important;
   }
+
   .page__table::-webkit-scrollbar {
     background: #e2e8f0;
     border-radius: 0.78vw;

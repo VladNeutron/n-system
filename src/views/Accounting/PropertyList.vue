@@ -12,26 +12,14 @@
             </template>
           </lists-header>
           <div class="card pt-4 pb-6">
-            <div
-              class="d-flex justify-content-between align-items-center mx-4 mb-4"
-            >
+            <div class="d-flex justify-content-between align-items-center mx-4 mb-4">
               <div>
-                <button
-                  class="btn bg-gradient-dark mb-0"
-                  style="
+                <button class="btn bg-gradient-dark mb-0" style="
                     margin-right: 0.833vw;
                     display: flex;
                     align-items: center;
-                  "
-                  data-bs-toggle="modal"
-                  data-bs-target="#InpModal"
-                  @click="isEdit = 'no'"
-                >
-                  <img
-                    src="@/assets/img/whtplus.svg"
-                    style="margin-right: 10px"
-                    alt=""
-                  />
+                  " data-bs-toggle="modal" data-bs-target="#InpModal" @click="isEdit = 'no'">
+                  <img src="@/assets/img/whtplus.svg" style="margin-right: 10px" alt="" />
                   Добавить имущество
                 </button>
               </div>
@@ -54,37 +42,20 @@
                     <td>{{ order.type }}</td>
                     <td>{{ order.price }} ₸</td>
                     <td class="dropdown">
-                      <img
-                        src="@/assets/img/dots.svg"
-                        style="width: 1.563vw; cursor: pointer"
-                        alt=""
-                      />
+                      <img src="@/assets/img/dots.svg" style="width: 1.563vw; cursor: pointer" alt="" />
                       <div class="dropdown-content">
-                        <a
-                          style="cursor: pointer"
-                          data-bs-toggle="modal"
-                          data-bs-target="#InpModal"
-                          @click="isEdit = 'yes'"
-                          >Редактировать</a
-                        >
+                        <a style="cursor: pointer" data-bs-toggle="modal" data-bs-target="#InpModal"
+                          @click="isEdit = 'yes'">Редактировать</a>
                         <hr />
-                        <a
-                          style="cursor: pointer"
-                          data-bs-toggle="modal"
-                          data-bs-target="#DeleteInv"
-                          >Удалить</a
-                        >
+                        <a style="cursor: pointer" data-bs-toggle="modal" data-bs-target="#DeleteInv">Удалить</a>
                       </div>
                     </td>
                   </tr>
                 </tbody>
               </table>
             </div>
-            <pagination-component
-              :filteredArr="orders"
-              :strAmount="10"
-              @PaginationReload="reloadPagination"
-            ></pagination-component>
+            <pagination-component :filteredArr="orders" :strAmount="10" @PaginationReload="reloadPagination"
+              class="pagination__size"></pagination-component>
           </div>
         </div>
       </div>
@@ -105,22 +76,11 @@
       <template #body>
         <div class="clients__modal" v-if="isEdit == 'no'">
           <div class="form-group">
-            <label
-              for="example-text-input"
-              class="form-control-label custom__label"
-              >Название</label
-            >
-            <input
-              class="form-control"
-              type="text"
-              placeholder="Введите название"
-              id="example-text-input"
-            />
+            <label for="example-text-input" class="form-control-label custom__label">Название</label>
+            <input class="form-control" type="text" placeholder="Введите название" id="example-text-input" />
           </div>
           <div class="form-group">
-            <label class="form-control-label custom__label" for="Статус заявки"
-              >Тип имущества</label
-            >
+            <label class="form-control-label custom__label" for="Статус заявки">Тип имущества</label>
             <select class="form-select custom__label">
               <option selected disabled>Выберите</option>
               <option>Мебель</option>
@@ -131,37 +91,17 @@
             </select>
           </div>
           <div class="form-group">
-            <label
-              for="example-text-input1"
-              class="form-control-label custom__label"
-              >Стоимость</label
-            >
-            <input
-              class="form-control"
-              type="text"
-              placeholder="Введите стоимость"
-              id="example-text-input1"
-            />
+            <label for="example-text-input1" class="form-control-label custom__label">Стоимость</label>
+            <input class="form-control" type="text" placeholder="Введите стоимость" id="example-text-input1" />
           </div>
         </div>
         <div class="clients__modal" v-if="isEdit == 'yes'">
           <div class="form-group">
-            <label
-              for="example-text-input"
-              class="form-control-label custom__label"
-              >Название</label
-            >
-            <input
-              class="form-control"
-              type="text"
-              placeholder="Введите название"
-              id="example-text-input"
-            />
+            <label for="example-text-input" class="form-control-label custom__label">Название</label>
+            <input class="form-control" type="text" placeholder="Введите название" id="example-text-input" />
           </div>
           <div class="form-group">
-            <label class="form-control-label custom__label" for="Статус заявки"
-              >Тип имущества</label
-            >
+            <label class="form-control-label custom__label" for="Статус заявки">Тип имущества</label>
             <select class="form-select">
               <option selected disabled>Выберите</option>
               <option>Мебель</option>
@@ -172,17 +112,8 @@
             </select>
           </div>
           <div class="form-group">
-            <label
-              for="example-text-input1"
-              class="form-control-label custom__label"
-              >Стоимость</label
-            >
-            <input
-              class="form-control"
-              type="text"
-              placeholder="Введите стоимость"
-              id="example-text-input1"
-            />
+            <label for="example-text-input1" class="form-control-label custom__label">Стоимость</label>
+            <input class="form-control" type="text" placeholder="Введите стоимость" id="example-text-input1" />
           </div>
         </div>
       </template>
@@ -194,20 +125,13 @@
           <button class="btn bg-gradient-dark">Сохранить</button>
         </div>
         <div class="clients__footer" v-if="isEdit == 'yes'">
-          <button
-            class="btn delete__btn"
-            data-bs-toggle="modal"
-            data-bs-target="#DeleteInv"
-          >
+          <button class="btn delete__btn" data-bs-toggle="modal" data-bs-target="#DeleteInv">
             Удалить имущество
           </button>
         </div>
       </template>
     </inputs-modal>
-    <delete-modal
-      :title="'имущества'"
-      :text="`имущество &quot;BMW M5&quot;`"
-    ></delete-modal>
+    <delete-modal :title="'имущества'" :text="`имущество &quot;BMW M5&quot;`"></delete-modal>
   </main>
 </template>
 
@@ -366,6 +290,7 @@ export default {
 .page__table {
   height: 27.6vw;
 }
+
 .dropdown {
   width: 100%;
   display: inline-block;
@@ -395,6 +320,7 @@ export default {
   color: #2d3748;
   text-decoration: none;
 }
+
 .form__width {
   width: 15.99vw !important;
 }
@@ -405,11 +331,13 @@ export default {
   line-height: 1.4;
   color: #ffffff;
 }
+
 .btn-outline-dark {
   font-size: 16px;
   font-weight: 600;
   color: #2d3748;
 }
+
 .page__name h3 {
   font-size: 24px;
   line-height: 32px;
@@ -444,6 +372,7 @@ td {
 .pagination {
   align-self: end;
 }
+
 th {
   text-transform: uppercase !important;
 }
@@ -453,10 +382,18 @@ th {
   flex-grow: 1;
   width: 100%;
 }
+
 .clients__footer button {
   width: 60%;
 }
+
 .form-group {
   text-align: left;
+}
+
+@media screen and (max-width: 1600px) {
+  .pagination__size {
+    padding-top: 50px;
+  }
 }
 </style>

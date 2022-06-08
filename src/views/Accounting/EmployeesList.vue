@@ -12,26 +12,14 @@
             </template>
           </lists-header>
           <div class="card pt-4 pb-6">
-            <div
-              class="d-flex justify-content-between align-items-center mx-4 mb-4"
-            >
+            <div class="d-flex justify-content-between align-items-center mx-4 mb-4">
               <div>
-                <button
-                  class="btn bg-gradient-dark btn-add mb-0"
-                  style="
+                <button class="btn bg-gradient-dark btn-add mb-0" style="
                     margin-right: 0.833vw;
                     display: flex;
                     align-items: center;
-                  "
-                  data-bs-toggle="modal"
-                  data-bs-target="#InpModal"
-                  @click="isEdit = 'no'"
-                >
-                  <img
-                    src="@/assets/img/whtplus.svg"
-                    style="margin-right: 10px"
-                    alt=""
-                  />
+                  " data-bs-toggle="modal" data-bs-target="#InpModal" @click="isEdit = 'no'">
+                  <img src="@/assets/img/whtplus.svg" style="margin-right: 10px" alt="" />
                   Добавить сотрудника
                 </button>
               </div>
@@ -46,11 +34,7 @@
               <table class="table table-hover table-striped">
                 <thead>
                   <tr class="">
-                    <th
-                      scope="col"
-                      class="th__col"
-                      style="width: 25px; padding-left: 27px"
-                    ></th>
+                    <th scope="col" class="th__col" style="width: 25px; padding-left: 27px"></th>
                     <th width="1%" scope="col" class="th__col">№</th>
                     <th scope="col" class="th__col">ФИО</th>
                     <th scope="col" class="th__col">Должность</th>
@@ -63,12 +47,7 @@
                   <tr v-for="(order, i) of paginationList" :key="order.id">
                     <td scope="row" style="padding-left: 27px">
                       <div class="form-check">
-                        <input
-                          class="form-check-input"
-                          type="checkbox"
-                          value=""
-                          id="fcustomCheck1"
-                        />
+                        <input class="form-check-input" type="checkbox" value="" id="fcustomCheck1" />
                       </div>
                     </td>
                     <td width="1%">{{ i + 1 }}</td>
@@ -77,37 +56,20 @@
                     <td>{{ order.phoneNumber }}</td>
                     <td>{{ order.email }}</td>
                     <td class="dropdown">
-                      <img
-                        src="@/assets/img/dots.svg"
-                        style="width: 1.563vw; cursor: pointer"
-                        alt=""
-                      />
+                      <img src="@/assets/img/dots.svg" style="width: 1.563vw; cursor: pointer" alt="" />
                       <div class="dropdown-content">
-                        <a
-                          style="cursor: pointer"
-                          data-bs-toggle="modal"
-                          data-bs-target="#InpModal"
-                          @click="isEdit = 'yes'"
-                          >Редактировать</a
-                        >
+                        <a style="cursor: pointer" data-bs-toggle="modal" data-bs-target="#InpModal"
+                          @click="isEdit = 'yes'">Редактировать</a>
                         <hr />
-                        <a
-                          style="cursor: pointer"
-                          data-bs-toggle="modal"
-                          data-bs-target="#DeleteInv"
-                          >Удалить</a
-                        >
+                        <a style="cursor: pointer" data-bs-toggle="modal" data-bs-target="#DeleteInv">Удалить</a>
                       </div>
                     </td>
                   </tr>
                 </tbody>
               </table>
             </div>
-            <pagination-component
-              :filteredArr="filteredList"
-              :strAmount="10"
-              @PaginationReload="reloadPagination"
-            ></pagination-component>
+            <pagination-component :filteredArr="filteredList" :strAmount="10" @PaginationReload="reloadPagination"
+              class="pagination__size"></pagination-component>
           </div>
         </div>
       </div>
@@ -128,20 +90,11 @@
       <template #body>
         <div class="clients__modal" v-if="isEdit == 'no'">
           <div class="form-group">
-            <label for="example-text-input" class="form-control-label"
-              >ФИО сотрудника</label
-            >
-            <input
-              class="form-control"
-              type="text"
-              placeholder="Введите ФИО"
-              id="example-text-input"
-            />
+            <label for="example-text-input" class="form-control-label">ФИО сотрудника</label>
+            <input class="form-control" type="text" placeholder="Введите ФИО" id="example-text-input" />
           </div>
           <div class="form-group">
-            <label class="form-control-label" for="Статус заявки"
-              >Должность</label
-            >
+            <label class="form-control-label" for="Статус заявки">Должность</label>
             <select class="form-select">
               <option selected disabled>Выберите</option>
               <option>Кассир</option>
@@ -149,44 +102,21 @@
             </select>
           </div>
           <div class="form-group">
-            <label for="example-text-input1" class="form-control-label"
-              >Номер телефона</label
-            >
-            <input
-              class="form-control"
-              type="text"
-              placeholder="Введите номер телефона"
-              id="example-text-input1"
-            />
+            <label for="example-text-input1" class="form-control-label">Номер телефона</label>
+            <input class="form-control" type="text" placeholder="Введите номер телефона" id="example-text-input1" />
           </div>
           <div class="form-group">
-            <label for="example-text-input2" class="form-control-label"
-              >Email</label
-            >
-            <input
-              class="form-control"
-              type="text"
-              placeholder="Введите email"
-              id="example-text-input2"
-            />
+            <label for="example-text-input2" class="form-control-label">Email</label>
+            <input class="form-control" type="text" placeholder="Введите email" id="example-text-input2" />
           </div>
         </div>
         <div class="clients__modal" v-if="isEdit == 'yes'">
           <div class="form-group">
-            <label for="example-text-input" class="form-control-label"
-              >ФИО сотрудника</label
-            >
-            <input
-              class="form-control"
-              type="text"
-              placeholder="Введите ФИО"
-              id="example-text-input"
-            />
+            <label for="example-text-input" class="form-control-label">ФИО сотрудника</label>
+            <input class="form-control" type="text" placeholder="Введите ФИО" id="example-text-input" />
           </div>
           <div class="form-group">
-            <label class="form-control-label" for="Статус заявки"
-              >Должность</label
-            >
+            <label class="form-control-label" for="Статус заявки">Должность</label>
             <select class="form-select">
               <option selected disabled>Выберите</option>
               <option>Кассир</option>
@@ -194,26 +124,12 @@
             </select>
           </div>
           <div class="form-group">
-            <label for="example-text-input1" class="form-control-label"
-              >Номер телефона</label
-            >
-            <input
-              class="form-control"
-              type="text"
-              placeholder="Введите номер телефона"
-              id="example-text-input1"
-            />
+            <label for="example-text-input1" class="form-control-label">Номер телефона</label>
+            <input class="form-control" type="text" placeholder="Введите номер телефона" id="example-text-input1" />
           </div>
           <div class="form-group">
-            <label for="example-text-input2" class="form-control-label"
-              >Email</label
-            >
-            <input
-              class="form-control"
-              type="text"
-              placeholder="Введите email"
-              id="example-text-input2"
-            />
+            <label for="example-text-input2" class="form-control-label">Email</label>
+            <input class="form-control" type="text" placeholder="Введите email" id="example-text-input2" />
           </div>
         </div>
       </template>
@@ -225,11 +141,7 @@
           <button class="btn bg-gradient-dark">Сохранить</button>
         </div>
         <div class="clients__footer" v-if="isEdit == 'yes'">
-          <button
-            class="btn delete__btn"
-            data-bs-toggle="modal"
-            data-bs-target="#DeleteInv"
-          >
+          <button class="btn delete__btn" data-bs-toggle="modal" data-bs-target="#DeleteInv">
             Удалить сотрудника
           </button>
         </div>
@@ -245,10 +157,7 @@
         <option value=""></option>
       </select>
     </the-filter>
-    <delete-modal
-      :title="'сотрудника'"
-      :text="`сотрудника &quot;Ильясов Д.С.&quot;`"
-    ></delete-modal>
+    <delete-modal :title="'сотрудника'" :text="`сотрудника &quot;Ильясов Д.С.&quot;`"></delete-modal>
   </main>
 </template>
 
@@ -414,6 +323,7 @@ export default {
 .page__table {
   height: 27.6vw;
 }
+
 .btn-add {
   font-weight: 600;
   font-size: 14px;
@@ -426,6 +336,7 @@ export default {
 
   color: #ffffff;
 }
+
 .dropdown {
   width: 100%;
   display: inline-block;
@@ -455,6 +366,7 @@ export default {
   color: #2d3748;
   text-decoration: none;
 }
+
 .form__width {
   width: 15.99vw !important;
 }
@@ -500,6 +412,7 @@ td {
 .pagination {
   align-self: end;
 }
+
 th {
   text-transform: uppercase !important;
 }
@@ -509,10 +422,18 @@ th {
   flex-grow: 1;
   width: 100%;
 }
+
 .clients__footer button {
   width: 60%;
 }
+
 .form-group {
   text-align: left;
+}
+
+@media screen and (max-width: 1600px) {
+  .pagination__size {
+    padding-top: 50px;
+  }
 }
 </style>
