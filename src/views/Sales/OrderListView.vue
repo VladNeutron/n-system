@@ -80,7 +80,7 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr v-for="(order,ind) of paginationList" :key="order.id">
+                    <tr v-for="(order) of paginationList" :key="order.id">
                       <th scope="row" style="">
                         <div class="form-check">
                           <input
@@ -118,7 +118,8 @@
                           style="width: 1.563vw; cursor: pointer"
                           alt=""
                         />
-                        <div :class="['dropdown-content', {'dropdown__content__top': ind >= paginationList.length - 2}]">
+                        <!-- <div :class="['dropdown-content', {'dropdown__content__top': ind >= paginationList.length - 2}]"> -->
+                        <div class="dropdown-content">
                           <a href="/sales/order">Редактировать</a>
                           <hr />
                           <a

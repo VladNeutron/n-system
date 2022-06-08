@@ -45,3 +45,7 @@ body::-webkit-scrollbar-track {
 .dropdown__content__top{
   bottom: 20px;
 }
+
+.table tr:nth-last-child(-n+2) .dropdown-content{
+  bottom: 20px;
+}
