@@ -177,7 +177,7 @@ export default {
   cursor: pointer;
 }
 .commentary__body {
-  height: 70%;
+  height: 65%;
   padding: 32px 40px 32px 32px;
   overflow-x: auto;
 }
