@@ -24,41 +24,17 @@
                 <div class="order__body__content">
                   <div class="order__first__row">
                     <div class="form-group">
-                      <label
-                        for="example-text-input"
-                        class="form-control-label order__label"
-                        >№ Возврата</label
-                      >
-                      <input
-                        class="form-control"
-                        type="text"
-                        id="example-text-input"
-                        placeholder="№ 9876543"
-                      />
+                      <label for="example-text-input" class="form-control-label order__label">№ Возврата</label>
+                      <input class="form-control" type="text" id="example-text-input" placeholder="№ 9876543" />
                     </div>
                     <div class="form-group">
-                      <label
-                        for="example-date-input"
-                        class="form-control-label order__label"
-                        >Дата возврата</label
-                      >
-                      <input
-                        class="form-control"
-                        type="date"
-                        id="example-date-input"
-                      />
+                      <label for="example-date-input" class="form-control-label order__label">Дата возврата</label>
+                      <input class="form-control" type="date" id="example-date-input" />
                     </div>
                     <div class="form-group">
-                      <label
-                        for="exampleFormControlSelect1"
-                        class="order__label"
-                        >Ответственный</label
-                      >
+                      <label for="exampleFormControlSelect1" class="order__label">Ответственный</label>
                       <div class="select">
-                        <select
-                          class="form-select"
-                          id="exampleFormControlSelect1"
-                        >
+                        <select class="form-select" id="exampleFormControlSelect1">
                           <option>Выберите</option>
                           <option>Иванов И.</option>
                           <option>Иванов И.</option>
@@ -68,16 +44,9 @@
                       </div>
                     </div>
                     <div class="form-group">
-                      <label
-                        for="exampleFormControlSelect1"
-                        class="order__label"
-                        >Склад</label
-                      >
+                      <label for="exampleFormControlSelect1" class="order__label">Склад</label>
                       <div class="select">
-                        <select
-                          class="form-select"
-                          id="exampleFormControlSelect1"
-                        >
+                        <select class="form-select" id="exampleFormControlSelect1">
                           <option>Выберите</option>
                           <option>Склад 1</option>
                           <option>Склад 1</option>
@@ -87,16 +56,9 @@
                       </div>
                     </div>
                     <div class="form-group">
-                      <label
-                        for="exampleFormControlSelect1"
-                        class="order__label"
-                        >Способ возврата средств</label
-                      >
+                      <label for="exampleFormControlSelect1" class="order__label">Способ возврата средств</label>
                       <div class="select">
-                        <select
-                          class="form-select"
-                          id="exampleFormControlSelect1"
-                        >
+                        <select class="form-select" id="exampleFormControlSelect1">
                           <option>Выберите</option>
                           <option>Безналичный расчет</option>
                           <option>Наличный расчет</option>
@@ -107,16 +69,9 @@
                   </div>
                   <div class="order__second__row">
                     <div class="form-group">
-                      <label
-                        for="exampleFormControlSelect1"
-                        class="order__label"
-                        >Статус возврата</label
-                      >
+                      <label for="exampleFormControlSelect1" class="order__label">Статус возврата</label>
                       <div class="select2">
-                        <select
-                          class="form-select first__s"
-                          id="exampleFormControlSelect1"
-                        >
+                        <select class="form-select first__s" id="exampleFormControlSelect1">
                           <option>Выберите</option>
                           <option>Новый возврат</option>
                           <option>Новый возврат</option>
@@ -125,43 +80,19 @@
                       </div>
                     </div>
                     <div class="form-group">
-                      <label
-                        for="example-text-input"
-                        class="form-control-label order__label"
-                        >ФИО клиента</label
-                      >
-                      <input
-                        class="form-control second__s"
-                        type="text"
-                        id="example-text-input"
-                        placeholder="Иванов Иван Иванович"
-                      />
+                      <label for="example-text-input" class="form-control-label order__label">ФИО клиента</label>
+                      <input class="form-control second__s" type="text" id="example-text-input"
+                        placeholder="Иванов Иван Иванович" />
                     </div>
                     <div class="form-group">
-                      <label
-                        for="example-text-input"
-                        class="form-control-label order__label"
-                        >Номер телефона</label
-                      >
-                      <input
-                        class="form-control third__s"
-                        type="tel"
-                        id="example-text-input"
-                        placeholder="+7 777 123 45 67"
-                      />
+                      <label for="example-text-input" class="form-control-label order__label">Номер телефона</label>
+                      <input class="form-control third__s" type="tel" id="example-text-input"
+                        placeholder="+7 777 123 45 67" />
                     </div>
                     <div class="form-group">
-                      <label
-                        for="example-text-input"
-                        class="form-control-label order__label"
-                        >E-mail</label
-                      >
-                      <input
-                        class="form-control fourth__s"
-                        type="email"
-                        id="example-text-input"
-                        placeholder="iva.noff@example.com"
-                      />
+                      <label for="example-text-input" class="form-control-label order__label">E-mail</label>
+                      <input class="form-control fourth__s" type="email" id="example-text-input"
+                        placeholder="iva.noff@example.com" />
                     </div>
                   </div>
                 </div>
@@ -171,33 +102,19 @@
                 <div class="order__ready">
                   <div class="order__ready__content">
                     <div class="form-group">
-                      <label
-                        for="exampleFormControlSelect1"
-                        class="order__label"
-                        >Способ доставки</label
-                      >
+                      <label for="exampleFormControlSelect1" class="order__label">Способ доставки</label>
                       <div class="select2">
-                        <select
-                          class="form-select five__s"
-                          id="exampleFormControlSelect1"
-                          @change="isPickup = !isPickup"
-                        >
+                        <select class="form-select five__s" id="exampleFormControlSelect1"
+                          @change="isPickup = !isPickup">
                           <option>Самовывоз</option>
                           <option>Доставка</option>
                         </select>
                       </div>
                     </div>
                     <div class="form-group" v-if="isPickup == true">
-                      <label
-                        for="exampleFormControlSelect1"
-                        class="order__label"
-                        >Пункт самовывоза</label
-                      >
+                      <label for="exampleFormControlSelect1" class="order__label">Пункт самовывоза</label>
                       <div class="select2">
-                        <select
-                          class="form-select five__s"
-                          id="exampleFormControlSelect1"
-                        >
+                        <select class="form-select five__s" id="exampleFormControlSelect1">
                           <option>Выберите</option>
                           <option>Склад 1</option>
                           <option>Склад 2</option>
@@ -205,17 +122,9 @@
                       </div>
                     </div>
                     <div class="form-group" v-if="isPickup == false">
-                      <label
-                        for="example-text-input"
-                        class="form-control-label order__label"
-                        >Адрес доставки</label
-                      >
-                      <input
-                        class="form-control five__s"
-                        type="text"
-                        id="example-text-input"
-                        placeholder="Введите адрес"
-                      />
+                      <label for="example-text-input" class="form-control-label order__label">Адрес доставки</label>
+                      <input class="form-control five__s" type="text" id="example-text-input"
+                        placeholder="Введите адрес" />
                     </div>
                   </div>
                 </div>
@@ -230,39 +139,23 @@
             <div class="barcodes">
               <div class="form-group">
                 <div class="input-group">
-                  <input
-                    class="form-control barcode__inp"
-                    placeholder="Введите штрихкод"
-                    id="search-barcode"
-                    type="text"
-                  />
-                  <span class="input-group-text py-0"
-                    ><img src="@/assets/css/icons/barcode.svg" alt=""
-                  /></span>
+                  <input class="form-control barcode__inp" placeholder="Введите штрихкод" id="search-barcode"
+                    type="text" />
+                  <span class="input-group-text py-0"><img src="@/assets/css/icons/barcode.svg" alt="" /></span>
                 </div>
               </div>
-              <button class="btn barcode__btn" data-bs-toggle="modal" data-bs-target="#SelectDisc">Выбрать из списка</button>
+              <button class="btn barcode__btn" data-bs-toggle="modal" data-bs-target="#SelectDisc">Выбрать из
+                списка</button>
             </div>
             <div class="search">
-              <button
-                class="btn disc__btn"
-                data-bs-toggle="modal"
-                data-bs-target="#InpModal"
-              >
+              <button class="btn disc__btn" data-bs-toggle="modal" data-bs-target="#InpModal">
                 Ввести номер поступления
               </button>
               <div class="form-group m-0">
                 <div class="input-group mt-1">
-                  <span class="input-group-text"
-                    ><img src="@/assets/css/icons/searchIcon.svg" alt=""
-                  /></span>
-                  <input
-                    class="form-control search__inp"
-                    placeholder="Поиск..."
-                    id="search"
-                    type="text"
-                    v-model.trim="search"
-                  />
+                  <span class="input-group-text"><img src="@/assets/css/icons/searchIcon.svg" alt="" /></span>
+                  <input class="form-control search__inp" placeholder="Поиск..." id="search" type="text"
+                    v-model.trim="search" />
                 </div>
               </div>
             </div>
@@ -275,7 +168,8 @@
                 Для того чтобы создать возврат, необходимо<br />
                 выбрать товары из списка
               </p>
-              <button class="btn btn__chose" data-bs-toggle="modal" data-bs-target="#SelectDisc">Выбрать из списка</button>
+              <button class="btn btn__chose" data-bs-toggle="modal" data-bs-target="#SelectDisc">Выбрать из
+                списка</button>
             </div>
           </div>
           <div class="order__table__body" v-else>
@@ -302,11 +196,7 @@
                     {{ i + 1 }}
                   </td>
                   <td style="display: flex">
-                    <img
-                      :src="item.img"
-                      style="width: 2.5vw; margin-right: 0.833vw"
-                      alt=""
-                    />
+                    <img :src="item.img" style="width: 2.5vw; margin-right: 0.833vw" alt="" />
                     {{ item.name }}
                   </td>
                   <td>
@@ -329,22 +219,11 @@
                   <td>{{ item.price * item.count }} ₸</td>
                   <td>
                     <div class="dropdown">
-                      <img
-                        src="@/assets/img/dots.svg"
-                        style="width: 1.563vw; cursor: pointer"
-                        alt=""
-                      />
+                      <img src="@/assets/img/dots.svg" style="width: 1.563vw; cursor: pointer" alt="" />
                       <div class="dropdown-content">
-                        <a href="/warehouse-accounting/edit-inv"
-                          >Редактировать</a
-                        >
+                        <a href="/warehouse-accounting/edit-inv">Редактировать</a>
                         <hr />
-                        <a
-                          style="cursor: pointer"
-                          data-bs-toggle="modal"
-                          data-bs-target="#DeleteInv"
-                          >Удалить</a
-                        >
+                        <a style="cursor: pointer" data-bs-toggle="modal" data-bs-target="#DeleteInv">Удалить</a>
                       </div>
                     </div>
                   </td>
@@ -382,16 +261,10 @@
       </template>
       <template #body>
         <div class="form-group label__text" style="text-align: left">
-          <label for="exampleFormControlInput1" class="label__text"
-            >Номер поступления</label
-          >
+          <label for="exampleFormControlInput1" class="label__text">Номер поступления</label>
           <div class="d-flex">
-            <input
-              type="number"
-              class="form-control modal__inp w-100"
-              id="exampleFormControlInput1"
-              placeholder="Введите номер поступления"
-            />
+            <input type="number" class="form-control modal__inp w-100" id="exampleFormControlInput1"
+              placeholder="Введите номер поступления" />
           </div>
         </div>
       </template>
@@ -399,8 +272,8 @@
         <div class="footer__btn">
           <button class="footer__button">Добавить</button>
         </div>
-      </template></InputsModal
-    >
+      </template>
+    </InputsModal>
     <commentary :pageTitle="'Возврат №342141'"></commentary>
     <select-product-discount></select-product-discount>
   </main>
@@ -418,14 +291,17 @@
   border-radius: 8px;
   padding: 0.729vw 5.906vw 0.729vw 5.906vw;
 }
+
 .not__added {
   padding-bottom: 130px;
 }
+
 .dropdown {
   width: 100%;
   display: inline-block;
   position: relative;
 }
+
 .dropdown-content {
   text-align: left;
   display: none;
@@ -439,14 +315,17 @@
   z-index: 1;
   padding: 0.625vw 0.625vw 0.625vw 0.625vw;
 }
+
 .dropdown:hover .dropdown-content {
   display: block;
 }
+
 .dropdown-content a {
   display: block;
   color: #2d3748;
   text-decoration: none;
 }
+
 .not__added__main {
   font-weight: 600;
   font-size: 1.25vw;
@@ -593,22 +472,18 @@
 }
 
 .active {
-  background: linear-gradient(
-    83.56deg,
-    #7092e0 10.01%,
-    #8baef3 75.36%
-  ) !important;
+  background: linear-gradient(83.56deg,
+      #7092e0 10.01%,
+      #8baef3 75.36%) !important;
   border-radius: 8px 0px 0px 8px !important;
   font-size: 0.729vw !important;
   color: #ffffff !important;
 }
 
 .active2 {
-  background: linear-gradient(
-    83.56deg,
-    #7092e0 10.01%,
-    #8baef3 75.36%
-  ) !important;
+  background: linear-gradient(83.56deg,
+      #7092e0 10.01%,
+      #8baef3 75.36%) !important;
   border-radius: 0px 8px 8px 0px !important;
   font-size: 0.729vw !important;
   color: #ffffff !important;
@@ -895,7 +770,8 @@
   display: flex;
   justify-content: space-between;
 }
-.order__body__content select{
+
+.order__body__content select {
   width: 10vw;
 }
 
@@ -921,11 +797,7 @@
   font-size: 0.729vw;
   color: #a0aec0;
 }
-td {
-  font-weight: 600;
-  font-size: 14px;
-  color: #2d3748;
-}
+
 .order__header__main {
   font-weight: 600;
   font-size: 1.25vw;
