@@ -63,7 +63,7 @@
                     <div class="form-group">
                       <label for="textarea" class="storage__label">Комментарии</label>
                       <textarea class="form-control area" id="textarea" rows="3"
-                        placeholder="Комментариев нет"></textarea>
+                        placeholder="Оставьте комментарий"></textarea>
                     </div>
                   </div>
                   <div class="storage__checkbox">
