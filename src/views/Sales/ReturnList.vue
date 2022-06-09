@@ -15,7 +15,7 @@
             <div class="drop__buttons">
               <comment-button style="margin-right: 24px"></comment-button>
               <action-button style="margin-right: 24px"></action-button>
-              <button class="btn save__btn" onclick="window.location.href = '/sales/order-list'">Сохранить</button>
+              <button class="btn save__btn" onclick="window.location.href = '/sales/return-list'">Сохранить</button>
             </div>
           </div>
           <div class="order__body">
@@ -249,7 +249,7 @@
                 data-bs-toggle="modal"
                 data-bs-target="#InpModal"
               >
-                Ввести номер поступления
+                Ввести номер заказа
               </button>
               <div class="form-group m-0">
                 <div class="input-group mt-1">
@@ -376,14 +376,14 @@
     <InputsModal>
       <template #head>
         <div style="text-align: left">
-          <p class="header__main">Возврат по номеру поступления</p>
+          <p class="header__main">Возврат по номеру зазказа</p>
           <p class="header__sec">Введите номер заказа и нажмите “Добавить”</p>
         </div>
       </template>
       <template #body>
         <div class="form-group label__text" style="text-align: left">
-          <label for="exampleFormControlInput1" class="label__text"
-            >Номер поступления</label
+          <label for="exampleFormControlInput1" class="label__text" style="font-size: 14px;"
+            >Номер заказа</label
           >
           <div class="d-flex">
             <input

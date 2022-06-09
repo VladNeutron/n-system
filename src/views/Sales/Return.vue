@@ -51,7 +51,7 @@
                     <tr class="text-start">
                       <th scope="col" class="th__col" style="width: 25px"></th>
                       <th scope="col" class="th__col">№</th>
-                      <th scope="col" class="th__col">№ Заказа</th>
+                      <th scope="col" class="th__col">№ Возврата</th>
                       <th scope="col" class="th__col">Дата</th>
                       <th scope="col" class="th__col">Склад</th>
                       <th scope="col" class="th__col">Ответственный</th>
@@ -65,7 +65,7 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr v-for="(order, i) of paginationList" :key="order.id">
+                    <tr v-for="(order) of paginationList" :key="order.id">
                       <th scope="row">
                         <div class="form-check mb-0 ms-2">
                           <input
@@ -76,7 +76,7 @@
                           />
                         </div>
                       </th>
-                      <th>{{ i + 1 }}</th>
+                      <th>{{ order.listNumber + 1 }}</th>
                       <td>{{ order.id }}</td>
                       <td>{{ order.date }}</td>
                       <td>{{ order.warehouse }}</td>
@@ -144,7 +144,7 @@
         <input class="form-control" type="date" id="example-date-input" />
       </div>
     </div>
-    <p class="text-start my-2 fw-bold" for="Статус">Статус заказа</p>
+    <p class="text-start my-2 fw-bold" for="Статус">Статус возврата</p>
     <div class="d-flex flex-wrap">
       <div class="cat" v-for="status of orderStatusList" :key="status">
         <label>
