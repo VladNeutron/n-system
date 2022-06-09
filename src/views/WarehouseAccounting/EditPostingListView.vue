@@ -22,15 +22,16 @@
             </template>
             <template #body>
               <div class="drowdown__items">
-                <div class="items__block">
+                <div class="items__block text-start">
                   <p class="items__title">№ оприходования</p>
                   <p class="items__text">№ 19</p>
                 </div>
-                <div class="items__block" data-bs-toggle="modal" data-bs-target="#InpModal" style="cursor: pointer">
+                <div class="items__block text-start" data-bs-toggle="modal" data-bs-target="#InpModal"
+                  style="cursor: pointer">
                   <p class="items__title">дата и время</p>
                   <p class="items__text">11 ноя, 19:23, 2021</p>
                 </div>
-                <div class="items__block">
+                <div class="items__block text-start">
                   <p class="items__title">Склад</p>
                   <div class="dropdown">
                     <p class="items__tex items__flex items__text" style="cursor: pointer">
@@ -45,7 +46,7 @@
                     </div>
                   </div>
                 </div>
-                <div class="items__block">
+                <div class="items__block text-start">
                   <p class="items__title">Ответственный</p>
 
                   <div class="dropdown">
@@ -63,7 +64,7 @@
                     </div>
                   </div>
                 </div>
-                <div class="items__block">
+                <div class="items__block text-start">
                   <p class="items__title">Статус оприходования</p>
                   <p class="items__text text-center">
                     <span style="cursor: pointer">Завершен</span>
@@ -98,12 +99,7 @@
                 </div>
                 <div class=" d-flex justify-content-between ps-3 pe-4">
                   <div class="page_search-inputs d-flex align-items-center gap-3">
-                    <div class="form-group m-0">
-                      <div class="input-group form__adapt">
-                        <span class="input-group-text"><img src="@/assets/css/icons/searchIcon.svg" alt="" /></span>
-                        <input class="form-control" placeholder="Поиск..." id="search" type="text" />
-                      </div>
-                    </div>
+                    <list-search @searchFilter="(a) => search = a"></list-search>
                     <button class="btn bg-gradient-dark mb-0">
                       Завершить оприходование
                     </button>
@@ -192,6 +188,7 @@ export default {
   },
   data() {
     return {
+      search: '',
       paginationList: [],
       items: [
         {

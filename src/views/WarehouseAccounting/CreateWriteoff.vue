@@ -24,15 +24,16 @@
             </template>
             <template #body>
               <div class="drowdown__items">
-                <div class="items__block">
+                <div class="items__block text-start">
                   <p class="items__title">№ списания</p>
                   <p class="items__text">№ 19</p>
                 </div>
-                <div class="items__block" data-bs-toggle="modal" data-bs-target="#InpModal" style="cursor: pointer">
+                <div class="items__block text-start" data-bs-toggle="modal" data-bs-target="#InpModal"
+                  style="cursor: pointer">
                   <p class="items__title">дата и время</p>
                   <p class="items__text">11 ноя, 19:23, 2021</p>
                 </div>
-                <div class="items__block">
+                <div class="items__block text-start">
                   <p class="items__title">Склад</p>
                   <div class="dropdown">
                     <p class="items__tex items__flex items__text" style="cursor: pointer">
@@ -47,7 +48,7 @@
                     </div>
                   </div>
                 </div>
-                <div class="items__block">
+                <div class="items__block text-start">
                   <p class="items__title">Ответственный</p>
 
                   <div class="dropdown">
@@ -65,9 +66,9 @@
                     </div>
                   </div>
                 </div>
-                <div class="items__block">
+                <div class="items__block text-start">
                   <p class="items__title">Статус списания</p>
-                  <p class="items__text text-center">
+                  <p class="items__text">
                     <span style="cursor: pointer">Новое</span>
                   </p>
                 </div>
