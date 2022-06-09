@@ -15,7 +15,8 @@
             <div class="drop__buttons">
               <comment-button style="margin-right: 24px"></comment-button>
               <action-button style="margin-right: 24px"></action-button>
-              <button class="btn save__btn">Сохранить</button>
+              <button class="btn save__btn"
+                onclick="window.location.href = '/purchases/return-supplier-list'">Сохранить</button>
             </div>
           </div>
           <div class="order__body">
@@ -143,9 +144,9 @@
               </thead>
               <tbody>
                 <!-- v-for="(item, i) in items" :key="item" -->
-                <tr v-for="(item, i) in paginationList" :key="item">
+                <tr v-for="item in paginationList" :key="item">
                   <td scope="row">
-                    {{ i + 1 }}
+                    {{ item.listNumber + 1 }}
                   </td>
                   <td style="display: flex">
                     <img :src="item.img" style="width: 2.5vw; margin-right: 0.833vw" alt="" />
@@ -228,7 +229,7 @@
         </div>
       </template>
     </InputsModal>
-    <commentary></commentary>
+    <commentary :pageTitle="'Возврат №2354657'"></commentary>
     <select-product></select-product>
   </main>
 </template>
@@ -456,6 +457,11 @@ export default {
 };
 </script>
 <style scoped>
+.label__text {
+  font-weight: 600;
+  font-size: 14px;
+}
+
 .footer__button {
   font-weight: 700;
   font-size: 0.833vw;

@@ -12,31 +12,21 @@
             </template>
           </lists-header>
           <div class="card pt-4 pb-6">
-            <div
-              class="d-flex justify-content-between align-items-center mx-4 mb-4"
-            >
+            <div class="d-flex justify-content-between align-items-center mx-4 mb-4">
               <div>
-                <button
-                  class="btn bg-gradient-dark mb-0"
-                  style="
+                <button class="btn bg-gradient-dark mb-0" style="
                     margin-right: 0.833vw;
                     font-size: 14px;
                     font-weight: 600;
                     display: flex;
                     align-items: center;
-                  "
-                  onclick="window.location.href = '/purchases/create-income'"
-                >
-                  <img
-                    src="@/assets/img/whtplus.svg"
-                    alt=""
-                    style="margin-right: 10px"
-                  />
+                  " onclick="window.location.href = '/purchases/create-income'">
+                  <img src="@/assets/img/whtplus.svg" alt="" style="margin-right: 10px" />
                   Новое поступление
                 </button>
               </div>
               <div class="table__inputs d-flex gap-3 align-content-center">
-                <list-search></list-search>
+                <list-search @searchFilter="(a) => search = a"></list-search>
                 <print-button></print-button>
                 <download-button></download-button>
                 <filters-button></filters-button>
@@ -46,11 +36,7 @@
               <table class="table table-hover table-striped">
                 <thead>
                   <tr class="">
-                    <th
-                      scope="col"
-                      class="th__col"
-                      style="width: 25px; padding-left: 27px"
-                    ></th>
+                    <th scope="col" class="th__col" style="width: 25px; padding-left: 27px"></th>
                     <th width="1%" scope="col" class="th__col">№</th>
                     <th scope="col" class="th__col">Номер Поступления</th>
                     <th scope="col" class="th__col">Дата</th>
@@ -63,18 +49,13 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr v-for="(order, i) of paginationList" :key="order.id">
+                  <tr v-for="order of paginationList" :key="order.id">
                     <th scope="row" style="padding-left: 27px">
                       <div class="form-check">
-                        <input
-                          class="form-check-input"
-                          type="checkbox"
-                          value=""
-                          id="fcustomCheck1"
-                        />
+                        <input class="form-check-input" type="checkbox" value="" id="fcustomCheck1" />
                       </div>
                     </th>
-                    <td width="1%">{{ i + 1 }}</td>
+                    <td width="1%">{{ order.listNumber + 1 }}</td>
                     <td>{{ order.id }}</td>
                     <td>{{ order.date }}</td>
                     <td>{{ order.responsible }}</td>
@@ -86,35 +67,20 @@
                     <td>{{ order.sum }}</td>
 
                     <td class="dropdown">
-                      <img
-                        src="@/assets/img/dots.svg"
-                        style="width: 1.563vw; cursor: pointer"
-                        alt=""
-                      />
+                      <img src="@/assets/img/dots.svg" style="width: 1.563vw; cursor: pointer" alt="" />
                       <div class="dropdown-content">
-                        <a
-                          style="cursor: pointer"
-                          onclick="window.location.href = '/purchases/edit-income'"
-                          >Редактировать</a
-                        >
+                        <a style="cursor: pointer"
+                          onclick="window.location.href = '/purchases/edit-income'">Редактировать</a>
                         <hr />
-                        <a
-                          style="cursor: pointer"
-                          data-bs-toggle="modal"
-                          data-bs-target="#DeleteInv"
-                          >Удалить</a
-                        >
+                        <a style="cursor: pointer" data-bs-toggle="modal" data-bs-target="#DeleteInv">Удалить</a>
                       </div>
                     </td>
                   </tr>
                 </tbody>
               </table>
             </div>
-            <pagination-component
-              :filteredArr="filteredOrders"
-              :strAmount="10"
-              @PaginationReload="reloadPagination"
-            ></pagination-component>
+            <pagination-component :filteredArr="filteredOrders" :strAmount="10" @PaginationReload="reloadPagination">
+            </pagination-component>
           </div>
         </div>
       </div>
@@ -126,21 +92,13 @@
       </div>
       <div class="filters__period">
         <div class="form-group mb-0">
-          <input
-            class="form-control period__s"
-            type="date"
-            id="example-date-input"
-          />
+          <input class="form-control period__s" type="date" id="example-date-input" />
         </div>
         <div>
           <img src="@/assets/img/line.svg" style="width: 1.927vw" alt="" />
         </div>
         <div class="form-group mb-0">
-          <input
-            class="form-control period__s"
-            type="date"
-            id="example-date-input"
-          />
+          <input class="form-control period__s" type="date" id="example-date-input" />
         </div>
       </div>
       <p class="text-start my-2 fw-bold" for="storage">Склад</p>
@@ -168,10 +126,7 @@
         <option value=""></option>
       </select>
     </the-filter>
-    <delete-modal
-      :title="'поступления'"
-      :text="`документ &quot;Поступление №12132415&quot;`"
-    ></delete-modal>
+    <delete-modal :title="'поступления'" :text="`документ &quot;Поступление №12132415&quot;`"></delete-modal>
   </main>
 </template>
 
@@ -297,6 +252,7 @@ export default {
       filterStorage: "",
       filterResponsible: "",
       filterSupplier: "",
+      search: '',
     };
   },
   methods: {
@@ -336,6 +292,10 @@ export default {
           (this.filterSupplier === ""
             ? true
             : order.supplier === this.filterSupplier)
+          &&
+          (String(order.responsible).toLowerCase().includes(String(this.search).toLowerCase())) ||
+          (String(order.storage).toLowerCase().includes(String(this.search).toLowerCase())) ||
+          (String(order.supplier).toLowerCase().includes(String(this.search).toLowerCase()))
       );
     },
   },
@@ -376,6 +336,7 @@ export default {
   color: #2d3748;
   text-decoration: none;
 }
+
 .form__width {
   width: 15.99vw !important;
 }
@@ -420,31 +381,38 @@ td {
 .pagination {
   align-self: end;
 }
+
 .page__table {
   height: 27.6vw;
 }
+
 @media screen and (max-width: 1600px) {
   .btn {
     font-size: 12px !important;
   }
+
   td,
   th {
     font-size: 12px;
   }
+
   .page__table::-webkit-scrollbar {
     background: #e2e8f0;
     border-radius: 0.78vw;
     width: 0.37vw;
   }
+
   .page__table::-webkit-scrollbar-thumb {
     border-radius: 0.78vw;
     background-color: #a0aec0;
   }
+
   .page__table::-webkit-scrollbar-track {
     -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.2);
     border-radius: 0.78vw;
     background-color: #e2e8f0;
   }
+
   .page__table {
     overflow-x: auto;
   }

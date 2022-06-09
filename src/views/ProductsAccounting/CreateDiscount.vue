@@ -104,7 +104,7 @@
                   <tr>
                     <th scope="col" class="th__col">№</th>
                     <th scope="col" class="th__col">Товар</th>
-                    <th scope="col" class="th__col">Штрихкод</th>
+                    <th scope="col" class="th__col">Артикул</th>
                     <th scope="col" class="th__col">Цвет</th>
                     <th scope="col" class="th__col">Размер</th>
                     <th scope="col" class="th__col">себестоимость</th>
