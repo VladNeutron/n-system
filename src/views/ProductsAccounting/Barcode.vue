@@ -68,20 +68,29 @@
                         </tr>
                       </thead>
                       <tbody>
-                        <tr v-for="(str, ind) in products" :key="ind">
+                        <tr v-for="(str, ind) in paginationList" :key="ind">
                           <td>
                             <div class="form-check types">
                               <input
+                                :checked="isItChecked(str.id)"
                                 class="form-check-input"
                                 type="checkbox"
                                 value=""
                                 :id="'checkbox-' + str.id"
                                 @change="selectProduct(str.id)"
                               />
+                              <!-- <input
+                                v-else
+                                class="form-check-input"
+                                type="checkbox"
+                                value=""
+                                :id="'checkbox-' + str.id"
+                                @change="selectProduct(str.id)"
+                              /> -->
                             </div>
                           </td>
                           <td>
-                            {{ ind + 1 }}
+                            {{ str.listNumber + 1 }}
                           </td>
                           <td>
                             {{ str.barcode }}
@@ -101,65 +110,8 @@
                     </table>
                   </div>
                 </div>
-                <div class="pagination d-flex justify-content-end pe-5">
-                  <div class="d-flex align-items-center gap-3 pb-4">
-                    <div>
-                      <p class="m-0">Показано<span> 2112 12121</span></p>
-                    </div>
-
-                    <div class="page__search-pages d-flex align-content-center">
-                      <div
-                        class="pagination-container d-flex justify-items-center"
-                      >
-                        <ul class="pagination pagination-info mb-0 pe-0">
-                          <li class="page-item">
-                            <a
-                              class="page-link"
-                              href="javascript:;"
-                              aria-label="Previous"
-                            >
-                              <span aria-hidden="true"
-                                ><i
-                                  class="fa fa-angle-double-left"
-                                  aria-hidden="true"
-                                ></i
-                              ></span>
-                            </a>
-                          </li>
-                          <li class="page-item">
-                            <a class="page-link" href="javascript:;">1</a>
-                          </li>
-                          <li class="page-item">
-                            <a class="page-link" href="javascript:;">2</a>
-                          </li>
-                          <li class="page-item active">
-                            <a class="page-link" href="javascript:;">3</a>
-                          </li>
-                          <li class="page-item">
-                            <a class="page-link" href="javascript:;">4</a>
-                          </li>
-                          <li class="page-item">
-                            <a class="page-link" href="javascript:;">5</a>
-                          </li>
-                          <li class="page-item">
-                            <a
-                              class="page-link"
-                              href="javascript:;"
-                              aria-label="Next"
-                            >
-                              <span aria-hidden="true"
-                                ><i
-                                  class="fa fa-angle-double-right"
-                                  aria-hidden="true"
-                                ></i
-                              ></span>
-                            </a>
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                <pagination-component :filteredArr="products" :strAmount="10"
+              @PaginationReload="reloadPagination"></pagination-component>
               </div>
             </div>
             <div class="col-3">
@@ -287,7 +239,7 @@
                   Перейти к печати
                 </button>
 
-                <button class="btn btn-outline-dark mb-0 mt-2">
+                <button class="btn btn-outline-dark mb-0 mt-2 save__right__btn">
                   Сохранить картинкой
                 </button>
               </div>
@@ -302,8 +254,8 @@
       :option="activeOption"
     ></barcode-modal>
     <select-product-discount></select-product-discount>
-    <filters @no-filter="cancelFilters">
-      <p class="text-start my-2 fw-bold" for="Клиент">Старая цена</p>
+    <filters>
+      <p class="text-start my-2 fw-bold" for="Клиент">Название товара</p>
       <div class="input-group mb-3">
         <input
           type="text"
@@ -414,7 +366,56 @@ export default {
           color: "Зеленый",
           size: "S",
         },
+        {
+          id: 10,
+          barcode: 1234567890456,
+          name: "Куртка зеленая",
+          price: "29 000",
+          color: "Зеленый",
+          size: "S",
+        },
+        {
+          id: 11,
+          barcode: 1234567890456,
+          name: "Куртка зеленая",
+          price: "29 000",
+          color: "Зеленый",
+          size: "S",
+        },
+        {
+          id: 12,
+          barcode: 1234567890456,
+          name: "Куртка зеленая",
+          price: "29 000",
+          color: "Зеленый",
+          size: "S",
+        },
+        {
+          id: 13,
+          barcode: 1234567890456,
+          name: "Куртка зеленая",
+          price: "29 000",
+          color: "Зеленый",
+          size: "S",
+        },
+        {
+          id: 14,
+          barcode: 1234567890456,
+          name: "Куртка зеленая",
+          price: "29 000",
+          color: "Зеленый",
+          size: "S",
+        },
+        {
+          id: 15,
+          barcode: 1234567890456,
+          name: "Куртка зеленая",
+          price: "29 000",
+          color: "Зеленый",
+          size: "S",
+        },
       ],
+      paginationList: [],
       selectedProducts: [],
       filterName: "",
       filterOldPrice: "",
@@ -462,14 +463,28 @@ export default {
         );
       }
     },
+    isItChecked(ids){
+      if (
+          this.selectedProducts.indexOf(
+            this.products.find((el) => {
+              return el.id == ids;
+            })
+          ) == -1
+        ){
+          return false
+        }  
+        else{
+          return true
+        }
+    },
     openModal() {
       let myModal = Modal.getInstance(document.getElementById("BarcodeModal"));
       myModal.show();
     },
-    // openFilters(){
-    //   let filtersContainer = document.querySelector(".filters__container");
-    //   filtersContainer.classList.add("filters__show");
-    // }
+    reloadPagination(arr) {
+      // console.log(arr);
+      this.paginationList = arr;
+    }
   },
   computed: {
     selectedOne() {
@@ -499,6 +514,9 @@ export default {
 </script>
 
 <style scoped>
+.save__right__btn{
+  font-size: 16px;
+}
 /* HEADER */
 .storage__sec {
   font-weight: 400;
@@ -575,7 +593,7 @@ th {
   font-size: 12px;
   color: #a0aec0;
   text-transform: uppercase;
-  text-align: left;
+  text-align: left !important;
 }
 td {
   text-align: left;

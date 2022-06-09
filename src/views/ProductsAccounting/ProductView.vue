@@ -15,7 +15,7 @@
             Управление товаром
           </button></router-link
         >
-        <button class="btn bg-gradient-dark mb-0">Сохранить</button>
+        <button class="btn bg-gradient-dark mb-0" onclick="window.location.href = '/products-accounting/product-list'">Сохранить</button>
       </div>
     </div>
     <div class="main__body d-flex gap-4 m-4">
@@ -196,7 +196,7 @@
           class="price__header d-flex justify-content-between align-items-center"
         >
           <h5>Стоимость товаров</h5>
-          <button class="btn btn-outline-dark">ФИЛЬТРЫ</button>
+          <filters-button></filters-button>
         </div>
         <div class="articles__content d-flex flex-column mt-4">
           <div
@@ -246,12 +246,34 @@
         </div>
       </div>
     </div>
+    <filters>
+      <p class="text-start my-2 fw-bold" for="">Цвет</p>
+      <select class="form-select">
+        <option value="" disabled selected>Выберите цвет</option>
+        <option v-for="color of colors" :key="color">
+          {{ color.name }}
+        </option>
+        <option value="">Все цвета</option>
+      </select>
+
+      <p class="text-start my-2 fw-bold" for="">Размер</p>
+      <select class="form-select">
+        <option value="" disabled selected>Выберите размер</option>
+        <option v-for="color of sizes" :key="color">
+          {{ color.name }}
+        </option>
+        <option value="">Все размеры</option>
+      </select>
+    </filters>
   </main>
 </template>
 
 <script>
 import Quill from "@/assets/js/plugins/quill.min.js";
+import FiltersButton from '@/components/buttons/FiltersButton.vue';
+import Filters from '@/components/Filters.vue';
 export default {
+  components: { FiltersButton, Filters },
   data() {
     return {
       warehouses: [
@@ -294,8 +316,8 @@ export default {
   text-align: start;
 }
 .radio-wrap .form-check-input::after {
-  width: 0.7375rem !important;
-  height: 0.7375rem !important;
+  /* width: 0.7375rem !important; */
+  /* height: 0.7375rem !important; */
 }
 label {
   font-family: Open Sans;

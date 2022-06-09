@@ -40,7 +40,7 @@ body::-webkit-scrollbar-track {
 }
 
 .table thead th{
-  text-align: center !important;
+  text-align: center;
 }
 .dropdown__content__top{
   bottom: 20px;
