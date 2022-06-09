@@ -20,35 +20,15 @@
             <div class="order__body__content">
               <div class="order__first__row">
                 <div class="form-group">
-                  <label
-                    for="example-text-input"
-                    class="form-control-label order__label"
-                    >№ Скидки</label
-                  >
-                  <input
-                    class="form-control"
-                    type="text"
-                    id="example-text-input"
-                    placeholder="№ 9876543"
-                  />
+                  <label for="example-text-input" class="form-control-label order__label">№ Скидки</label>
+                  <input class="form-control" type="text" id="example-text-input" placeholder="№ 9876543" />
                 </div>
                 <div class="form-group">
-                  <label
-                    for="example-text-input"
-                    class="form-control-label order__label"
-                    >Название скидки</label
-                  >
-                  <input
-                    class="form-control"
-                    type="text"
-                    id="example-text-input"
-                    placeholder="Скидка 8 марта"
-                  />
+                  <label for="example-text-input" class="form-control-label order__label">Название скидки</label>
+                  <input class="form-control" type="text" id="example-text-input" placeholder="Скидка 8 марта" />
                 </div>
                 <div class="form-group">
-                  <label for="exampleFormControlSelect1" class="order__label"
-                    >Тип скидки</label
-                  >
+                  <label for="exampleFormControlSelect1" class="order__label">Тип скидки</label>
                   <div class="select">
                     <select class="form-select" id="exampleFormControlSelect1">
                       <option selected disabled>Выберите</option>
@@ -58,47 +38,20 @@
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="type__disc" class="order__label"
-                    >Размер скидки</label
-                  >
+                  <label for="type__disc" class="order__label">Размер скидки</label>
                   <div class="input-group flex-nowrap" style="width: 141px">
-                    <input
-                      class="form-control"
-                      placeholder="10"
-                      id="type__disc"
-                      type="text"
-                    />
-                    <span class="input-group-text py-0"
-                      ><img src="@/assets/img/type__disc.svg" alt=""
-                    /></span>
+                    <input class="form-control" placeholder="10" id="type__disc" type="text" />
+                    <span class="input-group-text py-0"><img src="@/assets/img/type__disc.svg" alt="" /></span>
                   </div>
                 </div>
                 <div class="form-group">
-                  <label
-                    for="example-date-input"
-                    class="form-control-label order__label"
-                    >Дата начала скидки</label
-                  >
-                  <input
-                    class="form-control"
-                    type="date"
-                    id="example-date-input"
-                    style="width: 191px"
-                  />
+                  <label for="example-date-input" class="form-control-label order__label">Дата начала скидки</label>
+                  <input class="form-control" type="date" id="example-date-input" style="width: 191px" />
                 </div>
                 <div class="form-group">
-                  <label
-                    for="example-date-input"
-                    class="form-control-label order__label"
-                    style="white-space: nowrap"
-                    >Дата окончания скидки</label
-                  >
-                  <input
-                    class="form-control"
-                    type="date"
-                    id="example-date-input"
-                    style="width: 191px"
-                  />
+                  <label for="example-date-input" class="form-control-label order__label"
+                    style="white-space: nowrap">Дата окончания скидки</label>
+                  <input class="form-control" type="date" id="example-date-input" style="width: 191px" />
                 </div>
               </div>
             </div>
@@ -112,39 +65,22 @@
               <div class="barcodes">
                 <div class="form-group">
                   <div class="input-group">
-                    <input
-                      class="form-control barcode__inp"
-                      placeholder="Введите штрихкод"
-                      id="search-barcode"
-                      type="text"
-                    />
-                    <span class="input-group-text py-0"
-                      ><img src="@/assets/css/icons/barcode.svg" alt=""
-                    /></span>
+                    <input class="form-control barcode__inp" placeholder="Введите штрихкод" id="search-barcode"
+                      type="text" />
+                    <span class="input-group-text py-0"><img src="@/assets/css/icons/barcode.svg" alt="" /></span>
                   </div>
                 </div>
                 <button class="btn barcode__btn">Выбрать из списка</button>
               </div>
               <div class="search">
-                <button
-                  class="btn disc__btn"
-                  data-bs-toggle="modal"
-                  data-bs-target="#DiscModal"
-                >
+                <button class="btn disc__btn" data-bs-toggle="modal" data-bs-target="#DiscModal">
                   Ввести номер поступления
                 </button>
                 <div class="form-group m-0">
                   <div class="input-group mt-1">
-                    <span class="input-group-text"
-                      ><img src="@/assets/css/icons/searchIcon.svg" alt=""
-                    /></span>
-                    <input
-                      class="form-control search__inp"
-                      placeholder="Поиск..."
-                      id="search"
-                      type="text"
-                      v-model.trim="search"
-                    />
+                    <span class="input-group-text"><img src="@/assets/css/icons/searchIcon.svg" alt="" /></span>
+                    <input class="form-control search__inp" placeholder="Поиск..." id="search" type="text"
+                      v-model.trim="search" />
                   </div>
                 </div>
               </div>
@@ -166,7 +102,7 @@
                   <tr>
                     <th scope="col" class="th__col">№</th>
                     <th scope="col" class="th__col">Товар</th>
-                    <th scope="col" class="th__col">Штрихкод</th>
+                    <th scope="col" class="th__col">Артикул</th>
                     <th scope="col" class="th__col">Цвет</th>
                     <th scope="col" class="th__col">Размер</th>
                     <th scope="col" class="th__col">себестоимость</th>
@@ -182,11 +118,7 @@
                       {{ i + 1 }}
                     </td>
                     <td style="display: flex">
-                      <img
-                        :src="item.img"
-                        style="width: 2.5vw; margin-right: 0.833vw"
-                        alt=""
-                      />
+                      <img :src="item.img" style="width: 2.5vw; margin-right: 0.833vw" alt="" />
                       {{ item.name }}
                     </td>
                     <td>
@@ -208,12 +140,8 @@
             </div>
           </div>
         </div>
-        <pagination-component
-          :filteredArr="filteredProducts"
-          :strAmount="10"
-          @PaginationReload="reloadPagination"
-          class="pb-4"
-        ></pagination-component>
+        <pagination-component :filteredArr="filteredProducts" :strAmount="10" @PaginationReload="reloadPagination"
+          class="pb-4"></pagination-component>
       </div>
     </div>
   </main>
@@ -364,11 +292,9 @@
 }
 
 .active2 {
-  background: linear-gradient(
-    83.56deg,
-    #7092e0 10.01%,
-    #8baef3 75.36%
-  ) !important;
+  background: linear-gradient(83.56deg,
+      #7092e0 10.01%,
+      #8baef3 75.36%) !important;
   border-radius: 0px 8px 8px 0px !important;
   font-size: 0.729vw !important;
   color: #ffffff !important;
@@ -693,25 +619,32 @@
 .order__content {
   padding: 0 2.083vw 0 2.083vw;
 }
+
 @media screen and (max-width: 1600px) {
   .btn {
     font-size: 12px !important;
   }
+
   .order__header__main {
     font-size: 20px;
   }
+
   .order__header__sec {
     font-size: 14px;
   }
+
   .order__label {
     font-size: 12px;
   }
+
   .disc__btn {
     padding: 0.75rem 1.5rem;
   }
+
   .search {
     align-items: flex-start;
   }
+
   .order__table__body {
     height: 33vw;
   }
