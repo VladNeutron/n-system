@@ -100,7 +100,8 @@
                 <div class=" d-flex justify-content-between ps-3 pe-4">
                   <div class="page_search-inputs d-flex align-items-center gap-3">
                     <list-search @searchFilter="(a) => search = a"></list-search>
-                    <button class="btn bg-gradient-dark mb-0">
+                    <button class="btn bg-gradient-dark mb-0"
+                      onclick="window.location.href = '/warehouse-accounting/post-list'">
                       Завершить оприходование
                     </button>
                   </div>
@@ -123,8 +124,8 @@
                         </tr>
                       </thead>
                       <tbody>
-                        <tr v-for="(item, i) in paginationList" :key="item">
-                          <td scope="row">{{ i + 1 }}</td>
+                        <tr v-for="item in paginationList" :key="item">
+                          <td scope="row">{{ item.listNumber + 1 }}</td>
                           <td>{{ item.code }}</td>
                           <td>{{ item.name }}</td>
                           <td>{{ item.category }}</td>
@@ -141,7 +142,7 @@
                   </div>
                 </div>
               </div>
-              <pagination-component :filteredArr="items" :strAmount="7" @PaginationReload="reloadPagination"
+              <pagination-component :filteredArr="filteredOrders" :strAmount="7" @PaginationReload="reloadPagination"
                 class="pb-4 pagination__size"></pagination-component>
             </div>
           </div>
@@ -171,13 +172,24 @@
       </template>
     </inputs-modal>
     <select-product></select-product>
-    <commentary></commentary>
+    <commentary :pageTitle="'Оприходование №19'"></commentary>
   </main>
 </template>
 
 <script>
 import InputsModal from "@/components/InputsModal.vue";
 export default {
+  computed: {
+    filteredOrders() {
+      return this.items.filter(
+        (items) =>
+
+          (String(items.name).toLowerCase().includes(String(this.search).toLowerCase())) ||
+          (String(items.category).toLowerCase().includes(String(this.search).toLowerCase())) ||
+          (String(items.code).includes(String(this.search).toLowerCase()))
+      );
+    },
+  },
   methods: {
     reloadPagination(arr) {
       this.paginationList = arr;

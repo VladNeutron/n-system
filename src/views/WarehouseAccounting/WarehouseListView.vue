@@ -24,48 +24,52 @@
                   </button>
                 </div>
                 <div class="table__header-search">
-                  <list-search></list-search>
+                  <list-search @searchFilter="(a) => search = a"></list-search>
                   <filters-button></filters-button>
                 </div>
               </div>
               <div class="table__h">
-                <div class="table">
-                  <table>
-                    <tr>
-                      <th>№</th>
-                      <th>НАИМЕНОВАНИЕ СКЛАДА</th>
-                      <th>ТИП СКЛАДА</th>
-                      <th>АДРЕСС СКЛАДА</th>
-                      <th>СТАТУС</th>
-                    </tr>
-                    <tr v-for="warehouse in paginationList" :key="warehouse.id">
-                      <td>{{ warehouse.listNumber + 1 }}</td>
-                      <td>{{ warehouse.name }}</td>
-                      <td>{{ warehouse.type }}</td>
-                      <td>{{ warehouse.adress }}</td>
-                      <td>
-                        <div :class="[
-                          {
-                            table__status__open: warehouse.status != 'Закрыт',
-                          },
-                          {
-                            table__status__closed:
-                              warehouse.status == 'Закрыт',
-                          },
-                        ]">
-                          <p class="tag">{{ warehouse.status }}</p>
-                        </div>
-                      </td>
-                      <td></td>
-                      <td class="dropdown" style="padding-left: 100px">
-                        <img src="@/assets/img/dots.svg" style="width: 1.563vw; cursor: pointer" alt="" />
-                        <div class="dropdown-content">
-                          <a href="/warehouse-accounting/storage">Редактировать</a>
-                          <hr />
-                          <a style="cursor: pointer" data-bs-toggle="modal" data-bs-target="#DeleteInv">Удалить</a>
-                        </div>
-                      </td>
-                    </tr>
+                <div>
+                  <table class="table table-striped">
+                    <thead>
+                      <tr>
+                        <th>№</th>
+                        <th>НАИМЕНОВАНИЕ СКЛАДА</th>
+                        <th>ТИП СКЛАДА</th>
+                        <th>АДРЕСС СКЛАДА</th>
+                        <th>СТАТУС</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr v-for="warehouse in paginationList" :key="warehouse.id">
+                        <td>{{ warehouse.listNumber + 1 }}</td>
+                        <td>{{ warehouse.name }}</td>
+                        <td>{{ warehouse.type }}</td>
+                        <td>{{ warehouse.adress }}</td>
+                        <td>
+                          <div :class="[
+                            {
+                              table__status__open: warehouse.status != 'Закрыт',
+                            },
+                            {
+                              table__status__closed:
+                                warehouse.status == 'Закрыт',
+                            },
+                          ]">
+                            <p class="tag">{{ warehouse.status }}</p>
+                          </div>
+                        </td>
+                        <td></td>
+                        <td class="dropdown" style="padding-left: 100px">
+                          <img src="@/assets/img/dots.svg" style="width: 1.563vw; cursor: pointer" alt="" />
+                          <div class="dropdown-content">
+                            <a href="/warehouse-accounting/storage">Редактировать</a>
+                            <hr />
+                            <a style="cursor: pointer" data-bs-toggle="modal" data-bs-target="#DeleteInv">Удалить</a>
+                          </div>
+                        </td>
+                      </tr>
+                    </tbody>
                   </table>
                 </div>
               </div>
@@ -116,6 +120,7 @@ export default {
   },
   data() {
     return {
+      search: '',
       filterStatus: "",
       filterWarehouse: "",
       paginationList: [],
@@ -224,6 +229,11 @@ export default {
           (this.filterWarehouse === ""
             ? true
             : warehouse.name === this.filterWarehouse)
+          &&
+          (String(warehouse.name).toLowerCase().includes(String(this.search).toLowerCase())) ||
+          (String(warehouse.type).toLowerCase().includes(String(this.search).toLowerCase())) ||
+          (String(warehouse.adress).toLowerCase().includes(String(this.search).toLowerCase())) ||
+          (String(warehouse.status).toLowerCase().includes(String(this.search).toLowerCase()))
       );
     },
   },
@@ -270,7 +280,6 @@ export default {
 }
 
 .table {
-  display: flex;
   min-width: 95%;
   padding: 0.17vw 0.833vw 1.667vw 0.833vw;
 }
