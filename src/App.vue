@@ -27,7 +27,7 @@ export default {
       filtersContainer.classList.add("filters__show");
     },
   },
-  mounted() {},
+  mounted() { },
 };
 </script>
 
@@ -35,20 +35,24 @@ export default {
 .not__added {
   padding-bottom: 150px;
 }
+
 .filter__name__standart {
   font-weight: 600;
   font-size: 20px;
   color: #2d3748;
   text-align: left;
 }
+
 input[type="datetime-local"] {
   width: 191px;
   height: 40.39px;
 }
+
 input[type="date"] {
   width: 191px;
   height: 40.39px;
 }
+
 input[type="date"]::-webkit-calendar-picker-indicator {
   color: #2d3748;
   position: relative;
@@ -56,6 +60,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   cursor: pointer;
   font-size: 27px;
 }
+
 input[type="datetime-local"]::-webkit-calendar-picker-indicator {
   color: #2d3748;
   position: relative;
@@ -63,19 +68,24 @@ input[type="datetime-local"]::-webkit-calendar-picker-indicator {
   cursor: pointer;
   font-size: 27px;
 }
+
 .form-select:hover:focus {
   background-image: url(@/assets/img/arrow__flip.svg) !important;
   transition: 0.3s;
 }
+
 table th {
   font-size: 12px;
   font-weight: 600;
   color: rgba(160, 174, 192, 1);
 }
+
 td {
+  font-size: 14px;
   color: #2d3748;
   font-weight: 600;
 }
+
 .page__name h3 {
   font-size: 24px;
   line-height: 32px;
@@ -88,6 +98,7 @@ td {
   font-weight: 400;
   color: gray;
 }
+
 .form-select {
   border: 1px solid #a0aec0 !important;
   border-radius: 8px;
