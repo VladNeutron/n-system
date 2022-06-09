@@ -467,6 +467,9 @@ export default {
 </script>
 
 <style scoped>
+.show-btn{
+  position: relative;
+}
 label {
   font-family: Open Sans;
   font-size: 14px;
@@ -546,7 +549,7 @@ a {
   color: #a0aec0;
 }
 .remove-button {
-  position: relative;
+  position: absolute;
   top: -20px;
   right: -30px;
   height: 24px;

@@ -86,7 +86,7 @@
                         class="form-control area"
                         id="textarea"
                         rows="3"
-                        placeholder="Комментариев нет"
+                        placeholder="Оставьте комментарий"
                       ></textarea>
                     </div>
                   </div>
@@ -106,13 +106,13 @@
                   <div class="col">
                     <div class="form-check types">
                       <input
-                        class="form-check-input"
+                        class="form-check-input mb-1"
                         type="checkbox"
                         value=""
                         id="customCheck2"
                       />
                       <label
-                        class="custom-control-label type__label"
+                        class="custom-control-label type__label mb-0"
                         for="customCheck2"
                         >Доставка</label
                       >
@@ -136,7 +136,7 @@
                     </div>
                     <div class="form-check types">
                       <input
-                        class="form-check-input"
+                        class="form-check-input mb-1"
                         type="checkbox"
                         value=""
                         id="customCheck3"
@@ -166,7 +166,7 @@
                     </div>
                     <div class="form-check types">
                       <input
-                        class="form-check-input"
+                        class="form-check-input mb-1"
                         type="checkbox"
                         value=""
                         id="customCheck4"
@@ -198,7 +198,7 @@
                   <div class="col right__col">
                     <div class="form-check types">
                       <input
-                        class="form-check-input"
+                        class="form-check-input mb-1"
                         type="checkbox"
                         value=""
                         id="customCheck5"
@@ -228,7 +228,7 @@
                     </div>
                     <div class="form-check types">
                       <input
-                        class="form-check-input"
+                        class="form-check-input mb-1"
                         type="checkbox"
                         value=""
                         id="customCheck6"
@@ -258,7 +258,7 @@
                     </div>
                     <div class="form-check types">
                       <input
-                        class="form-check-input"
+                        class="form-check-input mb-1"
                         type="checkbox"
                         value=""
                         id="customCheck7"

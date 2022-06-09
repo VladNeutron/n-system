@@ -98,14 +98,18 @@
                         <input class="form-control" placeholder="Поиск..." id="search" type="text" />
                       </div>
                     </div>
-                    <button class="btn bg-gradient-dark mb-0">
+                    <button class="btn bg-gradient-dark mb-0" onclick="window.location.href = '/warehouse-accounting/inventorization-list'">
                       Завершить инвентаризацию
                     </button>
                   </div>
                 </div>
               </div>
-              <div class="inv__block py-4 ps-0">
+              <div v-if="isAdded == false">
+                <not-added-table :documentName="'инвентаризацию'"></not-added-table>
+              </div>
+              <div class="inv__block py-4 ps-0"  v-if="isAdded">
                 <div class="inv__content p-0">
+                  
                   <div>
                     <table class="table text-center">
                       <thead>
@@ -139,7 +143,7 @@
                   </div>
                 </div>
               </div>
-              <pagination-component :filteredArr="items" :strAmount="7" @PaginationReload="reloadPagination"
+              <pagination-component v-if="isAdded" :filteredArr="items" :strAmount="7" @PaginationReload="reloadPagination"
                 class="pb-4 pagination__size"></pagination-component>
             </div>
           </div>
@@ -169,7 +173,7 @@
       </template>
     </inputs-modal>
     <select-product-discount></select-product-discount>
-    <commentary></commentary>
+    <commentary :pageTitle="'Создание инвентаризации'"></commentary>
   </main>
 </template>
 
@@ -177,16 +181,18 @@
 import Commentary from "@/components/Commentary.vue";
 import SelectProductDiscount from "@/components/SelectProductDiscount.vue";
 import InputsModal from "@/components/InputsModal.vue";
+import NotAddedTable from "@/components/NotAddedTable.vue";
 export default {
   methods: {
     reloadPagination(arr) {
       this.paginationList = arr;
     },
   },
-  components: { InputsModal, SelectProductDiscount, Commentary },
+  components: { InputsModal, SelectProductDiscount, Commentary, NotAddedTable },
   data() {
     return {
       paginationList: [],
+      isAdded: false,
       items: [
         {
           code: 1234312454356,

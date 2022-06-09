@@ -107,13 +107,16 @@
                         <input class="form-control" placeholder="Поиск..." id="search" type="text" />
                       </div>
                     </div>
-                    <button class="btn bg-gradient-dark mb-0">
+                    <button class="btn bg-gradient-dark mb-0" onclick="window.location.href = '/warehouse-accounting/write-off'">
                       Завершить списание
                     </button>
                   </div>
                 </div>
               </div>
-              <div class="inv__block">
+              <div v-if="isAdded == false">
+                <not-added-table :documentName="'списание'"></not-added-table>
+              </div>
+              <div class="inv__block" v-if="isAdded">
                 <div class="inv__content">
                   <div>
                     <table class="table table-hover text-center">
@@ -147,7 +150,7 @@
                   </div>
                 </div>
               </div>
-              <pagination-component :filteredArr="items" :strAmount="7" @PaginationReload="reloadPagination"
+              <pagination-component v-if="isAdded" :filteredArr="items" :strAmount="7" @PaginationReload="reloadPagination"
                 class="pb-4 pagination__size"></pagination-component>
             </div>
           </div>
@@ -177,12 +180,13 @@
       </template>
     </inputs-modal>
     <select-product></select-product>
-    <commentary></commentary>
+    <commentary :pageTitle="'Создание списания'"></commentary>
   </main>
 </template>
 
 <script>
 import InputsModal from "@/components/InputsModal.vue";
+import NotAddedTable from "@/components/NotAddedTable.vue";
 export default {
   methods: {
     reloadPagination(arr) {
@@ -190,10 +194,11 @@ export default {
     },
   },
   components: {
-    InputsModal,
+    InputsModal, NotAddedTable
   },
   data() {
     return {
+      isAdded: false,
       paginationList: [],
       items: [
         {

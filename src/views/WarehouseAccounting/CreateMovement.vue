@@ -87,6 +87,14 @@
                     <span style="cursor: pointer">Новый</span>
                   </p>
                 </div>
+                <div class="items__block text-start" style="cursor: pointer"
+                  onclick="window.location.href = '/warehouse-accounting/inventorization-list'">
+                  <p class="items__title">Инвентаризация</p>
+                  <p class="items__text text-start">
+                    <span style="text-decoration: underline">Инвентаризация №19</span>,<br />
+                    <span style="text-decoration: underline">от 11.11.21</span>
+                  </p>
+                </div>
               </div>
             </template>
           </drop-down>
@@ -114,13 +122,16 @@
                         <input class="form-control" placeholder="Поиск..." id="search" type="text" />
                       </div>
                     </div>
-                    <button class="btn bg-gradient-dark mb-0">
+                    <button class="btn bg-gradient-dark mb-0" onclick="window.location.href = '/warehouse-accounting/move-list'">
                       Завершить перемещение
                     </button>
                   </div>
                 </div>
               </div>
-              <div class="inv__block">
+              <div v-if="isAdded == false">
+                <not-added-table :documentName="'перемещение'"></not-added-table>
+              </div>
+              <div class="inv__block" v-if="isAdded">
                 <div class="inv__content">
                   <div>
                     <table class="table table-hover text-center">
@@ -154,7 +165,7 @@
                   </div>
                 </div>
               </div>
-              <pagination-component :filteredArr="items" :strAmount="7" @PaginationReload="reloadPagination"
+              <pagination-component v-if="isAdded" :filteredArr="items" :strAmount="7" @PaginationReload="reloadPagination"
                 class="pb-4 pagination__size"></pagination-component>
             </div>
           </div>
@@ -184,22 +195,24 @@
       </template>
     </inputs-modal>
     <select-product></select-product>
-    <commentary></commentary>
+    <commentary :pageTitle="'Создание перемещения'"></commentary>
   </main>
 </template>
 
 <script>
 import InputsModal from "@/components/InputsModal.vue";
 import CommentButton from "@/components/buttons/CommentButton.vue";
+import NotAddedTable from "@/components/NotAddedTable.vue";
 export default {
   methods: {
     reloadPagination(arr) {
       this.paginationList = arr;
     },
   },
-  components: { InputsModal, CommentButton },
+  components: { InputsModal, CommentButton, NotAddedTable },
   data() {
     return {
+      isAdded: false,
       paginationList: [],
       items: [
         {
