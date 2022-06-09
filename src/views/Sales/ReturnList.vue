@@ -148,17 +148,8 @@
                 списка</button>
             </div>
             <div class="search">
-<<<<<<< HEAD
-              <button
-                class="btn disc__btn"
-                data-bs-toggle="modal"
-                data-bs-target="#InpModal"
-              >
-                Ввести номер заказа
-=======
               <button class="btn disc__btn" data-bs-toggle="modal" data-bs-target="#InpModal">
-                Ввести номер поступления
->>>>>>> 45a97f391f917c02c149a505538953b8b0d0c52e
+                Ввести номер заказа
               </button>
               <div class="form-group m-0">
                 <div class="input-group mt-1">
@@ -270,13 +261,9 @@
       </template>
       <template #body>
         <div class="form-group label__text" style="text-align: left">
-<<<<<<< HEAD
           <label for="exampleFormControlInput1" class="label__text" style="font-size: 14px;"
             >Номер заказа</label
           >
-=======
-          <label for="exampleFormControlInput1" class="label__text">Номер поступления</label>
->>>>>>> 45a97f391f917c02c149a505538953b8b0d0c52e
           <div class="d-flex">
             <input type="number" class="form-control modal__inp w-100" id="exampleFormControlInput1"
               placeholder="Введите номер поступления" />
