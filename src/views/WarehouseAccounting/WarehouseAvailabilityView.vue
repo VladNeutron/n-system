@@ -18,44 +18,21 @@
             </template>
           </lists-header>
           <div class="card">
-            <div
-              class="search__munu p-4 d-flex justify-content-between align-items-end"
-            >
+            <div class="search__munu p-4 d-flex justify-content-between align-items-end">
               <div class="search__menu-left d-flex gap-4">
-                <div
-                  class="form-group m-0 d-flex flex-column align-items-start"
-                  style="width: 307px"
-                >
-                  <label for="search" class="custom__label"
-                    >Список товаров</label
-                  >
+                <div class="form-group m-0 d-flex flex-column align-items-start" style="width: 307px">
+                  <label for="search" class="custom__label">Список товаров</label>
                   <div class="input-group mt-1">
-                    <span class="input-group-text"
-                      ><img src="@/assets/css/icons/searchIcon.svg" alt="" />
+                    <span class="input-group-text"><img src="@/assets/css/icons/searchIcon.svg" alt="" />
                     </span>
-                    <input
-                      class="form-control"
-                      placeholder="Поиск..."
-                      id="search"
-                      type="text"
-                      v-model.trim="search"
-                    />
+                    <input class="form-control" placeholder="Поиск..." id="search" type="text" v-model.trim="search" />
                   </div>
                 </div>
-                <div
-                  class="form-group m-0 mt-1 d-flex flex-column align-items-start"
-                  style="width: 393px"
-                >
-                  <label for="search" class="custom__label"
-                    >Выберите склад</label
-                  >
+                <div class="form-group m-0 mt-1 d-flex flex-column align-items-start" style="width: 393px">
+                  <label for="search" class="custom__label">Выберите склад</label>
                   <select class="form-select form__adapt" v-model="selected">
-                    <option
-                      v-for="(warehouse, i) in warehousesArr"
-                      :key="i"
-                      :value="warehouse"
-                      @input="this.selected = warehouse"
-                    >
+                    <option v-for="(warehouse, i) in warehousesArr" :key="i" :value="warehouse"
+                      @input="this.selected = warehouse">
                       {{ warehouse }}
                     </option>
                     <option value="">Без фильтра</option>
@@ -84,8 +61,8 @@
                   </tr>
                 </thead>
                 <tbody class="table-body">
-                  <tr v-for="(item, i) in paginationList" :key="item">
-                    <td scope="row">{{ i + 1 }}</td>
+                  <tr v-for="item in paginationList" :key="item">
+                    <td scope="row">{{ item.listNumber + 1 }}</td>
                     <td class="d-flex gap-2">
                       <img :src="item.img" />{{ item.name }}
                     </td>
@@ -101,12 +78,8 @@
                 </tbody>
               </table>
             </div>
-            <pagination-component
-              :filteredArr="filteredWarehouse"
-              :strAmount="10"
-              @PaginationReload="reloadPagination"
-              class="pb-4"
-            ></pagination-component>
+            <pagination-component :filteredArr="filteredWarehouse" :strAmount="8" @PaginationReload="reloadPagination"
+              class="pb-4"></pagination-component>
           </div>
         </div>
       </div>
@@ -118,21 +91,13 @@
       </div>
       <div class="filters__period">
         <div class="form-group">
-          <input
-            class="form-control period__s"
-            type="date"
-            id="example-date-input"
-          />
+          <input class="form-control period__s" type="date" id="example-date-input" />
         </div>
         <div>
           <img src="@/assets/img/line.svg" style="width: 1.927vw" alt="" />
         </div>
         <div class="form-group">
-          <input
-            class="form-control period__s"
-            type="date"
-            id="example-date-input"
-          />
+          <input class="form-control period__s" type="date" id="example-date-input" />
         </div>
       </div>
       <div class="text-start">
@@ -141,27 +106,16 @@
           <option></option>
         </select>
       </div>
-      <div class="text-start">
+      <!-- <div class="text-start">
         <label class="text-start" for="">Склад</label>
         <select class="form-select">
           <option></option>
         </select>
-      </div>
-      <div
-        class="form-check d-flex align-items-center"
-        style="text-align: left; margin-top: 0.833vw"
-      >
-        <input
-          class="form-check-input"
-          type="checkbox"
-          value=""
-          id="fcustomCheck1"
-        />
-        <label
-          class="custom-control-label filters__checkbox__label"
-          for="customCheck1"
-          >Есть в наличии</label
-        >
+      </div> -->
+      <div class="form-check d-flex align-items-center" style="text-align: left; margin-top: 0.833vw">
+        <input class="form-check-input mt-0" type="checkbox" value="" id="fcustomCheck1" />
+        <label class="custom-control-label filters__checkbox__label" style="margin-bottom:0;" for="customCheck1">Есть в
+          наличии</label>
       </div>
     </filters>
   </main>
@@ -178,6 +132,116 @@ export default {
   data() {
     return {
       items: [
+        {
+          name: "Куртка зеленая",
+          img: require("@/assets/css/images/pants.png"),
+          barcode: 1234567890456,
+          color: "Зеленый",
+          size: "S",
+          warehouse: "ТЦ “Jam Mall”",
+          startPrice: 12000,
+          currentPrice: 29000,
+          amount: 1,
+        },
+        {
+          name: "Куртка красная",
+          img: require("@/assets/css/images/pants.png"),
+          barcode: 1231236554634,
+          color: "Красный",
+          size: "M",
+          warehouse: "ТЦ “Jam Mall”",
+          startPrice: 20000,
+          currentPrice: 40000,
+          amount: 1,
+        },
+        {
+          name: "Футболка синяя",
+          img: require("@/assets/css/images/pants.png"),
+          barcode: 2354325423,
+          color: "Синий",
+          size: "XL",
+          warehouse: "ТЦ “Апорт”",
+          startPrice: 10000,
+          currentPrice: 27000,
+          amount: 1,
+        },
+        {
+          name: "Штаны дорогие",
+          img: require("@/assets/css/images/pants.png"),
+          barcode: 55555778080,
+          color: "Синий",
+          size: "L",
+          warehouse: "ТЦ “Апорт”",
+          startPrice: 40,
+          currentPrice: 40,
+          amount: 1,
+        },
+        {
+          name: "Шлем воина",
+          img: require("@/assets/css/images/pants.png"),
+          barcode: 2123123121,
+          color: "Черный",
+          size: "M",
+          warehouse: "ТЦ “Jam Mall”",
+          startPrice: 1000000,
+          currentPrice: 12000000,
+          amount: 1,
+        },
+        {
+          name: "Куртка зеленая",
+          img: require("@/assets/css/images/pants.png"),
+          barcode: 1234567890456,
+          color: "Зеленый",
+          size: "S",
+          warehouse: "ТЦ “Jam Mall”",
+          startPrice: 12000,
+          currentPrice: 29000,
+          amount: 1,
+        },
+        {
+          name: "Куртка красная",
+          img: require("@/assets/css/images/pants.png"),
+          barcode: 1231236554634,
+          color: "Красный",
+          size: "M",
+          warehouse: "ТЦ “Jam Mall”",
+          startPrice: 20000,
+          currentPrice: 40000,
+          amount: 1,
+        },
+        {
+          name: "Футболка синяя",
+          img: require("@/assets/css/images/pants.png"),
+          barcode: 2354325423,
+          color: "Синий",
+          size: "XL",
+          warehouse: "ТЦ “Апорт”",
+          startPrice: 10000,
+          currentPrice: 27000,
+          amount: 1,
+        },
+        {
+          name: "Штаны дорогие",
+          img: require("@/assets/css/images/pants.png"),
+          barcode: 55555778080,
+          color: "Синий",
+          size: "L",
+          warehouse: "ТЦ “Апорт”",
+          startPrice: 40,
+          currentPrice: 40,
+          amount: 1,
+        },
+        {
+          name: "Шлем воина",
+          img: require("@/assets/css/images/pants.png"),
+          barcode: 2123123121,
+          color: "Черный",
+          size: "M",
+          warehouse: "ТЦ “Jam Mall”",
+          startPrice: 1000000,
+          currentPrice: 12000000,
+          amount: 1,
+        },
         {
           name: "Куртка зеленая",
           img: require("@/assets/css/images/pants.png"),
@@ -268,64 +332,83 @@ export default {
 </script>
 
 <style scoped>
+.table__body {
+  height: 29.7vw;
+}
+
 .btn-outline-dark {
   font-weight: 500;
 }
+
 .period__s {
   width: 191px !important;
 }
+
 .page__name h3 {
   font-weight: 700;
   line-height: 1.667vw;
 }
+
 .page__name p {
   color: rgba(160, 174, 192, 1);
   font-size: 0.729vw;
 }
+
 thead {
   color: rgba(160, 174, 192, 1);
   font-size: 0.625vw;
   line-height: 0.938vw;
 }
+
 tbody {
   font-size: 0.729vw;
   font-weight: 600;
   line-height: 0.99vw;
 }
+
 tbody img {
   width: 48px;
   height: 48px;
 }
+
 .custom__label {
   font-weight: 600;
   font-size: 14px;
   color: #2d3748;
 }
+
 @media screen and (max-width: 1600px) {
+
   td,
   th {
     font-size: 14px;
   }
+
   .form__adapt {
     margin-top: 4px;
   }
+
   .table__body::-webkit-scrollbar {
     background: #e2e8f0;
     border-radius: 0.78vw;
     width: 0.37vw;
   }
+
   .table__body::-webkit-scrollbar-thumb {
     border-radius: 0.78vw;
     background-color: #a0aec0;
   }
+
   .table__body::-webkit-scrollbar-track {
     -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.2);
     border-radius: 0.78vw;
     background-color: #e2e8f0;
   }
+
   .table__body {
-    overflow-x: scroll;
+    overflow-x: auto;
   }
+
   .px-4 {
     margin-bottom: 1.5rem !important;
   }
