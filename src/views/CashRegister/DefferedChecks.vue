@@ -11,32 +11,14 @@
     <div class="card pt-4 pb-6 m-4">
       <div class="d-flex justify-content-between align-items-center mx-4 mb-4">
         <div>
-          <button
-            class="btn bg-gradient-dark mb-0"
-            style="margin-right: 0.833vw"
-          >
+          <button class="btn bg-gradient-dark mb-0" style="margin-right: 0.833vw"
+            onclick="window.location.href = '/cash-register/cash-register-sale'">
             Продолжить продажу
-            <img
-              src="@/assets/img/arrow_forward.svg"
-              style="width: 1.042vw"
-              alt=""
-            />
+            <img src="@/assets/img/arrow_forward.svg" style="width: 1.042vw" alt="" />
           </button>
         </div>
         <div class="table__inputs d-flex gap-3 align-content-center">
-          <div class="form-group m-0">
-            <div class="input-group">
-              <span class="input-group-text"
-                ><img src="@/assets/css/icons/searchIcon.svg" alt=""
-              /></span>
-              <input
-                class="form-control form__width"
-                placeholder="Поиск..."
-                id="search"
-                type="text"
-              />
-            </div>
-          </div>
+          <list-search @searchFilter="(a) => search = a"></list-search>
           <print-button></print-button>
           <download-button></download-button>
           <filters-button></filters-button>
@@ -59,18 +41,13 @@
             </tr>
           </thead>
           <tbody>
-            <tr v-for="(order, i) of paginationList" :key="order.checkId">
+            <tr v-for="order of paginationList" :key="order.checkId">
               <th scope="row">
                 <div class="form-check">
-                  <input
-                    class="form-check-input"
-                    type="checkbox"
-                    value=""
-                    id="fcustomCheck1"
-                  />
+                  <input class="form-check-input" type="checkbox" value="" id="fcustomCheck1" />
                 </div>
               </th>
-              <th width="1%">{{ i + 1 }}</th>
+              <th width="1%">{{ order.listNumber + 1 }}</th>
               <td>{{ order.checkId }}</td>
               <td>{{ order.date }}</td>
               <td>{{ order.cashier }}</td>
@@ -82,18 +59,9 @@
 
               <td>
                 <div class="dropdown">
-                  <img
-                    src="@/assets/img/dots.svg"
-                    style="width: 1.563vw; cursor: pointer"
-                    alt=""
-                  />
+                  <img src="@/assets/img/dots.svg" style="width: 1.563vw; cursor: pointer" alt="" />
                   <div class="dropdown-content">
-                    <a
-                      style="cursor: pointer"
-                      data-bs-toggle="modal"
-                      data-bs-target="#DeleteInv"
-                      >Удалить</a
-                    >
+                    <a style="cursor: pointer" data-bs-toggle="modal" data-bs-target="#DeleteInv">Удалить</a>
                   </div>
                 </div>
               </td>
@@ -101,12 +69,8 @@
           </tbody>
         </table>
       </div>
-      <pagination-component
-        :filteredArr="filteredOrders"
-        :strAmount="10"
-        @PaginationReload="reloadPagination"
-        class="pb-4"
-      ></pagination-component>
+      <pagination-component :filteredArr="filteredOrders" :strAmount="10" @PaginationReload="reloadPagination"
+        class="pt-6"></pagination-component>
     </div>
     <the-filter @no-filter="cancelFilters">
       <div class="filters__period__flex">
@@ -115,21 +79,13 @@
       </div>
       <div class="filters__period">
         <div class="form-group mb-0">
-          <input
-            class="form-control period__s"
-            type="date"
-            id="example-date-input"
-          />
+          <input class="form-control period__s" type="date" id="example-date-input" />
         </div>
         <div>
           <img src="@/assets/img/line.svg" style="width: 1.927vw" alt="" />
         </div>
         <div class="form-group mb-0">
-          <input
-            class="form-control period__s"
-            type="date"
-            id="example-date-input"
-          />
+          <input class="form-control period__s" type="date" id="example-date-input" />
         </div>
       </div>
       <p class="text-start my-2 fw-bold" for="cashier">Кассир</p>
@@ -150,10 +106,7 @@
       </select>
     </the-filter>
     <the-filter></the-filter>
-    <delete-modal
-      :title="'чека'"
-      :text="`отложенный чек &quot;Чек №1213215&quot;`"
-    ></delete-modal>
+    <delete-modal :title="'чека'" :text="`отложенный чек &quot;Чек №1213215&quot;`"></delete-modal>
   </main>
 </template>
 
@@ -213,10 +166,51 @@ export default {
           amount: 8,
           sum: 12000,
         },
+        {
+          checkId: 1213215,
+          date: "11 ноя, 2021 19:23",
+          cashier: "Тихонова А.Р.",
+          marketplace: "ТРЦ Москва",
+          amount: 8,
+          sum: 12000,
+        },
+        {
+          checkId: 1213215,
+          date: "11 ноя, 2021 19:23",
+          cashier: "Тихонова А.Р.",
+          marketplace: "ТРЦ Москва",
+          amount: 8,
+          sum: 12000,
+        },
+        {
+          checkId: 1213215,
+          date: "11 ноя, 2021 19:23",
+          cashier: "Тихонова А.Р.",
+          marketplace: "ТРЦ Москва",
+          amount: 8,
+          sum: 12000,
+        },
+        {
+          checkId: 1213215,
+          date: "11 ноя, 2021 19:23",
+          cashier: "Тихонова А.Р.",
+          marketplace: "ТРЦ Москва",
+          amount: 8,
+          sum: 12000,
+        },
+        {
+          checkId: 1213215,
+          date: "11 ноя, 2021 19:23",
+          cashier: "Тихонова А.Р.",
+          marketplace: "ТРЦ Москва",
+          amount: 8,
+          sum: 12000,
+        },
       ],
       filterCashier: "",
       filterMarketPlace: "",
       paginationList: [],
+      search: '',
     };
   },
   methods: {
@@ -248,6 +242,9 @@ export default {
           (this.filterMarketPlace === ""
             ? true
             : order.marketplace === this.filterMarketPlace)
+          &&
+          (String(order.cashier).toLowerCase().includes(String(this.search).toLowerCase())) ||
+          (String(order.marketplace).toLowerCase().includes(String(this.search).toLowerCase()))
       );
     },
   },
@@ -258,9 +255,14 @@ export default {
 </script>
 
 <style scoped>
+.page__table {
+  height: 24.7vw;
+}
+
 .form__width {
   width: 15.99vw !important;
 }
+
 .bg-gradient-dark {
   font-weight: 600;
   font-size: 0.729vw;
@@ -301,9 +303,11 @@ td {
 .pagination {
   align-self: end;
 }
+
 .period__s {
   width: 191px !important;
 }
+
 .reset__date {
   font-weight: 400;
   font-size: 14px;
@@ -316,6 +320,7 @@ td {
   /* Black for text */
   color: #2d3748;
 }
+
 .filters__period {
   display: flex;
   justify-content: space-between;
@@ -325,11 +330,13 @@ td {
   margin-top: 0.833vw;
   margin-bottom: 0.833vw;
 }
+
 .filters__period__flex {
   display: flex !important;
   justify-content: space-between;
   align-items: center;
 }
+
 @media screen and (max-width: 1600px) {
   .btn {
     font-size: 12px !important;
