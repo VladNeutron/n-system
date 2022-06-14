@@ -373,7 +373,7 @@
               </li>
 
               <li class="nav-item">
-                <router-link :to="{ name: 'revenue-expenses-income' }" class="nav-link">
+                <router-link :to="{ name: 'rpa-report' }" class="nav-link">
                   <span class="sidenav-mini-icon"> О </span>
                   <span class="sidenav-normal">Отчёт Доходы-Расходы </span>
                 </router-link>

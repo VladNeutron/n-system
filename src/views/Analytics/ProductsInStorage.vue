@@ -12,44 +12,21 @@
       <div class="row mt-4">
         <div class="col-12">
           <div class="card">
-            <div
-              class="search__munu p-4 d-flex justify-content-between align-items-end"
-            >
+            <div class="search__munu p-4 d-flex justify-content-between align-items-end">
               <div class="search__menu-left d-flex gap-4">
-                <div
-                  class="form-group m-0 d-flex flex-column align-items-start"
-                  style="width: 307px"
-                >
-                  <label for="search" class="custom__label"
-                    >Список товаров</label
-                  >
+                <div class="form-group m-0 d-flex flex-column align-items-start" style="width: 307px">
+                  <label for="search" class="custom__label">Список товаров</label>
                   <div class="input-group mt-1">
-                    <span class="input-group-text"
-                      ><img src="@/assets/css/icons/searchIcon.svg" alt="" />
+                    <span class="input-group-text"><img src="@/assets/css/icons/searchIcon.svg" alt="" />
                     </span>
-                    <input
-                      class="form-control"
-                      placeholder="Поиск..."
-                      id="search"
-                      type="text"
-                      v-model.trim="search"
-                    />
+                    <input class="form-control" placeholder="Поиск..." id="search" type="text" v-model.trim="search" />
                   </div>
                 </div>
-                <div
-                  class="form-group m-0 mt-1 d-flex flex-column align-items-start"
-                  style="width: 393px"
-                >
-                  <label for="search" class="custom__label"
-                    >Выберите склад</label
-                  >
+                <div class="form-group m-0 mt-1 d-flex flex-column align-items-start" style="width: 393px">
+                  <label for="search" class="custom__label">Выберите склад</label>
                   <select class="form-select form__adapt" v-model="selected">
-                    <option
-                      v-for="(warehouse, i) in warehousesArr"
-                      :key="i"
-                      :value="warehouse"
-                      @input="this.selected = warehouse"
-                    >
+                    <option v-for="(warehouse, i) in warehousesArr" :key="i" :value="warehouse"
+                      @input="this.selected = warehouse">
                       {{ warehouse }}
                     </option>
                     <option value="">Без фильтра</option>
@@ -77,8 +54,8 @@
                   </tr>
                 </thead>
                 <tbody class="table-body">
-                  <tr v-for="(item, i) in paginationList" :key="item">
-                    <td scope="row">{{ i + 1 }}</td>
+                  <tr v-for="item in paginationList" :key="item">
+                    <td scope="row">{{ item.listNumber + 1 }}</td>
                     <td class="d-flex gap-2">
                       <img :src="item.img" />{{ item.name }}
                     </td>
@@ -95,12 +72,8 @@
               </table>
             </div>
             <div class="table__pagination pb-2">
-              <pagination-component
-                :filteredArr="filteredWarehouse"
-                :strAmount="8"
-                @PaginationReload="reloadPagination"
-                class="pb-2"
-              ></pagination-component>
+              <pagination-component :filteredArr="filteredWarehouse" :strAmount="8" @PaginationReload="reloadPagination"
+                class="pb-2"></pagination-component>
             </div>
           </div>
         </div>
@@ -322,12 +295,15 @@ export default {
 .table__body {
   height: 30.8vw;
 }
+
 .form_s2 {
   width: 20.469vw !important;
 }
+
 .form__size {
   width: 15.99vw !important;
 }
+
 .page__name h3 {
   font-size: 24px;
   line-height: 32px;
@@ -340,16 +316,19 @@ export default {
   font-weight: 400;
   color: gray;
 }
+
 thead {
   color: rgba(160, 174, 192, 1);
   font-size: 0.625vw;
   line-height: 0.938vw;
 }
+
 tbody {
   font-size: 0.729vw;
   font-weight: 600;
   line-height: 0.99vw;
 }
+
 tbody img {
   width: 48px;
   height: 48px;

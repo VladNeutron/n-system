@@ -93,8 +93,8 @@
             </tr>
           </thead>
           <tbody>
-            <tr v-for="(order, i) of paginationList" :key="order.id">
-              <td>{{ i + 1 }}</td>
+            <tr v-for="order of paginationList" :key="order.id">
+              <td>{{ order.listNumber + 1 }}</td>
               <td>{{ order.name }}</td>
               <td>{{ order.color }}</td>
               <td>{{ order.size }}</td>
@@ -114,18 +114,22 @@
           </tbody>
         </table>
       </div>
-      <pagination-component :filteredArr="orders" :strAmount="8" @PaginationReload="reloadPagination" class="pb-2">
+      <pagination-component :filteredArr="filteredOrders" :strAmount="8" @PaginationReload="reloadPagination"
+        class="pb-2">
       </pagination-component>
+      <Filters></Filters>
     </div>
   </main>
 </template>
 
 <script>
+import Filters from '@/components/Filters.vue';
 export default {
   data() {
     return {
       paginationList: [],
       isActive: 1,
+      search: '',
       orders: [
         {
           name: "Куртка зеленая",
@@ -294,6 +298,19 @@ export default {
       }
     },
   },
+  computed: {
+    filteredOrders() {
+      return this.orders.filter(
+        (order) =>
+
+          (String(order.name).toLowerCase().includes(String(this.search).toLowerCase())) ||
+          (String(order.category).toLowerCase().includes(String(this.search).toLowerCase())) ||
+          (String(order.color).toLowerCase().includes(String(this.search).toLowerCase())) ||
+          (String(order.size).toLowerCase().includes(String(this.search).toLowerCase()))
+      );
+    },
+  },
+  components: { Filters }
 };
 </script>
 

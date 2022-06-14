@@ -3,28 +3,20 @@
   <main class="main-content border-radius-lg main__padding">
     <the-header></the-header>
     <div class="header__summary card m-4 p-4">
-      <div
-        class="header__summary-top d-flex justify-content-between align-items-center"
-      >
+      <div class="header__summary-top d-flex justify-content-between align-items-center">
         <div class="top-name">
           <h3>Доходы - Расходы - Прибыль</h3>
           <p>Настройте все параметры и нажмите “Сохранить”</p>
         </div>
         <filters-button></filters-button>
       </div>
-      <div
-        class="header__summary-report p-4 d-flex justify-content-between align-items-center"
-      >
+      <div class="header__summary-report p-4 d-flex justify-content-between align-items-center">
         <div class="report__period">
-          <div
-            class="filters__period-date d-flex justify-content-between align-items-end"
-          >
+          <div class="filters__period-date d-flex justify-content-between align-items-end">
             <div class="filter__period-name">Выберите период</div>
             <div class="filter__period-reset">Сбросить период</div>
           </div>
-          <div
-            class="filters__period mt-3 gap-3 d-flex justify-content-between align-items-center"
-          >
+          <div class="filters__period mt-3 gap-3 d-flex justify-content-between align-items-center">
             <div class="form-group mb-0">
               <input class="form-control" type="date" id="example-date-input" />
             </div>
@@ -36,9 +28,7 @@
             </div>
           </div>
         </div>
-        <div
-          class="report__sum d-flex justify-content-between gap-8 pt-3 align-items-center"
-        >
+        <div class="report__sum d-flex justify-content-between gap-8 pt-3 align-items-center">
           <div class="report__sum-block">
             <h5 class="mb-2">Доходы</h5>
             <p class="m-0">280 000 ₸</p>
@@ -55,7 +45,6 @@
       </div>
       <p class="selected-date">21.04.2022 - 21.05.2022</p>
     </div>
-    <h1>NE GOTOVO !!!! ! !!!!!!!!!Ples wait</h1>
     <div class="main__table card mx-4 d-flex flex-column">
       <div class="table-wrapper">
         <table class="table table-bordered">
@@ -66,10 +55,7 @@
               </th>
 
               <th class="p-0" v-for="(month, idx) of months" :key="idx">
-                <month-cell
-                  :monthIdx="idx"
-                  @new-month="changeMonth"
-                ></month-cell>
+                <month-cell :monthIdx="idx" @new-month="changeMonth"></month-cell>
               </th>
             </tr>
           </thead>
@@ -82,22 +68,50 @@
                 </div>
               </td>
               <td class="py-2" v-for="month in months" :key="month">
-                <info-cell
-                  :info="getProductIncomeByMonth(product, month)"
-                ></info-cell>
+                <info-cell :info="getProductIncomeByMonth(product, month)"></info-cell>
               </td>
             </tr>
           </tbody>
         </table>
       </div>
     </div>
+    <Filters>
+      <p class="text-start my-2 fw-bold" for="warehouse">Склад</p>
+      <select class="form-select">
+        <option value="" disabled>Выберите склад</option>
+
+        <option value="">ТРЦ Москва</option>
+        <option value="">ЦУМ</option>
+      </select>
+      <p class="text-start my-2 fw-bold" for="category">Товар</p>
+      <select class="form-select">
+        <option value="" disabled>Выберите товар</option>
+
+        <option value="">Куртка зеленая</option>
+        <option value="">Куртка зеленая</option>
+      </select>
+      <p class="text-start my-2 fw-bold" for="category">Категория</p>
+      <select class="form-select">
+        <option value="" disabled>Выберите категорию</option>
+
+        <option value="">Верхняя Одежда</option>
+        <option value="">Штаны</option>
+      </select>
+      <p class="text-start my-2 fw-bold" for="category">Ответственный</p>
+      <select class="form-select">
+        <option value="" disabled>Выберите ответственного</option>
+
+        <option value="">Тихонова А.Р</option>
+        <option value="">Макаров Антон</option>
+      </select>
+    </Filters>
   </main>
 </template>
 <script>
 import MonthCell from "@/components/AnalyticsComponents/MonthCell.vue";
 import InfoCell from "@/components/AnalyticsComponents/InfoCell.vue";
 import UpdateRatingCell from "@/components/AnalyticsComponents/UpdateRatingCell.vue";
-
+import Filters from "@/components/Filters.vue"
 import FiltersButton from "@/components/buttons/FiltersButton.vue";
 
 export default {
@@ -1019,6 +1033,7 @@ export default {
     MonthCell,
     InfoCell,
     UpdateRatingCell,
+    Filters
   },
 };
 </script>
@@ -1030,6 +1045,7 @@ export default {
   letter-spacing: -0.66383px;
   color: #2d3748;
 }
+
 .top-name p {
   font-weight: 400;
   font-size: 14px;
@@ -1037,10 +1053,12 @@ export default {
   letter-spacing: -0.387234px;
   color: #a0aec0;
 }
+
 .header__summary-report {
   background: #f8f9fa;
   border-radius: 12px;
 }
+
 .filter__period-name {
   font-weight: 600;
   font-size: 20px;
@@ -1049,6 +1067,7 @@ export default {
   color: #2d3748;
   text-align: left;
 }
+
 .filter__period-reset {
   font-weight: 400;
   font-size: 14px;
@@ -1056,9 +1075,11 @@ export default {
   text-decoration: underline;
   cursor: pointer;
 }
+
 .form-group {
   width: 190px;
 }
+
 .report__sum-block h5 {
   font-weight: 400;
   font-size: 20px;
@@ -1069,6 +1090,7 @@ export default {
 
   color: #2d3748;
 }
+
 .report__sum-block p {
   font-weight: 700;
   font-size: 24px;
@@ -1077,6 +1099,7 @@ export default {
 
   color: #2d3748;
 }
+
 .selected-date {
   position: absolute;
   top: 106px;
@@ -1092,27 +1115,34 @@ export default {
 
   color: #2d3748;
 }
+
 .main__table {
   height: 600px;
 }
+
 .table-wrapper {
   overflow: auto;
 }
+
 thead {
   background-color: #fff;
 }
+
 th {
   border-right: #a0aec0;
   border-bottom: #a0aec0;
 }
+
 tbody {
   overflow-x: auto;
 }
-.sticky-products {
-}
+
+.sticky-products {}
+
 .table-months {
   overflow-y: hidden;
 }
+
 .table-left {
   min-width: 370px;
 }

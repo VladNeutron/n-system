@@ -24,7 +24,7 @@
                 </button>
               </div>
               <div class="table__inputs d-flex gap-3 align-content-center">
-                <list-search></list-search>
+                <list-search @searchFilter="(a) => search = a"></list-search>
                 <print-button></print-button>
                 <download-button></download-button>
                 <filters-button></filters-button>
@@ -44,13 +44,13 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr v-for="(order, i) of paginationList" :key="order.id">
+                  <tr v-for="order of paginationList" :key="order.id">
                     <td scope="row" style="padding-left: 27px">
                       <div class="form-check">
                         <input class="form-check-input" type="checkbox" value="" id="fcustomCheck1" />
                       </div>
                     </td>
-                    <td width="1%">{{ i + 1 }}</td>
+                    <td width="1%">{{ order.listNumber + 1 }}</td>
                     <td>{{ order.name }}</td>
                     <td>{{ order.position }}</td>
                     <td>{{ order.phoneNumber }}</td>
@@ -209,70 +209,70 @@ export default {
           email: "vlv@neutron.kz",
         },
         {
-          id: 0,
+          id: 5,
           name: "Тихонова А.Р",
           position: "Кассир",
           phoneNumber: "+7 999 999 99 99",
           email: "kassir@neutron.kz",
         },
         {
-          id: 1,
+          id: 6,
           name: "Ильясов С.Д",
           position: "Исполнитель",
           phoneNumber: "+7 322 998 25 09",
           email: "isp@neutron.kz",
         },
         {
-          id: 2,
+          id: 7,
           name: "Павлов Л.В",
           position: "Технический директор",
           phoneNumber: "+7 322 998 01 05",
           email: "tech@neutron.kz",
         },
         {
-          id: 3,
+          id: 8,
           name: "Валерьянов М.С",
           position: "Full Stack программист",
           phoneNumber: "+7 322 001 15 02",
           email: "full@neutron.kz",
         },
         {
-          id: 4,
+          id: 9,
           name: "Владосов Л.В",
           position: "Стажёр",
           phoneNumber: "+7 322 999 07 10",
           email: "vlv@neutron.kz",
         },
         {
-          id: 0,
+          id: 10,
           name: "Тихонова А.Р",
           position: "Кассир",
           phoneNumber: "+7 999 999 99 99",
           email: "kassir@neutron.kz",
         },
         {
-          id: 1,
+          id: 11,
           name: "Ильясов С.Д",
           position: "Исполнитель",
           phoneNumber: "+7 322 998 25 09",
           email: "isp@neutron.kz",
         },
         {
-          id: 2,
+          id: 12,
           name: "Павлов Л.В",
           position: "Технический директор",
           phoneNumber: "+7 322 998 01 05",
           email: "tech@neutron.kz",
         },
         {
-          id: 3,
+          id: 13,
           name: "Валерьянов М.С",
           position: "Full Stack программист",
           phoneNumber: "+7 322 001 15 02",
           email: "full@neutron.kz",
         },
         {
-          id: 4,
+          id: 14,
           name: "Владосов Л.В",
           position: "Стажёр",
           phoneNumber: "+7 322 999 07 10",
@@ -281,6 +281,7 @@ export default {
       ],
       isEdit: "no",
       filterPosition: "",
+      search: '',
     };
   },
   methods: {
@@ -302,9 +303,15 @@ export default {
     },
     filteredList() {
       return this.orders.filter((order) =>
-        this.filterPosition === ""
+        (this.filterPosition === ""
           ? true
-          : order.position === this.filterPosition
+          : order.position === this.filterPosition)
+        &&
+        (String(order.name).toLowerCase().includes(String(this.search).toLowerCase())) ||
+        (String(order.position).toLowerCase().includes(String(this.search).toLowerCase())) ||
+        (String(order.phoneNumber).includes(String(this.search).toLowerCase())) ||
+        (String(order.email).toLowerCase().includes(String(this.search).toLowerCase()))
+
       );
     },
   },

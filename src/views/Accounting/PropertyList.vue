@@ -36,8 +36,8 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr v-for="(order, i) of paginationList" :key="order.id">
-                    <td width="1%">{{ i + 1 }}</td>
+                  <tr v-for="order of paginationList" :key="order.id">
+                    <td width="1%">{{ order.listNumber + 1 }}</td>
                     <td>{{ order.name }}</td>
                     <td>{{ order.type }}</td>
                     <td>{{ order.price }} ₸</td>
@@ -119,10 +119,10 @@
       </template>
       <template #footer>
         <div class="clients__footer" v-if="isEdit == 'no'">
-          <button class="btn bg-gradient-dark">Добавить</button>
+          <button class="btn bg-gradient-dark" data-bs-dismiss="modal">Добавить</button>
         </div>
         <div class="clients__footer mb-0" v-if="isEdit == 'yes'">
-          <button class="btn bg-gradient-dark">Сохранить</button>
+          <button class="btn bg-gradient-dark" data-bs-dismiss="modal">Сохранить</button>
         </div>
         <div class="clients__footer" v-if="isEdit == 'yes'">
           <button class="btn delete__btn" data-bs-toggle="modal" data-bs-target="#DeleteInv">

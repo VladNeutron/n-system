@@ -25,7 +25,7 @@
                 </button>
               </div>
               <div class="table__inputs d-flex gap-3 align-content-center">
-                <list-search></list-search>
+                <list-search @searchFilter="(a) => search = a"></list-search>
                 <print-button></print-button>
                 <download-button></download-button>
                 <filters-button></filters-button>
@@ -47,13 +47,13 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr v-for="(item, i) of paginationList" :key="item.id">
+                  <tr v-for="item of paginationList" :key="item.id">
                     <th scope="row" style="padding-left: 27px">
                       <div class="form-check">
                         <input class="form-check-input" type="checkbox" value="" id="fcustomCheck1" />
                       </div>
                     </th>
-                    <td width="1%">{{ i + 1 }}</td>
+                    <td width="1%">{{ item.listNumber + 1 }}</td>
                     <td>{{ item.name }}</td>
                     <td>{{ item.bin }}</td>
                     <td>{{ item.companyType }}</td>
@@ -67,7 +67,7 @@
                       <img src="@/assets/img/dots.svg" style="width: 1.563vw; cursor: pointer" alt="" />
                       <div class="dropdown-content">
                         <a style="cursor: pointer"
-                          onclick="window.location.href = '/accounting/new-contractor'">Редактировать</a>
+                          onclick="window.location.href = '/accounting/edit-contractor'">Редактировать</a>
                         <hr />
                         <a style="cursor: pointer" data-bs-toggle="modal" data-bs-target="#DeleteInv">Удалить</a>
                       </div>
@@ -164,7 +164,7 @@ export default {
           adress: "г.Алматы, ул.Жолдасбекова 97",
         },
         {
-          id: 0,
+          id: 4,
           name: "Тихонова А.Р",
           bin: 111111111111,
           companyType: "ТОО",
@@ -173,7 +173,7 @@ export default {
           adress: "г.Алматы, ул.Жолдасбекова 97",
         },
         {
-          id: 1,
+          id: 5,
           name: "ИП Ромашкин",
           bin: 222222222222,
           companyType: "ИП",
@@ -182,7 +182,7 @@ export default {
           adress: "г.Алматы, ул.Жолдасбекова 97",
         },
         {
-          id: 2,
+          id: 6,
           name: "ИП Весёлов",
           bin: 333333333333,
           companyType: "ИП",
@@ -191,7 +191,7 @@ export default {
           adress: "г.Алматы, ул.Жолдасбекова 97",
         },
         {
-          id: 3,
+          id: 7,
           name: "ТОО “Будь уверен”",
           bin: 444444444444,
           companyType: "ТОО",
@@ -200,7 +200,7 @@ export default {
           adress: "г.Алматы, ул.Жолдасбекова 97",
         },
         {
-          id: 0,
+          id: 8,
           name: "Тихонова А.Р",
           bin: 111111111111,
           companyType: "ТОО",
@@ -209,7 +209,7 @@ export default {
           adress: "г.Алматы, ул.Жолдасбекова 97",
         },
         {
-          id: 1,
+          id: 9,
           name: "ИП Ромашкин",
           bin: 222222222222,
           companyType: "ИП",
@@ -218,7 +218,7 @@ export default {
           adress: "г.Алматы, ул.Жолдасбекова 97",
         },
         {
-          id: 2,
+          id: 10,
           name: "ИП Весёлов",
           bin: 333333333333,
           companyType: "ИП",
@@ -227,7 +227,7 @@ export default {
           adress: "г.Алматы, ул.Жолдасбекова 97",
         },
         {
-          id: 3,
+          id: 11,
           name: "ТОО “Будь уверен”",
           bin: 444444444444,
           companyType: "ТОО",
@@ -236,6 +236,7 @@ export default {
           adress: "г.Алматы, ул.Жолдасбекова 97",
         },
       ],
+      search: '',
     };
   },
   methods: {
@@ -264,9 +265,15 @@ export default {
 
     filteredItems() {
       return this.items.filter((item) =>
-        this.filterCompanyType === ""
+        (this.filterCompanyType === ""
           ? true
-          : this.filterCompanyType === item.companyType
+          : this.filterCompanyType === item.companyType)
+        &&
+        (String(item.name).toLowerCase().includes(String(this.search).toLowerCase())) ||
+        (String(item.contractorType).toLowerCase().includes(String(this.search).toLowerCase())) ||
+        (String(item.adress).toLowerCase().includes(String(this.search).toLowerCase())) ||
+        (String(item.phoneNumber).includes(String(this.search).toLowerCase())) ||
+        (String(item.bin).includes(String(this.search).toLowerCase()))
       );
     },
   },

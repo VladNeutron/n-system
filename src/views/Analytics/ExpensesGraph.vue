@@ -3,15 +3,14 @@
   <main class="main-content border-radius-lg">
     <the-header></the-header>
     <div class="card p-4 m-4">
-      <div
-        class="header__name d-flex flex-row justify-content-between align-items-center"
-      >
+      <div class="header__name d-flex flex-row justify-content-between align-items-center">
         <div class="page__name">
           <div class="page__name-title text-start">
             <h3>Доходы - Расходы - Прибыль</h3>
             <p class="mb-0">Настройте все параметры и нажмите “Сохранить”</p>
           </div>
         </div>
+        <!-- <filters-button></filters-button> -->
       </div>
       <div class="header__settings d-flex gap-6 p-4 mt-4">
         <div class="header__settings-date">
@@ -43,11 +42,10 @@
         </div>
       </div>
       <div class="page__content-list w-55 card py-4">
-        <div
-          class="list__header d-flex justify-content-between align-items-center mx-4"
-        >
+        <div class="list__header d-flex justify-content-between align-items-center mx-4">
           <p class="fs-5 fw-bold m-0">Отчет доходов, расходов и прибыли</p>
-          <button class="btn info-button mb-0">Подробнее</button>
+          <button class="btn info-button mb-0"
+            onclick="window.location.href = '/analytics/revenue-profit-avgcheck/report'">Подробнее</button>
         </div>
         <div class="list__table mt-3 me-4 pe-4">
           <table class="table table-hover text-wrap text-start">
@@ -64,7 +62,7 @@
               <tr v-for="product of products" :key="product">
                 <td class="ps-4">
                   <img src="@/assets/img/tshirt.png" class="me-2" />{{
-                    product.name
+                      product.name
                   }}
                 </td>
                 <td></td>
@@ -77,12 +75,15 @@
         </div>
       </div>
     </div>
+    <Filters></Filters>
   </main>
 </template>
 <script>
+import Filters from "@/components/Filters.vue"
 import { Chart } from "@/assets/js/plugins/chartjs.min";
 // import chartlabelf from "chartjs-plugin-labels";
 export default {
+  components: { Filters },
   data() {
     return {
       revenueSwitch: true,
@@ -190,27 +191,36 @@ export default {
 };
 </script>
 <style scoped>
+.page__name {
+  display: flex;
+  justify-content: space-between;
+}
+
 .page__name h3 {
   font-size: 24px;
   line-height: 32px;
   font-weight: 600;
 }
+
 .page__name p {
   font-size: 14px;
   line-height: 19px;
   font-weight: 400;
   color: gray;
 }
+
 .header__settings {
   background-color: #f8f9fa;
   border-radius: 12px;
 }
+
 .filters__period {
   display: flex;
   justify-content: space-between;
   align-items: baseline;
   margin-bottom: 0;
 }
+
 .filter__name__standart {
   font-weight: 600;
   font-size: 20px;
@@ -220,9 +230,11 @@ export default {
 
   color: #2d3748;
 }
+
 .form-group {
   width: 190px;
 }
+
 .reset__date {
   font-weight: 400;
   font-size: 14px;
@@ -235,15 +247,18 @@ export default {
   /* Black for text */
   color: #2d3748;
 }
+
 .filters__period__flex {
   display: flex !important;
   justify-content: space-between;
   align-items: center;
 }
+
 .form-switch .form-check-input:checked {
   background: linear-gradient(83.56deg, #7092e0 10.01%, #8baef3 75.36%);
   border-color: rgba(112, 146, 224, 1);
 }
+
 .info-button {
   background: linear-gradient(83.56deg, #7092e0 10.01%, #8baef3 75.36%);
   border-color: rgba(112, 146, 224, 1);
@@ -253,6 +268,7 @@ export default {
   line-height: 19px;
   font-weight: 600;
 }
+
 .page__content {
   max-height: 608px;
 }
@@ -278,14 +294,17 @@ export default {
     0px 2px 4px -1px rgba(0, 0, 0, 0.07);
   border-radius: 8px;
 }
+
 th {
   color: #a0aec0;
   font-size: 12px;
 }
+
 td {
   font-size: 14px;
   font-weight: 600;
 }
+
 .graph {
   position: relative;
 

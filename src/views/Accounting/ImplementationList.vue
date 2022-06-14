@@ -11,12 +11,6 @@
               Выберите необходимые вам документы
             </template>
           </lists-header>
-          <!-- <div class="page__name d-flex align-items-center ms-4">
-            <div class="page__name-title text-start">
-              <h3>Список заказов</h3>
-              <p class="mb-0">Внесите изменения и не забудьте нажать “Сохранить”</p>
-            </div>
-          </div> -->
           <div class="card py-4 main__card">
             <div class="d-flex justify-content-between align-items-center mx-4 mb-4">
               <button class="btn bg-gradient-dark mb-0" style="
@@ -29,7 +23,7 @@
                 Создать реализацию
               </button>
               <div class="table__inputs d-flex gap-3 align-content-center align-items-center">
-                <list-search></list-search>
+                <list-search @searchFilter="(a) => search = a"></list-search>
                 <print-button></print-button>
                 <download-button></download-button>
                 <filter-button class="mb-0"></filter-button>
@@ -53,14 +47,14 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr v-for="(order, i) of paginationList" :key="order.id"
+                    <tr v-for="order of paginationList" :key="order.id"
                       ondblclick="window.location.href = '/accounting/documents/edit-implementation'">
                       <th scope="row" style="padding-left: 27px">
                         <div class="form-check">
                           <input class="form-check-input" type="checkbox" value="" id="flexCheckIndeterminate" />
                         </div>
                       </th>
-                      <td>{{ i + 1 }}</td>
+                      <td>{{ order.listNumber + 1 }}</td>
                       <td>{{ order.id }}</td>
                       <td>{{ order.date }}</td>
                       <td>{{ order.contractor }}</td>
@@ -245,6 +239,7 @@ export default {
       filterStatus: "",
 
       filterWarehouse: "",
+      search: '',
     };
   },
   methods: {
@@ -280,6 +275,12 @@ export default {
           (this.filterContragent === ""
             ? true
             : order.contractor === this.filterContragent)
+          &&
+
+          (String(order.name).toLowerCase().includes(String(this.search).toLowerCase())) ||
+          (String(order.contractor).toLowerCase().includes(String(this.search).toLowerCase())) ||
+          (String(order.responsible).toLowerCase().includes(String(this.search).toLowerCase())) ||
+          (String(order.warehouse).toLowerCase().includes(String(this.search).toLowerCase()))
       );
     },
   },

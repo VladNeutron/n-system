@@ -1,12 +1,6 @@
 <template>
-  <div
-    class="modal fade"
-    id="CounterModal"
-    tabindex="-1"
-    role="dialog"
-    aria-labelledby="CounterModal"
-    aria-hidden="true"
-  >
+  <div class="modal fade" id="CounterModal" tabindex="-1" role="dialog" aria-labelledby="CounterModal"
+    aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header header-flex">
@@ -16,12 +10,8 @@
               <p class="header__sec">Список документов по контрагенту</p>
             </div>
           </div>
-          <img
-            src="@/assets/img/closemodal.svg"
-            style="width: 1.25vw; cursor: pointer"
-            alt=""
-            data-bs-dismiss="modal"
-          />
+          <img src="@/assets/img/closemodal.svg" style="width: 1.25vw; cursor: pointer" alt=""
+            data-bs-dismiss="modal" />
         </div>
         <div class="modal-body">
           <div class="search modal__padding">
@@ -33,42 +23,24 @@
                 </div>
                 <div class="filters__period">
                   <div class="form-group">
-                    <input
-                      class="form-control"
-                      type="date"
-                      id="example-date-input"
-                    />
+                    <input class="form-control" type="date" id="example-date-input" />
                   </div>
                   <div>
-                    <img
-                      src="@/assets/img/line.svg"
-                      style="width: 1.927vw"
-                      alt=""
-                    />
+                    <img src="@/assets/img/line.svg" style="width: 1.927vw" alt="" />
                   </div>
                   <div class="form-group">
-                    <input
-                      class="form-control"
-                      type="date"
-                      id="example-date-input"
-                    />
+                    <input class="form-control" type="date" id="example-date-input" />
                   </div>
                 </div>
               </div>
               <div style="margin-left: 1.667vw">
                 <div class="form-group m-0">
-                  <label class="text-start filter__name__standart" for="type"
-                    >Тип документа</label
-                  >
-                  <select
-                    class="form-select"
-                    id="type"
-                    style="
+                  <label class="text-start filter__name__standart" for="type">Тип документа</label>
+                  <select class="form-select" id="type" style="
                       width: 11.667vw;
                       height: 2.344vw;
                       margin-bottom: 1.458vw;
-                    "
-                  >
+                    ">
                     <option disabled selected>Выберите тип документа</option>
                   </select>
                 </div>
@@ -76,16 +48,8 @@
               <div>
                 <div class="form-group m-0">
                   <div class="input-group mt-1" style="width: 10.104vw">
-                    <span class="input-group-text"
-                      ><img src="@/assets/css/icons/searchIcon.svg" alt=""
-                    /></span>
-                    <input
-                      class="form-control"
-                      placeholder="Поиск..."
-                      id="search"
-                      type="text"
-                      v-model.trim="search"
-                    />
+                    <span class="input-group-text"><img src="@/assets/css/icons/searchIcon.svg" alt="" /></span>
+                    <input class="form-control" placeholder="Поиск..." id="search" type="text" v-model.trim="search" />
                   </div>
                 </div>
               </div>
@@ -96,78 +60,41 @@
               <table class="table table-bordered table-hover table-striped">
                 <thead>
                   <tr>
-                    <th
-                      scope="col"
-                      class="th__col"
-                      style="width: 25px; border-left: 0; border-right: 0"
-                    ></th>
-                    <th
-                      scope="col"
-                      class="th__col"
-                      style="border-left: 0; border-right: 0"
-                    >
+                    <th scope="col" class="th__col" style="width: 25px; border-left: 0; border-right: 0"></th>
+                    <th scope="col" class="th__col" style="border-left: 0; border-right: 0">
                       №
                     </th>
-                    <th
-                      scope="col"
-                      class="th__col"
-                      style="border-left: 0; border-right: 0"
-                    >
+                    <th scope="col" class="th__col" style="border-left: 0; border-right: 0">
                       Номер документа
                     </th>
-                    <th
-                      scope="col"
-                      class="th__col"
-                      style="border-left: 0; border-right: 0"
-                    >
+                    <th scope="col" class="th__col" style="border-left: 0; border-right: 0">
                       Дата и время
                     </th>
 
-                    <th
-                      scope="col"
-                      class="th__col"
-                      style="border-left: 0; border-right: 0"
-                    >
+                    <th scope="col" class="th__col" style="border-left: 0; border-right: 0">
                       Тип документа
                     </th>
-                    <th
-                      scope="col"
-                      class="th__col"
-                      style="border-left: 0; border-right: 0"
-                    >
+                    <th scope="col" class="th__col" style="border-left: 0; border-right: 0">
                       Сумма
                     </th>
-                    <th
-                      scope="col"
-                      class="th__col"
-                      style="border-left: 0; border-right: 0"
-                    >
+                    <th scope="col" class="th__col" style="border-left: 0; border-right: 0">
                       Комментарий
                     </th>
-                    <th
-                      scope="col"
-                      class="th__col"
-                      style="border-left: 0; border-right: 0"
-                    >
+                    <th scope="col" class="th__col" style="border-left: 0; border-right: 0">
                       Действия
                     </th>
                   </tr>
                 </thead>
                 <tbody>
                   <!-- v-for="item in filteredProducts" :key="item" -->
-                  <tr v-for="(item, i) in filteredProducts" :key="item">
+                  <tr v-for="item in paginationList" :key="item">
                     <td scope="row" style="border-left: 0; border-right: 0">
                       <div class="form-check">
-                        <input
-                          class="form-check-input"
-                          type="checkbox"
-                          value=""
-                          id="fcustomCheck1"
-                        />
+                        <input class="form-check-input" type="checkbox" value="" id="fcustomCheck1" />
                       </div>
                     </td>
                     <td style="border-left: 0; border-right: 0">
-                      {{ i + 1 }}
+                      {{ item.listNumber + 1 }}
                     </td>
                     <td style="border-left: 0; border-right: 0">
                       {{ item.checkNum }}
@@ -186,28 +113,16 @@
                     </td>
                     <td style="border-left: 0; border-right: 0">
                       <div class="dropdown">
-                        <img
-                          src="@/assets/img/dots.svg"
-                          style="
+                        <img src="@/assets/img/dots.svg" style="
                             width: 1.563vw;
                             cursor: pointer;
                             transform: rotate(90deg);
-                          "
-                          alt=""
-                        />
+                          " alt="" />
                         <div class="dropdown-content">
-                          <a
-                            style="cursor: pointer"
-                            onclick="window.location.href = '/purchases/edit-supplier-return'"
-                            >Редактировать</a
-                          >
+                          <a style="cursor: pointer"
+                            onclick="window.location.href = '/purchases/edit-supplier-return'">Редактировать</a>
                           <hr />
-                          <a
-                            style="cursor: pointer"
-                            data-bs-toggle="modal"
-                            data-bs-target="#DeleteInv"
-                            >Удалить</a
-                          >
+                          <a style="cursor: pointer" data-bs-toggle="modal" data-bs-target="#DeleteInv">Удалить</a>
                         </div>
                       </div>
                     </td>
@@ -218,63 +133,8 @@
           </div>
         </div>
         <div class="modal-footer">
-          <div class="pagination d-flex justify-content-end pe-5">
-            <div class="d-flex align-items-center gap-3 pb-4">
-              <div>
-                <p class="m-0">Показано<span> 1-10 из 324</span></p>
-              </div>
-
-              <div class="page__search-pages d-flex align-content-center">
-                <div class="pagination-container d-flex justify-items-center">
-                  <ul class="pagination pagination-info mb-0 pe-0">
-                    <li class="page-item">
-                      <a
-                        class="page-link"
-                        href="javascript:;"
-                        aria-label="Previous"
-                      >
-                        <span aria-hidden="true"
-                          ><i
-                            class="fa fa-angle-double-left"
-                            aria-hidden="true"
-                          ></i
-                        ></span>
-                      </a>
-                    </li>
-                    <li class="page-item active">
-                      <a class="page-link" href="javascript:;">1</a>
-                    </li>
-                    <li class="page-item">
-                      <a class="page-link" href="javascript:;">2</a>
-                    </li>
-                    <li class="page-item">
-                      <a class="page-link" href="javascript:;">3</a>
-                    </li>
-                    <li class="page-item">
-                      <a class="page-link" href="javascript:;">4</a>
-                    </li>
-                    <li class="page-item">
-                      <a class="page-link" href="javascript:;">5</a>
-                    </li>
-                    <li class="page-item">
-                      <a
-                        class="page-link"
-                        href="javascript:;"
-                        aria-label="Next"
-                      >
-                        <span aria-hidden="true"
-                          ><i
-                            class="fa fa-angle-double-right"
-                            aria-hidden="true"
-                          ></i
-                        ></span>
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
+          <pagination-component :filteredArr="filteredProducts" :strAmount="5" @PaginationReload="reloadPagination"
+            class="pb-4"></pagination-component>
         </div>
       </div>
     </div>
@@ -295,7 +155,50 @@ export default {
       search: "",
       onStorage: "",
       added: false,
+      paginationList: [],
       items: [
+        {
+          checkNum: "23456",
+          date: "11 ноя, 2021 19:23",
+          docType: "Реализация",
+          sum: "12 890 ₸  ",
+          comment: "Какой-то текст",
+        },
+        {
+          checkNum: "23456",
+          date: "11 ноя, 2021 19:23",
+          docType: "Реализация",
+          sum: "12 890 ₸  ",
+          comment: "Какой-то текст",
+        },
+        {
+          checkNum: "23456",
+          date: "11 ноя, 2021 19:23",
+          docType: "Реализация",
+          sum: "12 890 ₸  ",
+          comment: "Какой-то текст",
+        },
+        {
+          checkNum: "23456",
+          date: "11 ноя, 2021 19:23",
+          docType: "Реализация",
+          sum: "12 890 ₸  ",
+          comment: "Какой-то текст",
+        },
+        {
+          checkNum: "23456",
+          date: "11 ноя, 2021 19:23",
+          docType: "Реализация",
+          sum: "12 890 ₸  ",
+          comment: "Какой-то текст",
+        },
+        {
+          checkNum: "23456",
+          date: "11 ноя, 2021 19:23",
+          docType: "Реализация",
+          sum: "12 890 ₸  ",
+          comment: "Какой-то текст",
+        },
         {
           checkNum: "23456",
           date: "11 ноя, 2021 19:23",
@@ -333,6 +236,11 @@ export default {
         },
       ],
     };
+  },
+  methods: {
+    reloadPagination(arr) {
+      this.paginationList = arr;
+    },
   },
   computed: {
     filteredProducts() {
@@ -373,15 +281,18 @@ export default {
   color: #2d3748;
   text-decoration: none;
 }
+
 .form-group {
   text-align: left;
 }
+
 .filter__name__standart {
   font-weight: 600;
   font-size: 14px;
   color: #2d3748;
   text-align: left;
 }
+
 .reset__date {
   font-weight: 400;
   font-size: 0.729vw;
@@ -389,11 +300,13 @@ export default {
   text-decoration: underline;
   cursor: pointer;
 }
+
 .filters__period__flex {
   display: flex !important;
   justify-content: space-between;
   align-items: flex-end;
 }
+
 .filters__period {
   width: 21.615vw;
   display: flex;
@@ -402,9 +315,11 @@ export default {
   margin-top: 0.833vw;
   margin-bottom: 0.833vw;
 }
+
 td {
   font-size: 0.729vw;
 }
+
 .checks__count {
   margin-left: 1.25vw;
   text-align: left;
@@ -494,9 +409,9 @@ td {
   text-transform: none;
 }
 
-.pagination.pagination-info .page-item.active > .page-link,
-.pagination.pagination-info .page-item.active > .page-link:focus,
-.pagination.pagination-info .page-item.active > .page-link:hover {
+.pagination.pagination-info .page-item.active>.page-link,
+.pagination.pagination-info .page-item.active>.page-link:focus,
+.pagination.pagination-info .page-item.active>.page-link:hover {
   background-image: linear-gradient(83.56deg, #7092e0 10.01%, #8baef3 75.36%);
 }
 

@@ -2,48 +2,22 @@
   <the-navbar></the-navbar>
   <main class="main-content border-radius-lg main__padding">
     <the-header></the-header>
-    <div
-      class="page__name d-flex align-items-center ms-4 justify-content-between"
-    >
+    <div class="page__name d-flex align-items-center ms-4 justify-content-between">
       <div class="page__name-title text-start">
         <h3>Лучшие товары за период</h3>
         <p class="mb-0">Внесите изменения и не забудьте нажать “Сохранить”</p>
       </div>
       <div class="header__buttons">
-        <button
-          class="btn filter__button mb-0"
-          :class="{ active: activeBtn == 1 }"
-          @click="activeBtn = 1"
-        >
-          <img
-            src="@/assets/img/monetization_on.svg"
-            style="width: 1.25vw; margin-right: 0.417vw"
-            alt=""
-          />
+        <button class="btn filter__button mb-0" :class="{ active: activeBtn == 1 }" @click="activeBtn = 1">
+          <img src="@/assets/img/monetization_on.svg" style="width: 1.25vw; margin-right: 0.417vw" alt="" />
           По сумме продаж
         </button>
-        <button
-          class="btn filter__button mb-0"
-          :class="{ active: activeBtn == 2 }"
-          @click="activeBtn = 2"
-        >
-          <img
-            src="@/assets/img/analytics.svg"
-            style="width: 1.25vw; margin-right: 0.417vw"
-            alt=""
-          />
+        <button class="btn filter__button mb-0" :class="{ active: activeBtn == 2 }" @click="activeBtn = 2">
+          <img src="@/assets/img/analytics.svg" style="width: 1.25vw; margin-right: 0.417vw" alt="" />
           По количеству продаж
         </button>
-        <button
-          class="btn filter__button mb-0"
-          :class="{ active: activeBtn == 3 }"
-          @click="activeBtn = 3"
-        >
-          <img
-            src="@/assets/img/calculate.svg"
-            style="width: 1.25vw; margin-right: 0.417vw"
-            alt=""
-          />
+        <button class="btn filter__button mb-0" :class="{ active: activeBtn == 3 }" @click="activeBtn = 3">
+          <img src="@/assets/img/calculate.svg" style="width: 1.25vw; margin-right: 0.417vw" alt="" />
           По маржинальности товара
         </button>
       </div>
@@ -149,11 +123,7 @@
                 {{ i + 4 }}
               </td>
               <td style="display: flex">
-                <img
-                  :src="item.img"
-                  style="width: 2.5vw; margin-right: 0.833vw"
-                  alt=""
-                />
+                <img :src="item.img" style="width: 2.5vw; margin-right: 0.833vw" alt="" />
                 {{ item.name }}
               </td>
               <td>{{ item.costPrice }} ₸</td>
@@ -169,18 +139,19 @@
       </div>
     </div>
     <the-filter @no-filter="cancelFilters">
-      <h1>Пока невозможно сделать фильтр</h1>
       <p class="text-start my-2 fw-bold" for="category">Категория</p>
       <select class="form-select">
         <option value="" disabled>Выберите категории</option>
 
-        <option value=""></option>
+        <option value="">Верхняя Одежда</option>
+        <option value="">Штаны</option>
       </select>
       <p class="text-start my-2 fw-bold" for="warehouse">Склад</p>
       <select class="form-select">
         <option value="" disabled>Выберите склад</option>
 
-        <option value=""></option>
+        <option value="">ТРЦ Москва</option>
+        <option value="">ЦУМ</option>
       </select>
     </the-filter>
   </main>
@@ -251,8 +222,7 @@ export default {
 </script>
 
 <style scoped>
-.order__table__body {
-}
+.order__table__body {}
 
 .top__number3 {
   position: absolute;
@@ -416,6 +386,7 @@ export default {
   .btn {
     font-size: 12px !important;
   }
+
   .order__table__body::-webkit-scrollbar {
     background: #e2e8f0;
     border-radius: 0.78vw;
@@ -436,23 +407,29 @@ export default {
   .order__table__body {
     overflow-y: scroll;
   }
+
   .main__top {
     font-size: 14px;
   }
+
   .sec__top {
     font-size: 12px;
   }
+
   .best__products__content {
     margin-right: 0.6459999999999999vw;
   }
+
   .top__number {
     left: 20.127vw;
     top: 6.4vw;
   }
+
   .top__number2 {
     left: 18.986vw;
     top: 6.438vw;
   }
+
   .top__number3 {
     left: 19.186vw;
     top: 6.381000000000001vw;

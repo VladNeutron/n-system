@@ -43,12 +43,7 @@
         <div class="table__inputs d-flex gap-3 align-items-end" style="margin-top: -20px">
           <div class="form-group m-0 form__pc" style="text-align: left">
             <label for="search">Поиск товаров</label>
-            <div class="input-group mt-0">
-              <span class="input-group-text"><img src="@/assets/css/icons/searchIcon.svg" alt="" />
-              </span>
-              <input class="form-control form__size" placeholder="Поиск..." id="search" type="text"
-                v-model.trim="search" />
-            </div>
+            <list-search @searchFilter="(a) => search = a"></list-search>
           </div>
           <export2-button></export2-button>
           <filters-button></filters-button>
@@ -56,12 +51,7 @@
       </div>
       <div class="d-flex" style="margin-left: 25px">
         <div class="form-group m-0 form__mob" style="text-align: left">
-          <div class="input-group mt-1 form__mob__width">
-            <span class="input-group-text"><img src="@/assets/css/icons/searchIcon.svg" alt="" />
-            </span>
-            <input class="form-control form__size" placeholder="Поиск..." id="search" type="text"
-              v-model.trim="search" />
-          </div>
+          <list-search @searchFilter="(a) => search = a"></list-search>
         </div>
         <div class="mt-2 buttons__mob" style="margin-left: 1.25vw">
           <button class="btn first__btn mb-0" :class="{ active1: isActive == 1 }" @click="isActive = 1">
@@ -91,9 +81,9 @@
             </tr>
           </thead>
           <tbody>
-            <tr v-for="(order, i) of paginationList" :key="order.id"
+            <tr v-for="order of paginationList" :key="order.id"
               onclick="window.location.href = '/analytics/abc-analysis/abc-product'">
-              <td>{{ i + 1 }}</td>
+              <td>{{ order.listNumber + 1 }}</td>
               <td>{{ order.name }}</td>
 
               <td>{{ order.category }}</td>
@@ -121,7 +111,7 @@
         <!-- <option v-for="cashier of orderCashierList" :key="cashier">
         {{ cashier }}
       </option> -->
-        <option value=""></option>
+        <option value="">ТРЦ Москва</option>
       </select>
       <p class="text-start my-2 fw-bold" for="marketplace">Категория</p>
       <select class="form-select" v-model="filterCategory">
@@ -278,6 +268,7 @@ export default {
       ],
       filterCategory: "",
       filterMarketPlace: "",
+      search: '',
     };
   },
   methods: {
@@ -320,6 +311,9 @@ export default {
           (this.filterMarketPlace === ""
             ? true
             : order.marketplace === this.filterMarketPlace)
+          &&
+          (String(order.name).toLowerCase().includes(String(this.search).toLowerCase())) ||
+          (String(order.category).includes(String(this.search).toLowerCase()))
       );
     },
   },

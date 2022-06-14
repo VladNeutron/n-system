@@ -14,16 +14,9 @@
         <div class="bank__header">
           <div class="bank__yname">
             <p class="yname__text">{{ item.name }}</p>
-            <span class="currency"
-              ><img :src="item.img" style="width: 0.625vw" alt=""
-            /></span>
+            <span class="currency"><img :src="item.img" style="width: 0.625vw" alt="" /></span>
           </div>
-          <img
-            @click="openModal(item.id)"
-            src="@/assets/img/edit.svg"
-            style="width: 1.25vw; cursor: pointer"
-            alt=""
-          />
+          <img @click="openModal(item.id)" src="@/assets/img/edit.svg" style="width: 1.25vw; cursor: pointer" alt="" />
         </div>
         <div class="bank__info">
           <div class="bank__info__text">
@@ -51,24 +44,14 @@
         </div>
       </div>
       <div class="bank__footer col-6">
-        <button
-          class="btn add__bank"
-          data-bs-toggle="modal"
-          data-bs-target="#InfoThird"
-        >
-          <img
-            src="@/assets/img/plus.svg"
-            style="width: 0.833vw; margin-right: 0.833vw"
-            alt=""
-          />
+        <button class="btn add__bank" data-bs-toggle="modal" data-bs-target="#InfoThird">
+          <img src="@/assets/img/plus.svg" style="width: 0.833vw; margin-right: 0.833vw" alt="" />
           Добавить счет
         </button>
       </div>
     </div>
     <add-bank-info-modal></add-bank-info-modal>
-    <edit-bank-info-modal
-      :product="modal.modalProductName"
-    ></edit-bank-info-modal>
+    <edit-bank-info-modal :product="modal.modalProductName"></edit-bank-info-modal>
   </div>
 </template>
 
@@ -140,6 +123,7 @@ export default {
   font-size: 14px;
   color: #fff;
 }
+
 .add__bank {
   display: flex;
   align-items: center;
@@ -153,25 +137,30 @@ export default {
   text-transform: none;
   white-space: nowrap;
 }
+
 .bank__footer {
   margin-top: 1.083vw;
   display: flex;
   justify-content: center;
 }
+
 .bank__info__main {
   font-weight: 600;
   font-size: 0.833vw;
   color: #2d3748;
 }
+
 .bank__info__name {
   font-weight: 400;
   font-size: 0.833vw;
   color: #a0aec0;
 }
+
 .bank__info__text {
   display: flex;
   justify-content: space-between;
 }
+
 .currency {
   background: #e2e8f0;
   border-radius: 5px;
@@ -180,20 +169,24 @@ export default {
   width: 1.354vw;
   height: 1.354vw;
 }
+
 .yname__text {
   font-weight: 600;
   font-size: 1.042vw;
   color: #2d3748;
   margin-right: 0.417vw;
 }
+
 .bank__yname {
   display: flex;
 }
+
 .bank__header {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
 }
+
 .bank__content {
   background: #f8f9fa;
   border-radius: 12px;
@@ -201,5 +194,6 @@ export default {
   margin-bottom: 0.833vw;
   height: 13.802vw;
   width: 50%;
+
 }
 </style>
