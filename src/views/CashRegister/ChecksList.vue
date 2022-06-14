@@ -10,7 +10,7 @@
         </template>
       </lists-header>
     </div>
-    <div class="card pt-4 pb-6 mb-4 ms-4">
+    <div class="card pt-4 pb-2 mb-4 ms-4">
       <div class="d-flex justify-content-between align-items-center mx-4 mb-4">
         <div>
           <button class="btn bg-gradient-dark mb-0" style="margin-right: 0.833vw"
@@ -25,7 +25,7 @@
           </button>
         </div>
         <div class="table__inputs d-flex gap-3 align-content-center">
-          <list-search></list-search>
+          <list-search @searchFilter="(a) => search = a"></list-search>
           <print-button></print-button>
           <download-button></download-button>
           <filters-button></filters-button>
@@ -56,13 +56,13 @@
             </tr>
           </thead>
           <tbody>
-            <tr v-for="(order, i) of paginationList" :key="order.checkId">
+            <tr v-for="(order) of paginationList" :key="order.checkId">
               <th scope="row" style="padding-left: 27px">
                 <div class="form-check">
                   <input class="form-check-input" type="checkbox" value="" id="fcustomCheck1" />
                 </div>
               </th>
-              <td width="1%">{{ i + 1 }}</td>
+              <td width="1%">{{ order.listNumber + 1 }}</td>
               <td>{{ order.checkId }}</td>
               <td>{{ order.date }}</td>
               <td>{{ order.cashier }}</td>
@@ -85,7 +85,7 @@
         </table>
       </div>
       <pagination-component :filteredArr="filteredOrders" :strAmount="10" @PaginationReload="reloadPagination"
-        class="pb-4"></pagination-component>
+        class="pb-2"></pagination-component>
     </div>
   </main>
   <the-filter @no-filter="cancelFilters">
@@ -134,7 +134,7 @@ export default {
       buttonText: "",
       orders: [
         {
-          checkId: 1213215,
+          checkId: 121,
           date: "11 ноя, 2021 19:23",
           cashier: "Тихонова А.Р.",
           marketplace: "ТРЦ МОСКВА",
@@ -142,7 +142,7 @@ export default {
           sum: 12000,
         },
         {
-          checkId: 1213215,
+          checkId: 122,
           date: "11 ноя, 2021 19:23",
           cashier: "Тихонова А.Р.",
           marketplace: "Тест3",
@@ -150,7 +150,7 @@ export default {
           sum: 12000,
         },
         {
-          checkId: 12132145,
+          checkId: 123,
           date: "11 ноя, 2021 19:23",
           cashier: "Московсая А.Р.",
           marketplace: "Тест2",
@@ -158,7 +158,7 @@ export default {
           sum: 12000,
         },
         {
-          checkId: 12132145,
+          checkId: 124,
           date: "11 ноя, 2021 19:23",
           cashier: "Галб А.Р.",
           marketplace: "Тест4",
@@ -166,7 +166,7 @@ export default {
           sum: 12000,
         },
         {
-          checkId: 1213215,
+          checkId: 125,
           date: "11 ноя, 2021 19:23",
           cashier: "Тихонова А.Р.",
           marketplace: "ТРЦ МОСКВА",
@@ -174,7 +174,7 @@ export default {
           sum: 12000,
         },
         {
-          checkId: 1213215,
+          checkId: 126,
           date: "11 ноя, 2021 19:23",
           cashier: "Тихонова А.Р.",
           marketplace: "Тест1",
@@ -182,7 +182,55 @@ export default {
           sum: 12000,
         },
         {
-          checkId: 12132145,
+          checkId: 127,
+          date: "11 ноя, 2021 19:23",
+          cashier: "Кулбыха А.Р.",
+          marketplace: "Тест2",
+          amount: 8,
+          sum: 12000,
+        },
+        {
+          checkId: 128,
+          date: "11 ноя, 2021 19:23",
+          cashier: "Тихонова А.Р.",
+          marketplace: "Тест3",
+          amount: 8,
+          sum: 12000,
+        },
+        {
+          checkId: 129,
+          date: "11 ноя, 2021 19:23",
+          cashier: "Московсая А.Р.",
+          marketplace: "Тест2",
+          amount: 8,
+          sum: 12000,
+        },
+        {
+          checkId: 130,
+          date: "11 ноя, 2021 19:23",
+          cashier: "Галб А.Р.",
+          marketplace: "Тест4",
+          amount: 8,
+          sum: 12000,
+        },
+        {
+          checkId: 131,
+          date: "11 ноя, 2021 19:23",
+          cashier: "Тихонова А.Р.",
+          marketplace: "ТРЦ МОСКВА",
+          amount: 8,
+          sum: 12000,
+        },
+        {
+          checkId: 132,
+          date: "11 ноя, 2021 19:23",
+          cashier: "Тихонова А.Р.",
+          marketplace: "Тест1",
+          amount: 8,
+          sum: 12000,
+        },
+        {
+          checkId: 133,
           date: "11 ноя, 2021 19:23",
           cashier: "Кулбыха А.Р.",
           marketplace: "Тест2",
@@ -193,6 +241,7 @@ export default {
       filterCashier: "",
       filterMarketPlace: "",
       paginationList: [],
+      search: '',
     };
   },
 
@@ -224,7 +273,10 @@ export default {
             : order.cashier === this.filterCashier) &&
           (this.filterMarketPlace === ""
             ? true
-            : order.marketplace === this.filterMarketPlace)
+            : order.marketplace === this.filterMarketPlace) &&
+          (String(order.checkId).includes(String(this.search).toLowerCase()) 
+          || String(order.cashier).toLowerCase().includes(String(this.search).toLowerCase())
+          || String(order.marketplace).toLowerCase().includes(String(this.search).toLowerCase()))
       );
     },
   },
@@ -295,7 +347,7 @@ td {
 }
 
 .card {
-  max-height: 838px;
+  height: 78vh;
 }
 
 .pagination {
@@ -338,22 +390,48 @@ td {
   justify-content: space-between;
   align-items: center;
 }
+.page__table{
+  overflow: auto;
+}
+.page__table::-webkit-scrollbar {
+    background: #e2e8f0;
+    border-radius: 0.78vw;
+    width: 0.37vw;
+}
+  
+.page__table::-webkit-scrollbar-thumb {
+    border-radius: 0.78vw;
+    background-color: #313860;
+}
+  
+.page__table::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.2);
+    border-radius: 0.78vw;
+    background-color: #e2e8f0;
+}
 
 @media screen and (max-width: 1600px) {
   .btn {
     font-size: 12px !important;
   }
+  .card {
+    height: 70vh;
+  }
+
 
   .search__adapt {
     display: none;
   }
 
   .search__adapt__mob {
-    display: contents;
+    /* display: contents; */
   }
 
   .search__size {
     width: 322px;
+  }
+  .page__table{
+    height: 70%;
   }
 }
 </style>

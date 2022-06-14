@@ -8,23 +8,18 @@
         <p class="mb-0">Внесите изменения и не забудьте нажать “Сохранить”</p>
       </div>
     </div>
-    <div class="card pt-4 pb-6 m-4">
+    <div class="card pt-4 pb-2 m-4">
       <div class="d-flex justify-content-between align-items-center mx-4 mb-4">
         <div>
-          <button class="btn bg-gradient-dark mb-0" style="margin-right: 0.833vw">
+          <button class="btn bg-gradient-dark mb-0" style="margin-right: 0.833vw" onclick="window.location.href = '/cash-register/cash-register-return'">
             <img src="@/assets/img/whtplus.svg" alt="" /> Оформить возврат
           </button>
-          <button class="btn bg-gradient-dark mb-0">
+          <button class="btn bg-gradient-dark mb-0" onclick="window.location.href = '/cash-register/cash-register-sale'">
             <img src="@/assets/img/whtplus.svg" alt="" /> Новая продажа
           </button>
         </div>
         <div class="table__inputs d-flex gap-3 align-content-center">
-          <div class="form-group m-0 search__adapt">
-            <div class="input-group">
-              <span class="input-group-text"><img src="@/assets/css/icons/searchIcon.svg" alt="" /></span>
-              <input class="form-control form__width" placeholder="Поиск..." id="search" type="text" />
-            </div>
-          </div>
+          <list-search @searchFilter="(a) => search = a"></list-search>
           <print-button></print-button>
           <download-button></download-button>
           <filters-button></filters-button>
@@ -55,13 +50,13 @@
             </tr>
           </thead>
           <tbody>
-            <tr v-for="(order, i) of paginationList" :key="order.id">
+            <tr v-for="(order) of paginationList" :key="order.id">
               <th scope="row">
                 <div class="form-check">
                   <input class="form-check-input" type="checkbox" value="" id="fcustomCheck1" />
                 </div>
               </th>
-              <th width="1%">{{ i + 1 }}</th>
+              <th width="1%">{{ order.listNumber + 1 }}</th>
               <td>{{ order.id }}</td>
               <td>{{ order.date }}</td>
               <td>{{ order.responsible }}</td>
@@ -84,7 +79,7 @@
         </table>
       </div>
       <pagination-component :filteredArr="filteredOrders" :strAmount="10" @PaginationReload="reloadPagination"
-        class="pb-4"></pagination-component>
+        class="pb-2"></pagination-component>
     </div>
     <the-filter @no-filter="cancelFilters">
       <div class="filters__period__flex">
@@ -128,11 +123,12 @@ import Filter from "../../components/Filters.vue";
 export default {
   data() {
     return {
+      search: '',
       status: null,
       buttonText: "",
       orders: [
         {
-          id: 12132145,
+          id: 150,
           date: "11 ноя, 2021 19:23",
           responsible: "Тихонова А.Р",
           storage: "Aport Mall",
@@ -142,7 +138,7 @@ export default {
           sum: 12000,
         },
         {
-          id: 12132145,
+          id: 151,
           date: "11 ноя, 2021 19:23",
           responsible: "Тихонова А.Р",
           storage: "Aport Mall",
@@ -152,7 +148,7 @@ export default {
           sum: 12000,
         },
         {
-          id: 12132145,
+          id: 152,
           date: "11 ноя, 2021 19:23",
           responsible: "Тихонова А.Р",
           storage: "Aport Mall",
@@ -162,7 +158,7 @@ export default {
           sum: 12000,
         },
         {
-          id: 12132145,
+          id: 153,
           date: "11 ноя, 2021 19:23",
           responsible: "Тихонова А.Р",
           storage: "Aport Mall",
@@ -172,7 +168,107 @@ export default {
           sum: 12000,
         },
         {
-          id: 12132145,
+          id: 154,
+          date: "11 ноя, 2021 19:23",
+          responsible: "Тихонова А.Р",
+          storage: "Aport Mall",
+          client: "Мария Калашникова",
+          type: "Создан вручную",
+          amount: 8,
+          sum: 12000,
+        },
+        {
+          id: 155,
+          date: "11 ноя, 2021 19:23",
+          responsible: "Тихонова А.Р",
+          storage: "Aport Mall",
+          client: "Мария Калашникова",
+          type: "Создан вручную",
+          amount: 8,
+          sum: 12000,
+        },
+        {
+          id: 156,
+          date: "11 ноя, 2021 19:23",
+          responsible: "Тихонова А.Р",
+          storage: "Aport Mall",
+          client: "Мария Калашникова",
+          type: "Создан вручную",
+          amount: 8,
+          sum: 12000,
+        },
+        {
+          id: 157,
+          date: "11 ноя, 2021 19:23",
+          responsible: "Тихонова А.Р",
+          storage: "Aport Mall",
+          client: "Мария Калашникова",
+          type: "Создан вручную",
+          amount: 8,
+          sum: 12000,
+        },
+        {
+          id: 158,
+          date: "11 ноя, 2021 19:23",
+          responsible: "Тихонова А.Р",
+          storage: "Aport Mall",
+          client: "Мария Калашникова",
+          type: "Создан вручную",
+          amount: 8,
+          sum: 12000,
+        },
+        {
+          id: 159,
+          date: "11 ноя, 2021 19:23",
+          responsible: "Тихонова А.Р",
+          storage: "Aport Mall",
+          client: "Мария Калашникова",
+          type: "Создан вручную",
+          amount: 8,
+          sum: 12000,
+        },
+        {
+          id: 160,
+          date: "11 ноя, 2021 19:23",
+          responsible: "Тихонова А.Р",
+          storage: "Aport Mall",
+          client: "Мария Калашникова",
+          type: "Создан вручную",
+          amount: 8,
+          sum: 12000,
+        },
+        {
+          id: 161,
+          date: "11 ноя, 2021 19:23",
+          responsible: "Тихонова А.Р",
+          storage: "Aport Mall",
+          client: "Мария Калашникова",
+          type: "Создан вручную",
+          amount: 8,
+          sum: 12000,
+        },
+        {
+          id: 162,
+          date: "11 ноя, 2021 19:23",
+          responsible: "Тихонова А.Р",
+          storage: "Aport Mall",
+          client: "Мария Калашникова",
+          type: "Создан вручную",
+          amount: 8,
+          sum: 12000,
+        },
+        {
+          id: 163,
+          date: "11 ноя, 2021 19:23",
+          responsible: "Тихонова А.Р",
+          storage: "Aport Mall",
+          client: "Мария Калашникова",
+          type: "Создан вручную",
+          amount: 8,
+          sum: 12000,
+        },
+        {
+          id: 164,
           date: "11 ноя, 2021 19:23",
           responsible: "Тихонова А.Р",
           storage: "Aport Mall",
@@ -215,7 +311,11 @@ export default {
             : order.responsible === this.filterResponsible) &&
           (this.filterStorage === ""
             ? true
-            : order.storage === this.filterStorage)
+            : order.storage === this.filterStorage) &&
+          (String(order.id).includes(String(this.search).toLowerCase()) 
+          || String(order.responsible).toLowerCase().includes(String(this.search).toLowerCase())
+          || String(order.storage).toLowerCase().includes(String(this.search).toLowerCase())
+          || String(order.client).toLowerCase().includes(String(this.search).toLowerCase()))
       );
     },
   },
@@ -226,8 +326,27 @@ export default {
 </script>
 
 <style scoped>
+.page__table{
+  overflow: auto;
+}
+.page__table::-webkit-scrollbar {
+    background: #e2e8f0;
+    border-radius: 0.78vw;
+    width: 0.37vw;
+}
+  
+.page__table::-webkit-scrollbar-thumb {
+    border-radius: 0.78vw;
+    background-color: #313860;
+}
+  
+.page__table::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.2);
+    border-radius: 0.78vw;
+    background-color: #e2e8f0;
+}
 .form__width {
-  width: 15.99vw !important;
+  /* width: 15.99vw !important; */
 }
 
 .bg-gradient-dark {
@@ -264,7 +383,7 @@ td {
 }
 
 .card {
-  max-height: 838px;
+  height: 78vh;
 }
 
 .pagination {
@@ -280,16 +399,19 @@ td {
     font-size: 12px !important;
   }
 
-  .search__adapt {
+  /* .search__adapt {
     display: none;
-  }
+  } */
 
-  .search__adapt__mob {
+  /* .search__adapt__mob {
     display: contents;
-  }
+  } */
 
   .search__size {
     width: 322px;
+  }
+  .card{
+    height: 70vh;
   }
 }
 </style>
