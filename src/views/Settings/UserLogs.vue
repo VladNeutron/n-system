@@ -14,11 +14,10 @@
                     <div class="card pt-4 pb-6">
                         <div class="d-flex justify-content-between align-items-center mx-4 mb-4">
                             <div>
-                                <list-search></list-search>
+                                <list-search @searchFilter="(a) => search = a"></list-search>
                             </div>
                             <div class="table__inputs d-flex gap-3 align-content-center">
 
-                                <filters-button></filters-button>
                             </div>
                         </div>
                         <div class="page__table">
@@ -34,14 +33,14 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr v-for="(order, i) of paginationList" :key="order.id">
+                                    <tr v-for="order of paginationList" :key="order.id">
                                         <td scope="row" style="padding-left: 27px">
                                             <div class="form-check">
                                                 <input class="form-check-input" type="checkbox" value=""
                                                     id="fcustomCheck1" />
                                             </div>
                                         </td>
-                                        <td width="1%">{{ i + 1 }}</td>
+                                        <td width="1%">{{ order.listNumber + 1 }}</td>
                                         <td>{{ order.user }}</td>
                                         <td>{{ order.action }}</td>
                                         <td>{{ order.date }}</td>
@@ -50,9 +49,7 @@
                                             <img src="@/assets/img/dots.svg" style="width: 1.563vw; cursor: pointer"
                                                 alt="" />
                                             <div class="dropdown-content">
-                                                <a style="cursor: pointer" data-bs-toggle="modal"
-                                                    data-bs-target="#InpModal" @click="isEdit = 'yes'">Редактировать</a>
-                                                <hr />
+
                                                 <a style="cursor: pointer" data-bs-toggle="modal"
                                                     data-bs-target="#DeleteInv">Удалить</a>
                                             </div>
@@ -67,24 +64,12 @@
                 </div>
             </div>
         </div>
-        <the-filter @no-filter="cancelFilters">
-            <p class="text-start my-2 fw-bold" for="position">Должность</p>
-            <select class="form-select" v-model="filterPosition">
-                <option value="" disabled>Выберите должность</option>
-                <option v-for="position of orderPositionsList" :key="position">
-                    {{ position }}
-                </option>
-                <option value=""></option>
-            </select>
-        </the-filter>
         <delete-modal :title="'лог сотрудника'" :text="`сотрудника &quot;Moon&quot;`"></delete-modal>
     </main>
 </template>
 
 <script>
-import Filter from "../../components/Filters.vue";
 import InputsModal from "@/components/InputsModal.vue";
-import FiltersButton from "@/components/buttons/FiltersButton.vue";
 import { CloseInvModal } from "@/assets/js/closeModalDeleteOpen";
 export default {
     data() {
@@ -100,31 +85,31 @@ export default {
                     date: "11.05.2022 18:03",
                 },
                 {
-                    id: 0,
+                    id: 1,
                     user: 'Moon',
                     action: "Открыл файл “Накладная от 25 мая 2022”",
                     date: "11.05.2022 18:03",
                 },
                 {
-                    id: 0,
+                    id: 2,
                     user: 'Moon',
                     action: "Открыл файл “Накладная от 25 мая 2022”",
                     date: "11.05.2022 18:03",
                 },
                 {
-                    id: 0,
+                    id: 3,
                     user: 'Moon',
                     action: "Открыл файл “Накладная от 25 мая 2022”",
                     date: "11.05.2022 18:03",
                 },
                 {
-                    id: 0,
+                    id: 4,
                     user: 'Moon',
                     action: "Открыл файл “Накладная от 25 мая 2022”",
                     date: "11.05.2022 18:03",
                 },
                 {
-                    id: 0,
+                    id: 5,
                     user: 'Moon',
                     action: "Открыл файл “Накладная от 25 мая 2022”",
                     date: "11.05.2022 18:03",
@@ -133,6 +118,7 @@ export default {
             ],
             isEdit: "no",
             filterPosition: "",
+            search: ''
         };
     },
     methods: {
@@ -140,23 +126,12 @@ export default {
             console.log(arr);
             this.paginationList = arr;
         },
-        cancelFilters() {
-            this.filterPosition = "";
-        },
-        createFilteredSet(key) {
-            const unfiltered = this.orders.map((obj) => obj[key]);
-            return [...new Set(unfiltered)];
-        },
     },
     computed: {
-        orderPositionsList() {
-            return this.createFilteredSet("position");
-        },
         filteredList() {
             return this.orders.filter((order) =>
-                this.filterPosition === ""
-                    ? true
-                    : order.position === this.filterPosition
+                (String(order.user).toLowerCase().includes(String(this.search).toLowerCase()))
+
             );
         },
     },
@@ -164,9 +139,7 @@ export default {
         CloseInvModal();
     },
     components: {
-        "the-filter": Filter,
         "inputs-modal": InputsModal,
-        FiltersButton,
     },
 };
 </script>

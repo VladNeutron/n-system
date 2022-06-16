@@ -24,7 +24,7 @@
                                 </button>
                             </div>
                             <div class="table__inputs d-flex gap-3 align-content-center">
-                                <list-search></list-search>
+                                <list-search @searchFilter="(a) => search = a"></list-search>
                             </div>
                         </div>
                         <div class="page__table">
@@ -39,14 +39,14 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr v-for="(order, i) of paginationList" :key="order.id">
+                                    <tr v-for="order of paginationList" :key="order.id">
                                         <td scope="row" style="padding-left: 27px">
                                             <div class="form-check">
                                                 <input class="form-check-input" type="checkbox" value=""
                                                     id="fcustomCheck1" />
                                             </div>
                                         </td>
-                                        <td width="1%">{{ i + 1 }}</td>
+                                        <td width="1%">{{ order.listNumber + 1 }}</td>
                                         <td style="padding-right:23.438vw">{{ order.roleName }}</td>
 
                                         <td class="dropdown">
@@ -455,10 +455,10 @@
             </template>
             <template #footer>
                 <div class="clients__footer" v-if="isEdit == 'no'">
-                    <button class="btn bg-gradient-dark">Добавить</button>
+                    <button class="btn bg-gradient-dark" data-bs-dismiss="modal">Добавить</button>
                 </div>
                 <div class="clients__footer" v-if="isEdit == 'yes'">
-                    <button class="btn bg-gradient-dark">Сохранить</button>
+                    <button class="btn bg-gradient-dark" data-bs-dismiss="modal">Сохранить</button>
                 </div>
                 <div class="clients__footer" v-if="isEdit == 'yes'">
                     <button class="btn delete__btn" data-bs-toggle="modal" data-bs-target="#DeleteInv">
@@ -467,24 +467,12 @@
                 </div>
             </template>
         </inputs-modal>
-        <the-filter @no-filter="cancelFilters">
-            <p class="text-start my-2 fw-bold" for="position">Должность</p>
-            <select class="form-select" v-model="filterPosition">
-                <option value="" disabled>Выберите должность</option>
-                <option v-for="position of orderPositionsList" :key="position">
-                    {{ position }}
-                </option>
-                <option value=""></option>
-            </select>
-        </the-filter>
         <delete-modal :title="'роли'" :text="`роль &quot;Кассир.&quot;`"></delete-modal>
     </main>
 </template>
 
 <script>
-import Filter from "../../components/Filters.vue";
 import InputsModal from "@/components/InputsModal.vue";
-import FiltersButton from "@/components/buttons/FiltersButton.vue";
 import { CloseInvModal } from "@/assets/js/closeModalDeleteOpen";
 export default {
     data() {
@@ -514,52 +502,53 @@ export default {
                     roleName: 'Руководитель',
                 },
                 {
-                    id: 0,
+                    id: 5,
                     roleName: 'Директор',
                 },
                 {
-                    id: 1,
+                    id: 6,
                     roleName: 'Собственник',
                 },
                 {
-                    id: 2,
+                    id: 7,
                     roleName: 'Менеджер',
                 },
                 {
-                    id: 0,
+                    id: 8,
                     roleName: 'Кассир',
                 },
                 {
-                    id: 1,
+                    id: 9,
                     roleName: 'Бухгалтер',
                 },
                 {
-                    id: 2,
+                    id: 10,
                     roleName: 'Продавец',
                 },
                 {
-                    id: 3,
+                    id: 11,
                     roleName: 'Администратор',
                 },
                 {
-                    id: 4,
+                    id: 12,
                     roleName: 'Руководитель',
                 },
                 {
-                    id: 0,
+                    id: 13,
                     roleName: 'Директор',
                 },
                 {
-                    id: 1,
+                    id: 14,
                     roleName: 'Собственник',
                 },
                 {
-                    id: 2,
+                    id: 15,
                     roleName: 'Менеджер',
                 },
             ],
             isEdit: "no",
             filterPosition: "",
+            search: '',
         };
     },
     methods: {
@@ -567,23 +556,13 @@ export default {
             console.log(arr);
             this.paginationList = arr;
         },
-        cancelFilters() {
-            this.filterPosition = "";
-        },
-        createFilteredSet(key) {
-            const unfiltered = this.orders.map((obj) => obj[key]);
-            return [...new Set(unfiltered)];
-        },
     },
     computed: {
-        orderPositionsList() {
-            return this.createFilteredSet("position");
-        },
+
         filteredList() {
             return this.orders.filter((order) =>
-                this.filterPosition === ""
-                    ? true
-                    : order.position === this.filterPosition
+                (String(order.roleName).toLowerCase().includes(String(this.search).toLowerCase()))
+
             );
         },
     },
@@ -591,9 +570,7 @@ export default {
         CloseInvModal();
     },
     components: {
-        "the-filter": Filter,
         "inputs-modal": InputsModal,
-        FiltersButton,
     },
 };
 </script>
