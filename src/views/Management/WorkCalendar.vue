@@ -196,5 +196,30 @@ export default {
 .fc-dayGridMonth-button{
     box-shadow: none !important;
 }
+.fc-icon-chevron-right{
+  background-image: linear-gradient(310deg, #141727 0%, #3A416F 100%);  
+}
+.fc-button-primary{
+  border-radius: 0.5rem !important;
+  font-size: 16px !important;
+  font-weight: 500 !important;
+  margin-right: 5px !important;
+  background-color: unset !important;
+  color: #2c3e50 !important;
+}
+.fc-prev-button, .fc-next-button, .fc-today-button{
+  background-image: linear-gradient(310deg, #141727 0%, #3A416F 100%);  
+  border-radius: 0.5rem !important;
+  font-size: 16px !important;
+  font-weight: 500 !important;
+  margin-right: 5px !important;
+  color: white !important;
+}
+
+.fc-button-active{
+  background: linear-gradient(83.56deg, #7092e0 10.01%, #8baef3 75.36%);
+  border: 0 !important;  
+  color: white !important;
+}
 
 </style>
