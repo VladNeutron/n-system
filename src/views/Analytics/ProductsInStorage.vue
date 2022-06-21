@@ -34,6 +34,7 @@
                 </div>
               </div>
               <div class="search__menu-right d-flex align-items-end gap-4">
+                <filters-button></filters-button>
                 <export-button></export-button>
               </div>
             </div>
@@ -79,6 +80,40 @@
         </div>
       </div>
     </div>
+    <filters>
+      <div class="filters__period__flex">
+        <div class="filter__name__standart">Выберите период</div>
+        <div class="reset__date">Сбросить период</div>
+      </div>
+      <div class="filters__period">
+        <div class="form-group">
+          <input class="form-control period__s" type="date" id="example-date-input" />
+        </div>
+        <div>
+          <img src="@/assets/img/line.svg" style="width: 1.927vw" alt="" />
+        </div>
+        <div class="form-group">
+          <input class="form-control period__s" type="date" id="example-date-input" />
+        </div>
+      </div>
+      <div class="text-start">
+        <label class="text-start" for="">Категория</label>
+        <select class="form-select">
+          <option></option>
+        </select>
+      </div>
+      <!-- <div class="text-start">
+        <label class="text-start" for="">Склад</label>
+        <select class="form-select">
+          <option></option>
+        </select>
+      </div> -->
+      <div class="form-check d-flex align-items-center" style="text-align: left; margin-top: 0.833vw">
+        <input class="form-check-input mt-0" type="checkbox" value="" id="fcustomCheck1" />
+        <label class="custom-control-label filters__checkbox__label" style="margin-bottom:0;" for="customCheck1">Есть в
+          наличии</label>
+      </div>
+    </filters>
   </main>
 </template>
 

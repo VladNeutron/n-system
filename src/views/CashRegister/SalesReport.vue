@@ -38,11 +38,7 @@
               <div class="analytic__header">
                 <p class="analytic__main">Аналитика продаж</p>
                 <div class="analytic__sec">
-                  <img
-                    src="@/assets/img/calendar_today.svg"
-                    style="width: 1.25vw; margin-right: 0.521vw"
-                    alt=""
-                  />
+                  <img src="@/assets/img/calendar_today.svg" style="width: 1.25vw; margin-right: 0.521vw" alt="" />
                   21.04.2022 - 21.05.2022
                 </div>
               </div>
@@ -64,17 +60,9 @@
           </div>
         </div>
         <div class="col">
-          <div
-            class="bg-gradient-dark border-radius-lg py-3 pe-1 mb-3 chars__adapt"
-            style=""
-          >
-            <canvas
-              id="chart-bars"
-              class="chart-canvas chartjs-render-monitor"
-              height="170"
-              style="height: 15.938vw; width: 45.417vw; box-sizing: border-box"
-              width="495"
-            ></canvas>
+          <div class="bg-gradient-dark border-radius-lg py-3 pe-1 mb-3 chars__adapt" style="">
+            <canvas id="chart-bars" class="chart-canvas chartjs-render-monitor" height="170"
+              style="height: 15.938vw; width: 45.417vw; box-sizing: border-box" width="495"></canvas>
           </div>
         </div>
       </div>
@@ -87,6 +75,7 @@
                   <th scope="col" class="th__col">№</th>
                   <th scope="col" class="th__col">Товар</th>
                   <th scope="col" class="th__col">Категория</th>
+                  <th scope="col" class="th__col">Размер</th>
                   <th scope="col" class="th__col">Цвет</th>
                   <th scope="col" class="th__col">Кол-во</th>
                   <th scope="col" class="th__col">Цена продажи</th>
@@ -96,24 +85,19 @@
               </thead>
               <tbody>
                 <!-- v-for="(item, i) in items" :key="item" -->
-                <tr
-                  v-for="(item, i) in items"
-                  :key="item"
-                  @click="openModal(item.id)"
-                >
+                <tr v-for="(item, i) in items" :key="item" @click="openModal(item.id)">
                   <td scope="row">
                     {{ i + 1 }}
                   </td>
                   <td style="display: flex">
-                    <img
-                      :src="item.img"
-                      style="width: 2.5vw; margin-right: 0.833vw"
-                      alt=""
-                    />
+                    <img :src="item.img" style="width: 2.5vw; margin-right: 0.833vw" alt="" />
                     {{ item.name }}
                   </td>
                   <td>
                     {{ item.category }}
+                  </td>
+                  <td>
+                    {{ item.size }}
                   </td>
                   <td>
                     {{ item.color }}
@@ -321,6 +305,7 @@
   text-decoration: underline;
   cursor: pointer;
 }
+
 .filter__name__standart {
   font-weight: 600;
   font-size: 20px;
@@ -354,23 +339,29 @@
   padding-left: 1.667vw;
   padding-right: 1.667vw;
 }
+
 @media screen and (max-width: 1600px) {
   .chars__adapt {
     width: 490px;
   }
+
   .btn {
     font-size: 12px !important;
   }
+
   .comment {
     align-items: center;
   }
+
   .action {
     padding: 0.75rem 1.5rem;
   }
+
   td,
   th {
     font-size: 14px;
   }
+
   .order__table__body {
     height: 400px;
   }
@@ -400,6 +391,7 @@ export default {
           id: 0,
           img: require("@/assets/img/tshirt.png"),
           category: "Верхняя одежда",
+          size: "XXL",
           name: "Куртка Белая",
           color: "Белый",
           price: 29000,
@@ -410,6 +402,7 @@ export default {
           id: 1,
           img: require("@/assets/img/tshirt.png"),
           category: "Верхняя одежда",
+          size: "XXL",
           name: "Куртка Белая",
           color: "Белый",
           price: 29000,
@@ -420,6 +413,7 @@ export default {
           id: 2,
           img: require("@/assets/img/tshirt.png"),
           category: "Верхняя одежда",
+          size: "XXL",
           name: "Куртка Белая",
           color: "Белый",
           price: 29000,
@@ -430,6 +424,7 @@ export default {
           id: 3,
           img: require("@/assets/img/tshirt.png"),
           category: "Верхняя одежда",
+          size: "XXL",
           name: "Куртка Белая",
           color: "Белый",
           price: 29000,
@@ -440,6 +435,7 @@ export default {
           id: 4,
           img: require("@/assets/img/tshirt.png"),
           category: "Верхняя одежда",
+          size: "XXL",
           name: "Куртка Красная",
           color: "Белый",
           price: 29000,

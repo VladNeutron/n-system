@@ -126,7 +126,40 @@
         <canvas id="myChart3" class="w-100"></canvas>
       </div>
     </div>
-    <the-filter></the-filter>
+    <the-filter>
+      <div class="filter__name__standart">Ответственный</div>
+      <select class="form-select">
+        <option value="" disabled selected>Выберите ответственного</option>
+        <option>
+
+        </option>
+        <option value=""></option>
+      </select>
+      <div class="filter__name__standart">Склад</div>
+      <select class="form-select">
+        <option value="" disabled selected>Выберите склад</option>
+        <option>
+
+        </option>
+        <option value=""></option>
+      </select>
+      <div class="filter__name__standart">Категории</div>
+      <select class="form-select">
+        <option value="" disabled selected>Выберите категориию</option>
+        <option>
+
+        </option>
+        <option value=""></option>
+      </select>
+      <div class="filter__name__standart">Товар</div>
+      <select class="form-select">
+        <option value="" disabled selected>Выберите Товар</option>
+        <option>
+
+        </option>
+        <option value=""></option>
+      </select>
+    </the-filter>
   </main>
 </template>
 <script>

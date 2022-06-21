@@ -108,6 +108,14 @@
         </option>
         <option value=""></option>
       </select>
+      <div class="filter__name__standart mt-3">Статус списания</div>
+      <select class="form-select" v-model="filterWriteoff">
+        <option value="" disabled selected>Выберите статус</option>
+        <option v-for="writeoff in writeoffList" :key="writeoff">
+          {{ writeoff }}
+        </option>
+        <option value=""></option>
+      </select>
     </filters>
   </main>
 </template>
@@ -124,6 +132,7 @@ export default {
     cancelFilters() {
       this.filterWarehouse = "";
       this.filterResponsible = "";
+      this.filterWriteoff = "";
     },
     createFilteredSet(key) {
       const unfiltered = this.items.map((obj) => obj[key]);
@@ -137,6 +146,9 @@ export default {
     responsibleList() {
       return this.createFilteredSet("name");
     },
+    writeoffList() {
+      return this.createFilteredSet("isReady");
+    },
     filteredItems() {
       return this.items.filter(
         (item) =>
@@ -146,6 +158,10 @@ export default {
           (this.filterResponsible === ""
             ? true
             : item.name === this.filterResponsible)
+          &&
+          (this.filterWriteoff === ""
+            ? true
+            : item.isReady === this.filterWriteoff)
           &&
           (String(item.name).toLowerCase().includes(String(this.search).toLowerCase())) ||
           (String(item.place).toLowerCase().includes(String(this.search).toLowerCase())) ||
@@ -163,6 +179,7 @@ export default {
       search: '',
       filterResponsible: "",
       filterWarehouse: "",
+      filterWriteoff: "",
       paginationList: [],
       items: [
         {

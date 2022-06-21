@@ -106,6 +106,14 @@
         </option>
         <option value=""></option>
       </select>
+      <p class="text-start my-2 fw-bold" for="supplier">Тип контрагента</p>
+      <select class="form-select" v-model="filterContractorType">
+        <option value="" disabled>Выберите тип контрагента</option>
+        <option v-for="ContractorType of itemsContractorType" :key="ContractorType">
+          {{ ContractorType }}
+        </option>
+        <option value=""></option>
+      </select>
     </the-filter>
     <delete-modal :title="'контрагента'" :text="`контрагента &quot;Тихонова А.Р&quot;`"></delete-modal>
     <counter-modal :product="modal.modalProductName"></counter-modal>
@@ -124,6 +132,7 @@ export default {
         modalProductName: {},
       },
       filterCompanyType: "",
+      filterContractorType: "",
       status: null,
       buttonText: "",
       items: [
@@ -252,6 +261,7 @@ export default {
     },
     cancelFilters() {
       this.filterCompanyType = "";
+      this.FilterContractorType = "";
     },
     createFilteredSet(key) {
       const unfiltered = this.items.map((obj) => obj[key]);
@@ -262,12 +272,19 @@ export default {
     itemsCompanyType() {
       return this.createFilteredSet("companyType");
     },
+    itemsContractorType() {
+      return this.createFilteredSet("contractorType")
+    },
 
     filteredItems() {
       return this.items.filter((item) =>
         (this.filterCompanyType === ""
           ? true
           : this.filterCompanyType === item.companyType)
+        &&
+        (this.filterContractorType === ""
+          ? true
+          : this.filterContractorType === item.ContractorType)
         &&
         (String(item.name).toLowerCase().includes(String(this.search).toLowerCase())) ||
         (String(item.contractorType).toLowerCase().includes(String(this.search).toLowerCase())) ||

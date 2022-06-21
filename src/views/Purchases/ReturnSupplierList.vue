@@ -38,7 +38,7 @@
                   <tr class="">
                     <th scope="col" class="th__col" style="width: 25px padding-left:27px"></th>
                     <th width="1%" scope="col" class="th__col">№</th>
-                    <th scope="col" class="th__col">Номер Возврата</th>
+                    <th scope="col" class="th__col">№ Возврата</th>
                     <th scope="col" class="th__col">Дата</th>
                     <th scope="col" class="th__col">Ответственный</th>
                     <th scope="col" class="th__col">Поставщик</th>

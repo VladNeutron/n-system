@@ -91,10 +91,11 @@
               placeholder="Введите название" />
           </div>
           <div class="form-check d-flex align-items-center" style="text-align: left">
-            <input class="form-check-input" type="checkbox" value="" id="fcustomCheck1" />
-            <label class="custom-control-label label__check mb-0" for="customCheck1">Подчиненная категория</label>
+            <input class="form-check-input" @change="checked = !checked" type="checkbox" value="" id="fcustomCheck1" />
+            <label class="custom-control-label label__check mb-0" for="customCheck1">Подчиненная
+              категория</label>
           </div>
-          <div class="form-group" style="text-align: left">
+          <div class="form-group" style="text-align: left" v-show="checked">
             <label for="exampleFormControlSelect1" class="label__text">Основная категория</label>
             <select class="form-select modal__inp" id="exampleFormControlSelect1" v-model="selected">
               <option>Верхняя одежда</option>
@@ -110,10 +111,10 @@
               placeholder="Введите название" />
           </div>
           <div class="form-check d-flex align-items-center" style="text-align: left">
-            <input class="form-check-input" type="checkbox" value="" id="fcustomCheck1" />
+            <input class="form-check-input" @change="checked = !checked" type="checkbox" value="" id="fcustomCheck1" />
             <label class="custom-control-label label__check mb-0" for="customCheck1">Подчиненная категория</label>
           </div>
-          <div class="form-group" style="text-align: left">
+          <div class="form-group" style="text-align: left" v-show="checked">
             <label for="exampleFormControlSelect1" class="label__text">Основная категория</label>
             <select class="form-select modal__inp" id="exampleFormControlSelect1" v-model="selected">
               <option>Верхняя одежда</option>
@@ -185,6 +186,7 @@ export default {
     return {
       check: false,
       selected: "",
+      checked: false,
       paginationList: [],
       items: [
         {
@@ -252,7 +254,6 @@ export default {
     categoryList() {
       return this.createFilteredSet("maincat");
     },
-
     filteredCategory() {
       return this.items.filter((item) => {
         return (

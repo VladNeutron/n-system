@@ -29,8 +29,7 @@
                 <div class="form-group" v-if="!isSelected">
                   <label for="example-text-input" class="form-control-label order__label">№ возврата</label>
                   <input disabled data-bs-toggle="modal" data-bs-target="#InpModal" class="form-control" type="text"
-                    id="example-text-input" placeholder="Выберите поступление" style="cursor: pointer"
-                    :value="message" />
+                    id="example-text-input" placeholder=" " style="cursor: pointer" :value="message" />
                 </div>
                 <div class="form-group">
                   <label for="example-date-input" class="form-control-label order__label">Дата поступления</label>
@@ -211,7 +210,7 @@
       <template #head>
         <div style="text-align: left">
           <p class="header__main">Возврат по номеру поступления</p>
-          <p class="header__sec">Введите номер заказа и нажмите “Добавить”</p>
+          <p class="header__sec">Введите номер поступлени и нажмите “Добавить”</p>
         </div>
       </template>
       <template #body>

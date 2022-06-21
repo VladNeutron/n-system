@@ -23,6 +23,7 @@
                   Добавить имущество
                 </button>
               </div>
+              <filters-button></filters-button>
             </div>
             <div class="page__table">
               <table class="table table-hover table-striped">
@@ -132,7 +133,18 @@
       </template>
     </inputs-modal>
     <delete-modal :title="'имущества'" :text="`имущество &quot;BMW M5&quot;`"></delete-modal>
+    <the-filter @no-filter="cancelFilters">
+      <div class="filter__name__standart mt-3">Тип имущества</div>
+      <select class="form-select" v-model="filterType">
+        <option value="" disabled selected>
+          Выберите тип имущества
+        </option>
+        <option v-for="types in typeList" :key="types">{{ types }}</option>
+        <option value=""></option>
+      </select>
+    </the-filter>
   </main>
+
 </template>
 
 <script>
@@ -140,11 +152,16 @@ import Filter from "../../components/Filters.vue";
 import InputsModal from "@/components/InputsModal.vue";
 import { CloseInvModal } from "@/assets/js/closeModalDeleteOpen";
 export default {
+  components: {
+    "the-filter": Filter,
+    "inputs-modal": InputsModal,
+  },
   data() {
     return {
       paginationList: [],
       status: null,
       buttonText: "",
+      filterType: "",
       orders: [
         {
           id: 0,
@@ -177,91 +194,91 @@ export default {
           price: 95421,
         },
         {
-          id: 0,
+          id: 6,
           name: "BMW M5",
           type: "Транспорт",
           price: 999999,
         },
         {
-          id: 1,
+          id: 7,
           name: "Дом на Саина",
           type: "Недвижимость",
           price: 7540000,
         },
         {
-          id: 2,
+          id: 8,
           name: "Дом в Алмате",
           type: "Недвижимость",
           price: 9650421,
         },
         {
-          id: 3,
+          id: 9,
           name: "Техника",
           type: "Техника",
           price: 965421,
         },
         {
-          id: 4,
+          id: 10,
           name: "Офисный стеллаж",
           type: "Мебель",
           price: 95421,
         },
         {
-          id: 0,
+          id: 11,
           name: "BMW M5",
           type: "Транспорт",
           price: 999999,
         },
         {
-          id: 1,
+          id: 12,
           name: "Дом на Саина",
           type: "Недвижимость",
           price: 7540000,
         },
         {
-          id: 2,
+          id: 13,
           name: "Дом в Алмате",
           type: "Недвижимость",
           price: 9650421,
         },
         {
-          id: 3,
+          id: 14,
           name: "Техника",
           type: "Техника",
           price: 965421,
         },
         {
-          id: 4,
+          id: 15,
           name: "Офисный стеллаж",
           type: "Мебель",
           price: 95421,
         },
         {
-          id: 0,
+          id: 16,
           name: "BMW M5",
           type: "Транспорт",
           price: 999999,
         },
         {
-          id: 1,
+          id: 17,
           name: "Дом на Саина",
           type: "Недвижимость",
           price: 7540000,
         },
         {
-          id: 2,
+          id: 18,
           name: "Дом в Алмате",
           type: "Недвижимость",
           price: 9650421,
         },
         {
-          id: 3,
+          id: 19,
           name: "Техника",
           type: "Техника",
           price: 965421,
         },
         {
-          id: 4,
+          id: 20,
           name: "Офисный с321теллаж",
           type: "Мебель",
           price: 95421,
@@ -275,15 +292,30 @@ export default {
       console.log(arr);
       this.paginationList = arr;
     },
+    cancelFilters() {
+      this.filterType = "";
+    },
+    createFilteredSet(key) {
+      const unfiltered = this.orders.map((obj) => obj[key]);
+      return [...new Set(unfiltered)];
+    },
   },
-  components: {
-    "the-filter": Filter,
-    "inputs-modal": InputsModal,
+  computed: {
+    typeList() {
+      return this.createFilteredSet("type");
+    },
+    filteredItems() {
+      return this.orders.filter(
+        (order) =>
+          (this.filterType === "" ? true : order.type === this.filterType)
+
+      );
+    },
+    mounted() {
+      CloseInvModal();
+    },
   },
-  mounted() {
-    CloseInvModal();
-  },
-};
+}
 </script>
 
 <style scoped>
@@ -332,11 +364,7 @@ export default {
   color: #ffffff;
 }
 
-.btn-outline-dark {
-  font-size: 16px;
-  font-weight: 600;
-  color: #2d3748;
-}
+
 
 .page__name h3 {
   font-size: 24px;

@@ -18,26 +18,14 @@
             </template>
           </lists-header>
           <div class="card py-4 main__card">
-            <div
-              class="d-flex justify-content-between align-items-center mx-4 mb-4"
-            >
-              <button
-                class="btn bg-gradient-dark mb-0"
-                data-bs-toggle="modal"
-                data-bs-target="#InpModal"
-                style="
+            <div class="d-flex justify-content-between align-items-center mx-4 mb-4">
+              <button class="btn bg-gradient-dark mb-0" data-bs-toggle="modal" data-bs-target="#InpModal" style="
                   font-size: 14px;
                   font-weight: 600;
                   display: flex;
                   align-items: center;
-                "
-                @click="isEdit = 'no'"
-              >
-                <img
-                  src="@/assets/img/whtplus.svg"
-                  alt=""
-                  style="margin-right: 10px"
-                />
+                " @click="isEdit = 'no'">
+                <img src="@/assets/img/whtplus.svg" alt="" style="margin-right: 10px" />
                 Создать заявку
               </button>
               <div class="table__inputs d-flex gap-3 align-content-center">
@@ -49,9 +37,7 @@
             </div>
             <div class="page__table mb-4">
               <div class="table-wrapper">
-                <table
-                  class="table table-hover text-wrap text-start table-striped"
-                >
+                <table class="table table-hover text-wrap text-start table-striped">
                   <thead>
                     <tr class="text-center">
                       <th scope="col" class="th__col">№</th>
@@ -69,36 +55,19 @@
                       <td>{{ order.date }}</td>
                       <td>{{ order.fio }}</td>
                       <td>
-                        <div
-                          class="btn mb-0 w-100"
-                          v-text="normalizeStatusName(order.status)"
-                          :class="getClass(order.status)"
-                        ></div>
+                        <div class="btn mb-0 w-100" v-text="normalizeStatusName(order.status)"
+                          :class="getClass(order.status)"></div>
                       </td>
                       <td>{{ order.phone }}</td>
                       <td>{{ order.email }}</td>
                       <td>
                         <div class="dropdown">
-                          <img
-                            src="@/assets/img/dots.svg"
-                            style="width: 1.563vw; cursor: pointer"
-                            alt=""
-                          />
+                          <img src="@/assets/img/dots.svg" style="width: 1.563vw; cursor: pointer" alt="" />
                           <div class="dropdown-content">
-                            <a
-                              style="cursor: pointer"
-                              data-bs-toggle="modal"
-                              data-bs-target="#InpModal"
-                              @click="isEdit = 'yes'"
-                              >Редактировать</a
-                            >
+                            <a style="cursor: pointer" data-bs-toggle="modal" data-bs-target="#InpModal"
+                              @click="isEdit = 'yes'">Редактировать</a>
                             <hr />
-                            <a
-                              style="cursor: pointer"
-                              data-bs-toggle="modal"
-                              data-bs-target="#DeleteInv"
-                              >Удалить</a
-                            >
+                            <a style="cursor: pointer" data-bs-toggle="modal" data-bs-target="#DeleteInv">Удалить</a>
                           </div>
                         </div>
                       </td>
@@ -107,11 +76,8 @@
                 </table>
               </div>
             </div>
-            <pagination-component
-              :filteredArr="filteredOrders"
-              :strAmount="paginationAmount"
-              @paginationReload="reloadPagination"
-            ></pagination-component>
+            <pagination-component :filteredArr="filteredOrders" :strAmount="paginationAmount"
+              @paginationReload="reloadPagination"></pagination-component>
           </div>
         </div>
       </div>
@@ -130,116 +96,58 @@
       <template #body>
         <div class="clients__modal" v-if="isEdit == 'no'">
           <div class="form-group">
-            <label for="example-text-input" class="form-control-label"
-              >ФИО клиента</label
-            >
-            <input
-              class="form-control"
-              type="text"
-              placeholder="ФИО клиента"
-              id="example-text-input"
-            />
+            <label for="example-text-input" class="form-control-label">ФИО клиента</label>
+            <input class="form-control" type="text" placeholder="ФИО клиента" id="example-text-input" />
           </div>
           <div class="form-group">
-            <label for="example-text-input1" class="form-control-label"
-              >Номер телефона</label
-            >
-            <input
-              class="form-control"
-              type="text"
-              placeholder="Введите номер телефона"
-              id="example-text-input1"
-            />
+            <label for="example-text-input1" class="form-control-label">Номер телефона</label>
+            <input class="form-control" type="text" placeholder="Введите номер телефона" id="example-text-input1" />
           </div>
           <div class="form-group">
-            <label for="example-text-input2" class="form-control-label"
-              >Email</label
-            >
-            <input
-              class="form-control"
-              type="text"
-              placeholder="Введите email"
-              id="example-text-input2"
-            />
+            <label for="example-text-input2" class="form-control-label">Email</label>
+            <input class="form-control" type="text" placeholder="Введите email" id="example-text-input2" />
           </div>
           <div class="form-group">
-            <label class="form-control-label" for="Статус заявки"
-              >Статус заявки</label
-            >
+            <label class="form-control-label" for="Статус заявки">Статус заявки</label>
             <select class="form-select">
               <option selected disabled>Выберите</option>
             </select>
           </div>
           <div class="form-group">
-            <label for="exampleFormControlTextarea1" class="form-control-label"
-              >Текст заявки</label
-            >
-            <textarea
-              class="form-control"
-              id="exampleFormControlTextarea1"
-              rows="2"
-              placeholder="Введите текст"
-            ></textarea>
+            <label for="exampleFormControlTextarea1" class="form-control-label">Текст заявки</label>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="2"
+              placeholder="Введите текст"></textarea>
           </div>
         </div>
         <div class="clients__modal" v-if="isEdit == 'yes'">
           <div class="form-group">
-            <label for="example-text-input" class="form-control-label"
-              >ФИО клиента</label
-            >
-            <input
-              class="form-control"
-              type="text"
-              placeholder="ФИО клиента"
-              id="example-text-input"
-            />
+            <label for="example-text-input" class="form-control-label">ФИО клиента</label>
+            <input class="form-control" type="text" placeholder="ФИО клиента" id="example-text-input" />
           </div>
           <div class="form-group">
-            <label for="example-text-input1" class="form-control-label"
-              >Номер телефона</label
-            >
-            <input
-              class="form-control"
-              type="text"
-              placeholder="Введите номер телефона"
-              id="example-text-input1"
-            />
+            <label for="example-text-input1" class="form-control-label">Номер телефона</label>
+            <input class="form-control" type="text" placeholder="Введите номер телефона" id="example-text-input1" />
           </div>
           <div class="form-group">
-            <label for="example-text-input2" class="form-control-label"
-              >Email</label
-            >
-            <input
-              class="form-control"
-              type="text"
-              placeholder="Введите email"
-              id="example-text-input2"
-            />
+            <label for="example-text-input2" class="form-control-label">Email</label>
+            <input class="form-control" type="text" placeholder="Введите email" id="example-text-input2" />
           </div>
           <div class="form-group">
-            <label class="form-control-label" for="Статус заявки"
-              >Статус заявки</label
-            >
+            <label class="form-control-label" for="Статус заявки">Статус заявки</label>
             <select class="form-select">
               <option selected disabled>Выберите</option>
             </select>
           </div>
           <div class="form-group">
-            <label for="exampleFormControlTextarea1" class="form-control-label"
-              >Текст заявки</label
-            >
-            <textarea
-              class="form-control"
-              id="exampleFormControlTextarea1"
-              rows="2"
-              placeholder="Введите текст"
-            ></textarea>
+            <label for="exampleFormControlTextarea1" class="form-control-label">Текст заявки</label>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="2"
+              placeholder="Введите текст"></textarea>
           </div>
         </div>
       </template>
       <template #footer>
         <div class="clients__footer">
-          <button class="btn clients__save" data-bs-dismiss="modal"  v-if="isEdit == 'no'">Добавить</button>
+          <button class="btn clients__save" data-bs-dismiss="modal" v-if="isEdit == 'no'">Добавить</button>
         </div>
         <div class="clients__footer">
           <button class="btn clients__save" data-bs-dismiss="modal" v-if="isEdit == 'yes'">Сохранить</button>
@@ -248,15 +156,27 @@
     </inputs-modal>
   </main>
   <the-filter @no-filter="cancelFilters">
+    <div class="filters__period__flex">
+      <div class="filter__name__standart">Выберите период</div>
+      <div class="reset__date">Сбросить период</div>
+    </div>
+    <div class="filters__period">
+      <div class="form-group">
+        <input class="form-control" type="date" id="example-date-input" />
+      </div>
+      <div>
+        <img src="@/assets/img/line.svg" style="width: 1.927vw" alt="" />
+      </div>
+      <div class="form-group">
+        <input class="form-control" type="date" id="example-date-input" />
+      </div>
+    </div>
     <p class="text-start my-2 fw-bold" for="Статус">Статус заказа</p>
     <div class="d-flex flex-wrap">
       <div class="cat" v-for="status of orderStatusList" :key="status">
         <label>
-          <input
-            type="checkbox"
-            :value="status"
-            v-model="filterStatusSelect"
-          /><span v-text="normalizeStatusName(status)"></span>
+          <input type="checkbox" :value="status" v-model="filterStatusSelect" /><span
+            v-text="normalizeStatusName(status)"></span>
         </label>
       </div>
     </div>
@@ -422,12 +342,12 @@ export default {
       return stat === "new"
         ? "bg-gradient-info"
         : stat === "in-process"
-        ? "bg-gradient-primary"
-        : "bg-gradient-success";
+          ? "bg-gradient-primary"
+          : "bg-gradient-success";
     },
     normalizeStatusName(name) {
       const statusMap = {
-        new: "Новый заявка",
+        new: "Новая заявка",
         "in-process": "В обработке",
         canceled: "Обработка",
       };
@@ -463,8 +383,8 @@ export default {
             ? this.filterStatusSelect.includes(order.status)
             : true) &&
           (this.filterClient === "" ? true : order.fio === this.filterClient)
-          && 
-            (String(order.fio).toLowerCase().includes(String(this.search).toLowerCase()))
+          &&
+          (String(order.fio).toLowerCase().includes(String(this.search).toLowerCase()))
       );
     },
     paginationAmount() {
@@ -488,12 +408,15 @@ export default {
 .bg-gradient-success {
   background: linear-gradient(135deg, #98ec2d 0%, #17ad37 100%);
 }
+
 .bg-gradient-primary {
   background: linear-gradient(135deg, #ff0080 0%, #7928ca 100%);
 }
+
 .bg-gradient-info {
   background: linear-gradient(135deg, #b2dbfb 0%, #459cf6 100%);
 }
+
 .clients__delete {
   text-transform: none;
   border: 0;
@@ -603,12 +526,12 @@ export default {
 }
 
 /* selects all of the text within the input element and changes the color of the text */
-.cat label input + span {
+.cat label input+span {
   color: #2d3748;
 }
 
 /* This will declare how a selected input will look giving generic properties */
-.cat input:checked + span {
+.cat input:checked+span {
   color: #ffffff;
   text-shadow: 0 0 6px rgba(0, 0, 0, 0.8);
   background-color: #2d3748;
@@ -631,21 +554,26 @@ export default {
 .main__card {
   max-height: 80vh;
 }
+
 .th__col {
   color: #a0aec0 !important;
 }
+
 table {
   height: 100%;
 }
+
 .table-wrapper {
   overflow: auto;
 }
+
 th {
   color: #2d3748;
   font-size: 12px;
   text-align: center;
   vertical-align: baseline;
 }
+
 td {
   vertical-align: baseline;
   font-size: 14px;
@@ -670,11 +598,13 @@ td {
   justify-content: space-between;
   align-items: flex-end;
 }
-.main__card{
+
+.main__card {
   height: 80vh;
 }
-@media screen and (max-width: 1600px){
-  .main__card{
+
+@media screen and (max-width: 1600px) {
+  .main__card {
     height: 75vh;
   }
 }

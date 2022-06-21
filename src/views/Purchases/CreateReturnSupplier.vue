@@ -209,7 +209,7 @@
       <template #head>
         <div style="text-align: left">
           <p class="header__main">Возврат по номеру поступления</p>
-          <p class="header__sec">Введите номер заказа и нажмите “Добавить”</p>
+          <p class="header__sec">Введите номер поступления и нажмите “Добавить”</p>
         </div>
       </template>
       <template #body>

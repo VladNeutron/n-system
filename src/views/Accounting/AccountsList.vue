@@ -42,7 +42,7 @@
                     <tr class="text-start">
                       <th scope="col" class="th__col" style="width: 1px; padding-left: 27px"></th>
                       <th scope="col" class="th__col">№</th>
-                      <th scope="col" class="th__col">номер документа</th>
+                      <th scope="col" class="th__col">№ документа</th>
                       <th scope="col" class="th__col">
                         Наименование документа
                       </th>

@@ -17,7 +17,7 @@
                 <div class="character__header">
                   <div>
                     <div class="d-flex">
-                      <p class="character__main">Размеры</p>
+                      <p class="character__main">{{ charFirst }}</p>
                       <img src="@/assets/img/edit.svg" style="
                           width: 1.042vw;
                           margin-left: 0.833vw;
@@ -39,7 +39,7 @@
                     <thead>
                       <tr>
                         <th scope="col" class="th__col" width="15%">№</th>
-                        <th scope="col" class="th__col" width="75%" style="text-align: left">
+                        <th scope="col" class="th__col" width="75%">
                           Значение характеристики
                         </th>
                         <th scope="col" class="th__col">Действия</th>
@@ -60,7 +60,7 @@
                           <img src="@/assets/img/dots.svg" style="width: 1.563vw; cursor: pointer" alt="" />
                           <div class="dropdown-content">
                             <a href="#" data-bs-toggle="modal" data-bs-target="#InpModal"
-                              @click="isColor = 'size'">Редактировать</a>
+                              @click="editSize(item.size)">Редактировать</a>
                             <hr />
                             <a style="cursor: pointer" data-bs-toggle="modal" data-bs-target="#DeleteInv">Удалить</a>
                           </div>
@@ -76,12 +76,12 @@
                 <div class="character__header">
                   <div>
                     <div class="d-flex">
-                      <p class="character__main">Цвета</p>
+                      <p class="character__main">{{ charSecond }}</p>
                       <img src="@/assets/img/edit.svg" style="
                           width: 1.042vw;
                           margin-left: 0.833vw;
                           cursor: pointer;
-                        " @click="isColor = 'sizes'" data-bs-toggle="modal" data-bs-target="#InpModal" alt="" />
+                        " @click="isColor = 'colors'" data-bs-toggle="modal" data-bs-target="#InpModal" alt="" />
                     </div>
                     <p class="character__sec">
                       Настройка характеристики товаров
@@ -98,7 +98,7 @@
                     <thead>
                       <tr>
                         <th scope="col" class="th__col" width="15%">№</th>
-                        <th scope="col" class="th__col" width="75%" style="text-align: left">
+                        <th scope="col" class="th__col" width="75%">
                           Значение характеристики
                         </th>
                         <th scope="col" class="th__col">Действия</th>
@@ -119,7 +119,7 @@
                           <img src="@/assets/img/dots.svg" style="width: 1.563vw; cursor: pointer" alt="" />
                           <div class="dropdown-content">
                             <a href="#" data-bs-toggle="modal" data-bs-target="#InpModal"
-                              @click="isColor = 'color'">Редактировать</a>
+                              @click="editColor(item.name)">Редактировать</a>
                             <hr />
                             <a style="cursor: pointer" data-bs-toggle="modal" data-bs-target="#DeleteInv">Удалить</a>
                           </div>
@@ -146,6 +146,9 @@
       <div class="modal__header" v-if="isColor == 'sizes'">
         <p class="modal__main">Редактирование названия</p>
       </div>
+      <div class="modal__header" v-if="isColor == 'colors'">
+        <p class="modal__main">Редактирование названия</p>
+      </div>
       <div class="modal__header" v-if="isColor == 'create1'">
         <p class="modal__main">Добавить размер</p>
       </div>
@@ -157,19 +160,29 @@
       <div class="modal__body" v-if="isColor == 'color'">
         <div class="form-group">
           <label for="exampleFormControlInput1" class="modal__label">Название цвета</label>
-          <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Новый цвет" />
+          <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Новый цвет"
+            :value="modalEdit.area.name" />
         </div>
       </div>
       <div class="modal__body" v-if="isColor == 'size'">
         <div class="form-group">
           <label for="exampleFormControlInput1" class="m-0">Введите название</label>
-          <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Новый размер" />
+          <input type="text" class="form-control" id="exampleFormControlInput1" :value="modalEdit.area.size"
+            placeholder="Новый размер" />
         </div>
       </div>
       <div class="modal__body" v-if="isColor == 'sizes'">
         <div class="form-group">
           <label for="exampleFormControlInput1" class="modal__label">Название характеристики</label>
-          <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Новое название" />
+          <input type="text" class="form-control" id="exampleFormControlInput3" placeholder="Новое название"
+            :value="charFirst" v-on:keyup.enter="sizeName" />
+        </div>
+      </div>
+      <div class="modal__body" v-if="isColor == 'colors'">
+        <div class="form-group">
+          <label for="exampleFormControlInput1" class="modal__label">Название характеристики</label>
+          <input type="text" class="form-control" id="exampleFormControlInput4" placeholder="Новое название"
+            :value="charSecond" v-on:keyup.enter="colorName" />
         </div>
       </div>
       <div class="form-group text-start me-2" v-if="modalId === 'size' || isColor === 'create1'">
@@ -196,9 +209,38 @@ export default {
   components: {
     InputsModal,
   },
+  methods: {
+    sizeName() {
+      let size = document.getElementById("exampleFormControlInput3").value;
+      this.charFirst = size
+    },
+    colorName() {
+      let color = document.getElementById("exampleFormControlInput4").value;
+      this.charSecond = color
+    },
+    editSize(id) {
+      this.isColor = 'size'
+      this.modalEdit.area = this.sizes.filter(
+        (sizes) => sizes.size == id
+      )[0];
+      $("#InpModal").modal("show");
+    },
+    editColor(id) {
+      this.isColor = 'color'
+      this.modalEdit.area = this.colors.filter(
+        (colors) => colors.name == id
+      )[0];
+      $("#InpModal").modal("show");
+    },
+  },
   data() {
     return {
+      charFirst: 'Размеры',
+      charSecond: 'Цвета',
       isColor: "",
+      modalEdit: {
+        area: {},
+      },
       sizes: [
         {
           size: "XXL",

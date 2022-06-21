@@ -30,18 +30,24 @@
                 <div class="form-group">
                   <label for="exampleFormControlSelect1" class="order__label">Тип скидки</label>
                   <div class="select">
-                    <select class="form-select" id="exampleFormControlSelect1">
-                      <option selected disabled>Выберите</option>
+                    <select class="form-select" id="exampleFormControlSelect1" @change="selected = !selected">
                       <option>Процент</option>
-                      <option>Процент/Число</option>
+                      <option>Число</option>
                     </select>
                   </div>
                 </div>
-                <div class="form-group">
+                <div class="form-group" v-show="selected">
                   <label for="type__disc" class="order__label">Размер скидки</label>
                   <div class="input-group flex-nowrap" style="width: 141px">
                     <input class="form-control" placeholder="10" id="type__disc" type="text" />
                     <span class="input-group-text py-0"><img src="@/assets/img/type__disc.svg" alt="" /></span>
+                  </div>
+                </div>
+                <div class="form-group" v-show="!selected">
+                  <label for="type__disc" class="order__label">Размер скидки</label>
+                  <div class="input-group flex-nowrap" style="width: 141px">
+                    <input class="form-control" placeholder="10" id="type__disc" type="text" />
+                    <span class="input-group-text py-0"><img src="@/assets/img/type__tenge.svg" alt="" /></span>
                   </div>
                 </div>
                 <div class="form-group">
@@ -74,9 +80,6 @@
                   списка</button>
               </div>
               <div class="search">
-                <button class="btn disc__btn" data-bs-toggle="modal" data-bs-target="#DiscModal">
-                  Ввести номер поступления
-                </button>
                 <div class="form-group m-0">
                   <div class="input-group mt-1">
                     <span class="input-group-text"><img src="@/assets/css/icons/searchIcon.svg" alt="" /></span>
@@ -671,6 +674,7 @@ export default {
   data() {
     return {
       paginationList: [],
+      selected: true,
       isPickup: true,
       onStorage: "yes",
       items: [

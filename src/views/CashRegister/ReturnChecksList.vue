@@ -11,10 +11,12 @@
     <div class="card pt-4 pb-2 m-4">
       <div class="d-flex justify-content-between align-items-center mx-4 mb-4">
         <div>
-          <button class="btn bg-gradient-dark mb-0" style="margin-right: 0.833vw" onclick="window.location.href = '/cash-register/cash-register-return'">
+          <button class="btn bg-gradient-dark mb-0" style="margin-right: 0.833vw"
+            onclick="window.location.href = '/cash-register/cash-register-return'">
             <img src="@/assets/img/whtplus.svg" alt="" /> Оформить возврат
           </button>
-          <button class="btn bg-gradient-dark mb-0" onclick="window.location.href = '/cash-register/cash-register-sale'">
+          <button class="btn bg-gradient-dark mb-0"
+            onclick="window.location.href = '/cash-register/cash-register-sale'">
             <img src="@/assets/img/whtplus.svg" alt="" /> Новая продажа
           </button>
         </div>
@@ -39,7 +41,7 @@
             <tr class="">
               <th scope="col" class="th__col" style="width: 25px"></th>
               <th width="1%" scope="col" class="th__col">№</th>
-              <th scope="col" class="th__col">№ чека</th>
+              <th scope="col" class="th__col">№ Возврата</th>
               <th scope="col" class="th__col">Дата</th>
               <th scope="col" class="th__col">Кассир</th>
               <th scope="col" class="th__col">Торговая точка</th>
@@ -312,10 +314,10 @@ export default {
           (this.filterStorage === ""
             ? true
             : order.storage === this.filterStorage) &&
-          (String(order.id).includes(String(this.search).toLowerCase()) 
-          || String(order.responsible).toLowerCase().includes(String(this.search).toLowerCase())
-          || String(order.storage).toLowerCase().includes(String(this.search).toLowerCase())
-          || String(order.client).toLowerCase().includes(String(this.search).toLowerCase()))
+          (String(order.id).includes(String(this.search).toLowerCase())
+            || String(order.responsible).toLowerCase().includes(String(this.search).toLowerCase())
+            || String(order.storage).toLowerCase().includes(String(this.search).toLowerCase())
+            || String(order.client).toLowerCase().includes(String(this.search).toLowerCase()))
       );
     },
   },
@@ -326,25 +328,27 @@ export default {
 </script>
 
 <style scoped>
-.page__table{
+.page__table {
   overflow: auto;
 }
+
 .page__table::-webkit-scrollbar {
-    background: #e2e8f0;
-    border-radius: 0.78vw;
-    width: 0.37vw;
+  background: #e2e8f0;
+  border-radius: 0.78vw;
+  width: 0.37vw;
 }
-  
+
 .page__table::-webkit-scrollbar-thumb {
-    border-radius: 0.78vw;
-    background-color: #313860;
+  border-radius: 0.78vw;
+  background-color: #313860;
 }
-  
+
 .page__table::-webkit-scrollbar-track {
-    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.2);
-    border-radius: 0.78vw;
-    background-color: #e2e8f0;
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.2);
+  border-radius: 0.78vw;
+  background-color: #e2e8f0;
 }
+
 .form__width {
   /* width: 15.99vw !important; */
 }
@@ -410,7 +414,8 @@ td {
   .search__size {
     width: 322px;
   }
-  .card{
+
+  .card {
     height: 70vh;
   }
 }
