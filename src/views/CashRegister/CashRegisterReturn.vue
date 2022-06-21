@@ -45,13 +45,14 @@
                                     <img src="@/assets/img/cash-register/delete.svg" alt="" @click="deleteProduct(selectedProduct.id)">
                                 </div>
                                 <div class="product__bottom">
+                                    <div style="display: flex;">
                                     <div class="product__price" v-if="selectedProduct.price">
                                         {{selectedProduct.price}} ₸  
                                     </div>
                                     <div class="product__price" v-else>
                                         0 ₸  
                                     </div>
-                                    <div class="product__buttons__center">
+                                    <div class="product__buttons__center ms-2">
                                         <div class="product__amount">
                                             <div class="product__amount__btn product__amount__btn__minus" @click="productAmount-=1">
                                                 <img src="@/assets/img/cash-register/cashminus.svg" alt="">
@@ -80,6 +81,7 @@
                                         <button class="btn bg-gradient-dark mb-0 ms-3" @click="saveProduct">
                                             <img src="@/assets/img/cash-register/cashSave.svg" alt=""> Сохранить
                                         </button>
+                                    </div>
                                     </div>
                                     <div class="product__result">
                                         {{productSum}} ₸  
@@ -831,6 +833,8 @@ export default {
     font-weight: 600;
     font-size: 30px;
     color: #2D3748;
+    min-width: 180px;
+    text-align: left;
 }
 .product__amount{
     display: flex;
@@ -839,8 +843,19 @@ export default {
 .product__amount input{
     margin-left: 7px;
     margin-right: 7px;
-    width: 4.031vw;
+    width: 5.031vw;
+    font-weight: 600;
     font-size: 20px;
+    color: #2D3748;
+    text-align: center;
+}
+
+.product__amount input::-webkit-outer-spin-button,
+.product__amount input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+.product__amount input{
+    -moz-appearance: textfield;
 }
 .product__amount__btn{
     cursor: pointer;

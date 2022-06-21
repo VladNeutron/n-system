@@ -517,4 +517,9 @@ export default {
   padding-right: 2.083vw;
   padding-top: 1.823vw;
 }
+@media screen and (max-width:1800px) {
+  .bank__content{
+    height: 15vw;
+  }
+}
 </style>
