@@ -29,6 +29,7 @@ import CommentButton from '@/components/buttons/CommentButton.vue'
 import ActionButton from '@/components/buttons/ActionButton.vue'
 import FiltersButton from '@/components/buttons/FiltersButton.vue'
 import ExportButton from '@/components/buttons/ExportButton.vue'
+import SrcButton from '@/components/buttons/SrcButton.vue'
 import Export2Button from '@/components/buttons/Export2Button.vue'
 import DeleteModal from "@/components/DeleteModal.vue";
 import PaginationComponent from "@/components/Pagination/PaginationComponent.vue";
@@ -53,6 +54,7 @@ app.component("action-button", ActionButton);
 app.component("filters-button", FiltersButton);
 app.component("export-button", ExportButton);
 app.component("export2-button", Export2Button);
+app.component("src-button", SrcButton);
 app.component("list-search", ListSearch);
 app.component('delete-modal', DeleteModal);
 app.component('pagination-component', PaginationComponent);

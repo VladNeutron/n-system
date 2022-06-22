@@ -26,6 +26,7 @@
               </div>
               <div class="table__inputs d-flex gap-3 align-content-center">
                 <list-search @searchFilter="(a) => search = a"></list-search>
+                <src-button data-bs-toggle="modal" data-bs-target="#SendModal"></src-button>
                 <print-button></print-button>
                 <download-button></download-button>
                 <filters-button></filters-button>
@@ -117,6 +118,32 @@
     </the-filter>
     <delete-modal :title="'контрагента'" :text="`контрагента &quot;Тихонова А.Р&quot;`"></delete-modal>
     <counter-modal :product="modal.modalProductName"></counter-modal>
+    <send-modal>
+      <template #head>
+        <div style="text-align: left">
+          <p class="header__main">Отправка формы заполнения реквизитов</p>
+          <p class="header__sec">
+            Укажите E-mail или контактный телефон Вашего контрагента, чтобы он мог заполнить свои реквизиты
+          </p>
+          <p class="header__sec">
+            *Контрагенту будет отправлено письмо или SMS со ссылкой на форму заполнения реквизитов. После заполнения
+            реквизитов контрагент появится в базе
+          </p>
+        </div>
+      </template>
+      <template #body>
+        <div class="form-group text-start">
+          <label for="example-text-input1" class="form-control-label">E-mail или телефон контрагента</label>
+          <input class="form-control" style="width:667.008px" type="text" placeholder="Введите e-mail или телефон"
+            id="example-text-input1" />
+        </div>
+      </template>
+      <template #footer>
+        <div class="clients__footer">
+          <button class="btn bg-gradient-dark" style="width:18.75vw">Отправить</button>
+        </div>
+      </template>
+    </send-modal>
   </main>
 </template>
 
@@ -124,6 +151,7 @@
 import CounterModal from "@/components/CounterModal.vue";
 import Filter from "../../components/Filters.vue";
 import FiltersButton from "@/components/buttons/FiltersButton.vue";
+import SendFormModal from "@/components/SendFormModal.vue"
 export default {
   data() {
     return {
@@ -298,6 +326,7 @@ export default {
     "the-filter": Filter,
     CounterModal,
     FiltersButton,
+    "send-modal": SendFormModal,
   },
 };
 </script>
