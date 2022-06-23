@@ -24,6 +24,7 @@
                                 </button>
                             </div>
                             <div class="table__inputs d-flex gap-3 align-content-center">
+                                <filter-button class="mb-0"></filter-button>
                                 <list-search @searchFilter="(a) => search = a"></list-search>
                             </div>
                         </div>
@@ -156,21 +157,33 @@
         </inputs-modal>
         <delete-modal :title="'пользователя'" :text="`пользователя &quot;Moon&quot;`"></delete-modal>
     </main>
+    <the-filter :orders="orders" @no-filter="cancelFilters">
+    <p class="text-start my-2 fw-bold" for="Склад">Роль сотрудника</p>
+    <select class="form-select" v-model="filterRole">
+        <option disabled value="">Выберите роль</option>
+        <option v-for="role of roles" :key="role.id">
+            {{ role.role }}
+        </option>
+    </select>
+  </the-filter>
 </template>
 
 <script>
 import InputsModal from "@/components/InputsModal.vue";
 import { CloseInvModal } from "@/assets/js/closeModalDeleteOpen";
+import Filter from "@/components/Filters.vue";
+import FilterButton from "@/components/buttons/FiltersButton.vue";
 export default {
     data() {
         return {
+            filterRole: 'Выберите роль',
             paginationList: [],
             status: null,
             buttonText: "",
             orders: [
                 {
                     id: 0,
-                    login: 'Moon',
+                    login: 'Ilya',
                     name: "Тихонова А.Р",
                     role: "Кассир",
                 },
@@ -262,6 +275,24 @@ export default {
             isEdit: "no",
             filterPosition: "",
             search: '',
+            roles: [
+                {
+                    id: 0,
+                    role: 'Кассир'
+                },
+                {
+                    id: 1,
+                    role: 'Бухгалтер'
+                },
+                {
+                    id: 2,
+                    role: 'Менеджер'
+                },
+                {
+                    id: 3,
+                    role: 'Грузчик'
+                },
+            ],
         };
     },
     methods: {
@@ -269,9 +300,22 @@ export default {
             console.log(arr);
             this.paginationList = arr;
         },
+        cancelFilters() {
+            this.filterRole = '';
+        },
     },
     computed: {
         filteredList() {
+            if(this.filterRole != '' && this.filterRole!='Выберите роль'){
+                let orders = this.orders.filter((order) =>
+                order.role.toLowerCase() == this.filterRole.toLowerCase()
+            );
+            return orders.filter((order) =>
+                (String(order.login).toLowerCase().includes(String(this.search).toLowerCase())) ||
+                (String(order.name).toLowerCase().includes(String(this.search).toLowerCase())) ||
+                (String(order.role).toLowerCase().includes(String(this.search).toLowerCase()))
+            );
+            }
             return this.orders.filter((order) =>
                 (String(order.login).toLowerCase().includes(String(this.search).toLowerCase())) ||
                 (String(order.name).toLowerCase().includes(String(this.search).toLowerCase())) ||
@@ -284,6 +328,8 @@ export default {
     },
     components: {
         "inputs-modal": InputsModal,
+        "the-filter": Filter,
+        "filter-button": FilterButton,
     },
 };
 </script>
