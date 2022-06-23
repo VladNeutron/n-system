@@ -107,6 +107,14 @@
         </option>
         <option value=""></option>
       </select>
+      <div class="filter__name__standart mt-3">Статус оприходования</div>
+      <select class="form-select" v-model="filterStatus">
+        <option value="" disabled selected>Выберите статус</option>
+        <option v-for="status in statusList" :key="status">
+          {{ status }}
+        </option>
+        <option value=""></option>
+      </select>
     </filters>
   </main>
 </template>
@@ -128,6 +136,7 @@ export default {
     cancelFilters() {
       this.filterWarehouse = "";
       this.filterResponsible = "";
+      this.filterStatus = "";
     },
     createFilteredSet(key) {
       const unfiltered = this.items.map((obj) => obj[key]);
@@ -141,6 +150,9 @@ export default {
     responsibleList() {
       return this.createFilteredSet("name");
     },
+    statusList() {
+      return this.createFilteredSet("isReady");
+    },
 
     filteredItems() {
       return this.items.filter(
@@ -151,6 +163,10 @@ export default {
           (this.filterResponsible === ""
             ? true
             : item.name === this.filterResponsible)
+          &&
+          (this.filterStatus === ""
+            ? true
+            : item.isReady === this.filterStatus)
           &&
           (String(item.name).toLowerCase().includes(String(this.search).toLowerCase())) ||
           (String(item.place).toLowerCase().includes(String(this.search).toLowerCase())) ||
@@ -163,6 +179,7 @@ export default {
       search: '',
       filterResponsible: "",
       filterWarehouse: "",
+      filterStatus: "",
       paginationList: [],
       items: [
         {

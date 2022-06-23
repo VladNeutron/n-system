@@ -31,37 +31,27 @@
                   <p class="items__title">дата и время</p>
                   <p class="items__text">11 ноя, 19:23, 2021</p>
                 </div>
-                <div class="items__block text-start">
-                  <p class="items__title">Склад</p>
-                  <div class="dropdown">
-                    <p class="items__tex items__flex items__text" style="cursor: pointer">
-                      ТРЦ Москва
-                      <img src="@/assets/img/down.svg" class="rotate" style="width: 0.729vw; margin-left: 0.417vw"
-                        alt="" />
-                    </p>
-                    <div class="dropdown-content">
-                      <a style="cursor: pointer">ТЦ Европейский</a>
-                      <hr />
-                      <a style="cursor: pointer">ТРЦ Jam Moll</a>
-                    </div>
+                <div class="form-group text-start">
+                  <label for="exampleFormControlSelect1" class="items__title">Склад</label>
+                  <div class="select">
+                    <select class="form-select" style="border:0 !important" id="exampleFormControlSelect1">
+                      <option selected disabled>Выберите</option>
+                      <option>Европейский</option>
+                      <option>ТРЦ Jam Moll</option>
+                      <option>ТРЦ Москва</option>
+                    </select>
                   </div>
                 </div>
-                <div class="items__block text-start">
-                  <p class="items__title">Ответственный</p>
-
-                  <div class="dropdown">
-                    <p class="items__text items__flex" style="cursor: pointer">
-                      Тихонов Александр
-                      <img src="@/assets/img/down.svg" class="rotate" style="width: 0.729vw; margin-left: 0.417vw"
-                        alt="" />
-                    </p>
-                    <div class="dropdown-content">
-                      <a style="cursor: pointer">Антон</a>
-                      <hr />
-                      <a style="cursor: pointer">Валера</a>
-                      <hr />
-                      <a style="cursor: pointer">Влад</a>
-                    </div>
+                <div class="form-group text-start">
+                  <label for="exampleFormControlSelect1" class="items__title">Ответственный</label>
+                  <div class="select">
+                    <select class="form-select" style="border:0 !important; margin-right:15px"
+                      id="exampleFormControlSelect1">
+                      <option selected disabled>Выберите</option>
+                      <option>Антон</option>
+                      <option>Валера</option>
+                      <option>Влад</option>
+                    </select>
                   </div>
                 </div>
                 <div class="items__block text-start">
@@ -98,7 +88,8 @@
                         <input class="form-control" placeholder="Поиск..." id="search" type="text" />
                       </div>
                     </div>
-                    <button class="btn bg-gradient-dark mb-0" onclick="window.location.href = '/warehouse-accounting/inventorization-list'">
+                    <button class="btn bg-gradient-dark mb-0"
+                      onclick="window.location.href = '/warehouse-accounting/inventorization-list'">
                       Завершить инвентаризацию
                     </button>
                   </div>
@@ -107,9 +98,9 @@
               <div v-if="isAdded == false">
                 <not-added-table :documentName="'инвентаризацию'"></not-added-table>
               </div>
-              <div class="inv__block py-4 ps-0"  v-if="isAdded">
+              <div class="inv__block py-4 ps-0" v-if="isAdded">
                 <div class="inv__content p-0">
-                  
+
                   <div>
                     <table class="table text-center">
                       <thead>
@@ -143,8 +134,8 @@
                   </div>
                 </div>
               </div>
-              <pagination-component v-if="isAdded" :filteredArr="items" :strAmount="7" @PaginationReload="reloadPagination"
-                class="pb-4 pagination__size"></pagination-component>
+              <pagination-component v-if="isAdded" :filteredArr="items" :strAmount="7"
+                @PaginationReload="reloadPagination" class="pb-4 pagination__size"></pagination-component>
             </div>
           </div>
         </div>

@@ -23,6 +23,7 @@
                   Добавить должность
                 </button>
               </div>
+              <filters-button></filters-button>
             </div>
             <div class="page__table">
               <table class="table table-hover table-striped">
@@ -54,7 +55,7 @@
                 </tbody>
               </table>
             </div>
-            <pagination-component :filteredArr="orders" :strAmount="10" @PaginationReload="reloadPagination"
+            <pagination-component :filteredArr="filteredItems" :strAmount="10" @PaginationReload="reloadPagination"
               class="pagination__size"></pagination-component>
           </div>
         </div>
@@ -108,6 +109,40 @@
       </template>
     </inputs-modal>
     <delete-modal :title="'должности'" :text="`должность &quot;Кассир&quot;`"></delete-modal>
+    <the-filter @no-filter="cancelFilters">
+      <div class="filters__period__flex">
+        <div class="filter__name__standart">Выберите период</div>
+        <div class="reset__date">Сбросить период</div>
+      </div>
+      <div class="filters__period">
+        <div class="form-group">
+          <input class="form-control" type="date" id="example-date-input" />
+        </div>
+        <div>
+          <img src="@/assets/img/line.svg" style="width: 1.927vw" alt="" />
+        </div>
+        <div class="form-group">
+          <input class="form-control" type="date" id="example-date-input" />
+        </div>
+      </div>
+
+      <div class="filter__name__standart">Торговая точка</div>
+      <select class="form-select" v-model="filterTradepoint">
+        <option value="" disabled selected>Выберите торговую точку</option>
+        <option v-for="tradepoint in tradepointList" :key="tradepoint">
+          {{ tradepoint }}
+        </option>
+        <option value=""></option>
+      </select>
+      <div class="filter__name__standart mt-3">Статус</div>
+      <select class="form-select" v-model="filterStatus">
+        <option value="" disabled selected>
+          Выберите статус
+        </option>
+        <option v-for="status in statusList" :key="status">{{ status }}</option>
+        <option value=""></option>
+      </select>
+    </the-filter>
   </main>
 </template>
 
@@ -121,6 +156,8 @@ export default {
       paginationList: [],
       status: null,
       buttonText: "",
+      filterTradepoint: "",
+      filterStatus: "",
       orders: [
         {
           id: 0,
@@ -153,61 +190,61 @@ export default {
           status: "Активна",
         },
         {
-          id: 0,
+          id: 6,
           name: "Кассир",
           shop: "Москва",
           status: "Активна",
         },
         {
-          id: 1,
+          id: 7,
           name: "Бухгалтер",
           shop: "Москва",
           status: "Не активна",
         },
         {
-          id: 2,
+          id: 8,
           name: "Фасовщик",
           shop: "Апорт",
           status: "Активна",
         },
         {
-          id: 3,
+          id: 9,
           name: "Консультант",
           shop: "Апорт",
           status: "Не активна",
         },
         {
-          id: 4,
+          id: 10,
           name: "Управляющий",
           shop: "Апорт",
           status: "Активна",
         },
         {
-          id: 0,
+          id: 11,
           name: "Кассир",
           shop: "Москва",
           status: "Активна",
         },
         {
-          id: 1,
+          id: 12,
           name: "Бухгалтер",
           shop: "Москва",
           status: "Не активна",
         },
         {
-          id: 2,
+          id: 13,
           name: "Фасовщик",
           shop: "Апорт",
           status: "Активна",
         },
         {
-          id: 3,
+          id: 14,
           name: "Консультант",
           shop: "Апорт",
           status: "Не активна",
         },
         {
-          id: 4,
+          id: 15,
           name: "Управляющий",
           shop: "Апорт",
           status: "Активна",
@@ -227,6 +264,30 @@ export default {
     reloadPagination(arr) {
       console.log(arr);
       this.paginationList = arr;
+    },
+    cancelFilters() {
+      this.filterTradepoint = "";
+      this.filterStatus = "";
+    },
+    createFilteredSet(key) {
+      const unfiltered = this.orders.map((obj) => obj[key]);
+      return [...new Set(unfiltered)];
+    },
+  },
+  computed: {
+    tradepointList() {
+      return this.createFilteredSet("shop");
+    },
+    statusList() {
+      return this.createFilteredSet("status");
+    },
+    filteredItems() {
+      return this.orders.filter(
+        (order) =>
+          (this.filterTradepoint === "" ? true : order.shop === this.filterTradepoint) &&
+          (this.filterStatus === "" ? true : order.status === this.filterStatus)
+
+      );
     },
   },
 };

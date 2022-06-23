@@ -36,7 +36,7 @@
                     <tr class="text-start">
                       <th scope="col" class="th__col" style="width: 1px; padding-left: 27px"></th>
                       <th scope="col" class="th__col">№</th>
-                      <th scope="col" class="th__col">номер документа</th>
+                      <th scope="col" class="th__col">№ Документа</th>
                       <th scope="col" class="th__col">Дата И ВРЕМЯ</th>
                       <th scope="col" class="th__col">контрагент</th>
                       <th scope="col" class="th__col">Ответственный</th>

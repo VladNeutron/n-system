@@ -38,7 +38,8 @@
                         № Документа
                       </th>
                       <th scope="col" class="th__col">Дата и время</th>
-                      <th scope="col" class="th__col">Склад</th>
+                      <th scope="col" class="th__col">Отправитель</th>
+                      <th scope="col" class="th__col">Получатель</th>
                       <th scope="col" class="th__col">Ответственный</th>
                       <th scope="col" class="th__col">Статус документа</th>
                       <th scope="col" class="th__col">Кол-во товаров</th>
@@ -50,7 +51,8 @@
                       <td scope="row">{{ item.listNumber + 1 }}</td>
                       <td>{{ item.id }}</td>
                       <td>{{ item.date }}</td>
-                      <td>{{ item.place }}</td>
+                      <td>{{ item.sender }}</td>
+                      <td>{{ item.receiver }}</td>
                       <td>{{ item.name }}</td>
                       <td>{{ item.isReady }}</td>
                       <td>{{ item.count }}</td>
@@ -172,7 +174,8 @@ export default {
         {
           date: "11 янв, 19:23, 2021",
           id: "23",
-          place: "ТРЦ Москва",
+          sender: "ТРЦ Москва",
+          receiver: "ЦУМ",
           name: "Мильчаков Валерий",
           isReady: "Завершен",
           count: "15",
@@ -180,7 +183,8 @@ export default {
         {
           date: "11 янв, 19:23, 2021",
           id: "23",
-          place: "ТРЦ Москва",
+          sender: "ТРЦ Москва",
+          receiver: "ЦУМ",
           name: "Мильчаков Валерий",
           isReady: "Завершен",
           count: "15",
@@ -188,73 +192,91 @@ export default {
         {
           date: "11 янв, 19:23, 2021",
           id: "23",
-          place: "ТРЦ Москва",
+          sender: "ТРЦ Москва",
+          receiver: "ЦУМ",
           name: "Мильчаков Валерий",
-          isReady: "Новый",
+          isReady: "Завершен",
           count: "15",
         },
         {
           date: "11 янв, 19:23, 2021",
           id: "23",
-          place: "ТРЦ Москва",
+          sender: "ТРЦ Москва",
+          receiver: "ЦУМ",
           name: "Мильчаков Валерий",
-          isReady: "Новый",
+          isReady: "Завершен",
           count: "15",
         },
         {
           date: "11 янв, 19:23, 2021",
           id: "23",
-          place: "ТРЦ Москва",
+          sender: "ТРЦ Москва",
+          receiver: "ЦУМ",
           name: "Мильчаков Валерий",
-          isReady: "Новый",
+          isReady: "Завершен",
           count: "15",
         },
         {
           date: "11 янв, 19:23, 2021",
           id: "23",
-          place: "ТРЦ Москва",
+          sender: "ТРЦ Москва",
+          receiver: "ЦУМ",
           name: "Мильчаков Валерий",
-          isReady: "Новый",
+          isReady: "Завершен",
           count: "15",
         },
         {
           date: "11 янв, 19:23, 2021",
           id: "23",
-          place: "ТРЦ Москва",
+          sender: "ТРЦ Москва",
+          receiver: "ЦУМ",
           name: "Мильчаков Валерий",
-          isReady: "Новый",
+          isReady: "Завершен",
           count: "15",
         },
         {
           date: "11 янв, 19:23, 2021",
           id: "23",
-          place: "ТРЦ Москва",
+          sender: "ТРЦ Москва",
+          receiver: "ЦУМ",
           name: "Мильчаков Валерий",
-          isReady: "Новый",
+          isReady: "Завершен",
           count: "15",
         },
         {
           date: "11 янв, 19:23, 2021",
           id: "23",
-          place: "ТРЦ Москва",
+          sender: "ТРЦ Москва",
+          receiver: "ЦУМ",
           name: "Мильчаков Валерий",
-          isReady: "Новый",
+          isReady: "Завершен",
           count: "15",
         },
         {
           date: "11 янв, 19:23, 2021",
           id: "23",
-          place: "ТРЦ Москва",
+          sender: "ТРЦ Москва",
+          receiver: "ЦУМ",
           name: "Мильчаков Валерий",
-          isReady: "Новый",
+          isReady: "Завершен",
           count: "15",
         },
         {
           date: "11 янв, 19:23, 2021",
           id: "23",
-          place: "ТРЦ Москва",
+          sender: "ТРЦ Москва",
+          receiver: "ЦУМ",
           name: "Мильчаков Валерий",
-          isReady: "Новый",
+          isReady: "Завершен",
+          count: "15",
+        },
+        {
+          date: "11 янв, 19:23, 2021",
+          id: "23",
+          sender: "ТРЦ Москва",
+          receiver: "ЦУМ",
+          name: "Мильчаков Валерий",
+          isReady: "Завершен",
           count: "15",
         },
       ],
