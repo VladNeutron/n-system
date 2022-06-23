@@ -581,6 +581,31 @@
           </div>
         </li>
 
+        <!-- ЭДО -->
+        <li class="nav-item">
+          <a data-bs-toggle="collapse" href="#edo" class="nav-link" aria-controls="edo" role="button"
+            aria-expanded="false">
+            <div
+              class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center d-flex align-items-center justify-content-center me-2">
+              <img src="@/assets/img/EdoIcon.svg" alt="" />
+            </div>
+
+            <span class="nav-link-text ms-1">ЭДО</span>
+          </a>
+
+          <div class="collapse" id="edo">
+            <ul class="nav ms-4 ps-3">
+              <li class="nav-item">
+                <router-link :to="{ name: 'edo-documents-list' }" class="nav-link">
+                  <span class="sidenav-mini-icon"> С </span>
+                  <span class="sidenav-normal">Список документов </span>
+                </router-link>
+              </li>
+
+            </ul>
+          </div>
+        </li>
+
         <!-- <li class="nav-item">
       
       

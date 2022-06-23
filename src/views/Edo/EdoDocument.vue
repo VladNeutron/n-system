@@ -197,15 +197,15 @@
                             </div>
                             <div class="documentInfo__download__cont row">
                                 <div class="documentInfo__download__item col-4">
-                                    <img src="@/assets/img/edo/edoOrig.svg" alt="">
+                                    <a download href="../schet.pdf"><img src="@/assets/img/edo/edoOrig.svg" alt=""></a>
                                     <span>Оригинал</span>
                                 </div>
                                 <div class="documentInfo__download__item col-4">
-                                    <img src="@/assets/img/edo/edoOregSigns.svg" alt="">
+                                    <a download href="../schet.pdf"><img src="@/assets/img/edo/edoOregSigns.svg" alt=""></a>
                                     <span>PDF с подписями</span>
                                 </div>
                                 <div class="documentInfo__download__item col-4">
-                                    <img src="@/assets/img/edo/edoZip.svg" alt="">
+                                    <a download href="../schet.pdf"><img src="@/assets/img/edo/edoZip.svg" alt=""></a>
                                     <span>Zip-архив с подписями</span>
                                 </div>
                             </div>
@@ -216,11 +216,11 @@
                             </div>
                             <div class="documentInfo__download__cont row">
                                 <div class="documentInfo__download__item col-4">
-                                    <img src="@/assets/img/edo/edoOrig.svg" alt="">
+                                    <a href="../schet.pdf"><img src="@/assets/img/edo/edoOrig.svg" alt=""></a>
                                     <span>Оригинал</span>
                                 </div>
                                 <div class="documentInfo__download__item col-4">
-                                    <img src="@/assets/img/edo/edoOregSigns.svg" alt="">
+                                    <a  href="../schet.pdf"><img src="@/assets/img/edo/edoOregSigns.svg" alt=""></a>
                                     <span>PDF с подписями</span>
                                 </div>
                             </div>
