@@ -658,6 +658,27 @@ const routes = [
   },
   // НАСТРОЙКИ
 
+  // ЭДО
+  {
+    path: "/edo",
+    name: "edo",
+    component: () => import("../views/Edo/EdoDocumentsList.vue"),
+    meta: { NavLink: "ЭДО" },
+  },
+  {
+    path: "/edo/edo-documents-list",
+    name: "edo-documents-list",
+    component: () => import("../views/Edo/EdoDocumentsList.vue"),
+    meta: { NavLink: "Список документов" },
+  },
+  {
+    path: "/edo/edo-document",
+    name: "edo-document",
+    component: () => import("../views/Edo/EdoDocument.vue"),
+    meta: { NavLink: "Документ" },
+  },
+  // ЭДО
+
 ];
 
 const router = createRouter({
