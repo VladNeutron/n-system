@@ -37,13 +37,13 @@
         </div>
         <ul class="navbar-nav  justify-content-end">
           <li class="nav-item d-flex align-items-center">
-            <a href="./pages/authentication/signin/illustration.html" class="nav-link text-body font-weight-bold px-0" target="_blank">
+            <router-link :to="{ name: 'profile' }" class="nav-link text-body font-weight-bold px-0">
               <!-- <i class="fa fa-user me-sm-1"></i> -->
                   <img src="@/assets/img/header/HeaderProfile.svg" class="me-2 header__images" alt="">
   
               <span class="d-sm-inline d-none header__name">Евгений</span>
   
-            </a>
+            </router-link>
           </li>
           <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
             <a href="javascript:;" class="nav-link text-body p-0" id="iconNavbarSidenav" @click="showSidebar">

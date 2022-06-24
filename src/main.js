@@ -2,6 +2,10 @@ import { createApp, VueElement } from "vue";
 import App from "./App.vue";
 import router from "./router";
 import store from "./store";
+import firebase from "firebase/compat/app";
+import "firebase/compat/auth";
+import "firebase/compat/firestore";
+
 import "@/assets/css/fonts.css";
 import "@/assets/css/main.css";
 import "@/assets/css/nucleo-icons.css";
@@ -37,6 +41,48 @@ import Commentary from '@/components/Commentary.vue'
 import SelelctProductDiscount from "@/components/SelectProductDiscount.vue"
 
 
+const firebaseConfig = {
+
+  apiKey: "AIzaSyAe1KZXriklxFBH61cbWaSRtaXEgMWpLzA",
+
+  authDomain: "neutron-system-beta.firebaseapp.com",
+
+  projectId: "neutron-system-beta",
+
+  storageBucket: "neutron-system-beta.appspot.com",
+
+  messagingSenderId: "605745747391",
+
+  appId: "1:605745747391:web:d90d6c97c69c8b95fcbd0a"
+
+};
+  
+  firebase.initializeApp(firebaseConfig);
+  
+  
+  
+  
+  router.beforeEach((to, from, next)=> {
+    if(to.name != 'login' & to.name != 'register'){
+      let authListener = firebase.auth().onAuthStateChanged(function (user) {
+        if (!user) {
+          // not logged in
+          alert("Пожалуйста авторизуйтесь!");
+          router.push({ name: "login" });
+        }
+        else{
+            next()    
+        }
+      });
+      console.log('no')
+      authListener();
+    }
+    else{
+      next()
+    }
+  })
+
+
 const app = createApp(App).use(store).use(router);
 
 app.component("the-navbar", Navbar);
@@ -60,6 +106,8 @@ app.component('delete-modal', DeleteModal);
 app.component('pagination-component', PaginationComponent);
 app.component('commentary', Commentary);
 app.component('select-product', SelelctProductDiscount);
+
+
 
 
 

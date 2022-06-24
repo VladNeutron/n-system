@@ -46,21 +46,21 @@ import firebase from "firebase/compat/app";
 import "firebase/compat/auth";
 import "firebase/compat/firestore";
 
-const firebaseConfig = {
+// const firebaseConfig = {
 
-  apiKey: "AIzaSyAe1KZXriklxFBH61cbWaSRtaXEgMWpLzA",
+//   apiKey: "AIzaSyAe1KZXriklxFBH61cbWaSRtaXEgMWpLzA",
 
-  authDomain: "neutron-system-beta.firebaseapp.com",
+//   authDomain: "neutron-system-beta.firebaseapp.com",
 
-  projectId: "neutron-system-beta",
+//   projectId: "neutron-system-beta",
 
-  storageBucket: "neutron-system-beta.appspot.com",
+//   storageBucket: "neutron-system-beta.appspot.com",
 
-  messagingSenderId: "605745747391",
+//   messagingSenderId: "605745747391",
 
-  appId: "1:605745747391:web:d90d6c97c69c8b95fcbd0a"
+//   appId: "1:605745747391:web:d90d6c97c69c8b95fcbd0a"
 
-};
+// };
 
 
 // firebase.initializeApp(firebaseConfig);
@@ -77,6 +77,7 @@ const signIn = () => {
       router.push("/");
     })
     .catch((error) => {
+      console.log(error)
       switch (error.code) {
         case "auth/invalid-email":
           console.log("Почта введена не правильно");

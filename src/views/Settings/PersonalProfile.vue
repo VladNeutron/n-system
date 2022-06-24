@@ -10,7 +10,10 @@
             Внесите изменения и не забудьте нажать “Сохранить”
           </template>
         </lists-header>
+        <div>
+        <button class="btn save__btn mt-3 me-3" @click="signOut">Выход</button>
         <button class="btn save__btn mt-3">Сохранить</button>
+        </div>
       </div>
       <div class="row">
         <div class="col">
@@ -141,6 +144,9 @@
 </template>
 
 <script>
+import { useRouter } from "vue-router";
+import firebase from "firebase/compat/app";
+import "firebase/compat/auth";
 export default {
   methods: {
     fioAdd() {
@@ -150,6 +156,14 @@ export default {
     MailAdd() {
       let input = document.getElementById("example-text-input1").value;
       this.mail = input;
+    },
+    signOut() {
+      firebase
+        .auth()
+        .signOut()
+        .then(() => {
+          this.$router.push({ name: "login" });
+        });
     },
   },
   data() {
