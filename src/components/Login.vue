@@ -63,7 +63,7 @@ const firebaseConfig = {
 };
 
 
-firebase.initializeApp(firebaseConfig);
+// firebase.initializeApp(firebaseConfig);
 
 const email = ref("");
 const password = ref("");

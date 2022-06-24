@@ -1,5 +1,8 @@
 import { createRouter, createWebHistory } from "vue-router";
 import HomeView from "../views/HomeView.vue";
+import firebase from "firebase/compat/app";
+import "firebase/compat/auth";
+import "firebase/compat/firestore";
 
 const routes = [
   // НАЧАЛЬНЫЕ СТРАНИЦЫ
@@ -688,5 +691,45 @@ const router = createRouter({
   },
   routes,
 });
+
+const firebaseConfig = {
+
+  apiKey: "AIzaSyDjqGGUxMrZpYpSIc27YovYq8gwCm7YYIs",
+
+  authDomain: "mebel-invest-base.firebaseapp.com",
+
+  databaseURL: "https://mebel-invest-base-default-rtdb.europe-west1.firebasedatabase.app",
+
+  projectId: "mebel-invest-base",
+
+  storageBucket: "mebel-invest-base.appspot.com",
+
+  messagingSenderId: "848013634645",
+
+  appId: "1:848013634645:web:76b5ce8043922f4c7e78dc"
+
+};
+
+firebase.initializeApp(firebaseConfig);
+
+
+
+
+router.beforeEach((to, from, next)=> {
+  if(to.name != 'login' & to.name != 'register'){
+    let authListener = firebase.auth().onAuthStateChanged(function (user) {
+      if (!user) {
+        // not logged in
+        alert("Пожалуйста авторизуйтесь!");
+        router.push({ name: "login" });
+      }
+    });
+    console.log('no')
+    authListener();
+  }
+  else{
+    next()
+  }
+})
 
 export default router;
