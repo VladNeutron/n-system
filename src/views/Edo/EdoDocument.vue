@@ -137,11 +137,10 @@
                                                     alt="" />
                                                 <!-- <div :class="['dropdown-content', {'dropdown__content__top': ind >= paginationList.length - 2}]"> -->
                                                 <div class="dropdown-content">
-                                                    <a href="/sales/order" style="white-space: pre-wrap;">Отправить
+                                                    <a style="white-space: pre-wrap;">Отправить
                                                         приглашение повторно</a>
                                                     <hr />
-                                                    <a style="cursor: pointer" data-bs-toggle="modal"
-                                                        data-bs-target="#DeleteInv">Отозвать приглашение</a>
+                                                    <a style="cursor: pointer">Отозвать приглашение</a>
                                                 </div>
                                             </div>
                                         </td>
@@ -159,11 +158,10 @@
                                                     alt="" />
                                                 <!-- <div :class="['dropdown-content', {'dropdown__content__top': ind >= paginationList.length - 2}]"> -->
                                                 <div class="dropdown-content">
-                                                    <a href="/sales/order" style="white-space: pre-wrap;">Отправить
+                                                    <a style="white-space: pre-wrap;">Отправить
                                                         приглашение повторно</a>
                                                     <hr />
-                                                    <a style="cursor: pointer" data-bs-toggle="modal"
-                                                        data-bs-target="#DeleteInv">Отозвать приглашение</a>
+                                                    <a style="cursor: pointer">Отозвать приглашение</a>
                                                 </div>
                                             </div>
                                         </td>

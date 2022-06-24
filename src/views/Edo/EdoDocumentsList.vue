@@ -330,7 +330,7 @@ export default {
                 return 7
             }
             else {
-                return 10
+                return 9
             }
         },
     },
