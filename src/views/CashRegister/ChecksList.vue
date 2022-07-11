@@ -1,7 +1,4 @@
 <template>
-  <the-navbar></the-navbar>
-  <main class="main-content border-radius-lg">
-    <the-header></the-header>
     <div class="page__name d-flex align-items-center ms-4">
       <lists-header>
         <template v-slot:title> Список чеков </template>
@@ -87,7 +84,6 @@
       <pagination-component :filteredArr="filteredOrders" :strAmount="10" @PaginationReload="reloadPagination"
         class="pb-2"></pagination-component>
     </div>
-  </main>
   <the-filter @no-filter="cancelFilters">
     <div class="filters__period__flex">
       <div class="filter__name__standart">Выберите период</div>

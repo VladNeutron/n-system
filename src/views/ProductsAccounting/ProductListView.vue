@@ -1,7 +1,4 @@
 <template>
-  <the-navbar></the-navbar>
-  <main class="main-content border-radius-lg">
-    <the-header></the-header>
     <div class="container-fluid py-1">
       <div class="row">
         <div class="col-12">
@@ -145,7 +142,6 @@
       </div>
     </filters>
     <delete-modal :title="'товара'" :text="`товар &quot;Куртка зеленая&quot;`"></delete-modal>
-  </main>
 </template>
 
 <script>

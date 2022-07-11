@@ -1,7 +1,4 @@
 <template>
-  <the-navbar></the-navbar>
-  <main class="main-content position-relative border-radius-lg">
-  <the-header></the-header>
   <div class="container-fluid">
     <div class="top__row">
       <div class="">
@@ -206,8 +203,6 @@
       </div>
     </div>
   </div>
-  
-  </main>
 </template>
 
 <script>

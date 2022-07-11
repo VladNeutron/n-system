@@ -1,7 +1,4 @@
 <template>
-  <the-navbar></the-navbar>
-  <main class="main-content border-radius-lg">
-    <the-header></the-header>
     <div class="container-fluid">
       <div class="order__header">
         <div class="order__header-content">
@@ -183,7 +180,6 @@
     </div>
     <commentary :pageTitle="'Создание акта'"></commentary>
     <select-product></select-product>
-  </main>
 </template>
 
 <style scoped>

@@ -1,7 +1,4 @@
 <template>
-  <the-navbar></the-navbar>
-  <main class="main-content border-radius-lg main__padding">
-    <the-header></the-header>
     <div class="page__name d-flex align-items-center ms-4 justify-content-between">
       <div class="page__name-title text-start">
         <h3>ABC анализ</h3>
@@ -122,7 +119,6 @@
         <option value=""></option>
       </select>
     </the-filter>
-  </main>
 </template>
 
 <script>

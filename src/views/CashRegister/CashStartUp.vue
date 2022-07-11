@@ -1,7 +1,4 @@
 <template>
-  <the-navbar></the-navbar>
-  <main class="main-content border-radius-lg">
-    <the-header></the-header>
     <div class="container-fluid py-1">
       <div class="row mt-4">
         <div class="col-12">
@@ -176,7 +173,6 @@
         </button>
       </template>
     </sure-modal>
-  </main>
 </template>
 
 <script>

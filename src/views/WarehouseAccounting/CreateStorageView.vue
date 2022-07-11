@@ -1,7 +1,4 @@
 <template>
-  <the-navbar></the-navbar>
-  <main class="main-content border-radius-lg">
-    <the-header></the-header>
     <storage>
       <template #storage>
         <div class="container-fluid">
@@ -316,7 +313,6 @@
         </div>
       </template>
     </storage>
-  </main>
   <inputs-modal>
     <template #head>
       <div style="text-align: left">

@@ -1,7 +1,4 @@
 <template>
-    <the-navbar></the-navbar>
-    <main class="main-content border-radius-lg main__padding">
-        <the-header></the-header>
         <div class="container-fluid">
             <div class="page__name d-flex align-items-center justify-content-between">
                 <div class="page__name-title text-start" v-if="activeBtn == 1">
@@ -29,7 +26,6 @@
                 <contractor-bank-info v-if="activeBtn == 2"></contractor-bank-info>
             </div>
         </div>
-    </main>
 </template>
 
 <script>

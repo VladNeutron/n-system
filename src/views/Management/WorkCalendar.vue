@@ -1,7 +1,4 @@
 <template>
-  <the-navbar></the-navbar>
-  <main class="main-content position-relative border-radius-lg">
-  <the-header></the-header>
   <div class="container-fluid">
       <div class="card pt-3 px-2">
         <div id="calendar">
@@ -9,7 +6,6 @@
         </div>
       </div>
   </div>
-  </main>
 </template>
 
 <script>

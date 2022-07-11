@@ -1,7 +1,4 @@
 <template>
-    <the-navbar></the-navbar>
-    <main class="main-content border-radius-lg">
-        <the-header></the-header>
         <div class="container-fluid">
             <div class="documentHeader">
                 <div class="documentHeader__nameCont">
@@ -303,7 +300,6 @@
                 </button>
             </template>
         </EDOModal>
-    </main>
 </template>
 
 <script>

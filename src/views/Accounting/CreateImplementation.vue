@@ -1,7 +1,4 @@
 <template>
-  <the-navbar></the-navbar>
-  <main class="main-content border-radius-lg">
-    <the-header></the-header>
     <div class="container-fluid">
       <div class="order__header">
         <div class="order__header-content">
@@ -306,7 +303,6 @@
     </discount-modal>
     <commentary :pageTitle="'Создание реализации'"></commentary>
     <select-product></select-product>
-  </main>
 </template>
 
 <style scoped>

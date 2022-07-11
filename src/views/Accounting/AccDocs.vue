@@ -1,7 +1,4 @@
 <template>
-  <the-navbar></the-navbar>
-  <main class="main-content border-radius-lg main__padding">
-    <the-header></the-header>
     <div
       class="page__name d-flex align-items-center justify-content-between px-4"
     >
@@ -86,7 +83,6 @@
         </div>
       </div>
     </div>
-  </main>
 </template>
 
 <script>

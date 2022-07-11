@@ -1,7 +1,4 @@
 <template>
-    <the-navbar></the-navbar>
-    <main class="main-content border-radius-lg">
-        <the-header></the-header>
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12">
@@ -156,7 +153,6 @@
             </template>
         </inputs-modal>
         <delete-modal :title="'пользователя'" :text="`пользователя &quot;Moon&quot;`"></delete-modal>
-    </main>
     <the-filter :orders="orders" @no-filter="cancelFilters">
     <p class="text-start my-2 fw-bold" for="Склад">Роль сотрудника</p>
     <select class="form-select" v-model="filterRole">

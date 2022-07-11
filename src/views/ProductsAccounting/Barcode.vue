@@ -1,7 +1,4 @@
 <template>
-  <the-navbar></the-navbar>
-  <main class="main-content border-radius-lg">
-    <the-header></the-header>
     <div class="container-fluid">
       <div class="row">
         <div class="col-12">
@@ -248,7 +245,6 @@
         </div>
       </div>
     </div>
-
     <barcode-modal
       :selectedArray="selectedProducts"
       :option="activeOption"
@@ -272,7 +268,7 @@
         <span class="input-group-text">₸</span>
       </div>
     </filters>
-  </main>
+  
   <div class="printContainer"></div>
 </template>
 

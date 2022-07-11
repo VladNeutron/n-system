@@ -1,7 +1,4 @@
 <template>
-  <the-navbar></the-navbar>
-  <main class="main-content border-radius-lg">
-    <the-header></the-header>
     <div class="card p-4 m-4">
       <div class="header__name d-flex flex-row justify-content-between align-items-center">
         <div class="page__name">
@@ -160,7 +157,6 @@
         <option value=""></option>
       </select>
     </the-filter>
-  </main>
 </template>
 <script>
 import Filter from "@/components/Filters.vue";

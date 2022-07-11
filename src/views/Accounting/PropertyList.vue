@@ -1,7 +1,4 @@
 <template>
-  <the-navbar></the-navbar>
-  <main class="main-content border-radius-lg">
-    <the-header></the-header>
     <div class="container-fluid">
       <div class="row">
         <div class="col-12">
@@ -143,8 +140,6 @@
         <option value=""></option>
       </select>
     </the-filter>
-  </main>
-
 </template>
 
 <script>

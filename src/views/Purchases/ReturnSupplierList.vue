@@ -1,7 +1,4 @@
 <template>
-  <the-navbar></the-navbar>
-  <main class="main-content border-radius-lg">
-    <the-header></the-header>
     <div class="container-fluid">
       <div class="row">
         <div class="col-12">
@@ -127,7 +124,6 @@
       </select>
     </the-filter>
     <delete-modal :title="'возврата поставщикам'" :text="`документ &quot;Возврат №12132145&quot;`"></delete-modal>
-  </main>
 </template>
 
 <script>

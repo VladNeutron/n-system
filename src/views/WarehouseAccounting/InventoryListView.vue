@@ -1,16 +1,10 @@
 <template>
-  <the-navbar></the-navbar>
-  <main class="main-content border-radius-lg">
-    <the-header></the-header>
     <div class="container-fluid">
       <div class="row">
         <div class="col-12">
           <lists-header>
             <template v-slot:title> Список инвентаризаций </template>
           </lists-header>
-          <!-- <div class="inv__title">
-            <p class="inv__title__text">Список инвентаризаций</p>
-          </div> -->
           <div class="card">
             <div class="inv__buttons">
               <div class="inv__left__btn">
@@ -122,7 +116,6 @@
         <option value=""></option>
       </select>
     </filters>
-  </main>
 </template>
 
 <script>

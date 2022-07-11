@@ -1,7 +1,4 @@
 <template>
-  <the-navbar></the-navbar>
-  <main class="main-content border-radius-lg">
-    <the-header></the-header>
     <div class="container-fluid">
       <div class="row">
         <div class="col-12">
@@ -70,7 +67,6 @@
     <Filters></Filters>
     <select-product-discount></select-product-discount>
     <delete-modal :title="'скидки'" :text="`скидку &quot;Скидка №1&quot;`"></delete-modal>
-  </main>
 </template>
 
 <script>

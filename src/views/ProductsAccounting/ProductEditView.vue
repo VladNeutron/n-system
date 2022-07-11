@@ -1,7 +1,4 @@
 <template>
-  <the-navbar></the-navbar>
-  <main class="main-content border-radius-lg">
-    <the-header></the-header>
     <div class="page__name d-flex justify-content-between align-items-center ms-4">
       <div class="page__name-title text-start">
         <h3>Управление товаром</h3>
@@ -167,7 +164,6 @@
         </div>
       </div>
     </div>
-  </main>
   <inputs-modal>
     <template #head>
       <h2 class="text-start">

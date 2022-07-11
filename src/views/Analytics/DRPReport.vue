@@ -1,7 +1,4 @@
 <template>
-  <the-navbar></the-navbar>
-  <main class="main-content border-radius-lg main__padding">
-    <the-header></the-header>
     <div class="header__summary card m-4 p-4">
       <div class="header__summary-top d-flex justify-content-between align-items-center">
         <div class="top-name">
@@ -105,7 +102,6 @@
         <option value="">Макаров Антон</option>
       </select>
     </Filters>
-  </main>
 </template>
 <script>
 import MonthCell from "@/components/AnalyticsComponents/MonthCell.vue";

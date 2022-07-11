@@ -1,7 +1,4 @@
 <template>
-  <the-navbar></the-navbar>
-  <main class="main-content position-relative border-radius-lg">
-    <the-header></the-header>
     <div class="container-fluid">
       <div class="row">
         <div class="col-12">
@@ -97,7 +94,6 @@
       </select>
     </filters>
     <delete-modal :title="'склада'" :text="`склад &quot;ТЦ “Jam mall”&quot;`"></delete-modal>
-  </main>
 </template>
 
 <script>

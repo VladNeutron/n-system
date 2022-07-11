@@ -1,7 +1,4 @@
 <template>
-  <the-navbar></the-navbar>
-  <main class="main-content border-radius-lg">
-    <the-header></the-header>
     <div class="card pt-4 pb-4 card__padding">
       <div class="page__name d-flex align-items-center justify-content-between">
         <div class="page__name-title text-start">
@@ -142,7 +139,6 @@
         <option value=""></option>
       </select>
     </Filter>
-  </main>
 </template>
 <style scoped>
 .buttons {

@@ -1,7 +1,4 @@
 <template>
-  <the-navbar></the-navbar>
-  <main class="main-content border-radius-lg">
-    <the-header></the-header>
     <div class="container-fluid pb-4">
       <div class="row">
         <div class="col-12">
@@ -172,7 +169,6 @@
     </inputs-modal>
     <select-product></select-product>
     <commentary :pageTitle="'Перемещение №19'"></commentary>
-  </main>
 </template>
 
 <script>

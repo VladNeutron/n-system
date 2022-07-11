@@ -1,7 +1,4 @@
 <template>
-  <the-navbar></the-navbar>
-  <main class="main-content border-radius-lg">
-    <the-header></the-header>
     <div class="page__name px-4">
       <h3 class="text-start">Остатки товаров на складе</h3>
       <p class="text-start m-0">
@@ -114,7 +111,6 @@
           наличии</label>
       </div>
     </filters>
-  </main>
 </template>
 
 <script>

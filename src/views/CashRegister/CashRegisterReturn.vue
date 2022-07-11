@@ -1,8 +1,5 @@
 <template>
-  <the-navbar></the-navbar>
-  <main class="main-content position-relative border-radius-lg">
-  <the-header></the-header>
-  <div class="container-fluid pt-1 pb-3">
+  <div class="no-print container-fluid pt-1 pb-3">
         <div class="row">
             <div class="col-12">
                 <div class="card">
@@ -328,7 +325,6 @@
         </div>
       </template>
   </discount-modal>
-  </main>
   <div class="printContainer">
       <div class="check__container">
         <div class="check__header">
@@ -1278,7 +1274,14 @@ export default {
   display: none;
 }
 @media print {
-    main {
+    body{
+        background-color: white !important;
+    }
+    main{
+        margin-left: 0;
+        transition: all 0s;
+    }
+    .no-print {
         display: none;
     }
     .printContainer {
@@ -1286,6 +1289,9 @@ export default {
     }
     #sidenav-main{
       display: none;
+    }
+    .navbar-main {
+        display: none;
     }
     .barcode-box {
         margin: 3mm 0 0 0;

@@ -1,7 +1,4 @@
 <template>
-  <the-navbar></the-navbar>
-  <main class="main-content border-radius-lg">
-    <the-header></the-header>
     <div
       class="page__name d-flex justify-content-between align-items-center ms-4"
     >
@@ -265,7 +262,6 @@
         <option value="">Все размеры</option>
       </select>
     </filters>
-  </main>
 </template>
 
 <script>

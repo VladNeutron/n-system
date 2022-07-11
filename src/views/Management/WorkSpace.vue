@@ -1,7 +1,4 @@
 <template>
-  <the-navbar></the-navbar>
-  <main class="main-content border-radius-lg">
-    <the-header></the-header>
     <div class="container-fluid pt-4">
       <div class="d-flex justify-content-between align-items-center">
         <div>
@@ -385,7 +382,6 @@
         </div>
       </div>
     </div>
-  </main>
 </template>
 
 <script>

@@ -1,7 +1,4 @@
 <template>
-  <the-navbar></the-navbar>
-  <main class="main-content border-radius-lg">
-    <the-header></the-header>
     <div class="container-fluid">
       <div class="order__header">
         <div class="order__header-content">
@@ -278,7 +275,6 @@
     </InputsModal>
     <commentary :pageTitle="'Возврат №342141'"></commentary>
     <select-product-discount></select-product-discount>
-  </main>
 </template>
 
 <style scoped>

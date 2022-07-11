@@ -1,7 +1,4 @@
 <template>
-  <the-navbar></the-navbar>
-  <main class="main-content border-radius-lg">
-    <the-header></the-header>
     <div class="page__name d-flex align-items-center ms-4">
       <div class="page__name-title text-start">
         <h3>Список возвратов</h3>
@@ -117,7 +114,6 @@
       </select>
     </the-filter>
     <delete-modal :title="'возврата'" :text="`чек возврата &quot;Чек №1213215&quot;`"></delete-modal>
-  </main>
 </template>
 
 <script>

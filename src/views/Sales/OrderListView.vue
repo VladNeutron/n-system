@@ -1,7 +1,4 @@
 <template>
-  <the-navbar></the-navbar>
-  <main class="main-content border-radius-lg">
-    <the-header></the-header>
     <div class="container-fluid">
       <div class="row">
         <div class="col-12">
@@ -11,24 +8,18 @@
               Внесите изменения и не забудьте нажать “Сохранить”
             </template>
           </lists-header>
-          <!-- <div class="page__name d-flex align-items-center ms-4">
-            <div class="page__name-title text-start">
-              <h3>Список заказов</h3>
-              <p class="mb-0">Внесите изменения и не забудьте нажать “Сохранить”</p>
-            </div>
-          </div> -->
           <div class="card py-4 main__card">
             <div class="d-flex justify-content-between align-items-center mx-4 mb-2">
-              <button class="btn bg-gradient-dark mb-0" style="
+              <router-link :to="{ name: 'create-order' }" class="btn bg-gradient-dark mb-0" style="
                   font-size: 14px;
                   font-weight: 600;
                   display: flex;
                   align-items: center;
-                  height: 40px;
-                " onclick="window.location.href = '/sales/create-order'">
+                  height: 40px;"
+                  >
                 <img src="@/assets/img/whtplus.svg" alt="" style="margin-right: 10px" />
                 Новый заказ
-              </button>
+              </router-link>
               <div class="table__inputs d-flex gap-3 align-content-center align-items-center">
                 <list-search @searchFilter="(a) => search = a"></list-search>
                 <print-button></print-button>
@@ -82,7 +73,7 @@
                           <img src="@/assets/img/dots.svg" style="width: 1.563vw; cursor: pointer" alt="" />
                           <!-- <div :class="['dropdown-content', {'dropdown__content__top': ind >= paginationList.length - 2}]"> -->
                           <div class="dropdown-content">
-                            <a href="/sales/order">Редактировать</a>
+                            <router-link :to="{name: 'order'}">Редактировать</router-link>
                             <hr />
                             <a style="cursor: pointer" data-bs-toggle="modal" data-bs-target="#DeleteInv">Удалить</a>
                           </div>
@@ -99,7 +90,6 @@
         </div>
       </div>
     </div>
-  </main>
   <the-filter :orders="orders" @no-filter="cancelFilters">
     <div class="filters__period__flex">
       <div class="filter__name__standart">Выберите период</div>

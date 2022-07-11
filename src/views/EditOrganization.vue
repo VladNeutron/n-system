@@ -1,7 +1,4 @@
 <template>
-  <the-navbar></the-navbar>
-  <main class="main-content border-radius-lg">
-    <the-header></the-header>
     <div class="container-fluid">
       <div class="row">
         <div class="col-12">
@@ -288,7 +285,6 @@
     <edit-bank-info-modal
       :product="modal.modalProductName"
     ></edit-bank-info-modal>
-  </main>
 </template>
 
 <script>

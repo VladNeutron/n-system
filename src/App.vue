@@ -1,22 +1,9 @@
 <template>
-  <!-- <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link> |
-    <router-link to="/login">Login</router-link> |
-    <router-link to="/about">About</router-link> |
-    <router-link to="/table">Table</router-link> |
-    <router-link to="/create-inv-list">Create Inventory</router-link>
-  </nav>
-    <router-link to="/table">Table</router-link>
-  </nav> -->
+<the-navbar v-if="mainContainer"></the-navbar>
+  <main class="main-content border-radius-lg">
+    <the-header v-if="mainContainer"></the-header>
   <router-view />
-  <!-- <delete-modal>
-    <template #header>
-      <p class="modal__title">
-        Вы уверены, что хотите удалить документ “Инвентаризация №19”?
-      </p>
-    </template>
-  </delete-modal> -->
+  </main>
 </template>
 
 <script>
@@ -27,7 +14,15 @@ export default {
       filtersContainer.classList.add("filters__show");
     },
   },
-  mounted() { },
+  mounted() { console.log(this.$route) },
+  computed:{
+    mainContainer(){
+      if(this.$route.name=='login' || this.$route.name=='register' || this.$route.name == 'company-info'){
+        return false
+      } 
+      return true
+    }
+  },
 };
 </script>
 
