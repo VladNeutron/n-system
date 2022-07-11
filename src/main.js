@@ -74,7 +74,7 @@ const firebaseConfig = {
             next()    
         }
       });
-      console.log('no')
+    //   console.log('no')
       authListener();
     }
     else{

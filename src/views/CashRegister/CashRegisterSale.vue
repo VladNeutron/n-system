@@ -121,7 +121,8 @@
                                             <td>
                                                 <div class="d-flex px-2">
                                                 <div>
-                                                    <img src="https://demos.creative-tim.com/soft-ui-design-system-pro/assets/img/team-2.jpg" class="avatar avatar-md me-3">
+                                                    <!-- <img src="https://demos.creative-tim.com/soft-ui-design-system-pro/assets/img/team-2.jpg" class="avatar avatar-md me-3"> -->
+                                                    <img src="@/assets/img/small-logos/team-4.jpg" class="avatar avatar-md me-3">
                                                 </div>
                                                 <div class="">
                                                     {{product.name}}
