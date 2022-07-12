@@ -1,56 +1,31 @@
 <template>
-    <div class="page__name d-flex align-items-center ms-4 justify-content-between">
-      <div class="page__name-title text-start">
-        <h3>ABC анализ</h3>
-        <p class="mb-0">Внесите изменения и не забудьте нажать “Сохранить”</p>
-      </div>
+  <div class="page__name d-flex align-items-center ms-4 justify-content-between">
+    <div class="page__name-title text-start">
+      <h3>ABC анализ</h3>
+      <p class="mb-0">Внесите изменения и не забудьте нажать “Сохранить”</p>
     </div>
-    <div class="card pt-4 pb-4 m-4">
-      <div class="d-flex justify-content-between align-items-center mx-4 mb-4">
-        <div class="period__flex">
-          <div class="products__period">
-            <div class="filters__period__flex">
-              <div class="filter__name__standart">Выберите период</div>
-              <div class="reset__date">Сбросить период</div>
+  </div>
+  <div class="card pt-4 pb-4 m-4">
+    <div class="d-flex justify-content-between align-items-center mx-4 mb-4">
+      <div class="period__flex">
+        <div class="products__period">
+          <div class="filters__period__flex">
+            <div class="filter__name__standart">Выберите период</div>
+            <div class="reset__date">Сбросить период</div>
+          </div>
+          <div class="filters__period">
+            <div class="form-group">
+              <input class="form-control data__size" type="date" id="example-date-input" />
             </div>
-            <div class="filters__period">
-              <div class="form-group">
-                <input class="form-control data__size" type="date" id="example-date-input" />
-              </div>
-              <div>
-                <img src="@/assets/img/line.svg" style="width: 1.927vw" alt="" />
-              </div>
-              <div class="form-group">
-                <input class="form-control data__size" type="date" id="example-date-input" />
-              </div>
+            <div>
+              <img src="@/assets/img/line.svg" style="width: 1.927vw" alt="" />
+            </div>
+            <div class="form-group">
+              <input class="form-control data__size" type="date" id="example-date-input" />
             </div>
           </div>
-          <div class="mt-3 buttons__pc" style="margin-left: 1.25vw">
-            <button class="btn first__btn mb-0" :class="{ active1: isActive == 1 }" @click="isActive = 1">
-              Квартал
-            </button>
-            <button class="btn second__btn mb-0" :class="{ active2: isActive == 2 }" @click="isActive = 2">
-              Полугодие
-            </button>
-            <button class="btn third__btn mb-0" :class="{ active3: isActive == 3 }" @click="isActive = 3">
-              Год
-            </button>
-          </div>
         </div>
-        <div class="table__inputs d-flex gap-3 align-items-end" style="margin-top: -20px">
-          <div class="form-group m-0 form__pc" style="text-align: left">
-            <label for="search">Поиск товаров</label>
-            <list-search @searchFilter="(a) => search = a"></list-search>
-          </div>
-          <export2-button></export2-button>
-          <filters-button></filters-button>
-        </div>
-      </div>
-      <div class="d-flex" style="margin-left: 25px">
-        <div class="form-group m-0 form__mob" style="text-align: left">
-          <list-search @searchFilter="(a) => search = a"></list-search>
-        </div>
-        <div class="mt-2 buttons__mob" style="margin-left: 1.25vw">
+        <div class="mt-3 buttons__pc" style="margin-left: 1.25vw">
           <button class="btn first__btn mb-0" :class="{ active1: isActive == 1 }" @click="isActive = 1">
             Квартал
           </button>
@@ -62,63 +37,86 @@
           </button>
         </div>
       </div>
-      <div class="page__table">
-        <table class="table table-hover text-wrap">
-          <thead>
-            <tr class="">
-              <th scope="col" class="th__col">№</th>
-              <th scope="col" class="th__col">Название товара</th>
-              <th scope="col" class="th__col">Категория</th>
-              <th scope="col" class="th__col">Количество продаж</th>
-              <th scope="col" class="th__col">Сумма продаж</th>
-              <th scope="col" class="th__col">% от продаж</th>
-              <th scope="col" class="th__col" style="padding-right: 7.656vw">
-                ABC анализ
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr v-for="order of paginationList" :key="order.id"
-              onclick="window.location.href = '/analytics/abc-analysis/abc-product'">
-              <td>{{ order.listNumber + 1 }}</td>
-              <td>{{ order.name }}</td>
-
-              <td>{{ order.category }}</td>
-              <td>
-                {{ order.count }}
-              </td>
-              <td>{{ order.sum }} ₸</td>
-              <td>{{ order.percent }} %</td>
-              <td style="padding-right: 7.656vw">
-                <div class="btn mb-0 w-100" :class="getClass(order.status)">
-                  {{ buttonText }}
-                </div>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+      <div class="table__inputs d-flex gap-3 align-items-end" style="margin-top: -20px">
+        <div class="form-group m-0 form__pc" style="text-align: left">
+          <label for="search">Поиск товаров</label>
+          <list-search @searchFilter="(a) => search = a"></list-search>
+        </div>
+        <export2-button></export2-button>
+        <filters-button></filters-button>
       </div>
-      <pagination-component :filteredArr="filteredOrders" :strAmount="8" @PaginationReload="reloadPagination"
-        class="pb-2"></pagination-component>
     </div>
-    <the-filter @no-filter="cancelFilters">
-      <p class="text-start my-2 fw-bold" for="marketplace">Торговая точка</p>
-      <select class="form-select" v-model="filterMarketPlace">
-        <option value="" disabled>Выберите точку</option>
-        <!-- <option v-for="cashier of orderCashierList" :key="cashier">
+    <div class="d-flex" style="margin-left: 25px">
+      <div class="form-group m-0 form__mob" style="text-align: left">
+        <list-search @searchFilter="(a) => search = a"></list-search>
+      </div>
+      <div class="mt-2 buttons__mob" style="margin-left: 1.25vw">
+        <button class="btn first__btn mb-0" :class="{ active1: isActive == 1 }" @click="isActive = 1">
+          Квартал
+        </button>
+        <button class="btn second__btn mb-0" :class="{ active2: isActive == 2 }" @click="isActive = 2">
+          Полугодие
+        </button>
+        <button class="btn third__btn mb-0" :class="{ active3: isActive == 3 }" @click="isActive = 3">
+          Год
+        </button>
+      </div>
+    </div>
+    <div class="page__table">
+      <table class="table table-hover text-wrap">
+        <thead>
+          <tr class="">
+            <th scope="col" class="th__col">Название товара</th>
+            <th scope="col" class="th__col">Категория</th>
+            <th scope="col" class="th__col">Количество продаж</th>
+            <th scope="col" class="th__col">Сумма продаж</th>
+            <th scope="col" class="th__col">% от продаж</th>
+            <th scope="col" class="th__col" style="padding-right: 7.656vw">
+              ABC анализ
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="order of paginationList" :key="order.id"
+            onclick="window.location.href = '/analytics/abc-analysis/abc-product'">
+            <td>{{ order.name }}</td>
+
+            <td>{{ order.category }}</td>
+            <td>
+              {{ order.count }}
+            </td>
+            <td>{{ order.sum }} ₸</td>
+            <td>{{ order.percent }} %</td>
+            <td style="padding-right: 7.656vw">
+              <div class="btn mb-0 w-100" :class="getClass(order.status)">
+                {{ buttonText }}
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <pagination-component :filteredArr="filteredOrders" :strAmount="8" @PaginationReload="reloadPagination"
+      class="pb-2"></pagination-component>
+  </div>
+  <the-filter @no-filter="cancelFilters">
+    <p class="text-start my-2 fw-bold" for="marketplace">Торговая точка</p>
+    <select class="form-select" v-model="filterMarketPlace">
+      <option value="" disabled>Выберите точку</option>
+      <!-- <option v-for="cashier of orderCashierList" :key="cashier">
         {{ cashier }}
       </option> -->
-        <option value="">ТРЦ Москва</option>
-      </select>
-      <p class="text-start my-2 fw-bold" for="marketplace">Категория</p>
-      <select class="form-select" v-model="filterCategory">
-        <option value="" disabled>Выберите торговую точку</option>
-        <option v-for="category of orderCategoryList" :key="category">
-          {{ category }}
-        </option>
-        <option value=""></option>
-      </select>
-    </the-filter>
+      <option value="">ТРЦ Москва</option>
+    </select>
+    <p class="text-start my-2 fw-bold" for="marketplace">Категория</p>
+    <select class="form-select" v-model="filterCategory">
+      <option value="" disabled>Выберите торговую точку</option>
+      <option v-for="category of orderCategoryList" :key="category">
+        {{ category }}
+      </option>
+      <option value=""></option>
+    </select>
+  </the-filter>
 </template>
 
 <script>

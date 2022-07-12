@@ -1,147 +1,143 @@
 <template>
-    <div class="container-fluid py-1">
-      <div class="row">
-        <div class="col-12">
-          <lists-header>
-            <template v-slot:title> Список товаров </template>
-            <template v-slot:description>
-              Внесите изменения и не забудьте нажать “Сохранить”
-            </template>
-          </lists-header>
-          <div class="card">
-            <div class="inv__buttons">
-              <div class="inv__left__btn">
+  <div class="container-fluid py-1">
+    <div class="row">
+      <div class="col-12">
+        <lists-header>
+          <template v-slot:title> Список товаров </template>
+          <template v-slot:description>
+            Внесите изменения и не забудьте нажать “Сохранить”
+          </template>
+        </lists-header>
+        <div class="card">
+          <div class="inv__buttons">
+            <div class="inv__left__btn">
 
-                <router-link :to="{ name: 'product' }" class="nav-link">
-                  <button type="button" class="btn bg-gradient-secondary">
-                    <img src="@/assets/img/whtplus.svg" style="width: 1.042vw; margin-right: 0.729vw" alt="" />
-                    Добавить товар
-                  </button>
-                </router-link>
-              </div>
-              <div class="inv__right__btn gap-3">
-                <list-search @searchFilter="(a) => search = a"></list-search>
-                <print-button></print-button>
-                <download-button></download-button>
-                <upload-button></upload-button>
-                <filters-button></filters-button>
-              </div>
+              <router-link :to="{ name: 'product' }" class="nav-link">
+                <button type="button" class="btn bg-gradient-secondary">
+                  <img src="@/assets/img/whtplus.svg" style="width: 1.042vw; margin-right: 0.729vw" alt="" />
+                  Добавить товар
+                </button>
+              </router-link>
             </div>
-            <div class="inv__block">
-              <div class="inv__content">
-                <table class="table table-hover table-striped">
-                  <thead>
-                    <tr>
-                      <th scope="col" class="th__col">№</th>
-                      <th scope="col" class="th__col">Товар</th>
-                      <th scope="col" class="th__col">Артикул</th>
-                      <th scope="col" class="th__col">Категория</th>
-                      <th scope="col" class="th__col">Себестоимость</th>
-                      <th scope="col" class="th__col">Цена продажи</th>
-
-                      <th scope="col" class="th__col">Действия</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr v-for="item in paginationList" :key="item">
-                      <td scope="row" width="1%">
-                        {{ item.listNumber + 1 }}
-                      </td>
-                      <td style="display: flex; justify-content: center">
-                        <img :src="item.img" style="margin-right: 0.833vw" />{{
-                            item.name
-                        }}
-                      </td>
-                      <td>
-                        {{ item.barcode }}
-                      </td>
-                      <td>
-                        {{ item.category }}
-                      </td>
-                      <td>
-                        {{ item.costPrice }}
-                      </td>
-                      <td>
-                        {{ item.price }}
-                      </td>
-                      <td>
-                        <div class="dropdown">
-                          <img src="@/assets/img/dots.svg" style="width: 1.563vw; cursor: pointer" alt="" />
-                          <div class="dropdown-content">
-                            <a href="/products-accounting/product">Редактировать</a>
-                            <hr />
-                            <a style="cursor: pointer" data-bs-toggle="modal" data-bs-target="#DeleteInv">Удалить</a>
-                          </div>
-                        </div>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
+            <div class="inv__right__btn gap-3">
+              <list-search @searchFilter="(a) => search = a"></list-search>
+              <print-button></print-button>
+              <download-button></download-button>
+              <upload-button></upload-button>
+              <filters-button></filters-button>
             </div>
-            <pagination-component :filteredArr="filteredProducts" :strAmount="8" @PaginationReload="reloadPagination"
-              class="pb-4"></pagination-component>
           </div>
+          <div class="inv__block">
+            <div class="inv__content">
+              <table class="table table-hover table-striped">
+                <thead>
+                  <tr>
+                    <th scope="col" class="th__col">Товар</th>
+                    <th scope="col" class="th__col">Артикул</th>
+                    <th scope="col" class="th__col">Категория</th>
+                    <th scope="col" class="th__col">Себестоимость</th>
+                    <th scope="col" class="th__col">Цена продажи</th>
+
+                    <th scope="col" class="th__col">Действия</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr v-for="item in paginationList" :key="item">
+                    <td style="display: flex; justify-content: center">
+                      <img :src="item.img" style="margin-right: 0.833vw" />{{
+                          item.name
+                      }}
+                    </td>
+                    <td>
+                      {{ item.barcode }}
+                    </td>
+                    <td>
+                      {{ item.category }}
+                    </td>
+                    <td>
+                      {{ item.costPrice }}
+                    </td>
+                    <td>
+                      {{ item.price }}
+                    </td>
+                    <td>
+                      <div class="dropdown">
+                        <img src="@/assets/img/dots.svg" style="width: 1.563vw; cursor: pointer" alt="" />
+                        <div class="dropdown-content">
+                          <a href="/products-accounting/product">Редактировать</a>
+                          <hr />
+                          <a style="cursor: pointer" data-bs-toggle="modal" data-bs-target="#DeleteInv">Удалить</a>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <pagination-component :filteredArr="filteredProducts" :strAmount="8" @PaginationReload="reloadPagination"
+            class="pb-4"></pagination-component>
         </div>
       </div>
     </div>
-    <inputs-modal>
-      <template #head>
-        <div style="text-align: left">
-          <p class="header__main">Добавление категории</p>
-          <p class="header__sec">
-            Введите название категории и нажмите “Добавить”
-          </p>
-        </div>
-      </template>
-      <template #body>
-        <div class="body__content">
-          <div class="form-group" style="text-align: left">
-            <label for="exampleFormControlInput1" class="label__text">Название категории</label>
-            <input type="text" class="form-control modal__inp" id="exampleFormControlInput1"
-              placeholder="Введите название" />
-          </div>
-          <div class="form-check" style="text-align: left">
-            <input class="form-check-input" type="checkbox" value="" id="fcustomCheck1" />
-            <label class="custom-control-label label__check" for="customCheck1">Подчиненная категория</label>
-          </div>
-          <div class="form-group" style="text-align: left">
-            <label for="exampleFormControlSelect1" class="label__text">Основная категория</label>
-            <select class="form-control modal__inp" id="exampleFormControlSelect1" v-model="selected">
-              <option>Верхняя одежда</option>
-              <option>Нижнее белье</option>
-              <option>Штаны</option>
-            </select>
-          </div>
-        </div>
-      </template>
-      <template #footer>
-        <div class="footer__btn">
-          <button class="footer__button">Добавить</button>
-        </div>
-      </template>
-    </inputs-modal>
-    <filters @no-filter="cancelFilters">
-      <div class="filter__name__standart">Категория</div>
-      <select class="form-select" v-model="filterCategory">
-        <option value="" disabled selected>Выберите категорию</option>
-        <option v-for="category in categoryList" :key="category">
-          {{ category }}
-        </option>
-        <option value=""></option>
-      </select>
-      <div class="filter__name__standart mt-3">Склад</div>
-      <select class="form-select">
-        <option value="" disabled selected>Выберите склад</option>
-        <option>Открыт</option>
-        <option>Закрыт</option>
-      </select>
-      <div class="form-check" style="text-align: left; margin-top: 0.833vw">
-        <input class="form-check-input" type="checkbox" value="" id="fcustomCheck1" />
-        <label class="custom-control-label filters__checkbox__label" for="customCheck1">Есть в наличии</label>
+  </div>
+  <inputs-modal>
+    <template #head>
+      <div style="text-align: left">
+        <p class="header__main">Добавление категории</p>
+        <p class="header__sec">
+          Введите название категории и нажмите “Добавить”
+        </p>
       </div>
-    </filters>
-    <delete-modal :title="'товара'" :text="`товар &quot;Куртка зеленая&quot;`"></delete-modal>
+    </template>
+    <template #body>
+      <div class="body__content">
+        <div class="form-group" style="text-align: left">
+          <label for="exampleFormControlInput1" class="label__text">Название категории</label>
+          <input type="text" class="form-control modal__inp" id="exampleFormControlInput1"
+            placeholder="Введите название" />
+        </div>
+        <div class="form-check" style="text-align: left">
+          <input class="form-check-input" type="checkbox" value="" id="fcustomCheck1" />
+          <label class="custom-control-label label__check" for="customCheck1">Подчиненная категория</label>
+        </div>
+        <div class="form-group" style="text-align: left">
+          <label for="exampleFormControlSelect1" class="label__text">Основная категория</label>
+          <select class="form-control modal__inp" id="exampleFormControlSelect1" v-model="selected">
+            <option>Верхняя одежда</option>
+            <option>Нижнее белье</option>
+            <option>Штаны</option>
+          </select>
+        </div>
+      </div>
+    </template>
+    <template #footer>
+      <div class="footer__btn">
+        <button class="footer__button">Добавить</button>
+      </div>
+    </template>
+  </inputs-modal>
+  <filters @no-filter="cancelFilters">
+    <div class="filter__name__standart">Категория</div>
+    <select class="form-select" v-model="filterCategory">
+      <option value="" disabled selected>Выберите категорию</option>
+      <option v-for="category in categoryList" :key="category">
+        {{ category }}
+      </option>
+      <option value=""></option>
+    </select>
+    <div class="filter__name__standart mt-3">Склад</div>
+    <select class="form-select">
+      <option value="" disabled selected>Выберите склад</option>
+      <option>Открыт</option>
+      <option>Закрыт</option>
+    </select>
+    <div class="form-check" style="text-align: left; margin-top: 0.833vw">
+      <input class="form-check-input" type="checkbox" value="" id="fcustomCheck1" />
+      <label class="custom-control-label filters__checkbox__label" for="customCheck1">Есть в наличии</label>
+    </div>
+  </filters>
+  <delete-modal :title="'товара'" :text="`товар &quot;Куртка зеленая&quot;`"></delete-modal>
 </template>
 
 <script>

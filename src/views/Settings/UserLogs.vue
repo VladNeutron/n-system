@@ -1,67 +1,65 @@
 <template>
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-12">
-                    <lists-header>
-                        <template v-slot:title> Логи пользователей </template>
-                        <template v-slot:description>
-                            Здесь отображены все действия пользователей
-                        </template>
-                    </lists-header>
-                    <div class="card pt-4 pb-6">
-                        <div class="d-flex justify-content-between align-items-center mx-4 mb-4">
-                            <div>
-                                <list-search @searchFilter="(a) => search = a"></list-search>
-                            </div>
-                            <div class="table__inputs d-flex gap-3 align-content-center">
-
-                            </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <lists-header>
+                    <template v-slot:title> Логи пользователей </template>
+                    <template v-slot:description>
+                        Здесь отображены все действия пользователей
+                    </template>
+                </lists-header>
+                <div class="card pt-4 pb-6">
+                    <div class="d-flex justify-content-between align-items-center mx-4 mb-4">
+                        <div>
+                            <list-search @searchFilter="(a) => search = a"></list-search>
                         </div>
-                        <div class="page__table">
-                            <table class="table table-hover table-striped">
-                                <thead>
-                                    <tr class="">
-                                        <th scope="col" class="th__col" style="width: 25px; padding-left: 27px"></th>
-                                        <th width="1%" scope="col" class="th__col">№</th>
-                                        <th scope="col" class="th__col">Пользователь</th>
-                                        <th scope="col" class="th__col">действие</th>
-                                        <th scope="col" class="th__col">дата и время</th>
-                                        <th scope="col" class="th__col">Действия</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr v-for="order of paginationList" :key="order.id">
-                                        <td scope="row" style="padding-left: 27px">
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" value=""
-                                                    id="fcustomCheck1" />
-                                            </div>
-                                        </td>
-                                        <td width="1%">{{ order.listNumber + 1 }}</td>
-                                        <td>{{ order.user }}</td>
-                                        <td>{{ order.action }}</td>
-                                        <td>{{ order.date }}</td>
+                        <div class="table__inputs d-flex gap-3 align-content-center">
 
-                                        <td class="dropdown">
-                                            <img src="@/assets/img/dots.svg" style="width: 1.563vw; cursor: pointer"
-                                                alt="" />
-                                            <div class="dropdown-content">
-
-                                                <a style="cursor: pointer" data-bs-toggle="modal"
-                                                    data-bs-target="#DeleteInv">Удалить</a>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
                         </div>
-                        <pagination-component :filteredArr="filteredList" :strAmount="10"
-                            @PaginationReload="reloadPagination" class="pagination__size"></pagination-component>
                     </div>
+                    <div class="page__table">
+                        <table class="table table-hover table-striped">
+                            <thead>
+                                <tr class="">
+                                    <th scope="col" class="th__col" style="width: 25px; padding-left: 27px"></th>
+                                    <th scope="col" class="th__col">Пользователь</th>
+                                    <th scope="col" class="th__col">действие</th>
+                                    <th scope="col" class="th__col">дата и время</th>
+                                    <th scope="col" class="th__col">Действия</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr v-for="order of paginationList" :key="order.id">
+                                    <td scope="row" style="padding-left: 27px">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value=""
+                                                id="fcustomCheck1" />
+                                        </div>
+                                    </td>
+                                    <td>{{ order.user }}</td>
+                                    <td>{{ order.action }}</td>
+                                    <td>{{ order.date }}</td>
+
+                                    <td class="dropdown">
+                                        <img src="@/assets/img/dots.svg" style="width: 1.563vw; cursor: pointer"
+                                            alt="" />
+                                        <div class="dropdown-content">
+
+                                            <a style="cursor: pointer" data-bs-toggle="modal"
+                                                data-bs-target="#DeleteInv">Удалить</a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <pagination-component :filteredArr="filteredList" :strAmount="10"
+                        @PaginationReload="reloadPagination" class="pagination__size"></pagination-component>
                 </div>
             </div>
         </div>
-        <delete-modal :title="'лог сотрудника'" :text="`сотрудника &quot;Moon&quot;`"></delete-modal>
+    </div>
+    <delete-modal :title="'лог сотрудника'" :text="`сотрудника &quot;Moon&quot;`"></delete-modal>
 </template>
 
 <script>

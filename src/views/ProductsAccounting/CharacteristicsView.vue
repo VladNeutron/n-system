@@ -1,136 +1,129 @@
 <template>
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-12">
-          <lists-header>
-            <template v-slot:title> Характеристики </template>
-            <template v-slot:description>
-              Настройка характеристик товаров
-            </template>
-          </lists-header>
-          <div class="row">
-            <div class="col">
-              <div class="character">
-                <div class="character__header">
-                  <div>
-                    <div class="d-flex">
-                      <p class="character__main">{{ charFirst }}</p>
-                      <img src="@/assets/img/edit.svg" style="
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-12">
+        <lists-header>
+          <template v-slot:title> Характеристики </template>
+          <template v-slot:description>
+            Настройка характеристик товаров
+          </template>
+        </lists-header>
+        <div class="row">
+          <div class="col">
+            <div class="character">
+              <div class="character__header">
+                <div>
+                  <div class="d-flex">
+                    <p class="character__main">{{ charFirst }}</p>
+                    <img src="@/assets/img/edit.svg" style="
                           width: 1.042vw;
                           margin-left: 0.833vw;
                           cursor: pointer;
                         " @click="isColor = 'sizes'" data-bs-toggle="modal" data-bs-target="#InpModal" alt="" />
-                    </div>
-                    <p class="character__sec">
-                      Настройка характеристики товаров
-                    </p>
                   </div>
-                  <button class="btn save__btn" @click="isColor = 'create1'" data-bs-toggle="modal"
-                    data-bs-target="#InpModal">
-                    <img src="@/assets/img/whtplus.svg" style="width: 1.042vw; margin-right: 0.521vw" alt="" />
-                    Добавить размер
-                  </button>
+                  <p class="character__sec">
+                    Настройка характеристики товаров
+                  </p>
                 </div>
-                <div class="character__body">
-                  <table class="table table-hover table-striped">
-                    <thead>
-                      <tr>
-                        <th scope="col" class="th__col" width="15%">№</th>
-                        <th scope="col" class="th__col" width="75%">
-                          Значение характеристики
-                        </th>
-                        <th scope="col" class="th__col">Действия</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <!-- v-for="(item, i) in items" :key="item" -->
-                      <tr v-for="(item, i) in sizes" :key="item">
-                        <td scope="row">
-                          {{ i + 1 }}
-                        </td>
-                        <td>
-                          <span style="margin-left: 0.677vw">{{
-                              item.size
-                          }}</span>
-                        </td>
-                        <td class="dropdown">
-                          <img src="@/assets/img/dots.svg" style="width: 1.563vw; cursor: pointer" alt="" />
-                          <div class="dropdown-content">
-                            <a href="#" data-bs-toggle="modal" data-bs-target="#InpModal"
-                              @click="editSize(item.size)">Редактировать</a>
-                            <hr />
-                            <a style="cursor: pointer" data-bs-toggle="modal" data-bs-target="#DeleteInv">Удалить</a>
-                          </div>
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
+                <button class="btn save__btn" @click="isColor = 'create1'" data-bs-toggle="modal"
+                  data-bs-target="#InpModal">
+                  <img src="@/assets/img/whtplus.svg" style="width: 1.042vw; margin-right: 0.521vw" alt="" />
+                  Добавить размер
+                </button>
+              </div>
+              <div class="character__body">
+                <table class="table table-hover table-striped">
+                  <thead>
+                    <tr>
+                      <th scope="col" class="th__col" width="75%">
+                        Значение характеристики
+                      </th>
+                      <th scope="col" class="th__col">Действия</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <!-- v-for="(item, i) in items" :key="item" -->
+                    <tr v-for="(item) in sizes" :key="item">
+                      <td>
+                        <span style="margin-left: 0.677vw">{{
+                            item.size
+                        }}</span>
+                      </td>
+                      <td class="dropdown">
+                        <img src="@/assets/img/dots.svg" style="width: 1.563vw; cursor: pointer" alt="" />
+                        <div class="dropdown-content">
+                          <a href="#" data-bs-toggle="modal" data-bs-target="#InpModal"
+                            @click="editSize(item.size)">Редактировать</a>
+                          <hr />
+                          <a style="cursor: pointer" data-bs-toggle="modal" data-bs-target="#DeleteInv">Удалить</a>
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
               </div>
             </div>
-            <div class="col">
-              <div class="character">
-                <div class="character__header">
-                  <div>
-                    <div class="d-flex">
-                      <p class="character__main">{{ charSecond }}</p>
-                      <img src="@/assets/img/edit.svg" style="
+          </div>
+          <div class="col">
+            <div class="character">
+              <div class="character__header">
+                <div>
+                  <div class="d-flex">
+                    <p class="character__main">{{ charSecond }}</p>
+                    <img src="@/assets/img/edit.svg" style="
                           width: 1.042vw;
                           margin-left: 0.833vw;
                           cursor: pointer;
                         " @click="isColor = 'colors'" data-bs-toggle="modal" data-bs-target="#InpModal" alt="" />
-                    </div>
-                    <p class="character__sec">
-                      Настройка характеристики товаров
-                    </p>
                   </div>
-                  <button class="btn save__btn" @click="isColor = 'create2'" data-bs-toggle="modal"
-                    data-bs-target="#InpModal">
-                    <img src="@/assets/img/whtplus.svg" style="width: 1.042vw; margin-right: 0.521vw" alt="" />
-                    Добавить цвет
-                  </button>
+                  <p class="character__sec">
+                    Настройка характеристики товаров
+                  </p>
                 </div>
-                <div class="character__body">
-                  <table class="table table-hover table-striped">
-                    <thead>
-                      <tr>
-                        <th scope="col" class="th__col" width="15%">№</th>
-                        <th scope="col" class="th__col" width="75%">
-                          Значение характеристики
-                        </th>
-                        <th scope="col" class="th__col">Действия</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <!-- v-for="(item, i) in items" :key="item" -->
-                      <tr v-for="(item, i) in colors" :key="item">
-                        <td scope="row">
-                          {{ i + 1 }}
-                        </td>
-                        <td>
-                          <span style="margin-left: 0.677vw">{{
-                              item.name
-                          }}</span>
-                        </td>
-                        <td class="dropdown">
-                          <img src="@/assets/img/dots.svg" style="width: 1.563vw; cursor: pointer" alt="" />
-                          <div class="dropdown-content">
-                            <a href="#" data-bs-toggle="modal" data-bs-target="#InpModal"
-                              @click="editColor(item.name)">Редактировать</a>
-                            <hr />
-                            <a style="cursor: pointer" data-bs-toggle="modal" data-bs-target="#DeleteInv">Удалить</a>
-                          </div>
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
+                <button class="btn save__btn" @click="isColor = 'create2'" data-bs-toggle="modal"
+                  data-bs-target="#InpModal">
+                  <img src="@/assets/img/whtplus.svg" style="width: 1.042vw; margin-right: 0.521vw" alt="" />
+                  Добавить цвет
+                </button>
+              </div>
+              <div class="character__body">
+                <table class="table table-hover table-striped">
+                  <thead>
+                    <tr>
+                      <th scope="col" class="th__col" width="75%">
+                        Значение характеристики
+                      </th>
+                      <th scope="col" class="th__col">Действия</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <!-- v-for="(item, i) in items" :key="item" -->
+                    <tr v-for="(item) in colors" :key="item">
+
+                      <td>
+                        <span style="margin-left: 0.677vw">{{
+                            item.name
+                        }}</span>
+                      </td>
+                      <td class="dropdown">
+                        <img src="@/assets/img/dots.svg" style="width: 1.563vw; cursor: pointer" alt="" />
+                        <div class="dropdown-content">
+                          <a href="#" data-bs-toggle="modal" data-bs-target="#InpModal"
+                            @click="editColor(item.name)">Редактировать</a>
+                          <hr />
+                          <a style="cursor: pointer" data-bs-toggle="modal" data-bs-target="#DeleteInv">Удалить</a>
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
+  </div>
   <inputs-modal>
     <template #head>
       <div class="modal__header" v-if="isColor == 'color'">

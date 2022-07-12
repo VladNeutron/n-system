@@ -1,156 +1,154 @@
 <template>
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-12">
-          <!-- <div class="page__name d-flex align-items-center ms-4">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-12">
+        <!-- <div class="page__name d-flex align-items-center ms-4">
             <div class="page__name-title text-start">
               <h3>Список заявок</h3>
               <p class="mb-0">Внесите изменения и не забудьте нажать “Сохранить”</p>
             </div>
           </div> -->
-          <lists-header>
-            <template v-slot:title> Список заявок </template>
-            <template v-slot:description>
-              Внесите изменения и не забудьте нажать “Сохранить”
-            </template>
-          </lists-header>
-          <div class="card py-4 main__card">
-            <div class="d-flex justify-content-between align-items-center mx-4 mb-4">
-              <button class="btn bg-gradient-dark mb-0" data-bs-toggle="modal" data-bs-target="#InpModal" style="
+        <lists-header>
+          <template v-slot:title> Список заявок </template>
+          <template v-slot:description>
+            Внесите изменения и не забудьте нажать “Сохранить”
+          </template>
+        </lists-header>
+        <div class="card py-4 main__card">
+          <div class="d-flex justify-content-between align-items-center mx-4 mb-4">
+            <button class="btn bg-gradient-dark mb-0" data-bs-toggle="modal" data-bs-target="#InpModal" style="
                   font-size: 14px;
                   font-weight: 600;
                   display: flex;
                   align-items: center;
                 " @click="isEdit = 'no'">
-                <img src="@/assets/img/whtplus.svg" alt="" style="margin-right: 10px" />
-                Создать заявку
-              </button>
-              <div class="table__inputs d-flex gap-3 align-content-center">
-                <list-search @searchFilter="(a) => search = a"></list-search>
-                <print-button></print-button>
-                <download-button></download-button>
-                <filter-button class="mb-0"></filter-button>
-              </div>
+              <img src="@/assets/img/whtplus.svg" alt="" style="margin-right: 10px" />
+              Создать заявку
+            </button>
+            <div class="table__inputs d-flex gap-3 align-content-center">
+              <list-search @searchFilter="(a) => search = a"></list-search>
+              <print-button></print-button>
+              <download-button></download-button>
+              <filter-button class="mb-0"></filter-button>
             </div>
-            <div class="page__table mb-4">
-              <div class="table-wrapper">
-                <table class="table table-hover text-wrap text-start table-striped">
-                  <thead>
-                    <tr class="text-center">
-                      <th scope="col" class="th__col">№</th>
-                      <th scope="col" class="th__col">Дата</th>
-                      <th scope="col" class="th__col">ФИО</th>
-                      <th scope="col" class="th__col">Статус</th>
-                      <th scope="col" class="th__col">Номер Телефона</th>
-                      <th scope="col" class="th__col">Email</th>
-                      <th scope="col" class="th__col">Действия</th>
-                    </tr>
-                  </thead>
-                  <tbody class="text-center">
-                    <tr v-for="(order, i) of paginationList" :key="order.id">
-                      <th>{{ i + 1 }}</th>
-                      <td>{{ order.date }}</td>
-                      <td>{{ order.fio }}</td>
-                      <td>
-                        <div class="btn mb-0 w-100" v-text="normalizeStatusName(order.status)"
-                          :class="getClass(order.status)"></div>
-                      </td>
-                      <td>{{ order.phone }}</td>
-                      <td>{{ order.email }}</td>
-                      <td>
-                        <div class="dropdown">
-                          <img src="@/assets/img/dots.svg" style="width: 1.563vw; cursor: pointer" alt="" />
-                          <div class="dropdown-content">
-                            <a style="cursor: pointer" data-bs-toggle="modal" data-bs-target="#InpModal"
-                              @click="isEdit = 'yes'">Редактировать</a>
-                            <hr />
-                            <a style="cursor: pointer" data-bs-toggle="modal" data-bs-target="#DeleteInv">Удалить</a>
-                          </div>
-                        </div>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-            <pagination-component :filteredArr="filteredOrders" :strAmount="paginationAmount"
-              @paginationReload="reloadPagination"></pagination-component>
           </div>
+          <div class="page__table mb-4">
+            <div class="table-wrapper">
+              <table class="table table-hover text-wrap text-start table-striped">
+                <thead>
+                  <tr class="text-center">
+                    <th scope="col" class="th__col">Дата</th>
+                    <th scope="col" class="th__col">ФИО</th>
+                    <th scope="col" class="th__col">Статус</th>
+                    <th scope="col" class="th__col">Номер Телефона</th>
+                    <th scope="col" class="th__col">Email</th>
+                    <th scope="col" class="th__col">Действия</th>
+                  </tr>
+                </thead>
+                <tbody class="text-center">
+                  <tr v-for="order of paginationList" :key="order.id">
+                    <td>{{ order.date }}</td>
+                    <td>{{ order.fio }}</td>
+                    <td>
+                      <div class="btn mb-0 w-100" v-text="normalizeStatusName(order.status)"
+                        :class="getClass(order.status)"></div>
+                    </td>
+                    <td>{{ order.phone }}</td>
+                    <td>{{ order.email }}</td>
+                    <td>
+                      <div class="dropdown">
+                        <img src="@/assets/img/dots.svg" style="width: 1.563vw; cursor: pointer" alt="" />
+                        <div class="dropdown-content">
+                          <a style="cursor: pointer" data-bs-toggle="modal" data-bs-target="#InpModal"
+                            @click="isEdit = 'yes'">Редактировать</a>
+                          <hr />
+                          <a style="cursor: pointer" data-bs-toggle="modal" data-bs-target="#DeleteInv">Удалить</a>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <pagination-component :filteredArr="filteredOrders" :strAmount="paginationAmount"
+            @paginationReload="reloadPagination"></pagination-component>
         </div>
       </div>
     </div>
-    <inputs-modal>
-      <template #head>
-        <div style="text-align: left" v-if="isEdit == 'no'">
-          <p class="header__main">Добавление заявки</p>
-          <p class="header__sec">Измените данные заявки и нажмите “Добавить”</p>
+  </div>
+  <inputs-modal>
+    <template #head>
+      <div style="text-align: left" v-if="isEdit == 'no'">
+        <p class="header__main">Добавление заявки</p>
+        <p class="header__sec">Измените данные заявки и нажмите “Добавить”</p>
+      </div>
+      <div style="text-align: left" v-if="isEdit == 'yes'">
+        <p class="header__main">Заявка №12345</p>
+        <p class="header__sec">Измените данные и нажмите “Сохранить”</p>
+      </div>
+    </template>
+    <template #body>
+      <div class="clients__modal" v-if="isEdit == 'no'">
+        <div class="form-group">
+          <label for="example-text-input" class="form-control-label">ФИО клиента</label>
+          <input class="form-control" type="text" placeholder="ФИО клиента" id="example-text-input" />
         </div>
-        <div style="text-align: left" v-if="isEdit == 'yes'">
-          <p class="header__main">Заявка №12345</p>
-          <p class="header__sec">Измените данные и нажмите “Сохранить”</p>
+        <div class="form-group">
+          <label for="example-text-input1" class="form-control-label">Номер телефона</label>
+          <input class="form-control" type="text" placeholder="Введите номер телефона" id="example-text-input1" />
         </div>
-      </template>
-      <template #body>
-        <div class="clients__modal" v-if="isEdit == 'no'">
-          <div class="form-group">
-            <label for="example-text-input" class="form-control-label">ФИО клиента</label>
-            <input class="form-control" type="text" placeholder="ФИО клиента" id="example-text-input" />
-          </div>
-          <div class="form-group">
-            <label for="example-text-input1" class="form-control-label">Номер телефона</label>
-            <input class="form-control" type="text" placeholder="Введите номер телефона" id="example-text-input1" />
-          </div>
-          <div class="form-group">
-            <label for="example-text-input2" class="form-control-label">Email</label>
-            <input class="form-control" type="text" placeholder="Введите email" id="example-text-input2" />
-          </div>
-          <div class="form-group">
-            <label class="form-control-label" for="Статус заявки">Статус заявки</label>
-            <select class="form-select">
-              <option selected disabled>Выберите</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="exampleFormControlTextarea1" class="form-control-label">Текст заявки</label>
-            <textarea class="form-control" id="exampleFormControlTextarea1" rows="2"
-              placeholder="Введите текст"></textarea>
-          </div>
+        <div class="form-group">
+          <label for="example-text-input2" class="form-control-label">Email</label>
+          <input class="form-control" type="text" placeholder="Введите email" id="example-text-input2" />
         </div>
-        <div class="clients__modal" v-if="isEdit == 'yes'">
-          <div class="form-group">
-            <label for="example-text-input" class="form-control-label">ФИО клиента</label>
-            <input class="form-control" type="text" placeholder="ФИО клиента" id="example-text-input" />
-          </div>
-          <div class="form-group">
-            <label for="example-text-input1" class="form-control-label">Номер телефона</label>
-            <input class="form-control" type="text" placeholder="Введите номер телефона" id="example-text-input1" />
-          </div>
-          <div class="form-group">
-            <label for="example-text-input2" class="form-control-label">Email</label>
-            <input class="form-control" type="text" placeholder="Введите email" id="example-text-input2" />
-          </div>
-          <div class="form-group">
-            <label class="form-control-label" for="Статус заявки">Статус заявки</label>
-            <select class="form-select">
-              <option selected disabled>Выберите</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="exampleFormControlTextarea1" class="form-control-label">Текст заявки</label>
-            <textarea class="form-control" id="exampleFormControlTextarea1" rows="2"
-              placeholder="Введите текст"></textarea>
-          </div>
+        <div class="form-group">
+          <label class="form-control-label" for="Статус заявки">Статус заявки</label>
+          <select class="form-select">
+            <option selected disabled>Выберите</option>
+          </select>
         </div>
-      </template>
-      <template #footer>
-        <div class="clients__footer">
-          <button class="btn clients__save" data-bs-dismiss="modal" v-if="isEdit == 'no'">Добавить</button>
+        <div class="form-group">
+          <label for="exampleFormControlTextarea1" class="form-control-label">Текст заявки</label>
+          <textarea class="form-control" id="exampleFormControlTextarea1" rows="2"
+            placeholder="Введите текст"></textarea>
         </div>
-        <div class="clients__footer">
-          <button class="btn clients__save" data-bs-dismiss="modal" v-if="isEdit == 'yes'">Сохранить</button>
+      </div>
+      <div class="clients__modal" v-if="isEdit == 'yes'">
+        <div class="form-group">
+          <label for="example-text-input" class="form-control-label">ФИО клиента</label>
+          <input class="form-control" type="text" placeholder="ФИО клиента" id="example-text-input" />
         </div>
-      </template>
-    </inputs-modal>
+        <div class="form-group">
+          <label for="example-text-input1" class="form-control-label">Номер телефона</label>
+          <input class="form-control" type="text" placeholder="Введите номер телефона" id="example-text-input1" />
+        </div>
+        <div class="form-group">
+          <label for="example-text-input2" class="form-control-label">Email</label>
+          <input class="form-control" type="text" placeholder="Введите email" id="example-text-input2" />
+        </div>
+        <div class="form-group">
+          <label class="form-control-label" for="Статус заявки">Статус заявки</label>
+          <select class="form-select">
+            <option selected disabled>Выберите</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="exampleFormControlTextarea1" class="form-control-label">Текст заявки</label>
+          <textarea class="form-control" id="exampleFormControlTextarea1" rows="2"
+            placeholder="Введите текст"></textarea>
+        </div>
+      </div>
+    </template>
+    <template #footer>
+      <div class="clients__footer">
+        <button class="btn clients__save" data-bs-dismiss="modal" v-if="isEdit == 'no'">Добавить</button>
+      </div>
+      <div class="clients__footer">
+        <button class="btn clients__save" data-bs-dismiss="modal" v-if="isEdit == 'yes'">Сохранить</button>
+      </div>
+    </template>
+  </inputs-modal>
   <the-filter @no-filter="cancelFilters">
     <div class="filters__period__flex">
       <div class="filter__name__standart">Выберите период</div>

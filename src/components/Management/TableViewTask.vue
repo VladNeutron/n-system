@@ -31,7 +31,6 @@
           <thead>
             <tr class="text-start">
               <th scope="col" class="th__col" style="width: 1px; padding-left: 27px"></th>
-              <th scope="col" class="th__col">№</th>
               <th scope="col" class="th__col">Название сделки</th>
               <th scope="col" class="th__col">дата последнего изменения</th>
               <th scope="col" class="th__col">ответственный</th>
@@ -47,7 +46,6 @@
                   <input class="form-check-input" type="checkbox" value="" id="flexCheckIndeterminate" />
                 </div>
               </th>
-              <td>{{ deal.listNumber + 1 }}</td>
               <td>{{ deal.dealName }}</td>
               <td>{{ deal.dealLastDate }}</td>
               <td>{{ deal.responsible }}</td>

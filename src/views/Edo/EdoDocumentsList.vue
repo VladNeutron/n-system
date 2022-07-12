@@ -1,114 +1,112 @@
 <template>
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-12">
-                    <lists-header>
-                        <template v-slot:title> Список документов </template>
-                        <template v-slot:description>
-                            Внесите изменения и не забудьте нажать “Сохранить”
-                        </template>
-                        <template #add>
-                            <div class="header__filter">
-                                <button class="btn header__btns" :class="{ btn__active: makeActive == 1 }"
-                                    @click="makeActive = 1"> <img src="@/assets/img/edo/1.svg" alt=""> Все
-                                    документы</button>
-                                <button class="btn header__btns" :class="{ btn__active: makeActive == 2 }"
-                                    @click="makeActive = 2"><img src="@/assets/img/edo/2.svg" alt=""> Подписанные
-                                    документы</button>
-                                <button class="btn header__btns" :class="{ btn__active: makeActive == 3 }"
-                                    @click="makeActive = 3"><img src="@/assets/img/edo/3.svg" alt=""> В процессе
-                                    подписания</button>
-                                <button class="btn header__btns" :class="{ btn__active: makeActive == 4 }"
-                                    @click="makeActive = 4"><img src="@/assets/img/edo/4.svg" alt=""> Документы на
-                                    подпись</button>
-                                <button class="btn header__btns" :class="{ btn__active: makeActive == 5 }"
-                                    @click="makeActive = 5"><img src="@/assets/img/edo/5.svg" alt=""> Архив
-                                    документов</button>
-                            </div>
-                        </template>
-                    </lists-header>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <lists-header>
+                    <template v-slot:title> Список документов </template>
+                    <template v-slot:description>
+                        Внесите изменения и не забудьте нажать “Сохранить”
+                    </template>
+                    <template #add>
+                        <div class="header__filter">
+                            <button class="btn header__btns" :class="{ btn__active: makeActive == 1 }"
+                                @click="makeActive = 1"> <img src="@/assets/img/edo/1.svg" alt=""> Все
+                                документы</button>
+                            <button class="btn header__btns" :class="{ btn__active: makeActive == 2 }"
+                                @click="makeActive = 2"><img src="@/assets/img/edo/2.svg" alt=""> Подписанные
+                                документы</button>
+                            <button class="btn header__btns" :class="{ btn__active: makeActive == 3 }"
+                                @click="makeActive = 3"><img src="@/assets/img/edo/3.svg" alt=""> В процессе
+                                подписания</button>
+                            <button class="btn header__btns" :class="{ btn__active: makeActive == 4 }"
+                                @click="makeActive = 4"><img src="@/assets/img/edo/4.svg" alt=""> Документы на
+                                подпись</button>
+                            <button class="btn header__btns" :class="{ btn__active: makeActive == 5 }"
+                                @click="makeActive = 5"><img src="@/assets/img/edo/5.svg" alt=""> Архив
+                                документов</button>
+                        </div>
+                    </template>
+                </lists-header>
 
-                    <div class="card py-4 main__card">
-                        <div class="d-flex justify-content-between align-items-center mx-4 mb-2">
-                            <input type="file" style="display: none;" id="fileupload" name="file" />
-                            <button class="btn bg-gradient-dark mb-0 add__file" style="
+                <div class="card py-4 main__card">
+                    <div class="d-flex justify-content-between align-items-center mx-4 mb-2">
+                        <input type="file" style="display: none;" id="fileupload" name="file" />
+                        <button class="btn bg-gradient-dark mb-0 add__file" style="
                   font-size: 14px;
                   font-weight: 600;
                   display: flex;
                   align-items: center;
                   height: 40px;
                 " onclick="document.getElementById('fileupload').click();">
-                                <img src="@/assets/img/whtplus.svg" alt="" style="margin-right: 10px" />
-                                Загрузить документ
-                            </button>
-                            <div class="table__inputs d-flex gap-3 align-content-center align-items-center">
-                                <list-search @searchFilter="(a) => search = a"></list-search>
-                                <filter-button class="mb-0"></filter-button>
-                            </div>
+                            <img src="@/assets/img/whtplus.svg" alt="" style="margin-right: 10px" />
+                            Загрузить документ
+                        </button>
+                        <div class="table__inputs d-flex gap-3 align-content-center align-items-center">
+                            <list-search @searchFilter="(a) => search = a"></list-search>
+                            <filter-button class="mb-0"></filter-button>
                         </div>
-                        <div class="page__table">
-                            <div class="table-wrapper">
-                                <table class="table table-hover text-wrap text-start table-striped" id="table_id">
-                                    <thead>
-                                        <tr class="text-start">
-                                            <th scope="col" class="th__col" style="width: 1px;"></th>
-                                            <th scope="col" class="th__col">№</th>
-                                            <th scope="col" class="th__col">№ документа</th>
-                                            <th scope="col" class="th__col">Дата</th>
-                                            <th scope="col" class="th__col">наименование документа</th>
-                                            <th scope="col" class="th__col">Контрагент</th>
-                                            <th scope="col" class="th__col">Статус</th>
-                                            <th scope="col" class="th__col">Редактирование</th>
-                                            <th scope="col" class="th__col">действия</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr v-for="(order) of paginationList" :key="order.id">
-                                            <th scope="row" style="">
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" value=""
-                                                        id="flexCheckIndeterminate" />
-                                                </div>
-                                            </th>
-                                            <td>{{ order.listNumber + 1 }}</td>
-                                            <td>{{ order.id }}</td>
-                                            <td>{{ order.date }}</td>
-                                            <td>{{ order.name }}</td>
-
-                                            <td>{{ order.contractor }}</td>
-                                            <td>
-                                                <div class="btn mb-0 w-100" v-text="normalizeStatusName(order.status)"
-                                                    :class="getClass(order.status)"></div>
-                                            </td>
-                                            <td><button
-                                                    onclick="window.location.href = '/accounting/documents/edit-account'"
-                                                    class="btn btn__edit mb-0"> <img src="@/assets/img/editedo.svg"
-                                                        style="margin-right:5px" />
-                                                    Изменить</button></td>
-                                            <td style="border-left: 0; padding-right: 27px">
-                                                <div class="dropdown">
-                                                    <img src="@/assets/img/dots.svg"
-                                                        style="width: 1.563vw; cursor: pointer" alt="" />
-                                                    <!-- <div :class="['dropdown-content', {'dropdown__content__top': ind >= paginationList.length - 2}]"> -->
-                                                    <div class="dropdown-content">
-                                                        <a href="/edo/edo-document">Редактировать</a>
-                                                        <hr />
-                                                        <a style="cursor: pointer" data-bs-toggle="modal"
-                                                            data-bs-target="#DeleteInv">Удалить</a>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                        <pagination-component :filteredArr="filteredOrders" :strAmount="paginationAmount"
-                            @PaginationReload="reloadPagination"></pagination-component>
                     </div>
+                    <div class="page__table">
+                        <div class="table-wrapper">
+                            <table class="table table-hover text-wrap text-start table-striped" id="table_id">
+                                <thead>
+                                    <tr class="text-start">
+                                        <th scope="col" class="th__col" style="width: 1px;"></th>
+                                        <th scope="col" class="th__col">№ документа</th>
+                                        <th scope="col" class="th__col">Дата</th>
+                                        <th scope="col" class="th__col">наименование документа</th>
+                                        <th scope="col" class="th__col">Контрагент</th>
+                                        <th scope="col" class="th__col">Статус</th>
+                                        <th scope="col" class="th__col">Редактирование</th>
+                                        <th scope="col" class="th__col">действия</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr v-for="(order) of paginationList" :key="order.id">
+                                        <th scope="row" style="">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" value=""
+                                                    id="flexCheckIndeterminate" />
+                                            </div>
+                                        </th>
+                                        <td>{{ order.id }}</td>
+                                        <td>{{ order.date }}</td>
+                                        <td>{{ order.name }}</td>
+
+                                        <td>{{ order.contractor }}</td>
+                                        <td>
+                                            <div class="btn mb-0 w-100" v-text="normalizeStatusName(order.status)"
+                                                :class="getClass(order.status)"></div>
+                                        </td>
+                                        <td><button
+                                                onclick="window.location.href = '/accounting/documents/edit-account'"
+                                                class="btn btn__edit mb-0"> <img src="@/assets/img/editedo.svg"
+                                                    style="margin-right:5px" />
+                                                Изменить</button></td>
+                                        <td style="border-left: 0; padding-right: 27px">
+                                            <div class="dropdown">
+                                                <img src="@/assets/img/dots.svg" style="width: 1.563vw; cursor: pointer"
+                                                    alt="" />
+                                                <!-- <div :class="['dropdown-content', {'dropdown__content__top': ind >= paginationList.length - 2}]"> -->
+                                                <div class="dropdown-content">
+                                                    <a href="/edo/edo-document">Редактировать</a>
+                                                    <hr />
+                                                    <a style="cursor: pointer" data-bs-toggle="modal"
+                                                        data-bs-target="#DeleteInv">Удалить</a>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <pagination-component :filteredArr="filteredOrders" :strAmount="paginationAmount"
+                        @PaginationReload="reloadPagination"></pagination-component>
                 </div>
             </div>
         </div>
+    </div>
     <the-filter :orders="orders" @no-filter="cancelFilters">
         <div class="filters__period__flex">
             <div class="filter__name__standart">Выберите период</div>

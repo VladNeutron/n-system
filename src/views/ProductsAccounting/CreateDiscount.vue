@@ -1,152 +1,148 @@
 <template>
-    <div class="container-fluid">
-      <div class="order__header">
-        <div class="order__header-content">
-          <div class="order__header-main">
-            <div class="order__header-text">
-              <p class="order__header__main">Создание скидки</p>
-              <p class="order__header__sec">
-                Настройте все параметры и нажмите “Сохранить”
-              </p>
-            </div>
-            <div class="drop__buttons">
-              <button class="btn save__btn">Создать скидку</button>
-            </div>
+  <div class="container-fluid">
+    <div class="order__header">
+      <div class="order__header-content">
+        <div class="order__header-main">
+          <div class="order__header-text">
+            <p class="order__header__main">Создание скидки</p>
+            <p class="order__header__sec">
+              Настройте все параметры и нажмите “Сохранить”
+            </p>
           </div>
-          <div class="order__body">
-            <div class="order__body__content">
-              <div class="order__first__row">
-                <div class="form-group">
-                  <label for="example-text-input" class="form-control-label order__label">№ Скидки</label>
-                  <input class="form-control" type="text" id="example-text-input" placeholder="№ 9876543" />
+          <div class="drop__buttons">
+            <button class="btn save__btn">Создать скидку</button>
+          </div>
+        </div>
+        <div class="order__body">
+          <div class="order__body__content">
+            <div class="order__first__row">
+              <div class="form-group">
+                <label for="example-text-input" class="form-control-label order__label">№ Скидки</label>
+                <input class="form-control" type="text" id="example-text-input" placeholder="№ 9876543" />
+              </div>
+              <div class="form-group">
+                <label for="example-text-input" class="form-control-label order__label">Название скидки</label>
+                <input class="form-control" type="text" id="example-text-input" placeholder="Скидка 8 марта" />
+              </div>
+              <div class="form-group">
+                <label for="exampleFormControlSelect1" class="order__label">Тип скидки</label>
+                <div class="select">
+                  <select class="form-select" id="exampleFormControlSelect1" @change="selected = !selected">
+                    <option>Процент</option>
+                    <option>Число</option>
+                  </select>
                 </div>
-                <div class="form-group">
-                  <label for="example-text-input" class="form-control-label order__label">Название скидки</label>
-                  <input class="form-control" type="text" id="example-text-input" placeholder="Скидка 8 марта" />
+              </div>
+              <div class="form-group" v-show="selected">
+                <label for="type__disc" class="order__label">Размер скидки</label>
+                <div class="input-group flex-nowrap" style="width: 141px">
+                  <input class="form-control" placeholder="10" id="type__disc" type="text" />
+                  <span class="input-group-text py-0"><img src="@/assets/img/type__disc.svg" alt="" /></span>
                 </div>
-                <div class="form-group">
-                  <label for="exampleFormControlSelect1" class="order__label">Тип скидки</label>
-                  <div class="select">
-                    <select class="form-select" id="exampleFormControlSelect1" @change="selected = !selected">
-                      <option>Процент</option>
-                      <option>Число</option>
-                    </select>
-                  </div>
+              </div>
+              <div class="form-group" v-show="!selected">
+                <label for="type__disc" class="order__label">Размер скидки</label>
+                <div class="input-group flex-nowrap" style="width: 141px">
+                  <input class="form-control" placeholder="10" id="type__disc" type="text" />
+                  <span class="input-group-text py-0"><img src="@/assets/img/type__tenge.svg" alt="" /></span>
                 </div>
-                <div class="form-group" v-show="selected">
-                  <label for="type__disc" class="order__label">Размер скидки</label>
-                  <div class="input-group flex-nowrap" style="width: 141px">
-                    <input class="form-control" placeholder="10" id="type__disc" type="text" />
-                    <span class="input-group-text py-0"><img src="@/assets/img/type__disc.svg" alt="" /></span>
-                  </div>
-                </div>
-                <div class="form-group" v-show="!selected">
-                  <label for="type__disc" class="order__label">Размер скидки</label>
-                  <div class="input-group flex-nowrap" style="width: 141px">
-                    <input class="form-control" placeholder="10" id="type__disc" type="text" />
-                    <span class="input-group-text py-0"><img src="@/assets/img/type__tenge.svg" alt="" /></span>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label for="example-date-input" class="form-control-label order__label">Дата начала скидки</label>
-                  <input class="form-control" type="date" id="example-date-input" style="width: 191px" />
-                </div>
-                <div class="form-group">
-                  <label for="example-date-input" class="form-control-label order__label"
-                    style="white-space: nowrap">Дата окончания скидки</label>
-                  <input class="form-control" type="date" id="example-date-input" style="width: 191px" />
-                </div>
+              </div>
+              <div class="form-group">
+                <label for="example-date-input" class="form-control-label order__label">Дата начала скидки</label>
+                <input class="form-control" type="date" id="example-date-input" style="width: 191px" />
+              </div>
+              <div class="form-group">
+                <label for="example-date-input" class="form-control-label order__label" style="white-space: nowrap">Дата
+                  окончания скидки</label>
+                <input class="form-control" type="date" id="example-date-input" style="width: 191px" />
               </div>
             </div>
           </div>
         </div>
-      </div>
-      <div class="card mt-4">
-        <div class="order__table">
-          <div class="order__table__content">
-            <div class="order__table__header">
-              <div class="barcodes">
-                <div class="form-group">
-                  <div class="input-group">
-                    <input class="form-control barcode__inp" placeholder="Введите штрихкод" id="search-barcode"
-                      type="text" />
-                    <span class="input-group-text py-0"><img src="@/assets/css/icons/barcode.svg" alt="" /></span>
-                  </div>
-                </div>
-                <button class="btn barcode__btn" data-bs-toggle="modal" data-bs-target="#SelectDisc">Выбрать из
-                  списка</button>
-              </div>
-              <div class="search">
-                <div class="form-group m-0">
-                  <div class="input-group mt-1">
-                    <span class="input-group-text"><img src="@/assets/css/icons/searchIcon.svg" alt="" /></span>
-                    <input class="form-control search__inp" placeholder="Поиск..." id="search" type="text"
-                      v-model.trim="search" />
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="not__added" v-if="isAdded">
-              <div>
-                <img src="@/assets/img/add.png" style="width: 6.667vw" alt="" />
-                <p class="not__added__main">Товары не выбраны</p>
-                <p class="not__added__sec">
-                  Для того чтобы создать заказ, необходимо<br />
-                  выбрать товары из списка
-                </p>
-                <button class="btn btn__chose" data-bs-toggle="modal" data-bs-target="#SelectDisc">Выбрать из
-                  списка</button>
-              </div>
-            </div>
-            <div class="order__table__body" v-else>
-              <table class="table table-hover">
-                <thead>
-                  <tr>
-                    <th scope="col" class="th__col">№</th>
-                    <th scope="col" class="th__col">Товар</th>
-                    <th scope="col" class="th__col">Артикул</th>
-                    <th scope="col" class="th__col">Цвет</th>
-                    <th scope="col" class="th__col">Размер</th>
-                    <th scope="col" class="th__col">себестоимость</th>
-                    <th scope="col" class="th__col">Текущая цена</th>
-
-                    <th scope="col" class="th__col">Цена со скидкой</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <!-- v-for="(item, i) in items" :key="item" -->
-                  <tr v-for="(item, i) in paginationList" :key="item">
-                    <td scope="row">
-                      {{ i + 1 }}
-                    </td>
-                    <td style="display: flex">
-                      <img :src="item.img" style="width: 2.5vw; margin-right: 0.833vw" alt="" />
-                      {{ item.name }}
-                    </td>
-                    <td>
-                      {{ item.barcode }}
-                    </td>
-                    <td>
-                      {{ item.color }}
-                    </td>
-                    <td>
-                      {{ item.size }}
-                    </td>
-                    <td>{{ item.costPrice }} ₸</td>
-                    <td>{{ item.price }} ₸</td>
-
-                    <td>{{ item.discPrice }} ₸</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-        <pagination-component :filteredArr="filteredProducts" :strAmount="10" @PaginationReload="reloadPagination"
-          class="pb-4" v-if="isAdded == false"></pagination-component>
       </div>
     </div>
-    <select-product></select-product>
+    <div class="card mt-4">
+      <div class="order__table">
+        <div class="order__table__content">
+          <div class="order__table__header">
+            <div class="barcodes">
+              <div class="form-group">
+                <div class="input-group">
+                  <input class="form-control barcode__inp" placeholder="Введите штрихкод" id="search-barcode"
+                    type="text" />
+                  <span class="input-group-text py-0"><img src="@/assets/css/icons/barcode.svg" alt="" /></span>
+                </div>
+              </div>
+              <button class="btn barcode__btn" data-bs-toggle="modal" data-bs-target="#SelectDisc">Выбрать из
+                списка</button>
+            </div>
+            <div class="search">
+              <div class="form-group m-0">
+                <div class="input-group mt-1">
+                  <span class="input-group-text"><img src="@/assets/css/icons/searchIcon.svg" alt="" /></span>
+                  <input class="form-control search__inp" placeholder="Поиск..." id="search" type="text"
+                    v-model.trim="search" />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="not__added" v-if="isAdded">
+            <div>
+              <img src="@/assets/img/add.png" style="width: 6.667vw" alt="" />
+              <p class="not__added__main">Товары не выбраны</p>
+              <p class="not__added__sec">
+                Для того чтобы создать заказ, необходимо<br />
+                выбрать товары из списка
+              </p>
+              <button class="btn btn__chose" data-bs-toggle="modal" data-bs-target="#SelectDisc">Выбрать из
+                списка</button>
+            </div>
+          </div>
+          <div class="order__table__body" v-else>
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th scope="col" class="th__col">Товар</th>
+                  <th scope="col" class="th__col">Артикул</th>
+                  <th scope="col" class="th__col">Цвет</th>
+                  <th scope="col" class="th__col">Размер</th>
+                  <th scope="col" class="th__col">себестоимость</th>
+                  <th scope="col" class="th__col">Текущая цена</th>
+
+                  <th scope="col" class="th__col">Цена со скидкой</th>
+                </tr>
+              </thead>
+              <tbody>
+                <!-- v-for="(item, i) in items" :key="item" -->
+                <tr v-for="(item) in paginationList" :key="item">
+                  <td style="display: flex">
+                    <img :src="item.img" style="width: 2.5vw; margin-right: 0.833vw" alt="" />
+                    {{ item.name }}
+                  </td>
+                  <td>
+                    {{ item.barcode }}
+                  </td>
+                  <td>
+                    {{ item.color }}
+                  </td>
+                  <td>
+                    {{ item.size }}
+                  </td>
+                  <td>{{ item.costPrice }} ₸</td>
+                  <td>{{ item.price }} ₸</td>
+
+                  <td>{{ item.discPrice }} ₸</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <pagination-component :filteredArr="filteredProducts" :strAmount="10" @PaginationReload="reloadPagination"
+        class="pb-4" v-if="isAdded == false"></pagination-component>
+    </div>
+  </div>
+  <select-product></select-product>
 </template>
 
 <style scoped>

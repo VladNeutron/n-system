@@ -1,470 +1,448 @@
 <template>
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-12">
-                    <lists-header>
-                        <template v-slot:title> Список ролей</template>
-                        <template v-slot:description>
-                            Внесите изменения и не забудьте нажать “Сохранить”
-                        </template>
-                    </lists-header>
-                    <div class="card pt-4 pb-6">
-                        <div class="d-flex justify-content-between align-items-center mx-4 mb-4">
-                            <div>
-                                <button class="btn bg-gradient-dark btn-add mb-0" style="
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <lists-header>
+                    <template v-slot:title> Список ролей</template>
+                    <template v-slot:description>
+                        Внесите изменения и не забудьте нажать “Сохранить”
+                    </template>
+                </lists-header>
+                <div class="card pt-4 pb-6">
+                    <div class="d-flex justify-content-between align-items-center mx-4 mb-4">
+                        <div>
+                            <button class="btn bg-gradient-dark btn-add mb-0" style="
                     margin-right: 0.833vw;
                     display: flex;
                     align-items: center;
                   " data-bs-toggle="modal" data-bs-target="#InpModal" @click="isEdit = 'no'">
-                                    <img src="@/assets/img/whtplus.svg" style="margin-right: 10px" alt="" />
-                                    Добавить роль
-                                </button>
-                            </div>
-                            <div class="table__inputs d-flex gap-3 align-content-center">
-                                <list-search @searchFilter="(a) => search = a"></list-search>
-                            </div>
+                                <img src="@/assets/img/whtplus.svg" style="margin-right: 10px" alt="" />
+                                Добавить роль
+                            </button>
                         </div>
-                        <div class="page__table">
-                            <table class="table table-hover table-striped">
-                                <thead>
-                                    <tr class="">
-                                        <th scope="col" class="th__col" style="width: 25px; padding-left: 27px"></th>
-                                        <th width="1%" scope="col" class="th__col">№</th>
-                                        <th scope="col" class="th__col" style="padding-right:23.938vw">Название роли
-                                        </th>
-                                        <th scope="col" class="th__col">Действия</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr v-for="order of paginationList" :key="order.id">
-                                        <td scope="row" style="padding-left: 27px">
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" value=""
-                                                    id="fcustomCheck1" />
-                                            </div>
-                                        </td>
-                                        <td width="1%">{{ order.listNumber + 1 }}</td>
-                                        <td style="padding-right:23.438vw">{{ order.roleName }}</td>
-
-                                        <td class="dropdown">
-                                            <img src="@/assets/img/dots.svg" style="width: 1.563vw; cursor: pointer"
-                                                alt="" />
-                                            <div class="dropdown-content">
-                                                <a style="cursor: pointer" data-bs-toggle="modal"
-                                                    data-bs-target="#InpModal" @click="isEdit = 'yes'">Редактировать</a>
-                                                <hr />
-                                                <a style="cursor: pointer" data-bs-toggle="modal"
-                                                    data-bs-target="#DeleteInv">Удалить</a>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                        <div class="table__inputs d-flex gap-3 align-content-center">
+                            <list-search @searchFilter="(a) => search = a"></list-search>
                         </div>
-                        <pagination-component :filteredArr="filteredList" :strAmount="10"
-                            @PaginationReload="reloadPagination" class="pagination__size"></pagination-component>
                     </div>
+                    <div class="page__table">
+                        <table class="table table-hover table-striped">
+                            <thead>
+                                <tr class="">
+                                    <th scope="col" class="th__col" style="width: 25px; padding-left: 27px"></th>
+                                    <th scope="col" class="th__col" style="padding-right:23.938vw">Название роли
+                                    </th>
+                                    <th scope="col" class="th__col">Действия</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr v-for="order of paginationList" :key="order.id">
+                                    <td scope="row" style="padding-left: 27px">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value=""
+                                                id="fcustomCheck1" />
+                                        </div>
+                                    </td>
+                                    <td style="padding-right:23.438vw">{{ order.roleName }}</td>
+
+                                    <td class="dropdown">
+                                        <img src="@/assets/img/dots.svg" style="width: 1.563vw; cursor: pointer"
+                                            alt="" />
+                                        <div class="dropdown-content">
+                                            <a style="cursor: pointer" data-bs-toggle="modal" data-bs-target="#InpModal"
+                                                @click="isEdit = 'yes'">Редактировать</a>
+                                            <hr />
+                                            <a style="cursor: pointer" data-bs-toggle="modal"
+                                                data-bs-target="#DeleteInv">Удалить</a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <pagination-component :filteredArr="filteredList" :strAmount="10"
+                        @PaginationReload="reloadPagination" class="pagination__size"></pagination-component>
                 </div>
             </div>
         </div>
-        <inputs-modal>
-            <template #head>
-                <div style="text-align: left" v-if="isEdit == 'no'">
-                    <p class="header__main">Добавление роли</p>
-                    <p class="header__sec">
-                        Создайте роль и укажите доступные разделы для роли
-                    </p>
+    </div>
+    <inputs-modal>
+        <template #head>
+            <div style="text-align: left" v-if="isEdit == 'no'">
+                <p class="header__main">Добавление роли</p>
+                <p class="header__sec">
+                    Создайте роль и укажите доступные разделы для роли
+                </p>
+            </div>
+            <div style="text-align: left" v-if="isEdit == 'yes'">
+                <p class="header__main">Редактирование роли</p>
+                <p class="header__sec">Измените данные и нажмите “Сохранить”</p>
+            </div>
+        </template>
+        <template #body>
+            <div class="clients__modal text-start" v-if="isEdit == 'no'">
+                <div class="form-group">
+                    <label for="example-text-input" class="form-control-label">Название роли</label>
+                    <input class="form-control" type="text" placeholder="Введите название роли"
+                        id="example-text-input" />
                 </div>
-                <div style="text-align: left" v-if="isEdit == 'yes'">
-                    <p class="header__main">Редактирование роли</p>
-                    <p class="header__sec">Измените данные и нажмите “Сохранить”</p>
-                </div>
-            </template>
-            <template #body>
-                <div class="clients__modal text-start" v-if="isEdit == 'no'">
-                    <div class="form-group">
-                        <label for="example-text-input" class="form-control-label">Название роли</label>
-                        <input class="form-control" type="text" placeholder="Введите название роли"
-                            id="example-text-input" />
-                    </div>
-                    <p class="mb-0 role__text">Выбор доступных разделов</p>
-                    <div class="d-flex justify-content-between mt-4">
-                        <div>
-                            <div class="form-check">
-                                <input class="form-check-input modal__check" type="checkbox" value=""
-                                    id="fcustomCheck1">
-                                <label class="custom-control-label" for="customCheck1">Главная</label>
-                                <div class="dropdown2">
-                                    <img src="@/assets/img/info.svg" style="
+                <p class="mb-0 role__text">Выбор доступных разделов</p>
+                <div class="d-flex justify-content-between mt-4">
+                    <div>
+                        <div class="form-check">
+                            <input class="form-check-input modal__check" type="checkbox" value="" id="fcustomCheck1">
+                            <label class="custom-control-label" for="customCheck1">Главная</label>
+                            <div class="dropdown2">
+                                <img src="@/assets/img/info.svg" style="
                             width: 1.25vw;
                             margin-left: 1.667vw;
                             cursor: help;
                           " alt="" />
-                                    <div class="dropdown-content">
-                                        <p>
-                                            Подсказка
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input modal__check" type="checkbox" value=""
-                                    id="fcustomCheck1">
-                                <label class="custom-control-label" for="customCheck1">Складской учет</label>
-                                <div class="dropdown2">
-                                    <img src="@/assets/img/info.svg" style="
-                            width: 1.25vw;
-                            margin-left: 1.667vw;
-                            cursor: help;
-                          " alt="" />
-                                    <div class="dropdown-content">
-                                        <p>
-                                            Подсказка
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input modal__check" type="checkbox" value=""
-                                    id="fcustomCheck1">
-                                <label class="custom-control-label" for="customCheck1">Учёт товаров</label>
-                                <div class="dropdown2">
-                                    <img src="@/assets/img/info.svg" style="
-                            width: 1.25vw;
-                            margin-left: 1.667vw;
-                            cursor: help;
-                          " alt="" />
-                                    <div class="dropdown-content">
-                                        <p>
-                                            Подсказка
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input modal__check" type="checkbox" value=""
-                                    id="fcustomCheck1">
-                                <label class="custom-control-label" for="customCheck1">Продажи</label>
-                                <div class="dropdown2">
-                                    <img src="@/assets/img/info.svg" style="
-                            width: 1.25vw;
-                            margin-left: 1.667vw;
-                            cursor: help;
-                          " alt="" />
-                                    <div class="dropdown-content">
-                                        <p>
-                                            Подсказка
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input modal__check" type="checkbox" value=""
-                                    id="fcustomCheck1">
-                                <label class="custom-control-label" for="customCheck1">Касса</label>
-                                <div class="dropdown2">
-                                    <img src="@/assets/img/info.svg" style="
-                            width: 1.25vw;
-                            margin-left: 1.667vw;
-                            cursor: help;
-                          " alt="" />
-                                    <div class="dropdown-content">
-                                        <p>
-                                            Подсказка
-                                        </p>
-                                    </div>
+                                <div class="dropdown-content">
+                                    <p>
+                                        Подсказка
+                                    </p>
                                 </div>
                             </div>
                         </div>
-                        <div>
-                            <div class="form-check">
-                                <input class="form-check-input modal__check" type="checkbox" value=""
-                                    id="fcustomCheck1">
-                                <label class="custom-control-label" for="customCheck1">Аналитика</label>
-                                <div class="dropdown2">
-                                    <img src="@/assets/img/info.svg" style="
+                        <div class="form-check">
+                            <input class="form-check-input modal__check" type="checkbox" value="" id="fcustomCheck1">
+                            <label class="custom-control-label" for="customCheck1">Складской учет</label>
+                            <div class="dropdown2">
+                                <img src="@/assets/img/info.svg" style="
                             width: 1.25vw;
                             margin-left: 1.667vw;
                             cursor: help;
                           " alt="" />
-                                    <div class="dropdown-content">
-                                        <p>
-                                            Подсказка
-                                        </p>
-                                    </div>
+                                <div class="dropdown-content">
+                                    <p>
+                                        Подсказка
+                                    </p>
                                 </div>
                             </div>
-                            <div class="form-check">
-                                <input class="form-check-input modal__check" type="checkbox" value=""
-                                    id="fcustomCheck1">
-                                <label class="custom-control-label" for="customCheck1">Закупки</label>
-                                <div class="dropdown2">
-                                    <img src="@/assets/img/info.svg" style="
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input modal__check" type="checkbox" value="" id="fcustomCheck1">
+                            <label class="custom-control-label" for="customCheck1">Учёт товаров</label>
+                            <div class="dropdown2">
+                                <img src="@/assets/img/info.svg" style="
                             width: 1.25vw;
                             margin-left: 1.667vw;
                             cursor: help;
                           " alt="" />
-                                    <div class="dropdown-content">
-                                        <p>
-                                            Подсказка
-                                        </p>
-                                    </div>
+                                <div class="dropdown-content">
+                                    <p>
+                                        Подсказка
+                                    </p>
                                 </div>
                             </div>
-                            <div class="form-check">
-                                <input class="form-check-input modal__check" type="checkbox" value=""
-                                    id="fcustomCheck1">
-                                <label class="custom-control-label" for="customCheck1">Бухгалтерия</label>
-                                <div class="dropdown2">
-                                    <img src="@/assets/img/info.svg" style="
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input modal__check" type="checkbox" value="" id="fcustomCheck1">
+                            <label class="custom-control-label" for="customCheck1">Продажи</label>
+                            <div class="dropdown2">
+                                <img src="@/assets/img/info.svg" style="
                             width: 1.25vw;
                             margin-left: 1.667vw;
                             cursor: help;
                           " alt="" />
-                                    <div class="dropdown-content">
-                                        <p>
-                                            Подсказка
-                                        </p>
-                                    </div>
+                                <div class="dropdown-content">
+                                    <p>
+                                        Подсказка
+                                    </p>
                                 </div>
                             </div>
-                            <div class="form-check">
-                                <input class="form-check-input modal__check" type="checkbox" value=""
-                                    id="fcustomCheck1">
-                                <label class="custom-control-label" for="customCheck1">Менеджмент</label>
-                                <div class="dropdown2">
-                                    <img src="@/assets/img/info.svg" style="
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input modal__check" type="checkbox" value="" id="fcustomCheck1">
+                            <label class="custom-control-label" for="customCheck1">Касса</label>
+                            <div class="dropdown2">
+                                <img src="@/assets/img/info.svg" style="
                             width: 1.25vw;
                             margin-left: 1.667vw;
                             cursor: help;
                           " alt="" />
-                                    <div class="dropdown-content">
-                                        <p>
-                                            Подсказка
-                                        </p>
-                                    </div>
+                                <div class="dropdown-content">
+                                    <p>
+                                        Подсказка
+                                    </p>
                                 </div>
                             </div>
-                            <div class="form-check">
-                                <input class="form-check-input modal__check" type="checkbox" value=""
-                                    id="fcustomCheck1">
-                                <label class="custom-control-label" for="customCheck1">Настройки</label>
-                                <div class="dropdown2">
-                                    <img src="@/assets/img/info.svg" style="
+                        </div>
+                    </div>
+                    <div>
+                        <div class="form-check">
+                            <input class="form-check-input modal__check" type="checkbox" value="" id="fcustomCheck1">
+                            <label class="custom-control-label" for="customCheck1">Аналитика</label>
+                            <div class="dropdown2">
+                                <img src="@/assets/img/info.svg" style="
                             width: 1.25vw;
                             margin-left: 1.667vw;
                             cursor: help;
                           " alt="" />
-                                    <div class="dropdown-content">
-                                        <p>
-                                            Подсказка
-                                        </p>
-                                    </div>
+                                <div class="dropdown-content">
+                                    <p>
+                                        Подсказка
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input modal__check" type="checkbox" value="" id="fcustomCheck1">
+                            <label class="custom-control-label" for="customCheck1">Закупки</label>
+                            <div class="dropdown2">
+                                <img src="@/assets/img/info.svg" style="
+                            width: 1.25vw;
+                            margin-left: 1.667vw;
+                            cursor: help;
+                          " alt="" />
+                                <div class="dropdown-content">
+                                    <p>
+                                        Подсказка
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input modal__check" type="checkbox" value="" id="fcustomCheck1">
+                            <label class="custom-control-label" for="customCheck1">Бухгалтерия</label>
+                            <div class="dropdown2">
+                                <img src="@/assets/img/info.svg" style="
+                            width: 1.25vw;
+                            margin-left: 1.667vw;
+                            cursor: help;
+                          " alt="" />
+                                <div class="dropdown-content">
+                                    <p>
+                                        Подсказка
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input modal__check" type="checkbox" value="" id="fcustomCheck1">
+                            <label class="custom-control-label" for="customCheck1">Менеджмент</label>
+                            <div class="dropdown2">
+                                <img src="@/assets/img/info.svg" style="
+                            width: 1.25vw;
+                            margin-left: 1.667vw;
+                            cursor: help;
+                          " alt="" />
+                                <div class="dropdown-content">
+                                    <p>
+                                        Подсказка
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input modal__check" type="checkbox" value="" id="fcustomCheck1">
+                            <label class="custom-control-label" for="customCheck1">Настройки</label>
+                            <div class="dropdown2">
+                                <img src="@/assets/img/info.svg" style="
+                            width: 1.25vw;
+                            margin-left: 1.667vw;
+                            cursor: help;
+                          " alt="" />
+                                <div class="dropdown-content">
+                                    <p>
+                                        Подсказка
+                                    </p>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="clients__modal text-start" v-if="isEdit == 'yes'">
-                    <div class="form-group">
-                        <label for="example-text-input" class="form-control-label">Название роли</label>
-                        <input class="form-control" type="text" placeholder="Введите название роли"
-                            id="example-text-input" />
-                    </div>
-                    <p class="mb-0 role__text">Выбор доступных разделов</p>
-                    <div class="d-flex justify-content-between mt-4">
-                        <div>
-                            <div class="form-check">
-                                <input class="form-check-input modal__check" type="checkbox" value=""
-                                    id="fcustomCheck1">
-                                <label class="custom-control-label" for="customCheck1">Главная</label>
-                                <div class="dropdown2">
-                                    <img src="@/assets/img/info.svg" style="
+            </div>
+            <div class="clients__modal text-start" v-if="isEdit == 'yes'">
+                <div class="form-group">
+                    <label for="example-text-input" class="form-control-label">Название роли</label>
+                    <input class="form-control" type="text" placeholder="Введите название роли"
+                        id="example-text-input" />
+                </div>
+                <p class="mb-0 role__text">Выбор доступных разделов</p>
+                <div class="d-flex justify-content-between mt-4">
+                    <div>
+                        <div class="form-check">
+                            <input class="form-check-input modal__check" type="checkbox" value="" id="fcustomCheck1">
+                            <label class="custom-control-label" for="customCheck1">Главная</label>
+                            <div class="dropdown2">
+                                <img src="@/assets/img/info.svg" style="
                             width: 1.25vw;
                             margin-left: 1.667vw;
                             cursor: help;
                           " alt="" />
-                                    <div class="dropdown-content">
-                                        <p>
-                                            Подсказка
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input modal__check" type="checkbox" value=""
-                                    id="fcustomCheck1">
-                                <label class="custom-control-label" for="customCheck1">Складской учет</label>
-                                <div class="dropdown2">
-                                    <img src="@/assets/img/info.svg" style="
-                            width: 1.25vw;
-                            margin-left: 1.667vw;
-                            cursor: help;
-                          " alt="" />
-                                    <div class="dropdown-content">
-                                        <p>
-                                            Подсказка
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input modal__check" type="checkbox" value=""
-                                    id="fcustomCheck1">
-                                <label class="custom-control-label" for="customCheck1">Учёт товаров</label>
-                                <div class="dropdown2">
-                                    <img src="@/assets/img/info.svg" style="
-                            width: 1.25vw;
-                            margin-left: 1.667vw;
-                            cursor: help;
-                          " alt="" />
-                                    <div class="dropdown-content">
-                                        <p>
-                                            Подсказка
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input modal__check" type="checkbox" value=""
-                                    id="fcustomCheck1">
-                                <label class="custom-control-label" for="customCheck1">Продажи</label>
-                                <div class="dropdown2">
-                                    <img src="@/assets/img/info.svg" style="
-                            width: 1.25vw;
-                            margin-left: 1.667vw;
-                            cursor: help;
-                          " alt="" />
-                                    <div class="dropdown-content">
-                                        <p>
-                                            Подсказка
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input modal__check" type="checkbox" value=""
-                                    id="fcustomCheck1">
-                                <label class="custom-control-label" for="customCheck1">Касса</label>
-                                <div class="dropdown2">
-                                    <img src="@/assets/img/info.svg" style="
-                            width: 1.25vw;
-                            margin-left: 1.667vw;
-                            cursor: help;
-                          " alt="" />
-                                    <div class="dropdown-content">
-                                        <p>
-                                            Подсказка
-                                        </p>
-                                    </div>
+                                <div class="dropdown-content">
+                                    <p>
+                                        Подсказка
+                                    </p>
                                 </div>
                             </div>
                         </div>
-                        <div>
-                            <div class="form-check">
-                                <input class="form-check-input modal__check" type="checkbox" value=""
-                                    id="fcustomCheck1">
-                                <label class="custom-control-label" for="customCheck1">Аналитика</label>
-                                <div class="dropdown2">
-                                    <img src="@/assets/img/info.svg" style="
+                        <div class="form-check">
+                            <input class="form-check-input modal__check" type="checkbox" value="" id="fcustomCheck1">
+                            <label class="custom-control-label" for="customCheck1">Складской учет</label>
+                            <div class="dropdown2">
+                                <img src="@/assets/img/info.svg" style="
                             width: 1.25vw;
                             margin-left: 1.667vw;
                             cursor: help;
                           " alt="" />
-                                    <div class="dropdown-content">
-                                        <p>
-                                            Подсказка
-                                        </p>
-                                    </div>
+                                <div class="dropdown-content">
+                                    <p>
+                                        Подсказка
+                                    </p>
                                 </div>
                             </div>
-                            <div class="form-check">
-                                <input class="form-check-input modal__check" type="checkbox" value=""
-                                    id="fcustomCheck1">
-                                <label class="custom-control-label" for="customCheck1">Закупки</label>
-                                <div class="dropdown2">
-                                    <img src="@/assets/img/info.svg" style="
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input modal__check" type="checkbox" value="" id="fcustomCheck1">
+                            <label class="custom-control-label" for="customCheck1">Учёт товаров</label>
+                            <div class="dropdown2">
+                                <img src="@/assets/img/info.svg" style="
                             width: 1.25vw;
                             margin-left: 1.667vw;
                             cursor: help;
                           " alt="" />
-                                    <div class="dropdown-content">
-                                        <p>
-                                            Подсказка
-                                        </p>
-                                    </div>
+                                <div class="dropdown-content">
+                                    <p>
+                                        Подсказка
+                                    </p>
                                 </div>
                             </div>
-                            <div class="form-check">
-                                <input class="form-check-input modal__check" type="checkbox" value=""
-                                    id="fcustomCheck1">
-                                <label class="custom-control-label" for="customCheck1">Бухгалтерия</label>
-                                <div class="dropdown2">
-                                    <img src="@/assets/img/info.svg" style="
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input modal__check" type="checkbox" value="" id="fcustomCheck1">
+                            <label class="custom-control-label" for="customCheck1">Продажи</label>
+                            <div class="dropdown2">
+                                <img src="@/assets/img/info.svg" style="
                             width: 1.25vw;
                             margin-left: 1.667vw;
                             cursor: help;
                           " alt="" />
-                                    <div class="dropdown-content">
-                                        <p>
-                                            Подсказка
-                                        </p>
-                                    </div>
+                                <div class="dropdown-content">
+                                    <p>
+                                        Подсказка
+                                    </p>
                                 </div>
                             </div>
-                            <div class="form-check">
-                                <input class="form-check-input modal__check" type="checkbox" value=""
-                                    id="fcustomCheck1">
-                                <label class="custom-control-label" for="customCheck1">Менеджмент</label>
-                                <div class="dropdown2">
-                                    <img src="@/assets/img/info.svg" style="
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input modal__check" type="checkbox" value="" id="fcustomCheck1">
+                            <label class="custom-control-label" for="customCheck1">Касса</label>
+                            <div class="dropdown2">
+                                <img src="@/assets/img/info.svg" style="
                             width: 1.25vw;
                             margin-left: 1.667vw;
                             cursor: help;
                           " alt="" />
-                                    <div class="dropdown-content">
-                                        <p>
-                                            Подсказка
-                                        </p>
-                                    </div>
+                                <div class="dropdown-content">
+                                    <p>
+                                        Подсказка
+                                    </p>
                                 </div>
                             </div>
-                            <div class="form-check">
-                                <input class="form-check-input modal__check" type="checkbox" value=""
-                                    id="fcustomCheck1">
-                                <label class="custom-control-label" for="customCheck1">Настройки</label>
-                                <div class="dropdown2">
-                                    <img src="@/assets/img/info.svg" style="
+                        </div>
+                    </div>
+                    <div>
+                        <div class="form-check">
+                            <input class="form-check-input modal__check" type="checkbox" value="" id="fcustomCheck1">
+                            <label class="custom-control-label" for="customCheck1">Аналитика</label>
+                            <div class="dropdown2">
+                                <img src="@/assets/img/info.svg" style="
                             width: 1.25vw;
                             margin-left: 1.667vw;
                             cursor: help;
                           " alt="" />
-                                    <div class="dropdown-content">
-                                        <p>
-                                            Подсказка
-                                        </p>
-                                    </div>
+                                <div class="dropdown-content">
+                                    <p>
+                                        Подсказка
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input modal__check" type="checkbox" value="" id="fcustomCheck1">
+                            <label class="custom-control-label" for="customCheck1">Закупки</label>
+                            <div class="dropdown2">
+                                <img src="@/assets/img/info.svg" style="
+                            width: 1.25vw;
+                            margin-left: 1.667vw;
+                            cursor: help;
+                          " alt="" />
+                                <div class="dropdown-content">
+                                    <p>
+                                        Подсказка
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input modal__check" type="checkbox" value="" id="fcustomCheck1">
+                            <label class="custom-control-label" for="customCheck1">Бухгалтерия</label>
+                            <div class="dropdown2">
+                                <img src="@/assets/img/info.svg" style="
+                            width: 1.25vw;
+                            margin-left: 1.667vw;
+                            cursor: help;
+                          " alt="" />
+                                <div class="dropdown-content">
+                                    <p>
+                                        Подсказка
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input modal__check" type="checkbox" value="" id="fcustomCheck1">
+                            <label class="custom-control-label" for="customCheck1">Менеджмент</label>
+                            <div class="dropdown2">
+                                <img src="@/assets/img/info.svg" style="
+                            width: 1.25vw;
+                            margin-left: 1.667vw;
+                            cursor: help;
+                          " alt="" />
+                                <div class="dropdown-content">
+                                    <p>
+                                        Подсказка
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input modal__check" type="checkbox" value="" id="fcustomCheck1">
+                            <label class="custom-control-label" for="customCheck1">Настройки</label>
+                            <div class="dropdown2">
+                                <img src="@/assets/img/info.svg" style="
+                            width: 1.25vw;
+                            margin-left: 1.667vw;
+                            cursor: help;
+                          " alt="" />
+                                <div class="dropdown-content">
+                                    <p>
+                                        Подсказка
+                                    </p>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </template>
-            <template #footer>
-                <div class="clients__footer" v-if="isEdit == 'no'">
-                    <button class="btn bg-gradient-dark" data-bs-dismiss="modal">Добавить</button>
-                </div>
-                <div class="clients__footer" v-if="isEdit == 'yes'">
-                    <button class="btn bg-gradient-dark" data-bs-dismiss="modal">Сохранить</button>
-                </div>
-                <div class="clients__footer" v-if="isEdit == 'yes'">
-                    <button class="btn delete__btn" data-bs-toggle="modal" data-bs-target="#DeleteInv">
-                        Удалить роль
-                    </button>
-                </div>
-            </template>
-        </inputs-modal>
-        <delete-modal :title="'роли'" :text="`роль &quot;Кассир.&quot;`"></delete-modal>
+            </div>
+        </template>
+        <template #footer>
+            <div class="clients__footer" v-if="isEdit == 'no'">
+                <button class="btn bg-gradient-dark" data-bs-dismiss="modal">Добавить</button>
+            </div>
+            <div class="clients__footer" v-if="isEdit == 'yes'">
+                <button class="btn bg-gradient-dark" data-bs-dismiss="modal">Сохранить</button>
+            </div>
+            <div class="clients__footer" v-if="isEdit == 'yes'">
+                <button class="btn delete__btn" data-bs-toggle="modal" data-bs-target="#DeleteInv">
+                    Удалить роль
+                </button>
+            </div>
+        </template>
+    </inputs-modal>
+    <delete-modal :title="'роли'" :text="`роль &quot;Кассир.&quot;`"></delete-modal>
 </template>
 
 <script>
