@@ -16,7 +16,8 @@
         </lists-header>
         <div class="card py-4 main__card">
           <div class="d-flex justify-content-between align-items-center mx-4 mb-4">
-            <button class="btn bg-gradient-dark mb-0" data-bs-toggle="modal" data-bs-target="#InpModal" style="
+            <a></a>
+            <!-- <button class="btn bg-gradient-dark mb-0" data-bs-toggle="modal" data-bs-target="#InpModal" style="
                   font-size: 14px;
                   font-weight: 600;
                   display: flex;
@@ -24,7 +25,7 @@
                 " @click="isEdit = 'no'">
               <img src="@/assets/img/whtplus.svg" alt="" style="margin-right: 10px" />
               Создать заявку
-            </button>
+            </button> -->
             <div class="table__inputs d-flex gap-3 align-content-center">
               <list-search @searchFilter="(a) => search = a"></list-search>
               <print-button></print-button>
