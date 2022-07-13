@@ -1,173 +1,171 @@
 <template>
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-12">
-          <drop-down>
-            <template #header>
-              <div class="drop__header">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-12">
+        <drop-down>
+          <template #header>
+            <div class="drop__header">
+              <div>
+                <p class="dropdown__title">Создание оприходования</p>
+                <p class="dropdown__sec">
+                  Настройте все параметры и нажмите “Завершить оприходование”
+                </p>
+              </div>
+              <div class="drop__buttons">
+                <action-button style="margin-right:24px"></action-button>
                 <div>
-                  <p class="dropdown__title">Создание оприходования</p>
-                  <p class="dropdown__sec">
-                    Настройте все параметры и нажмите “Завершить оприходование”
-                  </p>
-                </div>
-                <div class="drop__buttons">
-                  <action-button style="margin-right:24px"></action-button>
-                  <div>
-                    <comment-button></comment-button>
-                  </div>
+                  <comment-button></comment-button>
                 </div>
               </div>
-            </template>
-            <template #body>
-              <div class="drowdown__items">
-                <div class="items__block text-start">
-                  <p class="items__title">№ оприходования</p>
-                  <p class="items__text">№ 19</p>
+            </div>
+          </template>
+          <template #body>
+            <div class="drowdown__items">
+              <div class="items__block text-start">
+                <p class="items__title">№ оприходования</p>
+                <p class="items__text">№ 19</p>
+              </div>
+              <div class="items__block text-start" data-bs-toggle="modal" data-bs-target="#InpModal"
+                style="cursor: pointer">
+                <p class="items__title">дата и время</p>
+                <p class="items__text">11 ноя, 19:23, 2021</p>
+              </div>
+              <div class="form-group text-start">
+                <label for="exampleFormControlSelect1" class="items__title">Склад</label>
+                <div class="select">
+                  <select class="form-select" style="border:0 !important;" id="exampleFormControlSelect1">
+                    <option selected disabled>Выберите</option>
+                    <option>ТРЦ Москва</option>
+                    <option>ЦУМ</option>
+                  </select>
                 </div>
-                <div class="items__block text-start" data-bs-toggle="modal" data-bs-target="#InpModal"
-                  style="cursor: pointer">
-                  <p class="items__title">дата и время</p>
-                  <p class="items__text">11 ноя, 19:23, 2021</p>
+              </div>
+              <div class="form-group text-start">
+                <label for="exampleFormControlSelect1" class="items__title">Ответственный</label>
+                <div class="select">
+                  <select class="form-select" style="border:0 !important; margin-right:15px"
+                    id="exampleFormControlSelect1">
+                    <option selected disabled>Выберите</option>
+                    <option>Антон</option>
+                    <option>Валера</option>
+                    <option>Влад</option>
+                  </select>
                 </div>
-                <div class="form-group text-start">
-                  <label for="exampleFormControlSelect1" class="items__title">Склад</label>
-                  <div class="select">
-                    <select class="form-select" style="border:0 !important;" id="exampleFormControlSelect1">
-                      <option selected disabled>Выберите</option>
-                      <option>ТРЦ Москва</option>
-                      <option>ЦУМ</option>
-                    </select>
-                  </div>
-                </div>
-                <div class="form-group text-start">
-                  <label for="exampleFormControlSelect1" class="items__title">Ответственный</label>
-                  <div class="select">
-                    <select class="form-select" style="border:0 !important; margin-right:15px"
-                      id="exampleFormControlSelect1">
-                      <option selected disabled>Выберите</option>
-                      <option>Антон</option>
-                      <option>Валера</option>
-                      <option>Влад</option>
-                    </select>
-                  </div>
-                </div>
-                <div class="items__block text-start">
-                  <p class="items__title">Статус оприходования</p>
-                  <p class="items__text text-start">
-                    <span style="cursor: pointer">Новое</span>
-                  </p>
-                </div>
-                <div class="items__block text-start" style="cursor: pointer"
+              </div>
+              <div class="items__block text-start">
+                <p class="items__title">Статус оприходования</p>
+                <p class="items__text text-start">
+                  <span style="cursor: pointer">Новое</span>
+                </p>
+              </div>
+              <!-- <div class="items__block text-start" style="cursor: pointer"
                   onclick="window.location.href = '/warehouse-accounting/inventorization-list'">
                   <p class="items__title">Инвентаризация</p>
                   <p class="items__text text-start">
                     <span style="text-decoration: underline">Инвентаризация №19</span>,<br />
                     <span style="text-decoration: underline">от 11.11.21</span>
                   </p>
+                </div> -->
+            </div>
+          </template>
+        </drop-down>
+        <div class="card pl-pr">
+          <div class="main-page text-start">
+            <label class="form-control-label ps-3 pt-3 custom__label" for="search">Добавить по штрихкоду</label>
+            <div class="d-flex justify-content-between ps-3">
+              <div class="page_search-inputs d-flex align-items-center gap-3">
+                <div class="form-group m-0">
+                  <div class="input-group form__adapt2">
+                    <span class="input-group-text"><img src="@/assets/css/icons/searchIcon.svg" alt="" /></span>
+                    <input class="form-control" placeholder="Введите штрихкод" id="search-barcode" type="text" />
+                    <span class="input-group-text py-0"><img src="@/assets/css/icons/barcode.svg" alt="" /></span>
+                  </div>
                 </div>
+                <button class="btn bg-gradient-info mb-0" data-bs-toggle="modal" data-bs-target="#SelectDisc">
+                  Выбрать из списка
+                </button>
               </div>
-            </template>
-          </drop-down>
-          <div class="card pl-pr">
-            <div class="main-page text-start">
-              <label class="form-control-label ps-3 pt-3 custom__label" for="search">Добавить по штрихкоду</label>
-              <div class="d-flex justify-content-between ps-3">
+              <div class="d-flex justify-content-between ps-3 pe-4">
                 <div class="page_search-inputs d-flex align-items-center gap-3">
                   <div class="form-group m-0">
-                    <div class="input-group form__adapt2">
+                    <div class="input-group form__adapt">
                       <span class="input-group-text"><img src="@/assets/css/icons/searchIcon.svg" alt="" /></span>
-                      <input class="form-control" placeholder="Введите штрихкод" id="search-barcode" type="text" />
-                      <span class="input-group-text py-0"><img src="@/assets/css/icons/barcode.svg" alt="" /></span>
+                      <input class="form-control" placeholder="Поиск..." id="search" type="text" />
                     </div>
                   </div>
-                  <button class="btn bg-gradient-info mb-0" data-bs-toggle="modal" data-bs-target="#SelectDisc">
-                    Выбрать из списка
+                  <button class="btn bg-gradient-dark mb-0"
+                    onclick="window.location.href = '/warehouse-accounting/post-list'">
+                    Завершить оприходование
                   </button>
                 </div>
-                <div class="d-flex justify-content-between ps-3 pe-4">
-                  <div class="page_search-inputs d-flex align-items-center gap-3">
-                    <div class="form-group m-0">
-                      <div class="input-group form__adapt">
-                        <span class="input-group-text"><img src="@/assets/css/icons/searchIcon.svg" alt="" /></span>
-                        <input class="form-control" placeholder="Поиск..." id="search" type="text" />
-                      </div>
-                    </div>
-                    <button class="btn bg-gradient-dark mb-0"
-                      onclick="window.location.href = '/warehouse-accounting/post-list'">
-                      Завершить оприходование
-                    </button>
-                  </div>
-                </div>
               </div>
-              <div v-if="isAdded == false">
-                <not-added-table :documentName="'оприходование'"></not-added-table>
-              </div>
-              <div class="inv__block" v-if="isAdded">
-                <div class="inv__content">
-                  <div>
-                    <table class="table table-hover text-center">
-                      <thead>
-                        <tr>
-                          <th scope="col" class="">№</th>
-                          <th scope="col" class="">Артикул</th>
-                          <th scope="col" class="">Товар</th>
-                          <th scope="col" class="">Категория</th>
-                          <th scope="col" class="">Кол-во</th>
-                          <th scope="col" class="">Цена</th>
-                          <th scope="col" class="">Сумма</th>
-                          <th scope="col" class=""></th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr v-for="(item, i) in paginationList" :key="item">
-                          <td scope="row">{{ i + 1 }}</td>
-                          <td>{{ item.code }}</td>
-                          <td>{{ item.name }}</td>
-                          <td>{{ item.category }}</td>
-                          <td>{{ item.count }}</td>
-                          <td>{{ item.price }} <span>₸</span></td>
-                          <td>{{ item.count * item.price }} <span>₸</span></td>
-                          <td>
-                            <img src="@/assets/img/dots.svg" style="width: 1.563vw; cursor: pointer" alt="" />
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
-              </div>
-              <pagination-component v-if="isAdded" :filteredArr="items" :strAmount="7"
-                @PaginationReload="reloadPagination" class="pb-4 pagination__size"></pagination-component>
             </div>
+            <div v-if="isAdded == false">
+              <not-added-table :documentName="'оприходование'"></not-added-table>
+            </div>
+            <div class="inv__block" v-if="isAdded">
+              <div class="inv__content">
+                <div>
+                  <table class="table table-hover text-center">
+                    <thead>
+                      <tr>
+                        <th scope="col" class="">Артикул</th>
+                        <th scope="col" class="">Товар</th>
+                        <th scope="col" class="">Категория</th>
+                        <th scope="col" class="">Кол-во</th>
+                        <th scope="col" class="">Цена</th>
+                        <th scope="col" class="">Сумма</th>
+                        <th scope="col" class=""></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr v-for="item in paginationList" :key="item">
+                        <td>{{ item.code }}</td>
+                        <td>{{ item.name }}</td>
+                        <td>{{ item.category }}</td>
+                        <td>{{ item.count }}</td>
+                        <td>{{ item.price }} <span>₸</span></td>
+                        <td>{{ item.count * item.price }} <span>₸</span></td>
+                        <td>
+                          <img src="@/assets/img/dots.svg" style="width: 1.563vw; cursor: pointer" alt="" />
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+            <pagination-component v-if="isAdded" :filteredArr="items" :strAmount="7"
+              @PaginationReload="reloadPagination" class="pb-4 pagination__size"></pagination-component>
           </div>
         </div>
       </div>
     </div>
-    <inputs-modal>
-      <template #head>
-        <div style="text-align: left">
-          <p class="header__main">Изменение Даты</p>
-          <p class="header__sec">Измените данные и нажмите “Сохранить”</p>
+  </div>
+  <inputs-modal>
+    <template #head>
+      <div style="text-align: left">
+        <p class="header__main">Изменение Даты</p>
+        <p class="header__sec">Измените данные и нажмите “Сохранить”</p>
+      </div>
+    </template>
+    <template #body>
+      <div class="clients__modal">
+        <div class="form-group text-start">
+          <label for="example-datetime-local-input" class="form-control-label">Выберите дату и время</label>
+          <input class="form-control" type="datetime-local" value="2018-11-23T10:30:00"
+            id="example-datetime-local-input" />
         </div>
-      </template>
-      <template #body>
-        <div class="clients__modal">
-          <div class="form-group text-start">
-            <label for="example-datetime-local-input" class="form-control-label">Выберите дату и время</label>
-            <input class="form-control" type="datetime-local" value="2018-11-23T10:30:00"
-              id="example-datetime-local-input" />
-          </div>
-        </div>
-      </template>
-      <template #footer>
-        <div class="clients__footer">
-          <button class="btn clients__save">Сохранить</button>
-        </div>
-      </template>
-    </inputs-modal>
-    <select-product></select-product>
-    <commentary :pageTitle="'Создание оприходования'"></commentary>
+      </div>
+    </template>
+    <template #footer>
+      <div class="clients__footer">
+        <button class="btn clients__save">Сохранить</button>
+      </div>
+    </template>
+  </inputs-modal>
+  <select-product></select-product>
+  <commentary :pageTitle="'Создание оприходования'"></commentary>
 </template>
 
 <script>

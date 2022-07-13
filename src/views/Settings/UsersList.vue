@@ -1,167 +1,165 @@
 <template>
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-12">
-                    <lists-header>
-                        <template v-slot:title> Список пользователей </template>
-                        <template v-slot:description>
-                            Внесите изменения и не забудьте нажать “Сохранить”
-                        </template>
-                    </lists-header>
-                    <div class="card pt-4 pb-6">
-                        <div class="d-flex justify-content-between align-items-center mx-4 mb-4">
-                            <div>
-                                <button class="btn bg-gradient-dark btn-add mb-0" style="
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <lists-header>
+                    <template v-slot:title> Список пользователей </template>
+                    <template v-slot:description>
+                        Внесите изменения и не забудьте нажать “Сохранить”
+                    </template>
+                </lists-header>
+                <div class="card pt-4 pb-6">
+                    <div class="d-flex justify-content-between align-items-center mx-4 mb-4">
+                        <div>
+                            <button class="btn bg-gradient-dark btn-add mb-0" style="
                     margin-right: 0.833vw;
                     display: flex;
                     align-items: center;
                   " data-bs-toggle="modal" data-bs-target="#InpModal" @click="isEdit = 'no'">
-                                    <img src="@/assets/img/whtplus.svg" style="margin-right: 10px" alt="" />
-                                    Добавить пользователя
-                                </button>
-                            </div>
-                            <div class="table__inputs d-flex gap-3 align-content-center">
-                                <filter-button class="mb-0"></filter-button>
-                                <list-search @searchFilter="(a) => search = a"></list-search>
-                            </div>
+                                <img src="@/assets/img/whtplus.svg" style="margin-right: 10px" alt="" />
+                                Добавить пользователя
+                            </button>
                         </div>
-                        <div class="page__table">
-                            <table class="table table-hover table-striped">
-                                <thead>
-                                    <tr class="">
-                                        <th scope="col" class="th__col" style="width: 25px; padding-left: 27px"></th>
-                                        <th width="1%" scope="col" class="th__col">№</th>
-                                        <th scope="col" class="th__col">Логин</th>
-                                        <th scope="col" class="th__col">Сотрудник</th>
-                                        <th scope="col" class="th__col">Роль</th>
-                                        <th scope="col" class="th__col">Действия</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr v-for="order of paginationList" :key="order.id">
-                                        <td scope="row" style="padding-left: 27px">
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" value=""
-                                                    id="fcustomCheck1" />
-                                            </div>
-                                        </td>
-                                        <td width="1%">{{ order.listNumber + 1 }}</td>
-                                        <td>{{ order.login }}</td>
-                                        <td>{{ order.name }}</td>
-                                        <td>{{ order.role }}</td>
-
-                                        <td class="dropdown">
-                                            <img src="@/assets/img/dots.svg" style="width: 1.563vw; cursor: pointer"
-                                                alt="" />
-                                            <div class="dropdown-content">
-                                                <a style="cursor: pointer" data-bs-toggle="modal"
-                                                    data-bs-target="#InpModal" @click="isEdit = 'yes'">Редактировать</a>
-                                                <hr />
-                                                <a style="cursor: pointer" data-bs-toggle="modal"
-                                                    data-bs-target="#DeleteInv">Удалить</a>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                        <div class="table__inputs d-flex gap-3 align-content-center">
+                            <filter-button class="mb-0"></filter-button>
+                            <list-search @searchFilter="(a) => search = a"></list-search>
                         </div>
-                        <pagination-component :filteredArr="filteredList" :strAmount="10"
-                            @PaginationReload="reloadPagination" class="pagination__size"></pagination-component>
                     </div>
+                    <div class="page__table">
+                        <table class="table table-hover table-striped">
+                            <thead>
+                                <tr class="">
+                                    <th scope="col" class="th__col" style="width: 25px; padding-left: 27px"></th>
+                                    <th scope="col" class="th__col">Логин</th>
+                                    <th scope="col" class="th__col">Сотрудник</th>
+                                    <th scope="col" class="th__col">Роль</th>
+                                    <th scope="col" class="th__col">Действия</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr v-for="order of paginationList" :key="order.id">
+                                    <td scope="row" style="padding-left: 27px">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value=""
+                                                id="fcustomCheck1" />
+                                        </div>
+                                    </td>
+                                    <td>{{ order.login }}</td>
+                                    <td>{{ order.name }}</td>
+                                    <td>{{ order.role }}</td>
+
+                                    <td class="dropdown">
+                                        <img src="@/assets/img/dots.svg" style="width: 1.563vw; cursor: pointer"
+                                            alt="" />
+                                        <div class="dropdown-content">
+                                            <a style="cursor: pointer" data-bs-toggle="modal" data-bs-target="#InpModal"
+                                                @click="isEdit = 'yes'">Редактировать</a>
+                                            <hr />
+                                            <a style="cursor: pointer" data-bs-toggle="modal"
+                                                data-bs-target="#DeleteInv">Удалить</a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <pagination-component :filteredArr="filteredList" :strAmount="10"
+                        @PaginationReload="reloadPagination" class="pagination__size"></pagination-component>
                 </div>
             </div>
         </div>
-        <inputs-modal>
-            <template #head>
-                <div style="text-align: left" v-if="isEdit == 'no'">
-                    <p class="header__main">Добавление пользователя</p>
-                    <p class="header__sec">
-                        Введите данные пользователя и нажмите “Добавить”
-                    </p>
+    </div>
+    <inputs-modal>
+        <template #head>
+            <div style="text-align: left" v-if="isEdit == 'no'">
+                <p class="header__main">Добавление пользователя</p>
+                <p class="header__sec">
+                    Введите данные пользователя и нажмите “Добавить”
+                </p>
+            </div>
+            <div style="text-align: left" v-if="isEdit == 'yes'">
+                <p class="header__main">Пользователь Moon</p>
+                <p class="header__sec">Измените данные и нажмите “Сохранить”</p>
+            </div>
+        </template>
+        <template #body>
+            <div class="clients__modal" v-if="isEdit == 'no'">
+                <div class="form-group">
+                    <label for="example-text-input" class="form-control-label">Логин</label>
+                    <input class="form-control" type="text" placeholder="Введите логин" id="example-text-input" />
                 </div>
-                <div style="text-align: left" v-if="isEdit == 'yes'">
-                    <p class="header__main">Пользователь Moon</p>
-                    <p class="header__sec">Измените данные и нажмите “Сохранить”</p>
+                <div class="form-group">
+                    <label for="example-text-input" class="form-control-label">Пароль</label>
+                    <input class="form-control" type="text" placeholder="Введите пароль" id="example-text-input" />
                 </div>
-            </template>
-            <template #body>
-                <div class="clients__modal" v-if="isEdit == 'no'">
-                    <div class="form-group">
-                        <label for="example-text-input" class="form-control-label">Логин</label>
-                        <input class="form-control" type="text" placeholder="Введите логин" id="example-text-input" />
-                    </div>
-                    <div class="form-group">
-                        <label for="example-text-input" class="form-control-label">Пароль</label>
-                        <input class="form-control" type="text" placeholder="Введите пароль" id="example-text-input" />
-                    </div>
-                    <div class="form-group">
-                        <label class="form-control-label" for="Статус заявки">Роль</label>
-                        <select class="form-select">
-                            <option selected disabled>Выберите роль</option>
-                            <option>Кассир</option>
-                            <option>Складовщик</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label class="form-control-label" for="Статус заявки">Сотрудник</label>
-                        <select class="form-select">
-                            <option selected disabled>Выберите сотрудника</option>
-                            <option>Тиханова О.А</option>
-                            <option>Тиханова О.А</option>
-                        </select>
-                    </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="Статус заявки">Роль</label>
+                    <select class="form-select">
+                        <option selected disabled>Выберите роль</option>
+                        <option>Кассир</option>
+                        <option>Складовщик</option>
+                    </select>
                 </div>
-                <div class="clients__modal" v-if="isEdit == 'yes'">
-                    <div class="form-group">
-                        <label for="example-text-input" class="form-control-label">Логин</label>
-                        <input class="form-control" type="text" placeholder="Введите логин" id="example-text-input" />
-                    </div>
-                    <div class="form-group">
-                        <label for="example-text-input" class="form-control-label">Пароль</label>
-                        <input class="form-control" type="text" placeholder="Введите пароль" id="example-text-input" />
-                    </div>
-                    <div class="form-group">
-                        <label class="form-control-label" for="Статус заявки">Роль</label>
-                        <select class="form-select">
-                            <option selected disabled>Выберите роль</option>
-                            <option>Кассир</option>
-                            <option>Складовщик</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label class="form-control-label" for="Статус заявки">Сотрудник</label>
-                        <select class="form-select">
-                            <option selected disabled>Выберите сотрудника</option>
-                            <option>Тиханова О.А</option>
-                            <option>Тиханова О.А</option>
-                        </select>
-                    </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="Статус заявки">Сотрудник</label>
+                    <select class="form-select">
+                        <option selected disabled>Выберите сотрудника</option>
+                        <option>Тиханова О.А</option>
+                        <option>Тиханова О.А</option>
+                    </select>
                 </div>
-            </template>
-            <template #footer>
-                <div class="clients__footer" v-if="isEdit == 'no'">
-                    <button class="btn bg-gradient-dark" data-bs-dismiss="modal">Добавить</button>
+            </div>
+            <div class="clients__modal" v-if="isEdit == 'yes'">
+                <div class="form-group">
+                    <label for="example-text-input" class="form-control-label">Логин</label>
+                    <input class="form-control" type="text" placeholder="Введите логин" id="example-text-input" />
                 </div>
-                <div class="clients__footer" v-if="isEdit == 'yes'">
-                    <button class="btn bg-gradient-dark" data-bs-dismiss="modal">Сохранить</button>
+                <div class="form-group">
+                    <label for="example-text-input" class="form-control-label">Пароль</label>
+                    <input class="form-control" type="text" placeholder="Введите пароль" id="example-text-input" />
                 </div>
-                <div class="clients__footer" v-if="isEdit == 'yes'">
-                    <button class="btn delete__btn" data-bs-toggle="modal" data-bs-target="#DeleteInv">
-                        Удалить пользователя
-                    </button>
+                <div class="form-group">
+                    <label class="form-control-label" for="Статус заявки">Роль</label>
+                    <select class="form-select">
+                        <option selected disabled>Выберите роль</option>
+                        <option>Кассир</option>
+                        <option>Складовщик</option>
+                    </select>
                 </div>
-            </template>
-        </inputs-modal>
-        <delete-modal :title="'пользователя'" :text="`пользователя &quot;Moon&quot;`"></delete-modal>
+                <div class="form-group">
+                    <label class="form-control-label" for="Статус заявки">Сотрудник</label>
+                    <select class="form-select">
+                        <option selected disabled>Выберите сотрудника</option>
+                        <option>Тиханова О.А</option>
+                        <option>Тиханова О.А</option>
+                    </select>
+                </div>
+            </div>
+        </template>
+        <template #footer>
+            <div class="clients__footer" v-if="isEdit == 'no'">
+                <button class="btn bg-gradient-dark" data-bs-dismiss="modal">Добавить</button>
+            </div>
+            <div class="clients__footer" v-if="isEdit == 'yes'">
+                <button class="btn bg-gradient-dark" data-bs-dismiss="modal">Сохранить</button>
+            </div>
+            <div class="clients__footer" v-if="isEdit == 'yes'">
+                <button class="btn delete__btn" data-bs-toggle="modal" data-bs-target="#DeleteInv">
+                    Удалить пользователя
+                </button>
+            </div>
+        </template>
+    </inputs-modal>
+    <delete-modal :title="'пользователя'" :text="`пользователя &quot;Moon&quot;`"></delete-modal>
     <the-filter :orders="orders" @no-filter="cancelFilters">
-    <p class="text-start my-2 fw-bold" for="Склад">Роль сотрудника</p>
-    <select class="form-select" v-model="filterRole">
-        <option disabled value="">Выберите роль</option>
-        <option v-for="role of roles" :key="role.id">
-            {{ role.role }}
-        </option>
-    </select>
-  </the-filter>
+        <p class="text-start my-2 fw-bold" for="Склад">Роль сотрудника</p>
+        <select class="form-select" v-model="filterRole">
+            <option disabled value="">Выберите роль</option>
+            <option v-for="role of roles" :key="role.id">
+                {{ role.role }}
+            </option>
+        </select>
+    </the-filter>
 </template>
 
 <script>
@@ -302,15 +300,15 @@ export default {
     },
     computed: {
         filteredList() {
-            if(this.filterRole != '' && this.filterRole!='Выберите роль'){
+            if (this.filterRole != '' && this.filterRole != 'Выберите роль') {
                 let orders = this.orders.filter((order) =>
-                order.role.toLowerCase() == this.filterRole.toLowerCase()
-            );
-            return orders.filter((order) =>
-                (String(order.login).toLowerCase().includes(String(this.search).toLowerCase())) ||
-                (String(order.name).toLowerCase().includes(String(this.search).toLowerCase())) ||
-                (String(order.role).toLowerCase().includes(String(this.search).toLowerCase()))
-            );
+                    order.role.toLowerCase() == this.filterRole.toLowerCase()
+                );
+                return orders.filter((order) =>
+                    (String(order.login).toLowerCase().includes(String(this.search).toLowerCase())) ||
+                    (String(order.name).toLowerCase().includes(String(this.search).toLowerCase())) ||
+                    (String(order.role).toLowerCase().includes(String(this.search).toLowerCase()))
+                );
             }
             return this.orders.filter((order) =>
                 (String(order.login).toLowerCase().includes(String(this.search).toLowerCase())) ||

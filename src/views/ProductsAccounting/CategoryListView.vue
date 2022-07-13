@@ -1,144 +1,140 @@
 <template>
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-12">
-          <lists-header>
-            <template v-slot:title> Список категорий </template>
-            <template v-slot:description>Внесите изменения и не забудьте нажать “Сохранить”</template>
-          </lists-header>
-          <div class="card">
-            <div class="inv__buttons">
-              <div class="inv__left__btn">
-                <button type="button" class="btn bg-gradient-secondary" @click="isEdit = false" data-bs-toggle="modal"
-                  data-bs-target="#InpModal">
-                  <img src="@/assets/img/whtplus.svg" style="width: 1.042vw; margin-right: 0.729vw" alt="" />
-                  Добавить новую категорию
-                </button>
-              </div>
-              <div class="inv__right__btn gap-3">
-                <list-search @searchFilter="(a) => search = a"></list-search>
-                <print-button></print-button>
-                <download-button></download-button>
-                <filters-button></filters-button>
-              </div>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-12">
+        <lists-header>
+          <template v-slot:title> Список категорий </template>
+          <template v-slot:description>Внесите изменения и не забудьте нажать “Сохранить”</template>
+        </lists-header>
+        <div class="card">
+          <div class="inv__buttons">
+            <div class="inv__left__btn">
+              <button type="button" class="btn bg-gradient-secondary" @click="isEdit = false" data-bs-toggle="modal"
+                data-bs-target="#InpModal">
+                <img src="@/assets/img/whtplus.svg" style="width: 1.042vw; margin-right: 0.729vw" alt="" />
+                Добавить новую категорию
+              </button>
             </div>
-            <div class="inv__block">
-              <div class="inv__content">
-                <table class="table table-hover table-striped">
-                  <thead>
-                    <tr>
-                      <th scope="col" class="th__col">№</th>
-                      <th scope="col" class="th__col">Категория</th>
-                      <th scope="col" class="th__col">Основная Категория</th>
-
-                      <th scope="col" class="th__col">Действия</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr v-for="item in paginationList" :key="item">
-                      <td>
-                        {{ item.listNumber + 1 }}
-                      </td>
-                      <td>
-                        {{ item.category }}
-                      </td>
-                      <td width="75%">
-                        {{ item.maincat }}
-                      </td>
-                      <td class="dropdown">
-                        <img src="@/assets/img/dots.svg" style="width: 1.563vw; cursor: pointer" alt="" />
-                        <div class="dropdown-content">
-                          <a @click="isEdit = true" data-bs-toggle="modal" data-bs-target="#InpModal"
-                            style="cursor: pointer">Редактировать</a>
-                          <hr />
-                          <a style="cursor: pointer" data-bs-toggle="modal" data-bs-target="#DeleteInv">Удалить</a>
-                        </div>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
+            <div class="inv__right__btn gap-3">
+              <list-search @searchFilter="(a) => search = a"></list-search>
+              <print-button></print-button>
+              <download-button></download-button>
+              <filters-button></filters-button>
             </div>
-            <pagination-component :filteredArr="filteredCategory" :strAmount="10" @PaginationReload="reloadPagination"
-              class="pb-4"></pagination-component>
           </div>
+          <div class="inv__block">
+            <div class="inv__content">
+              <table class="table table-hover table-striped">
+                <thead>
+                  <tr>
+                    <th scope="col" class="th__col">Категория</th>
+                    <th scope="col" class="th__col">Основная Категория</th>
+
+                    <th scope="col" class="th__col">Действия</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr v-for="item in paginationList" :key="item">
+                    <td>
+                      {{ item.category }}
+                    </td>
+                    <td width="75%">
+                      {{ item.maincat }}
+                    </td>
+                    <td class="dropdown">
+                      <img src="@/assets/img/dots.svg" style="width: 1.563vw; cursor: pointer" alt="" />
+                      <div class="dropdown-content">
+                        <a @click="isEdit = true" data-bs-toggle="modal" data-bs-target="#InpModal"
+                          style="cursor: pointer">Редактировать</a>
+                        <hr />
+                        <a style="cursor: pointer" data-bs-toggle="modal" data-bs-target="#DeleteInv">Удалить</a>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <pagination-component :filteredArr="filteredCategory" :strAmount="10" @PaginationReload="reloadPagination"
+            class="pb-4"></pagination-component>
         </div>
       </div>
     </div>
-    <inputs-modal>
-      <template #head>
-        <div style="text-align: left" v-if="isEdit == false">
-          <p class="header__main">Добавление категории</p>
-          <p class="header__sec">
-            Введите название категории и нажмите “Добавить”
-          </p>
+  </div>
+  <inputs-modal>
+    <template #head>
+      <div style="text-align: left" v-if="isEdit == false">
+        <p class="header__main">Добавление категории</p>
+        <p class="header__sec">
+          Введите название категории и нажмите “Добавить”
+        </p>
+      </div>
+      <div style="text-align: left" v-if="isEdit == true">
+        <p class="header__main">Редактирование категории</p>
+        <p class="header__sec">
+          Введите название категории и нажмите “Сохранить”
+        </p>
+      </div>
+    </template>
+    <template #body>
+      <div class="body__content" v-if="isEdit == false">
+        <div class="form-group" style="text-align: left">
+          <label for="exampleFormControlInput1" class="label__text">Название категории</label>
+          <input type="text" class="form-control modal__inp" id="exampleFormControlInput1"
+            placeholder="Введите название" />
         </div>
-        <div style="text-align: left" v-if="isEdit == true">
-          <p class="header__main">Редактирование категории</p>
-          <p class="header__sec">
-            Введите название категории и нажмите “Сохранить”
-          </p>
+        <div class="form-check d-flex align-items-center" style="text-align: left">
+          <input class="form-check-input" @change="checked = !checked" type="checkbox" value="" id="fcustomCheck1" />
+          <label class="custom-control-label label__check mb-0" for="customCheck1">Подчиненная
+            категория</label>
         </div>
-      </template>
-      <template #body>
-        <div class="body__content" v-if="isEdit == false">
-          <div class="form-group" style="text-align: left">
-            <label for="exampleFormControlInput1" class="label__text">Название категории</label>
-            <input type="text" class="form-control modal__inp" id="exampleFormControlInput1"
-              placeholder="Введите название" />
-          </div>
-          <div class="form-check d-flex align-items-center" style="text-align: left">
-            <input class="form-check-input" @change="checked = !checked" type="checkbox" value="" id="fcustomCheck1" />
-            <label class="custom-control-label label__check mb-0" for="customCheck1">Подчиненная
-              категория</label>
-          </div>
-          <div class="form-group" style="text-align: left" v-show="checked">
-            <label for="exampleFormControlSelect1" class="label__text">Основная категория</label>
-            <select class="form-select modal__inp" id="exampleFormControlSelect1" v-model="selected">
-              <option>Верхняя одежда</option>
-              <option>Нижнее белье</option>
-              <option>Штаны</option>
-            </select>
-          </div>
+        <div class="form-group" style="text-align: left" v-show="checked">
+          <label for="exampleFormControlSelect1" class="label__text">Основная категория</label>
+          <select class="form-select modal__inp" id="exampleFormControlSelect1" v-model="selected">
+            <option>Верхняя одежда</option>
+            <option>Нижнее белье</option>
+            <option>Штаны</option>
+          </select>
         </div>
-        <div class="body__content" v-if="isEdit == true">
-          <div class="form-group" style="text-align: left">
-            <label for="exampleFormControlInput1" class="label__text">Название категории</label>
-            <input type="text" class="form-control modal__inp" id="exampleFormControlInput1"
-              placeholder="Введите название" />
-          </div>
-          <div class="form-check d-flex align-items-center" style="text-align: left">
-            <input class="form-check-input" @change="checked = !checked" type="checkbox" value="" id="fcustomCheck1" />
-            <label class="custom-control-label label__check mb-0" for="customCheck1">Подчиненная категория</label>
-          </div>
-          <div class="form-group" style="text-align: left" v-show="checked">
-            <label for="exampleFormControlSelect1" class="label__text">Основная категория</label>
-            <select class="form-select modal__inp" id="exampleFormControlSelect1" v-model="selected">
-              <option>Верхняя одежда</option>
-              <option>Нижнее белье</option>
-              <option>Штаны</option>
-            </select>
-          </div>
+      </div>
+      <div class="body__content" v-if="isEdit == true">
+        <div class="form-group" style="text-align: left">
+          <label for="exampleFormControlInput1" class="label__text">Название категории</label>
+          <input type="text" class="form-control modal__inp" id="exampleFormControlInput1"
+            placeholder="Введите название" />
         </div>
-      </template>
-      <template #footer>
-        <div class="footer__btn" v-if="isEdit == false">
-          <button class="footer__button">Добавить</button>
+        <div class="form-check d-flex align-items-center" style="text-align: left">
+          <input class="form-check-input" @change="checked = !checked" type="checkbox" value="" id="fcustomCheck1" />
+          <label class="custom-control-label label__check mb-0" for="customCheck1">Подчиненная категория</label>
         </div>
-        <div class="footer__btn" v-if="isEdit == true">
-          <button class="footer__button">Сохранить</button>
+        <div class="form-group" style="text-align: left" v-show="checked">
+          <label for="exampleFormControlSelect1" class="label__text">Основная категория</label>
+          <select class="form-select modal__inp" id="exampleFormControlSelect1" v-model="selected">
+            <option>Верхняя одежда</option>
+            <option>Нижнее белье</option>
+            <option>Штаны</option>
+          </select>
         </div>
-      </template>
-    </inputs-modal>
-    <filters @no-filter="cancelFilters">
-      <div class="filter__name__standart">Категории</div>
-      <select class="form-select" v-model="filterCategory">
-        <option value="" disabled selected>Выберите категорию</option>
-        <option v-for="category in categoryList" :key="category">
-          {{ category }}
-        </option>
-      </select>
-      <!-- <div class="form-check" style="text-align: left; margin-top: 0.833vw">
+      </div>
+    </template>
+    <template #footer>
+      <div class="footer__btn" v-if="isEdit == false">
+        <button class="footer__button">Добавить</button>
+      </div>
+      <div class="footer__btn" v-if="isEdit == true">
+        <button class="footer__button">Сохранить</button>
+      </div>
+    </template>
+  </inputs-modal>
+  <filters @no-filter="cancelFilters">
+    <div class="filter__name__standart">Категории</div>
+    <select class="form-select" v-model="filterCategory">
+      <option value="" disabled selected>Выберите категорию</option>
+      <option v-for="category in categoryList" :key="category">
+        {{ category }}
+      </option>
+    </select>
+    <!-- <div class="form-check" style="text-align: left; margin-top: 0.833vw">
         <input
           class="form-check-input"
           type="checkbox"
@@ -152,8 +148,8 @@
           >Показывать только основные категории</label
         >
       </div> -->
-    </filters>
-    <delete-modal :title="'категории'" :text="`категорию &quot;Зимняя одежда&quot;`"></delete-modal>
+  </filters>
+  <delete-modal :title="'категории'" :text="`категорию &quot;Зимняя одежда&quot;`"></delete-modal>
 </template>
 
 <script>

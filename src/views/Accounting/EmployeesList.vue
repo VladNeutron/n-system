@@ -1,160 +1,159 @@
 <template>
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-12">
-          <lists-header>
-            <template v-slot:title> Список сотрудников </template>
-            <template v-slot:description>
-              Внесите изменения и не забудьте нажать “Сохранить”
-            </template>
-          </lists-header>
-          <div class="card pt-4 pb-6">
-            <div class="d-flex justify-content-between align-items-center mx-4 mb-4">
-              <div>
-                <button class="btn bg-gradient-dark btn-add mb-0" style="
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-12">
+        <lists-header>
+          <template v-slot:title> Список сотрудников </template>
+          <template v-slot:description>
+            Внесите изменения и не забудьте нажать “Сохранить”
+          </template>
+        </lists-header>
+        <div class="card pt-4 pb-6">
+          <div class="d-flex justify-content-between align-items-center mx-4 mb-4">
+            <div>
+              <button class="btn bg-gradient-dark btn-add mb-0" style="
                     margin-right: 0.833vw;
                     display: flex;
                     align-items: center;
                   " data-bs-toggle="modal" data-bs-target="#InpModal" @click="isEdit = 'no'">
-                  <img src="@/assets/img/whtplus.svg" style="margin-right: 10px" alt="" />
-                  Добавить сотрудника
-                </button>
-              </div>
-              <div class="table__inputs d-flex gap-3 align-content-center">
-                <list-search @searchFilter="(a) => search = a"></list-search>
-                <print-button></print-button>
-                <download-button></download-button>
-                <filters-button></filters-button>
-              </div>
+                <img src="@/assets/img/whtplus.svg" style="margin-right: 10px" alt="" />
+                Добавить сотрудника
+              </button>
             </div>
-            <div class="page__table">
-              <table class="table table-hover table-striped">
-                <thead>
-                  <tr class="">
-                    <th scope="col" class="th__col" style="width: 25px; padding-left: 27px"></th>
-                    <th width="1%" scope="col" class="th__col">№</th>
-                    <th scope="col" class="th__col">ФИО</th>
-                    <th scope="col" class="th__col">Должность</th>
-                    <th scope="col" class="th__col">Телефон</th>
-                    <th scope="col" class="th__col">Email</th>
-                    <th scope="col" class="th__col">Действия</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr v-for="order of paginationList" :key="order.id">
-                    <td scope="row" style="padding-left: 27px">
-                      <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="fcustomCheck1" />
-                      </div>
-                    </td>
-                    <td width="1%">{{ order.listNumber + 1 }}</td>
-                    <td>{{ order.name }}</td>
-                    <td>{{ order.position }}</td>
-                    <td>{{ order.phoneNumber }}</td>
-                    <td>{{ order.email }}</td>
-                    <td class="dropdown">
-                      <img src="@/assets/img/dots.svg" style="width: 1.563vw; cursor: pointer" alt="" />
-                      <div class="dropdown-content">
-                        <a style="cursor: pointer" data-bs-toggle="modal" data-bs-target="#InpModal"
-                          @click="isEdit = 'yes'">Редактировать</a>
-                        <hr />
-                        <a style="cursor: pointer" data-bs-toggle="modal" data-bs-target="#DeleteInv">Удалить</a>
-                      </div>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
+            <div class="table__inputs d-flex gap-3 align-content-center">
+              <list-search @searchFilter="(a) => search = a"></list-search>
+              <print-button></print-button>
+              <download-button></download-button>
+              <filters-button></filters-button>
             </div>
-            <pagination-component :filteredArr="filteredList" :strAmount="10" @PaginationReload="reloadPagination"
-              class="pagination__size"></pagination-component>
           </div>
+          <div class="page__table">
+            <table class="table table-hover table-striped">
+              <thead>
+                <tr class="">
+                  <th scope="col" class="th__col" style="width: 25px; padding-left: 27px"></th>
+                  <th scope="col" class="th__col">ФИО</th>
+                  <th scope="col" class="th__col">Должность</th>
+                  <th scope="col" class="th__col">Телефон</th>
+                  <th scope="col" class="th__col">Email</th>
+                  <th scope="col" class="th__col">Действия</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr v-for="order of paginationList" :key="order.id">
+                  <td scope="row" style="padding-left: 27px">
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" value="" id="fcustomCheck1" />
+                    </div>
+                  </td>
+
+                  <td>{{ order.name }}</td>
+                  <td>{{ order.position }}</td>
+                  <td>{{ order.phoneNumber }}</td>
+                  <td>{{ order.email }}</td>
+                  <td class="dropdown">
+                    <img src="@/assets/img/dots.svg" style="width: 1.563vw; cursor: pointer" alt="" />
+                    <div class="dropdown-content">
+                      <a style="cursor: pointer" data-bs-toggle="modal" data-bs-target="#InpModal"
+                        @click="isEdit = 'yes'">Редактировать</a>
+                      <hr />
+                      <a style="cursor: pointer" data-bs-toggle="modal" data-bs-target="#DeleteInv">Удалить</a>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <pagination-component :filteredArr="filteredList" :strAmount="10" @PaginationReload="reloadPagination"
+            class="pagination__size"></pagination-component>
         </div>
       </div>
     </div>
-    <inputs-modal>
-      <template #head>
-        <div style="text-align: left" v-if="isEdit == 'no'">
-          <p class="header__main">Добавление сотрудника</p>
-          <p class="header__sec">
-            Введите данные сотрудника и нажмите “Добавить”
-          </p>
+  </div>
+  <inputs-modal>
+    <template #head>
+      <div style="text-align: left" v-if="isEdit == 'no'">
+        <p class="header__main">Добавление сотрудника</p>
+        <p class="header__sec">
+          Введите данные сотрудника и нажмите “Добавить”
+        </p>
+      </div>
+      <div style="text-align: left" v-if="isEdit == 'yes'">
+        <p class="header__main">Сотрудник Ильясов</p>
+        <p class="header__sec">Измените данные и нажмите “Сохранить”</p>
+      </div>
+    </template>
+    <template #body>
+      <div class="clients__modal" v-if="isEdit == 'no'">
+        <div class="form-group">
+          <label for="example-text-input" class="form-control-label">ФИО сотрудника</label>
+          <input class="form-control" type="text" placeholder="Введите ФИО" id="example-text-input" />
         </div>
-        <div style="text-align: left" v-if="isEdit == 'yes'">
-          <p class="header__main">Сотрудник Ильясов</p>
-          <p class="header__sec">Измените данные и нажмите “Сохранить”</p>
+        <div class="form-group">
+          <label class="form-control-label" for="Статус заявки">Должность</label>
+          <select class="form-select">
+            <option selected disabled>Выберите</option>
+            <option>Кассир</option>
+            <option>Складовщик</option>
+          </select>
         </div>
-      </template>
-      <template #body>
-        <div class="clients__modal" v-if="isEdit == 'no'">
-          <div class="form-group">
-            <label for="example-text-input" class="form-control-label">ФИО сотрудника</label>
-            <input class="form-control" type="text" placeholder="Введите ФИО" id="example-text-input" />
-          </div>
-          <div class="form-group">
-            <label class="form-control-label" for="Статус заявки">Должность</label>
-            <select class="form-select">
-              <option selected disabled>Выберите</option>
-              <option>Кассир</option>
-              <option>Складовщик</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="example-text-input1" class="form-control-label">Номер телефона</label>
-            <input class="form-control" type="text" placeholder="Введите номер телефона" id="example-text-input1" />
-          </div>
-          <div class="form-group">
-            <label for="example-text-input2" class="form-control-label">Email</label>
-            <input class="form-control" type="text" placeholder="Введите email" id="example-text-input2" />
-          </div>
+        <div class="form-group">
+          <label for="example-text-input1" class="form-control-label">Номер телефона</label>
+          <input class="form-control" type="text" placeholder="Введите номер телефона" id="example-text-input1" />
         </div>
-        <div class="clients__modal" v-if="isEdit == 'yes'">
-          <div class="form-group">
-            <label for="example-text-input" class="form-control-label">ФИО сотрудника</label>
-            <input class="form-control" type="text" placeholder="Введите ФИО" id="example-text-input" />
-          </div>
-          <div class="form-group">
-            <label class="form-control-label" for="Статус заявки">Должность</label>
-            <select class="form-select">
-              <option selected disabled>Выберите</option>
-              <option>Кассир</option>
-              <option>Складовщик</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="example-text-input1" class="form-control-label">Номер телефона</label>
-            <input class="form-control" type="text" placeholder="Введите номер телефона" id="example-text-input1" />
-          </div>
-          <div class="form-group">
-            <label for="example-text-input2" class="form-control-label">Email</label>
-            <input class="form-control" type="text" placeholder="Введите email" id="example-text-input2" />
-          </div>
+        <div class="form-group">
+          <label for="example-text-input2" class="form-control-label">Email</label>
+          <input class="form-control" type="text" placeholder="Введите email" id="example-text-input2" />
         </div>
-      </template>
-      <template #footer>
-        <div class="clients__footer" v-if="isEdit == 'no'">
-          <button class="btn bg-gradient-dark">Добавить</button>
+      </div>
+      <div class="clients__modal" v-if="isEdit == 'yes'">
+        <div class="form-group">
+          <label for="example-text-input" class="form-control-label">ФИО сотрудника</label>
+          <input class="form-control" type="text" placeholder="Введите ФИО" id="example-text-input" />
         </div>
-        <div class="clients__footer" v-if="isEdit == 'yes'">
-          <button class="btn bg-gradient-dark">Сохранить</button>
+        <div class="form-group">
+          <label class="form-control-label" for="Статус заявки">Должность</label>
+          <select class="form-select">
+            <option selected disabled>Выберите</option>
+            <option>Кассир</option>
+            <option>Складовщик</option>
+          </select>
         </div>
-        <div class="clients__footer" v-if="isEdit == 'yes'">
-          <button class="btn delete__btn" data-bs-toggle="modal" data-bs-target="#DeleteInv">
-            Удалить сотрудника
-          </button>
+        <div class="form-group">
+          <label for="example-text-input1" class="form-control-label">Номер телефона</label>
+          <input class="form-control" type="text" placeholder="Введите номер телефона" id="example-text-input1" />
         </div>
-      </template>
-    </inputs-modal>
-    <the-filter @no-filter="cancelFilters">
-      <p class="text-start my-2 fw-bold" for="position">Должность</p>
-      <select class="form-select" v-model="filterPosition">
-        <option value="" disabled>Выберите должность</option>
-        <option v-for="position of orderPositionsList" :key="position">
-          {{ position }}
-        </option>
-        <option value=""></option>
-      </select>
-    </the-filter>
-    <delete-modal :title="'сотрудника'" :text="`сотрудника &quot;Ильясов Д.С.&quot;`"></delete-modal>
+        <div class="form-group">
+          <label for="example-text-input2" class="form-control-label">Email</label>
+          <input class="form-control" type="text" placeholder="Введите email" id="example-text-input2" />
+        </div>
+      </div>
+    </template>
+    <template #footer>
+      <div class="clients__footer" v-if="isEdit == 'no'">
+        <button class="btn bg-gradient-dark">Добавить</button>
+      </div>
+      <div class="clients__footer" v-if="isEdit == 'yes'">
+        <button class="btn bg-gradient-dark">Сохранить</button>
+      </div>
+      <div class="clients__footer" v-if="isEdit == 'yes'">
+        <button class="btn delete__btn" data-bs-toggle="modal" data-bs-target="#DeleteInv">
+          Удалить сотрудника
+        </button>
+      </div>
+    </template>
+  </inputs-modal>
+  <the-filter @no-filter="cancelFilters">
+    <p class="text-start my-2 fw-bold" for="position">Должность</p>
+    <select class="form-select" v-model="filterPosition">
+      <option value="" disabled>Выберите должность</option>
+      <option v-for="position of orderPositionsList" :key="position">
+        {{ position }}
+      </option>
+      <option value=""></option>
+    </select>
+  </the-filter>
+  <delete-modal :title="'сотрудника'" :text="`сотрудника &quot;Ильясов Д.С.&quot;`"></delete-modal>
 </template>
 
 <script>

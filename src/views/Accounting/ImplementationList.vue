@@ -1,84 +1,82 @@
 <template>
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-12">
-          <lists-header>
-            <template v-slot:title> Реализации </template>
-            <template v-slot:description>
-              Выберите необходимые вам документы
-            </template>
-          </lists-header>
-          <div class="card py-4 main__card">
-            <div class="d-flex justify-content-between align-items-center mx-4 mb-4">
-              <button class="btn bg-gradient-dark mb-0" style="
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-12">
+        <lists-header>
+          <template v-slot:title> Реализации </template>
+          <template v-slot:description>
+            Выберите необходимые вам документы
+          </template>
+        </lists-header>
+        <div class="card py-4 main__card">
+          <div class="d-flex justify-content-between align-items-center mx-4 mb-4">
+            <button class="btn bg-gradient-dark mb-0" style="
                   font-size: 14px;
                   font-weight: 600;
                   display: flex;
                   align-items: center;
                 " onclick="window.location.href = '/accounting/documents/create-implementation'">
-                <img src="@/assets/img/whtplus.svg" alt="" style="margin-right: 10px" />
-                Создать реализацию
-              </button>
-              <div class="table__inputs d-flex gap-3 align-content-center align-items-center">
-                <list-search @searchFilter="(a) => search = a"></list-search>
-                <print-button></print-button>
-                <download-button></download-button>
-                <filter-button class="mb-0"></filter-button>
-              </div>
+              <img src="@/assets/img/whtplus.svg" alt="" style="margin-right: 10px" />
+              Создать реализацию
+            </button>
+            <div class="table__inputs d-flex gap-3 align-content-center align-items-center">
+              <list-search @searchFilter="(a) => search = a"></list-search>
+              <print-button></print-button>
+              <download-button></download-button>
+              <filter-button class="mb-0"></filter-button>
             </div>
-            <div class="page__table">
-              <div class="table-wrapper">
-                <table class="table table-hover text-wrap text-start table-striped">
-                  <thead>
-                    <tr class="text-start">
-                      <th scope="col" class="th__col" style="width: 1px; padding-left: 27px"></th>
-                      <th scope="col" class="th__col">№</th>
-                      <th scope="col" class="th__col">№ Документа</th>
-                      <th scope="col" class="th__col">Дата И ВРЕМЯ</th>
-                      <th scope="col" class="th__col">контрагент</th>
-                      <th scope="col" class="th__col">Ответственный</th>
-                      <th scope="col" class="th__col">Склад</th>
-                      <th scope="col" class="th__col">Количество</th>
-                      <th scope="col" class="th__col">сумма</th>
-                      <th scope="col" class="th__col">действия</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr v-for="order of paginationList" :key="order.id"
-                      ondblclick="window.location.href = '/accounting/documents/edit-implementation'">
-                      <th scope="row" style="padding-left: 27px">
-                        <div class="form-check">
-                          <input class="form-check-input" type="checkbox" value="" id="flexCheckIndeterminate" />
-                        </div>
-                      </th>
-                      <td>{{ order.listNumber + 1 }}</td>
-                      <td>{{ order.id }}</td>
-                      <td>{{ order.date }}</td>
-                      <td>{{ order.contractor }}</td>
-
-                      <td>{{ order.responsible }}</td>
-                      <td>{{ order.warehouse }}</td>
-                      <td>{{ order.amount }}</td>
-                      <td>{{ order.sum }}</td>
-                      <td class="dropdown" style="border-left: 0; width: 100%">
-                        <img src="@/assets/img/dots.svg" style="width: 1.563vw; cursor: pointer" alt="" />
-                        <div class="dropdown-content">
-                          <a href="/accounting/documents/edit-implementation">Редактировать</a>
-                          <hr />
-                          <a style="cursor: pointer" data-bs-toggle="modal" data-bs-target="#DeleteInv">Удалить</a>
-                        </div>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-            <pagination-component :filteredArr="filteredOrders" :strAmount="10" @PaginationReload="reloadPagination"
-              class="pagination__size"></pagination-component>
           </div>
+          <div class="page__table">
+            <div class="table-wrapper">
+              <table class="table table-hover text-wrap text-start table-striped">
+                <thead>
+                  <tr class="text-start">
+                    <th scope="col" class="th__col" style="width: 1px; padding-left: 27px"></th>
+                    <th scope="col" class="th__col">№ Документа</th>
+                    <th scope="col" class="th__col">Дата И ВРЕМЯ</th>
+                    <th scope="col" class="th__col">контрагент</th>
+                    <th scope="col" class="th__col">Ответственный</th>
+                    <th scope="col" class="th__col">Склад</th>
+                    <th scope="col" class="th__col">Количество</th>
+                    <th scope="col" class="th__col">сумма</th>
+                    <th scope="col" class="th__col">действия</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr v-for="order of paginationList" :key="order.id"
+                    ondblclick="window.location.href = '/accounting/documents/edit-implementation'">
+                    <th scope="row" style="padding-left: 27px">
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="flexCheckIndeterminate" />
+                      </div>
+                    </th>
+                    <td>{{ order.id }}</td>
+                    <td>{{ order.date }}</td>
+                    <td>{{ order.contractor }}</td>
+
+                    <td>{{ order.responsible }}</td>
+                    <td>{{ order.warehouse }}</td>
+                    <td>{{ order.amount }}</td>
+                    <td>{{ order.sum }}</td>
+                    <td class="dropdown" style="border-left: 0; width: 100%">
+                      <img src="@/assets/img/dots.svg" style="width: 1.563vw; cursor: pointer" alt="" />
+                      <div class="dropdown-content">
+                        <a href="/accounting/documents/edit-implementation">Редактировать</a>
+                        <hr />
+                        <a style="cursor: pointer" data-bs-toggle="modal" data-bs-target="#DeleteInv">Удалить</a>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <pagination-component :filteredArr="filteredOrders" :strAmount="10" @PaginationReload="reloadPagination"
+            class="pagination__size"></pagination-component>
         </div>
       </div>
     </div>
+  </div>
   <the-filter @no-filter="cancelFilters">
     <div class="filters__period__flex">
       <div class="filter__name__standart">Выберите период</div>

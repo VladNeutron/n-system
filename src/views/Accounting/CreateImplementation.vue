@@ -1,308 +1,305 @@
 <template>
-    <div class="container-fluid">
-      <div class="order__header">
-        <div class="order__header-content">
-          <div class="order__header-main">
-            <div class="order__header-text">
-              <p class="order__header__main">Создание реализации</p>
-              <p class="order__header__sec">
-                Настройте все параметры и нажмите “Сохранить”
-              </p>
-            </div>
-            <div class="drop__buttons">
-              <comment-button style="margin-right: 24px"></comment-button>
-              <action-button style="margin-right: 24px"></action-button>
-              <button class="btn save__btn mb-0"
-                onclick="window.location.href = '/accounting/documents/implementation-list'">Сохранить</button>
-            </div>
+  <div class="container-fluid">
+    <div class="order__header">
+      <div class="order__header-content">
+        <div class="order__header-main">
+          <div class="order__header-text">
+            <p class="order__header__main">Создание реализации</p>
+            <p class="order__header__sec">
+              Настройте все параметры и нажмите “Сохранить”
+            </p>
           </div>
-          <div class="order__body">
-            <div class="order__body__content">
-              <div class="order__first__row">
-                <div class="form-group">
-                  <label for="example-text-input" class="form-control-label order__label">№ Реализации</label>
-                  <input class="form-control" type="text" id="example-text-input" value="№2354657"
-                    style="width: 8.333vw" disabled />
-                </div>
-                <div class="form-group">
-                  <label for="example-datetime-local-input" class="form-control-label order__label">Дата и время</label>
-                  <input style="width: 10.938vw" class="form-control" type="datetime-local" value="2018-11-23T10:30:00"
-                    id="example-datetime-local-input" />
-                </div>
-                <div class="form-group">
-                  <label for="exampleFormControlSelect1" class="order__label">Организация</label>
-                  <div class="select">
-                    <select class="form-select" id="exampleFormControlSelect1" style="width: 10.833vw">
-                      <option>Выберите</option>
-                      <option>ТОО “Ромашка”</option>
-                      <option>ТОО “Рога и Копыта“</option>
-                      <option>ИП “Лес”</option>
-                    </select>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label for="exampleFormControlSelect1" class="order__label">Контрагент</label>
-                  <div class="select">
-                    <select class="form-select" id="exampleFormControlSelect1" style="width: 14vw">
-                      <option>Выберите контрагента</option>
-                      <option>ТОО “Ромашка”</option>
-                    </select>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label for="example-text-input" class="form-control-label order__label">Договор</label>
-                  <input class="form-control" type="text" id="example-text-input" value="Договор №1 от 12.02.22" />
-                </div>
-                <div class="form-group">
-                  <label for="exampleFormControlSelect1" class="order__label">Склад</label>
-                  <div class="select">
-                    <select class="form-select" id="exampleFormControlSelect1" style="width: 12.01vw">
-                      <option>Выберите склад</option>
-                      <option>ТРЦ “Москва”</option>
-                      <option>ТРЦ “Материк”</option>
-                    </select>
-                  </div>
-                </div>
-              </div>
-              <div class="order__first__row">
-                <div class="form-group">
-                  <label for="exampleFormControlSelect1" class="order__label">Условие оплаты</label>
-                  <div class="select">
-                    <select class="form-select" id="exampleFormControlSelect1" style="width: 8.229vw">
-                      <option>Наличные</option>
-                      <option>Карта</option>
-                    </select>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label for="exampleFormControlSelect1" class="order__label">Вид номенклатуры</label>
-                  <div class="select">
-                    <select class="form-select" id="exampleFormControlSelect1" style="width: 8.802vw">
-                      <option>Товар</option>
-                      <option>Товар</option>
-                    </select>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label for="exampleFormControlSelect1" class="order__label">Вид отправления</label>
-                  <div class="select">
-                    <select class="form-select" id="exampleFormControlSelect1" style="width: 7.865vw">
-                      <option>Самовывоз</option>
-                      <option>Доставка</option>
-                    </select>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label for="example-text-input" class="form-control-label order__label">Адрес</label>
-                  <input style="width: 10.938vw" class="form-control" type="text" id="example-text-input"
-                    value="г.Алматы Аксай-2, д.39" />
-                </div>
-
-                <div class="form-group">
-                  <label for="exampleFormControlSelect1" class="order__label">Ответственный</label>
-                  <div class="select">
-                    <select class="form-select" id="exampleFormControlSelect1" style="width: 11.823vw">
-                      <option>Иванов Иван Иванович</option>
-                      <option>Иванов Иван Иванович</option>
-                    </select>
-                  </div>
-                </div>
-              </div>
-            </div>
+          <div class="drop__buttons">
+            <comment-button style="margin-right: 24px"></comment-button>
+            <action-button style="margin-right: 24px"></action-button>
+            <button class="btn save__btn mb-0"
+              onclick="window.location.href = '/accounting/documents/implementation-list'">Сохранить</button>
           </div>
         </div>
-      </div>
-      <div class="order__table">
-        <div class="order__table__content">
-          <div class="order__table__header">
-            <div class="barcodes">
+        <div class="order__body">
+          <div class="order__body__content">
+            <div class="order__first__row">
               <div class="form-group">
-                <div class="input-group">
-                  <input class="form-control barcode__inp" placeholder="Введите штрихкод" id="search-barcode"
-                    type="text" />
-                  <span class="input-group-text py-0"><img src="@/assets/css/icons/barcode.svg" alt="" /></span>
+                <label for="example-text-input" class="form-control-label order__label">№ Реализации</label>
+                <input class="form-control" type="text" id="example-text-input" value="№2354657" style="width: 8.333vw"
+                  disabled />
+              </div>
+              <div class="form-group">
+                <label for="example-datetime-local-input" class="form-control-label order__label">Дата и время</label>
+                <input style="width: 10.938vw" class="form-control" type="datetime-local" value="2018-11-23T10:30:00"
+                  id="example-datetime-local-input" />
+              </div>
+              <div class="form-group">
+                <label for="exampleFormControlSelect1" class="order__label">Организация</label>
+                <div class="select">
+                  <select class="form-select" id="exampleFormControlSelect1" style="width: 10.833vw">
+                    <option>Выберите</option>
+                    <option>ТОО “Ромашка”</option>
+                    <option>ТОО “Рога и Копыта“</option>
+                    <option>ИП “Лес”</option>
+                  </select>
                 </div>
               </div>
-              <button class="btn barcode__btn" data-bs-toggle="modal" data-bs-target="#SelectDisc">Выбрать из
-                списка</button>
-            </div>
-            <div class="search">
-              <button class="btn bg-gradient-dark mb-0" style="height: 40px" data-bs-toggle="modal"
-                data-bs-target="#DiscModal">
-                Применить скидку
-              </button>
-              <div class="form-group m-0 ms-2">
-                <div class="input-group">
-                  <span class="input-group-text"><img src="@/assets/css/icons/searchIcon.svg" alt="" /></span>
-                  <input class="form-control search__inp" placeholder="Поиск..." id="search" type="text"
-                    v-model.trim="search" />
+              <div class="form-group">
+                <label for="exampleFormControlSelect1" class="order__label">Контрагент</label>
+                <div class="select">
+                  <select class="form-select" id="exampleFormControlSelect1" style="width: 14vw">
+                    <option>Выберите контрагента</option>
+                    <option>ТОО “Ромашка”</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="example-text-input" class="form-control-label order__label">Договор</label>
+                <input class="form-control" type="text" id="example-text-input" value="Договор №1 от 12.02.22" />
+              </div>
+              <div class="form-group">
+                <label for="exampleFormControlSelect1" class="order__label">Склад</label>
+                <div class="select">
+                  <select class="form-select" id="exampleFormControlSelect1" style="width: 12.01vw">
+                    <option>Выберите склад</option>
+                    <option>ТРЦ “Москва”</option>
+                    <option>ТРЦ “Материк”</option>
+                  </select>
                 </div>
               </div>
             </div>
-          </div>
-          <div class="not__added" v-if="isAdded">
-            <div>
-              <img src="@/assets/img/add.png" style="width: 6.667vw" alt="" />
-              <p class="not__added__main">Товары не выбраны</p>
-              <p class="not__added__sec">
-                Для того чтобы создать реализацию, необходимо<br />
-                выбрать товары из списка
-              </p>
-              <button class="btn btn__chose" data-bs-toggle="modal" data-bs-target="#SelectDisc">Выбрать из
-                списка</button>
-            </div>
-          </div>
-          <div class="order__table__body" v-else>
-            <table class="table table-hover">
-              <thead>
-                <tr>
-                  <th scope="col" class="th__col">№</th>
-                  <th scope="col" class="th__col">Товар</th>
-                  <th scope="col" class="th__col">Артикул</th>
-                  <th scope="col" class="th__col">Цвет</th>
-                  <th scope="col" class="th__col">Размер</th>
-                  <th scope="col" class="th__col">Себестоимость</th>
-                  <th scope="col" class="th__col">Цена</th>
-                  <th scope="col" class="th__col">Кол-во</th>
-                  <th scope="col" class="th__col">Скидка</th>
-                  <th scope="col" class="th__col">Сумма</th>
-                  <th scope="col" class="th__col">Действия</th>
-                </tr>
-              </thead>
-              <tbody>
-                <!-- v-for="(item, i) in items" :key="item" -->
-                <tr v-for="item in paginationList" :key="item">
-                  <td scope="row">
-                    {{ item.listNumber + 1 }}
-                  </td>
-                  <td style="display: flex">
-                    <img :src="item.img" style="width: 2.5vw; margin-right: 0.833vw" alt="" />
-                    {{ item.name }}
-                  </td>
-                  <td>
-                    {{ item.barcode }}
-                  </td>
-                  <td>
-                    {{ item.color }}
-                  </td>
-                  <td>
-                    {{ item.size }}
-                  </td>
-                  <td>{{ item.costPrice }} ₸</td>
-                  <td>{{ item.price }} ₸</td>
-                  <td>
-                    {{ item.count }}
-                  </td>
-                  <td>{{ item.disc }} ₸</td>
-                  <td>{{ item.price * item.count - item.disc }} ₸</td>
-                  <td>
-                    <div class="dropdown">
-                      <img src="@/assets/img/dots.svg" style="width: 1.563vw; cursor: pointer" alt="" />
-                      <div class="dropdown-content">
-                        <a href="#" data-bs-toggle="modal" data-bs-target="#InpModal"
-                          @click="isColor = true">Редактировать</a>
-                        <hr />
-                        <a style="cursor: pointer" data-bs-toggle="modal" data-bs-target="#DeleteInv">Удалить</a>
-                      </div>
-                    </div>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          <div class="d-flex justify-content-between" v-if="!isAdded">
-            <div class="order__ready_block">
-              <div style="
-                  text-align: left;
-                  margin-right: 7.344vw;
-                  margin-left: 24px;
-                ">
-                <p class="order__ready__main">Сумма</p>
-                <p class="order__ready__sec">280 000 ₸</p>
+            <div class="order__first__row">
+              <div class="form-group">
+                <label for="exampleFormControlSelect1" class="order__label">Условие оплаты</label>
+                <div class="select">
+                  <select class="form-select" id="exampleFormControlSelect1" style="width: 8.229vw">
+                    <option>Наличные</option>
+                    <option>Карта</option>
+                  </select>
+                </div>
               </div>
-              <div style="text-align: left; margin-right: 7.344vw">
-                <p class="order__ready__main">Кол-во товаров</p>
-                <p class="order__ready__sec">26 шт</p>
+              <div class="form-group">
+                <label for="exampleFormControlSelect1" class="order__label">Вид номенклатуры</label>
+                <div class="select">
+                  <select class="form-select" id="exampleFormControlSelect1" style="width: 8.802vw">
+                    <option>Товар</option>
+                    <option>Товар</option>
+                  </select>
+                </div>
               </div>
-              <div style="text-align: left; margin-right: 7.344vw">
-                <p class="order__ready__main">Общая скидка</p>
-                <p class="order__ready__sec">10%</p>
+              <div class="form-group">
+                <label for="exampleFormControlSelect1" class="order__label">Вид отправления</label>
+                <div class="select">
+                  <select class="form-select" id="exampleFormControlSelect1" style="width: 7.865vw">
+                    <option>Самовывоз</option>
+                    <option>Доставка</option>
+                  </select>
+                </div>
               </div>
-              <div style="text-align: left; margin-right: 5.344vw">
-                <p class="order__ready__result">Итог</p>
-                <p class="order__ready__sum">320 000 ₸</p>
+              <div class="form-group">
+                <label for="example-text-input" class="form-control-label order__label">Адрес</label>
+                <input style="width: 10.938vw" class="form-control" type="text" id="example-text-input"
+                  value="г.Алматы Аксай-2, д.39" />
+              </div>
+
+              <div class="form-group">
+                <label for="exampleFormControlSelect1" class="order__label">Ответственный</label>
+                <div class="select">
+                  <select class="form-select" id="exampleFormControlSelect1" style="width: 11.823vw">
+                    <option>Иванов Иван Иванович</option>
+                    <option>Иванов Иван Иванович</option>
+                  </select>
+                </div>
               </div>
             </div>
-            <pagination-component :filteredArr="filteredProducts" :strAmount="10" @PaginationReload="reloadPagination"
-              class="pb-5"></pagination-component>
           </div>
         </div>
       </div>
     </div>
-    <discount-modal>
-      <template #head>
-        <div style="text-align: left">
-          <p class="header__main">Применить скидку</p>
-          <p class="header__sec">Выберите скидку и нажмите “Применить”</p>
-        </div>
-      </template>
-      <template #body>
-        <div class="search__buttons">
-          <button :class="['left__btn', { active: onStorage == 'yes' }]" @click="onStorage = 'yes'">
-            Выбрать из списка
-          </button>
-          <button :class="['right__btn', { active2: onStorage == 'all' }]" @click="onStorage = 'all'">
-            Ввести вручную
-          </button>
-        </div>
-        <div class="modal__flex__disc" v-if="onStorage == 'yes'">
-          <div class="form-group mr">
-            <label for="exampleFormControlSelect1" class="order__label__disc">Выберите скидку</label>
-            <div class="select3">
-              <select class="form-select disc__form" id="exampleFormControlSelect1">
-                <option>Выберите</option>
-                <option>Скидка "8 марта"</option>
-                <option>Скидка "8 марта"</option>
-                <option>Скидка "8 марта"</option>
-              </select>
+    <div class="order__table">
+      <div class="order__table__content">
+        <div class="order__table__header">
+          <div class="barcodes">
+            <div class="form-group">
+              <div class="input-group">
+                <input class="form-control barcode__inp" placeholder="Введите штрихкод" id="search-barcode"
+                  type="text" />
+                <span class="input-group-text py-0"><img src="@/assets/css/icons/barcode.svg" alt="" /></span>
+              </div>
+            </div>
+            <button class="btn barcode__btn" data-bs-toggle="modal" data-bs-target="#SelectDisc">Выбрать из
+              списка</button>
+          </div>
+          <div class="search">
+            <button class="btn bg-gradient-dark mb-0" style="height: 40px" data-bs-toggle="modal"
+              data-bs-target="#DiscModal">
+              Применить скидку
+            </button>
+            <div class="form-group m-0 ms-2">
+              <div class="input-group">
+                <span class="input-group-text"><img src="@/assets/css/icons/searchIcon.svg" alt="" /></span>
+                <input class="form-control search__inp" placeholder="Поиск..." id="search" type="text"
+                  v-model.trim="search" />
+              </div>
             </div>
           </div>
         </div>
-        <div class="modal__flex__disc" v-if="onStorage == 'all'">
-          <div class="form-group m-0" style="flex-grow:1;">
-            <label for="type__disc" class="order__label">Ручная скидка</label>
-            <div class="input-group flex-nowrap ms-auto me-auto" style="width: 98%">
-              <input class="form-control" placeholder="10" id="type__disc" type="text" />
-              <span class="input-group-text input-group-text2 py-0" @click="isClicked = 1">
-                <div class="not__selected" :class="{ selected: isClicked == 1 }">
-                  <svg width="16" height="15" viewBox="0 0 16 15" xmlns="http://www.w3.org/2000/svg"
-                    class="not__selected__img" :class="{ selected__img: isClicked == 1 }">
-                    <path
-                      d="M2.5024 5C2.5024 5.74414 2.56686 6.30078 2.69576 6.66992C2.83053 7.0332 3.0444 7.21484 3.33736 7.21484C3.89986 7.21484 4.18111 6.47656 4.18111 5C4.18111 3.53516 3.89986 2.80273 3.33736 2.80273C3.0444 2.80273 2.83053 2.98438 2.69576 3.34766C2.56686 3.70508 2.5024 4.25586 2.5024 5ZM6.39596 4.98242C6.39596 6.33008 6.13522 7.34375 5.61373 8.02344C5.09225 8.69727 4.3276 9.03418 3.31979 9.03418C2.35299 9.03418 1.60592 8.68848 1.07858 7.99707C0.551232 7.2998 0.28756 6.29492 0.28756 4.98242C0.28756 2.30469 1.2983 0.96582 3.31979 0.96582C4.31002 0.96582 5.06881 1.31445 5.59615 2.01172C6.12936 2.70312 6.39596 3.69336 6.39596 4.98242ZM12.4428 1.15039L5.3149 14H3.20553L10.3335 1.15039H12.4428ZM11.5024 10.1328C11.5024 10.877 11.5669 11.4336 11.6958 11.8027C11.8305 12.166 12.0444 12.3477 12.3374 12.3477C12.8999 12.3477 13.1811 11.6094 13.1811 10.1328C13.1811 8.66797 12.8999 7.93555 12.3374 7.93555C12.0444 7.93555 11.8305 8.11719 11.6958 8.48047C11.5669 8.83789 11.5024 9.38867 11.5024 10.1328ZM15.396 10.1152C15.396 11.457 15.1352 12.4678 14.6137 13.1475C14.0922 13.8213 13.3276 14.1582 12.3198 14.1582C11.353 14.1582 10.6059 13.8125 10.0786 13.1211C9.55123 12.4238 9.28756 11.4219 9.28756 10.1152C9.28756 7.4375 10.2983 6.09863 12.3198 6.09863C13.31 6.09863 14.0688 6.44727 14.5962 7.14453C15.1294 7.83594 15.396 8.82617 15.396 10.1152Z" />
-                  </svg>
-                </div>
-              </span>
-              <span class="input-group-text input-group-text2 py-0" @click="isClicked = 2">
-                <div class="not__selected" :class="{ selected: isClicked == 2 }">
-                  <svg width="11" height="13" viewBox="0 0 11 13" xmlns="http://www.w3.org/2000/svg"
-                    class="not__selected__img" :class="{ selected__img: isClicked == 2 }">
-                    <path
-                      d="M7.20424 13H4.48624V5.944H0.99424V3.676H10.6962V5.944H7.20424V13ZM0.99424 0.147999H10.6962V2.416H0.99424V0.147999Z" />
-                  </svg>
-                </div>
-              </span>
-            </div>
+        <div class="not__added" v-if="isAdded">
+          <div>
+            <img src="@/assets/img/add.png" style="width: 6.667vw" alt="" />
+            <p class="not__added__main">Товары не выбраны</p>
+            <p class="not__added__sec">
+              Для того чтобы создать реализацию, необходимо<br />
+              выбрать товары из списка
+            </p>
+            <button class="btn btn__chose" data-bs-toggle="modal" data-bs-target="#SelectDisc">Выбрать из
+              списка</button>
           </div>
         </div>
-      </template>
-      <template #footer>
-        <div class="accept__button">
-          <button class="btn accept__btn" data-bs-dismiss="modal">Применить</button>
+        <div class="order__table__body" v-else>
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th scope="col" class="th__col">Товар</th>
+                <th scope="col" class="th__col">Артикул</th>
+                <th scope="col" class="th__col">Цвет</th>
+                <th scope="col" class="th__col">Размер</th>
+                <th scope="col" class="th__col">Себестоимость</th>
+                <th scope="col" class="th__col">Цена</th>
+                <th scope="col" class="th__col">Кол-во</th>
+                <th scope="col" class="th__col">Скидка</th>
+                <th scope="col" class="th__col">Сумма</th>
+                <th scope="col" class="th__col">Действия</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- v-for="(item, i) in items" :key="item" -->
+              <tr v-for="item in paginationList" :key="item">
+
+                <td style="display: flex">
+                  <img :src="item.img" style="width: 2.5vw; margin-right: 0.833vw" alt="" />
+                  {{ item.name }}
+                </td>
+                <td>
+                  {{ item.barcode }}
+                </td>
+                <td>
+                  {{ item.color }}
+                </td>
+                <td>
+                  {{ item.size }}
+                </td>
+                <td>{{ item.costPrice }} ₸</td>
+                <td>{{ item.price }} ₸</td>
+                <td>
+                  {{ item.count }}
+                </td>
+                <td>{{ item.disc }} ₸</td>
+                <td>{{ item.price * item.count - item.disc }} ₸</td>
+                <td>
+                  <div class="dropdown">
+                    <img src="@/assets/img/dots.svg" style="width: 1.563vw; cursor: pointer" alt="" />
+                    <div class="dropdown-content">
+                      <a href="#" data-bs-toggle="modal" data-bs-target="#InpModal"
+                        @click="isColor = true">Редактировать</a>
+                      <hr />
+                      <a style="cursor: pointer" data-bs-toggle="modal" data-bs-target="#DeleteInv">Удалить</a>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
         </div>
-      </template>
-    </discount-modal>
-    <commentary :pageTitle="'Создание реализации'"></commentary>
-    <select-product></select-product>
+        <div class="d-flex justify-content-between" v-if="!isAdded">
+          <div class="order__ready_block">
+            <div style="
+                  text-align: left;
+                  margin-right: 7.344vw;
+                  margin-left: 24px;
+                ">
+              <p class="order__ready__main">Сумма</p>
+              <p class="order__ready__sec">280 000 ₸</p>
+            </div>
+            <div style="text-align: left; margin-right: 7.344vw">
+              <p class="order__ready__main">Кол-во товаров</p>
+              <p class="order__ready__sec">26 шт</p>
+            </div>
+            <div style="text-align: left; margin-right: 7.344vw">
+              <p class="order__ready__main">Общая скидка</p>
+              <p class="order__ready__sec">10%</p>
+            </div>
+            <div style="text-align: left; margin-right: 5.344vw">
+              <p class="order__ready__result">Итог</p>
+              <p class="order__ready__sum">320 000 ₸</p>
+            </div>
+          </div>
+          <pagination-component :filteredArr="filteredProducts" :strAmount="10" @PaginationReload="reloadPagination"
+            class="pb-5"></pagination-component>
+        </div>
+      </div>
+    </div>
+  </div>
+  <discount-modal>
+    <template #head>
+      <div style="text-align: left">
+        <p class="header__main">Применить скидку</p>
+        <p class="header__sec">Выберите скидку и нажмите “Применить”</p>
+      </div>
+    </template>
+    <template #body>
+      <div class="search__buttons">
+        <button :class="['left__btn', { active: onStorage == 'yes' }]" @click="onStorage = 'yes'">
+          Выбрать из списка
+        </button>
+        <button :class="['right__btn', { active2: onStorage == 'all' }]" @click="onStorage = 'all'">
+          Ввести вручную
+        </button>
+      </div>
+      <div class="modal__flex__disc" v-if="onStorage == 'yes'">
+        <div class="form-group mr">
+          <label for="exampleFormControlSelect1" class="order__label__disc">Выберите скидку</label>
+          <div class="select3">
+            <select class="form-select disc__form" id="exampleFormControlSelect1">
+              <option>Выберите</option>
+              <option>Скидка "8 марта"</option>
+              <option>Скидка "8 марта"</option>
+              <option>Скидка "8 марта"</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="modal__flex__disc" v-if="onStorage == 'all'">
+        <div class="form-group m-0" style="flex-grow:1;">
+          <label for="type__disc" class="order__label">Ручная скидка</label>
+          <div class="input-group flex-nowrap ms-auto me-auto" style="width: 98%">
+            <input class="form-control" placeholder="10" id="type__disc" type="text" />
+            <span class="input-group-text input-group-text2 py-0" @click="isClicked = 1">
+              <div class="not__selected" :class="{ selected: isClicked == 1 }">
+                <svg width="16" height="15" viewBox="0 0 16 15" xmlns="http://www.w3.org/2000/svg"
+                  class="not__selected__img" :class="{ selected__img: isClicked == 1 }">
+                  <path
+                    d="M2.5024 5C2.5024 5.74414 2.56686 6.30078 2.69576 6.66992C2.83053 7.0332 3.0444 7.21484 3.33736 7.21484C3.89986 7.21484 4.18111 6.47656 4.18111 5C4.18111 3.53516 3.89986 2.80273 3.33736 2.80273C3.0444 2.80273 2.83053 2.98438 2.69576 3.34766C2.56686 3.70508 2.5024 4.25586 2.5024 5ZM6.39596 4.98242C6.39596 6.33008 6.13522 7.34375 5.61373 8.02344C5.09225 8.69727 4.3276 9.03418 3.31979 9.03418C2.35299 9.03418 1.60592 8.68848 1.07858 7.99707C0.551232 7.2998 0.28756 6.29492 0.28756 4.98242C0.28756 2.30469 1.2983 0.96582 3.31979 0.96582C4.31002 0.96582 5.06881 1.31445 5.59615 2.01172C6.12936 2.70312 6.39596 3.69336 6.39596 4.98242ZM12.4428 1.15039L5.3149 14H3.20553L10.3335 1.15039H12.4428ZM11.5024 10.1328C11.5024 10.877 11.5669 11.4336 11.6958 11.8027C11.8305 12.166 12.0444 12.3477 12.3374 12.3477C12.8999 12.3477 13.1811 11.6094 13.1811 10.1328C13.1811 8.66797 12.8999 7.93555 12.3374 7.93555C12.0444 7.93555 11.8305 8.11719 11.6958 8.48047C11.5669 8.83789 11.5024 9.38867 11.5024 10.1328ZM15.396 10.1152C15.396 11.457 15.1352 12.4678 14.6137 13.1475C14.0922 13.8213 13.3276 14.1582 12.3198 14.1582C11.353 14.1582 10.6059 13.8125 10.0786 13.1211C9.55123 12.4238 9.28756 11.4219 9.28756 10.1152C9.28756 7.4375 10.2983 6.09863 12.3198 6.09863C13.31 6.09863 14.0688 6.44727 14.5962 7.14453C15.1294 7.83594 15.396 8.82617 15.396 10.1152Z" />
+                </svg>
+              </div>
+            </span>
+            <span class="input-group-text input-group-text2 py-0" @click="isClicked = 2">
+              <div class="not__selected" :class="{ selected: isClicked == 2 }">
+                <svg width="11" height="13" viewBox="0 0 11 13" xmlns="http://www.w3.org/2000/svg"
+                  class="not__selected__img" :class="{ selected__img: isClicked == 2 }">
+                  <path
+                    d="M7.20424 13H4.48624V5.944H0.99424V3.676H10.6962V5.944H7.20424V13ZM0.99424 0.147999H10.6962V2.416H0.99424V0.147999Z" />
+                </svg>
+              </div>
+            </span>
+          </div>
+        </div>
+      </div>
+    </template>
+    <template #footer>
+      <div class="accept__button">
+        <button class="btn accept__btn" data-bs-dismiss="modal">Применить</button>
+      </div>
+    </template>
+  </discount-modal>
+  <commentary :pageTitle="'Создание реализации'"></commentary>
+  <select-product></select-product>
 </template>
 
 <style scoped>

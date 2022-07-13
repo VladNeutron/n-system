@@ -1,72 +1,68 @@
 <template>
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-12">
-          <lists-header>
-            <template v-slot:title> Список скидок </template>
-            <template v-slot:description>Внесите изменения и не забудьте нажать “Сохранить”</template>
-          </lists-header>
-          <div class="card">
-            <div class="inv__buttons">
-              <div class="inv__left__btn">
-                <button type="button" class="btn bg-gradient-secondary"
-                  onclick="window.location.href = '/products-accounting/discounts/discount-create'">
-                  <img src="@/assets/img/whtplus.svg" style="width: 1.042vw; margin-right: 0.729vw" alt="" />
-                  Добавить скидку
-                </button>
-              </div>
-              <div class="inv__right__btn gap-3">
-                <list-search @searchFilter="(a) => search = a"></list-search>
-                <print-button></print-button>
-                <download-button></download-button>
-                <filters-button></filters-button>
-              </div>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-12">
+        <lists-header>
+          <template v-slot:title> Список скидок </template>
+          <template v-slot:description>Внесите изменения и не забудьте нажать “Сохранить”</template>
+        </lists-header>
+        <div class="card">
+          <div class="inv__buttons">
+            <div class="inv__left__btn">
+              <button type="button" class="btn bg-gradient-secondary"
+                onclick="window.location.href = '/products-accounting/discounts/discount-create'">
+                <img src="@/assets/img/whtplus.svg" style="width: 1.042vw; margin-right: 0.729vw" alt="" />
+                Добавить скидку
+              </button>
             </div>
-            <div class="inv__block">
-              <div class="inv__content">
-                <table class="table table-hover table-striped">
-                  <thead>
-                    <tr>
-                      <th scope="col" class="th__col">№</th>
-                      <th scope="col" class="th__col">Тип скидки</th>
-                      <th scope="col" class="th__col">Период действия</th>
-
-                      <th scope="col" class="th__col">Действия</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr v-for="item in paginationList" :key="item">
-                      <td scope="row">
-                        {{ item.listNumber + 1 }}
-                      </td>
-                      <td>
-                        {{ item.type }}
-                      </td>
-                      <td width="75%">
-                        {{ item.period }}
-                      </td>
-                      <td class="dropdown">
-                        <img src="@/assets/img/dots.svg" style="width: 1.563vw; cursor: pointer" alt="" />
-                        <div class="dropdown-content">
-                          <a href="/products-accounting/discounts/discount-edit">Редактировать</a>
-                          <hr />
-                          <a style="cursor: pointer" data-bs-toggle="modal" data-bs-target="#DeleteInv">Удалить</a>
-                        </div>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
+            <div class="inv__right__btn gap-3">
+              <list-search @searchFilter="(a) => search = a"></list-search>
+              <print-button></print-button>
+              <download-button></download-button>
+              <filters-button></filters-button>
             </div>
-            <pagination-component :filteredArr="filteredDiscounts" :strAmount="10" @PaginationReload="reloadPagination"
-              class="pb-4"></pagination-component>
           </div>
+          <div class="inv__block">
+            <div class="inv__content">
+              <table class="table table-hover table-striped">
+                <thead>
+                  <tr>
+                    <th scope="col" class="th__col">Тип скидки</th>
+                    <th scope="col" class="th__col">Период действия</th>
+
+                    <th scope="col" class="th__col">Действия</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr v-for="item in paginationList" :key="item">
+                    <td>
+                      {{ item.type }}
+                    </td>
+                    <td width="75%">
+                      {{ item.period }}
+                    </td>
+                    <td class="dropdown">
+                      <img src="@/assets/img/dots.svg" style="width: 1.563vw; cursor: pointer" alt="" />
+                      <div class="dropdown-content">
+                        <a href="/products-accounting/discounts/discount-edit">Редактировать</a>
+                        <hr />
+                        <a style="cursor: pointer" data-bs-toggle="modal" data-bs-target="#DeleteInv">Удалить</a>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <pagination-component :filteredArr="filteredDiscounts" :strAmount="10" @PaginationReload="reloadPagination"
+            class="pb-4"></pagination-component>
         </div>
       </div>
     </div>
-    <Filters></Filters>
-    <select-product-discount></select-product-discount>
-    <delete-modal :title="'скидки'" :text="`скидку &quot;Скидка №1&quot;`"></delete-modal>
+  </div>
+  <Filters></Filters>
+  <select-product-discount></select-product-discount>
+  <delete-modal :title="'скидки'" :text="`скидку &quot;Скидка №1&quot;`"></delete-modal>
 </template>
 
 <script>

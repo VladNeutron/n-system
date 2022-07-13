@@ -1,119 +1,117 @@
 <template>
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-12">
-          <lists-header>
-            <template v-slot:title> Список списаний </template>
-          </lists-header>
-          <div class="card">
-            <div class="inv__buttons">
-              <div class="inv__left__btn">
-                <button type="button" style="
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-12">
+        <lists-header>
+          <template v-slot:title> Список списаний </template>
+        </lists-header>
+        <div class="card">
+          <div class="inv__buttons">
+            <div class="inv__left__btn">
+              <button type="button" style="
                     font-size: 14px;
                     font-weight: 500;
                     display: flex;
                     align-items: center;
                   " class="btn bg-gradient-secondary"
-                  onclick="window.location.href = '/warehouse-accounting/create-writeoff'">
-                  <img src="@/assets/img/whtplus.svg" alt="" style="margin-right: 10px" />
-                  Создать списание
-                </button>
-              </div>
-              <div class="inv__right__btn gap-3">
-                <list-search @searchFilter="(a) => search = a"></list-search>
-                <print-button></print-button>
-                <download-button></download-button>
-                <filters-button></filters-button>
-              </div>
+                onclick="window.location.href = '/warehouse-accounting/create-writeoff'">
+                <img src="@/assets/img/whtplus.svg" alt="" style="margin-right: 10px" />
+                Создать списание
+              </button>
             </div>
-            <div class="inv__block">
-              <div class="inv__content">
-                <table class="table table-bordered table-hover table-striped">
-                  <thead>
-                    <tr style="border-width:0">
-                      <th scope="col" class="th__col">№</th>
-                      <th scope="col" class="th__col" width="5%">
-                        № Документа
-                      </th>
-                      <th scope="col" class="th__col">Дата и время</th>
-                      <th scope="col" class="th__col">Склад</th>
-                      <th scope="col" class="th__col">Ответственный</th>
-                      <th scope="col" class="th__col">Статус документа</th>
-                      <th scope="col" class="th__col">Кол-во товаров</th>
-                      <th scope="col" class="th__col"></th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr v-for="item in paginationList" :key="item">
-                      <td scope="row">{{ item.listNumber + 1 }}</td>
-                      <td>{{ item.id }}</td>
-                      <td>{{ item.date }}</td>
-                      <td>{{ item.place }}</td>
-                      <td>{{ item.name }}</td>
-                      <td>{{ item.isReady }}</td>
-                      <td>{{ item.count }}</td>
-                      <td class="dropdown">
-                        <img src="@/assets/img/dots.svg" style="width: 1.563vw; cursor: pointer" alt="" />
-                        <div class="dropdown-content">
-                          <a href="/warehouse-accounting/edit-writeoff">Редактировать</a>
-                          <hr />
-                          <a style="cursor: pointer" data-bs-toggle="modal" data-bs-target="#DeleteInv">Удалить</a>
-                        </div>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
+            <div class="inv__right__btn gap-3">
+              <list-search @searchFilter="(a) => search = a"></list-search>
+              <print-button></print-button>
+              <download-button></download-button>
+              <filters-button></filters-button>
             </div>
-            <pagination-component :filteredArr="filteredItems" :strAmount="10" @PaginationReload="reloadPagination"
-              class="pb-4"></pagination-component>
           </div>
+          <div class="inv__block">
+            <div class="inv__content">
+              <table class="table table-bordered table-hover table-striped">
+                <thead>
+                  <tr style="border-width:0">
+                    <th scope="col" class="th__col" width="5%">
+                      № Документа
+                    </th>
+                    <th scope="col" class="th__col">Дата и время</th>
+                    <th scope="col" class="th__col">Склад</th>
+                    <th scope="col" class="th__col">Ответственный</th>
+                    <th scope="col" class="th__col">Статус документа</th>
+                    <th scope="col" class="th__col">Кол-во товаров</th>
+                    <th scope="col" class="th__col"></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr v-for="item in paginationList" :key="item">
+                    <td>{{ item.id }}</td>
+                    <td>{{ item.date }}</td>
+                    <td>{{ item.place }}</td>
+                    <td>{{ item.name }}</td>
+                    <td>{{ item.isReady }}</td>
+                    <td>{{ item.count }}</td>
+                    <td class="dropdown">
+                      <img src="@/assets/img/dots.svg" style="width: 1.563vw; cursor: pointer" alt="" />
+                      <div class="dropdown-content">
+                        <a href="/warehouse-accounting/edit-writeoff">Редактировать</a>
+                        <hr />
+                        <a style="cursor: pointer" data-bs-toggle="modal" data-bs-target="#DeleteInv">Удалить</a>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <pagination-component :filteredArr="filteredItems" :strAmount="10" @PaginationReload="reloadPagination"
+            class="pb-4"></pagination-component>
         </div>
       </div>
     </div>
-    <delete-modal :title="'списания'" :text="`документ &quot;Списание №23&quot;`"></delete-modal>
-    <filters @no-filter="cancelFilters">
-      <div class="filters__period__flex">
-        <div class="filter__name__standart">Выберите период</div>
-        <div class="reset__date">Сбросить период</div>
+  </div>
+  <delete-modal :title="'списания'" :text="`документ &quot;Списание №23&quot;`"></delete-modal>
+  <filters @no-filter="cancelFilters">
+    <div class="filters__period__flex">
+      <div class="filter__name__standart">Выберите период</div>
+      <div class="reset__date">Сбросить период</div>
+    </div>
+    <div class="filters__period">
+      <div class="form-group">
+        <input class="form-control" type="date" id="example-date-input" />
       </div>
-      <div class="filters__period">
-        <div class="form-group">
-          <input class="form-control" type="date" id="example-date-input" />
-        </div>
-        <div>
-          <img src="@/assets/img/line.svg" style="width: 1.927vw" alt="" />
-        </div>
-        <div class="form-group">
-          <input class="form-control" type="date" id="example-date-input" />
-        </div>
+      <div>
+        <img src="@/assets/img/line.svg" style="width: 1.927vw" alt="" />
       </div>
+      <div class="form-group">
+        <input class="form-control" type="date" id="example-date-input" />
+      </div>
+    </div>
 
-      <div class="filter__name__standart">Склад</div>
-      <select class="form-select" v-model="filterWarehouse">
-        <option value="" disabled selected>Выберите склад</option>
-        <option v-for="warehouse in warehouseList" :key="warehouse">
-          {{ warehouse }}
-        </option>
-        <option value=""></option>
-      </select>
-      <div class="filter__name__standart mt-3">Ответственный</div>
-      <select class="form-select" v-model="filterResponsible">
-        <option value="" disabled selected>Выберите ответственного</option>
-        <option v-for="responsible in responsibleList" :key="responsible">
-          {{ responsible }}
-        </option>
-        <option value=""></option>
-      </select>
-      <div class="filter__name__standart mt-3">Статус списания</div>
-      <select class="form-select" v-model="filterWriteoff">
-        <option value="" disabled selected>Выберите статус</option>
-        <option v-for="writeoff in writeoffList" :key="writeoff">
-          {{ writeoff }}
-        </option>
-        <option value=""></option>
-      </select>
-    </filters>
+    <div class="filter__name__standart">Склад</div>
+    <select class="form-select" v-model="filterWarehouse">
+      <option value="" disabled selected>Выберите склад</option>
+      <option v-for="warehouse in warehouseList" :key="warehouse">
+        {{ warehouse }}
+      </option>
+      <option value=""></option>
+    </select>
+    <div class="filter__name__standart mt-3">Ответственный</div>
+    <select class="form-select" v-model="filterResponsible">
+      <option value="" disabled selected>Выберите ответственного</option>
+      <option v-for="responsible in responsibleList" :key="responsible">
+        {{ responsible }}
+      </option>
+      <option value=""></option>
+    </select>
+    <div class="filter__name__standart mt-3">Статус списания</div>
+    <select class="form-select" v-model="filterWriteoff">
+      <option value="" disabled selected>Выберите статус</option>
+      <option v-for="writeoff in writeoffList" :key="writeoff">
+        {{ writeoff }}
+      </option>
+      <option value=""></option>
+    </select>
+  </filters>
 </template>
 
 <script>

@@ -1,139 +1,135 @@
 <template>
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-12">
-                    <lists-header>
-                        <template v-slot:title> Методы оплаты </template>
-                        <template v-slot:description>
-                            Внесите изменения и не забудьте нажать “Сохранить”
-                        </template>
-                    </lists-header>
-                    <div class="card pt-4 pb-6">
-                        <div class="d-flex justify-content-between align-items-center mx-4 mb-4">
-                            <div>
-                                <button class="btn bg-gradient-dark btn-add mb-0" style="
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <lists-header>
+                    <template v-slot:title> Методы оплаты </template>
+                    <template v-slot:description>
+                        Внесите изменения и не забудьте нажать “Сохранить”
+                    </template>
+                </lists-header>
+                <div class="card pt-4 pb-6">
+                    <div class="d-flex justify-content-between align-items-center mx-4 mb-4">
+                        <div>
+                            <button class="btn bg-gradient-dark btn-add mb-0" style="
                     margin-right: 0.833vw;
                     display: flex;
                     align-items: center;
                   " data-bs-toggle="modal" data-bs-target="#InpModal" @click="isEdit = 'no'">
-                                    <img src="@/assets/img/whtplus.svg" style="margin-right: 10px" alt="" />
-                                    Добавить метод оплаты
-                                </button>
-                            </div>
-                            <div class="table__inputs d-flex gap-3 align-content-center">
-
-                            </div>
+                                <img src="@/assets/img/whtplus.svg" style="margin-right: 10px" alt="" />
+                                Добавить метод оплаты
+                            </button>
                         </div>
-                        <div class="page__table">
-                            <table class="table table-hover table-striped">
-                                <thead>
-                                    <tr class="">
-                                        <th scope="col" class="th__col" style="width: 25px; padding-left: 27px"></th>
-                                        <th width="1%" scope="col" class="th__col">№</th>
-                                        <th scope="col" class="th__col">Название </th>
-                                        <th scope="col" class="th__col">Сдача</th>
-                                        <th scope="col" class="th__col">Активность</th>
-                                        <th scope="col" class="th__col">Действия</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr v-for="order of paginationList" :key="order.id">
-                                        <td scope="row" style="padding-left: 27px">
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" value=""
-                                                    id="fcustomCheck1" />
-                                            </div>
-                                        </td>
-                                        <td width="1%">{{ order.listNumber + 1 }}</td>
-                                        <td>{{ order.name }}</td>
-                                        <td>{{ order.oddMoney }}</td>
-                                        <td>{{ order.activity }}</td>
+                        <div class="table__inputs d-flex gap-3 align-content-center">
 
-                                        <td class="dropdown">
-                                            <img src="@/assets/img/dots.svg" style="width: 1.563vw; cursor: pointer"
-                                                alt="" />
-                                            <div class="dropdown-content">
-                                                <a style="cursor: pointer" data-bs-toggle="modal"
-                                                    data-bs-target="#InpModal" @click="isEdit = 'yes'">Редактировать</a>
-                                                <hr />
-                                                <a style="cursor: pointer" data-bs-toggle="modal"
-                                                    data-bs-target="#DeleteInv">Удалить</a>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
                         </div>
-                        <pagination-component :filteredArr="filteredList" :strAmount="10"
-                            @PaginationReload="reloadPagination" class="pagination__size"></pagination-component>
                     </div>
+                    <div class="page__table">
+                        <table class="table table-hover table-striped">
+                            <thead>
+                                <tr class="">
+                                    <th scope="col" class="th__col" style="width: 25px; padding-left: 27px"></th>
+                                    <th scope="col" class="th__col">Название </th>
+                                    <th scope="col" class="th__col">Сдача</th>
+                                    <th scope="col" class="th__col">Активность</th>
+                                    <th scope="col" class="th__col">Действия</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr v-for="order of paginationList" :key="order.id">
+                                    <td scope="row" style="padding-left: 27px">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value=""
+                                                id="fcustomCheck1" />
+                                        </div>
+                                    </td>
+                                    <td>{{ order.name }}</td>
+                                    <td>{{ order.oddMoney }}</td>
+                                    <td>{{ order.activity }}</td>
+
+                                    <td class="dropdown">
+                                        <img src="@/assets/img/dots.svg" style="width: 1.563vw; cursor: pointer"
+                                            alt="" />
+                                        <div class="dropdown-content">
+                                            <a style="cursor: pointer" data-bs-toggle="modal" data-bs-target="#InpModal"
+                                                @click="isEdit = 'yes'">Редактировать</a>
+                                            <hr />
+                                            <a style="cursor: pointer" data-bs-toggle="modal"
+                                                data-bs-target="#DeleteInv">Удалить</a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <pagination-component :filteredArr="filteredList" :strAmount="10"
+                        @PaginationReload="reloadPagination" class="pagination__size"></pagination-component>
                 </div>
             </div>
         </div>
-        <inputs-modal>
-            <template #head>
-                <div style="text-align: left" v-if="isEdit == 'no'">
-                    <p class="header__main">Добавление метода оплаты</p>
-                    <p class="header__sec">
-                        Введите данные и нажмите “Добавить”
-                    </p>
+    </div>
+    <inputs-modal>
+        <template #head>
+            <div style="text-align: left" v-if="isEdit == 'no'">
+                <p class="header__main">Добавление метода оплаты</p>
+                <p class="header__sec">
+                    Введите данные и нажмите “Добавить”
+                </p>
+            </div>
+            <div style="text-align: left" v-if="isEdit == 'yes'">
+                <p class="header__main">Редактирование метода оплаты</p>
+                <p class="header__sec">Измените данные и нажмите “Сохранить”</p>
+            </div>
+        </template>
+        <template #body>
+            <div class="clients__modal" v-if="isEdit == 'no'">
+                <div class="form-group">
+                    <label for="example-text-input" class="form-control-label">Название </label>
+                    <input class="form-control" type="text" placeholder="Введите название" id="example-text-input" />
                 </div>
-                <div style="text-align: left" v-if="isEdit == 'yes'">
-                    <p class="header__main">Редактирование метода оплаты</p>
-                    <p class="header__sec">Измените данные и нажмите “Сохранить”</p>
-                </div>
-            </template>
-            <template #body>
-                <div class="clients__modal" v-if="isEdit == 'no'">
-                    <div class="form-group">
-                        <label for="example-text-input" class="form-control-label">Название </label>
-                        <input class="form-control" type="text" placeholder="Введите название"
-                            id="example-text-input" />
+                <div class="d-flex">
+                    <div class="form-check form-switch" style="margin-right:50px;">
+                        <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" checked="">
+                        <label class="form-check-label" for="flexSwitchCheckDefault">Сдача</label>
                     </div>
-                    <div class="d-flex">
-                        <div class="form-check form-switch" style="margin-right:50px;">
-                            <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" checked="">
-                            <label class="form-check-label" for="flexSwitchCheckDefault">Сдача</label>
-                        </div>
-                        <div class="form-check form-switch">
-                            <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" checked="">
-                            <label class="form-check-label" for="flexSwitchCheckDefault">Активность</label>
-                        </div>
-                    </div>
-                </div>
-                <div class="clients__modal" v-if="isEdit == 'yes'">
-                    <div class="form-group">
-                        <label for="example-text-input" class="form-control-label">Название </label>
-                        <input class="form-control" type="text" placeholder="Введите название"
-                            id="example-text-input" />
-                    </div>
-                    <div class="d-flex">
-                        <div class="form-check form-switch" style="margin-right:50px;">
-                            <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" checked="">
-                            <label class="form-check-label" for="flexSwitchCheckDefault">Сдача</label>
-                        </div>
-                        <div class="form-check form-switch">
-                            <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" checked="">
-                            <label class="form-check-label" for="flexSwitchCheckDefault">Активность</label>
-                        </div>
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" checked="">
+                        <label class="form-check-label" for="flexSwitchCheckDefault">Активность</label>
                     </div>
                 </div>
-            </template>
-            <template #footer>
-                <div class="clients__footer" v-if="isEdit == 'no'">
-                    <button class="btn bg-gradient-dark" data-bs-dismiss="modal">Добавить</button>
+            </div>
+            <div class="clients__modal" v-if="isEdit == 'yes'">
+                <div class="form-group">
+                    <label for="example-text-input" class="form-control-label">Название </label>
+                    <input class="form-control" type="text" placeholder="Введите название" id="example-text-input" />
                 </div>
-                <div class="clients__footer" v-if="isEdit == 'yes'">
-                    <button class="btn bg-gradient-dark" data-bs-dismiss="modal">Сохранить</button>
+                <div class="d-flex">
+                    <div class="form-check form-switch" style="margin-right:50px;">
+                        <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" checked="">
+                        <label class="form-check-label" for="flexSwitchCheckDefault">Сдача</label>
+                    </div>
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" checked="">
+                        <label class="form-check-label" for="flexSwitchCheckDefault">Активность</label>
+                    </div>
                 </div>
-                <div class="clients__footer" v-if="isEdit == 'yes'">
-                    <button class="btn delete__btn" data-bs-toggle="modal" data-bs-target="#DeleteInv">
-                        Удалить метод оплаты
-                    </button>
-                </div>
-            </template>
-        </inputs-modal>
-        <delete-modal :title="'метода оплаты'" :text="`метод оплаты &quot;'Карта' &quot;`"></delete-modal>
+            </div>
+        </template>
+        <template #footer>
+            <div class="clients__footer" v-if="isEdit == 'no'">
+                <button class="btn bg-gradient-dark" data-bs-dismiss="modal">Добавить</button>
+            </div>
+            <div class="clients__footer" v-if="isEdit == 'yes'">
+                <button class="btn bg-gradient-dark" data-bs-dismiss="modal">Сохранить</button>
+            </div>
+            <div class="clients__footer" v-if="isEdit == 'yes'">
+                <button class="btn delete__btn" data-bs-toggle="modal" data-bs-target="#DeleteInv">
+                    Удалить метод оплаты
+                </button>
+            </div>
+        </template>
+    </inputs-modal>
+    <delete-modal :title="'метода оплаты'" :text="`метод оплаты &quot;'Карта' &quot;`"></delete-modal>
 </template>
 
 <script>

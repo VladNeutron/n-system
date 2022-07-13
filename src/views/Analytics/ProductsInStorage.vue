@@ -1,116 +1,114 @@
 <template>
-    <div class="page__name px-4">
-      <h3 class="text-start">Остатки товаров на складе</h3>
-      <p class="text-start m-0">
-        Внесите изменения и не забудьте нажать “Сохранить”
-      </p>
-    </div>
-    <div class="container-fluid pb-4">
-      <div class="row mt-4">
-        <div class="col-12">
-          <div class="card">
-            <div class="search__munu p-4 d-flex justify-content-between align-items-end">
-              <div class="search__menu-left d-flex gap-4">
-                <div class="form-group m-0 d-flex flex-column align-items-start" style="width: 307px">
-                  <label for="search" class="custom__label">Список товаров</label>
-                  <div class="input-group mt-1">
-                    <span class="input-group-text"><img src="@/assets/css/icons/searchIcon.svg" alt="" />
-                    </span>
-                    <input class="form-control" placeholder="Поиск..." id="search" type="text" v-model.trim="search" />
-                  </div>
-                </div>
-                <div class="form-group m-0 mt-1 d-flex flex-column align-items-start" style="width: 393px">
-                  <label for="search" class="custom__label">Выберите склад</label>
-                  <select class="form-select form__adapt" v-model="selected">
-                    <option v-for="(warehouse, i) in warehousesArr" :key="i" :value="warehouse"
-                      @input="this.selected = warehouse">
-                      {{ warehouse }}
-                    </option>
-                    <option value="">Без фильтра</option>
-                  </select>
+  <div class="page__name px-4">
+    <h3 class="text-start">Остатки товаров на складе</h3>
+    <p class="text-start m-0">
+      Внесите изменения и не забудьте нажать “Сохранить”
+    </p>
+  </div>
+  <div class="container-fluid pb-4">
+    <div class="row mt-4">
+      <div class="col-12">
+        <div class="card">
+          <div class="search__munu p-4 d-flex justify-content-between align-items-end">
+            <div class="search__menu-left d-flex gap-4">
+              <div class="form-group m-0 d-flex flex-column align-items-start" style="width: 307px">
+                <label for="search" class="custom__label">Список товаров</label>
+                <div class="input-group mt-1">
+                  <span class="input-group-text"><img src="@/assets/css/icons/searchIcon.svg" alt="" />
+                  </span>
+                  <input class="form-control" placeholder="Поиск..." id="search" type="text" v-model.trim="search" />
                 </div>
               </div>
-              <div class="search__menu-right d-flex align-items-end gap-4">
-                <filters-button></filters-button>
-                <export-button></export-button>
+              <div class="form-group m-0 mt-1 d-flex flex-column align-items-start" style="width: 393px">
+                <label for="search" class="custom__label">Выберите склад</label>
+                <select class="form-select form__adapt" v-model="selected">
+                  <option v-for="(warehouse, i) in warehousesArr" :key="i" :value="warehouse"
+                    @input="this.selected = warehouse">
+                    {{ warehouse }}
+                  </option>
+                  <option value="">Без фильтра</option>
+                </select>
               </div>
             </div>
-            <div class="table__body">
-              <table class="table table-hover text-center table-striped">
-                <thead>
-                  <tr>
-                    <th scope="col" class="">№</th>
-                    <th scope="col" class="">Товар</th>
-                    <th scope="col" class="">Артикул</th>
-                    <th scope="col" class="">Цвет</th>
-                    <th scope="col" class="">Размер</th>
-                    <th scope="col" class="">Склад</th>
-                    <th scope="col" class="">Себестоимость</th>
-                    <th scope="col" class="">Текущая цена</th>
-                    <th scope="col" class="">Кол-во</th>
-                    <th scope="col" class="">Сумма</th>
-                  </tr>
-                </thead>
-                <tbody class="table-body">
-                  <tr v-for="item in paginationList" :key="item">
-                    <td scope="row">{{ item.listNumber + 1 }}</td>
-                    <td class="d-flex gap-2">
-                      <img :src="item.img" />{{ item.name }}
-                    </td>
-                    <td>{{ item.barcode }}</td>
-                    <td>{{ item.color }}</td>
-                    <td>{{ item.size }}</td>
-                    <td>{{ item.warehouse }}</td>
-                    <td>{{ item.startPrice }}<span>₸</span></td>
-                    <td>{{ item.currentPrice }}<span>₸</span></td>
-                    <td>{{ item.amount }}</td>
-                    <td>{{ item.currentPrice * item.amount }}<span>₸</span></td>
-                  </tr>
-                </tbody>
-              </table>
+            <div class="search__menu-right d-flex align-items-end gap-4">
+              <filters-button></filters-button>
+              <export-button></export-button>
             </div>
-            <div class="table__pagination pb-2">
-              <pagination-component :filteredArr="filteredWarehouse" :strAmount="8" @PaginationReload="reloadPagination"
-                class="pb-2"></pagination-component>
-            </div>
+          </div>
+          <div class="table__body">
+            <table class="table table-hover text-center table-striped">
+              <thead>
+                <tr>
+                  <th scope="col" class="">Товар</th>
+                  <th scope="col" class="">Артикул</th>
+                  <th scope="col" class="">Цвет</th>
+                  <th scope="col" class="">Размер</th>
+                  <th scope="col" class="">Склад</th>
+                  <th scope="col" class="">Себестоимость</th>
+                  <th scope="col" class="">Текущая цена</th>
+                  <th scope="col" class="">Кол-во</th>
+                  <th scope="col" class="">Сумма</th>
+                </tr>
+              </thead>
+              <tbody class="table-body">
+                <tr v-for="item in paginationList" :key="item">
+                  <td class="d-flex gap-2">
+                    <img :src="item.img" />{{ item.name }}
+                  </td>
+                  <td>{{ item.barcode }}</td>
+                  <td>{{ item.color }}</td>
+                  <td>{{ item.size }}</td>
+                  <td>{{ item.warehouse }}</td>
+                  <td>{{ item.startPrice }}<span>₸</span></td>
+                  <td>{{ item.currentPrice }}<span>₸</span></td>
+                  <td>{{ item.amount }}</td>
+                  <td>{{ item.currentPrice * item.amount }}<span>₸</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="table__pagination pb-2">
+            <pagination-component :filteredArr="filteredWarehouse" :strAmount="8" @PaginationReload="reloadPagination"
+              class="pb-2"></pagination-component>
           </div>
         </div>
       </div>
     </div>
-    <filters>
-      <div class="filters__period__flex">
-        <div class="filter__name__standart">Выберите период</div>
-        <div class="reset__date">Сбросить период</div>
+  </div>
+  <filters>
+    <div class="filters__period__flex">
+      <div class="filter__name__standart">Выберите период</div>
+      <div class="reset__date">Сбросить период</div>
+    </div>
+    <div class="filters__period">
+      <div class="form-group">
+        <input class="form-control period__s" type="date" id="example-date-input" />
       </div>
-      <div class="filters__period">
-        <div class="form-group">
-          <input class="form-control period__s" type="date" id="example-date-input" />
-        </div>
-        <div>
-          <img src="@/assets/img/line.svg" style="width: 1.927vw" alt="" />
-        </div>
-        <div class="form-group">
-          <input class="form-control period__s" type="date" id="example-date-input" />
-        </div>
+      <div>
+        <img src="@/assets/img/line.svg" style="width: 1.927vw" alt="" />
       </div>
-      <div class="text-start">
-        <label class="text-start" for="">Категория</label>
-        <select class="form-select">
-          <option></option>
-        </select>
+      <div class="form-group">
+        <input class="form-control period__s" type="date" id="example-date-input" />
       </div>
-      <!-- <div class="text-start">
+    </div>
+    <div class="text-start">
+      <label class="text-start" for="">Категория</label>
+      <select class="form-select">
+        <option></option>
+      </select>
+    </div>
+    <!-- <div class="text-start">
         <label class="text-start" for="">Склад</label>
         <select class="form-select">
           <option></option>
         </select>
       </div> -->
-      <div class="form-check d-flex align-items-center" style="text-align: left; margin-top: 0.833vw">
-        <input class="form-check-input mt-0" type="checkbox" value="" id="fcustomCheck1" />
-        <label class="custom-control-label filters__checkbox__label" style="margin-bottom:0;" for="customCheck1">Есть в
-          наличии</label>
-      </div>
-    </filters>
+    <div class="form-check d-flex align-items-center" style="text-align: left; margin-top: 0.833vw">
+      <input class="form-check-input mt-0" type="checkbox" value="" id="fcustomCheck1" />
+      <label class="custom-control-label filters__checkbox__label" style="margin-bottom:0;" for="customCheck1">Есть в
+        наличии</label>
+    </div>
+  </filters>
 </template>
 
 <script>

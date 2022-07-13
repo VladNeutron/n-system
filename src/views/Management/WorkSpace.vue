@@ -1,379 +1,380 @@
 <template>
-    <div class="container-fluid pt-4">
-      <div class="d-flex justify-content-between align-items-center">
-        <div>
-          <lists-header>
-            <template v-slot:title> Neutron </template>
-            <template v-slot:description> Рабочая область </template>
-          </lists-header>
+  <div class="container-fluid pt-4">
+    <div class="d-flex justify-content-between align-items-center">
+      <div>
+        <lists-header>
+          <template v-slot:title> Neutron </template>
+          <template v-slot:description> Рабочая область </template>
+        </lists-header>
+      </div>
+      <div class="d-flex">
+        <div class="periods" style="margin-right: 24px">
+          <div class="periods__content">
+            <div class="test" :class="{ active1: isActive == 1 }" @click="isActive = 1">
+              Сегодня
+            </div>
+            <img src="@/assets/img/lineHr.svg" alt="" />
+            <div>
+              <div class="test2" :class="{ active2: isActive == 2 }" @click="isActive = 2">
+                Вчера
+              </div>
+            </div>
+            <img src="@/assets/img/lineHr.svg" alt="" />
+            <div>
+              <div class="test3" :class="{ active2: isActive == 3 }" @click="isActive = 3">
+                Неделя
+              </div>
+            </div>
+            <img src="@/assets/img/lineHr.svg" alt="" />
+            <div>
+              <div class="test4" :class="{ active2: isActive == 4 }" @click="isActive = 4">
+                Месяц
+              </div>
+            </div>
+            <img src="@/assets/img/lineHr.svg" alt="" />
+            <div>
+              <div class="test5" :class="{ active3: isActive == 5 }" @click="isActive = 5">
+                Период
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="d-flex">
-          <div class="periods" style="margin-right: 24px">
-            <div class="periods__content">
-              <div class="test" :class="{ active1: isActive == 1 }" @click="isActive = 1">
-                Сегодня
-              </div>
-              <img src="@/assets/img/lineHr.svg" alt="" />
-              <div>
-                <div class="test2" :class="{ active2: isActive == 2 }" @click="isActive = 2">
-                  Вчера
+        <div class="select">
+          <div class="select__content">
+            <div>Все</div>
+            <img src="@/assets/img/lineHr.svg" alt="" />
+            <div class="form-group m-0" style="width: 120px">
+              <select class="form-select select__workspace m-0" id="exampleFormControlSelect1">
+                <option>Выберите</option>
+                <option>Тихонов А.</option>
+                <option>Тихонов А.</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card pt-4 pb-4 px-4">
+      <div>
+        <div class="card__header">
+          <h4 class="mb-0">Воронка продаж</h4>
+          <p class="mb-0">Название воронки</p>
+        </div>
+        <div class="funnel" style="margin-left: 70px">
+          <div class="funnel__content" v-if="isActive == 1">
+            <div v-for="step in steps" :key="step" style="margin-right: 24px">
+              <router-link :to="{ name: 'deal-list' }" class="nav-link">
+                <p class="step__main mb-0">{{ step.stepName }}</p>
+              </router-link>
+              <p class="step__count">
+                {{ step.stepCount }}, {{ step.stepCountSum }}
+              </p>
+              <div class="step__color__block">
+                <div>
+                  <p class="step__count__main mb-0">+{{ step.countDeal }}</p>
+                  <p class="step__count mb-0" style="text-transform: uppercase">
+                    Новых сделок
+                  </p>
                 </div>
-              </div>
-              <img src="@/assets/img/lineHr.svg" alt="" />
-              <div>
-                <div class="test3" :class="{ active2: isActive == 3 }" @click="isActive = 3">
-                  Неделя
-                </div>
-              </div>
-              <img src="@/assets/img/lineHr.svg" alt="" />
-              <div>
-                <div class="test4" :class="{ active2: isActive == 4 }" @click="isActive = 4">
-                  Месяц
-                </div>
-              </div>
-              <img src="@/assets/img/lineHr.svg" alt="" />
-              <div>
-                <div class="test5" :class="{ active3: isActive == 5 }" @click="isActive = 5">
-                  Период
+                <hr />
+                <div>
+                  <p class="step__count__main mb-0">{{ step.sumDeal }}</p>
+                  <p class="step__count mb-0" style="text-transform: uppercase">
+                    Сумма сделок
+                  </p>
                 </div>
               </div>
             </div>
           </div>
-          <div class="select">
-            <div class="select__content">
-              <div>Все</div>
-              <img src="@/assets/img/lineHr.svg" alt="" />
-              <div class="form-group m-0" style="width: 120px">
-                <select class="form-select select__workspace m-0" id="exampleFormControlSelect1">
-                  <option>Выберите</option>
-                  <option>Тихонов А.</option>
-                  <option>Тихонов А.</option>
-                </select>
+          <div class="funnel__content" v-if="isActive == 2">
+            <div v-for="step in steps2" :key="step" style="margin-right: 24px">
+              <p class="step__main mb-0">{{ step.stepName }}</p>
+              <p class="step__count">
+                {{ step.stepCount }}, {{ step.stepCountSum }}
+              </p>
+              <div class="step__color__block">
+                <div>
+                  <p class="step__count__main mb-0">+{{ step.countDeal }}</p>
+                  <p class="step__count mb-0" style="text-transform: uppercase">
+                    Новых сделок
+                  </p>
+                </div>
+                <hr />
+                <div>
+                  <p class="step__count__main mb-0">{{ step.sumDeal }}</p>
+                  <p class="step__count mb-0" style="text-transform: uppercase">
+                    Сумма сделок
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="funnel__content" v-if="isActive == 3">
+            <div v-for="step in steps3" :key="step" style="margin-right: 24px">
+              <p class="step__main mb-0">{{ step.stepName }}</p>
+              <p class="step__count">
+                {{ step.stepCount }}, {{ step.stepCountSum }}
+              </p>
+              <div class="step__color__block">
+                <div>
+                  <p class="step__count__main mb-0">+{{ step.countDeal }}</p>
+                  <p class="step__count mb-0" style="text-transform: uppercase">
+                    Новых сделок
+                  </p>
+                </div>
+                <hr />
+                <div>
+                  <p class="step__count__main mb-0">{{ step.sumDeal }}</p>
+                  <p class="step__count mb-0" style="text-transform: uppercase">
+                    Сумма сделок
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="funnel__content" v-if="isActive == 4">
+            <div v-for="step in steps4" :key="step" style="margin-right: 24px">
+              <p class="step__main mb-0">{{ step.stepName }}</p>
+              <p class="step__count">
+                {{ step.stepCount }}, {{ step.stepCountSum }}
+              </p>
+              <div class="step__color__block">
+                <div>
+                  <p class="step__count__main mb-0">+{{ step.countDeal }}</p>
+                  <p class="step__count mb-0" style="text-transform: uppercase">
+                    Новых сделок
+                  </p>
+                </div>
+                <hr />
+                <div>
+                  <p class="step__count__main mb-0">{{ step.sumDeal }}</p>
+                  <p class="step__count mb-0" style="text-transform: uppercase">
+                    Сумма сделок
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="funnel__content" v-if="isActive == 5">
+            <div v-for="step in steps5" :key="step" style="margin-right: 24px">
+              <p class="step__main mb-0">{{ step.stepName }}</p>
+              <p class="step__count">
+                {{ step.stepCount }}, {{ step.stepCountSum }}
+              </p>
+              <div class="step__color__block">
+                <div>
+                  <p class="step__count__main mb-0">+{{ step.countDeal }}</p>
+                  <p class="step__count mb-0" style="text-transform: uppercase">
+                    Новых сделок
+                  </p>
+                </div>
+                <hr />
+                <div>
+                  <p class="step__count__main mb-0">{{ step.sumDeal }}</p>
+                  <p class="step__count mb-0" style="text-transform: uppercase">
+                    Сумма сделок
+                  </p>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <div class="card pt-4 pb-4 px-4">
-        <div>
-          <div class="card__header">
-            <h4 class="mb-0">Воронка продаж</h4>
-            <p class="mb-0">Название воронки</p>
+    </div>
+    <div class="row mt-4">
+      <div class="col">
+        <div class="task__block">
+          <div class="task__content">
+            <div class="block">
+              <p class="task__main">Просроченные задачи</p>
+              <p class="task__count">3</p>
+              <p class="task__today mb-0">за сегодня</p>
+            </div>
+            <div class="block">
+              <p class="task__main">ВЫполненные задачи</p>
+              <p class="task__count">3</p>
+              <p class="task__today mb-0">за сегодня</p>
+            </div>
           </div>
-          <div class="funnel" style="margin-left: 70px">
-            <div class="funnel__content" v-if="isActive == 1">
-              <div v-for="step in steps" :key="step" style="margin-right: 24px">
-                <p class="step__main mb-0">{{ step.stepName }}</p>
-                <p class="step__count">
-                  {{ step.stepCount }}, {{ step.stepCountSum }}
-                </p>
-                <div class="step__color__block">
-                  <div>
-                    <p class="step__count__main mb-0">+{{ step.countDeal }}</p>
-                    <p class="step__count mb-0" style="text-transform: uppercase">
-                      Новых сделок
-                    </p>
-                  </div>
-                  <hr />
-                  <div>
-                    <p class="step__count__main mb-0">{{ step.sumDeal }}</p>
-                    <p class="step__count mb-0" style="text-transform: uppercase">
-                      Сумма сделок
-                    </p>
-                  </div>
-                </div>
-              </div>
+          <div class="task__content mt-2">
+            <div class="block">
+              <p class="task__main">задачи в работе</p>
+              <p class="task__count">18</p>
+              <p class="task__today mb-0">за сегодня</p>
             </div>
-            <div class="funnel__content" v-if="isActive == 2">
-              <div v-for="step in steps2" :key="step" style="margin-right: 24px">
-                <p class="step__main mb-0">{{ step.stepName }}</p>
-                <p class="step__count">
-                  {{ step.stepCount }}, {{ step.stepCountSum }}
-                </p>
-                <div class="step__color__block">
-                  <div>
-                    <p class="step__count__main mb-0">+{{ step.countDeal }}</p>
-                    <p class="step__count mb-0" style="text-transform: uppercase">
-                      Новых сделок
-                    </p>
-                  </div>
-                  <hr />
-                  <div>
-                    <p class="step__count__main mb-0">{{ step.sumDeal }}</p>
-                    <p class="step__count mb-0" style="text-transform: uppercase">
-                      Сумма сделок
-                    </p>
-                  </div>
-                </div>
-              </div>
+            <div class="block">
+              <p class="task__main">сделок без задач</p>
+              <p class="task__count">1</p>
+              <p class="task__today mb-0">за сегодня</p>
             </div>
-            <div class="funnel__content" v-if="isActive == 3">
-              <div v-for="step in steps3" :key="step" style="margin-right: 24px">
-                <p class="step__main mb-0">{{ step.stepName }}</p>
-                <p class="step__count">
-                  {{ step.stepCount }}, {{ step.stepCountSum }}
-                </p>
-                <div class="step__color__block">
-                  <div>
-                    <p class="step__count__main mb-0">+{{ step.countDeal }}</p>
-                    <p class="step__count mb-0" style="text-transform: uppercase">
-                      Новых сделок
-                    </p>
-                  </div>
-                  <hr />
-                  <div>
-                    <p class="step__count__main mb-0">{{ step.sumDeal }}</p>
-                    <p class="step__count mb-0" style="text-transform: uppercase">
-                      Сумма сделок
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="funnel__content" v-if="isActive == 4">
-              <div v-for="step in steps4" :key="step" style="margin-right: 24px">
-                <p class="step__main mb-0">{{ step.stepName }}</p>
-                <p class="step__count">
-                  {{ step.stepCount }}, {{ step.stepCountSum }}
-                </p>
-                <div class="step__color__block">
-                  <div>
-                    <p class="step__count__main mb-0">+{{ step.countDeal }}</p>
-                    <p class="step__count mb-0" style="text-transform: uppercase">
-                      Новых сделок
-                    </p>
-                  </div>
-                  <hr />
-                  <div>
-                    <p class="step__count__main mb-0">{{ step.sumDeal }}</p>
-                    <p class="step__count mb-0" style="text-transform: uppercase">
-                      Сумма сделок
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="funnel__content" v-if="isActive == 5">
-              <div v-for="step in steps5" :key="step" style="margin-right: 24px">
-                <p class="step__main mb-0">{{ step.stepName }}</p>
-                <p class="step__count">
-                  {{ step.stepCount }}, {{ step.stepCountSum }}
-                </p>
-                <div class="step__color__block">
-                  <div>
-                    <p class="step__count__main mb-0">+{{ step.countDeal }}</p>
-                    <p class="step__count mb-0" style="text-transform: uppercase">
-                      Новых сделок
-                    </p>
-                  </div>
-                  <hr />
-                  <div>
-                    <p class="step__count__main mb-0">{{ step.sumDeal }}</p>
-                    <p class="step__count mb-0" style="text-transform: uppercase">
-                      Сумма сделок
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
+          </div>
+        </div>
+        <div class="card p-4 mt-4" style="width: 634px">
+          <div class="manager__deals">
+            <p class="deals__main mb-0">Активность за сегодня</p>
+            <p class="deals__count mb-0">18</p>
+          </div>
+          <div class="deals__table mt-3">
+            <table class="table">
+              <thead>
+                <th>Наименование</th>
+                <th>КОЛИЧЕСТВО</th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+              </thead>
+              <tbody>
+                <tr v-for="item in deals" :key="item">
+                  <td>{{ item.name }}</td>
+                  <td>{{ item.count }} задача</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
       </div>
-      <div class="row mt-4">
-        <div class="col">
-          <div class="task__block">
-            <div class="task__content">
-              <div class="block">
-                <p class="task__main">Просроченные задачи</p>
-                <p class="task__count">3</p>
-                <p class="task__today mb-0">за сегодня</p>
-              </div>
-              <div class="block">
-                <p class="task__main">ВЫполненные задачи</p>
-                <p class="task__count">3</p>
-                <p class="task__today mb-0">за сегодня</p>
-              </div>
-            </div>
-            <div class="task__content mt-2">
-              <div class="block">
-                <p class="task__main">задачи в работе</p>
-                <p class="task__count">18</p>
-                <p class="task__today mb-0">за сегодня</p>
-              </div>
-              <div class="block">
-                <p class="task__main">сделок без задач</p>
-                <p class="task__count">1</p>
-                <p class="task__today mb-0">за сегодня</p>
-              </div>
-            </div>
+      <div class="col-7">
+        <div class="card p-4">
+          <div class="manager__deals">
+            <p class="deals__main mb-0">Сделки по менеджерам</p>
+            <p class="deals__count mb-0">18</p>
           </div>
-          <div class="card p-4 mt-4" style="width: 634px">
-            <div class="manager__deals">
-              <p class="deals__main mb-0">Активность за сегодня</p>
-              <p class="deals__count mb-0">18</p>
-            </div>
-            <div class="deals__table mt-3">
-              <table class="table">
-                <thead>
-                  <th>Наименование</th>
-                  <th>КОЛИЧЕСТВО</th>
-                  <th></th>
-                  <th></th>
-                  <th></th>
-                  <th></th>
-                  <th></th>
-                  <th></th>
-                </thead>
-                <tbody>
-                  <tr v-for="item in deals" :key="item">
-                    <td>{{ item.name }}</td>
-                    <td>{{ item.count }} задача</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
+          <div class="deals__table mt-5">
+            <table class="table">
+              <thead>
+                <th>Ф.И.О. Менеджера</th>
+                <th>КОЛИЧЕСТВО</th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+              </thead>
+              <tbody>
+                <tr v-for="item in deals" :key="item">
+                  <td>{{ item.name }}</td>
+                  <td>{{ item.count }}</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
-        <div class="col-7">
-          <div class="card p-4">
-            <div class="manager__deals">
-              <p class="deals__main mb-0">Сделки по менеджерам</p>
-              <p class="deals__count mb-0">18</p>
+        <div class="card px-4 py-4 pb-5 mt-4">
+          <div class="activity__scroll">
+            <div class="activity__header">
+              <p class="activity__main mb-0">
+                Использование системы за сегодня
+              </p>
             </div>
-            <div class="deals__table mt-5">
-              <table class="table">
-                <thead>
-                  <th>Ф.И.О. Менеджера</th>
-                  <th>КОЛИЧЕСТВО</th>
-                  <th></th>
-                  <th></th>
-                  <th></th>
-                  <th></th>
-                  <th></th>
-                  <th></th>
-                  <th></th>
-                  <th></th>
-                  <th></th>
-                  <th></th>
-                  <th></th>
-                </thead>
-                <tbody>
-                  <tr v-for="item in deals" :key="item">
-                    <td>{{ item.name }}</td>
-                    <td>{{ item.count }}</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-          <div class="card px-4 py-4 pb-5 mt-4">
-            <div class="activity__scroll">
-              <div class="activity__header">
-                <p class="activity__main mb-0">
-                  Использование системы за сегодня
-                </p>
+            <div class="activity__content">
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="d-flex align-items-center activity__margin">
+                  <img src="@/assets/img/avatar.svg" style="width: 24px; margin-right: 8px" alt="" />
+                  <p class="activity__name mb-0">Евгений</p>
+                </div>
+                <div class="progress-wrapper" style="width: 350px">
+                  <div class="progress-info">
+                    <div class="progress-percentage text-end">
+                      <span class="text-sm font-weight-bold">10 ч. 32 мин.</span>
+                    </div>
+                  </div>
+                  <div class="progress">
+                    <div class="progress-bar bg-dark" role="progressbar" aria-valuenow="40" aria-valuemin="0"
+                      aria-valuemax="100" style="width: 40%"></div>
+                  </div>
+                </div>
               </div>
-              <div class="activity__content">
-                <div class="d-flex justify-content-between align-items-center">
-                  <div class="d-flex align-items-center activity__margin">
-                    <img src="@/assets/img/avatar.svg" style="width: 24px; margin-right: 8px" alt="" />
-                    <p class="activity__name mb-0">Евгений</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="d-flex align-items-center activity__margin">
+                  <img src="@/assets/img/avatar.svg" style="width: 24px; margin-right: 8px" alt="" />
+                  <p class="activity__name mb-0">Роман Ромашков</p>
+                </div>
+                <div class="progress-wrapper" style="width: 350px">
+                  <div class="progress-info">
+                    <div class="progress-percentage text-end">
+                      <span class="text-sm font-weight-bold">7 ч. 11 мин.</span>
+                    </div>
                   </div>
-                  <div class="progress-wrapper" style="width: 350px">
-                    <div class="progress-info">
-                      <div class="progress-percentage text-end">
-                        <span class="text-sm font-weight-bold">10 ч. 32 мин.</span>
-                      </div>
-                    </div>
-                    <div class="progress">
-                      <div class="progress-bar bg-dark" role="progressbar" aria-valuenow="40" aria-valuemin="0"
-                        aria-valuemax="100" style="width: 40%"></div>
-                    </div>
+                  <div class="progress">
+                    <div class="progress-bar bg-dark" role="progressbar" aria-valuenow="40" aria-valuemin="0"
+                      aria-valuemax="100" style="width: 20%"></div>
                   </div>
                 </div>
-                <div class="d-flex justify-content-between align-items-center">
-                  <div class="d-flex align-items-center activity__margin">
-                    <img src="@/assets/img/avatar.svg" style="width: 24px; margin-right: 8px" alt="" />
-                    <p class="activity__name mb-0">Роман Ромашков</p>
+              </div>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="d-flex align-items-center activity__margin">
+                  <img src="@/assets/img/avatar.svg" style="width: 24px; margin-right: 8px" alt="" />
+                  <p class="activity__name mb-0">Елизавета Кирова</p>
+                </div>
+                <div class="progress-wrapper" style="width: 350px">
+                  <div class="progress-info">
+                    <div class="progress-percentage text-end">
+                      <span class="text-sm font-weight-bold">22 ч. 08 мин.</span>
+                    </div>
                   </div>
-                  <div class="progress-wrapper" style="width: 350px">
-                    <div class="progress-info">
-                      <div class="progress-percentage text-end">
-                        <span class="text-sm font-weight-bold">7 ч. 11 мин.</span>
-                      </div>
-                    </div>
-                    <div class="progress">
-                      <div class="progress-bar bg-dark" role="progressbar" aria-valuenow="40" aria-valuemin="0"
-                        aria-valuemax="100" style="width: 20%"></div>
-                    </div>
+                  <div class="progress">
+                    <div class="progress-bar bg-dark" role="progressbar" aria-valuenow="40" aria-valuemin="0"
+                      aria-valuemax="100" style="width: 70%"></div>
                   </div>
                 </div>
-                <div class="d-flex justify-content-between align-items-center">
-                  <div class="d-flex align-items-center activity__margin">
-                    <img src="@/assets/img/avatar.svg" style="width: 24px; margin-right: 8px" alt="" />
-                    <p class="activity__name mb-0">Елизавета Кирова</p>
+              </div>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="d-flex align-items-center activity__margin">
+                  <img src="@/assets/img/avatar.svg" style="width: 24px; margin-right: 8px" alt="" />
+                  <p class="activity__name mb-0">Роман Ромашков</p>
+                </div>
+                <div class="progress-wrapper" style="width: 350px">
+                  <div class="progress-info">
+                    <div class="progress-percentage text-end">
+                      <span class="text-sm font-weight-bold">7 ч. 11 мин.</span>
+                    </div>
                   </div>
-                  <div class="progress-wrapper" style="width: 350px">
-                    <div class="progress-info">
-                      <div class="progress-percentage text-end">
-                        <span class="text-sm font-weight-bold">22 ч. 08 мин.</span>
-                      </div>
-                    </div>
-                    <div class="progress">
-                      <div class="progress-bar bg-dark" role="progressbar" aria-valuenow="40" aria-valuemin="0"
-                        aria-valuemax="100" style="width: 70%"></div>
-                    </div>
+                  <div class="progress">
+                    <div class="progress-bar bg-dark" role="progressbar" aria-valuenow="40" aria-valuemin="0"
+                      aria-valuemax="100" style="width: 20%"></div>
                   </div>
                 </div>
-                <div class="d-flex justify-content-between align-items-center">
-                  <div class="d-flex align-items-center activity__margin">
-                    <img src="@/assets/img/avatar.svg" style="width: 24px; margin-right: 8px" alt="" />
-                    <p class="activity__name mb-0">Роман Ромашков</p>
-                  </div>
-                  <div class="progress-wrapper" style="width: 350px">
-                    <div class="progress-info">
-                      <div class="progress-percentage text-end">
-                        <span class="text-sm font-weight-bold">7 ч. 11 мин.</span>
-                      </div>
-                    </div>
-                    <div class="progress">
-                      <div class="progress-bar bg-dark" role="progressbar" aria-valuenow="40" aria-valuemin="0"
-                        aria-valuemax="100" style="width: 20%"></div>
-                    </div>
-                  </div>
+              </div>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="d-flex align-items-center activity__margin">
+                  <img src="@/assets/img/avatar.svg" style="width: 24px; margin-right: 8px" alt="" />
+                  <p class="activity__name mb-0">Роман Ромашков</p>
                 </div>
-                <div class="d-flex justify-content-between align-items-center">
-                  <div class="d-flex align-items-center activity__margin">
-                    <img src="@/assets/img/avatar.svg" style="width: 24px; margin-right: 8px" alt="" />
-                    <p class="activity__name mb-0">Роман Ромашков</p>
+                <div class="progress-wrapper" style="width: 350px">
+                  <div class="progress-info">
+                    <div class="progress-percentage text-end">
+                      <span class="text-sm font-weight-bold">7 ч. 11 мин.</span>
+                    </div>
                   </div>
-                  <div class="progress-wrapper" style="width: 350px">
-                    <div class="progress-info">
-                      <div class="progress-percentage text-end">
-                        <span class="text-sm font-weight-bold">7 ч. 11 мин.</span>
-                      </div>
-                    </div>
-                    <div class="progress">
-                      <div class="progress-bar bg-dark" role="progressbar" aria-valuenow="40" aria-valuemin="0"
-                        aria-valuemax="100" style="width: 20%"></div>
-                    </div>
+                  <div class="progress">
+                    <div class="progress-bar bg-dark" role="progressbar" aria-valuenow="40" aria-valuemin="0"
+                      aria-valuemax="100" style="width: 20%"></div>
                   </div>
                 </div>
               </div>
@@ -382,6 +383,7 @@
         </div>
       </div>
     </div>
+  </div>
 </template>
 
 <script>

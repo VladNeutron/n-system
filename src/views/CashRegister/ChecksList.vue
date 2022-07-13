@@ -1,89 +1,87 @@
 <template>
-    <div class="page__name d-flex align-items-center ms-4">
-      <lists-header>
-        <template v-slot:title> Список чеков </template>
-        <template v-slot:description>
-          Внесите изменения и не забудьте нажать “Сохранить”
-        </template>
-      </lists-header>
+  <div class="page__name d-flex align-items-center ms-4">
+    <lists-header>
+      <template v-slot:title> Список чеков </template>
+      <template v-slot:description>
+        Внесите изменения и не забудьте нажать “Сохранить”
+      </template>
+    </lists-header>
+  </div>
+  <div class="card pt-4 pb-2 mb-4 ms-4">
+    <div class="d-flex justify-content-between align-items-center mx-4 mb-4">
+      <div>
+        <button class="btn bg-gradient-dark mb-0" style="margin-right: 0.833vw"
+          onclick="window.location.href = '/cash-register/cash-register-sale'">
+          <img src="@/assets/img/whtplus.svg" alt="" style="margin-right: 10px" />
+          Новая продажа
+        </button>
+        <button class="btn bg-gradient-dark mb-0"
+          onclick="window.location.href = '/cash-register/cash-register-return'">
+          <img src="@/assets/img/whtplus.svg" alt="" style="margin-right: 10px" />
+          Оформить возврат
+        </button>
+      </div>
+      <div class="table__inputs d-flex gap-3 align-content-center">
+        <list-search @searchFilter="(a) => search = a"></list-search>
+        <print-button></print-button>
+        <download-button></download-button>
+        <filters-button></filters-button>
+      </div>
     </div>
-    <div class="card pt-4 pb-2 mb-4 ms-4">
-      <div class="d-flex justify-content-between align-items-center mx-4 mb-4">
-        <div>
-          <button class="btn bg-gradient-dark mb-0" style="margin-right: 0.833vw"
-            onclick="window.location.href = '/cash-register/cash-register-sale'">
-            <img src="@/assets/img/whtplus.svg" alt="" style="margin-right: 10px" />
-            Новая продажа
-          </button>
-          <button class="btn bg-gradient-dark mb-0"
-            onclick="window.location.href = '/cash-register/cash-register-return'">
-            <img src="@/assets/img/whtplus.svg" alt="" style="margin-right: 10px" />
-            Оформить возврат
-          </button>
-        </div>
-        <div class="table__inputs d-flex gap-3 align-content-center">
-          <list-search @searchFilter="(a) => search = a"></list-search>
-          <print-button></print-button>
-          <download-button></download-button>
-          <filters-button></filters-button>
+    <div style="margin-left: 25px">
+      <div class="form-group m-0 search__adapt__mob">
+        <div class="input-group mt-1 search__size">
+          <span class="input-group-text"><img src="@/assets/css/icons/searchIcon.svg" alt="" /></span>
+          <input class="form-control form__width" placeholder="Поиск..." id="search" type="text" />
         </div>
       </div>
-      <div style="margin-left: 25px">
-        <div class="form-group m-0 search__adapt__mob">
-          <div class="input-group mt-1 search__size">
-            <span class="input-group-text"><img src="@/assets/css/icons/searchIcon.svg" alt="" /></span>
-            <input class="form-control form__width" placeholder="Поиск..." id="search" type="text" />
-          </div>
-        </div>
-      </div>
-      <div class="page__table">
-        <table class="table table-hover">
-          <thead>
-            <tr class="">
-              <th scope="col" class="th__col" style="width: 25px; padding-left: 27px"></th>
-              <th width="1%" scope="col" class="th__col">№</th>
-              <th scope="col" class="th__col">№ чека</th>
-              <th scope="col" class="th__col">Дата</th>
-              <th scope="col" class="th__col">Кассир</th>
-              <th scope="col" class="th__col">Торговая точка</th>
-              <th scope="col" class="th__col">Кол-во</th>
-              <th scope="col" class="th__col">Сумма</th>
-
-              <th scope="col" class="th__col" style="padding-right: 27px"></th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr v-for="(order) of paginationList" :key="order.checkId">
-              <th scope="row" style="padding-left: 27px">
-                <div class="form-check">
-                  <input class="form-check-input" type="checkbox" value="" id="fcustomCheck1" />
-                </div>
-              </th>
-              <td width="1%">{{ order.listNumber + 1 }}</td>
-              <td>{{ order.checkId }}</td>
-              <td>{{ order.date }}</td>
-              <td>{{ order.cashier }}</td>
-              <td>
-                {{ order.marketplace }}
-              </td>
-              <td>{{ order.amount }}</td>
-              <td>{{ order.sum }}</td>
-
-              <td style="padding-right: 27px">
-                <div class="dropdown">
-                  <img src="@/assets/img/dots.svg" style="width: 1.563vw; cursor: pointer" alt="" />
-                  <div class="dropdown-content">
-                    <a style="cursor: pointer" data-bs-toggle="modal" data-bs-target="#DeleteInv">Удалить</a>
-                  </div>
-                </div>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <pagination-component :filteredArr="filteredOrders" :strAmount="10" @PaginationReload="reloadPagination"
-        class="pb-2"></pagination-component>
     </div>
+    <div class="page__table">
+      <table class="table table-hover">
+        <thead>
+          <tr class="">
+            <th scope="col" class="th__col" style="width: 25px; padding-left: 27px"></th>
+            <th scope="col" class="th__col">№ чека</th>
+            <th scope="col" class="th__col">Дата</th>
+            <th scope="col" class="th__col">Кассир</th>
+            <th scope="col" class="th__col">Торговая точка</th>
+            <th scope="col" class="th__col">Кол-во</th>
+            <th scope="col" class="th__col">Сумма</th>
+
+            <th scope="col" class="th__col" style="padding-right: 27px"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="(order) of paginationList" :key="order.checkId">
+            <th scope="row" style="padding-left: 27px">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="fcustomCheck1" />
+              </div>
+            </th>
+            <td>{{ order.checkId }}</td>
+            <td>{{ order.date }}</td>
+            <td>{{ order.cashier }}</td>
+            <td>
+              {{ order.marketplace }}
+            </td>
+            <td>{{ order.amount }}</td>
+            <td>{{ order.sum }}</td>
+
+            <td style="padding-right: 27px">
+              <div class="dropdown">
+                <img src="@/assets/img/dots.svg" style="width: 1.563vw; cursor: pointer" alt="" />
+                <div class="dropdown-content">
+                  <a style="cursor: pointer" data-bs-toggle="modal" data-bs-target="#DeleteInv">Удалить</a>
+                </div>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <pagination-component :filteredArr="filteredOrders" :strAmount="10" @PaginationReload="reloadPagination"
+      class="pb-2"></pagination-component>
+  </div>
   <the-filter @no-filter="cancelFilters">
     <div class="filters__period__flex">
       <div class="filter__name__standart">Выберите период</div>
@@ -270,9 +268,9 @@ export default {
           (this.filterMarketPlace === ""
             ? true
             : order.marketplace === this.filterMarketPlace) &&
-          (String(order.checkId).includes(String(this.search).toLowerCase()) 
-          || String(order.cashier).toLowerCase().includes(String(this.search).toLowerCase())
-          || String(order.marketplace).toLowerCase().includes(String(this.search).toLowerCase()))
+          (String(order.checkId).includes(String(this.search).toLowerCase())
+            || String(order.cashier).toLowerCase().includes(String(this.search).toLowerCase())
+            || String(order.marketplace).toLowerCase().includes(String(this.search).toLowerCase()))
       );
     },
   },
@@ -386,30 +384,33 @@ td {
   justify-content: space-between;
   align-items: center;
 }
-.page__table{
+
+.page__table {
   overflow: auto;
 }
+
 .page__table::-webkit-scrollbar {
-    background: #e2e8f0;
-    border-radius: 0.78vw;
-    width: 0.37vw;
+  background: #e2e8f0;
+  border-radius: 0.78vw;
+  width: 0.37vw;
 }
-  
+
 .page__table::-webkit-scrollbar-thumb {
-    border-radius: 0.78vw;
-    background-color: #313860;
+  border-radius: 0.78vw;
+  background-color: #313860;
 }
-  
+
 .page__table::-webkit-scrollbar-track {
-    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.2);
-    border-radius: 0.78vw;
-    background-color: #e2e8f0;
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.2);
+  border-radius: 0.78vw;
+  background-color: #e2e8f0;
 }
 
 @media screen and (max-width: 1600px) {
   .btn {
     font-size: 12px !important;
   }
+
   .card {
     height: 70vh;
   }
@@ -426,7 +427,8 @@ td {
   .search__size {
     width: 322px;
   }
-  .page__table{
+
+  .page__table {
     height: 70%;
   }
 }

@@ -1,134 +1,131 @@
 <template>
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-12">
-          <lists-header>
-            <template v-slot:title> Список касс </template>
-            <template v-slot:description>
-              Внесите изменения и не забудьте нажать “Сохранить”
-            </template>
-          </lists-header>
-          <div class="card" style="padding-top: 1.25vw">
-            <div style="text-align: left; margin-left: 1.25vw">
-              <button class="btn add__cash" data-bs-toggle="modal" data-bs-target="#InpModal" @click="isEdit = 'no'"
-                style="
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-12">
+        <lists-header>
+          <template v-slot:title> Список касс </template>
+          <template v-slot:description>
+            Внесите изменения и не забудьте нажать “Сохранить”
+          </template>
+        </lists-header>
+        <div class="card" style="padding-top: 1.25vw">
+          <div style="text-align: left; margin-left: 1.25vw">
+            <button class="btn add__cash" data-bs-toggle="modal" data-bs-target="#InpModal" @click="isEdit = 'no'"
+              style="
                   font-size: 14px;
                   font-weight: 600;
                   display: flex;
                   align-items: center;
                 ">
-                <img src="@/assets/img/whtplus.svg" alt="" style="margin-right: 10px" />
-                Добавить кассу
-              </button>
-            </div>
-            <div class="inv__block">
-              <div class="inv__content">
-                <table class="table table-hover table-striped">
-                  <thead>
-                    <tr>
-                      <th scope="col" class="th__col">№</th>
-                      <th scope="col" class="th__col">Название кассы</th>
-                      <th scope="col" class="th__col">Tорговая точка</th>
-                      <th scope="col" class="th__col">Cтатус</th>
-                      <th scope="col" class="th__col">Действия</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <!-- v-for="(item, i) in filteredClients" :key="item" -->
-                    <tr v-for="item in paginationList" :key="item">
-                      <td scope="row">
-                        {{ item.listNumber + 1 }}
-                      </td>
-                      <td>
-                        {{ item.name }}
-                      </td>
-                      <td>
-                        {{ item.tradePoint }}
-                      </td>
-                      <td>
-                        {{ item.status }}
-                      </td>
-                      <td class="dropdown">
-                        <img src="@/assets/img/dots.svg" style="width: 1.563vw; cursor: pointer" alt="" />
-                        <div class="dropdown-content">
-                          <a style="cursor: pointer" data-bs-toggle="modal" data-bs-target="#InpModal"
-                            @click="isEdit = 'yes'">Редактировать</a>
-                          <hr />
-                          <a style="cursor: pointer" data-bs-toggle="modal" data-bs-target="#DeleteInv">Удалить</a>
-                        </div>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-            <pagination-component :filteredArr="items" :strAmount="10" @PaginationReload="reloadPagination"
-              class="pb-4"></pagination-component>
+              <img src="@/assets/img/whtplus.svg" alt="" style="margin-right: 10px" />
+              Добавить кассу
+            </button>
           </div>
+          <div class="inv__block">
+            <div class="inv__content">
+              <table class="table table-hover table-striped">
+                <thead>
+                  <tr>
+                    <th scope="col" class="th__col">Название кассы</th>
+                    <th scope="col" class="th__col">Tорговая точка</th>
+                    <th scope="col" class="th__col">Cтатус</th>
+                    <th scope="col" class="th__col">Действия</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <!-- v-for="(item, i) in filteredClients" :key="item" -->
+                  <tr v-for="item in paginationList" :key="item">
+
+                    <td>
+                      {{ item.name }}
+                    </td>
+                    <td>
+                      {{ item.tradePoint }}
+                    </td>
+                    <td>
+                      {{ item.status }}
+                    </td>
+                    <td class="dropdown">
+                      <img src="@/assets/img/dots.svg" style="width: 1.563vw; cursor: pointer" alt="" />
+                      <div class="dropdown-content">
+                        <a style="cursor: pointer" data-bs-toggle="modal" data-bs-target="#InpModal"
+                          @click="isEdit = 'yes'">Редактировать</a>
+                        <hr />
+                        <a style="cursor: pointer" data-bs-toggle="modal" data-bs-target="#DeleteInv">Удалить</a>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <pagination-component :filteredArr="items" :strAmount="10" @PaginationReload="reloadPagination" class="pb-4">
+          </pagination-component>
         </div>
       </div>
     </div>
-    <inputs-modal>
-      <template #head>
-        <div style="text-align: left" v-if="isEdit == 'yes'">
-          <p class="header__main">Касса №1</p>
-          <p class="header__sec">Измените данные кассы и нажмите “Сохранить”</p>
+  </div>
+  <inputs-modal>
+    <template #head>
+      <div style="text-align: left" v-if="isEdit == 'yes'">
+        <p class="header__main">Касса №1</p>
+        <p class="header__sec">Измените данные кассы и нажмите “Сохранить”</p>
+      </div>
+      <div style="text-align: left" v-if="isEdit == 'no'">
+        <p class="header__main">Добавление кассы</p>
+        <p class="header__sec">Введите данные кассы и нажмите “Добавить”</p>
+      </div>
+    </template>
+    <template #body>
+      <div v-if="isEdit == 'yes'">
+        <div class="form-group">
+          <label for="example-text-input" class="order__label__disc">Название кассы</label>
+          <input class="form-control" type="text" placeholder="Введите название" id="example-text-input" />
         </div>
-        <div style="text-align: left" v-if="isEdit == 'no'">
-          <p class="header__main">Добавление кассы</p>
-          <p class="header__sec">Введите данные кассы и нажмите “Добавить”</p>
-        </div>
-      </template>
-      <template #body>
-        <div v-if="isEdit == 'yes'">
-          <div class="form-group">
-            <label for="example-text-input" class="order__label__disc">Название кассы</label>
-            <input class="form-control" type="text" placeholder="Введите название" id="example-text-input" />
-          </div>
-          <div class="form-group mr">
-            <label for="exampleFormControlSelect1" class="order__label__disc">Торговая точка</label>
-            <div class="select3">
-              <select class="form-select disc__form" id="exampleFormControlSelect1">
-                <option disabled selected>Выберите торговую точку</option>
-                <option>Zero Караганда</option>
-                <option>Zero Караганда</option>
-                <option>Zero Караганда</option>
-              </select>
-            </div>
-          </div>
-        </div>
-        <div v-if="isEdit == 'no'">
-          <div class="form-group">
-            <label for="example-text-input" class="order__label__disc">Название кассы</label>
-            <input class="form-control" type="text" placeholder="Введите название" id="example-text-input" />
-          </div>
-          <div class="form-group mr">
-            <label for="exampleFormControlSelect1" class="order__label__disc">Торговая точка</label>
-            <div class="select3">
-              <select class="form-select disc__form" id="exampleFormControlSelect1">
-                <option disabled selected>Выберите торговую точку</option>
-                <option>Zero Караганда</option>
-                <option>Zero Караганда</option>
-                <option>Zero Караганда</option>
-              </select>
-            </div>
+        <div class="form-group mr">
+          <label for="exampleFormControlSelect1" class="order__label__disc">Торговая точка</label>
+          <div class="select3">
+            <select class="form-select disc__form" id="exampleFormControlSelect1">
+              <option disabled selected>Выберите торговую точку</option>
+              <option>Zero Караганда</option>
+              <option>Zero Караганда</option>
+              <option>Zero Караганда</option>
+            </select>
           </div>
         </div>
-      </template>
-      <template #footer>
-        <div class="cash__accept__button" v-if="isEdit == 'yes'">
-          <button class="btn accept__btn" data-bs-dismiss="modal">Сохранить</button>
-          <button class="btn delete__btn" data-bs-toggle="modal" data-bs-target="#DeleteInv">
-            Удалить кассу
-          </button>
+      </div>
+      <div v-if="isEdit == 'no'">
+        <div class="form-group">
+          <label for="example-text-input" class="order__label__disc">Название кассы</label>
+          <input class="form-control" type="text" placeholder="Введите название" id="example-text-input" />
         </div>
-        <div class="cash__accept__button" v-if="isEdit == 'no'">
-          <button class="btn accept__btn" data-bs-dismiss="modal">Добавить</button>
+        <div class="form-group mr">
+          <label for="exampleFormControlSelect1" class="order__label__disc">Торговая точка</label>
+          <div class="select3">
+            <select class="form-select disc__form" id="exampleFormControlSelect1">
+              <option disabled selected>Выберите торговую точку</option>
+              <option>Zero Караганда</option>
+              <option>Zero Караганда</option>
+              <option>Zero Караганда</option>
+            </select>
+          </div>
         </div>
-      </template>
-    </inputs-modal>
+      </div>
+    </template>
+    <template #footer>
+      <div class="cash__accept__button" v-if="isEdit == 'yes'">
+        <button class="btn accept__btn" data-bs-dismiss="modal">Сохранить</button>
+        <button class="btn delete__btn" data-bs-toggle="modal" data-bs-target="#DeleteInv">
+          Удалить кассу
+        </button>
+      </div>
+      <div class="cash__accept__button" v-if="isEdit == 'no'">
+        <button class="btn accept__btn" data-bs-dismiss="modal">Добавить</button>
+      </div>
+    </template>
+  </inputs-modal>
 
-    <delete-modal :title="'кассы'" :text="`кассу &quot;Касса ТРЦ МОСКВА&quot;`"></delete-modal>
+  <delete-modal :title="'кассы'" :text="`кассу &quot;Касса ТРЦ МОСКВА&quot;`"></delete-modal>
 </template>
 
 <script>

@@ -1,99 +1,97 @@
 <template>
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-12">
-          <lists-header>
-            <template v-slot:title> Список складов </template>
-          </lists-header>
-          <div class="card">
-            <div>
-              <div class="table__header">
-                <div>
-                  <button class="btn bg-gradient-dark"
-                    onclick="window.location.href = '/warehouse-accounting/create-storage'" style="
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-12">
+        <lists-header>
+          <template v-slot:title> Список складов </template>
+        </lists-header>
+        <div class="card">
+          <div>
+            <div class="table__header">
+              <div>
+                <button class="btn bg-gradient-dark"
+                  onclick="window.location.href = '/warehouse-accounting/create-storage'" style="
                       font-size: 14px;
                       font-weight: 600;
                       display: flex;
                       align-items: center;
                     ">
-                    <img src="@/assets/img/whtplus.svg" alt="" style="margin-right: 10px" />
-                    Добавить склад
-                  </button>
-                </div>
-                <div class="table__header-search">
-                  <list-search @searchFilter="(a) => search = a"></list-search>
-                  <filters-button></filters-button>
-                </div>
+                  <img src="@/assets/img/whtplus.svg" alt="" style="margin-right: 10px" />
+                  Добавить склад
+                </button>
               </div>
-              <div class="table__h">
-                <div>
-                  <table class="table table-striped">
-                    <thead>
-                      <tr>
-                        <th>№</th>
-                        <th>НАИМЕНОВАНИЕ СКЛАДА</th>
-                        <th>ТИП СКЛАДА</th>
-                        <th>АДРЕСС СКЛАДА</th>
-                        <th>СТАТУС</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr v-for="warehouse in paginationList" :key="warehouse.id">
-                        <td>{{ warehouse.listNumber + 1 }}</td>
-                        <td>{{ warehouse.name }}</td>
-                        <td>{{ warehouse.type }}</td>
-                        <td>{{ warehouse.adress }}</td>
-                        <td>
-                          <div :class="[
-                            {
-                              table__status__open: warehouse.status != 'Закрыт',
-                            },
-                            {
-                              table__status__closed:
-                                warehouse.status == 'Закрыт',
-                            },
-                          ]">
-                            <p class="tag">{{ warehouse.status }}</p>
-                          </div>
-                        </td>
-                        <td></td>
-                        <td class="dropdown" style="padding-left: 100px">
-                          <img src="@/assets/img/dots.svg" style="width: 1.563vw; cursor: pointer" alt="" />
-                          <div class="dropdown-content">
-                            <a href="/warehouse-accounting/storage">Редактировать</a>
-                            <hr />
-                            <a style="cursor: pointer" data-bs-toggle="modal" data-bs-target="#DeleteInv">Удалить</a>
-                          </div>
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
+              <div class="table__header-search">
+                <list-search @searchFilter="(a) => search = a"></list-search>
+                <filters-button></filters-button>
               </div>
-              <pagination-component :filteredArr="filteredItems" :strAmount="10" @PaginationReload="reloadPagination"
-                class="pb-4"></pagination-component>
             </div>
+            <div class="table__h">
+              <div>
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th>НАИМЕНОВАНИЕ СКЛАДА</th>
+                      <th>ТИП СКЛАДА</th>
+                      <th>АДРЕСС СКЛАДА</th>
+                      <th>СТАТУС</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr v-for="warehouse in paginationList" :key="warehouse.id">
+                      <td>{{ warehouse.name }}</td>
+                      <td>{{ warehouse.type }}</td>
+                      <td>{{ warehouse.adress }}</td>
+                      <td>
+                        <div :class="[
+                          {
+                            table__status__open: warehouse.status != 'Закрыт',
+                          },
+                          {
+                            table__status__closed:
+                              warehouse.status == 'Закрыт',
+                          },
+                        ]">
+                          <p class="tag">{{ warehouse.status }}</p>
+                        </div>
+                      </td>
+                      <td></td>
+                      <td class="dropdown" style="padding-left: 100px">
+                        <img src="@/assets/img/dots.svg" style="width: 1.563vw; cursor: pointer" alt="" />
+                        <div class="dropdown-content">
+                          <a href="/warehouse-accounting/storage">Редактировать</a>
+                          <hr />
+                          <a style="cursor: pointer" data-bs-toggle="modal" data-bs-target="#DeleteInv">Удалить</a>
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <pagination-component :filteredArr="filteredItems" :strAmount="10" @PaginationReload="reloadPagination"
+              class="pb-4"></pagination-component>
           </div>
         </div>
       </div>
     </div>
-    <filters @no-filter="cancelFilters">
-      <div class="filter__name__standart">Тип склада</div>
-      <select class="form-select" v-model="filterWarehouse">
-        <option value="" disabled selected>Выберите склад</option>
-        <option v-for="warehouse in warehouseList" :key="warehouse">
-          {{ warehouse }}
-        </option>
-        <option value=""></option>
-      </select>
-      <div class="filter__name__standart mt-3">Статус склада</div>
-      <select class="form-select" v-model="filterStatus">
-        <option value="" disabled selected>Выберите статус склада</option>
-        <option v-for="status in statusList" :key="status">{{ status }}</option>
-        <option value=""></option>
-      </select>
-    </filters>
-    <delete-modal :title="'склада'" :text="`склад &quot;ТЦ “Jam mall”&quot;`"></delete-modal>
+  </div>
+  <filters @no-filter="cancelFilters">
+    <div class="filter__name__standart">Тип склада</div>
+    <select class="form-select" v-model="filterWarehouse">
+      <option value="" disabled selected>Выберите склад</option>
+      <option v-for="warehouse in warehouseList" :key="warehouse">
+        {{ warehouse }}
+      </option>
+      <option value=""></option>
+    </select>
+    <div class="filter__name__standart mt-3">Статус склада</div>
+    <select class="form-select" v-model="filterStatus">
+      <option value="" disabled selected>Выберите статус склада</option>
+      <option v-for="status in statusList" :key="status">{{ status }}</option>
+      <option value=""></option>
+    </select>
+  </filters>
+  <delete-modal :title="'склада'" :text="`склад &quot;ТЦ “Jam mall”&quot;`"></delete-modal>
 </template>
 
 <script>
