@@ -40,28 +40,12 @@
                         </div>
                       </div>
                     </router-link>
-                    <div class="card__adapt">
-                      <router-link :to="{ name: 'deffered-checks' }">
-                        <div class="cash__blue__block">
-                          <div class="cash__blue__content">
-                            <div class="cash__blue__text align-items-start">
-                              <img src="@/assets/img/remove_shopping_cart.svg"
-                                style="width: 1.667vw; margin-right: 0.833vw" alt="" />
-                              Незавершенные продажи
-                            </div>
-                          </div>
-                        </div>
-                      </router-link>
-                    </div>
-                  </div>
-                  <div class="card__adapt__mob">
-                    <router-link :to="{ name: 'deffered-checks' }">
-                      <div class="cash__blue__block" style="margin-top: 3vw; margin-right: 1.042vw">
+                    <router-link :to="{ name: 'return-checks' }">
+                      <div class="cash__blue__block">
                         <div class="cash__blue__content">
-                          <div class="cash__blue__text align-items-start text-start">
-                            <img src="@/assets/img/remove_shopping_cart.svg"
-                              style="width: 1.667vw; margin-right: 0.833vw" alt="" />
-                            Незавершенные продажи
+                          <div class="cash__blue__text">
+                            <img src="@/assets/img/receipt.svg" style="width: 1.667vw; margin-right: 0.833vw" alt="" />
+                            Список возвратов
                           </div>
                         </div>
                       </div>
@@ -92,6 +76,19 @@
                           Снять X - отчет
                         </div>
                       </div>
+                    </div>
+                    <div class="card__adapt">
+                      <router-link :to="{ name: 'deffered-checks' }">
+                        <div class="cash__blue__block">
+                          <div class="cash__blue__content">
+                            <div class="cash__blue__text align-items-start">
+                              <img src="@/assets/img/remove_shopping_cart.svg"
+                                style="width: 1.667vw; margin-right: 0.833vw" alt="" />
+                              Незавершенные продажи
+                            </div>
+                          </div>
+                        </div>
+                      </router-link>
                     </div>
                   </div>
                 </div>
@@ -153,9 +150,7 @@
                       </div>
                     </div>
                     <div>
-                      <router-link :to="{ name: 'cash-list' }">
-                        <button class="btn goto__list">Перейти к списку</button>
-                      </router-link>
+                      
                     </div>
                   </div>
                 </div>
@@ -388,9 +383,9 @@ export default {
     font-size: 12px;
   }
 
-  .card__adapt {
+  /* .card__adapt {
     display: none;
-  }
+  } */
 
   .card__adapt__mob {
     display: contents;

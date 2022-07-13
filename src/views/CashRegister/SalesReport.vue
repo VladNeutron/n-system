@@ -120,9 +120,9 @@
 
         <option value=""></option>
       </select>
-      <p class="text-start my-2 fw-bold" for="Ответственный">Склад</p>
+      <p class="text-start my-2 fw-bold" for="Ответственный">Торговая точка</p>
       <select class="form-select" v-model="filterResponsible">
-        <option value="" disabled>Выберите склад</option>
+        <option value="" disabled>Выберите торговую точку</option>
 
         <option value=""></option>
       </select>

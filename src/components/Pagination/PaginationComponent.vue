@@ -113,7 +113,7 @@ computed:{
           if(this.filteredArr.length>0){
             let pageWeapons = [];
             let ind = 0;
-            console.log(this.stringAmount)
+            // console.log(this.stringAmount)
             if (this.pageNumber > 1){
                 ind = (this.pageNumber-1)*this.stringAmount
             }
@@ -147,10 +147,10 @@ computed:{
         else{
             let pagesArr = [];
             for(let i = (this.MaxPages - 4); i <= this.MaxPages; i++){
-                console.log(i);
+                // console.log(i);
                 pagesArr.push(i)
             }
-            console.log(pagesArr);
+            // console.log(pagesArr);
             return pagesArr
         }
     },

@@ -28,8 +28,9 @@
                             </button>
                             </router-link>
                             <select class="form-select" v-model="cashRegisterNumber">
-                                <option>Касса 1</option>
-                                <option>Касса 2</option>
+                                <option>Павел</option>
+                                <option>Илья</option>
+                                <option>Владислав</option>
                             </select> 
                         </div>
                     </div>
@@ -519,7 +520,7 @@ export default {
             discountModalInput: 0,
             discountModalValue: 0,
             checkNumber: 3800961,
-            cashRegisterNumber: 'Касса 1',
+            cashRegisterNumber: 'Павел',
             checkDate: '13.05.2022 10:58' 
         }
     },

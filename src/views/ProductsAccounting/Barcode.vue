@@ -1,5 +1,5 @@
 <template>
-    <div class="container-fluid">
+    <div class="no-print container-fluid">
       <div class="row">
         <div class="col-12">
           <lists-header>
@@ -48,7 +48,7 @@
                         />
                         Обновить данные
                       </button>
-                      <filters-button></filters-button>
+                      
                     </div>
                   </div>
                   <div class="table-responsive">
@@ -743,8 +743,23 @@ td {
 .printContainer {
   display: none;
 }
+main{
+    transition: all 0s !important;
+  }
 @media print {
-  main {
+  main{
+    transition: all 0s !important;
+  }
+  .card{
+    transition: all 0;
+  }
+  .no-print, #BarcodeModal {
+    display: none;
+  }
+  .modal{
+    display: none !important;
+  }
+  .navbar-main{
     display: none;
   }
   .printContainer {
